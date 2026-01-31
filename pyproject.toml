@@ -1,0 +1,81 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "synesis-lsp"
+version = "1.0.1"
+description = "Language Server Protocol para Synesis v1.1"
+readme = "README.md"
+authors = [
+    {name = "Synesis Project", email = "noreply@synesis.org"}
+]
+license = "MIT"
+license-files = ["LICENSE"]
+urls = { "Homepage" = "https://github.com/synesis-lang/synesis-lsp", "Repository" = "https://github.com/synesis-lang/synesis-lsp", "Issues" = "https://github.com/synesis-lang/synesis-lsp/issues" }
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Text Editors :: Integrated Development Environments (IDE)",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "pygls>=1.0.0,<2.0.0",
+    "lsprotocol>=2023.0.0,<2024.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.20.0",
+    "black>=23.0.0",
+    "mypy>=1.0.0",
+]
+release = [
+    "build>=1.2.0",
+    "twine>=5.0.0",
+]
+
+[project.scripts]
+synesis-lsp = "synesis_lsp.server:main"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["synesis_lsp*"]
+exclude = ["tests*", "vscode-extension*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+
+[tool.black]
+line-length = 100
+target-version = ['py310', 'py311', 'py312']
+include = '\\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.venv
+  | build
+  | dist
+  | vscode-extension
+)/
+'''
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+ignore_missing_imports = true

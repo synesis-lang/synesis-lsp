@@ -1,0 +1,9 @@
+# Synesis LSP Server Dependencies
+
+# LSP Framework
+pygls>=1.0.0
+lsprotocol>=2023.0.0
+
+# Compilador Synesis (deve ser instalado localmente)
+# pip install -e ../Compiler
+# synesis>=1.1.0

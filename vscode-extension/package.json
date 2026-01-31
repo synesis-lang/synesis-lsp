@@ -1,0 +1,101 @@
+{
+  "name": "synesis-vscode",
+  "displayName": "Synesis Language Support",
+  "description": "Language Server Protocol support for Synesis v1.1 - Qualitative Research DSL",
+  "version": "0.1.0",
+  "publisher": "synesis-project",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/synesis-project/synesis-lsp"
+  },
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Linters"
+  ],
+  "keywords": [
+    "synesis",
+    "qualitative research",
+    "dsl",
+    "language server"
+  ],
+  "activationEvents": [
+    "onLanguage:synesis"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "synesis",
+        "aliases": [
+          "Synesis",
+          "synesis"
+        ],
+        "extensions": [
+          ".syn",
+          ".synp",
+          ".synt",
+          ".syno"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "synesis",
+        "scopeName": "source.synesis",
+        "path": "./syntaxes/synesis.tmLanguage.json"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Synesis",
+      "properties": {
+        "synesis.pythonPath": {
+          "type": "string",
+          "default": "python3",
+          "description": "Path to Python interpreter (must have synesis-lsp installed)"
+        },
+        "synesisLanguageServer.trace.server": {
+          "type": "string",
+          "enum": [
+            "off",
+            "messages",
+            "verbose"
+          ],
+          "default": "off",
+          "description": "Traces the communication between VS Code and the language server"
+        },
+        "synesis.validation.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/disable real-time validation"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "lint": "eslint src --ext ts",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.75.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vscode/vsce": "^2.22.0",
+    "eslint": "^8.50.0",
+    "typescript": "^5.2.0"
+  }
+}

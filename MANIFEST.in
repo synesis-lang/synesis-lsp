@@ -1,0 +1,9 @@
+include README.md
+include LICENSE
+include CHANGELOG.md
+include INTERFACES.md
+include LSP_Implementation.md
+include lsp_index.md
+include synesis-explorer-lsp.md
+include synesis_load.qmd
+recursive-include docs *.md

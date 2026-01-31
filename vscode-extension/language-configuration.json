@@ -1,0 +1,27 @@
+{
+  "comments": {
+    "lineComment": "#"
+  },
+  "brackets": [
+    ["[", "]"]
+  ],
+  "autoClosingPairs": [
+    { "open": "[", "close": "]" },
+    { "open": "\"", "close": "\"" }
+  ],
+  "surroundingPairs": [
+    { "open": "[", "close": "]" },
+    { "open": "\"", "close": "\"" }
+  ],
+  "folding": {
+    "markers": {
+      "start": "^\\s*(PROJECT|SOURCE|ITEM|ONTOLOGY|TEMPLATE|FIELD)\\s",
+      "end": "^\\s*END\\s+(PROJECT|SOURCE|ITEM|ONTOLOGY|TEMPLATE|FIELD)"
+    }
+  },
+  "wordPattern": "(-?\\d*\\.\\d\\w*)|([^\\`\\~\\!\\@\\#\\%\\^\\&\\*\\(\\)\\-\\=\\+\\[\\{\\]\\}\\\\\\|\\;\\:\\'\\\"\\,\\.\\<\\>\\/\\?\\s]+)",
+  "indentationRules": {
+    "increaseIndentPattern": "^\\s*(PROJECT|SOURCE|ITEM|ONTOLOGY|TEMPLATE|FIELD|ORDERED)\\s",
+    "decreaseIndentPattern": "^\\s*END\\s+(PROJECT|SOURCE|ITEM|ONTOLOGY|TEMPLATE|FIELD|ORDERED)"
+  }
+}
