@@ -55,7 +55,6 @@ from lsprotocol.types import (
     WatchKind,
     TEXT_DOCUMENT_SEMANTIC_TOKENS_FULL,
     SemanticTokensParams,
-    SemanticTokensOptions,
     TEXT_DOCUMENT_DOCUMENT_SYMBOL,
     DocumentSymbolParams,
     TEXT_DOCUMENT_HOVER,
@@ -278,7 +277,7 @@ def get_project_stats(ls: SynesisLanguageServer, params) -> dict:
 
 @server.feature(
     TEXT_DOCUMENT_SEMANTIC_TOKENS_FULL,
-    SemanticTokensOptions(legend=build_legend(), full=True),
+    build_legend(),
 )
 def semantic_tokens_full(
     ls: SynesisLanguageServer, params: SemanticTokensParams
