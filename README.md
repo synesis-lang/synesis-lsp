@@ -27,6 +27,12 @@
 
 ## 🚀 Instalação
 
+### Opção A: Instalar via TestPyPI (teste de publicação)
+
+```bash
+python -m pip install -i https://test.pypi.org/simple/ synesis-lsp --extra-index-url https://pypi.org/simple
+```
+
 ### 1. Instalar o Compilador Synesis
 
 ```bash

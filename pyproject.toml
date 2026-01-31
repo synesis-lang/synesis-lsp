@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "synesis-lsp"
-version = "1.0.1"
+version = "1.0.2a1"
 description = "Language Server Protocol para Synesis v1.1"
 readme = "README.md"
 authors = [

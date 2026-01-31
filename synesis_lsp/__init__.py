@@ -25,5 +25,5 @@ Notas de implementação:
 Gerado conforme: Especificação Synesis v1.1 + ADR-002 LSP
 """
 
-__version__ = "1.0.1"
+__version__ = "1.0.2a1"
 __all__ = ["server", "converters", "handlers"]
