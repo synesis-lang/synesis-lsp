@@ -18,6 +18,15 @@
 - ✅ **Descoberta Automática**: Carrega templates e bibliografia automaticamente
 - ✅ **Fuzzy Matching**: Sugestões para bibrefs não encontrados
 - ✅ **Suporte Completo**: Arquivos `.syn`, `.synp`, `.synt`, `.syno`
+- ✅ **Semantic Tokens**: Colorização semântica baseada no compilador
+- ✅ **Document Symbols**: Outline SOURCE/ITEM/ONTOLOGY
+- ✅ **Hover**: Contexto de bibliografia, template e ontologia
+- ✅ **Autocomplete**: Bibrefs, códigos e campos
+- ✅ **Inlay Hints**: Autor/ano após @bibref
+- ✅ **Go-to-Definition**: Bibrefs e códigos
+- ✅ **Signature Help**: Definição de campo durante preenchimento
+- ✅ **Rename**: Renomeia bibrefs e códigos no workspace
+- ✅ **Relation Graph**: Mermaid.js a partir de relações
 
 ## 📋 Pré-Requisitos
 
@@ -89,9 +98,29 @@ LSP/
 │   ├── __main__.py        # Entry point (python -m synesis_lsp)
 │   ├── server.py          # Servidor principal com pygls
 │   └── converters.py      # ValidationError → LSP Diagnostic
+│   ├── cache.py           # Workspace cache
+│   ├── semantic_tokens.py # Semantic tokens
+│   ├── symbols.py         # Document symbols
+│   ├── hover.py           # Hover provider
+│   ├── definition.py      # Go-to-definition
+│   ├── completion.py      # Autocomplete
+│   ├── inlay_hints.py      # Inlay hints
+│   ├── explorer_requests.py # Custom explorer requests
+│   ├── graph.py           # Relation graph (Mermaid)
+│   ├── signature_help.py  # Signature help
+│   └── rename.py          # Rename provider
 │
 ├── tests/                 # Testes unitários
 │   └── test_converters.py
+│   ├── test_cache.py
+│   ├── test_semantic_tokens.py
+│   ├── test_symbols.py
+│   ├── test_hover.py
+│   ├── test_definition.py
+│   ├── test_completion.py
+│   ├── test_inlay_hints.py
+│   ├── test_explorer_requests.py
+│   └── test_server_commands.py
 │
 ├── vscode-extension/      # Extensão VSCode (cliente)
 │   ├── src/extension.ts
@@ -140,6 +169,11 @@ Veja RELEASING.md para passos de build e upload.
 ├─────────────────────────────────┤
 │ • Handlers: did_open, did_change│
 │ • Converters: Error → Diagnostic│
+│ • Providers: tokens, symbols,    │
+│   hover, completion, definition, │
+│   inlay, signature, rename       │
+│ • Commands: loadProject, stats,  │
+│   explorer, relation graph       │
 └──────┬──────────────────────────┘
        │ importa
        ▼
@@ -182,6 +216,14 @@ python -m synesis_lsp 2>&1 | tee lsp.log
 ```
 
 Logs são escritos em `stderr` e capturados pelo VSCode em **Output → Synesis LSP**.
+
+## 🧩 Recursos avançados
+
+- Comandos custom: `synesis/loadProject`, `synesis/getProjectStats`,
+  `synesis/getReferences`, `synesis/getCodes`, `synesis/getRelations`,
+  `synesis/getRelationGraph`
+- Recursos cross-file (hover, definition, completion, rename, graph) dependem
+  do cache do workspace carregado via `synesis/loadProject`
 
 ## 📚 Dependências
 
