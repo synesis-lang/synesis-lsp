@@ -35,6 +35,7 @@ import sys
 from importlib import metadata
 from pathlib import Path
 from typing import Optional
+from urllib.parse import unquote, urlparse
 
 from lsprotocol.types import (
     TEXT_DOCUMENT_DID_CHANGE,
@@ -150,12 +151,22 @@ def _resolve_workspace_root(ls: SynesisLanguageServer, params) -> Optional[str]:
         3. Senão, tenta extrair do primeiro documento aberto via _find_workspace_root
     """
     # Tenta extrair de params
-    if isinstance(params, dict) and "workspaceRoot" in params:
-        return params["workspaceRoot"]
+    if isinstance(params, dict):
+        if "workspaceRoot" in params:
+            return params["workspaceRoot"]
+        if "rootUri" in params:
+            return params["rootUri"]
+        if "rootPath" in params:
+            return params["rootPath"]
     if isinstance(params, list) and len(params) > 0:
         first = params[0]
-        if isinstance(first, dict) and "workspaceRoot" in first:
-            return first["workspaceRoot"]
+        if isinstance(first, dict):
+            if "workspaceRoot" in first:
+                return first["workspaceRoot"]
+            if "rootUri" in first:
+                return first["rootUri"]
+            if "rootPath" in first:
+                return first["rootPath"]
 
     # Fallback: usa primeiro documento aberto
     for workspace_key, doc_uris in ls.workspace_documents.items():
@@ -168,11 +179,53 @@ def _resolve_workspace_root(ls: SynesisLanguageServer, params) -> Optional[str]:
         if folders:
             first_folder = next(iter(folders.values()), None)
             if first_folder:
-                folder_uri = first_folder.uri
-                folder_path = folder_uri.replace("file:///", "").replace("file://", "")
-                return folder_path
+                return first_folder.uri
 
     return None
+
+
+def _normalize_workspace_path(workspace_root) -> Optional[Path]:
+    """
+    Normaliza workspace_root para Path, aceitando path ou file URI.
+
+    Mantém o caminho sem resolve() para evitar dependência do filesystem.
+    """
+    if not workspace_root:
+        return None
+
+    if isinstance(workspace_root, Path):
+        return workspace_root
+
+    if not isinstance(workspace_root, str):
+        return None
+
+    if workspace_root.startswith("file://"):
+        parsed = urlparse(workspace_root)
+        path_str = unquote(parsed.path or "")
+
+        # UNC paths: file://server/share/path -> //server/share/path
+        if parsed.netloc:
+            path_str = f"//{parsed.netloc}{path_str}"
+
+        # Windows drive: /d:/path -> d:/path
+        if len(path_str) >= 3 and path_str[0] == "/" and path_str[2] == ":":
+            path_str = path_str[1:]
+
+        return Path(path_str)
+
+    return Path(workspace_root)
+
+
+def _workspace_key(workspace_root) -> Optional[str]:
+    """Normaliza workspace_root para chave consistente do cache."""
+    path = _normalize_workspace_path(workspace_root)
+    if not path:
+        return None
+
+    key = path.as_posix()
+    if sys.platform.startswith("win"):
+        key = key.lower()
+    return key
 
 
 @server.command("synesis/loadProject")
@@ -188,7 +241,9 @@ def load_project(ls: SynesisLanguageServer, params) -> dict:
         if not workspace_root:
             return {"success": False, "error": "Workspace não encontrado"}
 
-        workspace_path = Path(workspace_root)
+        workspace_path = _normalize_workspace_path(workspace_root)
+        if not workspace_path:
+            return {"success": False, "error": "Workspace inválido"}
 
         # Buscar .synp no workspace
         synp_files = list(workspace_path.glob("**/*.synp"))
@@ -204,7 +259,9 @@ def load_project(ls: SynesisLanguageServer, params) -> dict:
         result = compiler.compile()
 
         # Cachear resultado
-        ws_key = str(workspace_root)
+        ws_key = _workspace_key(workspace_path)
+        if not ws_key:
+            return {"success": False, "error": "Workspace inválido"}
         ls.workspace_cache.put(ws_key, result, workspace_path)
 
         # Retornar estatísticas (leve)
@@ -254,7 +311,11 @@ def get_project_stats(ls: SynesisLanguageServer, params) -> dict:
     if not workspace_root:
         return {"success": False, "error": "Workspace não encontrado"}
 
-    cached = ls.workspace_cache.get(str(workspace_root))
+    workspace_key = _workspace_key(workspace_root)
+    if not workspace_key:
+        return {"success": False, "error": "Workspace inválido"}
+
+    cached = ls.workspace_cache.get(workspace_key)
     if not cached:
         return {
             "success": False,
@@ -319,9 +380,8 @@ def hover(ls: SynesisLanguageServer, params: HoverParams):
 
     # Resolve workspace para obter cache
     workspace_root = _find_workspace_root(uri)
-    cached_result = None
-    if workspace_root:
-        cached_result = ls.workspace_cache.get(str(workspace_root))
+    workspace_key = _workspace_key(workspace_root)
+    cached_result = ls.workspace_cache.get(workspace_key) if workspace_key else None
 
     return compute_hover(doc.source, params.position, cached_result)
 
@@ -337,9 +397,8 @@ def inlay_hint(ls: SynesisLanguageServer, params: InlayHintParams):
     doc = ls.workspace.get_document(uri)
 
     workspace_root = _find_workspace_root(uri)
-    cached_result = None
-    if workspace_root:
-        cached_result = ls.workspace_cache.get(str(workspace_root))
+    workspace_key = _workspace_key(workspace_root)
+    cached_result = ls.workspace_cache.get(workspace_key) if workspace_key else None
 
     return compute_inlay_hints(doc.source, cached_result, params.range)
 
@@ -355,9 +414,8 @@ def definition(ls: SynesisLanguageServer, params: DefinitionParams):
     doc = ls.workspace.get_document(uri)
 
     workspace_root = _find_workspace_root(uri)
-    cached_result = None
-    if workspace_root:
-        cached_result = ls.workspace_cache.get(str(workspace_root))
+    workspace_key = _workspace_key(workspace_root)
+    cached_result = ls.workspace_cache.get(workspace_key) if workspace_key else None
 
     return compute_definition(doc.source, params.position, cached_result)
 
@@ -376,9 +434,8 @@ def completion(ls: SynesisLanguageServer, params: CompletionParams):
     doc = ls.workspace.get_document(uri)
 
     workspace_root = _find_workspace_root(uri)
-    cached_result = None
-    if workspace_root:
-        cached_result = ls.workspace_cache.get(str(workspace_root))
+    workspace_key = _workspace_key(workspace_root)
+    cached_result = ls.workspace_cache.get(workspace_key) if workspace_key else None
 
     trigger_char = None
     if params.context:
@@ -401,9 +458,8 @@ def signature_help(ls: SynesisLanguageServer, params: SignatureHelpParams):
     doc = ls.workspace.get_document(uri)
 
     workspace_root = _find_workspace_root(uri)
-    cached_result = None
-    if workspace_root:
-        cached_result = ls.workspace_cache.get(str(workspace_root))
+    workspace_key = _workspace_key(workspace_root)
+    cached_result = ls.workspace_cache.get(workspace_key) if workspace_key else None
 
     return compute_signature_help(doc.source, params.position, cached_result)
 
@@ -419,9 +475,8 @@ def prepare_rename_handler(ls: SynesisLanguageServer, params: PrepareRenameParam
     doc = ls.workspace.get_document(uri)
 
     workspace_root = _find_workspace_root(uri)
-    cached_result = None
-    if workspace_root:
-        cached_result = ls.workspace_cache.get(str(workspace_root))
+    workspace_key = _workspace_key(workspace_root)
+    cached_result = ls.workspace_cache.get(workspace_key) if workspace_key else None
 
     return prepare_rename(doc.source, params.position, cached_result)
 
@@ -437,9 +492,8 @@ def rename(ls: SynesisLanguageServer, params: RenameParams):
     doc = ls.workspace.get_document(uri)
 
     workspace_root = _find_workspace_root(uri)
-    cached_result = None
-    if workspace_root:
-        cached_result = ls.workspace_cache.get(str(workspace_root))
+    workspace_key = _workspace_key(workspace_root)
+    cached_result = ls.workspace_cache.get(workspace_key) if workspace_key else None
 
     return compute_rename(doc.source, params.position, params.new_name, cached_result)
 
@@ -449,7 +503,10 @@ def _get_cached_for_workspace(ls: SynesisLanguageServer, params):
     workspace_root = _resolve_workspace_root(ls, params)
     if not workspace_root:
         return None, "Workspace não encontrado"
-    return ls.workspace_cache.get(str(workspace_root)), None
+    workspace_key = _workspace_key(workspace_root)
+    if not workspace_key:
+        return None, "Workspace inválido"
+    return ls.workspace_cache.get(workspace_key), None
 
 
 @server.command("synesis/getReferences")
@@ -551,10 +608,11 @@ def validate_document(ls: SynesisLanguageServer, uri: str) -> None:
         # REGISTRAR DOCUMENTO NO WORKSPACE (para revalidação futura)
         workspace_root = _find_workspace_root(uri)
         if workspace_root:
-            workspace_key = str(workspace_root)
-            if workspace_key not in ls.workspace_documents:
-                ls.workspace_documents[workspace_key] = set()
-            ls.workspace_documents[workspace_key].add(uri)
+            workspace_key = _workspace_key(workspace_root)
+            if workspace_key:
+                if workspace_key not in ls.workspace_documents:
+                    ls.workspace_documents[workspace_key] = set()
+                ls.workspace_documents[workspace_key].add(uri)
 
         logger.info(
             f"Validação completa: {uri} - "
@@ -625,8 +683,8 @@ def did_close(ls: SynesisLanguageServer, params: DidCloseTextDocumentParams) -> 
     # Remove do rastreamento de workspace
     workspace_root = _find_workspace_root(uri)
     if workspace_root:
-        workspace_key = str(workspace_root)
-        if workspace_key in ls.workspace_documents:
+        workspace_key = _workspace_key(workspace_root)
+        if workspace_key and workspace_key in ls.workspace_documents:
             ls.workspace_documents[workspace_key].discard(uri)
 
 
@@ -718,7 +776,10 @@ def did_save(ls: SynesisLanguageServer, params: DidSaveTextDocumentParams) -> No
             logger.warning(f"Workspace root não encontrado para {uri}")
             return
 
-        workspace_key = str(workspace_root)
+        workspace_key = _workspace_key(workspace_root)
+        if not workspace_key:
+            logger.warning(f"Workspace inválido para {uri}")
+            return
 
         # 2. INVALIDAR CACHES
         _invalidate_cache(workspace_root)
@@ -744,7 +805,10 @@ def did_save(ls: SynesisLanguageServer, params: DidSaveTextDocumentParams) -> No
 
         workspace_root = _find_workspace_root(uri)
         if workspace_root:
-            workspace_key = str(workspace_root)
+            workspace_key = _workspace_key(workspace_root)
+            if not workspace_key:
+                logger.warning(f"Workspace inválido para {uri}")
+                return
 
             # Invalidar caches
             _invalidate_cache(workspace_root)
@@ -763,8 +827,9 @@ def did_save(ls: SynesisLanguageServer, params: DidSaveTextDocumentParams) -> No
     elif file_extension in [".syn", ".syno"]:
         workspace_root = _find_workspace_root(uri)
         if workspace_root:
-            workspace_key = str(workspace_root)
-            ls.workspace_cache.invalidate(workspace_key)
+            workspace_key = _workspace_key(workspace_root)
+            if workspace_key:
+                ls.workspace_cache.invalidate(workspace_key)
 
 
 @server.feature(WORKSPACE_DID_CHANGE_WATCHED_FILES)
@@ -804,7 +869,9 @@ def did_change_watched_files(
         if not workspace_root:
             continue
 
-        workspace_key = str(workspace_root)
+        workspace_key = _workspace_key(workspace_root)
+        if not workspace_key:
+            continue
 
         # Invalidar caches
         _invalidate_cache(workspace_root)
