@@ -66,6 +66,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Produz `WorkspaceEdit` com `TextEdit` por arquivo
   - Lê arquivos do disco para encontrar ocorrências textuais com word boundary
 
+## [1.0.3] - 2026-02-01
+
+### Fixed
+
+- **LSP features**: corrigida a resolucao do workspace cache para handlers de
+  hover/definition/inlay/signature/rename em Windows quando o rootUri chega
+  como `file:///` (fallback para `workspaceFolders`).
+
 ## [1.0.2a3] - 2026-02-01
 
 ### Changed

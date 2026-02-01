@@ -378,10 +378,7 @@ def hover(ls: SynesisLanguageServer, params: HoverParams):
     uri = params.text_document.uri
     doc = ls.workspace.get_document(uri)
 
-    # Resolve workspace para obter cache
-    workspace_root = _find_workspace_root(uri)
-    workspace_key = _workspace_key(workspace_root)
-    cached_result = ls.workspace_cache.get(workspace_key) if workspace_key else None
+    cached_result = _get_cached_for_uri(ls, uri)
 
     return compute_hover(doc.source, params.position, cached_result)
 
@@ -396,9 +393,7 @@ def inlay_hint(ls: SynesisLanguageServer, params: InlayHintParams):
     uri = params.text_document.uri
     doc = ls.workspace.get_document(uri)
 
-    workspace_root = _find_workspace_root(uri)
-    workspace_key = _workspace_key(workspace_root)
-    cached_result = ls.workspace_cache.get(workspace_key) if workspace_key else None
+    cached_result = _get_cached_for_uri(ls, uri)
 
     return compute_inlay_hints(doc.source, cached_result, params.range)
 
@@ -413,9 +408,7 @@ def definition(ls: SynesisLanguageServer, params: DefinitionParams):
     uri = params.text_document.uri
     doc = ls.workspace.get_document(uri)
 
-    workspace_root = _find_workspace_root(uri)
-    workspace_key = _workspace_key(workspace_root)
-    cached_result = ls.workspace_cache.get(workspace_key) if workspace_key else None
+    cached_result = _get_cached_for_uri(ls, uri)
 
     return compute_definition(doc.source, params.position, cached_result)
 
@@ -433,9 +426,7 @@ def completion(ls: SynesisLanguageServer, params: CompletionParams):
     uri = params.text_document.uri
     doc = ls.workspace.get_document(uri)
 
-    workspace_root = _find_workspace_root(uri)
-    workspace_key = _workspace_key(workspace_root)
-    cached_result = ls.workspace_cache.get(workspace_key) if workspace_key else None
+    cached_result = _get_cached_for_uri(ls, uri)
 
     trigger_char = None
     if params.context:
@@ -457,9 +448,7 @@ def signature_help(ls: SynesisLanguageServer, params: SignatureHelpParams):
     uri = params.text_document.uri
     doc = ls.workspace.get_document(uri)
 
-    workspace_root = _find_workspace_root(uri)
-    workspace_key = _workspace_key(workspace_root)
-    cached_result = ls.workspace_cache.get(workspace_key) if workspace_key else None
+    cached_result = _get_cached_for_uri(ls, uri)
 
     return compute_signature_help(doc.source, params.position, cached_result)
 
@@ -474,9 +463,7 @@ def prepare_rename_handler(ls: SynesisLanguageServer, params: PrepareRenameParam
     uri = params.text_document.uri
     doc = ls.workspace.get_document(uri)
 
-    workspace_root = _find_workspace_root(uri)
-    workspace_key = _workspace_key(workspace_root)
-    cached_result = ls.workspace_cache.get(workspace_key) if workspace_key else None
+    cached_result = _get_cached_for_uri(ls, uri)
 
     return prepare_rename(doc.source, params.position, cached_result)
 
@@ -491,9 +478,7 @@ def rename(ls: SynesisLanguageServer, params: RenameParams):
     uri = params.text_document.uri
     doc = ls.workspace.get_document(uri)
 
-    workspace_root = _find_workspace_root(uri)
-    workspace_key = _workspace_key(workspace_root)
-    cached_result = ls.workspace_cache.get(workspace_key) if workspace_key else None
+    cached_result = _get_cached_for_uri(ls, uri)
 
     return compute_rename(doc.source, params.position, params.new_name, cached_result)
 
@@ -507,6 +492,28 @@ def _get_cached_for_workspace(ls: SynesisLanguageServer, params):
     if not workspace_key:
         return None, "Workspace inválido"
     return ls.workspace_cache.get(workspace_key), None
+
+
+def _get_cached_for_uri(ls: SynesisLanguageServer, uri: str):
+    """
+    Helper: resolve workspace a partir de URI do documento.
+
+    Usa _find_workspace_root (lsp_adapter) e, se falhar, tenta folders do LSP.
+    Retorna cached_result ou None.
+    """
+    workspace_root = _find_workspace_root(uri)
+    if not workspace_root and ls.workspace and hasattr(ls.workspace, "folders"):
+        folders = ls.workspace.folders
+        if folders:
+            first_folder = next(iter(folders.values()), None)
+            if first_folder:
+                workspace_root = first_folder.uri
+
+    workspace_key = _workspace_key(workspace_root)
+    if not workspace_key:
+        return None
+
+    return ls.workspace_cache.get(workspace_key)
 
 
 @server.command("synesis/getReferences")
