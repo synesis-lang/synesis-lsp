@@ -157,3 +157,55 @@ Ao alterar interfaces no compilador:
 - [ ] Novo `ErrorSeverity` -> adicionar em `convert_severity()` em `converters.py`
 - [ ] Mudanca em `validate_single_file()` -> verificar `server.py:validate_document()`
 - [ ] Atualizar este documento (`INTERFACES.md`)
+
+## 6. Custom Requests do Explorer (LSP -> Cliente)
+
+### Envelope padrao
+
+```js
+{ success: boolean, error?: string }
+```
+
+### synesis/getCodes
+
+```js
+{
+  success: true,
+  codes: [
+    {
+      code: "proposito",
+      usageCount: 321,
+      ontologyDefined: true,
+      occurrences: [
+        { file: "interviews/e01.syn", line: 10, column: 5, context: "code", field: "ordem_2a" }
+      ]
+    }
+  ]
+}
+```
+
+### synesis/getRelations
+
+```js
+{
+  success: true,
+  relations: [
+    {
+      from: "proposito",
+      relation: "CAUSA",
+      to: "chamado",
+      type: "QUALIFIED",
+      location: { file: "interviews/e01.syn", line: 12, column: 7 }
+    }
+  ]
+}
+```
+
+### synesis/getRelationGraph
+
+```js
+{
+  success: true,
+  mermaidCode: "graph LR\\n  a[a] -->|REL| b[b]"
+}
+```

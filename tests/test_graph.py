@@ -97,16 +97,18 @@ class TestFilterByBibref:
     """Testa filtragem por bibref."""
 
     def test_filter_by_bibref(self):
-        item1 = SimpleNamespace(extra_fields={"ordem_2a": ["proposito", "chamado"]})
-        src = SimpleNamespace(items=[item1])
-        sources = {"entrevista01": src}
+        item1 = SimpleNamespace(bibref="@entrevista01")
+        code_usage = {
+            "proposito": [item1],
+            "chamado": [item1],
+        }
 
         triples = [
             ("proposito", "CAUSA", "chamado"),
             ("dons", "LEVA_A", "milagres"),
         ]
 
-        cached = _make_cached(triples=triples, sources=sources)
+        cached = _make_cached(triples=triples, code_usage=code_usage)
         result = get_relation_graph(cached, bibref="@entrevista01")
 
         assert result["success"] is True
@@ -117,10 +119,10 @@ class TestFilterByBibref:
         assert "milagres" not in mermaid
 
     def test_filter_bibref_no_items(self):
-        src = SimpleNamespace(items=[])
-        sources = {"e01": src}
+        item1 = SimpleNamespace(bibref="@outra")
+        code_usage = {"a": [item1]}
         triples = [("a", "R", "b")]
-        cached = _make_cached(triples=triples, sources=sources)
+        cached = _make_cached(triples=triples, code_usage=code_usage)
 
         result = get_relation_graph(cached, bibref="e01")
         assert result["success"] is True
@@ -128,9 +130,101 @@ class TestFilterByBibref:
 
     def test_filter_bibref_unknown(self):
         triples = [("a", "R", "b")]
-        cached = _make_cached(triples=triples, sources={})
+        cached = _make_cached(triples=triples, code_usage={})
 
         result = get_relation_graph(cached, bibref="inexistente")
+        assert result["success"] is True
+        assert "Sem relações" in result["mermaidCode"]
+
+    def test_filter_by_bibref_with_source_reference(self):
+        """Items with source.bibref (not direct bibref) - Task 1.3 fix."""
+        source = SimpleNamespace(bibref="@entrevista01")
+        item = SimpleNamespace(source=source, bibref=None)  # No direct bibref
+        code_usage = {
+            "faith": [item],
+            "healing": [item],
+        }
+
+        triples = [
+            ("faith", "causes", "healing"),
+            ("prayer", "leads_to", "peace"),  # Not in entrevista01
+        ]
+
+        cached = _make_cached(triples=triples, code_usage=code_usage)
+        result = get_relation_graph(cached, bibref="@entrevista01")
+
+        assert result["success"] is True
+        mermaid = result["mermaidCode"]
+        assert "faith" in mermaid
+        assert "healing" in mermaid
+        assert "prayer" not in mermaid  # Filtered out
+
+    def test_filter_by_bibref_without_at(self):
+        """Accept bibref with or without @ prefix - Task 1.3 fix."""
+        source = SimpleNamespace(bibref="@estudo2019")
+        item = SimpleNamespace(source=source)
+        code_usage = {"hope": [item]}
+        triples = [("hope", "inspires", "action")]
+
+        cached = _make_cached(triples=triples, code_usage=code_usage)
+
+        # Test without @ prefix
+        result = get_relation_graph(cached, bibref="estudo2019")
+        assert result["success"] is True
+        assert "hope" in result["mermaidCode"]
+
+        # Test with @ prefix (should also work)
+        result2 = get_relation_graph(cached, bibref="@estudo2019")
+        assert result2["success"] is True
+        assert "hope" in result2["mermaidCode"]
+
+    def test_filter_by_bibref_sources_fallback(self):
+        """Fall back to sources when code_usage items lack bibref - Task 1.3 fix."""
+        # code_usage has items without bibref
+        item_no_bibref = SimpleNamespace(bibref=None, source=None)
+        code_usage = {"mystery": [item_no_bibref]}
+
+        # sources has proper bibref
+        item_with_codes = SimpleNamespace(
+            codes=["mystery", "revelation"],
+            chains=[],
+            extra_fields={}
+        )
+        src = SimpleNamespace(
+            bibref="@research2024",
+            items=[item_with_codes]
+        )
+        sources = {"research2024": src}
+
+        triples = [
+            ("mystery", "reveals", "revelation"),
+            ("other", "unrelated", "triple"),
+        ]
+
+        lp = SimpleNamespace(
+            all_triples=triples,
+            sources=sources,
+            code_usage=code_usage,
+        )
+        cached = SimpleNamespace(result=SimpleNamespace(linked_project=lp))
+
+        result = get_relation_graph(cached, bibref="@research2024")
+
+        assert result["success"] is True
+        mermaid = result["mermaidCode"]
+        assert "mystery" in mermaid
+        assert "revelation" in mermaid
+        assert "other" not in mermaid  # Filtered out
+
+    def test_filter_by_nonexistent_bibref(self):
+        """Return empty graph for nonexistent bibref - Task 1.3 fix."""
+        item = SimpleNamespace(bibref="@exists")
+        code_usage = {"some_code": [item]}
+        triples = [("some_code", "rel", "other")]
+
+        cached = _make_cached(triples=triples, code_usage=code_usage)
+        result = get_relation_graph(cached, bibref="@nonexistent")
+
         assert result["success"] is True
         assert "Sem relações" in result["mermaidCode"]
 

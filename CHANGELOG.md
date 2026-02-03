@@ -5,44 +5,289 @@ All notable changes to the Synesis LSP project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.1.0] - 2026-01-03
+## [Unreleased]
 
-### Added
+### Planned
 
-- **LSP Server** (`synesis_lsp/`)
-  - Servidor LSP com pygls para validacao em tempo real
-  - Handlers: `didOpen`, `didChange`, `didClose`, `didSave`
-  - Invalidacao automatica de cache ao salvar `.synp`, `.synt`, `.bib`
-  - Monitoramento de arquivos de contexto via `workspace/didChangeWatchedFiles`
-  - Configuracao `synesis.validation.enabled` para habilitar/desabilitar validacao
-  - Tratamento robusto de excecoes (servidor nunca crasha)
+- Code lens (reference counts)
+- Call hierarchy support
+- Folding ranges
 
-- **Converters** (`synesis_lsp/converters.py`)
-  - Conversao `SourceLocation` (1-based) para LSP `Range` (0-based)
-  - Mapeamento `ErrorSeverity` para `DiagnosticSeverity`
-  - Builder de `Diagnostic` com fallback para erros mal-formados
+## [0.13.0] - 2026-02-02
 
-- **VSCode Extension** (`vscode-extension/`)
-  - Cliente LSP em TypeScript com `vscode-languageclient`
-  - Syntax highlighting via TextMate grammar (`.syn`, `.synp`, `.synt`, `.syno`)
-  - Configuracao de Python path e trace level
-  - Auto-indentacao e bracket matching
-  - Empacotamento como `.vsix`
+### Added - Phase 3: Advanced LSP Features
 
-- **Compiler Adapter** (em `synesis/lsp_adapter.py` no compilador)
-  - Funcao `validate_single_file()` para validacao in-memory
-  - Descoberta automatica de contexto (`.synp`, `.synt`, `.bib`)
-  - Cache de `ValidationContext` com validacao por mtime
-  - 13 testes unitarios passando
+**Task 3.1: textDocument/references**
+- **New LSP feature**: Implementa Find All References para codes e bibrefs
+- **Implementation**: New module `synesis_lsp/references.py`
+  - `compute_references()`: Main function finding all references to symbols
+  - `_find_code_references()`: Finds all code usages across workspace
+  - `_find_bibref_references()`: Finds all bibref usages
+  - `_convert_to_lsp_location()`: Converts 1-based compiler coordinates to 0-based LSP
+  - Supports `includeDeclaration` parameter to include/exclude definition
+- **Integration**: Feature handler added to `server.py` for TEXT_DOCUMENT_REFERENCES
+- **Tests**: 11 tests added (`test_references.py` - NEW FILE)
+  - Tests for code and bibref references
+  - Tests for declaration inclusion/exclusion
+  - Tests for bibref normalization
 
-### Architecture
+**Task 3.2: textDocument/codeAction**
+- **New LSP feature**: Implementa Code Actions (Quick Fixes) para erros comuns
+- **Implementation**: New module `synesis_lsp/code_actions.py`
+  - `compute_code_actions()`: Generates code actions for diagnostics
+  - `_suggest_field_corrections()`: Suggests similar field names using Levenshtein distance
+  - `_suggest_required_field()`: Suggests inserting missing required fields
+  - `_levenshtein_distance()`: Calculates edit distance for smart suggestions
+  - Quick fixes for: unknown fields, required fields missing, typos
+- **Smart suggestions**: Uses edit distance algorithm (max 3 changes) to find similar fields
+- **Integration**: Feature handler added to `server.py` for TEXT_DOCUMENT_CODE_ACTION
+- **Tests**: 24 tests added (`test_code_actions.py` - NEW FILE)
+  - Tests for field correction suggestions
+  - Tests for Levenshtein distance calculation
+  - Tests for field name extraction from diagnostic messages
+  - Tests for multiple suggestions and filtering
 
-- Decisao arquitetural documentada em ADR-002 (`docs/ADR-002.md`)
-- LSP opera como Protocol Adapter puro (sem logica de validacao propria)
-- Fonte unica de verdade: compilador Synesis
-- Fluxo unidirecional: Editor -> LSP -> Compilador -> Diagnosticos
+**Task 3.3: Workspace Diagnostics**
+- **New feature**: Valida todos os arquivos Synesis no workspace, não apenas abertos
+- **Implementation**: New module `synesis_lsp/workspace_diagnostics.py`
+  - `compute_workspace_diagnostics()`: Validates all Synesis files in workspace
+  - `_find_synesis_files()`: Recursively discovers .syn, .synp, .synt, .syno files
+  - `validate_workspace_file()`: Validates individual file
+  - Returns map of URI → Diagnostics for all files
+- **Command**: `synesis/validateWorkspace` triggers workspace-wide validation
+- **Integration**: Command handler added to `server.py`
+- **Tests**: 18 tests added (`test_workspace_diagnostics.py` - NEW FILE)
+  - Tests for file discovery in subdirectories
+  - Tests for validation error handling
+  - Tests for empty/nonexistent workspaces
+  - Tests for individual file validation
 
-## [1.0.0] - 2026-01-30
+### Impact
+
+- **Find All References**: IDE-standard feature now available for Synesis symbols
+- **Quick Fixes**: Intelligent corrections reduce typos and speed up development
+- **Workspace Validation**: Catch errors across entire project, not just open files
+- **Developer Experience**: Synesis LSP now provides modern IDE features on par with mainstream languages
+
+### Test Coverage
+
+- **314 tests total** (261 from Phases 1+2 + 53 from Phase 3)
+- **53 new tests** added across Phase 3 tasks (11 + 24 + 18)
+- All tests passing ✅
+
+### Files Added
+
+- `synesis_lsp/references.py` - Find All References implementation
+- `synesis_lsp/code_actions.py` - Code Actions (Quick Fixes)
+- `synesis_lsp/workspace_diagnostics.py` - Workspace-wide validation
+- `tests/test_references.py` - 11 tests
+- `tests/test_code_actions.py` - 24 tests
+- `tests/test_workspace_diagnostics.py` - 18 tests
+
+### Files Modified
+
+- `synesis_lsp/server.py` - Added 3 new feature handlers + 1 command
+- `CHANGELOG.md` - Documented Phase 3 implementation
+
+## [0.12.0] - 2026-02-02
+
+### Added - Phase 2: Completeness Endpoints
+
+**Task 2.1: synesis/getOntologyTopics**
+- **New endpoint**: `synesis/getOntologyTopics` extracts hierarchical topic structure from `.syno` files
+- **Hierarchical parsing**: Respects indentation to build tree of concepts with levels (0, 1, 2...)
+- **Implementation**: New module `synesis_lsp/ontology_topics.py`
+  - `get_ontology_topics()`: Main function extracting topics from cached LinkedProject
+  - `_parse_syno_file()`: Parses individual `.syno` files respecting indentation
+  - Supports both space-based (4 spaces = 1 level) and tab-based indentation
+  - Returns topics with: name, level, file (relative), line, children (recursive)
+- **Integration**: Command handler added to `server.py`
+- **Tests**: 13 new tests added (`test_ontology_topics.py` - NEW FILE)
+  - Tests for empty ontology, hierarchical parsing, deep nesting, multiple roots
+  - Tests for tab indentation, empty lines, relative paths, error handling
+
+**Task 2.2: synesis/getOntologyAnnotations**
+- **New endpoint**: `synesis/getOntologyAnnotations` cross-references ontology concepts with annotations
+- **Implementation**: New module `synesis_lsp/ontology_annotations.py`
+  - `get_ontology_annotations()`: Returns all ontology concepts with their occurrences in `.syn` files
+  - `_build_occurrences()`: Builds detailed occurrence list with exact positions
+  - `_find_code_in_item()`: Searches for code in item fields (CODE, CHAIN, etc.)
+  - Returns annotations with: code, ontologyDefined, ontologyFile, ontologyLine, occurrences
+  - Occurrences include: file, itemName, line, column, context ("code"/"chain"), field
+- **Active file filtering**: Optional `activeFile` parameter filters occurrences to specific file
+- **Integration**: Command handler added to `server.py`
+- **Tests**: 15 new tests added (`test_ontology_annotations.py` - NEW FILE)
+  - Tests for empty ontology, multiple concepts, active file filtering
+  - Tests for occurrence extraction from fields and chains
+  - Tests for relative paths and error handling
+
+**Task 2.3: synesis/getAbstract**
+- **New endpoint**: `synesis/getAbstract` extracts ABSTRACT field from `.syn` files
+- **Implementation**: New module `synesis_lsp/abstract_viewer.py`
+  - `get_abstract()`: Main function supporting both LinkedProject extraction and direct file parsing
+  - `_extract_from_linked_project()`: Fast path using cached compilation result
+  - `_parse_abstract_from_file()`: Fallback parsing directly from file
+  - Handles multiline ABSTRACT fields with indentation continuation
+  - Returns: abstract (text), file (relative), line (start line of ABSTRACT field)
+- **Flexible parsing**:
+  - Case-insensitive field name recognition
+  - Supports both same-line (`ABSTRACT: text`) and multiline formats
+  - Handles empty lines within ABSTRACT
+- **Integration**: Command handler added to `server.py`
+- **Tests**: 19 new tests added (`test_abstract_viewer.py` - NEW FILE)
+  - Tests for simple and multiline abstracts
+  - Tests for case insensitivity, relative paths, missing abstract
+  - Tests for LinkedProject extraction and direct file parsing
+
+### Impact
+
+- **Ontology Topics Explorer**: Now operates 100% via LSP (no regex fallback)
+- **Ontology Annotations Explorer**: Now operates 100% via LSP with precise positioning
+- **Abstract Viewer**: Now operates 100% via LSP (eliminates SynesisParser dependency)
+- **VSCode Extension**: Eliminates all remaining regex-based local parsing
+- **Data Quality**: All endpoints return relative paths and 1-based line numbers (LSP standard)
+
+### Test Coverage
+
+- **261 tests total** (43 from Phase 1 + 47 from Phase 2 + 171 existing)
+- **47 new tests** added across Phase 2 tasks (13 + 15 + 19)
+- All tests passing ✅
+
+### Files Added
+
+- `synesis_lsp/ontology_topics.py` - Topic hierarchy extraction
+- `synesis_lsp/ontology_annotations.py` - Ontology-annotation cross-referencing
+- `synesis_lsp/abstract_viewer.py` - ABSTRACT field extraction
+- `tests/test_ontology_topics.py` - 13 tests
+- `tests/test_ontology_annotations.py` - 15 tests
+- `tests/test_abstract_viewer.py` - 19 tests
+
+### Files Modified
+
+- `synesis_lsp/server.py` - Added 3 new command handlers
+- `CHANGELOG.md` - Documented Phase 2 implementation
+
+## [0.11.0] - 2026-02-02
+
+### Fixed - Phase 1: Critical LSP Fixes
+
+**Task 1.3: getRelationGraph Bibref Filter**
+- **Bibref extraction**: Enhanced `_item_bibref()` with additional fallback strategies
+  - Now checks: `bibref`, `source_bibref`, `bibref_id`, `ref`, `source.bibref`, `parent.bibref`
+  - Fixes empty graph results when items lack direct bibref attributes
+- **Code extraction**: Added `_iter_codes_from_item_all()` without ontology filter
+  - Fallback now extracts ALL codes from sources, not just ontology-defined codes
+  - Fixes missing codes in bibref-filtered graphs
+- **Debugging**: Added comprehensive logging to `get_relation_graph()`
+  - Logs bibref filtering steps, code counts, and triple filtering
+- **Tests**: 4 new tests added (`test_graph.py`)
+  - `test_filter_by_bibref_with_source_reference`
+  - `test_filter_by_bibref_without_at`
+  - `test_filter_by_bibref_sources_fallback`
+  - `test_filter_by_nonexistent_bibref`
+
+**Task 1.2: getRelations Location and Type**
+- **Type detection**: Enhanced `_extract_chain_type()` to distinguish "qualified" vs "simple"
+  - Qualified: chains with explicit type attribute or "::" separator
+  - Simple: plain triples without type prefix
+  - Added `_chain_to_string()` helper for format-based detection
+- **Location extraction**: Improved `_index_chain()` with priority-based location lookup
+  - Priority: `tuple[3]` → `chain.location` → `dict["location"]` → `item.location`
+  - Ensures all relations have location and type fields
+- **Tests**: 5 new tests added (`test_explorer_requests.py`)
+  - `test_get_relations_qualified_type`
+  - `test_get_relations_simple_type`
+  - `test_get_relations_location_from_tuple`
+  - `test_get_relations_dict_location`
+  - `test_get_relations_fallback_to_item_location`
+
+**Task 1.4: Template Diagnostics Logging**
+- **Enhanced logging**: Added detailed logging to `validate_document()`
+  - Template discovery steps logged (cache → auto-discovery)
+  - Template diagnostics generation logged with counts
+  - Publishing success/failure logged with error details
+- **Debug command**: Added `synesis/debug/diagnostics` command
+  - Returns diagnostic system status
+  - Shows cache availability, template availability, and field specs
+  - Useful for troubleshooting validation issues
+- **Tests**: 5 new tests added (`test_server_diagnostics.py` - NEW FILE)
+  - `test_validate_document_publishes`
+  - `test_validate_document_template_integration`
+  - `test_validate_document_disabled`
+  - `test_debug_diagnostics_command`
+  - `test_debug_diagnostics_no_cache`
+
+**Task 1.1: getCodes Exact Occurrences**
+- **Exact positioning**: Added field-level and token-level position tracking
+  - New `_find_code_in_field_value()`: finds exact token positions within field values
+  - New `_extract_field_location()`: extracts field start line/column
+  - New `_stringify_value()`: converts field values to searchable strings
+- **Enhanced `_build_code_occurrences()`**:
+  - Now calculates exact line/column for each code within field values
+  - Handles multiline field values (splits by '\n', tracks line offsets)
+  - Extracts chain.location when available (not just item.location)
+  - Graceful fallback to item.location when field location unavailable
+- **Tests**: 4 new tests added (`test_explorer_requests.py`)
+  - `test_get_codes_exact_positions`
+  - `test_get_codes_multiline_field`
+  - `test_get_codes_fallback_to_item_location`
+  - `test_get_codes_with_chain_location`
+
+### Impact
+
+- **Graph Viewer**: Now works correctly with bibref filter (no more empty graphs)
+- **Relation Explorer**: All relations now have location and type fields
+- **Code Explorer**: Codes now show exact positions, not just item-level positions
+- **Diagnostics**: Template validation now visible with enhanced logging
+- **Extension**: Reduced/eliminated fallback to regex parsing in VSCode extension
+
+### Test Coverage
+
+- **43 tests total** (18 graph + 20 explorer + 5 diagnostics)
+- **18 new tests** added across Phase 1 tasks
+- All tests passing ✅
+
+## [0.10.4] - 2026-02-02
+
+### Fixed
+
+- **Project loading**: `synesis/loadProject` agora detecta `.synp` quando o
+  `workspaceRoot` aponta para arquivo ou pasta.
+- **Explorer codes**: `synesis/getCodes` inclui `occurrences` e faz fallback
+  via `sources/items` quando `code_usage` não está disponível.
+- **Relations**: `synesis/getRelations` agora inclui `location` e `type` com
+  parsing mais robusto de CHAINs.
+- **Relation graph**: filtro por `bibref` em `synesis/getRelationGraph` foi
+  corrigido com normalização e fallback via `sources/items`.
+- **Paths**: caminhos relativos normalizados para formato POSIX nas respostas.
+
+## [0.10.3] - 2026-02-01
+
+### Fixed
+
+- **LSP features**: corrigida a resolucao do workspace cache para handlers de
+  hover/definition/inlay/signature/rename em Windows quando o rootUri chega
+  como `file:///` (fallback para `workspaceFolders`).
+
+## [0.10.2a3] - 2026-02-01
+
+### Changed
+
+- **Empacotamento**: bump de versão para release de teste no TestPyPI.
+
+## [0.10.2a1] - 2026-01-31
+
+### Changed
+
+- **Empacotamento**: bump de versão para release de teste no TestPyPI.
+
+## [0.10.1] - 2026-01-31
+
+### Fixed
+
+- **Semantic Tokens**: legenda agora usa strings e instância fresca para evitar crash no initialize.
+
+## [0.10.0] - 2026-01-30
 
 ### Added
 
@@ -65,32 +310,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Para códigos: busca em arquivos .syno (definição) e .syn (uso via code_usage)
   - Produz `WorkspaceEdit` com `TextEdit` por arquivo
   - Lê arquivos do disco para encontrar ocorrências textuais com word boundary
-
-## [1.0.3] - 2026-02-01
-
-### Fixed
-
-- **LSP features**: corrigida a resolucao do workspace cache para handlers de
-  hover/definition/inlay/signature/rename em Windows quando o rootUri chega
-  como `file:///` (fallback para `workspaceFolders`).
-
-## [1.0.2a3] - 2026-02-01
-
-### Changed
-
-- **Empacotamento**: bump de versão para release de teste no TestPyPI.
-
-## [1.0.2a1] - 2026-01-31
-
-### Changed
-
-- **Empacotamento**: bump de versão para release de teste no TestPyPI.
-
-## [1.0.1] - 2026-01-31
-
-### Fixed
-
-- **Semantic Tokens**: legenda agora usa strings e instância fresca para evitar crash no initialize.
 
 ## [0.9.0] - 2026-01-30
 
@@ -199,10 +418,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `did_save` agora invalida `workspace_cache` para `.synp`, `.synt`, `.bib`, `.syn`, `.syno`
 - `did_change_watched_files` estendido para processar `.syn` e `.syno`
 
-## [Unreleased]
+## [0.1.0] - 2026-01-03
 
-### Planned
+### Added
 
-- Code actions (quick fixes)
-- Workspace diagnostics (diagnosticProvider)
-- Code lens (reference counts)
+- **LSP Server** (`synesis_lsp/`)
+  - Servidor LSP com pygls para validacao em tempo real
+  - Handlers: `didOpen`, `didChange`, `didClose`, `didSave`
+  - Invalidacao automatica de cache ao salvar `.synp`, `.synt`, `.bib`
+  - Monitoramento de arquivos de contexto via `workspace/didChangeWatchedFiles`
+  - Configuracao `synesis.validation.enabled` para habilitar/desabilitar validacao
+  - Tratamento robusto de excecoes (servidor nunca crasha)
+
+- **Converters** (`synesis_lsp/converters.py`)
+  - Conversao `SourceLocation` (1-based) para LSP `Range` (0-based)
+  - Mapeamento `ErrorSeverity` para `DiagnosticSeverity`
+  - Builder de `Diagnostic` com fallback para erros mal-formados
+
+- **VSCode Extension** (`vscode-extension/`)
+  - Cliente LSP em TypeScript com `vscode-languageclient`
+  - Syntax highlighting via TextMate grammar (`.syn`, `.synp`, `.synt`, `.syno`)
+  - Configuracao de Python path e trace level
+  - Auto-indentacao e bracket matching
+  - Empacotamento como `.vsix`
+
+- **Compiler Adapter** (em `synesis/lsp_adapter.py` no compilador)
+  - Funcao `validate_single_file()` para validacao in-memory
+  - Descoberta automatica de contexto (`.synp`, `.synt`, `.bib`)
+  - Cache de `ValidationContext` com validacao por mtime
+  - 13 testes unitarios passando
+
+### Architecture
+
+- Decisao arquitetural documentada em ADR-002 (`docs/ADR-002.md`)
+- LSP opera como Protocol Adapter puro (sem logica de validacao propria)
+- Fonte unica de verdade: compilador Synesis
+- Fluxo unidirecional: Editor -> LSP -> Compilador -> Diagnosticos

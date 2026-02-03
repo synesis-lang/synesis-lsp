@@ -1,7 +1,7 @@
 # Synesis Explorer + LSP: Estudo e Plano de Implementacao (Refinado)
 
 Data: 2026-01-30
-Atualizado: 2026-01-30 (validado contra LSP v1.0.0)
+Atualizado: 2026-01-30 (validado contra LSP v0.10.0)
 
 ## Objetivo deste documento
 
@@ -15,9 +15,9 @@ com menor risco de integracao, especificando contratos de dados e fluxo de estad
 3. ✅ LanguageId: `synesis` (definido em `package.json` da extensao `vscode-extension/`).
 4. ✅ Custom requests (`synesis/*`): `location.line` e `location.column` sao **1-based**.
    Features LSP padrao (`textDocument/*`): posicoes sao **0-based** (conforme protocolo).
-5. ✅ Endpoints existentes documentados abaixo com schemas **reais** do servidor v1.0.0.
+5. ✅ Endpoints existentes documentados abaixo com schemas **reais** do servidor v0.10.0.
 
-## Estado atual do LSP Server (v1.0.0 - 193 testes)
+## Estado atual do LSP Server (v0.10.0 - 193 testes)
 
 ### Custom Requests (JSON-RPC commands)
 
@@ -26,8 +26,8 @@ com menor risco de integracao, especificando contratos de dados e fluxo de estad
 | `synesis/loadProject` | ✅ Existe | Compila projeto completo, retorna stats |
 | `synesis/getProjectStats` | ✅ Existe | Stats do cache (sem recompilar) |
 | `synesis/getReferences` | ✅ Existe | Lista de SOURCEs com itemCount, fields, location |
-| `synesis/getCodes` | ✅ Existe | Lista de codigos com usageCount, ontologyDefined |
-| `synesis/getRelations` | ✅ Existe | Lista de triples (from, relation, to) |
+| `synesis/getCodes` | ✅ Existe | Lista de codigos com usageCount, ontologyDefined, occurrences |
+| `synesis/getRelations` | ✅ Existe | Lista de triples com location e type (quando disponivel) |
 | `synesis/getRelationGraph` | ✅ Existe | Codigo Mermaid.js do grafo (com filtro por bibref) |
 | `synesis/getOntologyTopics` | ❌ Nao existe | Proposto |
 | `synesis/getOntologyAnnotations` | ❌ Nao existe | Proposto |
@@ -80,7 +80,7 @@ silencioso em erro (ex: `success: false`).
 
 ---
 
-## Contrato de Dados VALIDADO (LSP v1.0.0)
+## Contrato de Dados VALIDADO (LSP v0.10.0)
 
 ### Envelope padrao
 
@@ -194,10 +194,19 @@ Exemplo real:
 
 ```js
 /**
+ * @typedef {Object} LspCodeOccurrence
+ * @property {string} file     // path relativo
+ * @property {number} line     // 1-based
+ * @property {number} column   // 1-based
+ * @property {'code'|'chain'} context
+ * @property {string} field    // nome do campo
+ */
+/**
  * @typedef {Object} LspCode
  * @property {string} code           // nome normalizado (ex: "proposito")
  * @property {number} usageCount     // quantos ItemNodes usam este codigo
  * @property {boolean} ontologyDefined // true se existe em ontology_index
+ * @property {LspCodeOccurrence[]} occurrences
  */
 /**
  * @typedef {LspResult & { codes?: LspCode[] }} CodesResult
@@ -214,13 +223,15 @@ Exemplo real:
  * @property {string} from       // codigo origem
  * @property {string} relation   // nome da relacao
  * @property {string} to         // codigo destino
+ * @property {string=} type      // tipo/label da cadeia (se disponivel)
+ * @property {LspLocation=} location
  */
 /**
  * @typedef {LspResult & { relations?: LspRelation[] }} RelationsResult
  */
 ```
 
-### `synesis/getRelationGraph` (NOVO - v1.0.0)
+### `synesis/getRelationGraph` (NOVO - v0.10.0)
 
 **Params:** `{ workspaceRoot?: string, bibref?: string }`
 
@@ -359,7 +370,7 @@ Implemente um DataService com Adapter Pattern.
 TAREFAS:
 1. Crie `src/services/dataService.js`.
 2. Implemente `LspDataProvider` e `LocalRegexProvider`.
-3. Interface completa (todos os endpoints existem no LSP v1.0.0):
+3. Interface completa (todos os endpoints existem no LSP v0.10.0):
    - `getReferences(): Promise<ReferencesResult>`
    - `getCodes(): Promise<CodesResult>`
    - `getRelations(): Promise<RelationsResult>`
@@ -371,8 +382,8 @@ TAREFAS:
 
 SCHEMAS REAIS:
 - References: `{ success, references: [{ bibref, itemCount, fields, location: { file, line, column } }] }`
-- Codes: `{ success, codes: [{ code, usageCount, ontologyDefined }] }`
-- Relations: `{ success, relations: [{ from, relation, to }] }`
+- Codes: `{ success, codes: [{ code, usageCount, ontologyDefined, occurrences: [{ file, line, column, context, field }] }] }`
+- Relations: `{ success, relations: [{ from, relation, to, type?, location? }] }`
 - RelationGraph: `{ success, mermaidCode: "graph LR\n..." }`
 
 NOTA:
@@ -415,8 +426,8 @@ TAREFAS:
 Atualize `CodeExplorer` e `RelationExplorer` para DataService.
 
 SCHEMAS DO SERVIDOR (VALIDADOS):
-1) Codes: `{ success: true, codes: [{ code: "proposito", usageCount: 321, ontologyDefined: true }] }`
-2) Relations: `{ success: true, relations: [{ from: "proposito", relation: "CAUSA", to: "chamado" }] }`
+1) Codes: `{ success: true, codes: [{ code: "proposito", usageCount: 321, ontologyDefined: true, occurrences: [{ file, line, column, context, field }] }] }`
+2) Relations: `{ success: true, relations: [{ from: "proposito", relation: "CAUSA", to: "chamado", type?, location? }] }`
 
 TAREFAS:
 1. Adicionar `getCodes()` e `getRelations()` ao DataService.
@@ -424,15 +435,12 @@ TAREFAS:
    - Substituir regex parsing por `dataService.getCodes()`
    - Exibir `usageCount` como description
    - Icone distinto quando `!ontologyDefined`
-   - Nota: LSP nao retorna positions individuais dos codigos — manter
-     posicoes locais (regex) para click-to-navigate se necessario,
-     ou usar `textDocument/definition` do LSP para navegacao
+  - LSP retorna `occurrences` com location 1-based para click-to-navigate
 3. RelationExplorer:
    - Substituir chainParser por `dataService.getRelations()`
    - Agrupar por `relation`
    - Filhos no formato "from -> to"
-   - Nota: LSP nao retorna positions das relacoes — manter fallback
-     local para click-to-navigate se necessario
+  - LSP retorna `location` quando disponivel; manter fallback se ausente
 4. Se `success: false`, fallback silencioso para regex local.
 ```
 
@@ -440,7 +448,7 @@ TAREFAS:
 
 **Status: IMPLEMENTAVEL** — `synesis/getRelationGraph` existe e retorna Mermaid.js pronto.
 
-> **NOVA FASE** — nao existia no documento original. O LSP v1.0.0 ja gera codigo
+> **NOVA FASE** — nao existia no documento original. O LSP v0.10.0 ja gera codigo
 > Mermaid.js completo, eliminando a necessidade de parsear CHAIN no client.
 
 **Prompt otimizado**
@@ -460,7 +468,7 @@ CONTEXTO:
   3. Gera Mermaid no client com `generateMermaidGraph()`
   4. Renderiza em webview com Mermaid.js 10
 
-- O LSP v1.0.0 ja faz passos 1-3 no servidor.
+- O LSP v0.10.0 ja faz passos 1-3 no servidor.
 
 TAREFAS:
 1. Adicionar `getRelationGraph(bibref?)` ao DataService.
@@ -543,7 +551,7 @@ RECOMENDACAO: Implementar Opcao A no LSP (simples — dados ja estao em cache).
 
 ## Fases BONUS: Features LSP que o Explorer pode aproveitar
 
-> As features abaixo ja existem no LSP v1.0.0 e podem ser aproveitadas
+> As features abaixo ja existem no LSP v0.10.0 e podem ser aproveitadas
 > pela extensao synesis-explorer sem necessidade de novos endpoints.
 > Sao features nativas do protocolo LSP que o `vscode-languageclient`
 > ativa automaticamente ao conectar.
@@ -622,8 +630,8 @@ NOTA: O LSP rename atualiza todos os arquivos .syn e .syno do workspace.
 | Feature do Explorer | Parser Local | Endpoint LSP | Status |
 |---------------------|-------------|--------------|--------|
 | ReferenceExplorer.refresh | SynesisParser.parseSourceBlocks | `synesis/getReferences` | ✅ Substituivel |
-| CodeExplorer.refresh | SynesisParser.parseItems + extractCodes | `synesis/getCodes` | ✅ Substituivel (sem positions) |
-| RelationExplorer.refresh | parseItems + chainParser | `synesis/getRelations` | ✅ Substituivel (sem positions) |
+| CodeExplorer.refresh | SynesisParser.parseItems + extractCodes | `synesis/getCodes` | ✅ Substituivel (com occurrences) |
+| RelationExplorer.refresh | parseItems + chainParser | `synesis/getRelations` | ✅ Substituivel (com location quando disponivel) |
 | GraphViewer.showGraph | chainParser + generateMermaid | `synesis/getRelationGraph` | ✅ Substituivel (Mermaid pronto) |
 | OntologyExplorer.refresh | OntologyParser + TemplateManager | — | ❌ Requer novo endpoint |
 | OntologyAnnotationExplorer.refresh | OntologyParser + active doc | — | ❌ Requer novo endpoint |
@@ -650,7 +658,7 @@ graph TD
     DATA -->|LSP off| PROV_LOC[LocalRegexProvider]
 
     PROV_LSP --> CLIENT
-    CLIENT <-->|JSON-RPC stdio| SERVER[Python LSP v1.0.0]
+    CLIENT <-->|JSON-RPC stdio| SERVER[Python LSP v0.10.0]
 
     PROV_LOC --> PARSERS[Regex Parsers]
 

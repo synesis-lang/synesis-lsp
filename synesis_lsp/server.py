@@ -74,6 +74,10 @@ from lsprotocol.types import (
     RenameParams,
     TEXT_DOCUMENT_PREPARE_RENAME,
     PrepareRenameParams,
+    TEXT_DOCUMENT_REFERENCES,
+    ReferenceParams,
+    TEXT_DOCUMENT_CODE_ACTION,
+    CodeActionParams,
 )
 from pygls.server import LanguageServer
 
@@ -104,6 +108,13 @@ from synesis_lsp.completion import compute_completions
 from synesis_lsp.graph import get_relation_graph
 from synesis_lsp.signature_help import compute_signature_help
 from synesis_lsp.rename import prepare_rename, compute_rename
+from synesis_lsp.template_diagnostics import build_template_diagnostics
+from synesis_lsp.ontology_topics import get_ontology_topics
+from synesis_lsp.ontology_annotations import get_ontology_annotations
+from synesis_lsp.abstract_viewer import get_abstract
+from synesis_lsp.references import compute_references
+from synesis_lsp.code_actions import compute_code_actions
+from synesis_lsp.workspace_diagnostics import compute_workspace_diagnostics, validate_workspace_file
 
 # Configuração de logging
 logging.basicConfig(
@@ -138,7 +149,7 @@ class SynesisLanguageServer(LanguageServer):
 
 
 # Instância global do servidor
-server = SynesisLanguageServer("synesis-lsp", "v1.0")
+server = SynesisLanguageServer("synesis-lsp", "v0.10.4")
 
 
 def _resolve_workspace_root(ls: SynesisLanguageServer, params) -> Optional[str]:
@@ -246,7 +257,13 @@ def load_project(ls: SynesisLanguageServer, params) -> dict:
             return {"success": False, "error": "Workspace inválido"}
 
         # Buscar .synp no workspace
-        synp_files = list(workspace_path.glob("**/*.synp"))
+        synp_files = []
+        if workspace_path.suffix.lower() == ".synp":
+            synp_files = [workspace_path]
+        else:
+            if workspace_path.is_file():
+                workspace_path = workspace_path.parent
+            synp_files = sorted(workspace_path.glob("**/*.synp"))
         if not synp_files:
             return {"success": False, "error": "Nenhum arquivo .synp encontrado"}
 
@@ -413,6 +430,66 @@ def definition(ls: SynesisLanguageServer, params: DefinitionParams):
     return compute_definition(doc.source, params.position, cached_result)
 
 
+@server.feature(TEXT_DOCUMENT_REFERENCES)
+def references(ls: SynesisLanguageServer, params: ReferenceParams):
+    """
+    Find All References: encontra todas as referências a codes e bibrefs.
+
+    Depende do workspace_cache; retorna None se cache vazio.
+    """
+    uri = params.text_document.uri
+    doc = ls.workspace.get_document(uri)
+
+    cached_result = _get_cached_for_uri(ls, uri)
+    if not cached_result:
+        return None
+
+    # Extrair palavra na posição do cursor
+    line_idx = params.position.line
+    lines = doc.source.split("\n")
+    if line_idx >= len(lines):
+        return None
+
+    line = lines[line_idx]
+    char_idx = params.position.character
+
+    # Extrair palavra (incluindo @ para bibrefs)
+    word = _get_word_at_position(line, char_idx)
+    if not word:
+        return None
+
+    # Extrair workspace_root
+    workspace_root = None
+    workspace_folders = getattr(ls, "workspace", None)
+    if workspace_folders:
+        folders = getattr(workspace_folders, "folders", None)
+        if folders and len(folders) > 0:
+            workspace_root = Path(folders[0].uri.replace("file:///", "").replace("file://", ""))
+
+    # Incluir declaração se context.includeDeclaration for True
+    include_declaration = params.context.include_declaration if params.context else True
+
+    return compute_references(cached_result, word, workspace_root, include_declaration)
+
+
+@server.feature(TEXT_DOCUMENT_CODE_ACTION)
+def code_action(ls: SynesisLanguageServer, params: CodeActionParams):
+    """
+    Code Actions: quick fixes para erros comuns (campos desconhecidos, etc.).
+
+    Depende do workspace_cache; retorna None se cache vazio.
+    """
+    uri = params.text_document.uri
+    cached_result = _get_cached_for_uri(ls, uri)
+
+    return compute_code_actions(
+        uri=uri,
+        range_=params.range,
+        diagnostics=params.context.diagnostics,
+        cached_result=cached_result
+    )
+
+
 @server.feature(
     TEXT_DOCUMENT_COMPLETION,
     CompletionOptions(trigger_characters=["@"]),
@@ -516,6 +593,22 @@ def _get_cached_for_uri(ls: SynesisLanguageServer, uri: str):
     return ls.workspace_cache.get(workspace_key)
 
 
+def _collect_existing_field_errors(result) -> set[tuple[str, Optional[str]]]:
+    """Coleta erros já reportados pelo compilador para evitar duplicatas."""
+    existing: set[tuple[str, Optional[str]]] = set()
+    if not result:
+        return existing
+    all_errors = result.errors + result.warnings + result.info
+    for error in all_errors:
+        field = getattr(error, "field_name", None)
+        if not field:
+            continue
+        block = getattr(error, "block_type", None)
+        block_name = str(block).upper() if block else None
+        existing.add((field, block_name))
+    return existing
+
+
 @server.command("synesis/getReferences")
 def cmd_get_references(ls: SynesisLanguageServer, params) -> dict:
     """Retorna lista de SOURCEs com contagem de items."""
@@ -560,6 +653,183 @@ def cmd_get_relation_graph(ls: SynesisLanguageServer, params) -> dict:
             bibref = first.get("bibref")
 
     return get_relation_graph(cached, bibref=bibref)
+
+
+@server.command("synesis/debug/diagnostics")
+def debug_diagnostics(ls: SynesisLanguageServer, params) -> dict:
+    """
+    Debug command to check diagnostic system status.
+
+    Returns dict with diagnostic system status and test results.
+    """
+    uri = None
+    if isinstance(params, list) and len(params) > 0:
+        first = params[0]
+        if isinstance(first, dict):
+            uri = first.get("uri")
+    elif isinstance(params, dict):
+        uri = params.get("uri")
+
+    status = {
+        "validation_enabled": ls.validation_enabled,
+        "template_diagnostics_module": "imported",
+    }
+
+    if uri:
+        # Test specific URI
+        try:
+            cached = _get_cached_for_uri(ls, uri)
+            status["cached_available"] = cached is not None
+
+            if cached:
+                template = getattr(cached.result, "template", None)
+                status["template_available"] = template is not None
+
+                if template:
+                    field_specs = getattr(template, "field_specs", {})
+                    status["template_fields"] = list(field_specs.keys())
+
+            context = _discover_context(uri)
+            status["context_discoverable"] = context is not None
+
+        except Exception as e:
+            status["error"] = str(e)
+
+    return {"success": True, "status": status}
+
+
+@server.command("synesis/getOntologyTopics")
+def cmd_get_ontology_topics(ls: SynesisLanguageServer, params) -> dict:
+    """Retorna hierarquia de tópicos da ontologia."""
+    cached, error = _get_cached_for_workspace(ls, params)
+    if error and not cached:
+        return get_ontology_topics(None)
+
+    # Extrair workspace_root dos params
+    workspace_root = None
+    if isinstance(params, dict):
+        workspace_root_str = params.get("workspaceRoot")
+        if workspace_root_str:
+            workspace_root = Path(workspace_root_str)
+    elif isinstance(params, list) and len(params) > 0:
+        first = params[0]
+        if isinstance(first, dict):
+            workspace_root_str = first.get("workspaceRoot")
+            if workspace_root_str:
+                workspace_root = Path(workspace_root_str)
+
+    return get_ontology_topics(cached, workspace_root=workspace_root)
+
+
+@server.command("synesis/getOntologyAnnotations")
+def cmd_get_ontology_annotations(ls: SynesisLanguageServer, params) -> dict:
+    """Retorna anotações de ontologia com occurrences."""
+    cached, error = _get_cached_for_workspace(ls, params)
+    if error and not cached:
+        return get_ontology_annotations(None)
+
+    # Extrair workspace_root e activeFile dos params
+    workspace_root = None
+    active_file = None
+
+    if isinstance(params, dict):
+        workspace_root_str = params.get("workspaceRoot")
+        if workspace_root_str:
+            workspace_root = Path(workspace_root_str)
+        active_file = params.get("activeFile")
+    elif isinstance(params, list) and len(params) > 0:
+        first = params[0]
+        if isinstance(first, dict):
+            workspace_root_str = first.get("workspaceRoot")
+            if workspace_root_str:
+                workspace_root = Path(workspace_root_str)
+            active_file = first.get("activeFile")
+
+    return get_ontology_annotations(
+        cached,
+        workspace_root=workspace_root,
+        active_file=active_file
+    )
+
+
+@server.command("synesis/getAbstract")
+def cmd_get_abstract(ls: SynesisLanguageServer, params) -> dict:
+    """Retorna campo ABSTRACT de arquivo .syn."""
+    # Extrair file path dos params
+    file_path = None
+    workspace_root = None
+
+    if isinstance(params, dict):
+        file_path = params.get("file")
+        workspace_root_str = params.get("workspaceRoot")
+        if workspace_root_str:
+            workspace_root = Path(workspace_root_str)
+    elif isinstance(params, list) and len(params) > 0:
+        first = params[0]
+        if isinstance(first, dict):
+            file_path = first.get("file")
+            workspace_root_str = first.get("workspaceRoot")
+            if workspace_root_str:
+                workspace_root = Path(workspace_root_str)
+
+    if not file_path:
+        return {"success": False, "error": "Parâmetro 'file' não fornecido"}
+
+    # Tentar obter cached_result (opcional)
+    cached = None
+    if workspace_root:
+        ws_key = _workspace_key(workspace_root)
+        cached = ls.workspace_cache.get(ws_key) if ws_key else None
+
+    return get_abstract(file_path, cached_result=cached, workspace_root=workspace_root)
+
+
+@server.command("synesis/validateWorkspace")
+def cmd_validate_workspace(ls: SynesisLanguageServer, params) -> dict:
+    """
+    Valida todos os arquivos Synesis no workspace.
+
+    Returns dict com resultados de validação por arquivo.
+    """
+    # Extrair workspace_root dos params
+    workspace_root = None
+
+    if isinstance(params, dict):
+        workspace_root_str = params.get("workspaceRoot")
+        if workspace_root_str:
+            workspace_root = Path(workspace_root_str)
+    elif isinstance(params, list) and len(params) > 0:
+        first = params[0]
+        if isinstance(first, dict):
+            workspace_root_str = first.get("workspaceRoot")
+            if workspace_root_str:
+                workspace_root = Path(workspace_root_str)
+
+    if not workspace_root:
+        return {"success": False, "error": "Workspace root não fornecido"}
+
+    # Função de validação para passar ao compute_workspace_diagnostics
+    def validate_func(uri: str, file_path: Path) -> list:
+        return validate_workspace_file(uri, file_path, validate_single_file)
+
+    # Computar diagnósticos para todo workspace
+    diagnostics_map = compute_workspace_diagnostics(workspace_root, validate_func)
+
+    # Publicar diagnósticos para cada arquivo
+    for uri, diagnostics in diagnostics_map.items():
+        ls.publish_diagnostics(uri, diagnostics)
+
+    # Retornar resumo
+    total_files = len(diagnostics_map)
+    files_with_errors = sum(1 for diags in diagnostics_map.values() if diags)
+    total_diagnostics = sum(len(diags) for diags in diagnostics_map.values())
+
+    return {
+        "success": True,
+        "totalFiles": total_files,
+        "filesWithErrors": files_with_errors,
+        "totalDiagnostics": total_diagnostics
+    }
 
 
 def validate_document(ls: SynesisLanguageServer, uri: str) -> None:
@@ -609,8 +879,47 @@ def validate_document(ls: SynesisLanguageServer, uri: str) -> None:
         # CONVERTER PARA DIAGNÓSTICOS LSP
         diagnostics = build_diagnostics(result)
 
+        # Diagnósticos adicionais baseados em template (fallback)
+        try:
+            template = None
+            cached = _get_cached_for_uri(ls, uri)
+            if cached:
+                template = getattr(cached.result, "template", None)
+                if template:
+                    logger.debug(f"Template found in cache for {uri}")
+                else:
+                    logger.debug(f"No template in cache for {uri}")
+
+            if not template:
+                logger.debug(f"Attempting template discovery for {uri}")
+                context = _discover_context(uri)
+                template = getattr(context, "template", None)
+                if template:
+                    logger.debug(f"Template discovered for {uri}")
+                else:
+                    logger.debug(f"Template discovery failed for {uri}")
+
+            if template:
+                existing_fields = _collect_existing_field_errors(result)
+                logger.debug(f"Collected {len(existing_fields)} existing field errors")
+
+                template_diags = build_template_diagnostics(source, uri, template, existing_fields)
+                logger.debug(f"Generated {len(template_diags)} template diagnostics")
+
+                diagnostics.extend(template_diags)
+            else:
+                logger.info(f"No template available for {uri}, skipping template diagnostics")
+
+        except Exception as e:
+            logger.warning(f"Template diagnostics failed for {uri}: {e}", exc_info=True)
+
         # PUBLICAR DIAGNÓSTICOS
-        ls.publish_diagnostics(uri, diagnostics)
+        try:
+            logger.debug(f"Publishing {len(diagnostics)} diagnostics for {uri}")
+            ls.publish_diagnostics(uri, diagnostics)
+            logger.info(f"Published diagnostics for {uri}")
+        except Exception as e:
+            logger.error(f"Failed to publish diagnostics for {uri}: {e}", exc_info=True)
 
         # REGISTRAR DOCUMENTO NO WORKSPACE (para revalidação futura)
         workspace_root = _find_workspace_root(uri)
