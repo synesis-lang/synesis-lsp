@@ -1,0 +1,402 @@
+SOURCE @entrevista13_2
+	código: N/A
+END SOURCE
+
+ITEM @entrevista13_2
+    ordem_1a: "as manifestações dessa graça são diferentes em função da natureza de onde você está. Ó, se você está em casa, se você é esposo ou mãe, a manifestação da graça é característica de um lugar ou posição que você ocupa."
+    ordem_2a: coram_deo_vida_diante_de_deus
+    justificativa_interna: "Definição oficial: 'Consciência permanente de viver, agir e decidir sob o olhar de Deus, sem separação entre vida pública, privada, espiritual e profissional.' O trecho evidencia que a graça se manifesta em diferentes esferas da vida (casa, trabalho, família) sem separação, caracterizando a integração total da vida sob a perspectiva divina."
+
+    ordem_2a: chamado_vocacao
+    justificativa_interna: "Definição oficial: 'Percepção de um chamado divino específico que orienta a escolha da profissão, do negócio ou da atuação no trabalho como resposta obediente à vontade de Deus.' A menção de que a graça se manifesta conforme 'a posição que você ocupa' sugere compreensão de que diferentes posições (profissionais, familiares) são lugares de manifestação do propósito divino."
+
+    ordem_2a: graca_comum_gc
+    justificativa_interna: "Definição oficial: 'Concessão divina de bens naturais, sociais e estruturais a toda a humanidade, percebida como ordem, sustento e prosperidade cotidiana'. O trecho descreve manifestações da graça em diferentes contextos sociais ('casa', 'esposo ou mãe'), caracterizando-a como estrutural e contextual, típico da graça comum."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. O texto menciona explicitamente 'posição que você ocupa' e papéis sociais ('esposo ou mãe'), evidenciando avaliação de papéis e relações sociais."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "José experimentou uma graça diferente porque ele virou dominador. Então ele tinha uma série de experiências especiais e ele acabou atuando de uma maneira especial também em resposta a essa graça"
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho, inclusive eventos aparentemente ordinários.' O exemplo de José evidencia a crença de que Deus direcionou as circunstâncias profissionais ('virou dominador') e que isso gerou 'experiências especiais', caracterizando providência divina."
+
+    ordem_2a: deus_guiando_os_passos
+    justificativa_interna: "Definição oficial: 'Atribuição direta das decisões, caminhos e escolhas profissionais à orientação pessoal e intencional de Deus em cada detalhe, momento a momento.' A narrativa de que José 'experimentou uma graça diferente' e 'acabou atuando de uma maneira especial em resposta' evidencia atribuição da trajetória profissional à direção divina específica."
+
+    ordem_2a: dependencia_de_deus
+    justificativa_interna: "Definição oficial: 'Reconhecimento explícito da limitação humana e da incapacidade de alcançar resultados desejáveis sem a ação, ajuda ou sustento de Deus.' A expressão 'em resposta a essa graça' indica que a atuação profissional de José foi dependente da graça recebida, não de capacidade autônoma."
+
+    ordem_2a: graca_especial_ge
+    justificativa_interna: "Definição oficial: 'Ação soberana e específica de Deus que opera salvação, conversão e restauração espiritual em pessoas, reconhecida explicitamente como intervenção redentora divina'. O termo 'experiências especiais' e 'graça diferente' indicam reconhecimento de intervenção divina específica na vida de José."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência'. A menção a 'virou dominador' evidencia mudança de papel social e posição relacional."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "dependendo de algumas questões, é pela graça que você acessa alguns lugares e não por competência."
+    ordem_2a: dependencia_de_deus
+    justificativa_interna: "Definição oficial: 'Reconhecimento explícito da limitação humana e da incapacidade de alcançar resultados desejáveis sem a ação, ajuda ou sustento de Deus.' A contraposição explícita entre 'graça' e 'competência' como meio de 'acessar lugares' evidencia reconhecimento de que resultados profissionais não dependem apenas de capacidade humana."
+
+    ordem_2a: nao_confiar_no_homem_em_si_mesmo
+    justificativa_interna: "Definição oficial: 'Reconhecimento da limitação humana e recusa de fundamentar decisões últimas apenas na própria capacidade ou na confiança em outros.' A afirmação de que não é 'por competência' mas 'pela graça' que se acessa lugares profissionais evidencia recusa de confiar exclusivamente na capacidade humana."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana'. A contraposição 'pela graça' versus 'não por competência' evidencia reconhecimento da graça como fonte exclusiva, sem mérito humano."
+
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana, sendo inteiramente imerecida'. A negação explícita da competência como causa ('não por competência') demonstra compreensão do caráter imerecido da graça."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "existe a graça que vem com Jesus e que é a salvação, que você não tem nada que você possa fazer para merecer e que é o favor merecido, né?"
+    ordem_2a: resgate
+    justificativa_interna: "Definição oficial: 'Ação soberana de Deus que liberta o ser humano da condição de pecado e perdição, incluindo a esperança futura de comunhão plena com Cristo.' A menção explícita de 'graça que vem com Jesus' e 'salvação' caracteriza a compreensão da ação salvífica divina."
+
+    ordem_2a: dependencia_de_deus
+    justificativa_interna: "Definição oficial: 'Reconhecimento explícito da limitação humana e da incapacidade de alcançar resultados desejáveis sem a ação, ajuda ou sustento de Deus.' A afirmação 'você não tem nada que você possa fazer para merecer' evidencia reconhecimento radical da incapacidade humana de alcançar a salvação por esforço próprio."
+
+    ordem_2a: graca_especial_ge
+    justificativa_interna: "Definição oficial: 'Ação soberana e específica de Deus que opera salvação, conversão e restauração espiritual em pessoas'. A menção explícita a 'graça que vem com Jesus' e 'salvação' caracteriza claramente a graça especial redentora."
+
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana, sendo inteiramente imerecida'. A frase 'você não tem nada que você possa fazer para merecer' expressa literalmente o caráter imerecido da graça."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana'. A negação total de ação humana ('nada que você possa fazer') evidencia reconhecimento da exclusividade divina."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "Outra coisa é Deus te dar graça, te dar condições de passar por situações."
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho, inclusive eventos aparentemente ordinários.' A expressão 'Deus te dar condições de passar por situações' evidencia crença de que Deus provê sustento específico para circunstâncias concretas."
+
+    ordem_2a: dependencia_de_deus
+    justificativa_interna: "Definição oficial: 'Reconhecimento explícito da limitação humana e da incapacidade de alcançar resultados desejáveis sem a ação, ajuda ou sustento de Deus.' A necessidade de que 'Deus te dar condições' para passar por situações evidencia reconhecimento de que sem essa provisão divina não seria possível atravessar as circunstâncias."
+
+    ordem_2a: graca_comum_gc
+    justificativa_interna: "Definição oficial: 'Concessão divina de bens naturais, sociais e estruturais a toda a humanidade, percebida como ordem, sustento e prosperidade cotidiana'. O termo 'condições de passar por situações' caracteriza provisão estrutural e sustento cotidiano, típico da graça comum."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "a graça de Deus estava sobre toda a família. Algumas pessoas optaram por bloquear aquilo ali. Mas a graça, ela está manifesta, independente daquilo que eu sou, daquilo que eu faço."
+    ordem_2a: soberania_de_deus
+    justificativa_interna: "Definição oficial: 'Crença de que Deus possui controle último sobre todas as coisas, inclusive sobre os resultados finais, pessoais ou profissionais, independentemente da competência, esforço ou planejamento humano.' A afirmação de que a graça 'está manifesta, independente daquilo que eu sou, daquilo que eu faço' evidencia crença na soberania divina que age independentemente da ação humana."
+
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho, inclusive eventos aparentemente ordinários.' A descrição de que 'a graça de Deus estava sobre toda a família' evidencia crença de que Deus governa e sustenta circunstâncias familiares de forma abrangente."
+
+    ordem_2a: graca_comum_gc
+    justificativa_interna: "Definição oficial: 'Concessão divina de bens naturais, sociais e estruturais a toda a humanidade'. A expressão 'sobre toda a família' e 'independente daquilo que eu sou, daquilo que eu faço' caracteriza a universalidade da graça comum."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana'. A frase 'independente daquilo que eu sou, daquilo que eu faço' evidencia reconhecimento da graça como independente de ação humana."
+
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana'. A independência da graça em relação ao que a pessoa 'é' ou 'faz' demonstra compreensão do caráter imerecido."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "uma vez você está salvo, você desvia, não sei o quê, etc. A graça de Deus continua sobre você, você que está escolhendo não acessar, não está debaixo da desviação daquele momento."
+    ordem_2a: soberania_de_deus
+    justificativa_interna: "Definição oficial: 'Crença de que Deus possui controle último sobre todas as coisas, inclusive sobre os resultados finais, pessoais ou profissionais, independentemente da competência, esforço ou planejamento humano.' A afirmação de que 'a graça de Deus continua sobre você' mesmo em desvio evidencia crença na permanência soberana da graça independente da conduta humana."
+
+    ordem_2a: depravacao_total_pecado_queda_confissao_de_pecados
+    justificativa_interna: "Definição oficial: 'Reconhecimento da gravidade da condição espiritual e moral humana, erro moral ou espiritual acompanhado ou evidenciado de (ou para) mudança de postura.' A menção de 'você desvia' reconhece a possibilidade de erro moral e afastamento espiritual."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "você conseguir ter uma percepção e ter um alinhamento com o propósito, usando as suas habilidades, eu acho que é outra coisa. Isso não tem necessariamente a ver com a graça. Isso tem a ver com uma capacidade de percepção, de alinhamento, de comportamento, de conduta."
+    ordem_2a: proposito
+    justificativa_interna: "Definição oficial: 'Compreensão de que a própria vida e atuação profissional possuem um sentido de missão definido pela vontade de Deus, orientando escolhas, prioridades e perseverança.' A menção de 'alinhamento com o propósito' evidencia compreensão de que existe um sentido de missão que orienta a vida profissional."
+
+    ordem_2a: sabedoria_prudencia
+    justificativa_interna: "Definição oficial: 'Discernimento prático expresso em decisões cautelosas, responsáveis e contextualizadas, nas quais o gestor pondera valores, consequências e riscos antes de agir.' A referência a 'capacidade de percepção, de alinhamento, de comportamento, de conduta' evidencia discernimento prático para decisões responsáveis."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana'. A distinção clara entre graça e habilidades humanas ('não tem necessariamente a ver com a graça') evidencia reconhecimento da graça como independente de capacidades humanas."
+
+    ordem_2a: aspecto_analitico_7
+    justificativa_interna: "Definição oficial: 'Uso consciente do julgamento racional, da distinção conceitual e da coerência lógica'. O trecho demonstra distinção conceitual clara entre graça e capacidades humanas, evidenciando uso de julgamento racional."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "a graça de Deus permanece independente daquilo que eu sou e faço. Então, se eu aflito, por exemplo, o princípio do filho pródigo. O cara resolveu ir embora, largar a turma, mas o pai estava ali. A graça estava disponível para isso."
+    ordem_2a: soberania_de_deus
+    justificativa_interna: "Definição oficial: 'Crença de que Deus possui controle último sobre todas as coisas, inclusive sobre os resultados finais, pessoais ou profissionais, independentemente da competência, esforço ou planejamento humano.' A afirmação de que a graça 'permanece independente daquilo que eu sou e faço' evidencia crença na soberania divina que age independentemente da ação humana."
+
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho, inclusive eventos aparentemente ordinários.' O exemplo do filho pródigo onde 'o pai estava ali' e 'a graça estava disponível' evidencia crença de que Deus sustenta e governa mesmo em circunstâncias de afastamento."
+
+    ordem_2a: depravacao_total_pecado_queda_confissao_de_pecados
+    justificativa_interna: "Definição oficial: 'Reconhecimento da gravidade da condição espiritual e moral humana, erro moral ou espiritual acompanhado ou evidenciado de (ou para) mudança de postura.' A referência ao filho pródigo que 'resolveu ir embora, largar a turma' reconhece a possibilidade de erro moral e afastamento."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "como não é merecido, você tem uma... Pelo menos eu penso assim, né? Você tem uma sensação, bom, se eu não mereci, eu tenho que fazer por merecido. Tem essa expressão, você faz por merecer. E, ao fazer por merecer, você tenta alcançar, né? Você tenta elevar seu padrão, você tenta fazer por merecido."
+    ordem_2a: sentir_se_em_divida
+    justificativa_interna: "Definição oficial: 'Senso moral de responsabilidade em servir, amar e beneficiar o próximo decorrentes do favor concedido por Deus em Cristo.' A expressão 'se eu não mereci, eu tenho que fazer por merecido' evidencia senso de responsabilidade moral decorrente do favor imerecido recebido."
+
+    ordem_2a: excelencia_crista_fazer_para_cristo
+    justificativa_interna: "Definição oficial: 'Busca intencional de alta qualidade e zelo no trabalho por reconhecer Deus como destinatário último da ação.' A afirmação 'você tenta elevar seu padrão, você tenta fazer por merecido' evidencia busca intencional de alta qualidade como resposta ao favor recebido."
+
+    ordem_2a: dependencia_de_deus
+    justificativa_interna: "Definição oficial: 'Reconhecimento explícito da limitação humana e da incapacidade de alcançar resultados desejáveis sem a ação, ajuda ou sustento de Deus.' O reconhecimento explícito 'não é merecido' evidencia consciência de que o que foi recebido não veio por capacidade própria."
+
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana, sendo inteiramente imerecida'. A afirmação 'não é merecido' e 'se eu não mereci' evidencia reconhecimento explícito do caráter imerecido da graça."
+
+    ordem_2a: nao_circularidade_negativa_sinergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça recebida gera obrigação de retribuição a Deus, estabelecendo lógica de troca, compensação ou pagamento pelo favor concedido'. A expressão 'eu tenho que fazer por merecido' e 'você faz por merecer' evidencia lógica de retribuição e compensação pela graça recebida."
+
+    ordem_2a: gratidao_especial_ge
+    justificativa_interna: "Definição oficial: 'Reconhecimento consciente e pessoal de ter recebido a ação salvífica de Deus, acompanhado de resposta explícita de gratidão a Ele'. A tentativa de 'fazer por merecido' e 'elevar seu padrão' pode ser interpretada como resposta de gratidão à graça recebida."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "o estado de graça, né? O estado de graça, ele tem a ver só com coisas boas e não tem a ver. Acho que a experiência, por exemplo, que eu tive em ambientes mais complicados, difíceis, de pobreza e de pós-guerra, e essa coisa toda, me fazem perceber de outra forma, também."
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho, inclusive eventos aparentemente ordinários.' A afirmação de que a graça não 'tem a ver só com coisas boas' e a menção de experiências em 'ambientes mais complicados, difíceis, de pobreza e de pós-guerra' evidencia crença de que Deus governa e sustenta também em circunstâncias adversas."
+
+    ordem_2a: paciencia_e_longanimidade
+    justificativa_interna: "Definição oficial: 'Capacidade de suportar frustrações e dificuldades prolongadas sem perder a fé, a coerência ética ou o compromisso relacional.' A referência a experiências em 'ambientes mais complicados, difíceis, de pobreza e de pós-guerra' sugere capacidade de suportar dificuldades prolongadas mantendo a percepção da graça."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "é tão imerecido que não é... Eu tô num contexto que me foi favorável, mas se eu também não estiver num contexto externo favorável, acontece da mesma forma."
+    ordem_2a: soberania_de_deus
+    justificativa_interna: "Definição oficial: 'Crença de que Deus possui controle último sobre todas as coisas, inclusive sobre os resultados finais, pessoais ou profissionais, independentemente da competência, esforço ou planejamento humano.' A afirmação de que a graça 'acontece da mesma forma' independente do contexto (favorável ou não) evidencia crença na soberania divina que age independentemente das circunstâncias externas."
+
+    ordem_2a: contentamento
+    justificativa_interna: "Definição oficial: 'Disposição interior de satisfação com o que foi recebido de Deus, independentemente da quantidade, reduzindo desejo por acumular mais.' A afirmação de que a graça opera 'da mesma forma' em contextos favoráveis ou desfavoráveis sugere disposição de satisfação independente das circunstâncias materiais."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "Tem pessoas que estão numa situação tanto de trabalho quanto de social, geográfico, que parece que as coisas não contribuem, né? E aí você pensa o seguinte, aí eu vou falar no ambiente profissional. O interesse, assim, se você é estagiário ou se você é diretor. Ou se você está numa posição de liderança ou de liderado. Ou uma posição de que você está sendo promovido ou injustiçado. Isso são coisas da vida."
+    ordem_2a: igualdade_perante_deus
+    justificativa_interna: "Definição oficial: 'Crença de que todos os seres humanos possuem o mesmo valor moral e dignidade diante de Deus, sem hierarquias espirituais.' A equiparação entre diferentes posições profissionais (estagiário/diretor, liderança/liderado) como 'coisas da vida' que não afetam o valor fundamental evidencia crença na igualdade de dignidade independente de status."
+
+    ordem_2a: contentamento
+    justificativa_interna: "Definição oficial: 'Disposição interior de satisfação com o que foi recebido de Deus, independentemente da quantidade, reduzindo desejo por acumular mais.' A afirmação de que diferentes posições profissionais 'são coisas da vida' sugere disposição de não vincular satisfação interior a status ou posição profissional."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "Eu não quero atrelar essas coisas da vida à graça de vida, porque ela não tem a ver com esses... Essas coisas... Não tem só a ver com essas coisas físicas que você vai alcançar, porque uma criança que faça fome, uma pessoa que não tem uma casa, que não tem acesso, que não tem não sei o que, Deus continua tendo graça por ela."
+    ordem_2a: soberania_de_deus
+    justificativa_interna: "Definição oficial: 'Crença de que Deus possui controle último sobre todas as coisas, inclusive sobre os resultados finais, pessoais ou profissionais, independentemente da competência, esforço ou planejamento humano.' A afirmação de que 'Deus continua tendo graça' mesmo para quem não tem casa, acesso ou recursos evidencia crença na soberania divina que age independentemente de resultados materiais."
+
+    ordem_2a: cuidado_do_pobre_da_viuva_e_do_orfao
+    justificativa_interna: "Definição oficial: 'Compromisso pessoal, moral ativo, de proteger, sustentar e defender pessoas socialmente vulneráveis, motivado por mandamento religioso cristão.' A menção específica de 'uma criança que faça fome, uma pessoa que não tem uma casa, que não tem acesso' evidencia consciência e preocupação com pessoas socialmente vulneráveis."
+
+    ordem_2a: igualdade_perante_deus
+    justificativa_interna: "Definição oficial: 'Crença de que todos os seres humanos possuem o mesmo valor moral e dignidade diante de Deus, sem hierarquias espirituais.' A afirmação de que Deus tem graça tanto para quem tem recursos quanto para quem não tem evidencia crença na igualdade de valor diante de Deus independente de condição material."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "a graça, ela está aqui, pairando, ela está disponível para todos. Agora, o fato de eu ter acessado um lugar, acessado em conhecimento ou não acessado em conhecimento, eu acho que não é isso que faz a graça ser maior ou menor."
+    ordem_2a: soberania_de_deus
+    justificativa_interna: "Definição oficial: 'Crença de que Deus possui controle último sobre todas as coisas, inclusive sobre os resultados finais, pessoais ou profissionais, independentemente da competência, esforço ou planejamento humano.' A afirmação de que a graça 'está disponível para todos' e não varia conforme acesso a conhecimento ou posição evidencia crença na soberania divina que age independentemente de conquistas humanas."
+
+    ordem_2a: igualdade_perante_deus
+    justificativa_interna: "Definição oficial: 'Crença de que todos os seres humanos possuem o mesmo valor moral e dignidade diante de Deus, sem hierarquias espirituais.' A afirmação de que a graça 'está disponível para todos' e não é 'maior ou menor' conforme acesso evidencia crença na igualdade fundamental diante de Deus."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "se eu me colocar num lugar de que eu sou um ser humano, simples, falho, como qualquer outro, qualquer lugar que eu chegue, por deixar de chegar, não tem a ver com a graça de Deus. Tem a ver com outras coisas."
+    ordem_2a: depravacao_total_pecado_queda_confissao_de_pecados
+    justificativa_interna: "Definição oficial: 'Reconhecimento da gravidade da condição espiritual e moral humana, erro moral ou espiritual acompanhado ou evidenciado de (ou para) mudança de postura.' A autodefinição como 'ser humano, simples, falho' evidencia reconhecimento da condição moral humana limitada."
+
+    ordem_2a: igualdade_perante_deus
+    justificativa_interna: "Definição oficial: 'Crença de que todos os seres humanos possuem o mesmo valor moral e dignidade diante de Deus, sem hierarquias espirituais.' A afirmação 'como qualquer outro' evidencia crença na igualdade fundamental entre todos os seres humanos diante de Deus."
+
+    ordem_2a: mansidao
+    justificativa_interna: "Definição oficial: 'Expressão de força moral sob controle, manifestada em humildade, autocontenção e ausência de agressividade.' A autodefinição como 'ser humano, simples, falho' evidencia humildade e autocontenção ao reconhecer limitações pessoais."
+
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana, sendo inteiramente imerecida'. O reconhecimento de ser 'simples, falho' e a afirmação de que conquistas 'não tem a ver com a graça de Deus' evidenciam compreensão do caráter imerecido."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana'. A distinção clara entre graça e conquistas humanas evidencia reconhecimento da exclusividade divina."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "como pode acontecer uma pessoa da Venezuela, um cara que é médico, estar aqui hoje numa situação de inservente, de limpeza. E eu não posso relacionar a graça à posição que eu cheguei, não."
+    ordem_2a: igualdade_perante_deus
+    justificativa_interna: "Definição oficial: 'Crença de que todos os seres humanos possuem o mesmo valor moral e dignidade diante de Deus, sem hierarquias espirituais.' O exemplo do médico venezuelano em posição de limpeza e a afirmação de que não se pode 'relacionar a graça à posição' evidencia crença na igualdade de dignidade independente de status profissional."
+
+    ordem_2a: contentamento
+    justificativa_interna: "Definição oficial: 'Disposição interior de satisfação com o que foi recebido de Deus, independentemente da quantidade, reduzindo desejo por acumular mais.' A afirmação de que a graça não se relaciona à posição alcançada sugere disposição de não vincular satisfação interior a conquistas profissionais."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "Aonde eu estou, eu tenho que fazer o meu melhor. Então, se eu estiver algum dia numa condição ruim, do ponto de vista humano, de acesso financeiro, de poder e de outras coisas, porque se eu relaciono às benesses, eu estou discredenciando aquilo que é o sofrimento."
+    ordem_2a: excelencia_crista_fazer_para_cristo
+    justificativa_interna: "Definição oficial: 'Busca intencional de alta qualidade e zelo no trabalho por reconhecer Deus como destinatário último da ação.' A afirmação 'aonde eu estou, eu tenho que fazer o meu melhor' evidencia busca intencional de alta qualidade independente da posição ou circunstância."
+
+    ordem_2a: paciencia_e_longanimidade
+    justificativa_interna: "Definição oficial: 'Capacidade de suportar frustrações e dificuldades prolongadas sem perder a fé, a coerência ética ou o compromisso relacional.' A menção de 'se eu estiver algum dia numa condição ruim' e a necessidade de não 'discredenciar o sofrimento' evidencia capacidade de manter coerência ética mesmo em dificuldades."
+
+    ordem_2a: contentamento
+    justificativa_interna: "Definição oficial: 'Disposição interior de satisfação com o que foi recebido de Deus, independentemente da quantidade, reduzindo desejo por acumular mais.' A afirmação de que não se deve relacionar graça a 'benesses' evidencia disposição de satisfação independente de acesso financeiro ou poder."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "Porque Jesus não foi uma pessoa, isso não veio a partir de um posto que ele ocupou lá. Tinha Pilate, tinha Herói, tinham outras pessoas que tinham outro tipo de poder. Não é sobre um poder físico ou material. É sobre um poder espiritual."
+    ordem_2a: jesus_no_centro
+    justificativa_interna: "Definição oficial: 'Centralidade explícita da pessoa e dos ensinamentos de Jesus Cristo como referência máxima para sentido, ética e ação prática na vida e no trabalho.' A menção de Jesus como referência para compreender que o poder verdadeiro 'não é físico ou material' mas 'espiritual' evidencia centralidade de Cristo como modelo."
+
+    ordem_2a: kenosis
+    justificativa_interna: "Definição oficial: 'Compreensão do autoesvaziamento voluntário de Cristo ao assumir a condição humana, renunciando prerrogativas de glória como modelo normativo de humildade, serviço e autorrenúncia.' A contraposição entre Jesus e figuras de poder (Pilatos, Herodes) evidencia compreensão de que Cristo renunciou poder material como modelo."
+
+    ordem_2a: transcendencia
+    justificativa_interna: "Definição oficial: 'Reconhecimento da existência de uma realidade que ultrapassa o mundo imanente, o tempo histórico e o plano material, afirmando um 'além' ontológico que não se esgota na experiência humana, natural ou social.' A contraposição entre 'poder físico ou material' e 'poder espiritual' evidencia reconhecimento de uma realidade que ultrapassa o plano material."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "se eu estou estagiária, se eu estou gerente, se eu estou diretora, ou se eu não estou, se eu estou desempregada, a graça continua existindo, se manifestando com aquilo que eu tenho de capacidades ou não."
+    ordem_2a: soberania_de_deus
+    justificativa_interna: "Definição oficial: 'Crença de que Deus possui controle último sobre todas as coisas, inclusive sobre os resultados finais, pessoais ou profissionais, independentemente da competência, esforço ou planejamento humano.' A afirmação de que 'a graça continua existindo' independente de posição profissional (estagiária, gerente, diretora, desempregada) evidencia crença na soberania divina que age independentemente de resultados profissionais."
+
+    ordem_2a: contentamento
+    justificativa_interna: "Definição oficial: 'Disposição interior de satisfação com o que foi recebido de Deus, independentemente da quantidade, reduzindo desejo por acumular mais.' A afirmação de que a graça se manifesta 'com aquilo que eu tenho de capacidades ou não' evidencia disposição de satisfação independente de conquistas ou posição."
+
+    ordem_2a: igualdade_perante_deus
+    justificativa_interna: "Definição oficial: 'Crença de que todos os seres humanos possuem o mesmo valor moral e dignidade diante de Deus, sem hierarquias espirituais.' A equiparação de diferentes posições profissionais (estagiária, gerente, diretora, desempregada) como igualmente receptoras da graça evidencia crença na igualdade de dignidade diante de Deus."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "uma vez você está salvo, você desvia, não sei o quê, etc. A graça de Deus continua sobre você, você que está escolhendo não acessar"
+    ordem_2a: graca_especial_ge
+    justificativa_interna: "Definição oficial: 'Ação soberana e específica de Deus que opera salvação, conversão e restauração espiritual em pessoas'. A menção explícita a 'está salvo' e 'graça de Deus continua' caracteriza a graça especial salvífica."
+
+    ordem_2a: eficacia
+    justificativa_interna: "Definição oficial: 'Convicção de que a graça atua de modo plenamente eficaz, realizando integralmente aquilo que Deus determinou e produzindo transformação real'. A afirmação de que a graça 'continua sobre você' mesmo no desvio evidencia convicção na eficácia permanente da graça."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "a graça, ela não está relacionando a minha habilidade, aquilo que eu posso fazer ou não, porque a graça de Deus permanece independente daquilo que eu sou e faço."
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana'. A afirmação de que a graça 'permanece independente daquilo que eu sou e faço' evidencia reconhecimento da exclusividade divina."
+
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana'. A negação explícita de relação entre graça e habilidades ('não está relacionando a minha habilidade') demonstra compreensão do caráter imerecido."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "o princípio do filho pródigo. O cara resolveu ir embora, largar a turma, mas o pai estava ali. A graça estava disponível para isso."
+    ordem_2a: graca_especial_ge
+    justificativa_interna: "Definição oficial: 'Ação soberana e específica de Deus que opera salvação, conversão e restauração espiritual em pessoas'. A referência ao filho pródigo e à disponibilidade da graça caracteriza a graça especial redentora."
+
+    ordem_2a: prioridade_monergismo
+    justificativa_interna: "Definição oficial: 'Compreensão de que a graça antecede toda ação, decisão ou mérito humano, sendo iniciativa soberana e primeira de Deus'. A afirmação de que 'o pai estava ali' e 'a graça estava disponível' antes do retorno do filho evidencia anterioridade da graça."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "como é imerecido. Ou seja, você reconheceu que o cara... Ou seja, de fora pra dentro, né? É imerecido."
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana, sendo inteiramente imerecida'. A repetição do termo 'imerecido' e a expressão 'de fora pra dentro' evidenciam reconhecimento explícito do caráter imerecido da graça."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana'. A expressão 'de fora pra dentro' evidencia reconhecimento da graça como procedente exclusivamente de fonte externa (Deus)."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "o estado de graça, né? O estado de graça, ele tem a ver só com coisas boas e não tem a ver."
+    ordem_2a: graca_comum_gc
+    justificativa_interna: "Definição oficial: 'Concessão divina de bens naturais, sociais e estruturais a toda a humanidade, percebida como ordem, sustento e prosperidade cotidiana'. A discussão sobre 'estado de graça' e 'coisas boas' sugere reflexão sobre manifestações da graça em circunstâncias cotidianas."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "a experiência, por exemplo, que eu tive em ambientes mais complicados, difíceis, de pobreza e de pós-guerra, e essa coisa toda, me fazem perceber de outra forma, também. É, de entender que é tão imerecido que não é... Eu tô num contexto que me foi favorável, mas se eu também não estiver num contexto externo favorável, acontece da mesma forma."
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana, sendo inteiramente imerecida'. A expressão 'é tão imerecido' e a independência da graça em relação ao contexto ('favorável' ou não) evidenciam compreensão do caráter imerecido."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana'. A afirmação de que a graça 'acontece da mesma forma' independente do contexto evidencia reconhecimento da exclusividade divina."
+
+    ordem_2a: erradicacao_da_pobreza
+    justificativa_interna: "Definição oficial: 'Eliminação da pobreza extrema e à garantia de condições mínimas e estruturais de vida digna'. A menção explícita a 'ambientes mais complicados, difíceis, de pobreza' evidencia consciência sobre condições de pobreza."
+
+    ordem_2a: paz_justica_e_instituicoes_eficazes
+    justificativa_interna: "Definição oficial: 'Promoção de sociedades pacíficas, garantia de acesso à justiça e fortalecimento de instituições eficazes'. A menção a 'pós-guerra' evidencia consciência sobre contextos de ausência de paz e necessidade de reconstrução institucional."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "Tem pessoas que estão numa situação tanto de trabalho quanto de... social, geográfico, que parece que as coisas não contribuem, né?"
+    ordem_2a: reducao_das_desigualdades
+    justificativa_interna: "Definição oficial: 'Redução de desigualdades sociais, econômicas e de oportunidades entre indivíduos, grupos e países'. A menção a diferentes situações de 'trabalho', 'social' e 'geográfico' evidencia consciência sobre desigualdades estruturais."
+
+    ordem_2a: aspecto_espacial_2
+    justificativa_interna: "Definição oficial: 'Referência ao espaço físico, territorial ou estrutural do negócio'. A menção explícita a 'geográfico' evidencia consideração do aspecto espacial."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. A menção a 'situação de trabalho' e 'social' evidencia avaliação de relações e padrões sociais."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "se você é estagiário ou se você é diretor. Ou se você está numa posição de liderança ou de liderado. Ou uma posição de que você está sendo promovido ou injustiçado. Isso são coisas da vida. Eu não quero atrelar essas coisas da vida à graça de vida, porque ela não tem a ver com esses... Essas coisas... Não tem só a ver com essas coisas físicas que você vai alcançar"
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana'. A negação explícita de relação entre graça e posições ('Eu não quero atrelar essas coisas da vida à graça') evidencia reconhecimento da graça como independente de conquistas humanas."
+
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana'. A afirmação de que a graça 'não tem a ver com essas coisas físicas que você vai alcançar' evidencia compreensão do caráter imerecido."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. A menção explícita a 'estagiário', 'diretor', 'liderança', 'liderado' evidencia avaliação de papéis e posições sociais."
+
+    ordem_2a: trabalho_decente_e_crescimento_economico
+    justificativa_interna: "Definição oficial: 'Emprego digno, condições justas de trabalho e crescimento econômico sustentável e inclusivo'. A menção a 'promovido ou injustiçado' evidencia consciência sobre condições de trabalho e justiça laboral."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "uma criança que faça fome, uma pessoa que não tem uma casa, que não tem acesso, que não tem não sei o que, Deus continua tendo graça por ela. Mas ela não teve acesso."
+    ordem_2a: graca_comum_gc
+    justificativa_interna: "Definição oficial: 'Concessão divina de bens naturais, sociais e estruturais a toda a humanidade, percebida como ordem, sustento e prosperidade cotidiana'. A afirmação de que 'Deus continua tendo graça' mesmo em situações de privação evidencia compreensão da graça comum como universal."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana'. A afirmação de que a graça permanece independente das condições materiais evidencia reconhecimento da exclusividade divina."
+
+    ordem_2a: fome_zero_e_agricultura_sustentavel
+    justificativa_interna: "Definição oficial: 'Acesso contínuo a alimentos suficientes, seguros e nutritivos'. A menção explícita a 'criança que faça fome' evidencia consciência sobre insegurança alimentar."
+
+    ordem_2a: erradicacao_da_pobreza
+    justificativa_interna: "Definição oficial: 'Eliminação da pobreza extrema e à garantia de condições mínimas e estruturais de vida digna'. A menção a 'não tem uma casa', 'não tem acesso' evidencia consciência sobre condições de pobreza extrema."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "Então eu não posso relacionar algumas situações externas e que tem outras camadas. É como se na minha percepção tivesse um grande guarda-chuva, que é... Você tem o sol, você tem o ar, você tem os recursos, né? Está aqui o nosso mundo, que está aqui, e a gente está localizado em lugares diferentes, com habilidades diferentes. Mas a graça, ela está aqui, pairando, ela está disponível para todos."
+    ordem_2a: graca_comum_gc
+    justificativa_interna: "Definição oficial: 'Concessão divina de bens naturais, sociais e estruturais a toda a humanidade, percebida como ordem, sustento e prosperidade cotidiana'. A metáfora do 'guarda-chuva' e a menção a 'sol', 'ar', 'recursos' como disponíveis para todos caracteriza a graça comum universal."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana'. A afirmação de que a graça 'está disponível para todos' independente de 'lugares diferentes' e 'habilidades diferentes' evidencia reconhecimento da exclusividade divina."
+
+    ordem_2a: reducao_das_desigualdades
+    justificativa_interna: "Definição oficial: 'Redução de desigualdades sociais, econômicas e de oportunidades entre indivíduos, grupos e países'. A menção a 'lugares diferentes' e 'habilidades diferentes' evidencia consciência sobre desigualdades estruturais."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "o fato de eu ter acessado um lugar, acessado em conhecimento ou não acessado em conhecimento, eu acho que não é isso que faz a graça ser maior ou menor."
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana'. A afirmação de que o acesso a conhecimento 'não é isso que faz a graça ser maior ou menor' evidencia reconhecimento da graça como independente de conquistas humanas."
+
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana'. A negação de relação entre acesso a conhecimento e magnitude da graça evidencia compreensão do caráter imerecido."
+
+    ordem_2a: educacao_de_qualidade
+    justificativa_interna: "Definição oficial: 'Acesso inclusivo, equitativo e contínuo à educação de qualidade e a oportunidades permanentes de aprendizagem'. A menção a 'acessado em conhecimento ou não acessado em conhecimento' evidencia consciência sobre acesso à educação."
+END ITEM
+
+ITEM @entrevista13_2
+    ordem_1a: "como pode acontecer uma pessoa da Venezuela, um cara que é médico, estar aqui hoje numa situação de inservente, de limpeza."
+    ordem_2a: reducao_das_desigualdades
+    justificativa_interna: "Definição oficial: 'Redução de desigualdades sociais, econômicas e de oportunidades entre indivíduos, grupos e países'. O exemplo do médico venezuelano em situação de trabalho precário evidencia consciência sobre desigualdades sociais e econômicas extremas."
+
+    ordem_2a: trabalho_decente_e_crescimento_economico
+    justificativa_interna: "Definição oficial: 'Emprego digno, condições justas de trabalho e crescimento econômico sustentável e inclusivo'. A menção a 'situação de inservente, de limpeza' para um médico evidencia consciência sobre condições de trabalho indignas."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. A menção a mudança drástica de papel social (médico para inservente) evidencia avaliação de papéis sociais."
+END ITEM

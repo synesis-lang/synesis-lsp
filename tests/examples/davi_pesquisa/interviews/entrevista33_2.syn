@@ -1,0 +1,528 @@
+SOURCE @entrevista33_2
+	código: N/A
+END SOURCE
+
+ITEM @entrevista33_2
+    ordem_1a: "cercear o direito de liberdade, crença, então eu não vejo isso de forma tão direta a ponto de barrar a tua essência, quem você é"
+    ordem_2a: perseguicao_religiosa
+    justificativa_interna: "Definição oficial: 'Qualquer forma de desvalorização, hostilidade, ridicularização ou prejuízo profissional motivado pela identidade ou prática religiosa no trabalho'. O entrevistado reconhece a possibilidade de 'cercear o direito de liberdade, crença' e 'barrar a tua essência', evidenciando consciência de potencial hostilidade à expressão religiosa no ambiente profissional."
+
+    ordem_2a: unidade_e_integridade_de_vida_pessoal_e_profissional
+    justificativa_interna: "Definição oficial: 'Convicção de que fé, valores e prática cristã devem orientar de forma integrada a vida pessoal e a atuação profissional, rejeitando qualquer separação entre espiritualidade e trabalho'. A expressão 'barrar a tua essência, quem você é' evidencia a recusa de separar identidade religiosa da atuação profissional."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "quando você tem uma empresa que professa a mesma fé, que é uma empresa, de certa forma, uma empresa cristã, sócios cristãos"
+    ordem_2a: sociedade_apenas_entre_cristaos
+    justificativa_interna: "Definição oficial: 'Formação deliberada de sociedades empresariais restritas a cristãos, fundamentada na confiança espiritual mútua e no alinhamento explícito de valores e convicções religiosas'. O trecho menciona explicitamente 'empresa cristã, sócios cristãos', caracterizando sociedade empresarial baseada em fé compartilhada."
+
+    ordem_2a: credito_e_confiabilidade_publica_de_cristao_para_cristao
+    justificativa_interna: "Definição oficial: 'Concessão de crédito, facilidades comerciais ou oportunidades profissionais fundamentadas na confiança mútua entre cristãos'. A menção a 'empresa que professa a mesma fé' e 'sócios cristãos' evidencia confiança relacional baseada na fé compartilhada."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente'. O trecho menciona diretamente 'professa a mesma fé', 'empresa cristã' e 'sócios cristãos', evidenciando a fé como orientação da organização."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. A menção a 'sócios' e 'empresa' evidencia a avaliação de papéis e relações sociais na estrutura organizacional."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "quando há essa inclinação da cultura da empresa, o colaborador tem mais liberdade de fazê-lo"
+    ordem_2a: unidade_e_integridade_de_vida_pessoal_e_profissional
+    justificativa_interna: "Definição oficial: 'Convicção de que fé, valores e prática cristã devem orientar de forma integrada a vida pessoal e a atuação profissional'. O trecho evidencia que quando a cultura empresarial é cristã, há 'mais liberdade' para integrar fé e trabalho."
+
+    ordem_2a: desenvolvimento_humano_dos_funcionarios
+    justificativa_interna: "Definição oficial: 'Promoção intencional do crescimento espiritual, ético e humano dos funcionários, incorporando práticas religiosas cristãs no ambiente de trabalho'. A 'liberdade' mencionada permite que colaboradores expressem e desenvolvam sua dimensão espiritual no trabalho."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "isso não exclui a sua responsabilidade de produção, isso não exclui a responsabilidade de resultado, isso não exclui, eventualmente, a pessoa ser desligada por falta de produtividade"
+    ordem_2a: ambidestria_na_gestao
+    justificativa_interna: "Definição oficial: 'Capacidade gerencial de equilibrar simultaneamente a viabilidade econômica do negócio com o cuidado genuíno com pessoas'. O trecho evidencia o equilíbrio entre valores cristãos ('liberdade' religiosa) e exigências de 'produção' e 'resultado'."
+
+    ordem_2a: exigencia_profissional_limitada
+    justificativa_interna: "Definição oficial: 'Definição consciente de metas, ritmos e cobranças profissionais que respeitam limites humanos'. Embora mencione 'responsabilidade de produção', o contexto indica que isso ocorre dentro de uma cultura que respeita a dimensão espiritual do colaborador."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "a diligência faz parte do cristão, então você ser dirigente no trabalho, ser dirigente na empresa e no cargo que foi confiado, faz parte da nossa essência"
+    ordem_2a: excelencia_crista_fazer_para_cristo
+    justificativa_interna: "Definição oficial: 'Busca intencional de alta qualidade e zelo no trabalho por reconhecer Deus como destinatário último da ação'. O termo 'diligência' e 'ser dirigente' evidenciam zelo e qualidade no trabalho como expressão da essência cristã."
+
+    ordem_2a: trabalho_como_adoracao_avoda_empresa_como_ministerio
+    justificativa_interna: "Definição oficial: 'Compreensão do trabalho e da empresa como gesto de adoração, espaço legítimo de culto, serviço e obediência a Deus'. A expressão 'faz parte da nossa essência' e 'cargo que foi confiado' evidenciam o trabalho como dimensão espiritual."
+
+    ordem_2a: mordomia
+    justificativa_interna: "Definição oficial: 'Administração responsável de recursos, bens e resultados entendidos como pertencentes a Deus e confiados ao ser humano'. A expressão 'cargo que foi confiado' evidencia compreensão de mordomia sobre a função profissional."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais'. O termo 'diligência' como parte da 'essência' cristã evidencia disposição moral profunda."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente'. A menção a 'faz parte do cristão' e 'nossa essência' evidencia a fé como fonte de orientação existencial."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. A referência a 'cargo que foi confiado' evidencia avaliação de papéis sociais."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "você se posicionar com relação à propina, com relação a ações que podem ferir princípios pessoais, que sim colocaria em cheque o meu cargo, a minha função"
+    ordem_2a: retidao_incorruptibilidade
+    justificativa_interna: "Definição oficial: 'Postura ética inegociável que rejeita corrupção, ilegalidade ou compromissos morais duvidosos, mesmo sob pressão ou risco de perdas pessoais'. A menção explícita a 'propina' e disposição de colocar 'em cheque o meu cargo' evidencia incorruptibilidade."
+
+    ordem_2a: praticas_comerciais_antieticas_corrupcao
+    justificativa_interna: "Definição oficial: 'Adoção de práticas comerciais ilegais ou moralmente condenáveis, como sonegação, propina, fraudes'. O trecho menciona explicitamente 'propina' como prática antiética a ser rejeitada."
+
+    ordem_2a: sofrer_o_dano
+    justificativa_interna: "Definição oficial: 'Aceitação consciente de prejuízo pessoal, profissional ou material como consequência de permanecer fiel a princípios cristãos'. A disposição de colocar 'em cheque o meu cargo' evidencia aceitação de prejuízo profissional por fidelidade a princípios."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "eu não estou ali de forma amarrada, então eu sou escravo daquela empresa"
+    ordem_2a: dependencia_de_deus
+    justificativa_interna: "Definição oficial: 'Reconhecimento explícito da limitação humana e da incapacidade de alcançar resultados desejáveis sem a ação, ajuda ou sustento de Deus'. A negação de ser 'escravo daquela empresa' evidencia reconhecimento de que a dependência última não é da empresa, mas de Deus."
+
+    ordem_2a: todas_as_coisas_pertencem_a_deus
+    justificativa_interna: "Definição oficial: 'Reconhecimento de que bens, recursos, resultados e oportunidades não pertencem em última instância ao ser humano, mas estão sob a posse e autoridade de Deus'. A recusa de ser 'escravo' da empresa evidencia que o trabalho não é propriedade última do empregador."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais'. A rejeição à condição de 'escravo' evidencia integridade e liberdade moral como fundamento."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. A menção a não ser 'escravo daquela empresa' evidencia avaliação crítica de relações de trabalho."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "se algum direcionamento da empresa, seja alguma iniciativa de negócio, de fechamento de negócio, fere os meus princípios, cabe a mim me posicionar e não fazê-lo"
+    ordem_2a: obediencia
+    justificativa_interna: "Definição oficial: 'Disposição prática de fazer aquilo que Deus ordena, conformando ações e decisões às suas ordens, mesmo quando contrariam interesses pessoais ou conveniências'. O 'não fazê-lo' quando 'fere os meus princípios' evidencia obediência a Deus acima de direcionamentos empresariais."
+
+    ordem_2a: retidao_incorruptibilidade
+    justificativa_interna: "Definição oficial: 'Postura ética inegociável que rejeita corrupção, ilegalidade ou compromissos morais duvidosos'. A disposição de 'me posicionar e não fazê-lo' evidencia postura ética inegociável."
+
+    ordem_2a: teste_da_consciencia_crista_jesus_aprovaria
+    justificativa_interna: "Definição oficial: 'Avaliação moral interna que usa a pessoa e os ensinamentos de Jesus como critério para discernir se uma ação deve ou não ser realizada'. A expressão 'fere os meus princípios' evidencia avaliação moral interna baseada em critérios cristãos."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais'. A menção a 'fere os meus princípios' e 'me posicionar' evidencia integridade como fundamento de decisão."
+
+    ordem_2a: lucratividade_aceitavel_diminuicao_do_lucro
+    justificativa_interna: "Definição oficial: 'Aceitação gerencial ou pessoal consciente de redução dos resultados financeiros em razão de escolhas éticas, sociais ou alinhadas a valores'. A disposição de 'não fazer' negócios que ferem princípios evidencia aceitação de redução de resultados por valores éticos."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "acarretando sim com as consequências de uma eventual saída, uma eventual demissão"
+    ordem_2a: sofrer_o_dano
+    justificativa_interna: "Definição oficial: 'Aceitação consciente de prejuízo pessoal, profissional ou material como consequência de permanecer fiel a princípios cristãos'. A aceitação de 'eventual saída, uma eventual demissão' evidencia disposição de sofrer prejuízo profissional por fidelidade a princípios."
+
+    ordem_2a: morrer_para_produzir_fruto_orientacao_sacrificial
+    justificativa_interna: "Definição oficial: 'Disposição deliberada de renunciar a interesses, ganhos ou reconhecimento pessoal para que ações gerem frutos espirituais, éticos ou coletivos duradouros'. A aceitação de 'demissão' por não ferir princípios evidencia renúncia a ganhos pessoais por frutos éticos."
+
+    ordem_2a: ser_demitido
+    justificativa_interna: "Definição oficial: 'Desligamento profissional sofrido diretamente em função de posicionamentos éticos, práticas ou identidade cristã no ambiente de trabalho'. A menção a 'eventual demissão' como consequência de posicionamento ético evidencia a variável."
+
+    ordem_2a: aspecto_juridico_13
+    justificativa_interna: "Definição oficial: 'Referência a normas, direitos, deveres e consequências institucionais como expressão de justiça'. A menção a 'demissão' evidencia consequência institucional formal."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "se uma empresa me pedisse para numa eventual negociação acertar uma propina, eu não faria, porque isso vai contra meus princípios"
+    ordem_2a: retidao_incorruptibilidade
+    justificativa_interna: "Definição oficial: 'Postura ética inegociável que rejeita corrupção, ilegalidade ou compromissos morais duvidosos'. A declaração explícita 'eu não faria' em relação a 'propina' evidencia incorruptibilidade."
+
+    ordem_2a: praticas_comerciais_antieticas_corrupcao
+    justificativa_interna: "Definição oficial: 'Adoção de práticas comerciais ilegais ou moralmente condenáveis, como sonegação, propina, fraudes'. O trecho menciona explicitamente 'propina' como prática antiética rejeitada."
+
+    ordem_2a: obediencia
+    justificativa_interna: "Definição oficial: 'Disposição prática de fazer aquilo que Deus ordena, conformando ações e decisões às suas ordens'. O 'não faria' evidencia obediência a princípios divinos acima de pressões empresariais."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais'. A recusa explícita à propina 'porque vai contra meus princípios' evidencia integridade como fundamento moral."
+
+    ordem_2a: perda_financeira_sonegacao_suprimida
+    justificativa_interna: "Definição oficial: 'Redução de ganhos decorrente da recusa em adotar práticas ilegais, corruptas ou fiscalmente irregulares'. A recusa a 'acertar uma propina' evidencia redução de ganhos por rejeitar práticas corruptas."
+
+    ordem_2a: aspecto_juridico_13
+    justificativa_interna: "Definição oficial: 'Referência a normas, direitos, deveres e consequências institucionais como expressão de justiça'. A menção a 'propina' evidencia referência a prática ilegal."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "mais de 70% das empresas alegaram que tiveram melhorias nos seus negócios pós-entrada no C12"
+    ordem_2a: pra_cima
+    justificativa_interna: "Definição oficial: 'Percepção de que a fé cristã contribui positivamente para desempenho financeiro, estabilidade econômica ou crescimento sustentável de resultados'. A menção a 'melhorias nos seus negócios' evidencia percepção de impacto positivo da fé nos resultados."
+
+    ordem_2a: melhoria_dos_resultados_nos_negocios
+    justificativa_interna: "Definição oficial: 'Aumento do desempenho e dos resultados organizacionais percebido como consequência indireta do fortalecimento relacional, do cuidado com pessoas e do sentido compartilhado no trabalho'. As 'melhorias nos seus negócios' são atribuídas à integração de fé e negócio."
+
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades como critérios relevantes para gestão'. A menção a 'mais de 70%' evidencia uso de proporção como critério."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro'. A menção a 'melhorias nos seus negócios' evidencia resultados econômicos."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "pós-entrada no C12 é entender o seu negócio como ministério, integrar a Fé em negócio"
+    ordem_2a: trabalho_como_adoracao_avoda_empresa_como_ministerio
+    justificativa_interna: "Definição oficial: 'Compreensão do trabalho e da empresa como gesto de adoração, espaço legítimo de culto, serviço e obediência a Deus'. A expressão explícita 'entender o seu negócio como ministério' evidencia esta compreensão."
+
+    ordem_2a: unidade_e_integridade_de_vida_pessoal_e_profissional
+    justificativa_interna: "Definição oficial: 'Convicção de que fé, valores e prática cristã devem orientar de forma integrada a vida pessoal e a atuação profissional'. A expressão 'integrar a Fé em negócio' evidencia esta integração."
+
+    ordem_2a: proposito
+    justificativa_interna: "Definição oficial: 'Compreensão de que a própria vida e atuação profissional possuem um sentido de missão definido pela vontade de Deus'. Entender o 'negócio como ministério' evidencia compreensão de propósito divino no trabalho."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "quem tem essa mentalidade de integrar a Fé em negócio, trata melhor o funcionário, busca uma pessoalização, uma humanização nos seus processos com clientes, com colaboradores, com fornecedores"
+    ordem_2a: defesa_dos_interesses_do_funcionario
+    justificativa_interna: "Definição oficial: 'Postura gerencial de priorizar a proteção e as necessidades do funcionário'. A expressão 'trata melhor o funcionário' e 'humanização' evidenciam priorização das necessidades dos colaboradores."
+
+    ordem_2a: desenvolvimento_humano_dos_funcionarios
+    justificativa_interna: "Definição oficial: 'Promoção intencional do crescimento espiritual, ético e humano dos funcionários'. A 'humanização nos seus processos' evidencia promoção do desenvolvimento humano integral."
+
+    ordem_2a: amar_o_proximo
+    justificativa_interna: "Definição oficial: 'Ação prática de cuidado, responsabilidade e socorro ao outro que surge diante de uma necessidade concreta'. O 'trata melhor o funcionário' e 'humanização' evidenciam cuidado prático com o próximo."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais'. A menção a 'trata melhor', 'humanização' evidencia amor e misericórdia como fundamento."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. A referência a 'funcionário', 'clientes', 'colaboradores', 'fornecedores' evidencia avaliação de relações sociais."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente'. A menção a 'integrar a Fé em negócio' evidencia a fé como fonte de orientação."
+
+    ordem_2a: valorizacao_de_indicadores_nao_financeiros
+    justificativa_interna: "Definição oficial: 'Reconhecimento de impactos sociais, humanos, ambientais e éticos como dimensões legítimas do desempenho organizacional, além dos resultados financeiros'. A menção a 'humanização nos seus processos' evidencia valorização de dimensões humanas além do financeiro."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "não é simplesmente falar do amor de Deus, ser um cristão passa mais do que falar, é a pessoa ver isso em você"
+    ordem_2a: testemunho
+    justificativa_interna: "Definição oficial: 'Vivência coerente e visível da fé cristã expressa em atitudes, escolhas e conduta cotidiana, funcionando como exemplo público que aponta para Deus'. A expressão 'a pessoa ver isso em você' evidencia testemunho visível da fé."
+
+    ordem_2a: fe_sem_obras_e_morta
+    justificativa_interna: "Definição oficial: 'Convicção de que a fé autêntica se manifesta necessariamente por ações práticas e observáveis'. A expressão 'passa mais do que falar' evidencia que fé verdadeira se manifesta em ações."
+
+    ordem_2a: integridade_moral
+    justificativa_interna: "Definição oficial: 'Coerência estável entre valores professados, discurso público e práticas concretas'. A expressão 'não é simplesmente falar' mas 'a pessoa ver isso em você' evidencia coerência entre discurso e prática."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais'. A menção ao 'amor de Deus' e 'ver isso em você' evidencia amor como disposição moral profunda manifestada em ações."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente'. A menção a 'amor de Deus' e 'ser um cristão' evidencia a fé como fonte de orientação."
+
+    ordem_2a: aspecto_linguistico_9
+    justificativa_interna: "Definição oficial: 'Uso da linguagem, do discurso e da comunicação como portadores de significado e coerência'. A contraposição entre 'falar' e 'ver' evidencia a linguagem como portadora de significado que deve ser coerente com ações."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "se a empresa tem isso no DNA, acaba refletindo sim no negócio"
+    ordem_2a: pra_cima
+    justificativa_interna: "Definição oficial: 'Percepção de que a fé cristã contribui positivamente para desempenho financeiro'. A expressão 'refletindo sim no negócio' evidencia percepção de impacto positivo da fé nos resultados."
+
+    ordem_2a: melhoria_dos_resultados_nos_negocios
+    justificativa_interna: "Definição oficial: 'Aumento do desempenho e dos resultados organizacionais percebido como consequência indireta do fortalecimento relacional'. O 'refletindo sim no negócio' é atribuído à cultura cristã da empresa."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro'. A menção a 'refletindo sim no negócio' evidencia impacto em resultados econômicos."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente'. A referência a 'isso' (fé integrada) no 'DNA' da empresa evidencia a fé como orientação fundamental."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "quando você consagra os seus caminhos para o Senhor, quando você consagra a sua empresa para o Senhor, seus planos são bem-sucedidos, é o que diz a palavra"
+    ordem_2a: oracao_consagracao_do_dia_de_trabalho_e_caminhos
+    justificativa_interna: "Definição oficial: 'Entrega explícita do trabalho, das decisões e dos caminhos profissionais a Deus por meio da oração cotidiana'. A expressão 'consagra os seus caminhos para o Senhor' e 'consagra a sua empresa' evidenciam entrega explícita do trabalho a Deus."
+
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho'. A expressão 'seus planos são bem-sucedidos' após consagração evidencia crença na providência divina."
+
+    ordem_2a: consultar_a_palavra_biblia
+    justificativa_interna: "Definição oficial: 'Uso intencional das Escrituras como fonte normativa de orientação'. A expressão 'é o que diz a palavra' evidencia uso da Bíblia como fonte de orientação para decisões profissionais."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente'. A menção a 'consagra para o Senhor' e 'diz a palavra' evidencia a fé e a Escritura como fonte de orientação."
+
+    ordem_2a: superabundancia
+    justificativa_interna: "Definição oficial: 'Percepção da graça como benesses em quantidade muito grande, imensurável, que ultrapassa qualquer critério humano de cálculo, mérito ou expectativa'. A promessa de que 'planos são bem-sucedidos' por consagração evidencia percepção de bênção abundante."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana'. A atribuição do sucesso à consagração 'para o Senhor' evidencia reconhecimento de Deus como fonte exclusiva."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro'. A menção a 'planos são bem-sucedidos' evidencia resultados econômicos."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "eu como cristão creio nisso e vejo isso como resultado"
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho'. A expressão 'creio nisso' em relação aos planos bem-sucedidos evidencia crença na providência divina."
+
+    ordem_2a: pra_cima
+    justificativa_interna: "Definição oficial: 'Percepção de que a fé cristã contribui positivamente para desempenho financeiro'. A expressão 'vejo isso como resultado' evidencia percepção de impacto positivo da fé."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente'. A expressão 'como cristão creio nisso' evidencia a fé como fonte de convicção."
+
+    ordem_2a: eficacia
+    justificativa_interna: "Definição oficial: 'Convicção de que a graça atua de modo plenamente eficaz, realizando integralmente aquilo que Deus determinou e produzindo transformação real'. A expressão 'vejo isso como resultado' evidencia convicção de que a graça produz efeitos reais."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "aqueles que realmente consagram o caminho para o Senhor e tem uma integração de Fé em negócio, melhoram sim os seus resultados"
+    ordem_2a: oracao_consagracao_do_dia_de_trabalho_e_caminhos
+    justificativa_interna: "Definição oficial: 'Entrega explícita do trabalho, das decisões e dos caminhos profissionais a Deus'. A expressão 'consagram o caminho para o Senhor' evidencia entrega do trabalho a Deus."
+
+    ordem_2a: pra_cima
+    justificativa_interna: "Definição oficial: 'Percepção de que a fé cristã contribui positivamente para desempenho financeiro'. A expressão 'melhoram sim os seus resultados' evidencia percepção de impacto positivo."
+
+    ordem_2a: unidade_e_integridade_de_vida_pessoal_e_profissional
+    justificativa_interna: "Definição oficial: 'Convicção de que fé, valores e prática cristã devem orientar de forma integrada a vida pessoal e a atuação profissional'. A expressão 'integração de Fé em negócio' evidencia esta integração."
+
+    ordem_2a: melhoria_dos_resultados_nos_negocios
+    justificativa_interna: "Definição oficial: 'Aumento do desempenho e dos resultados organizacionais percebido como consequência indireta do fortalecimento relacional'. A melhoria dos resultados é atribuída à consagração e integração da fé."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente'. A menção a 'consagram o caminho para o Senhor' e 'integração de Fé' evidencia a fé como orientação."
+
+    ordem_2a: superabundancia
+    justificativa_interna: "Definição oficial: 'Percepção da graça como benesses em quantidade muito grande, imensurável, que ultrapassa qualquer critério humano de cálculo, mérito ou expectativa'. A afirmação de que 'melhoram sim os seus resultados' por consagração evidencia percepção de bênção abundante."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro'. A menção a 'melhoram sim os seus resultados' evidencia resultados econômicos."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "fizemos uma ação, junto com os colaboradores, de visitar um asilo, uma ação social"
+    ordem_2a: cuidado_do_pobre_da_viuva_e_do_orfao
+    justificativa_interna: "Definição oficial: 'Compromisso pessoal, moral ativo, de proteger, sustentar e defender pessoas socialmente vulneráveis, motivado por mandamento religioso cristão'. A 'visitar um asilo' evidencia cuidado com vulneráveis (idosos)."
+
+    ordem_2a: hospitalidade
+    justificativa_interna: "Definição oficial: 'Prática intencional de acolher pessoas com generosidade, cuidado e abertura relacional, promovendo dignidade e pertencimento'. A visita ao asilo evidencia acolhimento e cuidado com idosos."
+
+    ordem_2a: amar_o_proximo
+    justificativa_interna: "Definição oficial: 'Ação prática de cuidado, responsabilidade e socorro ao outro que surge diante de uma necessidade concreta'. A ação social no asilo evidencia cuidado prático com o próximo."
+
+    ordem_2a: macro_rsc
+    justificativa_interna: "Definição oficial: 'Conjunto de políticas, estratégias e ações sociais adotadas pela organização em nível institucional, incluindo programas estruturados de filantropia e responsabilidade social'. A menção a 'ação social' institucional evidencia programa estruturado de responsabilidade social."
+
+    ordem_2a: saude_e_bem_estar
+    justificativa_interna: "Definição oficial: 'Garantia e promoção de condições que favoreçam a saúde física, mental e social ao longo de todo o ciclo de vida'. A visita a 'asilo' evidencia cuidado com saúde e bem-estar de idosos."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. A menção a 'junto com os colaboradores' evidencia padrões de convivência."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "projetos voltados para o bem, voltados para as pessoas, isso cria um clima organizacional diferente, aumenta o engajamento das pessoas, dos colaboradores, inclusive diminui o seu turnover"
+    ordem_2a: engajamento_com_equipes
+    justificativa_interna: "Definição oficial: 'Construção intencional de vínculos de confiança, cooperação e pertencimento com as equipes, visando engajamento sustentável'. A expressão 'aumenta o engajamento das pessoas' evidencia construção de vínculos."
+
+    ordem_2a: melhoria_dos_resultados_nos_negocios
+    justificativa_interna: "Definição oficial: 'Aumento do desempenho e dos resultados organizacionais percebido como consequência indireta do fortalecimento relacional'. A redução de 'turnover' e melhoria do 'clima organizacional' evidenciam melhoria de resultados."
+
+    ordem_2a: amar_o_proximo
+    justificativa_interna: "Definição oficial: 'Ação prática de cuidado, responsabilidade e socorro ao outro'. Os 'projetos voltados para as pessoas' evidenciam cuidado prático com o próximo."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "há um sentimento maior de pertencimento"
+    ordem_2a: engajamento_com_equipes
+    justificativa_interna: "Definição oficial: 'Construção intencional de vínculos de confiança, cooperação e pertencimento com as equipes'. A expressão 'sentimento maior de pertencimento' evidencia construção de vínculos relacionais."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "nós que cuidávamos do dinheiro de pessoas que estavam investindo para as suas velhices"
+    ordem_2a: mordomia
+    justificativa_interna: "Definição oficial: 'Administração responsável de recursos, bens e resultados entendidos como pertencentes a Deus e confiados ao ser humano'. A expressão 'cuidávamos do dinheiro de pessoas' evidencia administração responsável de recursos confiados."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro'. A menção a 'cuidávamos do dinheiro' evidencia administração de recursos financeiros."
+
+    ordem_2a: aspecto_biotico_5
+    justificativa_interna: "Definição oficial: 'Valorização da vida como critérios, incluindo saúde sobrevivência e cuidado físico de pessoas, animais ou criação'. A menção a 'velhices' evidencia consideração do ciclo de vida."
+
+    ordem_2a: saude_e_bem_estar
+    justificativa_interna: "Definição oficial: 'Garantia e promoção de condições que favoreçam a saúde física, mental e social ao longo de todo o ciclo de vida'. A menção a 'investindo para as suas velhices' evidencia cuidado com bem-estar ao longo do ciclo de vida."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "foi identificado qual era a necessidade desse asilo, que na época era a fralda geriátrica"
+    ordem_2a: cuidado_do_pobre_da_viuva_e_do_orfao
+    justificativa_interna: "Definição oficial: 'Compromisso pessoal, moral ativo, de proteger, sustentar e defender pessoas socialmente vulneráveis'. A identificação da 'necessidade' do asilo evidencia compromisso ativo com vulneráveis."
+
+    ordem_2a: amar_o_proximo
+    justificativa_interna: "Definição oficial: 'Ação prática de cuidado, responsabilidade e socorro ao outro que surge diante de uma necessidade concreta'. A identificação e atendimento da necessidade evidenciam cuidado prático."
+
+    ordem_2a: saude_e_bem_estar
+    justificativa_interna: "Definição oficial: 'Garantia e promoção de condições que favoreçam a saúde física, mental e social ao longo de todo o ciclo de vida'. A menção a 'fralda geriátrica' evidencia cuidado com saúde física de idosos."
+
+    ordem_2a: aspecto_biotico_5
+    justificativa_interna: "Definição oficial: 'Valorização da vida como critérios, incluindo saúde sobrevivência e cuidado físico de pessoas, animais ou criação'. A identificação de necessidade de 'fralda geriátrica' evidencia cuidado físico com vida de idosos."
+
+    ordem_2a: aspecto_analitico_7
+    justificativa_interna: "Definição oficial: 'Uso consciente do julgamento racional, da distinção conceitual e da coerência lógica'. A expressão 'foi identificado qual era a necessidade' evidencia uso de julgamento racional."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "foi pleiteado para os próprios colaboradores poderem contribuir comprando as fraldas geriátricas, não de forma impositiva, mas opcional"
+    ordem_2a: liberalidade_financeira_discreta_generosidade
+    justificativa_interna: "Definição oficial: 'Prática de doação financeira pessoal voluntária e intencional realizada sem busca de visibilidade, prestígio ou reconhecimento público'. A contribuição 'opcional' e 'não impositiva' evidencia doação voluntária."
+
+    ordem_2a: de_graca_recebestes_de_graca_dai
+    justificativa_interna: "Definição oficial: 'Princípio de não reter benefícios recebidos, dispondo-se a compartilhar gratuitamente o que foi dado de graça por Deus'. A disposição de 'contribuir' evidencia compartilhamento voluntário."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "fizemos enquanto empresa, junto com os colaboradores também, de forma voluntária"
+    ordem_2a: liberalidade_financeira_discreta_generosidade
+    justificativa_interna: "Definição oficial: 'Prática de doação financeira pessoal voluntária e intencional'. A expressão 'de forma voluntária' evidencia doação intencional sem imposição."
+
+    ordem_2a: engajamento_com_equipes
+    justificativa_interna: "Definição oficial: 'Construção intencional de vínculos de confiança, cooperação e pertencimento com as equipes'. A ação 'junto com os colaboradores' evidencia construção de vínculos."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "pudemos ali ter um tempo com aqueles idosos, levando uma palavra de esperança, levando a palavra de Deus, orando com eles"
+    ordem_2a: evangelismo
+    justificativa_interna: "Definição oficial: 'Ação intencional orientada a conduzir outras pessoas ao conhecimento, à aceitação e à conversão à fé cristã'. A expressão 'levando a palavra de Deus' evidencia ação evangelística intencional."
+
+    ordem_2a: oracao
+    justificativa_interna: "Definição oficial: 'Prática intencional de comunicação com Deus por meio de pedido, escuta, entrega ou adoração, aplicada à vida pessoal e profissional'. A expressão 'orando com eles' evidencia prática de oração."
+
+    ordem_2a: cuidado_do_pobre_da_viuva_e_do_orfao
+    justificativa_interna: "Definição oficial: 'Compromisso pessoal, moral ativo, de proteger, sustentar e defender pessoas socialmente vulneráveis'. O 'ter um tempo com aqueles idosos' evidencia compromisso ativo com vulneráveis."
+
+    ordem_2a: hospitalidade
+    justificativa_interna: "Definição oficial: 'Prática intencional de acolher pessoas com generosidade, cuidado e abertura relacional, promovendo dignidade e pertencimento'. O 'ter um tempo' e 'carinho e amor' evidenciam acolhimento."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "podendo ter um carinho e um amor com aqueles senhores e senhoras"
+    ordem_2a: amar_o_proximo
+    justificativa_interna: "Definição oficial: 'Ação prática de cuidado, responsabilidade e socorro ao outro que surge diante de uma necessidade concreta'. A expressão 'carinho e um amor' evidencia cuidado prático com o próximo."
+
+    ordem_2a: misericordia
+    justificativa_interna: "Definição oficial: 'Ação compassiva diante da fragilidade, culpa ou necessidade do outro'. O 'carinho e amor' com idosos evidenciam ação compassiva diante da fragilidade."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "cercear o direito de liberdade, crença"
+    ordem_2a: aspecto_juridico_13
+    justificativa_interna: "Definição oficial: 'Referência a normas, direitos, deveres e consequências institucionais como expressão de justiça'. O trecho menciona explicitamente 'direito de liberdade' e 'crença', evidenciando referência direta a direitos como categoria jurídica."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente'. A menção a 'crença' no contexto de liberdade religiosa evidencia a dimensão de fé como orientação existencial."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "o colaborador tem mais liberdade de fazê-lo, isso não exclui a sua responsabilidade de produção, isso não exclui a responsabilidade de resultado"
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro'. A menção a 'responsabilidade de produção' e 'responsabilidade de resultado' evidencia a administração de recursos e resultados econômicos."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais'. A menção a 'responsabilidade' como valor moral que não é excluído pela liberdade religiosa evidencia disposição ética."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. A referência ao 'colaborador' e suas responsabilidades evidencia avaliação de papéis sociais na organização."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "eventualmente, a pessoa ser desligada por falta de produtividade"
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro'. A menção a 'falta de produtividade' como critério de desligamento evidencia administração de recursos e resultados."
+
+    ordem_2a: aspecto_juridico_13
+    justificativa_interna: "Definição oficial: 'Referência a normas, direitos, deveres e consequências institucionais como expressão de justiça'. O termo 'desligada' evidencia consequência institucional formal."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "você se posicionar com relação à propina, com relação a ações que podem ferir princípios pessoais"
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais'. A menção a 'ferir princípios pessoais' e rejeição à 'propina' evidencia integridade como disposição moral."
+
+    ordem_2a: aspecto_juridico_13
+    justificativa_interna: "Definição oficial: 'Referência a normas, direitos, deveres e consequências institucionais como expressão de justiça'. A menção a 'propina' evidencia referência a práticas ilegais e suas consequências."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "que sim colocaria em cheque o meu cargo, a minha função"
+    ordem_2a: estagnacao_profissional_nao_promocao
+    justificativa_interna: "Definição oficial: 'Interrupção ou limitação do crescimento na carreira associada à manutenção de princípios éticos ou religiosos'. A expressão 'colocaria em cheque o meu cargo' evidencia risco de limitação profissional por manter princípios."
+
+    ordem_2a: ameaca_ao_emprego
+    justificativa_interna: "Definição oficial: 'Percepção situacional concreta de risco iminente de perda do emprego em razão de decisões éticas ou religiosas assumidas'. A expressão 'colocaria em cheque o meu cargo' evidencia percepção de risco ao emprego."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "entender o seu negócio como ministério, integrar a Fé em negócio"
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente'. A expressão 'negócio como ministério' e 'integrar a Fé em negócio' evidencia a fé como orientação transcendente da gestão."
+
+    ordem_2a: macro_rsc
+    justificativa_interna: "Definição oficial: 'Conjunto de políticas, estratégias e ações sociais adotadas pela organização em nível institucional, incluindo programas estruturados de filantropia e responsabilidade social'. A menção a 'negócio como ministério' evidencia estratégia institucional de responsabilidade social."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "responsabilidade social corporativa é o compromisso voluntário das empresas ou gestores de integrar preocupações sociais, ambientais e éticas em suas operações"
+    ordem_2a: macro_rsc
+    justificativa_interna: "Definição oficial: 'Conjunto de políticas, estratégias e ações sociais adotadas pela organização em nível institucional, incluindo programas estruturados de filantropia e responsabilidade social'. A definição lida evidencia políticas institucionais de responsabilidade social."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais'. A menção a 'preocupações éticas' evidencia disposições morais."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. A menção a 'preocupações sociais' e 'relacionamento com partes interessadas' evidencia avaliação de relações sociais."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "indo além das obrigações legais, para contribuir com o desenvolvimento sustentável"
+    ordem_2a: aspecto_juridico_13
+    justificativa_interna: "Definição oficial: 'Referência a normas, direitos, deveres e consequências institucionais como expressão de justiça'. A menção a 'obrigações legais' evidencia referência a normas e deveres."
+
+    ordem_2a: percepcao_positiva_generica
+    justificativa_interna: "Definição oficial: 'Avaliação geral favorável do ESG ou objetivos. (Ex: Iniciativa legítima, relevante, benéfica para a organização ou para a sociedade)'. A menção a 'contribuir com o desenvolvimento sustentável' evidencia avaliação favorável de iniciativas de sustentabilidade."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "quando você levanta ações sociais, e aí sim é aquilo que eu estava falando, em relação a projetos voltados para o bem, voltados para as pessoas, isso cria um clima organizacional diferente"
+    ordem_2a: macro_rsc
+    justificativa_interna: "Definição oficial: 'Conjunto de políticas, estratégias e ações sociais adotadas pela organização em nível institucional, incluindo programas estruturados de filantropia e responsabilidade social'. A menção a 'ações sociais' e 'projetos voltados para o bem' evidencia programas de responsabilidade social."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. A menção a 'clima organizacional' evidencia avaliação de padrões de convivência."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais'. A menção a 'voltados para o bem, voltados para as pessoas' evidencia amor e misericórdia como fundamento."
+
+    ordem_2a: valorizacao_de_indicadores_nao_financeiros
+    justificativa_interna: "Definição oficial: 'Reconhecimento de impactos sociais, humanos, ambientais e éticos como dimensões legítimas do desempenho organizacional, além dos resultados financeiros'. A menção a 'clima organizacional' como resultado de ações sociais evidencia valorização de dimensões não financeiras."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "aumenta o engajamento das pessoas, dos colaboradores, inclusive diminui o seu turnover, porque há um sentimento maior de pertencimento"
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. A menção a 'engajamento', 'turnover' e 'pertencimento' evidencia avaliação de relações e padrões sociais."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro'. A menção a 'diminui o seu turnover' evidencia administração de recursos humanos com impacto econômico."
+
+    ordem_2a: aspecto_sensitivo_6
+    justificativa_interna: "Definição oficial: 'Consideração explícita das experiências emocionais humanas relevantes — como dor, medo, empatia ou sofrimento'. A menção a 'sentimento maior de pertencimento' evidencia consideração de experiências emocionais."
+END ITEM
+
+ITEM @entrevista33_2
+    ordem_1a: "a gente fez uma ação social, um asilo, um asilo inclusive que foi escolhido pelos próprios colaboradores"
+    ordem_2a: macro_rsc
+    justificativa_interna: "Definição oficial: 'Conjunto de políticas, estratégias e ações sociais adotadas pela organização em nível institucional, incluindo programas estruturados de filantropia e responsabilidade social'. A menção a 'ação social' institucional evidencia programa de responsabilidade social."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. A menção a 'escolhido pelos próprios colaboradores' evidencia padrões de participação social."
+
+    ordem_2a: saude_e_bem_estar
+    justificativa_interna: "Definição oficial: 'Garantia e promoção de condições que favoreçam a saúde física, mental e social ao longo de todo o ciclo de vida'. A ação em 'asilo' evidencia cuidado com saúde de idosos."
+END ITEM

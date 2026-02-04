@@ -1,0 +1,67 @@
+TEMPLATE gestao_fe 
+
+# ============================================
+# CAMPOS DE SOURCE
+# ============================================
+
+SOURCE FIELDS
+    REQUIRED código
+END SOURCE FIELDS
+
+FIELD código TYPE TEXT
+    SCOPE SOURCE
+    DESCRIPTION Código da entrevista
+END FIELD
+
+
+# ============================================
+# CAMPOS DE ITEM
+# ============================================
+
+ITEM FIELDS
+    REQUIRED ordem_1a
+    REQUIRED BUNDLE ordem_2a, justificativa_interna
+END ITEM FIELDS
+
+FIELD ordem_1a TYPE MEMO
+    SCOPE ITEM
+    DESCRIPTION Codificação de 1ª ordem (descritiva)
+END FIELD
+
+FIELD ordem_2a TYPE CODE
+    SCOPE ITEM
+    DESCRIPTION Codificação de 2ª ordem (conceitual)
+END FIELD
+
+FIELD justificativa_interna TYPE TEXT
+    SCOPE ITEM
+    DESCRIPTION Critérios aplicados na codificação de 2 ordem.
+END FIELD
+
+# ============================================
+# CAMPOS DE ONTOLOGY
+# ============================================
+
+ONTOLOGY FIELDS
+    REQUIRED descricao, ordem_3a, dimensao_agregada, tipo_fatores
+END ONTOLOGY FIELDS
+
+FIELD descricao TYPE TEXT
+    SCOPE ONTOLOGY
+    DESCRIPTION  Descrição da variável de 2a ordem
+END FIELD
+
+FIELD ordem_3a TYPE TOPIC
+    SCOPE ONTOLOGY
+    DESCRIPTION  Codificação de 3ª ordem (teórica/categórica)
+END FIELD
+
+FIELD dimensao_agregada TYPE TOPIC
+    SCOPE ONTOLOGY
+    DESCRIPTION  Codificação de 4ª ordem (teórica/categórica)
+END FIELD
+
+FIELD tipo_fatores TYPE TOPIC
+    SCOPE ONTOLOGY
+    DESCRIPTION  Classificação geral
+END FIELD

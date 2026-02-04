@@ -78,10 +78,12 @@ def _find_code_references(
     """
     locations = []
 
+    normalized = _normalize_code(code)
+
     # 1. Incluir declaração na ontologia (se solicitado)
     if include_declaration:
         ontology_index = getattr(lp, "ontology_index", {}) or {}
-        onto_node = ontology_index.get(code)
+        onto_node = ontology_index.get(code) or ontology_index.get(normalized)
         if onto_node:
             onto_location = getattr(onto_node, "location", None)
             if onto_location:
@@ -91,7 +93,7 @@ def _find_code_references(
 
     # 2. Buscar usos nos arquivos .syn
     code_usage = getattr(lp, "code_usage", {}) or {}
-    items = code_usage.get(code, [])
+    items = code_usage.get(code, code_usage.get(normalized, []))
 
     for item in items:
         # Localização do item
@@ -125,7 +127,7 @@ def _find_bibref_references(
     locations = []
 
     # Normalizar bibref (remover @ se presente)
-    bibref = bibref.lstrip("@")
+    bibref = _normalize_bibref(bibref)
 
     # 1. Incluir declaração na bibliografia (se solicitado)
     if include_declaration:
@@ -194,7 +196,11 @@ def _extract_item_bibref(item) -> Optional[str]:
 
 def _normalize_bibref(bibref: str) -> str:
     """Normaliza bibref removendo @ prefix."""
-    return bibref.lstrip("@")
+    return bibref.lstrip("@").strip().lower()
+
+
+def _normalize_code(code: str) -> str:
+    return " ".join(code.strip().split()).lower()
 
 
 def _convert_to_lsp_location(

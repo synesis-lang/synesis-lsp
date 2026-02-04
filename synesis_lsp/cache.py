@@ -33,6 +33,7 @@ class CachedCompilation:
     result: object  # CompilationResult do synesis
     timestamp: float = field(default_factory=time.time)
     workspace_root: Path = field(default_factory=lambda: Path("."))
+    fingerprint: Optional[str] = None
 
 
 class WorkspaceCache:
@@ -45,10 +46,18 @@ class WorkspaceCache:
         """Retorna compilação em cache para o workspace, ou None."""
         return self._cache.get(workspace_key)
 
-    def put(self, workspace_key: str, result, workspace_root: Path) -> None:
+    def put(
+        self,
+        workspace_key: str,
+        result,
+        workspace_root: Path,
+        fingerprint: Optional[str] = None,
+    ) -> None:
         """Armazena resultado de compilação no cache."""
         self._cache[workspace_key] = CachedCompilation(
-            result=result, workspace_root=workspace_root
+            result=result,
+            workspace_root=workspace_root,
+            fingerprint=fingerprint,
         )
         logger.info(f"Cache atualizado para workspace: {workspace_key}")
 

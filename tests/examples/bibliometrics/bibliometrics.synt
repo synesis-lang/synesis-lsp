@@ -1,0 +1,137 @@
+TEMPLATE bibliometrics version: "1.0" author: "Synesis Compiler Team"
+
+# ============================================
+# CAMPOS DE SOURCE
+# ============================================
+
+SOURCE FIELDS
+    REQUIRED description, epistemic_model, method
+END SOURCE FIELDS
+
+FIELD description TYPE TEXT
+    SCOPE SOURCE
+    DESCRIPTION Descrição do estudo e contexto da pesquisa
+END FIELD
+
+FIELD epistemic_model TYPE TEXT
+    SCOPE SOURCE
+    DESCRIPTION Modelo epistemológico ou framework teórico utilizado
+END FIELD
+
+FIELD method TYPE TEXT
+    SCOPE SOURCE
+    DESCRIPTION Método de pesquisa utilizado (survey, entrevistas, etc.)
+END FIELD
+
+# ============================================
+# CAMPOS DE ITEM
+# ============================================
+
+ITEM FIELDS
+    REQUIRED text
+    REQUIRED BUNDLE note, chain
+END ITEM FIELDS
+
+FIELD text TYPE QUOTATION
+    SCOPE ITEM
+    DESCRIPTION Excerto textual extraído da fonte bibliográfica
+END FIELD
+
+FIELD note TYPE MEMO
+    SCOPE ITEM
+    DESCRIPTION Memo analítico explicando a interpretação e mecanismo causal identificado
+END FIELD
+
+FIELD chain TYPE CHAIN
+    SCOPE ITEM
+    ARITY >= 2
+    DESCRIPTION Cadeia causal/relacional entre conceitos da ontologia
+    RELATIONS
+        ENABLES: Condição necessária ou facilitadora (A permite que B ocorra)
+        INFLUENCES: Efeito causal direto (A afeta ou muda B)
+        CONSTRAINS: Limita ou restringe (A reduz opções ou viabilidade de B)
+        CONTESTED-BY: Oposição ativa (A é contestado ou desafiado por B)
+        RELATES-TO: Associação significativa genérica (A está relacionado a B)
+    END RELATIONS
+END FIELD
+
+# ============================================
+# CAMPOS DE ONTOLOGY
+# ============================================
+
+ONTOLOGY FIELDS
+    REQUIRED description
+    OPTIONAL topic, aspect, dimension, confidence, reasoning, rgt_element_a, rgt_element_b, theoretical_significance
+END ONTOLOGY FIELDS
+
+FIELD topic TYPE TOPIC
+    SCOPE ONTOLOGY
+    DESCRIPTION Tópico ou domínio temático do conceito (categoria hierárquica superior dinâmica)
+END FIELD
+
+FIELD aspect TYPE ORDERED
+    SCOPE ONTOLOGY
+    DESCRIPTION Aspectos modais de Dooyeweerd (ordem é significativa)
+    VALUES
+        [0] Undefined: Not available
+        [1] Quantitative: Medições, estatísticas, quantidades discretas
+        [2] Spatial: Localização, geografia, relações espaciais
+        [3] Kinematic: Movimento, fluxo, dinâmica temporal
+        [4] Physical: Propriedades materiais, forças, sistemas energéticos
+        [5] Biotic: Ecológico, ambiental, impactos na saúde e vida
+        [6] Sensitive: Percepção, consciência, respostas emocionais
+        [7] Analytical: Pesquisa, análise, elementos metodológicos
+        [8] Formative: Planejamento, design, inovação, contexto cultural
+        [9] Lingual: Comunicação, documentação, informação, linguagem
+        [10] Social: Relações comunitárias, redes, dinâmicas coletivas
+        [11] Economic: Custos, mercados, finanças, incentivos econômicos
+        [12] Aesthetic: Qualidades visuais, estética, harmonia, beleza
+        [13] Juridical: Legal, regulatório, frameworks de governança
+        [14] Ethical: Responsabilidade moral, equidade, dever, justiça
+        [15] Fiducial: Confiança, crença, valores, cosmovisão, fé
+    END VALUES
+END FIELD
+
+FIELD dimension TYPE ORDERED
+    SCOPE ONTOLOGY
+    DESCRIPTION Dimensões da aceitação social de tecnologias energéticas (Wüstenhagen et al.)
+    VALUES
+        [0] Undefined: Não classificado ou não aplicável
+        [1] Community_Acceptance: Residentes, atores locais e stakeholders comunitários
+        [2] Market_Acceptance: Consumidores, investidores, competitividade de mercado
+        [3] Socio-Political_Acceptance: Instituições, sociedade, frameworks de governança
+        [4] Technical-Scientific: Avaliação científica, analítica e técnica
+    END VALUES
+END FIELD
+
+FIELD confidence TYPE ENUMERATED
+    SCOPE ONTOLOGY
+    DESCRIPTION Nível de confiança na classificação do conceito baseado em frequência e fontes
+    VALUES
+        LOW: Baixa frequência ou fontes limitadas (conceito emergente ou especializado)
+        MEDIUM: Frequência moderada com suporte razoável em múltiplas fontes
+        HIGH: Alta frequência e amplo suporte empírico em diversas fontes
+    END VALUES
+END FIELD
+
+FIELD reasoning TYPE TEXT
+    SCOPE ONTOLOGY
+    DESCRIPTION Justificativa analítica para classificação do conceito (aspect, dimension, confidence)
+END FIELD
+
+FIELD rgt_element_a TYPE TEXT
+    SCOPE ONTOLOGY
+    DESCRIPTION Polo A do construto bipolar (Repertory Grid Theory)
+END FIELD
+
+FIELD rgt_element_b TYPE TEXT
+    SCOPE ONTOLOGY
+    DESCRIPTION Polo B do construto bipolar (Repertory Grid Theory)
+END FIELD
+
+FIELD theoretical_significance TYPE SCALE
+    SCOPE ONTOLOGY
+    FORMAT [0..5]
+    DESCRIPTION Significância teórica do conceito (0=baixa, 5=alta)
+END FIELD
+

@@ -133,6 +133,45 @@ class TestGetAbstract:
             assert result["success"] is True
             assert result["abstract"] == "Test abstract."
 
+    def test_extract_from_bibliography(self):
+        """Deve extrair ABSTRACT do .bib quando disponível no cache."""
+        with TemporaryDirectory() as tmpdir:
+            tmppath = Path(tmpdir)
+            syn_file = tmppath / "test.syn"
+            syn_file.write_text("SOURCE: test\nITEM: x\nEND\n")
+
+            bib_file = tmppath / "refs.bib"
+            bib_file.write_text("@misc{test, abstract={Bib abstract.}}")
+
+            source = SimpleNamespace(
+                bibref="test",
+                location=SimpleNamespace(file=str(syn_file), line=1),
+                extra_fields={},
+            )
+            lp = SimpleNamespace(sources={"test": source})
+            bibliography = {
+                "test": {
+                    "abstract": "Bib abstract.",
+                    "location": {"file": str(bib_file), "line": 10},
+                }
+            }
+            cached = SimpleNamespace(
+                result=SimpleNamespace(
+                    bibliography=bibliography,
+                    linked_project=lp,
+                )
+            )
+
+            result = get_abstract(
+                str(syn_file),
+                cached_result=cached,
+                workspace_root=tmppath,
+            )
+
+            assert result["success"] is True
+            assert result["abstract"] == "Bib abstract."
+            assert "refs.bib" in result["file"]
+
 
 class TestParseAbstractFromFile:
     """Testa parsing direto de arquivo."""

@@ -194,12 +194,14 @@ Ao alterar interfaces no compilador:
       from: "proposito",
       relation: "CAUSA",
       to: "chamado",
-      type: "QUALIFIED",
+      type: "qualified",
       location: { file: "interviews/e01.syn", line: 12, column: 7 }
     }
   ]
 }
 ```
+
+`type`: `"qualified"` | `"simple"`
 
 ### synesis/getRelationGraph
 

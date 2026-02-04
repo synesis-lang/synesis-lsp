@@ -30,8 +30,11 @@ Gerado conforme: Especificação Synesis v1.1 + ADR-002 LSP
 
 from __future__ import annotations
 
+import hashlib
 import logging
+import os
 import sys
+import time
 from importlib import metadata
 from pathlib import Path
 from typing import Optional
@@ -108,7 +111,7 @@ from synesis_lsp.completion import compute_completions
 from synesis_lsp.graph import get_relation_graph
 from synesis_lsp.signature_help import compute_signature_help
 from synesis_lsp.rename import prepare_rename, compute_rename
-from synesis_lsp.template_diagnostics import build_template_diagnostics
+from synesis_lsp.template_diagnostics import build_template_diagnostics, build_command_diagnostics
 from synesis_lsp.ontology_topics import get_ontology_topics
 from synesis_lsp.ontology_annotations import get_ontology_annotations
 from synesis_lsp.abstract_viewer import get_abstract
@@ -149,7 +152,7 @@ class SynesisLanguageServer(LanguageServer):
 
 
 # Instância global do servidor
-server = SynesisLanguageServer("synesis-lsp", "v0.10.4")
+server = SynesisLanguageServer("synesis-lsp", "v0.14.2")
 
 
 def _resolve_workspace_root(ls: SynesisLanguageServer, params) -> Optional[str]:
@@ -239,6 +242,49 @@ def _workspace_key(workspace_root) -> Optional[str]:
     return key
 
 
+def _extract_synp_path(params) -> Optional[str]:
+    """Extrai synpPath dos params (dict ou lista)."""
+    if isinstance(params, dict):
+        return params.get("synpPath")
+    if isinstance(params, list) and len(params) > 0:
+        first = params[0]
+        if isinstance(first, dict):
+            return first.get("synpPath")
+    return None
+
+
+def _compute_workspace_fingerprint(root: Path) -> str:
+    """
+    Calcula fingerprint do workspace baseado em mtime/size dos arquivos Synesis.
+
+    Inclui: .synp, .syn, .syno, .synt, .bib
+    """
+    exts = {".synp", ".syn", ".syno", ".synt", ".bib"}
+    hasher = hashlib.sha1()
+
+    root_path = root
+    if root_path.is_file():
+        root_path = root_path.parent
+
+    for dirpath, dirnames, filenames in os.walk(root_path):
+        dirnames.sort()
+        filenames.sort()
+        for name in filenames:
+            if Path(name).suffix.lower() not in exts:
+                continue
+            file_path = Path(dirpath) / name
+            try:
+                stat = file_path.stat()
+            except OSError:
+                continue
+
+            rel = file_path.relative_to(root_path).as_posix()
+            payload = f"{rel}|{stat.st_mtime_ns}|{stat.st_size}".encode("utf-8")
+            hasher.update(payload)
+
+    return hasher.hexdigest()
+
+
 @server.command("synesis/loadProject")
 def load_project(ls: SynesisLanguageServer, params) -> dict:
     """
@@ -256,16 +302,49 @@ def load_project(ls: SynesisLanguageServer, params) -> dict:
         if not workspace_path:
             return {"success": False, "error": "Workspace inválido"}
 
-        # Buscar .synp no workspace
+        # Resolver .synp: synpPath explícito ou busca automática
         synp_files = []
-        if workspace_path.suffix.lower() == ".synp":
-            synp_files = [workspace_path]
+        synp_path_str = _extract_synp_path(params)
+        if synp_path_str:
+            synp_path = Path(synp_path_str)
+            if not synp_path.is_absolute():
+                base_dir = workspace_path if workspace_path.is_dir() else workspace_path.parent
+                synp_path = (base_dir / synp_path).resolve()
+            if not synp_path.exists() or synp_path.suffix.lower() != ".synp":
+                return {"success": False, "error": "synpPath inválido ou não encontrado"}
+            synp_files = [synp_path]
         else:
-            if workspace_path.is_file():
-                workspace_path = workspace_path.parent
-            synp_files = sorted(workspace_path.glob("**/*.synp"))
-        if not synp_files:
-            return {"success": False, "error": "Nenhum arquivo .synp encontrado"}
+            if workspace_path.suffix.lower() == ".synp":
+                synp_files = [workspace_path]
+            else:
+                if workspace_path.is_file():
+                    workspace_path = workspace_path.parent
+                synp_files = sorted(workspace_path.glob("**/*.synp"))
+            if not synp_files:
+                return {"success": False, "error": "Nenhum arquivo .synp encontrado"}
+
+        fingerprint_root = workspace_path if workspace_path.is_dir() else workspace_path.parent
+        fingerprint = _compute_workspace_fingerprint(fingerprint_root)
+
+        # Se fingerprint igual ao cache, reaproveitar
+        ws_key = _workspace_key(workspace_path)
+        cached = ls.workspace_cache.get(ws_key) if ws_key else None
+        if cached and cached.fingerprint == fingerprint:
+            stats = cached.result.stats
+            return {
+                "success": True,
+                "cached": True,
+                "stats": {
+                    "source_count": stats.source_count,
+                    "item_count": stats.item_count,
+                    "ontology_count": stats.ontology_count,
+                    "code_count": stats.code_count,
+                    "chain_count": stats.chain_count,
+                    "triple_count": stats.triple_count,
+                },
+                "has_errors": cached.result.has_errors(),
+                "has_warnings": cached.result.has_warnings(),
+            }
 
         logger.info(f"Compilando projeto: {synp_files[0]}")
 
@@ -276,10 +355,9 @@ def load_project(ls: SynesisLanguageServer, params) -> dict:
         result = compiler.compile()
 
         # Cachear resultado
-        ws_key = _workspace_key(workspace_path)
         if not ws_key:
             return {"success": False, "error": "Workspace inválido"}
-        ls.workspace_cache.put(ws_key, result, workspace_path)
+        ls.workspace_cache.put(ws_key, result, workspace_path, fingerprint=fingerprint)
 
         # Retornar estatísticas (leve)
         return {
@@ -609,6 +687,16 @@ def _collect_existing_field_errors(result) -> set[tuple[str, Optional[str]]]:
     return existing
 
 
+def _iter_sources_local(sources):
+    """Itera sobre fontes, aceitando dict/list/tuple/set."""
+    if isinstance(sources, dict):
+        yield from sources.values()
+        return
+    if isinstance(sources, (list, tuple, set)):
+        yield from sources
+        return
+
+
 @server.command("synesis/getReferences")
 def cmd_get_references(ls: SynesisLanguageServer, params) -> dict:
     """Retorna lista de SOURCEs com contagem de items."""
@@ -696,6 +784,138 @@ def debug_diagnostics(ls: SynesisLanguageServer, params) -> dict:
             status["error"] = str(e)
 
     return {"success": True, "status": status}
+
+
+@server.command("synesis/debug/projectInfo")
+def debug_project_info(ls: SynesisLanguageServer, params) -> dict:
+    """
+    Debug command to inspect cached project state and optional query timings.
+
+    Params (optional):
+        workspaceRoot: path or file URI
+        runQueries: bool (default False)
+        bibref: optional bibref for getRelationGraph filtering
+    """
+    workspace_root = _resolve_workspace_root(ls, params)
+    if not workspace_root:
+        return {"success": False, "error": "Workspace não encontrado"}
+
+    workspace_key = _workspace_key(workspace_root)
+    if not workspace_key:
+        return {"success": False, "error": "Workspace inválido"}
+
+    cached = ls.workspace_cache.get(workspace_key)
+    if not cached:
+        return {
+            "success": False,
+            "error": "Projeto não carregado. Chame synesis/loadProject primeiro.",
+        }
+
+    result = getattr(cached, "result", None)
+    if not result:
+        return {"success": False, "error": "Resultado de compilação inválido"}
+
+    lp = getattr(result, "linked_project", None)
+    if not lp:
+        return {"success": False, "error": "LinkedProject não disponível"}
+
+    stats = getattr(result, "stats", None)
+    sources = getattr(lp, "sources", {}) or {}
+    source_list = list(_iter_sources_local(sources))
+
+    # Compute items count from sources (may differ from stats)
+    items_from_sources = 0
+    for src in source_list:
+        items = getattr(src, "items", None) or []
+        items_from_sources += len(items)
+
+    code_usage = getattr(lp, "code_usage", {}) or {}
+    code_usage_items = sum(len(v) for v in code_usage.values())
+
+    ontology_index = getattr(lp, "ontology_index", {}) or {}
+    all_triples = getattr(lp, "all_triples", None) or []
+
+    template = getattr(result, "template", None)
+    field_specs = getattr(template, "field_specs", {}) if template else {}
+    chain_spec = field_specs.get("chain") if field_specs else None
+    chain_has_relations = bool(getattr(chain_spec, "relations", None)) if chain_spec else None
+
+    info = {
+        "success": True,
+        "workspaceRoot": str(getattr(cached, "workspace_root", "")),
+        "stats": {
+            "source_count": getattr(stats, "source_count", None),
+            "item_count": getattr(stats, "item_count", None),
+            "ontology_count": getattr(stats, "ontology_count", None),
+            "code_count": getattr(stats, "code_count", None),
+            "chain_count": getattr(stats, "chain_count", None),
+            "triple_count": getattr(stats, "triple_count", None),
+        },
+        "linkedProject": {
+            "sources": len(source_list),
+            "itemsFromSources": items_from_sources,
+            "codeUsage": {
+                "codeCount": len(code_usage),
+                "usageItems": code_usage_items,
+            },
+            "ontologyIndex": len(ontology_index),
+            "allTriples": len(all_triples),
+        },
+        "template": {
+            "loaded": template is not None,
+            "fieldSpecCount": len(field_specs),
+            "chainHasRelations": chain_has_relations,
+        },
+    }
+
+    # Optional query timings
+    run_queries = False
+    bibref = None
+    if isinstance(params, dict):
+        run_queries = bool(params.get("runQueries", False))
+        bibref = params.get("bibref")
+    elif isinstance(params, list) and len(params) > 0 and isinstance(params[0], dict):
+        run_queries = bool(params[0].get("runQueries", False))
+        bibref = params[0].get("bibref")
+
+    if run_queries:
+        timings = {}
+
+        def _timed(name, func):
+            start = time.perf_counter()
+            try:
+                result_val = func()
+                ok = bool(getattr(result_val, "get", lambda k, d=None: None)("success", True))
+                size = None
+                if isinstance(result_val, dict):
+                    for key in ("codes", "relations", "topics", "annotations"):
+                        if key in result_val and isinstance(result_val[key], list):
+                            size = len(result_val[key])
+                            break
+                duration_ms = (time.perf_counter() - start) * 1000.0
+                timings[name] = {
+                    "success": ok,
+                    "durationMs": round(duration_ms, 2),
+                    "size": size,
+                }
+            except Exception as e:
+                duration_ms = (time.perf_counter() - start) * 1000.0
+                timings[name] = {
+                    "success": False,
+                    "durationMs": round(duration_ms, 2),
+                    "error": str(e),
+                }
+
+        _timed("getReferences", lambda: get_references(cached))
+        _timed("getCodes", lambda: get_codes(cached))
+        _timed("getRelations", lambda: get_relations(cached))
+        _timed("getRelationGraph", lambda: get_relation_graph(cached, bibref=bibref))
+        _timed("getOntologyTopics", lambda: get_ontology_topics(cached, workspace_root=getattr(cached, "workspace_root", None)))
+        _timed("getOntologyAnnotations", lambda: get_ontology_annotations(cached, workspace_root=getattr(cached, "workspace_root", None)))
+
+        info["timings"] = timings
+
+    return info
 
 
 @server.command("synesis/getOntologyTopics")
@@ -912,6 +1132,15 @@ def validate_document(ls: SynesisLanguageServer, uri: str) -> None:
 
         except Exception as e:
             logger.warning(f"Template diagnostics failed for {uri}: {e}", exc_info=True)
+
+        # Avisos para comandos inválidos (SOURCE/ITEM/ONTOLOGY, etc.)
+        try:
+            command_diags = build_command_diagnostics(source, uri)
+            if command_diags:
+                logger.debug(f"Generated {len(command_diags)} command diagnostics")
+                diagnostics.extend(command_diags)
+        except Exception as e:
+            logger.warning(f"Command diagnostics failed for {uri}: {e}", exc_info=True)
 
         # PUBLICAR DIAGNÓSTICOS
         try:

@@ -29,7 +29,8 @@ from lsprotocol.types import Hover, MarkupContent, MarkupKind, Position
 logger = logging.getLogger(__name__)
 
 # Caracteres válidos em palavras Synesis (bibrefs, campos, códigos)
-_WORD_CHARS = re.compile(r"[@\w]")
+# Inclui hífen e ponto para bibrefs compostos (ex: @martinez-gordon2022)
+_WORD_CHARS = re.compile(r"[@\w._-]")
 
 
 def compute_hover(
@@ -59,12 +60,33 @@ def compute_hover(
     if word.startswith("@"):
         return _hover_bibref(word, cached_result)
 
-    # 2. campo: → template FieldSpec
-    if _is_field_name(line, position.character, word):
-        return _hover_field(word, cached_result)
+    if not cached_result:
+        return None
 
-    # 3. código/valor → ontologia
-    return _hover_code(word, cached_result)
+    result = cached_result.result
+    template = getattr(result, "template", None)
+    field_specs = getattr(template, "field_specs", None) if template else None
+
+    field_name, value_start = _field_in_line(line)
+    in_value = field_name is not None and position.character >= value_start
+    spec = field_specs.get(field_name) if field_specs and field_name else None
+    spec_type = getattr(getattr(spec, "type", None), "name", None) if spec else None
+
+    # Hover em nome de campo somente se for CODE/CHAIN
+    if _is_field_name(line, position.character, word):
+        if spec_type in {"CODE", "CHAIN"}:
+            return _hover_field(word, cached_result)
+        return None
+
+    # Hover em valores apenas para CODE/CHAIN ou linhas de chain (multiline)
+    in_chain_line = "->" in line
+    if spec_type in {"CODE", "CHAIN"} or in_chain_line:
+        rel_hover = _hover_relation(word, cached_result)
+        if rel_hover:
+            return rel_hover
+        return _hover_code(word, cached_result)
+
+    return None
 
 
 def _hover_bibref(word: str, cached_result) -> Optional[Hover]:
@@ -124,6 +146,10 @@ def _hover_field(word: str, cached_result) -> Optional[Hover]:
     return Hover(contents=MarkupContent(kind=MarkupKind.Markdown, value=md))
 
 
+def _normalize_code(value: str) -> str:
+    return " ".join(value.strip().split()).lower()
+
+
 def _hover_code(word: str, cached_result) -> Optional[Hover]:
     """Hover para código: mostra ontologia e contagem de uso."""
     if not cached_result:
@@ -138,12 +164,13 @@ def _hover_code(word: str, cached_result) -> Optional[Hover]:
     if not ontology_index:
         return None
 
-    onto = ontology_index.get(word)
+    normalized = _normalize_code(word)
+    onto = ontology_index.get(word) or ontology_index.get(normalized)
     if not onto:
         return None
 
     code_usage = getattr(lp, "code_usage", {})
-    usage_count = len(code_usage.get(word, []))
+    usage_count = len(code_usage.get(normalized, code_usage.get(word, [])))
 
     md = f"**Ontologia: `{onto.concept}`**\n\n"
     if onto.description:
@@ -158,6 +185,35 @@ def _hover_code(word: str, cached_result) -> Optional[Hover]:
     md += f"\nUsado em **{usage_count}** itens"
 
     return Hover(contents=MarkupContent(kind=MarkupKind.Markdown, value=md))
+
+
+def _hover_relation(word: str, cached_result) -> Optional[Hover]:
+    """Hover para relações de CHAIN (ex: ENABLES, INFLUENCES)."""
+    if not cached_result:
+        return None
+
+    result = cached_result.result
+    template = getattr(result, "template", None)
+    if not template:
+        return None
+
+    field_specs = getattr(template, "field_specs", None)
+    if not field_specs:
+        return None
+
+    target = word.strip().lower()
+    for spec in field_specs.values():
+        relations = getattr(spec, "relations", None)
+        if not relations:
+            continue
+        for key, description in relations.items():
+            if str(key).strip().lower() == target:
+                md = f"**Relação: `{key}`**\n\n"
+                if description:
+                    md += f"{description}\n"
+                return Hover(contents=MarkupContent(kind=MarkupKind.Markdown, value=md))
+
+    return None
 
 
 def _get_word_at_position(line: str, character: int) -> Optional[str]:
@@ -186,6 +242,19 @@ def _get_word_at_position(line: str, character: int) -> Optional[str]:
 
     word = line[start:end]
     return word if word else None
+
+
+def _field_in_line(line: str) -> tuple[Optional[str], int]:
+    """
+    Retorna (field_name, value_start_index) se a linha contém 'field: value'.
+    Caso contrário, retorna (None, 0).
+    """
+    match = re.match(r"^(\s*)([\w._-]+)(\s*:)\s*(.*)$", line)
+    if not match:
+        return (None, 0)
+    field_name = match.group(2)
+    value_start = match.start(4)
+    return (field_name, value_start)
 
 
 def _is_field_name(line: str, character: int, word: str) -> bool:

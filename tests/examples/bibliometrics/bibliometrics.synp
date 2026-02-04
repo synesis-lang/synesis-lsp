@@ -1,0 +1,26 @@
+PROJECT bibliometrics
+
+TEMPLATE "bibliometrics.synt"
+INCLUDE BIBLIOGRAPHY "bibliometrics.bib"
+INCLUDE ANNOTATIONS "bibliometrics.syn"
+INCLUDE ONTOLOGY "bibliometrics.syno"
+
+METADATA
+    version: 1.0
+    author: Bibliometric Research Team
+    created: 2024-12-15
+    modified: 2025-12-30
+    dataset: Social acceptance of energy transition technologies
+END METADATA
+
+DESCRIPTION
+Análise bibliométrica sistemática de fatores de aceitação social de tecnologias
+de transição energética, utilizando teoria fundamentada (Grounded Theory),
+teoria modal de Dooyeweerd e framework tridimensional de Wüstenhagen.
+
+O corpus analisa relações causais entre fatores sociais, econômicos, políticos,
+técnicos e éticos que influenciam a aceitação comunitária, de mercado e
+sociopolítica de tecnologias como energia eólica offshore, solar fotovoltaica,
+captura e armazenamento de carbono (CCS), hidrogênio, e dessalinização renovável.
+END DESCRIPTION
+END PROJECT

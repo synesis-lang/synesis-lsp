@@ -24,6 +24,8 @@ _BLOCK_RE = re.compile(r"^\s*(SOURCE|ITEM|ONTOLOGY)\b")
 _END_RE = re.compile(r"^\s*END\b")
 _FIELD_RE = re.compile(r"^\s*([A-Za-z_][\w]*)\s*:")
 
+_COMMAND_RE = re.compile(r"^\s*([A-Z][A-Z_]*)(?:\s+([A-Z_]+))?\b")
+
 
 def build_template_diagnostics(
     source: str,
@@ -107,6 +109,41 @@ def build_template_diagnostics(
     return diagnostics
 
 
+def build_command_diagnostics(source: str, uri: str) -> list[Diagnostic]:
+    """
+    Gera avisos para comandos inválidos (palavras reservadas).
+    """
+    file_kind = _file_kind(uri)
+    allowed = _allowed_commands(file_kind)
+    if not allowed:
+        return []
+
+    diagnostics: list[Diagnostic] = []
+    for line_idx, line in enumerate(source.splitlines()):
+        stripped = line.strip()
+        if not stripped or stripped.startswith("#"):
+            continue
+        if ":" in stripped:
+            continue
+
+        match = _COMMAND_RE.match(line)
+        if not match:
+            continue
+
+        first = match.group(1) or ""
+        second = match.group(2) or ""
+        command = f"{first} {second}".strip() if first == "END" else first
+
+        if command not in allowed:
+            message = (
+                f"Comando invalido '{command}'. "
+                f"Esperado: {', '.join(sorted(allowed))}."
+            )
+            diagnostics.append(_make_diag(line_idx, match.start(1) + 1, message, DiagnosticSeverity.Warning))
+
+    return diagnostics
+
+
 def _is_syn_document(uri: str) -> bool:
     if not uri:
         return False
@@ -116,6 +153,80 @@ def _is_syn_document(uri: str) -> bool:
     else:
         path = uri
     return path.lower().endswith(".syn")
+
+
+def _file_kind(uri: str) -> str:
+    if not uri:
+        return ""
+    if uri.startswith("file://"):
+        parsed = urlparse(uri)
+        path = unquote(parsed.path or "")
+    else:
+        path = uri
+    lower = path.lower()
+    if lower.endswith(".syn"):
+        return "syn"
+    if lower.endswith(".syno"):
+        return "syno"
+    if lower.endswith(".synt"):
+        return "synt"
+    if lower.endswith(".synp"):
+        return "synp"
+    return ""
+
+
+def _allowed_commands(kind: str) -> set[str]:
+    if kind == "syn":
+        return {
+            "SOURCE",
+            "ITEM",
+            "END SOURCE",
+            "END ITEM",
+        }
+    if kind == "syno":
+        return {
+            "ONTOLOGY",
+            "END ONTOLOGY",
+        }
+    if kind == "synp":
+        return {
+            "PROJECT",
+            "END PROJECT",
+            "TEMPLATE",
+            "INCLUDE",
+            "METADATA",
+            "END METADATA",
+            "DESCRIPTION",
+            "END DESCRIPTION",
+        }
+    if kind == "synt":
+        return {
+            "TEMPLATE",
+            "PROJECT",
+            "END PROJECT",
+            "SOURCE",
+            "ITEM",
+            "ONTOLOGY",
+            "END SOURCE",
+            "END ITEM",
+            "END ONTOLOGY",
+            "FIELD",
+            "END FIELD",
+            "VALUES",
+            "END VALUES",
+            "RELATIONS",
+            "END RELATIONS",
+            "SCOPE",
+            "TYPE",
+            "DESCRIPTION",
+            "FORMAT",
+            "ARITY",
+            "REQUIRED",
+            "OPTIONAL",
+            "FORBIDDEN",
+            "BUNDLE",
+        }
+    return set()
 
 
 def _parse_blocks(source: str) -> list[dict]:
@@ -183,14 +294,14 @@ def _unknown_field_message(field_name: str, known_fields: Iterable[str]) -> str:
     return f"Campo desconhecido '{field_name}'."
 
 
-def _make_diag(line: int, column: int, message: str) -> Diagnostic:
+def _make_diag(line: int, column: int, message: str, severity: DiagnosticSeverity = DiagnosticSeverity.Error) -> Diagnostic:
     line = max(0, line)
     column = max(1, column)
     start = Position(line=line, character=column - 1)
     end = Position(line=line, character=column)
     return Diagnostic(
         range=Range(start=start, end=end),
-        severity=DiagnosticSeverity.Error,
+        severity=severity,
         source="synesis-lsp",
         message=message,
     )

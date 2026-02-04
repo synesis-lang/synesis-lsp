@@ -1,0 +1,1284 @@
+SOURCE @entrevista41_1
+	código: N/A
+END SOURCE
+
+ITEM @entrevista41_1
+    ordem_1a: "Depois eu me afastei, confesso, da religião."
+    ordem_2a: incredulidade
+    justificativa_interna: "Definição: 'Rejeição ou ausência de confiança na existência de Deus, suas verdades, suas obras, atos ou promessas'. O termo 'me afastei' e 'confesso' evidenciam um período de ausência de confiança ou rejeição das práticas religiosas."
+
+    ordem_2a: dicotomia_fe_trabalho
+    justificativa_interna: "Definição: 'Postura em que cristãos separam a fé pessoal do ambiente de trabalho'. O afastamento confessado da religião sugere uma separação entre vida pessoal/espiritual e outras esferas da vida."
+
+    ordem_2a: cristianismo_secular
+    justificativa_interna: "Definição oficial: 'Apropriação cultural ou ética de elementos do cristianismo como referência moral, identitária ou simbólica, sem reconhecimento de Jesus como Senhor, sem experiência pessoal de fé, sem prática religiosa e sem orientação existencial da vida por Deus.' O afastamento confessado da religião indica ausência de prática religiosa e distanciamento da orientação existencial por Deus durante um período significativo da vida."
+
+    ordem_2a: hereditariedade_cultural
+    justificativa_interna: "Definição oficial: 'Narrativa da transmissão da fé, de pai pra filho, por meio da educação em família, sem exigência de conversão pessoal pontual consciente ou experiência individual de fé por meio de um evento.' A entrevistada menciona batismo na igreja anglicana (igreja do pai) e primeira comunhão católica (influência da mãe), caracterizando transmissão familiar da fé sem evento de conversão pessoal marcante neste momento."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Pra eu rezar, eu preciso ir na missa? Eu preciso me confessar com o padre? Quem é o padre pra ele me dar uma penitência? Algumas coisas que eu não concordava, sabe?"
+    ordem_2a: fe_x_racionalismo
+    justificativa_interna: "Definição: 'Tensão percebida entre confiar na ação e direção de Deus e depender exclusivamente de explicações, cálculos ou critérios puramente racionais'. Os questionamentos 'preciso ir na missa?', 'quem é o padre?' evidenciam tensão entre práticas religiosas institucionais e critérios racionais pessoais."
+
+    ordem_2a: incredulidade
+    justificativa_interna: "Definição: 'Rejeição ou ausência de confiança'. A frase 'algumas coisas que eu não concordava' demonstra rejeição de verdades ou práticas religiosas específicas."
+
+    ordem_2a: cristianismo_secular
+    justificativa_interna: "Definição oficial: 'Apropriação cultural ou ética de elementos do cristianismo como referência moral, identitária ou simbólica, sem reconhecimento de Jesus como Senhor, sem experiência pessoal de fé, sem prática religiosa e sem orientação existencial da vida por Deus.' O questionamento das práticas religiosas institucionais (missa, confissão, autoridade do padre) sem buscar orientação existencial por Deus caracteriza apropriação cultural sem prática religiosa efetiva."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' O questionamento sobre a necessidade de práticas religiosas ('Pra eu rezar, eu preciso ir na missa?') evidencia reflexão sobre a dimensão transcendente e a relação com Deus, mesmo que de forma crítica."
+
+    ordem_2a: aspecto_analitico_7
+    justificativa_interna: "Definição oficial: 'Uso consciente do julgamento racional, da distinção conceitual e da coerência lógica.' Os questionamentos sequenciais ('Pra eu rezar, eu preciso...? Quem é o padre pra...?') demonstram uso explícito do raciocínio lógico para avaliar a coerência das práticas religiosas institucionais."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Mas nos dias atuais, a Bluefields apareceu na minha vida."
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho, inclusive eventos aparentemente ordinários'. O termo 'apareceu na minha vida' sugere interpretação de um evento profissional como direcionado providencialmente."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "E eu achei muito interessante saber que tinha uma pessoa que estava tentando unir fé junto com negócios em um programa de aceleração de startup."
+    ordem_2a: unidade_e_integridade_de_vida_pessoal_e_profissional
+    justificativa_interna: "Definição: 'Convicção de que fé, valores e prática cristã devem orientar de forma integrada a vida pessoal e a atuação profissional, rejeitando qualquer separação entre espiritualidade e trabalho'. A expressão 'unir fé junto com negócios' evidencia o reconhecimento da integração entre espiritualidade e trabalho."
+
+    ordem_2a: trabalho_como_adoracao_avoda_empresa_como_ministerio
+    justificativa_interna: "Definição: 'Compreensão do trabalho e da empresa como gesto de adoração, espaço legítimo de culto, serviço e obediência a Deus'. O interesse em 'unir fé junto com negócios' aponta para a compreensão do trabalho como espaço legítimo de expressão da fé."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A menção direta à 'fé junto com negócios' evidencia reconhecimento da dimensão transcendente como orientação relevante para a atividade empresarial."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A referência a 'negócios' e 'programa de aceleração de startup' indica contexto de gestão de recursos econômicos e empresariais."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa.' O interesse em 'unir fé junto com negócios' implica avaliação de como relações e papéis sociais no ambiente empresarial podem ser influenciados pela dimensão religiosa."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Mas eu sinto que o mundo de diversidade e inclusão é muito ácido."
+    ordem_2a: amoralidade_abandono_deliberado_de_valores
+    justificativa_interna: "Definição: 'Ambiente organizacional que abandona critérios morais claros em nome de resultados ou desempenho'. O termo 'ácido' sugere percepção de um ambiente que corrói ou abandona valores morais claros."
+
+    ordem_2a: progressismo_agenda
+    justificativa_interna: "Definição: 'Conjunto geral de pautas culturais, morais percebidas como ideologizadas e impostas social ou institucionalmente'. A descrição do 'mundo de diversidade e inclusão' como 'muito ácido' sugere percepção crítica de pautas culturais específicas."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "E no universo de luta feminina, eu acho que eu estava indo para uma linha de conhecer muitas mulheres que lutam muito pela independência feminina, pela independência financeira, mas que são mulheres muito infelizes nas suas vidas pessoais e familiares."
+    ordem_2a: feminismo_x_maternidade
+    justificativa_interna: "Definição: 'Percepção negativa do impacto do feminismo sobre maternidade, papel da mulher, criação de filhos e organização familiar'. A descrição de mulheres que 'lutam muito pela independência' mas são 'muito infelizes nas suas vidas pessoais e familiares' evidencia percepção negativa do impacto do feminismo sobre a vida familiar."
+
+    ordem_2a: hedonismo
+    justificativa_interna: "Definição: 'Orientação existencial centrada na busca de prazer imediato como valor supremo'. A ênfase exclusiva na 'independência financeira' sem felicidade pessoal sugere orientação que não alcança sentido pleno."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' A observação sobre mulheres 'muito infelizes nas suas vidas pessoais e familiares' apesar da independência financeira evidencia questionamento sobre fundamentos morais que orientam escolhas de vida além do sucesso econômico."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A menção explícita à 'independência financeira' como objetivo das mulheres indica contexto de gestão de recursos econômicos."
+
+    ordem_2a: aspecto_sensitivo_6
+    justificativa_interna: "Definição oficial: 'Consideração explícita das experiências emocionais humanas relevantes — como dor, medo, empatia ou sofrimento.' A descrição de mulheres como 'muito infelizes' expressa reconhecimento explícito de sofrimento emocional e experiências negativas."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa.' A referência a 'vidas pessoais e familiares' no contexto de luta feminina indica avaliação de papéis sociais e padrões de convivência que impactam relações."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "E nessa minha saída, o palco me chamou por um convite de uma consultoria e eu me reaproximei dele e me reaproximei de outras pessoas na minha vida pessoal que são pessoas muito mais de fé."
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho'. A sequência de eventos ('saída', 'convite', 'reaproximei') sugere interpretação de direcionamento providencial."
+
+    ordem_2a: deus_guiando_os_passos
+    justificativa_interna: "Definição: 'Atribuição direta das decisões, caminhos e escolhas profissionais à orientação pessoal e intencional de Deus'. A narrativa de reaproximação através de um convite profissional sugere percepção de orientação divina nos passos profissionais."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana.' A expressão 'o palco me chamou' (voz passiva) e 'eu me reaproximei' (sem agência ativa inicial) sugerem que a oportunidade e a reaproximação com pessoas de fé ocorreram sem iniciativa causal própria."
+
+    ordem_2a: prioridade_monergismo
+    justificativa_interna: "Definição oficial: 'Compreensão de que a graça antecede toda ação, decisão ou mérito humano, sendo iniciativa soberana e primeira de Deus.' O convite ('o palgo me chamou') antecede temporalmente a decisão de reaproximação, caracterizando iniciativa externa anterior à ação humana."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A menção a 'pessoas muito mais de fé' evidencia reconhecimento da dimensão transcendente como característica relevante nas relações pessoais."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "O meu marido aqui é de uma família evangélica e eu acho que ele também é uma pessoa que tem uns valores muito fortes da religião, apesar de não ser super praticante, mas ele foi formado na religião evangélica."
+    ordem_2a: primeiro_os_da_fe_os_de_casa
+    justificativa_interna: "Definição: 'Prioridade ética dada ao cuidado, sustento e compromisso com a própria família e com os da mesma fé'. A menção aos 'valores muito fortes da religião' do marido evidencia reconhecimento da importância da fé compartilhada na família."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Então, hoje eu me reaproximei. E me reaproximei até da minha formação católica."
+    ordem_2a: arrependimento
+    justificativa_interna: "Definição: 'Reconhecimento consciente do pecado acompanhado de mudança intencional de direção, atitude e comportamento diante de Deus'. O termo 'reaproximei' evidencia mudança intencional de direção em relação à fé."
+
+    ordem_2a: conversao_de_outros_como_resultado
+    justificativa_interna: "Definição: 'Narrativa da influência da conduta pessoal ou profissional de um gestor para a conversão de terceiros'. Embora seja a própria conversão, a reaproximação foi influenciada por pessoas de fé ao redor."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Eu acho que existem algumas questões na vida que o racional não resolve."
+    ordem_2a: fe_x_racionalismo
+    justificativa_interna: "Definição: 'Tensão percebida entre confiar na ação e direção de Deus e depender exclusivamente de explicações, cálculos ou critérios puramente racionais'. A afirmação direta 'o racional não resolve' evidencia reconhecimento dos limites da racionalidade."
+
+    ordem_2a: nao_confiar_no_homem_em_si_mesmo
+    justificativa_interna: "Definição: 'Reconhecimento da limitação humana e recusa de fundamentar decisões últimas apenas na própria capacidade'. A frase 'o racional não resolve' implica reconhecimento da limitação da capacidade humana racional."
+
+    ordem_2a: aspecto_analitico_7
+    justificativa_interna: "Definição oficial: 'Uso consciente do julgamento racional, da distinção conceitual e da coerência lógica.' A afirmação sobre os limites do racional ('o racional não resolve') demonstra uso consciente do julgamento racional para reconhecer suas próprias limitações."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' O reconhecimento de que 'o racional não resolve' algumas questões da vida implica abertura para dimensões transcendentes (fé) como fonte de sentido além da razão."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "O próprio nascimento da minha filha eu acho que é um milagre de Deus."
+    ordem_2a: milagres
+    justificativa_interna: "Definição: 'Evento percebido como intervenção divina fora do curso natural'. A expressão literal 'milagre de Deus' evidencia percepção de intervenção divina no nascimento."
+
+    ordem_2a: maravilhamento
+    justificativa_interna: "Definição: 'Experiência de admiração reverente diante da ação de Deus ou da criação de Deus'. O reconhecimento do nascimento como 'milagre' evidencia admiração reverente diante da ação criadora de Deus."
+
+    ordem_2a: criacao_criatura
+    justificativa_interna: "Definição: 'Reconhecimento de Deus como Criador soberano de todas as coisas'. A atribuição do nascimento a 'milagre de Deus' evidencia reconhecimento de Deus como Criador."
+
+    ordem_2a: graca_comum_gc
+    justificativa_interna: "Definição oficial: 'Concessão divina de bens naturais, sociais e estruturais a toda a humanidade, percebida como ordem, sustento e prosperidade cotidiana, sem referência direta à salvação.' O nascimento da filha é reconhecido como 'milagre de Deus', caracterizando bem natural (vida) concedido divinamente, sem referência à salvação."
+
+    ordem_2a: gratidao_comum_gc
+    justificativa_interna: "Definição oficial: 'Resposta geral de reconhecimento por benefícios, circunstâncias favoráveis e bens da vida, percebidos como dádivas, sem referência direta à salvação.' A atribuição do nascimento da filha como 'milagre de Deus' expressa reconhecimento de benefício (vida) percebido como dádiva divina."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A menção direta a 'milagre de Deus' evidencia referência explícita à fé como fonte de sentido para o evento do nascimento."
+
+    ordem_2a: aspecto_biotico_5
+    justificativa_interna: "Definição oficial: 'Valorização da vida como critérios, incluindo saúde sobrevivência e cuidado físico de pessoas, animais ou criação.' O nascimento da filha e a menção à 'formação de um ser humano' evidenciam valorização explícita da vida como critério relevante."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Acho que estar grávida, ver o passo a passo da formação de um ser humano dentro da minha barriga, ver o milagre que é mesmo."
+    ordem_2a: maravilhamento
+    justificativa_interna: "Definição: 'Experiência de admiração reverente diante da ação de Deus ou da criação de Deus'. A expressão 'ver o milagre que é mesmo' evidencia admiração reverente diante da criação."
+
+    ordem_2a: milagres
+    justificativa_interna: "Definição: 'Evento percebido como intervenção divina fora do curso natural'. O uso do termo 'milagre' para descrever a formação do ser humano evidencia percepção de intervenção divina."
+
+    ordem_2a: criacao_criatura
+    justificativa_interna: "Definição: 'Reconhecimento de Deus como Criador soberano'. A observação da 'formação de um ser humano' como milagre evidencia reconhecimento de Deus como Criador."
+
+    ordem_2a: graca_comum_gc
+    justificativa_interna: "Definição oficial: 'Concessão divina de bens naturais, sociais e estruturais a toda a humanidade, percebida como ordem, sustento e prosperidade cotidiana, sem referência direta à salvação.' A percepção da formação de um ser humano como 'milagre' caracteriza reconhecimento de ordem natural (gestação) como concessão divina."
+
+    ordem_2a: aspecto_biotico_5
+    justificativa_interna: "Definição oficial: 'Valorização da vida como critérios, incluindo saúde sobrevivência e cuidado físico de pessoas, animais ou criação.' A descrição detalhada da 'formação de um ser humano dentro da minha barriga' evidencia valorização explícita da vida e do processo biológico."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A caracterização da gestação como 'milagre' evidencia referência à dimensão transcendente como fonte de sentido para o fenômeno natural."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Por exemplo, eu tive um sangramento na minha gravidez bem no comecinho que chega um momento que você não tem nada a se agarrar. Você não se agarra nem à medicina. Você é remédio. Você se agarra à sua fé."
+    ordem_2a: dependencia_de_deus
+    justificativa_interna: "Definição: 'Reconhecimento explícito da limitação humana e da incapacidade de alcançar resultados desejáveis sem a ação, ajuda ou sustento de Deus'. A expressão 'não tem nada a se agarrar' e 'você se agarra à sua fé' evidenciam reconhecimento da limitação humana e dependência de Deus."
+
+    ordem_2a: nao_confiar_no_homem_em_si_mesmo
+    justificativa_interna: "Definição: 'Reconhecimento da limitação humana e recusa de fundamentar decisões últimas apenas na própria capacidade'. A frase 'não se agarra nem à medicina' evidencia reconhecimento da limitação dos recursos humanos."
+
+    ordem_2a: fe_x_racionalismo
+    justificativa_interna: "Definição: 'Tensão percebida entre confiar na ação e direção de Deus e depender exclusivamente de explicações, cálculos ou critérios puramente racionais'. O contraste entre 'medicina' e 'fé' evidencia a tensão entre recursos racionais/técnicos e confiança em Deus."
+
+    ordem_2a: oracao
+    justificativa_interna: "Definição: 'Prática intencional de comunicação com Deus por meio de pedido, escuta, entrega ou adoração'. Embora não explícita, 'se agarrar à fé' em momento de crise sugere prática de oração como entrega."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A afirmação 'Você se agarra à sua fé' em situação-limite evidencia referência explícita à fé como fonte última de sentido e sustentação existencial."
+
+    ordem_2a: evento_cristo
+    justificativa_interna: "Definição oficial: 'Narrativa da conversão do próprio gestor (conhecimento de Cristo), por meio de uma experiência existencial marcante, frequentemente associada a situações-limite.' O sangramento na gravidez caracteriza situação-limite que levou a entrevistada a 'se agarrar à sua fé', configurando experiência existencial marcante associada a crise."
+
+    ordem_2a: aspecto_biotico_5
+    justificativa_interna: "Definição oficial: 'Valorização da vida como critérios, incluindo saúde sobrevivência e cuidado físico de pessoas, animais ou criação.' A menção ao 'sangramento na minha gravidez' evidencia preocupação com saúde e sobrevivência (própria e do bebê)."
+
+    ordem_2a: aspecto_sensitivo_6
+    justificativa_interna: "Definição oficial: 'Consideração explícita das experiências emocionais humanas relevantes — como dor, medo, empatia ou sofrimento.' A descrição de 'não tem nada a se agarrar' expressa experiência emocional de medo e desamparo em situação de risco."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Então, eu acho que essas questões me fizeram repensar muito mais. E voltar a ter mais fé. E voltar até a me conectar com pessoas de mais fé. E ouvir. Acho que não basta você se aproximar, você tem que saber ouvir."
+    ordem_2a: arrependimento
+    justificativa_interna: "Definição: 'Reconhecimento consciente do pecado acompanhado de mudança intencional de direção, atitude e comportamento diante de Deus'. A expressão 'voltar a ter mais fé' evidencia mudança intencional de direção."
+
+    ordem_2a: igreja_como_povo_de_deus
+    justificativa_interna: "Definição: 'Compreensão da igreja como uma comunidade viva de pessoas chamadas e reunidas por Deus, que compartilham identidade, fé e missão comuns'. A expressão 'me conectar com pessoas de mais fé' evidencia reconhecimento da importância da comunidade de fé."
+
+    ordem_2a: sabedoria_prudencia
+    justificativa_interna: "Definição: 'Discernimento prático expresso em decisões cautelosas, responsáveis e contextualizadas'. A frase 'você tem que saber ouvir' evidencia discernimento prático na busca por orientação."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Então, eu estou mais aberta hoje em dia a pessoas que são de mais fé. E que compartilham, independente da sua religião, a sua fé comigo."
+    ordem_2a: igreja_como_povo_de_deus
+    justificativa_interna: "Definição: 'Compreensão da igreja como uma comunidade viva de pessoas chamadas e reunidas por Deus'. A abertura a 'pessoas que são de mais fé' evidencia reconhecimento da comunidade de fé como importante."
+
+    ordem_2a: hospitalidade
+    justificativa_interna: "Definição: 'Prática intencional de acolher pessoas com generosidade, cuidado e abertura relacional'. A expressão 'mais aberta' e 'compartilham' evidenciam abertura relacional e acolhimento."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "O próprio mundo dos negócios é um mundo bastante racional. Indicadores. Você vai fazer as coisas para ganhar mais dinheiro."
+    ordem_2a: fe_x_racionalismo
+    justificativa_interna: "Definição: 'Tensão percebida entre confiar na ação e direção de Deus e depender exclusivamente de explicações, cálculos ou critérios puramente racionais'. A descrição do 'mundo dos negócios' como 'bastante racional' com foco em 'indicadores' evidencia a tensão com a fé."
+
+    ordem_2a: reducao_da_vida_a_valores_economicos
+    justificativa_interna: "Definição: 'Postura organizacional ou profissional que reduz pessoas a instrumentos de geração de lucro, subordinando dignidade humana, saúde e bem-estar a critérios exclusivamente econômicos'. A frase 'fazer as coisas para ganhar mais dinheiro' evidencia redução a valores econômicos."
+
+    ordem_2a: aspecto_analitico_7
+    justificativa_interna: "Definição oficial: 'Uso consciente do julgamento racional, da distinção conceitual e da coerência lógica.' A caracterização do mundo dos negócios como 'bastante racional' e baseado em 'indicadores' evidencia reconhecimento do uso do julgamento racional como critério dominante."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A menção a 'ganhar mais dinheiro' como objetivo evidencia administração consciente de recursos econômicos."
+
+    ordem_2a: maximizacao_do_lucro_aumento_da_lucratividade
+    justificativa_interna: "Definição oficial: 'Orientação gerencial estratégica centrada no crescimento máximo e contínuo dos resultados financeiros com objetivo prioritário de melhorar sempre a gestão.' A expressão 'fazer as coisas para ganhar mais dinheiro' caracteriza orientação centrada no crescimento de resultados financeiros."
+
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades como critérios relevantes para gestão.' A menção a 'indicadores' evidencia uso de números e quantidades como critérios relevantes no mundo dos negócios."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Mas, no final, para que você vai fazer tudo isso? É só para o acionista? É só para o bônus que você vai fazer?"
+    ordem_2a: proposito
+    justificativa_interna: "Definição: 'Compreensão de que a própria vida e atuação profissional possuem um sentido de missão definido pela vontade de Deus'. Os questionamentos 'para que você vai fazer tudo isso?' evidenciam busca por propósito além de resultados financeiros."
+
+    ordem_2a: reducao_da_vida_a_valores_economicos
+    justificativa_interna: "Definição: 'Postura organizacional ou profissional que reduz pessoas a instrumentos de geração de lucro'. As perguntas retóricas 'É só para o acionista? É só para o bônus?' evidenciam crítica à redução do trabalho a valores puramente econômicos."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' Os questionamentos 'para que você vai fazer tudo isso?' e 'É só para o acionista?' evidenciam busca por fundamentos morais mais profundos que orientem decisões empresariais além do lucro."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A menção a 'acionista' e 'bônus' indica contexto de gestão de recursos econômicos e distribuição de resultados financeiros."
+
+    ordem_2a: aspecto_analitico_7
+    justificativa_interna: "Definição oficial: 'Uso consciente do julgamento racional, da distinção conceitual e da coerência lógica.' Os questionamentos sequenciais ('para que...? É só...? É só...?') demonstram uso do raciocínio lógico para avaliar a coerência dos objetivos empresariais."
+
+    ordem_2a: valorizacao_de_indicadores_nao_financeiros
+    justificativa_interna: "Definição oficial: 'Reconhecimento de impactos sociais, humanos, ambientais e éticos como dimensões legítimas do desempenho organizacional, além dos resultados financeiros.' O questionamento 'É só para o acionista? É só para o bônus?' implica reconhecimento de que há dimensões além dos resultados financeiros que devem ser consideradas."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "E eu acho que ter fé e você exercitar fé durante o trabalho te deixa mais em paz."
+    ordem_2a: unidade_e_integridade_de_vida_pessoal_e_profissional
+    justificativa_interna: "Definição: 'Convicção de que fé, valores e prática cristã devem orientar de forma integrada a vida pessoal e a atuação profissional'. A expressão 'exercitar fé durante o trabalho' evidencia integração entre fé e trabalho."
+
+    ordem_2a: calma
+    justificativa_interna: "Definição: 'Estado emocional de serenidade, equilíbrio e estabilidade interior mantido mesmo diante de situações adversas ou incertas'. A expressão 'te deixa mais em paz' evidencia estado de serenidade e equilíbrio interior."
+
+    ordem_2a: trabalho_como_adoracao_avoda_empresa_como_ministerio
+    justificativa_interna: "Definição: 'Compreensão do trabalho e da empresa como gesto de adoração, espaço legítimo de culto, serviço e obediência a Deus'. A expressão 'exercitar fé durante o trabalho' sugere compreensão do trabalho como espaço de expressão da fé."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A menção a 'ter fé' e 'exercitar fé durante o trabalho' evidencia referência explícita à fé como orientação transcendente no contexto profissional."
+
+    ordem_2a: aspecto_sensitivo_6
+    justificativa_interna: "Definição oficial: 'Consideração explícita das experiências emocionais humanas relevantes — como dor, medo, empatia ou sofrimento.' A expressão 'te deixa mais em paz' evidencia consideração de experiência emocional positiva (paz) como resultado da fé no trabalho."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' A afirmação de que 'exercitar fé durante o trabalho' gera paz evidencia disposição moral profunda (fé) como fundamento para decisões e experiências no trabalho."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Então, vai te deixar mais em paz, vai te dar mais longevidade, não somente na sua vida, mas também na sua longevidade nos trabalhos que você for fazer no mercado de trabalho."
+    ordem_2a: fe_para_longevidade
+    justificativa_interna: "Definição: 'Confiança em Deus associada à perseverança no tempo, especialmente diante de desafios prolongados relacionados à saúde, carreira ou sobrevivência do negócio'. A expressão literal 'vai te dar mais longevidade' associada à fé evidencia confiança em Deus para perseverança."
+
+    ordem_2a: calma
+    justificativa_interna: "Definição: 'Estado emocional de serenidade, equilíbrio e estabilidade interior'. A expressão 'mais em paz' evidencia serenidade interior."
+
+    ordem_2a: aspecto_biotico_5
+    justificativa_interna: "Definição oficial: 'Valorização da vida como critérios, incluindo saúde sobrevivência e cuidado físico de pessoas, animais ou criação.' A menção a 'longevidade' (duas vezes) evidencia valorização da vida e da saúde como critérios relevantes."
+
+    ordem_2a: aspecto_cinetico_3
+    justificativa_interna: "Definição oficial: 'Avaliação de movimentos, fluxos e mudanças operacionais da empresa ao longo do tempo, como crescimento, retração ou rotatividade.' A referência à 'longevidade nos trabalhos' indica avaliação de permanência e estabilidade ao longo do tempo no mercado de trabalho."
+
+    ordem_2a: aspecto_sensitivo_6
+    justificativa_interna: "Definição oficial: 'Consideração explícita das experiências emocionais humanas relevantes — como dor, medo, empatia ou sofrimento.' A menção a 'te deixar mais em paz' evidencia consideração de experiência emocional positiva."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Então, eu vejo que pessoas que têm mais essa consciência seja social, consciência religiosa, essa consciência do seu propósito de vida nos seus trabalhos, são pessoas que acabam tendo mais... Ficam mais tempo, não ficam pulando de trabalho em trabalho e tudo mais."
+    ordem_2a: proposito
+    justificativa_interna: "Definição: 'Compreensão de que a própria vida e atuação profissional possuem um sentido de missão definido pela vontade de Deus'. A expressão literal 'consciência do seu propósito de vida nos seus trabalhos' evidencia compreensão de sentido de missão no trabalho."
+
+    ordem_2a: fe_para_longevidade
+    justificativa_interna: "Definição: 'Confiança em Deus associada à perseverança no tempo'. A observação de que pessoas com 'consciência religiosa' 'ficam mais tempo' evidencia associação entre fé e perseverança profissional."
+
+    ordem_2a: unidade_e_integridade_de_vida_pessoal_e_profissional
+    justificativa_interna: "Definição: 'Convicção de que fé, valores e prática cristã devem orientar de forma integrada a vida pessoal e a atuação profissional'. A menção à 'consciência religiosa' integrada ao 'propósito de vida nos seus trabalhos' evidencia integração entre fé e trabalho."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A menção a 'consciência religiosa' e 'propósito de vida nos seus trabalhos' evidencia referência explícita à fé como orientação transcendente no contexto profissional."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa.' A menção a 'consciência social' indica avaliação de relações e papéis sociais como critério relevante no trabalho."
+
+    ordem_2a: aspecto_cinetico_3
+    justificativa_interna: "Definição oficial: 'Avaliação de movimentos, fluxos e mudanças operacionais da empresa ao longo do tempo, como crescimento, retração ou rotatividade.' A observação de que pessoas com consciência religiosa 'ficam mais tempo, não ficam pulando de trabalho em trabalho' evidencia avaliação de rotatividade e permanência ao longo do tempo."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' A menção a 'consciência do seu propósito de vida nos seus trabalhos' evidencia disposição moral profunda como fundamento para decisões profissionais."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Eu estudo sobre como fazer impacto social, como você faz impacto positivo para pessoas junto com negócios."
+    ordem_2a: maximizacao_do_beneficio
+    justificativa_interna: "Definição: 'Orientação ética primariamente individual do gestor ou dono, expressa em decisões e práticas pessoais de trabalho, voltada a gerar o maior impacto positivo possível ao maior número de pessoas'. A expressão 'impacto positivo para pessoas junto com negócios' evidencia orientação para maximizar benefício."
+
+    ordem_2a: reino_deus_em_primeiro_lugar_resultado_depois
+    justificativa_interna: "Definição: 'Orientação de gestão em que os valores do Reino de Deus e a justiça precedem objetivos financeiros'. O foco em 'impacto social' e 'impacto positivo para pessoas' antes de mencionar negócios sugere priorização de valores sobre resultados financeiros."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Essa consultoria apoia lideranças que querem fazer um impacto social através dos seus negócios e também ONGs e iniciativas corporativas que querem impactar socioambientalmente também positivamente o mundo."
+    ordem_2a: maximizacao_do_beneficio
+    justificativa_interna: "Definição: 'Orientação ética voltada a gerar o maior impacto positivo possível ao maior número de pessoas'. A expressão 'impacto social' e 'impactar socioambientalmente positivamente o mundo' evidenciam orientação para maximizar benefício coletivo."
+
+    ordem_2a: lideranca_servil_sacrificial
+    justificativa_interna: "Definição: 'Forma de liderança orientada ao serviço, em que o líder prioriza pessoas e propósitos acima do poder'. O apoio a 'lideranças que querem fazer um impacto social' sugere orientação de liderança voltada ao serviço."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Eu estudei bem hard de tecnologia, programação, mas eu acho que na minha experiência de formação eu percebi que eu poderia ir para um lado bem técnico, bem hard mesmo de tecnologia, mas eu sentia muita falta de trabalhar com pessoas."
+    ordem_2a: proposito
+    justificativa_interna: "Definição: 'Compreensão de que a própria vida e atuação profissional possuem um sentido de missão'. A percepção de 'falta' ao trabalhar apenas com tecnologia e a busca por 'trabalhar com pessoas' evidenciam busca por sentido de missão no trabalho."
+
+    ordem_2a: maximizacao_do_beneficio
+    justificativa_interna: "Definição: 'Orientação ética voltada a gerar o maior impacto positivo possível ao maior número de pessoas'. A expressão 'trabalhar com pessoas' e a insatisfação com trabalho puramente técnico evidenciam orientação para impacto direto em pessoas."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "E acho que isso tem tudo a ver com o seu tempo de generosidade, porque para mim é muito importante eu trabalhar com negócios, mas que envolvam pessoas e ver o quanto aquele negócio diretamente está afetando uma pessoa."
+    ordem_2a: maximizacao_do_beneficio
+    justificativa_interna: "Definição: 'Orientação ética voltada a gerar o maior impacto positivo possível ao maior número de pessoas'. A expressão 'ver o quanto aquele negócio diretamente está afetando uma pessoa' evidencia orientação para maximizar impacto positivo direto."
+
+    ordem_2a: altruismo
+    justificativa_interna: "Definição: 'Ação orientada exclusivamente ao bem do outro, sem expectativa de retorno, vantagem ou reconhecimento pessoal'. A menção ao 'tempo de generosidade' e a importância de 'afetar uma pessoa' evidenciam orientação ao bem do outro."
+
+    ordem_2a: amar_o_proximo
+    justificativa_interna: "Definição: 'Ação prática de cuidado, responsabilidade e socorro ao outro que surge diante de uma necessidade concreta'. A expressão 'trabalhar com negócios que envolvam pessoas' evidencia cuidado prático com o outro."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Então, quando eu trabalhava com tecnologia, era muito indireto esse impacto."
+    ordem_2a: maximizacao_do_beneficio
+    justificativa_interna: "Definição: 'Orientação ética voltada a gerar o maior impacto positivo possível ao maior número de pessoas'. A insatisfação com impacto 'indireto' evidencia busca por maximizar impacto direto e observável em pessoas."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Eu como uma pessoa que me afastei tanto, eu acho, da minha fé durante essa trajetória, que eu tive aqui o impacto da religião, eu acho que ele veio meio indireto, sabe?"
+    ordem_2a: dicotomia_fe_trabalho
+    justificativa_interna: "Definição: 'Postura em que cristãos separam a fé pessoal do ambiente de trabalho'. A expressão 'me afastei tanto da minha fé durante essa trajetória' e 'impacto indireto' evidenciam separação entre fé e vida profissional."
+
+    ordem_2a: incredulidade
+    justificativa_interna: "Definição: 'Rejeição ou ausência de confiança'. O afastamento confessado da fé evidencia período de ausência de confiança."
+
+    ordem_2a: dicotomia_fe_trabalho
+    justificativa_interna: "Definição: 'Postura em que cristãos separam a fé pessoal do ambiente de trabalho, propiciando um ambiente de trabalho não permeável a valores cristãos.' O afastamento da fé durante a trajetória profissional e o reconhecimento de um impacto 'indireto' evidenciam a separação entre fé pessoal e atuação profissional."
+
+    ordem_2a: incredulidade
+    justificativa_interna: "Definição: 'Rejeição ou ausência de confiança na existência de Deus, suas verdades, suas obras, atos ou promessas.' O afastamento da fé ('me afastei tanto da minha fé') caracteriza ausência de confiança ativa nas verdades e promessas de Deus durante o período profissional."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Eu não sou uma pessoa que eu acho que sou abençoada por eu ter buscado essa bênção."
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição: 'Compreensão de que a graça é concedida de forma totalmente imerecida, sem relação com desempenho moral'. A negação de que as bênçãos vieram por 'ter buscado' evidencia reconhecimento da graça imerecida."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição: 'Reconhecimento de que a salvação e as bênçãos são iniciativa exclusiva de Deus'. A negação da agência própria ('não sou abençoada por ter buscado') evidencia reconhecimento da iniciativa divina."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana.' A negação explícita da busca pessoal ('não sou uma pessoa que eu acho que sou abençoada por eu ter buscado') evidencia o reconhecimento de que a bênção não procede de ação humana."
+
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana, sendo inteiramente imerecida.' O trecho nega a relação entre busca pessoal e bênção recebida, caracterizando o caráter imerecido da graça."
+
+    ordem_2a: prioridade_monergismo
+    justificativa_interna: "Definição oficial: 'Compreensão de que a graça antecede toda ação, decisão ou mérito humano, sendo iniciativa soberana e primeira de Deus.' A estrutura 'não sou abençoada por ter buscado' implica que a bênção antecede qualquer ação de busca."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Agora, mas nos dias atuais, a Bluefields apareceu na minha vida."
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana.' O uso do verbo 'apareceu' (voz passiva) indica que a Bluefields surgiu na vida da entrevistada sem agência própria dela, sugerindo iniciativa externa à sua vontade."
+
+    ordem_2a: prioridade_monergismo
+    justificativa_interna: "Definição oficial: 'Compreensão de que a graça antecede toda ação, decisão ou mérito humano, sendo iniciativa soberana e primeira de Deus.' A expressão 'apareceu na minha vida' denota anterioridade temporal da oportunidade em relação a qualquer busca ou decisão consciente da entrevistada."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Mas eu sinto que o mundo de diversidade e inclusão é muito ácido. E ele não resolve algumas questões de como você cria uma família, filhos."
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' A percepção de que o universo de diversidade e inclusão 'não resolve algumas questões' de criação de família evidencia busca por fundamentos morais mais profundos que orientem decisões existenciais."
+
+    ordem_2a: aspecto_sensitivo_6
+    justificativa_interna: "Definição oficial: 'Consideração explícita das experiências emocionais humanas relevantes — como dor, medo, empatia ou sofrimento.' A descrição do mundo de diversidade e inclusão como 'muito ácido' expressa experiência emocional negativa (desconforto, agressividade percebida) relacionada a esse ambiente."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa.' A menção a 'como você cria uma família, filhos' no contexto de diversidade e inclusão indica avaliação de papéis sociais e padrões de convivência que transcendem o ambiente corporativo."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Então, eu acho que essas questões me fizeram repensar muito mais. E voltar a ter mais fé. E voltar até a me conectar com pessoas de mais fé. E ouvir."
+    ordem_2a: evento_cristo
+    justificativa_interna: "Definição oficial: 'Narrativa da conversão do próprio gestor (conhecimento de Cristo), por meio de uma experiência existencial marcante, frequentemente associada a situações-limite.' A experiência do sangramento na gravidez (situação-limite) levou a entrevistada a 'voltar a ter mais fé', caracterizando conversão/reaproximação por meio de experiência existencial marcante."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A decisão de 'voltar a ter mais fé' e 'me conectar com pessoas de mais fé' evidencia referência explícita à fé como orientação transcendente."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa.' A menção a 'me conectar com pessoas de mais fé' indica avaliação de relações sociais baseadas em critério religioso."
+
+    ordem_2a: aspecto_linguistico_9
+    justificativa_interna: "Definição oficial: 'Uso da linguagem, do discurso e da comunicação como portadores de significado e coerência.' A ênfase em 'E ouvir' (com ponto final separado) destaca o uso da comunicação (escuta) como portadora de significado na reaproximação com a fé."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Acho que não basta você se aproximar, você tem que saber ouvir. Então, eu estou mais aberta hoje em dia a pessoas que são de mais fé. E que compartilham, independente da sua religião, a sua fé comigo."
+    ordem_2a: aspecto_linguistico_9
+    justificativa_interna: "Definição oficial: 'Uso da linguagem, do discurso e da comunicação como portadores de significado e coerência.' A afirmação 'você tem que saber ouvir' e 'compartilham... a sua fé comigo' evidencia uso consciente da comunicação (escuta e compartilhamento) como portadora de significado na experiência religiosa."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa.' A abertura a 'pessoas que são de mais fé' e que 'compartilham... a sua fé' indica avaliação de relações sociais baseadas em critério religioso."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A menção a 'pessoas que são de mais fé' e 'compartilham... a sua fé' evidencia referência explícita à fé como dimensão transcendente relevante."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Atualmente, eu me divido entre o meu doutorado também. Eu faço um doutorado na Engenharia de Produção lá na Escola Politécnica da USP. Eu estudo sobre como fazer impacto social, como você faz impacto positivo para pessoas junto com negócios."
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa.' O foco em 'impacto social' e 'impacto positivo para pessoas junto com negócios' evidencia avaliação de relações sociais e impactos em pessoas como critério central."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A menção a 'negócios' indica contexto de gestão de recursos econômicos."
+
+    ordem_2a: valorizacao_de_indicadores_nao_financeiros
+    justificativa_interna: "Definição oficial: 'Reconhecimento de impactos sociais, humanos, ambientais e éticos como dimensões legítimas do desempenho organizacional, além dos resultados financeiros.' O estudo sobre 'impacto social' e 'impacto positivo para pessoas' evidencia reconhecimento explícito de dimensões sociais e humanas como legítimas no desempenho organizacional."
+
+    ordem_2a: macro_rsc
+    justificativa_interna: "Definição oficial: 'Conjunto de políticas, estratégias e ações sociais adotadas pela organização em nível institucional, incluindo programas estruturados de filantropia e responsabilidade social.' O foco acadêmico em 'impacto social' junto com negócios caracteriza estudo de políticas e estratégias de responsabilidade social em nível institucional."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Mas uma coisa que eu acredito muito, Davi, é que a minha mãe, a minha tia, a minha avó, elas são pessoas de tanta fé que em vários momentos na minha vida profissional eu penso e eu achei também que as coisas aconteceram muito favoravelmente para mim porque elas acreditam nisso tudo."
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho, inclusive eventos aparentemente ordinários.' A crença de que as coisas aconteceram favoravelmente por causa da fé das mulheres da família evidencia a convicção de direção divina nas circunstâncias profissionais."
+
+    ordem_2a: oracao
+    justificativa_interna: "Definição: 'Prática intencional de comunicação com Deus por meio de pedido, escuta, entrega ou adoração, aplicada à vida pessoal e profissional.' A menção às promessas da avó ('minha avó sempre foi uma pessoa que fazia promessas') caracteriza prática de comunicação com Deus aplicada à vida profissional da entrevistada."
+
+    ordem_2a: resposta_de_oracao
+    justificativa_interna: "Definição: 'Relato ou interpretação de que uma oração específica foi atendida por Deus de maneira perceptível ou concreta.' A narrativa de que 'quando a coisa se realizava, em parte eu achava que era por conta da minha avó' evidencia interpretação de que as orações/promessas foram atendidas de forma concreta."
+
+    ordem_2a: hereditariedade_cultural
+    justificativa_interna: "Definição oficial: 'Narrativa da transmissão da fé, de pai pra filho, por meio da educação em família.' O trecho evidencia a transmissão familiar da fé através das mulheres da família (mãe, tia, avó) e seu impacto na vida profissional."
+
+    ordem_2a: graca_comum_gc
+    justificativa_interna: "Definição oficial: 'Concessão divina de bens naturais, sociais e estruturais a toda a humanidade, percebida como ordem, sustento e prosperidade cotidiana.' As 'coisas aconteceram muito favoravelmente' na vida profissional caracterizam prosperidade cotidiana percebida como concessão divina."
+
+    ordem_2a: gratidao_comum_gc
+    justificativa_interna: "Definição oficial: 'Resposta geral de reconhecimento por benefícios, circunstâncias favoráveis e bens da vida, percebidos como dádivas.' O reconhecimento de que 'as coisas aconteceram muito favoravelmente' evidencia percepção de benefícios como dádivas."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Minha avó sempre foi uma pessoa que fazia promessas, entende? E ela falava para mim, olha, estou fazendo uma promessa para que você consiga essa conquista profissional, Célia, porque eu sei que você quer muito."
+    ordem_2a: oracao_consagracao_do_dia_de_trabalho_e_caminhos
+    justificativa_interna: "Definição: 'Entrega explícita do trabalho, das decisões e dos caminhos profissionais a Deus por meio da oração cotidiana.' As promessas da avó direcionadas especificamente às conquistas profissionais da entrevistada caracterizam entrega explícita dos caminhos profissionais a Deus."
+
+    ordem_2a: fe_para_longevidade
+    justificativa_interna: "Definição: 'Confiança em Deus associada à perseverança no tempo, especialmente diante de desafios prolongados relacionados à saúde, carreira ou sobrevivência do negócio.' A prática contínua de promessas pela avó ('sempre foi uma pessoa que fazia promessas') para conquistas profissionais evidencia confiança em Deus associada à perseverança na carreira."
+
+    ordem_2a: hereditariedade_cultural
+    justificativa_interna: "Definição oficial: 'Narrativa da transmissão da fé, de pai pra filho, por meio da educação em família.' A avó fazendo promessas pela neta evidencia transmissão familiar intencional da prática de fé."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' As 'promessas' da avó constituem prática religiosa explícita orientando a vida profissional."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência.' A relação avó-neta e o papel da avó como intercessora evidenciam padrão relacional específico."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Então, e quando a coisa se realizava, em parte eu achava que era por conta da minha avó."
+    ordem_2a: resposta_de_oracao
+    justificativa_interna: "Definição: 'Relato ou interpretação de que uma oração específica foi atendida por Deus de maneira perceptível ou concreta.' A realização das conquistas profissionais atribuída às promessas da avó caracteriza interpretação de que orações foram atendidas de forma perceptível."
+
+    ordem_2a: livramento
+    justificativa_interna: "Definição: 'Interpretação de eventos concretos como intervenção direta de Deus para proteger, libertar ou preservar de perigos, perdas ou males específicos.' A atribuição da realização profissional à intervenção divina mediada pelas promessas evidencia interpretação de eventos como intervenção direta de Deus."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus.' Embora mediada pela avó, a realização é atribuída a uma fonte específica externa à própria entrevistada, caracterizando ausência de agência pessoal."
+
+    ordem_2a: gratidao_comum_gc
+    justificativa_interna: "Definição oficial: 'Resposta geral de reconhecimento por benefícios, circunstâncias favoráveis e bens da vida, percebidos como dádivas.' O reconhecimento de que a realização veio 'por conta da avó' evidencia percepção de benefício como dádiva."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "E por várias vezes, Davi, eu confesso que eu não estar conectada com a minha fé me fazia pensar, nossa, eu não estou tão conectada com Deus e todos esses valores, mas ainda assim eu estou sendo agraciada. Como eu sou uma pessoa abençoada, sabe?"
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição: 'Compreensão de que a graça é concedida de forma totalmente imerecida, sem relação com desempenho moral.' O reconhecimento explícito de ser agraciada 'ainda assim' sem estar conectada com Deus evidencia a compreensão de graça imerecida, sem relação com desempenho espiritual."
+
+    ordem_2a: superabundancia
+    justificativa_interna: "Definição: 'Desproporção característica entre a condição do receptor e a magnitude da graça recebida.' A expressão 'ainda assim eu estou sendo agraciada' e 'Como eu sou uma pessoa abençoada' evidenciam a percepção de desproporção entre sua condição espiritual (desconectada) e a magnitude das bênçãos recebidas."
+
+    ordem_2a: sentir_se_em_divida
+    justificativa_interna: "Definição: 'Senso moral de responsabilidade em servir, amar e beneficiar o próximo decorrentes do favor concedido por Deus em Cristo.' A consciência de ser agraciada sem conexão adequada gera o senso de responsabilidade moral implícito na expressão de espanto ('nossa', 'Como eu sou uma pessoa abençoada')."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Eu me sinto em dívida, eu me sinto em dívida com Deus, Davi, e é uma coisa que eu, é engraçado, porque eu andei trabalhando inclusive isso nesses últimos dias, assim, na minha cabeça."
+    ordem_2a: sentir_se_em_divida
+    justificativa_interna: "Definição: 'Senso moral de responsabilidade em servir, amar e beneficiar o próximo decorrentes do favor concedido por Deus em Cristo.' A declaração explícita e repetida 'eu me sinto em dívida com Deus' caracteriza diretamente o senso moral de responsabilidade decorrente do favor divino recebido."
+
+    ordem_2a: arrependimento
+    justificativa_interna: "Definição: 'Reconhecimento consciente do pecado acompanhado de mudança intencional de direção, atitude e comportamento diante de Deus.' O trabalho mental recente sobre esse sentimento de dívida ('andei trabalhando inclusive isso nesses últimos dias') evidencia processo de reconhecimento consciente acompanhado de reflexão para mudança."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "E Davi, eu me sinto tão em dívida com Deus, que eu falava assim, nossa, eu não me sinto merecedora, eu me sinto tão em dívida que eu vou pedir mais coisas, sendo que eu não agradeci Ele todo esse tempo, todas as graças alcançadas, sabe?"
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição: 'Compreensão de que a graça é concedida de forma totalmente imerecida, sem relação com desempenho moral.' A declaração explícita 'eu não me sinto merecedora' e o reconhecimento de não ter agradecido evidenciam a compreensão de graça totalmente imerecida, sem relação com desempenho espiritual."
+
+    ordem_2a: sentir_se_em_divida
+    justificativa_interna: "Definição: 'Senso moral de responsabilidade em servir, amar e beneficiar o próximo decorrentes do favor concedido por Deus em Cristo.' A repetição enfática 'eu me sinto tão em dívida' e a consciência de não ter agradecido 'todas as graças alcançadas' caracterizam o senso moral de responsabilidade decorrente do favor divino."
+
+    ordem_2a: depravacao_total_pecado_queda_confissao_de_pecados
+    justificativa_interna: "Definição: 'Reconhecimento da gravidade da condição espiritual e moral humana, erro moral ou espiritual acompanhado ou evidenciado de (ou para) mudança de postura.' A confissão de não ter agradecido a Deus 'todo esse tempo' evidencia reconhecimento de erro espiritual."
+
+    ordem_2a: oracao
+    justificativa_interna: "Definição: 'Prática intencional de comunicação com Deus por meio de pedido, escuta, entrega ou adoração, aplicada à vida pessoal e profissional.' A menção a 'pedir mais coisas' e a necessidade de agradecer caracterizam a prática de comunicação com Deus por meio de pedido e adoração."
+
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana, sendo inteiramente imerecida.' A expressão explícita 'eu não me sinto merecedora' evidencia o núcleo da incongruência entre condição pessoal e graça recebida."
+
+    ordem_2a: superabundancia
+    justificativa_interna: "Definição oficial: 'Percepção da graça como benesses em quantidade muito grande, imensurável, que ultrapassa qualquer critério humano de cálculo, mérito ou expectativa.' A menção a 'todas as graças alcançadas' e o sentimento de dívida por não ter agradecido evidenciam percepção de quantidade imensurável de bênçãos."
+
+    ordem_2a: gratidao_especial_ge
+    justificativa_interna: "Definição oficial: 'Reconhecimento consciente e pessoal de ter recebido a ação salvífica de Deus, acompanhado de resposta explícita de gratidão a Ele.' O reconhecimento de não ter agradecido 'todas as graças alcançadas' evidencia consciência da necessidade de gratidão explícita."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "E aí, teve uma pessoa nesse meio do caminho que falou, Célia, talvez é um momento de reflexão para você realmente retornar e exercer essa sua fé. E agora eu acho que até voltei mais, sabe? Agradecer mais, para eu me sentir bem, assim, na minha relação com Deus, sabe?"
+    ordem_2a: arrependimento
+    justificativa_interna: "Definição: 'Reconhecimento consciente do pecado acompanhado de mudança intencional de direção, atitude e comportamento diante de Deus.' O retorno à fé ('agora eu acho que até voltei mais') e a prática de agradecer mais evidenciam mudança intencional de direção e comportamento diante de Deus."
+
+    ordem_2a: oracao
+    justificativa_interna: "Definição: 'Prática intencional de comunicação com Deus por meio de pedido, escuta, entrega ou adoração, aplicada à vida pessoal e profissional.' A prática de 'Agradecer mais' caracteriza comunicação intencional com Deus por meio de adoração e gratidão."
+
+    ordem_2a: aconselhamento_biblico
+    justificativa_interna: "Definição: 'Uso intencional das Escrituras como referência normativa principal para orientar decisões, corrigir condutas e definir critérios morais na vida pessoal e profissional.' A orientação recebida de outra pessoa ('teve uma pessoa nesse meio do caminho que falou') para retornar e exercer a fé caracteriza aconselhamento que orienta correção de conduta espiritual."
+
+    ordem_2a: evento_cristo
+    justificativa_interna: "Definição oficial: 'Narrativa da conversão do próprio gestor (conhecimento de Cristo), por meio de uma experiência existencial marcante, frequentemente associada a situações-limite.' A UTI da filha como situação-limite que promove 'retorno' à fé caracteriza experiência existencial marcante."
+
+    ordem_2a: gratidao_especial_ge
+    justificativa_interna: "Definição oficial: 'Reconhecimento consciente e pessoal de ter recebido a ação salvífica de Deus, acompanhado de resposta explícita de gratidão a Ele.' O 'agradecer mais' evidencia resposta explícita de gratidão."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Nossa, eu sou uma pessoa que acredito muito no poder das pessoas resolver os problemas da sociedade, sabe, Davi?"
+    ordem_2a: mandato_cultural
+    justificativa_interna: "Definição: 'Responsabilidade humana de desenvolver trabalho, cultura, economia e sociedade de forma ordenada e responsável, conforme os propósitos e limites estabelecidos por Deus.' A crença no poder das pessoas de resolver problemas da sociedade evidencia reconhecimento da responsabilidade humana de desenvolver a sociedade de forma ordenada."
+
+    ordem_2a: imago_dei
+    justificativa_interna: "Definição: 'Reconhecimento da dignidade humana por ser imagem e semelhança de Deus. Um representante de Deus na Terra.' A crença no 'poder das pessoas' e na capacidade humana de resolver problemas evidencia reconhecimento implícito da dignidade e capacidade humana como representantes de Deus."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência.' A crença no 'poder das pessoas resolver os problemas da sociedade' evidencia avaliação de papéis sociais."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' A crença no poder das pessoas para resolver problemas sociais evidencia disposição moral como fundamento."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Quando eu olho alguém, eu nunca olho pelo lado negativo que ela pode ter, né? E atitudes ruins. Eu sempre imagino que as pessoas estão aqui no mundo para melhorar a nossa sociedade, conviver bem e tudo mais."
+    ordem_2a: imago_dei
+    justificativa_interna: "Definição: 'Reconhecimento da dignidade humana por ser imagem e semelhança de Deus. Um representante de Deus na Terra.' A visão de que as pessoas 'estão aqui no mundo para melhorar a nossa sociedade' evidencia reconhecimento da dignidade e propósito humano como representantes de Deus na Terra."
+
+    ordem_2a: proposito
+    justificativa_interna: "Definição: 'Compreensão de que a própria vida e atuação profissional possuem um sentido de missão definido pela vontade de Deus, orientando escolhas, prioridades e perseverança.' A crença de que as pessoas têm propósito ('estão aqui no mundo para melhorar a nossa sociedade') evidencia compreensão de sentido de missão que orienta a vida."
+
+    ordem_2a: amar_o_proximo
+    justificativa_interna: "Definição: 'Ação prática de cuidado, responsabilidade e socorro ao outro que surge diante de uma necessidade concreta, independentemente de proximidade, afinidade, identidade ou merecimento moral.' A postura de não olhar 'pelo lado negativo' e imaginar que as pessoas estão para 'melhorar a nossa sociedade' evidencia cuidado e responsabilidade pelo outro independentemente de merecimento."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício.' A postura de 'nunca olhar pelo lado negativo' e imaginar que 'as pessoas estão aqui no mundo para melhorar a nossa sociedade' evidencia disposição moral profunda de amor e misericórdia."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência.' A visão de que 'as pessoas estão aqui no mundo para melhorar a nossa sociedade, conviver bem' evidencia avaliação de papéis sociais e padrões de convivência."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "E eu acho que tem muitas questões do ambiente profissional, assim, que eles são causados ao mesmo tempo pelo homem, mas eles podem ser resolvidos pelo homem."
+    ordem_2a: mandato_cultural
+    justificativa_interna: "Definição: 'Responsabilidade humana de desenvolver trabalho, cultura, economia e sociedade de forma ordenada e responsável, conforme os propósitos e limites estabelecidos por Deus.' A crença de que problemas profissionais causados pelo homem podem ser resolvidos pelo homem evidencia reconhecimento da responsabilidade humana de desenvolver trabalho e sociedade de forma ordenada."
+
+    ordem_2a: depravacao_total_pecado_queda_confissao_de_pecados
+    justificativa_interna: "Definição: 'Reconhecimento da gravidade da condição espiritual e moral humana, erro moral ou espiritual acompanhado ou evidenciado de (ou para) mudança de postura.' O reconhecimento de que questões do ambiente profissional 'são causados ao mesmo tempo pelo homem' evidencia consciência da condição moral humana que gera problemas."
+
+    ordem_2a: aspecto_analitico_7
+    justificativa_interna: "Definição oficial: 'Uso consciente do julgamento racional, da distinção conceitual e da coerência lógica.' A análise causal (problemas causados pelo homem podem ser resolvidos pelo homem) evidencia uso de julgamento racional e distinção conceitual."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência.' A análise dos problemas do ambiente profissional como causados e resolvidos pelo homem evidencia avaliação de papéis sociais."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Porque eu acho que, assim, em grande parte, muitas coisas que eu faço hoje, até na minha transição de carreira, de ter saído da engenharia mecatrônica, construir de gestão de multinacionais e ter ido para o setor mais de responsabilidade social, é porque eu gosto de apoiar as pessoas que querem fazer mais o bem na sociedade."
+    ordem_2a: chamado_vocacao
+    justificativa_interna: "Definição: 'Percepção de um chamado divino específico que orienta a escolha da profissão, do negócio ou da atuação no trabalho como resposta obediente à vontade de Deus.' A transição de carreira motivada pelo desejo de 'apoiar as pessoas que querem fazer mais o bem na sociedade' evidencia percepção de chamado que orienta a escolha profissional."
+
+    ordem_2a: proposito
+    justificativa_interna: "Definição: 'Compreensão de que a própria vida e atuação profissional possuem um sentido de missão definido pela vontade de Deus, orientando escolhas, prioridades e perseverança.' A transição de carreira orientada por 'apoiar as pessoas que querem fazer mais o bem' evidencia compreensão de sentido de missão que orienta escolhas profissionais."
+
+    ordem_2a: servir_servico_servo_servo_de_cristo
+    justificativa_interna: "Definição: 'Postura voluntária de humildade e submissão que orienta a ação profissional e relacional ao bem do outro, tomando Cristo como modelo de serviço.' O desejo de 'apoiar as pessoas' e fazer 'o bem na sociedade' evidencia postura voluntária que orienta a ação profissional ao bem do outro."
+
+    ordem_2a: maximizacao_do_beneficio
+    justificativa_interna: "Definição: 'Orientação ética primariamente individual do gestor ou dono, expressa em decisões e práticas pessoais de trabalho, voltada a gerar o maior impacto positivo possível ao maior número de pessoas.' A transição de carreira para 'apoiar as pessoas que querem fazer mais o bem na sociedade' evidencia orientação voltada a gerar maior impacto positivo ao maior número de pessoas."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Eu gosto muito de me relacionar com empreendedores sociais, que são pessoas que normalmente têm um negócio, como a Bluefields, o Paulo, a Ana Fontes, que é da Rede Mulher Empreendedora."
+    ordem_2a: engajamento_com_equipes
+    justificativa_interna: "Definição: 'Construção intencional de vínculos de confiança, cooperação e pertencimento com as equipes, visando engajamento sustentável e melhor desempenho coletivo.' A preferência por 'me relacionar com empreendedores sociais' evidencia construção intencional de vínculos de cooperação visando desempenho coletivo."
+
+    ordem_2a: sociedade_apenas_entre_cristaos
+    justificativa_interna: "Definição: 'Formação deliberada de sociedades empresariais restritas a cristãos, fundamentada na confiança espiritual mútua e no alinhamento explícito de valores e convicções religiosas.' A menção específica a 'Bluefields' e 'Paulo' (conhecidos por serem cristãos) como exemplos de empreendedores sociais com quem gosta de se relacionar sugere preferência por alinhamento de valores."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Eu gosto de apoiar essas pessoas, porque eu acho que eu tenho ferramentas que eu aprendi de gestão na minha época de consultoria e tudo mais, que eu posso acelerar e aumentar o impacto que eles podem gerar na vida de mais pessoas."
+    ordem_2a: maximizacao_do_beneficio
+    justificativa_interna: "Definição: 'Orientação ética primariamente individual do gestor ou dono, expressa em decisões e práticas pessoais de trabalho, voltada a gerar o maior impacto positivo possível ao maior número de pessoas.' O desejo de 'acelerar e aumentar o impacto que eles podem gerar na vida de mais pessoas' evidencia orientação voltada a gerar o maior impacto positivo ao maior número de pessoas."
+
+    ordem_2a: servir_servico_servo_servo_de_cristo
+    justificativa_interna: "Definição: 'Postura voluntária de humildade e submissão que orienta a ação profissional e relacional ao bem do outro, tomando Cristo como modelo de serviço.' O desejo de 'apoiar essas pessoas' usando ferramentas de gestão evidencia postura voluntária que orienta a ação profissional ao bem do outro."
+
+    ordem_2a: parabola_dos_talentos
+    justificativa_interna: "Definição: 'Ensino de Jesus que enfatiza a responsabilidade de usar, desenvolver e multiplicar fielmente os recursos confiados por Deus.' O uso das 'ferramentas que eu aprendi de gestão' para 'acelerar e aumentar o impacto' evidencia responsabilidade de usar e multiplicar recursos confiados."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Então, acho que o exemplo que eu te dou é a própria minha transição de carreira e ter ido trabalhar na Rede Mulher Empreendedora tem a ver com isso."
+    ordem_2a: chamado_vocacao
+    justificativa_interna: "Definição: 'Percepção de um chamado divino específico que orienta a escolha da profissão, do negócio ou da atuação no trabalho como resposta obediente à vontade de Deus.' A transição de carreira para a Rede Mulher Empreendedora como resposta ao desejo de apoiar pessoas evidencia percepção de chamado que orienta a escolha profissional."
+
+    ordem_2a: proposito
+    justificativa_interna: "Definição: 'Compreensão de que a própria vida e atuação profissional possuem um sentido de missão definido pela vontade de Deus, orientando escolhas, prioridades e perseverança.' A transição de carreira orientada por valores ('tem a ver com isso') evidencia compreensão de sentido de missão que orienta escolhas profissionais."
+
+    ordem_2a: aspecto_cinetico_3
+    justificativa_interna: "Definição oficial: 'Avaliação de movimentos, fluxos e mudanças operacionais da empresa ao longo do tempo, como crescimento, retração ou rotatividade.' A 'transição de carreira' evidencia movimento e mudança ao longo do tempo."
+
+    ordem_2a: micro_rsc
+    justificativa_interna: "Definição oficial: 'Conjunto de práticas éticas manifestas nas decisões cotidianas, atitudes pessoais e comportamentos individuais adotados pelo gestor como pessoa no exercício da gestão.' A transição de carreira motivada por valores éticos evidencia prática ética individual."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Quando a Ana, que é a fundadora, ela me sugeriu, ah, Célia, você quer criar um programa de aceleração de startups liderados e fundados por mulheres? Porque nós acreditamos que a mulher tem um papel na sociedade de apoiar a família, de cuidar dos filhos, enfim, a mulher como alavanca na sociedade."
+    ordem_2a: imago_dei
+    justificativa_interna: "Definição: 'Reconhecimento da dignidade humana por ser imagem e semelhança de Deus. Um representante de Deus na Terra.' A crença de que 'a mulher tem um papel na sociedade' e é 'alavanca na sociedade' evidencia reconhecimento da dignidade e propósito humano específico da mulher como representante de Deus."
+
+    ordem_2a: mandato_cultural
+    justificativa_interna: "Definição: 'Responsabilidade humana de desenvolver trabalho, cultura, economia e sociedade de forma ordenada e responsável, conforme os propósitos e limites estabelecidos por Deus.' A visão da mulher como 'alavanca na sociedade' para 'apoiar a família' evidencia reconhecimento da responsabilidade humana de desenvolver sociedade de forma ordenada."
+
+    ordem_2a: igualdade_de_genero
+    justificativa_interna: "Definição oficial: 'Promoção da equidade de direitos, oportunidades e condições entre homens e mulheres, combatendo desigualdades estruturais de gênero.' O programa de aceleração de startups 'liderados e fundados por mulheres' evidencia promoção de oportunidades para mulheres."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência.' A menção ao 'papel da mulher na sociedade' evidencia avaliação explícita de papéis sociais."
+
+    ordem_2a: trabalho_decente_e_crescimento_economico
+    justificativa_interna: "Definição oficial: 'Emprego digno, condições justas de trabalho e crescimento econômico sustentável e inclusivo.' O programa de aceleração de startups liderados por mulheres promove crescimento econômico inclusivo."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Nossa, eu achei essa tese de impacto tão interessante que eu decidi apoiar ela, porque eu acho que me fazia total sentido, sabe?"
+    ordem_2a: proposito
+    justificativa_interna: "Definição: 'Compreensão de que a própria vida e atuação profissional possuem um sentido de missão definido pela vontade de Deus, orientando escolhas, prioridades e perseverança.' A decisão de apoiar a tese porque 'me fazia total sentido' evidencia compreensão de sentido de missão que orienta escolhas profissionais."
+
+    ordem_2a: chamado_vocacao
+    justificativa_interna: "Definição: 'Percepção de um chamado divino específico que orienta a escolha da profissão, do negócio ou da atuação no trabalho como resposta obediente à vontade de Deus.' A decisão de apoiar a tese de impacto porque fazia 'total sentido' evidencia percepção de chamado que orienta a escolha profissional."
+
+    ordem_2a: aspecto_analitico_7
+    justificativa_interna: "Definição oficial: 'Uso consciente do julgamento racional, da distinção conceitual e da coerência lógica.' A avaliação da 'tese de impacto' e a decisão baseada em 'fazer sentido' evidenciam uso de julgamento racional."
+
+    ordem_2a: micro_rsc
+    justificativa_interna: "Definição oficial: 'Conjunto de práticas éticas manifestas nas decisões cotidianas, atitudes pessoais e comportamentos individuais adotados pelo gestor como pessoa no exercício da gestão.' A decisão pessoal de apoiar baseada em valores evidencia prática ética individual."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "E além disso, eu ficava pensando, nossa, eu ainda vou ganhar dinheiro para trabalhar com isso."
+    ordem_2a: trabalho_como_adoracao_avoda_empresa_como_ministerio
+    justificativa_interna: "Definição: 'Compreensão do trabalho e da empresa como gesto de adoração, espaço legítimo de culto, serviço e obediência a Deus.' A surpresa positiva de 'ainda vou ganhar dinheiro para trabalhar com isso' evidencia compreensão do trabalho como espaço legítimo de serviço que integra propósito e sustento."
+
+    ordem_2a: contentamento
+    justificativa_interna: "Definição: 'Disposição interior de satisfação com o que foi recebido de Deus, independentemente da quantidade, reduzindo desejo por acumular mais.' A satisfação expressa em 'nossa, eu ainda vou ganhar dinheiro' evidencia disposição interior de satisfação com o que foi recebido."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A menção explícita a 'ganhar dinheiro' evidencia consideração de recursos econômicos."
+
+    ordem_2a: lucratividade_aceitavel_custos_minimos
+    justificativa_interna: "Definição oficial: 'Postura gerencial ou pessoal que não prioriza o lucro imediato, concentrando-se no controle rigoroso de despesas, simplicidade operacional e sustentabilidade funcional.' O 'ainda vou ganhar dinheiro' no contexto de trabalho social evidencia que o lucro não é prioridade imediata, mas sustentabilidade funcional."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "O que era diferente, quando eu trabalhava na consultoria, que o meu último projeto tinha sido para fazer um trabalho numa farmacêutica e eu lembro que eu fiz um projeto de redução diária e aí eu falava, ah, nesse projeto a gente consegue reduzir 20 pessoas e o CEO falou, ah, ótimo, então vamos demitir essas pessoas."
+    ordem_2a: reducao_da_vida_a_valores_economicos
+    justificativa_interna: "Definição: 'Postura organizacional ou profissional que reduz pessoas a instrumentos de geração de lucro, subordinando dignidade humana, saúde e bem-estar a critérios exclusivamente econômicos.' A decisão do CEO de demitir pessoas baseada exclusivamente em redução de custos ('então vamos demitir essas pessoas') evidencia redução de pessoas a instrumentos de geração de lucro."
+
+    ordem_2a: degradacao_das_condicoes_de_trabalho_trabalhador
+    justificativa_interna: "Definição: 'Deterioração das condições de trabalho que ignora dignidade, bem-estar físico e emocional e direitos básicos do trabalhador.' A demissão de 20 pessoas como resultado direto de projeto de redução evidencia deterioração que ignora dignidade e bem-estar do trabalhador."
+
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades como critérios relevantes para gestão.' A menção a 'reduzir 20 pessoas' evidencia uso explícito de números como critério de gestão."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' O projeto de 'redução' evidencia administração de recursos escassos."
+
+    ordem_2a: maximizacao_do_lucro_aumento_da_lucratividade
+    justificativa_interna: "Definição oficial: 'Orientação gerencial estratégica centrada no crescimento máximo e contínuo dos resultados financeiros com objetivo prioritário de melhorar sempre a gestão.' A decisão do CEO de demitir para reduzir custos evidencia orientação centrada em resultados financeiros."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "E a minha proposta não era de demitir, era de realocar as pessoas dentro da empresa, né? E eu me senti muito mal, eu falei, nossa, eu estou fazendo mal para as pessoas."
+    ordem_2a: defesa_dos_interesses_do_funcionario
+    justificativa_interna: "Definição: 'Postura gerencial de priorizar a proteção e as necessidades do funcionário, aceitando custos, riscos ou prejuízos em favor do colaborador mais vulnerável.' A proposta de 'realocar as pessoas dentro da empresa' ao invés de demitir evidencia postura de priorizar a proteção e necessidades do funcionário."
+
+    ordem_2a: imago_dei
+    justificativa_interna: "Definição: 'Reconhecimento da dignidade humana por ser imagem e semelhança de Deus. Um representante de Deus na Terra.' O sentimento de mal-estar ('eu me senti muito mal') por estar 'fazendo mal para as pessoas' evidencia reconhecimento da dignidade humana que não deve ser violada."
+
+    ordem_2a: frustracao
+    justificativa_interna: "Definição: 'Vivência emocional de bloqueio, desapontamento ou impotência diante de limites, perdas ou resultados que frustram expectativas.' O sentimento de mal-estar ('eu me senti muito mal') e a percepção de estar fazendo mal evidenciam vivência emocional de desapontamento diante de resultado que frustra expectativas éticas."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício.' O sentimento de 'fazer mal para as pessoas' e a proposta de realocação evidenciam disposição moral profunda de misericórdia."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência.' A preocupação com o impacto nas pessoas e a proposta de realocação evidenciam avaliação de relações sociais."
+
+    ordem_2a: valorizacao_de_indicadores_nao_financeiros
+    justificativa_interna: "Definição oficial: 'Reconhecimento de impactos sociais, humanos, ambientais e éticos como dimensões legítimas do desempenho organizacional, além dos resultados financeiros.' A preocupação com o impacto humano da demissão evidencia reconhecimento de dimensões não financeiras."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "E por várias vezes, Davi, eu confesso que eu não estar conectada com a minha fé me fazia pensar, nossa, eu não estou tão conectada com Deus e todos esses valores, mas ainda assim eu estou sendo agraciada."
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana, sendo inteiramente imerecida.' A expressão 'não estou tão conectada com Deus... mas ainda assim eu estou sendo agraciada' evidencia o reconhecimento explícito do caráter imerecido da graça."
+
+    ordem_2a: prioridade_monergismo
+    justificativa_interna: "Definição oficial: 'Compreensão de que a graça antecede toda ação, decisão ou mérito humano, sendo iniciativa soberana e primeira de Deus.' O 'ainda assim' indica que a graça antecede e independe da conexão pessoal."
+
+    ordem_2a: eficacia
+    justificativa_interna: "Definição oficial: 'Convicção de que a graça atua de modo plenamente eficaz, realizando integralmente aquilo que Deus determinou e produzindo transformação real.' O 'estou sendo agraciada' evidencia a eficácia da graça mesmo sem conexão pessoal intensa."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Como eu sou uma pessoa abençoada, sabe?"
+    ordem_2a: gratidao_comum_gc
+    justificativa_interna: "Definição oficial: 'Resposta geral de reconhecimento por benefícios, circunstâncias favoráveis e bens da vida, percebidos como dádivas.' O reconhecimento de ser 'uma pessoa abençoada' evidencia percepção de benefícios como dádivas."
+
+    ordem_2a: superabundancia
+    justificativa_interna: "Definição oficial: 'Percepção da graça como benesses em quantidade muito grande, imensurável, que ultrapassa qualquer critério humano de cálculo, mérito ou expectativa.' A autoidentificação como 'pessoa abençoada' no contexto de múltiplas graças recebidas sugere percepção de abundância."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Davi, eu nunca questionei a fé delas, assim, e eu sempre achei que era uma coisa muito poderosa, sabe?"
+    ordem_2a: hereditariedade_cultural
+    justificativa_interna: "Definição oficial: 'Narrativa da transmissão da fé, de pai pra filho, por meio da educação em família.' O reconhecimento do poder da fé das mulheres da família evidencia transmissão familiar de valores religiosos."
+
+    ordem_2a: eficacia
+    justificativa_interna: "Definição oficial: 'Convicção de que a graça atua de modo plenamente eficaz, realizando integralmente aquilo que Deus determinou e produzindo transformação real.' A percepção da fé como 'muito poderosa' evidencia convicção na eficácia da ação divina."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Eu sinto que eu estava num mundo profissional de muita carnificina, vamos falar assim, mas que ainda assim eu estava protegida por uma bolha de fé, de energia, muito positiva, que elas emanavam para mim, sabe?"
+    ordem_2a: graca_comum_gc
+    justificativa_interna: "Definição oficial: 'Concessão divina de bens naturais, sociais e estruturais a toda a humanidade, percebida como ordem, sustento e prosperidade cotidiana.' A 'proteção' no ambiente profissional hostil caracteriza sustento e ordem percebidos como concessão divina."
+
+    ordem_2a: hereditariedade_cultural
+    justificativa_interna: "Definição oficial: 'Narrativa da transmissão da fé, de pai pra filho, por meio da educação em família.' A 'bolha de fé' que 'elas emanavam' evidencia transmissão familiar ativa da proteção religiosa."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A 'bolha de fé' como proteção no ambiente profissional evidencia fé como orientação transcendente."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Eu me sinto em dívida, eu me sinto em dívida com Deus, Davi"
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana, sendo inteiramente imerecida.' O sentimento de 'dívida com Deus' evidencia reconhecimento do caráter imerecido das graças recebidas."
+
+    ordem_2a: gratidao_especial_ge
+    justificativa_interna: "Definição oficial: 'Reconhecimento consciente e pessoal de ter recebido a ação salvífica de Deus, acompanhado de resposta explícita de gratidão a Ele.' O sentimento de dívida constitui forma de reconhecimento consciente da ação divina."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Porque eu acho que eu tenho ferramentas que eu aprendi de gestão na minha época de consultoria e tudo mais, que eu posso acelerar e aumentar o impacto que eles podem gerar na vida de mais pessoas."
+    ordem_2a: aspecto_formativo_8
+    justificativa_interna: "Definição oficial: 'Ação deliberada de planejar, moldar e transformar estruturas, processos ou estratégias.' O uso de 'ferramentas de gestão' para 'acelerar e aumentar o impacto' evidencia ação deliberada de transformar processos."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência.' O objetivo de 'gerar impacto na vida de mais pessoas' evidencia avaliação de papéis sociais."
+
+    ordem_2a: micro_rsc
+    justificativa_interna: "Definição oficial: 'Conjunto de práticas éticas manifestas nas decisões cotidianas, atitudes pessoais e comportamentos individuais adotados pelo gestor como pessoa no exercício da gestão.' O uso pessoal de ferramentas de gestão para gerar impacto social evidencia prática ética individual no exercício da gestão."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Então, profissionalmente, eu comecei a optar por iniciativas que geram impacto positivo em pessoas. Então, para mim, quando isso não está atrelado, eu não gosto, assim, do trabalho, sabe? Eu prefiro nem fazer."
+    ordem_2a: valorizacao_de_indicadores_nao_financeiros
+    justificativa_interna: "Definição oficial: 'Reconhecimento de impactos sociais, humanos, ambientais e éticos como dimensões legítimas do desempenho organizacional, além dos resultados financeiros.' A opção por 'iniciativas que geram impacto positivo em pessoas' como critério de escolha profissional evidencia reconhecimento de dimensões não financeiras como legítimas."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' A recusa de trabalhos que não geram impacto positivo evidencia disposição moral como fundamento de decisões."
+
+    ordem_2a: micro_rsc
+    justificativa_interna: "Definição oficial: 'Conjunto de práticas éticas manifestas nas decisões cotidianas, atitudes pessoais e comportamentos individuais adotados pelo gestor como pessoa no exercício da gestão.' A opção pessoal por iniciativas de impacto positivo evidencia prática ética individual no exercício da gestão."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Olha, acho que é uma boa pergunta essa daí, viu? Eu acho que de bate e pronto eu atrelo muito mais isso a valores da minha família."
+    ordem_2a: hereditariedade_cultural
+    justificativa_interna: "Definição oficial: 'Narrativa da transmissão da fé, de pai pra filho, por meio da educação em família.' A atribuição de valores profissionais aos 'valores da minha família' evidencia transmissão familiar."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência.' A referência aos 'valores da família' evidencia avaliação de padrões de convivência familiar."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "A minha família é descendente de japoneses. Se a gente olhar a raiz da religião na minha família, tem os budistas e tem os católicos."
+    ordem_2a: hereditariedade_cultural
+    justificativa_interna: "Definição oficial: 'Narrativa da transmissão da fé, de pai pra filho, por meio da educação em família.' A menção à 'raiz da religião na minha família' evidencia transmissão familiar de tradições religiosas."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência.' A descrição da composição religiosa familiar evidencia avaliação de padrões de convivência."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Eu confesso que nunca parei para refletir muito na religião como influenciando esses valores da família."
+    ordem_2a: hereditariedade_cultural
+    justificativa_interna: "Definição oficial: 'Narrativa da transmissão da fé, de pai pra filho, por meio da educação em família.' A reflexão sobre a religião influenciando 'valores da família' evidencia reconhecimento de transmissão familiar, mesmo que não consciente anteriormente."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Mas agora você fazendo essa provocação, eu acho que em grande parte eles serem pessoas de fé. Pode ter me transmitido indiretamente através dos valores da família."
+    ordem_2a: hereditariedade_cultural
+    justificativa_interna: "Definição oficial: 'Narrativa da transmissão da fé, de pai pra filho, por meio da educação em família.' A percepção de que 'eles serem pessoas de fé' transmitiu valores 'indiretamente através dos valores da família' evidencia transmissão familiar."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A fé como fonte de valores transmitidos evidencia orientação transcendente."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Eu acho que Deus é muito generoso, sabe? Ele é muito, acho que é outra palavra, abundante."
+    ordem_2a: superabundancia
+    justificativa_interna: "Definição oficial: 'Desproporção característica da superabundância'. O uso dos termos 'muito generoso' e 'abundante' para descrever a ação de Deus evidencia a percepção de uma provisão que excede o necessário ou esperado, caracterizando a superabundância."
+
+    ordem_2a: deus_e_bom
+    justificativa_interna: "Definição oficial: 'Convicção de que a bondade pertence essencialmente a Deus'. A atribuição de 'generoso' como característica essencial de Deus demonstra o reconhecimento de Sua bondade intrínseca."
+
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho'. A descrição de Deus como 'abundante' sugere a crença em Sua provisão ativa e contínua."
+
+    ordem_2a: superabundancia
+    justificativa_interna: "Definição oficial: 'Percepção da graça como benesses em quantidade muito grande, imensurável, que ultrapassa qualquer critério humano de cálculo, mérito ou expectativa. Foco na quantidade da bênção alcançada.' O uso dos termos 'muito generoso' e 'abundante' evidencia a percepção de quantidade excessiva e imensurável das benesses recebidas, característica central da superabundância."
+
+    ordem_2a: gratidao_comum_gc
+    justificativa_interna: "Definição oficial: 'Resposta geral de reconhecimento por benefícios, circunstâncias favoráveis e bens da vida, percebidos como dádivas, sem referência direta à salvação.' A descrição de Deus como 'generoso' e 'abundante' expressa reconhecimento geral de benefícios recebidos como dádivas divinas, sem menção específica à salvação."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Ele não tem mágoas. É... Eu acho que ele é atencioso. É... Ele não tem rancor."
+    ordem_2a: deus_e_bom
+    justificativa_interna: "Definição oficial: 'Convicção de que a bondade pertence essencialmente a Deus e que Suas ações são boas em si mesmas'. A negação de 'mágoas' e 'rancor' e a afirmação de que Deus é 'atencioso' evidenciam a crença na bondade essencial do caráter divino."
+
+    ordem_2a: perdao_perdoar
+    justificativa_interna: "Definição oficial: 'Decisão pessoal consciente de renunciar à vingança, à cobrança moral ou à retaliação'. A afirmação de que Deus 'não tem mágoas' e 'não tem rancor' reflete a compreensão do perdão divino como ausência de retaliação."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "É amor, né? É amor puro, né? Acho que é amor puro."
+    ordem_2a: deus_e_bom
+    justificativa_interna: "Definição oficial: 'Convicção de que a bondade pertence essencialmente a Deus'. A caracterização de Deus como 'amor puro' expressa o reconhecimento de Sua bondade essencial e natureza benevolente."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' A menção explícita ao 'amor puro' como característica de Deus evidencia disposição moral profunda que fundamenta a compreensão da entrevistada sobre a graça."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Com o Paulo e a Búfios, eu aprendi uma palavra que eu gostei muito, que é a liderança sacrificial."
+    ordem_2a: lideranca_servil_sacrificial
+    justificativa_interna: "Definição oficial: 'Forma de liderança orientada ao serviço, em que o líder prioriza pessoas e propósitos acima do poder, aceitando sacrifícios pessoais para promover o bem comum'. A menção explícita à 'liderança sacrificial' como conceito aprendido e valorizado demonstra a adoção deste modelo de liderança."
+
+    ordem_2a: aspecto_formativo_8
+    justificativa_interna: "Definição oficial: 'Ação deliberada de planejar, moldar e transformar estruturas, processos ou estratégias.' O aprendizado de 'liderança sacrificial' representa ação formativa deliberada que molda a compreensão gerencial da entrevistada."
+
+    ordem_2a: aspecto_linguistico_9
+    justificativa_interna: "Definição oficial: 'Uso da linguagem, do discurso e da comunicação como portadores de significado e coerência.' A menção explícita de 'aprendi uma palavra' evidencia o uso da linguagem como portadora de significado para a prática gerencial."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Eu vejo muito o sacrifício de pessoas ao meu redor, na minha família, pra eu estar onde eu estou, sabe?"
+    ordem_2a: morrer_para_produzir_fruto_orientacao_sacrificial
+    justificativa_interna: "Definição oficial: 'Disposição deliberada de renunciar a interesses, ganhos ou reconhecimento pessoal para que ações gerem frutos espirituais, éticos ou coletivos duradouros'. O reconhecimento do 'sacrifício de pessoas' da família para que ela alcançasse sua posição atual evidencia a percepção de renúncia orientada a frutos futuros."
+
+    ordem_2a: gratidao_reconhecimento
+    justificativa_interna: "O reconhecimento explícito do sacrifício de outras pessoas 'pra eu estar onde eu estou' demonstra consciência e valorização do que foi feito por ela, caracterizando gratidão."
+
+    ordem_2a: hereditariedade_cultural
+    justificativa_interna: "Definição oficial: 'Narrativa da transmissão da fé, de pai pra filho, por meio da educação em família, sem exigência de conversão pessoal pontual consciente ou experiência individual de fé por meio de um evento.' O reconhecimento do 'sacrifício de pessoas na família' para sua posição atual evidencia transmissão familiar de valores sem referência a evento de conversão específico."
+
+    ordem_2a: gratidao_comum_gc
+    justificativa_interna: "Definição oficial: 'Resposta geral de reconhecimento por benefícios, circunstâncias favoráveis e bens da vida, percebidos como dádivas, sem referência direta à salvação.' O reconhecimento do sacrifício familiar como fundamento de sua posição atual expressa gratidão por circunstâncias favoráveis percebidas como dádivas."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa.' A menção ao 'sacrifício de pessoas ao meu redor, na minha família' evidencia avaliação de relações e papéis sociais como fundamento da trajetória profissional."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Então, hoje em dia mesmo, eu penso que essa fase com a minha filha é um momento de sacrifício, né?"
+    ordem_2a: morrer_para_produzir_fruto_orientacao_sacrificial
+    justificativa_interna: "Definição oficial: 'Disposição deliberada de renunciar a interesses, ganhos ou reconhecimento pessoal para que ações gerem frutos espirituais, éticos ou coletivos duradouros'. A identificação da fase com a filha como 'momento de sacrifício' evidencia a disposição de renunciar a interesses pessoais em favor do cuidado e desenvolvimento da filha."
+
+    ordem_2a: perda_investimento_de_tempo
+    justificativa_interna: "Definição oficial: 'Renúncia a tempo produtivo ou remunerado para investir no desenvolvimento humano, espiritual ou profissional de outras pessoas.' A descrição da 'fase com a filha' como 'momento de sacrifício' evidencia renúncia a tempo produtivo para investir no desenvolvimento de outra pessoa (a filha)."
+
+    ordem_2a: aspecto_biotico_5
+    justificativa_interna: "Definição oficial: 'Valorização da vida como critérios, incluindo saúde sobrevivência e cuidado físico de pessoas, animais ou criação.' A menção ao cuidado com a filha como 'momento de sacrifício' evidencia valorização da vida e cuidado físico como critério de decisão."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "quando a gente pensa só em ganhar, ganhar, ganhar, não é positivo pro coletivo, né?"
+    ordem_2a: reino_deus_em_primeiro_lugar_resultado_depois
+    justificativa_interna: "Definição oficial: 'Orientação de gestão em que os valores do Reino de Deus e a justiça precedem objetivos financeiros, entendendo resultados econômicos como consequência e não como finalidade última'. A crítica ao foco exclusivo em 'ganhar, ganhar, ganhar' e a preocupação com o 'coletivo' demonstram a subordinação de objetivos financeiros a valores mais amplos."
+
+    ordem_2a: maximizacao_do_beneficio
+    justificativa_interna: "Definição oficial: 'Orientação ética voltada a gerar o maior impacto positivo possível ao maior número de pessoas'. A preocupação com o que 'não é positivo pro coletivo' evidencia a orientação para maximizar benefícios coletivos acima de ganhos individuais."
+
+    ordem_2a: lucratividade_aceitavel_diminuicao_do_lucro
+    justificativa_interna: "Definição oficial: 'Aceitação gerencial ou pessoal consciente de redução dos resultados financeiros em razão de escolhas éticas, sociais ou alinhadas a valores.' A crítica ao foco exclusivo em 'ganhar, ganhar, ganhar' e a preocupação com o 'coletivo' evidenciam aceitação consciente de redução de resultados financeiros por valores sociais."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A menção explícita a 'ganhar' repetidamente evidencia administração consciente de recursos financeiros e lucro."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa.' A preocupação com o que 'não é positivo pro coletivo' evidencia avaliação de padrões de convivência e impacto social das decisões."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Então, eu sou uma pessoa que eu abri muito mão do meu financeiro pra que eu pudesse apoiar muitas pessoas, socialmente falando, com meus trabalhos."
+    ordem_2a: morrer_para_produzir_fruto_orientacao_sacrificial
+    justificativa_interna: "Definição oficial: 'Disposição deliberada de renunciar a interesses, ganhos ou reconhecimento pessoal para que ações gerem frutos espirituais, éticos ou coletivos duradouros'. A renúncia explícita ao 'financeiro' para 'apoiar muitas pessoas' caracteriza sacrifício orientado a frutos coletivos."
+
+    ordem_2a: maximizacao_do_beneficio
+    justificativa_interna: "Definição oficial: 'Orientação ética voltada a gerar o maior impacto positivo possível ao maior número de pessoas, frequentemente indo além do mínimo exigido'. A decisão de 'apoiar muitas pessoas' abrindo mão do financeiro evidencia a busca por maximizar benefícios a outros."
+
+    ordem_2a: altruismo
+    justificativa_interna: "Definição oficial: 'Ação orientada exclusivamente ao bem do outro, sem expectativa de retorno, vantagem ou reconhecimento pessoal'. A renúncia ao ganho financeiro para apoiar pessoas socialmente demonstra ação orientada ao bem do outro sem retorno imediato."
+
+    ordem_2a: perda_financeira
+    justificativa_interna: "Definição oficial: 'Aceitação consciente de prejuízo econômico para preservar a coerência pública da fé, a integridade moral e o testemunho cristão.' A expressão 'abri muito mão do meu financeiro' evidencia aceitação consciente de prejuízo econômico para 'apoiar muitas pessoas', preservando integridade moral."
+
+    ordem_2a: lucratividade_aceitavel_diminuicao_do_lucro
+    justificativa_interna: "Definição oficial: 'Aceitação gerencial ou pessoal consciente de redução dos resultados financeiros em razão de escolhas éticas, sociais ou alinhadas a valores.' A decisão de 'abrir mão do financeiro' para 'apoiar muitas pessoas' evidencia aceitação consciente de redução de resultados financeiros por escolhas sociais."
+
+    ordem_2a: micro_rsc
+    justificativa_interna: "Definição oficial: 'Conjunto de práticas éticas manifestas nas decisões cotidianas, atitudes pessoais e comportamentos individuais adotados pelo gestor como pessoa no exercício da gestão.' A decisão pessoal de 'abrir mão do financeiro' para 'apoiar muitas pessoas' evidencia prática ética manifesta em decisão individual no exercício da gestão."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A menção explícita a 'abrir mão do meu financeiro' evidencia administração consciente de recursos financeiros escassos."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' A decisão de abrir mão do financeiro para 'apoiar muitas pessoas' evidencia disposição moral profunda (misericórdia, sacrifício) como fundamento da decisão."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Por muito tempo, eu fiz muito trabalho pro Roma. Mentorias. Porque eu entendi que eu não conseguia cobrar de pessoas que já não tem nem recurso, o negócio não tá nem rodando, né?"
+    ordem_2a: cuidado_do_pobre_da_viuva_e_do_orfao
+    justificativa_interna: "Definição oficial: 'Compromisso pessoal, moral ativo, de proteger, sustentar e defender pessoas socialmente vulneráveis, motivado por mandamento religioso cristão'. A decisão de não cobrar de 'pessoas que já não tem nem recurso' evidencia o cuidado ativo com vulneráveis econômicos."
+
+    ordem_2a: misericordia
+    justificativa_interna: "Definição oficial: 'Ação compassiva diante da fragilidade, culpa ou necessidade do outro'. A compreensão de que não conseguia cobrar de pessoas sem recursos demonstra ação compassiva diante da fragilidade econômica alheia."
+
+    ordem_2a: maximizacao_do_beneficio
+    justificativa_interna: "Definição oficial: 'Orientação ética voltada a gerar o maior impacto positivo possível ao maior número de pessoas, frequentemente indo além do mínimo exigido'. A oferta de mentorias gratuitas para pessoas sem recursos caracteriza ação que vai além do contratado para gerar benefício."
+
+    ordem_2a: perda_financeira
+    justificativa_interna: "Definição oficial: 'Aceitação consciente de prejuízo econômico para preservar a coerência pública da fé, a integridade moral e o testemunho cristão.' A decisão de não cobrar por mentorias de 'pessoas que já não tem nem recurso' evidencia aceitação consciente de prejuízo econômico para preservar integridade moral."
+
+    ordem_2a: lucratividade_aceitavel_suspensao_da_lucratividade
+    justificativa_interna: "Definição oficial: 'Disposição gerencial ou pessoal de operar temporariamente sem lucro, mantendo equilíbrio financeiro, para atender princípios éticos, humanos ou relacionais.' A decisão de fazer 'trabalho pro bono' (mentorias sem cobrar) evidencia disposição de operar sem lucro para atender princípios humanos."
+
+    ordem_2a: micro_rsc
+    justificativa_interna: "Definição oficial: 'Conjunto de práticas éticas manifestas nas decisões cotidianas, atitudes pessoais e comportamentos individuais adotados pelo gestor como pessoa no exercício da gestão.' A prática de mentorias gratuitas evidencia prática ética manifesta em decisão individual no exercício da gestão."
+
+    ordem_2a: erradicacao_da_pobreza
+    justificativa_interna: "Definição oficial: 'Eliminação da pobreza extrema e à garantia de condições mínimas e estruturais de vida digna.' A menção a 'pessoas que já não tem nem recurso' e a decisão de não cobrar evidenciam ação voltada a pessoas em condição de vulnerabilidade econômica, alinhada ao ODS 1."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A decisão de 'não conseguia cobrar' evidencia administração consciente de recursos financeiros considerando a escassez do outro."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "qual que é o limite do sacrifício que a gente dá também, né?"
+    ordem_2a: morrer_para_produzir_fruto_orientacao_sacrificial
+    justificativa_interna: "Definição oficial: 'Disposição deliberada de renunciar a interesses, ganhos ou reconhecimento pessoal'. A questão sobre o 'limite do sacrifício' evidencia a reflexão consciente sobre até onde ir na renúncia pessoal em favor de outros."
+
+    ordem_2a: sabedoria_prudencia
+    justificativa_interna: "Definição oficial: 'Discernimento prático expresso em decisões cautelosas, responsáveis e contextualizadas, nas quais o gestor pondera valores, consequências e riscos antes de agir'. A pergunta sobre limites do sacrifício demonstra ponderação sobre consequências e sustentabilidade da ação sacrificial."
+
+    ordem_2a: perda_de_performance_x_favorecimento_funcionario
+    justificativa_interna: "Definição oficial: 'Priorização da dignidade, cuidado ou necessidade do colaborador mesmo quando isso implica redução de eficiência, desempenho ou retorno econômico imediato.' A questão sobre 'limite do sacrifício' evidencia tensão entre priorizar o cuidado com pessoas e manter desempenho econômico."
+
+    ordem_2a: aspecto_analitico_7
+    justificativa_interna: "Definição oficial: 'Uso consciente do julgamento racional, da distinção conceitual e da coerência lógica.' A formulação da pergunta 'qual que é o limite do sacrifício' evidencia uso de julgamento racional para estabelecer distinções conceituais sobre limites éticos."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "nós temos que estar bem com nós mesmos também, né? Então, a gente não pode se sacrificar a ponto de estar tão caco que a gente não consegue continuar nossa jornada profissional, né?"
+    ordem_2a: sabedoria_prudencia
+    justificativa_interna: "Definição oficial: 'Discernimento prático expresso em decisões cautelosas, responsáveis e contextualizadas, nas quais o gestor pondera valores, consequências e riscos antes de agir'. A ponderação sobre não se sacrificar 'a ponto de estar tão caco' evidencia discernimento sobre limites sustentáveis da ação sacrificial."
+
+    ordem_2a: exigencia_profissional_limitada
+    justificativa_interna: "Definição oficial: 'Definição consciente de metas, ritmos e cobranças profissionais que respeitam limites humanos, familiares e espirituais, evitando sobrecarga, adoecimento ou desgaste excessivo'. O reconhecimento de que não se pode sacrificar 'a ponto de estar tão caco' demonstra consciência sobre limites humanos que devem ser respeitados."
+
+    ordem_2a: aspecto_biotico_5
+    justificativa_interna: "Definição oficial: 'Valorização da vida como critérios, incluindo saúde sobrevivência e cuidado físico de pessoas, animais ou criação.' A menção a 'estar bem com nós mesmos' e não 'estar tão caco' evidencia valorização da saúde e sobrevivência como critério de decisão."
+
+    ordem_2a: aspecto_sensitivo_6
+    justificativa_interna: "Definição oficial: 'Consideração explícita das experiências emocionais humanas relevantes — como dor, medo, empatia ou sofrimento.' A expressão 'estar tão caco' evidencia consideração de experiências emocionais e sofrimento como critério de limite."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A menção a 'estar bem financeiramente' e 'continuar jornada profissional' evidencia administração consciente de recursos financeiros como condição de sustentabilidade."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "esse sacrifício da mentoria pro abono, ela tem que ser também no limite que eu consiga estar bem financeiramente pra conseguir continuar minha jornada profissional, né?"
+    ordem_2a: sabedoria_prudencia
+    justificativa_interna: "Definição oficial: 'Discernimento prático expresso em decisões cautelosas, responsáveis e contextualizadas, nas quais o gestor pondera valores, consequências e riscos antes de agir'. A definição de limites do sacrifício baseada na capacidade de 'estar bem financeiramente' e 'continuar a jornada' evidencia ponderação responsável de consequências."
+
+    ordem_2a: mordomia
+    justificativa_interna: "Definição oficial: 'Administração responsável de recursos, bens e resultados entendidos como pertencentes a Deus e confiados ao ser humano'. A preocupação em manter-se 'bem financeiramente' para poder continuar servindo demonstra administração responsável dos próprios recursos."
+
+    ordem_2a: lucratividade_aceitavel_suspensao_da_lucratividade
+    justificativa_interna: "Definição oficial: 'Disposição gerencial ou pessoal de operar temporariamente sem lucro, mantendo equilíbrio financeiro, para atender princípios éticos, humanos ou relacionais.' A menção ao 'limite' de 'estar bem financeiramente' para 'continuar jornada profissional' evidencia disposição de operar sem lucro mantendo equilíbrio financeiro."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A menção explícita a 'estar bem financeiramente' e 'continuar jornada profissional' evidencia administração consciente de recursos financeiros escassos."
+
+    ordem_2a: micro_rsc
+    justificativa_interna: "Definição oficial: 'Conjunto de práticas éticas manifestas nas decisões cotidianas, atitudes pessoais e comportamentos individuais adotados pelo gestor como pessoa no exercício da gestão.' A decisão sobre o 'limite' do 'sacrifício da mentoria pro bono' evidencia prática ética manifesta em decisão individual no exercício da gestão."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Eu sou uma pessoa um pouco rancorosa. E aí, por eu ser rancorosa, eu fico imaginando que todo mundo é rancoroso, sabe? Que as pessoas guardam mágoas."
+    ordem_2a: depravacao_total_pecado_queda_confissao_de_pecados
+    justificativa_interna: "Definição oficial: 'Reconhecimento da gravidade da condição espiritual e moral humana, erro moral ou espiritual acompanhado ou evidenciado de (ou para) mudança de postura'. A confissão explícita de ser 'uma pessoa um pouco rancorosa' evidencia reconhecimento de erro moral pessoal."
+
+    ordem_2a: perdao_perdoar
+    justificativa_interna: "Definição oficial: 'Decisão pessoal consciente de renunciar à vingança, à cobrança moral ou à retaliação'. A identificação do rancor como característica pessoal negativa sugere consciência da necessidade de trabalhar o perdão, ainda que seja uma dificuldade reconhecida."
+
+    ordem_2a: aspecto_sensitivo_6
+    justificativa_interna: "Definição oficial: 'Consideração explícita das experiências emocionais humanas relevantes — como dor, medo, empatia ou sofrimento.' A menção a 'rancorosa' e 'guardam mágoas' evidencia consideração explícita de experiências emocionais humanas."
+
+    ordem_2a: aspecto_analitico_7
+    justificativa_interna: "Definição oficial: 'Uso consciente do julgamento racional, da distinção conceitual e da coerência lógica.' A reflexão 'por eu ser rancorosa, eu fico imaginando que todo mundo é rancoroso' evidencia uso de julgamento racional para estabelecer distinção conceitual sobre projeção psicológica."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "E às vezes eu penso se Deus é igual a mim. Se Ele é rancoroso, sabe? De eu ter ficado tão longe dEle."
+    ordem_2a: medo_de_desagradar_a_deus
+    justificativa_interna: "Definição oficial: 'Receio subjetivo antecipatório específico de agir de modo contrário à vontade de Deus ou de comprometer a fidelidade e a honra devidas a Ele'. A preocupação de que Deus possa ser 'rancoroso' por ela ter 'ficado tão longe dEle' evidencia receio de ter desagradado a Deus."
+
+    ordem_2a: temor_do_senhor
+    justificativa_interna: "Definição oficial: 'Atitude de reverência profunda e respeito moral diante de Deus que estabelece limites éticos claros e orienta decisões práticas'. A preocupação com a possível reação de Deus ao seu distanciamento demonstra reverência e respeito moral diante dEle."
+
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana, sendo inteiramente imerecida.' A preocupação se 'Deus é rancoroso' por 'ter ficado tão longe dEle' evidencia compreensão de que a graça é imerecida, sem relação com adequação moral ('ficar longe')."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A menção explícita a 'Deus' e à reflexão sobre Sua natureza evidencia referência à fé como fonte de sentido."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "E por isso eu... É quase que uma coisa de respeito, assim, sabe? Com Deus, assim, de não ficar só pedindo, pedindo, pedindo. E tem que agradecer, né?"
+    ordem_2a: temor_do_senhor
+    justificativa_interna: "Definição oficial: 'Atitude de reverência profunda e respeito moral diante de Deus'. A menção explícita ao 'respeito' com Deus e a preocupação em não 'ficar só pedindo' evidenciam reverência e consciência moral na relação com o divino."
+
+    ordem_2a: oracao
+    justificativa_interna: "Definição oficial: 'Prática intencional de comunicação com Deus por meio de pedido, escuta, entrega ou adoração'. A referência a 'pedindo, pedindo, pedindo' e 'agradecer' evidencia a prática de oração tanto de súplica quanto de gratidão."
+
+    ordem_2a: gratidao_especial_ge
+    justificativa_interna: "Definição oficial: 'Reconhecimento consciente e pessoal de ter recebido a ação salvífica de Deus, acompanhado de resposta explícita de gratidão a Ele.' A menção a 'tem que agradecer' e 'respeito com Deus' evidencia reconhecimento consciente e resposta de gratidão a Deus."
+
+    ordem_2a: nao_circularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Compreensão de que a graça é intrinsecamente gratuita e não pode ser paga, retribuída ou compensada a Deus por nenhuma ação humana.' A preocupação de 'não ficar só pedindo' e a necessidade de 'agradecer' evidenciam compreensão de que a graça não pode ser compensada, apenas reconhecida com gratidão."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A menção explícita a 'Deus' e à postura de 'respeito' evidencia referência à fé como orientação transcendente."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "E por eu não ter agradecido, talvez, tão diretamente a Ele, todos as graças inalcançadas, eu senti que eu também não posso pedir mais, assim, sabe?"
+    ordem_2a: sentir_se_em_divida
+    justificativa_interna: "Definição oficial: 'Senso moral de responsabilidade em servir, amar e beneficiar o próximo decorrentes do favor concedido por Deus em Cristo'. A consciência de não ter agradecido 'todas as graças alcançadas' e o sentimento de que 'não posso pedir mais' evidenciam senso de dívida moral diante das graças recebidas."
+
+    ordem_2a: oracao
+    justificativa_interna: "Definição oficial: 'Prática intencional de comunicação com Deus por meio de pedido, escuta, entrega ou adoração'. A menção a 'agradecer' e 'pedir' evidencia a prática de oração em suas diferentes dimensões."
+
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana, sendo inteiramente imerecida.' A percepção de 'não poder pedir mais' por 'não ter agradecido' evidencia compreensão de imerecimento da graça, sem relação com adequação moral (agradecer adequadamente)."
+
+    ordem_2a: gratidao_especial_ge
+    justificativa_interna: "Definição oficial: 'Reconhecimento consciente e pessoal de ter recebido a ação salvífica de Deus, acompanhado de resposta explícita de gratidão a Ele.' A menção a 'não ter agradecido' e 'graças alcançadas' evidencia reconhecimento consciente de ter recebido ação divina."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "E ainda assim Ele consegue me dar mais graças, assim, profissionais e pessoais."
+    ordem_2a: superabundancia
+    justificativa_interna: "Definição oficial: 'Desproporção característica da superabundância'. A expressão 'ainda assim Ele consegue me dar mais graças' evidencia a percepção de uma provisão divina que excede o merecimento ou expectativa, caracterizando superabundância."
+
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho'. A atribuição a Deus da concessão de 'mais graças' profissionais e pessoais demonstra crença em Sua provisão ativa e contínua."
+
+    ordem_2a: deus_e_bom
+    justificativa_interna: "Definição oficial: 'Convicção de que a bondade pertence essencialmente a Deus e que Suas ações são boas em si mesmas, mesmo quando não compreendidas'. A percepção de que Deus continua dando graças 'ainda assim' (apesar da falta de agradecimento) evidencia a crença em Sua bondade essencial."
+
+    ordem_2a: superabundancia
+    justificativa_interna: "Definição oficial: 'Percepção da graça como benesses em quantidade muito grande, imensurável, que ultrapassa qualquer critério humano de cálculo, mérito ou expectativa.' A expressão 'ainda assim' e 'consegue me dar mais graças' evidencia percepção de quantidade que ultrapassa expectativa e mérito."
+
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana, sendo inteiramente imerecida.' A expressão 'ainda assim Ele consegue me dar mais graças' (apesar de não ter agradecido) evidencia compreensão de graça imerecida, sem relação com mérito."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana.' A atribuição exclusiva a 'Ele consegue me dar' evidencia reconhecimento focal da graça como procedente exclusivamente de Deus."
+
+    ordem_2a: graca_comum_gc
+    justificativa_interna: "Definição oficial: 'Concessão divina de bens naturais, sociais e estruturais a toda a humanidade, percebida como ordem, sustento e prosperidade cotidiana, sem referência direta à salvação.' A menção a 'graças profissionais e pessoais' evidencia percepção de bens cotidianos (profissionais) como concessão divina, sem referência direta à salvação."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "o não merecimento, acho que hoje faz parte da minha jornada, assim. É uma coisa que eu tenho que trabalhar."
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Compreensão de que a graça é concedida de forma totalmente imerecida, sem relação com desempenho moral'. A afirmação explícita do 'não merecimento' como parte da jornada evidencia o reconhecimento da incongruência entre a condição pessoal e as graças recebidas."
+
+    ordem_2a: depravacao_total_pecado_queda_confissao_de_pecados
+    justificativa_interna: "Definição oficial: 'Reconhecimento da gravidade da condição espiritual e moral humana'. A consciência do 'não merecimento' e a necessidade de 'trabalhar' isso evidenciam reconhecimento da própria condição moral limitada."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Eu não acho que eu não seja merecedora do que eu alcancei profissionalmente, sabe?"
+    ordem_2a: fe_sem_obras_e_morta
+    justificativa_interna: "Definição oficial: 'Convicção de que a fé autêntica se manifesta necessariamente por ações práticas e observáveis'. O reconhecimento de que é merecedora do que alcançou profissionalmente sugere a valorização do esforço e das ações práticas como legítimas."
+
+    ordem_2a: excelencia_crista_fazer_para_cristo
+    justificativa_interna: "Definição oficial: 'Busca intencional de alta qualidade e zelo no trabalho'. O reconhecimento do próprio merecimento profissional sugere consciência do esforço e qualidade investidos no trabalho."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Nas grandes conquistas da vida, que é tipo, ai, abrir a consultoria, é... Conseguir um título de engenheira, fazer um mestrado, eu não devo... É engraçado, mas eu acho que assim, eu não devo em grandes partes a Deus, assim, somente, sabe?"
+    ordem_2a: fe_sem_obras_e_morta
+    justificativa_interna: "Definição oficial: 'Convicção de que a fé autêntica se manifesta necessariamente por ações práticas e observáveis'. A afirmação de que não deve 'em grandes partes a Deus, assim, somente' evidencia o reconhecimento de que as ações práticas e o esforço pessoal são parte legítima das conquistas."
+
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho'. Mesmo afirmando que não deve 'somente' a Deus, ela reconhece que deve 'em partes', evidenciando crença na providência divina operando junto com o esforço humano."
+
+    ordem_2a: gratidao_comum_negativa_gcn
+    justificativa_interna: "Definição oficial: 'Postura em que conquistas e benefícios são atribuídos exclusivamente ao esforço pessoal, sem reconhecimento de dependência ou gratidão a Deus.' A afirmação 'eu não devo em grandes partes a Deus' sobre conquistas profissionais evidencia atribuição ao esforço pessoal sem reconhecimento pleno de dependência de Deus."
+
+    ordem_2a: aspecto_formativo_8
+    justificativa_interna: "Definição oficial: 'Ação deliberada de planejar, moldar e transformar estruturas, processos ou estratégias.' A menção a 'abrir a consultoria' evidencia ação deliberada de planejar e transformar estruturas profissionais."
+
+    ordem_2a: educacao_de_qualidade
+    justificativa_interna: "Definição oficial: 'Acesso inclusivo, equitativo e contínuo à educação de qualidade e a oportunidades permanentes de aprendizagem.' A menção a 'conseguir um título de engenheira, fazer um mestrado' evidencia acesso a educação de qualidade e oportunidades de aprendizagem."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Indiretamente sim, porque teve a minha família e tudo mais, né? Mas também teve um esforço meu e tudo mais."
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho, inclusive eventos aparentemente ordinários'. O reconhecimento de que Deus agiu 'indiretamente' através da família evidencia a crença na providência divina operando por meios secundários."
+
+    ordem_2a: fe_sem_obras_e_morta
+    justificativa_interna: "Definição oficial: 'Convicção de que a fé autêntica se manifesta necessariamente por ações práticas e observáveis'. A afirmação de que 'também teve um esforço meu' evidencia o reconhecimento da legitimidade das obras e ações práticas."
+
+    ordem_2a: hereditariedade_cultural
+    justificativa_interna: "Definição oficial: 'Narrativa da transmissão da fé, de pai pra filho, por meio da educação em família, sem exigência de conversão pessoal pontual consciente ou experiência individual de fé por meio de um evento.' A menção a 'teve a minha família' como fator indireto evidencia transmissão familiar de valores e suporte."
+
+    ordem_2a: gratidao_comum_gc
+    justificativa_interna: "Definição oficial: 'Resposta geral de reconhecimento por benefícios, circunstâncias favoráveis e bens da vida, percebidos como dádivas, sem referência direta à salvação.' O reconhecimento indireto da família como fator de conquista evidencia gratidão por circunstâncias favoráveis percebidas como dádivas."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa.' A menção à 'família' como fator de conquista evidencia avaliação de relações sociais como fundamento da trajetória."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Mas eu acho que nos pequenos detalhes do dia a dia, que eu acho que assim, putz, acho que Deus tava lá, sabe?"
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho, inclusive eventos aparentemente ordinários'. A percepção de que 'Deus tava lá' nos 'pequenos detalhes do dia a dia' evidencia a crença na providência divina operando em eventos cotidianos e aparentemente ordinários."
+
+    ordem_2a: coram_deo_vida_diante_de_deus
+    justificativa_interna: "Definição oficial: 'Consciência permanente de viver, agir e decidir sob o olhar de Deus, sem separação entre vida pública, privada, espiritual e profissional'. A percepção da presença de Deus nos detalhes cotidianos evidencia consciência de viver diante dEle."
+
+    ordem_2a: graca_comum_gc
+    justificativa_interna: "Definição oficial: 'Concessão divina de bens naturais, sociais e estruturais a toda a humanidade, percebida como ordem, sustento e prosperidade cotidiana, sem referência direta à salvação.' A percepção de 'Deus tava lá' nos 'pequenos detalhes do dia a dia' evidencia reconhecimento de concessão divina em sustento e ordem cotidiana, sem referência à salvação."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana.' A atribuição exclusiva a 'Deus tava lá' nos detalhes cotidianos evidencia reconhecimento focal da graça como procedente exclusivamente de Deus."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A menção explícita a 'Deus tava lá' evidencia referência à fé como fonte de sentido para eventos cotidianos."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Porque eu acho que esse fato de, por exemplo, você terminar uma faculdade, às vezes eu penso assim, ah, ter feito uma prova, sabe? Eu estudei pra prova, passei na prova, isso terminou."
+    ordem_2a: fe_sem_obras_e_morta
+    justificativa_interna: "Definição oficial: 'Convicção de que a fé autêntica se manifesta necessariamente por ações práticas e observáveis'. A narrativa de 'estudei pra prova, passei na prova' evidencia o reconhecimento de que ações práticas e esforço são parte legítima e necessária dos resultados."
+
+    ordem_2a: gratidao_comum_negativa_gcn
+    justificativa_interna: "Definição oficial: 'Postura em que conquistas e benefícios são atribuídos exclusivamente ao esforço pessoal, sem reconhecimento de dependência ou gratidão a Deus.' A atribuição de 'terminar faculdade' e 'passar na prova' ao fato de 'eu estudei' evidencia atribuição exclusiva ao esforço pessoal."
+
+    ordem_2a: educacao_de_qualidade
+    justificativa_interna: "Definição oficial: 'Acesso inclusivo, equitativo e contínuo à educação de qualidade e a oportunidades permanentes de aprendizagem.' A menção a 'terminar uma faculdade' e 'fazer uma prova' evidencia acesso a educação de qualidade."
+
+    ordem_2a: aspecto_analitico_7
+    justificativa_interna: "Definição oficial: 'Uso consciente do julgamento racional, da distinção conceitual e da coerência lógica.' A reflexão sobre a diferença entre 'terminar faculdade' (esforço próprio) e outros eventos evidencia uso de julgamento racional para estabelecer distinções conceituais."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Mas existem coisas que às vezes as pessoas falam que é sorte, mas eu não acho que é sorte, aí é Deus, assim."
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho, inclusive eventos aparentemente ordinários'. A rejeição da explicação de 'sorte' e a atribuição a 'Deus' evidenciam a crença na providência divina governando eventos que outros atribuiriam ao acaso."
+
+    ordem_2a: soberania_de_deus
+    justificativa_interna: "Definição oficial: 'Crença de que Deus possui controle último sobre todas as coisas, inclusive sobre os resultados finais, pessoais ou profissionais, independentemente da competência, esforço ou planejamento humano'. A atribuição a Deus de eventos que outros chamam de 'sorte' evidencia a crença em Seu controle soberano sobre circunstâncias."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Sim, o não merecimento, acho que hoje faz parte da minha jornada, assim. É uma coisa que eu tenho que trabalhar."
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana, sendo inteiramente imerecida.' A afirmação explícita do 'não merecimento' como parte da jornada evidencia compreensão de que a graça é inteiramente imerecida."
+END ITEM
+
+ITEM @entrevista41_1
+    ordem_1a: "Não, eu acho que assim... Eu acho que tem alguns aspectos sim e outros aspectos não, sabe?"
+    ordem_2a: aspecto_analitico_7
+    justificativa_interna: "Definição oficial: 'Uso consciente do julgamento racional, da distinção conceitual e da coerência lógica.' A distinção entre 'alguns aspectos sim e outros aspectos não' evidencia uso de julgamento racional para estabelecer distinções conceituais."
+END ITEM

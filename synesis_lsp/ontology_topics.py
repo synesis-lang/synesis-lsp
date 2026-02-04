@@ -12,10 +12,35 @@ Custom Request:
 from __future__ import annotations
 
 import logging
+import re
 from pathlib import Path
 from typing import Optional
 
 logger = logging.getLogger(__name__)
+
+_TOPICS_CACHE: dict[tuple[str, float], dict] = {}
+_TOPICS_CACHE_MAX = 4
+
+
+def _topics_cache_key(cached_result, workspace_root: Optional[Path]) -> Optional[tuple[str, int, float]]:
+    if not cached_result:
+        return None
+    root = workspace_root or getattr(cached_result, "workspace_root", None)
+    root_key = str(root) if root else ""
+    timestamp = getattr(cached_result, "timestamp", None)
+    if timestamp is None:
+        return None
+    return (root_key, id(cached_result), float(timestamp))
+
+
+def _topics_cache_set(key: Optional[tuple[str, float]], value: dict) -> None:
+    if not key:
+        return
+    _TOPICS_CACHE[key] = value
+    if len(_TOPICS_CACHE) > _TOPICS_CACHE_MAX:
+        oldest_key = next(iter(_TOPICS_CACHE))
+        if oldest_key != key:
+            _TOPICS_CACHE.pop(oldest_key, None)
 
 
 def get_ontology_topics(cached_result, workspace_root: Optional[Path] = None) -> dict:
@@ -51,12 +76,20 @@ def get_ontology_topics(cached_result, workspace_root: Optional[Path] = None) ->
     if not lp:
         return {"success": False, "error": "LinkedProject não disponível"}
 
+    effective_root = workspace_root or getattr(cached_result, "workspace_root", None)
+    cache_key = _topics_cache_key(cached_result, effective_root)
+    cached = _TOPICS_CACHE.get(cache_key) if cache_key else None
+    if cached is not None:
+        return cached
+
     # Extrair informações da ontologia
     ontology_index = getattr(lp, "ontology_index", {}) or {}
 
     if not ontology_index:
         logger.debug("Ontology index vazio, retornando lista vazia")
-        return {"success": True, "topics": []}
+        result = {"success": True, "topics": []}
+        _topics_cache_set(cache_key, result)
+        return result
 
     # Agrupar conceitos por arquivo .syno
     files_to_parse: dict[Path, list[tuple[str, int]]] = {}
@@ -78,18 +111,22 @@ def get_ontology_topics(cached_result, workspace_root: Optional[Path] = None) ->
 
     if not files_to_parse:
         logger.debug("Nenhum arquivo .syno encontrado")
-        return {"success": True, "topics": []}
+        result = {"success": True, "topics": []}
+        _topics_cache_set(cache_key, result)
+        return result
 
     # Parsear cada arquivo .syno
     all_topics = []
     for syno_path, concepts in files_to_parse.items():
         try:
-            topics = _parse_syno_file(syno_path, workspace_root, concepts)
+            topics = _parse_syno_file(syno_path, effective_root, concepts)
             all_topics.extend(topics)
         except Exception as e:
             logger.warning(f"Erro ao parsear {syno_path}: {e}", exc_info=True)
 
-    return {"success": True, "topics": all_topics}
+    result = {"success": True, "topics": all_topics}
+    _topics_cache_set(cache_key, result)
+    return result
 
 
 def _parse_syno_file(
@@ -135,6 +172,9 @@ def _parse_syno_file(
     topics = []
     stack = []  # (level, topic_dict)
 
+    in_ontology = False
+    chain_fields = {"parent", "parents", "is_a", "isa", "chain", "chains"}
+
     for line_number, line in enumerate(lines, start=1):
         # Ignorar linhas vazias
         if not line.strip():
@@ -152,7 +192,25 @@ def _parse_syno_file(
         if "\t" in line[:indent]:
             level = line[:indent].count("\t")
 
-        name = stripped.strip()
+        header_match = re.match(r"^ONTOLOGY\s+(\S+)", stripped, flags=re.IGNORECASE)
+        if header_match:
+            in_ontology = True
+            name = header_match.group(1).strip()
+        elif stripped.upper().startswith("END ONTOLOGY"):
+            in_ontology = False
+            continue
+        else:
+            if not in_ontology:
+                continue
+            field_match = re.match(r"^([\w._-]+)\s*:\s*(.+)$", stripped)
+            if not field_match:
+                continue
+            field_name = field_match.group(1).lower()
+            if field_name not in chain_fields:
+                continue
+            name = field_match.group(2).strip()
+            if not name:
+                continue
 
         # Criar tópico
         topic = {
@@ -180,5 +238,3 @@ def _parse_syno_file(
         stack.append((level, topic))
 
     return topics
-
-

@@ -8,10 +8,52 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Planned
+- Centralizar lista de comandos/keywords no compilador/gramatica e expor ao LSP, evitando duplicacao em `template_diagnostics.py`.
+
+## [0.14.3] - 2026-02-03
+
+### Changed
+- Versao agora derivada do `pyproject.toml` via metadata do pacote, evitando duplicacao.
+
+## [0.14.2] - 2026-02-03
+
+### Fixed
+- Code explorer now indexes `CHAIN` fields and `ChainNode` occurrences correctly (codes + positions).
+- Ontology annotations now detect `CHAIN` occurrences and merge chain usage with code usage.
+- Relation graphs now filter by current SOURCE bibref, reducing graph size to relevant chains.
+- Hover now recognizes compound bibrefs with hyphens and dots (e.g. `@martinez-gordon2022`).
+
+### Planned
 
 - Code lens (reference counts)
 - Call hierarchy support
 - Folding ranges
+
+## [0.14.1] - 2026-02-03
+
+### Fixed
+
+- Relations now resolve locations via `relation_index` when available (compiler provenance).
+- Explorer requests fall back to `item.source.location` when `item.location` is missing.
+- Ontology annotations file filtering now normalizes `file://` URIs.
+
+## [0.14.0] - 2026-02-03
+
+### Added
+
+- Command `synesis/debug/projectInfo` to expose project stats and timing metadata.
+
+### Changed
+
+- `synesis/loadProject` now supports `synpPath` and reuses cached data when the workspace fingerprint is unchanged.
+- `synesis/getCodes` now returns ontology codes even when `usageCount` is 0.
+- Relation and ontology requests reuse cached results to reduce repeated computation.
+
+### Fixed
+
+- Graph filtering by bibref now includes chain-based relations (`ChainNode`).
+- Hover/definition/references/rename normalize ontology codes and bibrefs consistently.
+- `synesis/getAbstract` now resolves abstracts from the bibliography referenced by the project.
 
 ## [0.13.0] - 2026-02-02
 

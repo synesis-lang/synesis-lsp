@@ -1,0 +1,20 @@
+PROJECT gestao_fe
+
+TEMPLATE "Davi.synt"
+INCLUDE BIBLIOGRAPHY "Davi.bib"
+INCLUDE ANNOTATIONS ".\interviews\*.syn"
+INCLUDE ONTOLOGY "Davi.syno"
+
+METADATA
+    version: 1.0
+    author: davi Brescia
+    dataset: Gestão baseada em fé
+END METADATA
+
+DESCRIPTION
+Análise bibliométrica sistemática de fatores de aceitação social de tecnologias
+de transição energética, utilizando teoria fundamentada (Grounded Theory),
+teoria modal de Dooyeweerd e framework tridimensional de Wüstenhagen.
+
+END DESCRIPTION
+END PROJECT

@@ -19,7 +19,7 @@ from typing import Optional
 
 from lsprotocol.types import InlayHint, InlayHintKind, Position
 
-BIBREF_PATTERN = re.compile(r"@(\w+)")
+BIBREF_PATTERN = re.compile(r"@([\w._-]+)")
 
 
 def compute_inlay_hints(
@@ -50,8 +50,8 @@ def compute_inlay_hints(
 
         for match in BIBREF_PATTERN.finditer(line):
             bibref = match.group(1)
-            if bibref in bib:
-                entry = bib[bibref]
+            entry = bib.get(bibref) or bib.get(bibref.lower())
+            if entry:
                 author = entry.get("author", "?")
                 year = entry.get("year", "?")
                 short = author.split(",")[0].strip() if author else "?"

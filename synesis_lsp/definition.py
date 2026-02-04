@@ -60,7 +60,7 @@ def compute_definition(
 
     # @bibref → SourceNode.location
     if word.startswith("@"):
-        bibref = word[1:]
+        bibref = word[1:].strip().lower()
         sources = getattr(lp, "sources", {}) or {}
         src = sources.get(bibref)
         if src and hasattr(src, "location"):
@@ -68,12 +68,17 @@ def compute_definition(
 
     # código → OntologyNode.location
     ontology_index = getattr(lp, "ontology_index", {}) or {}
-    if word in ontology_index:
-        onto = ontology_index[word]
+    normalized = _normalize_code(word)
+    onto = ontology_index.get(word) or ontology_index.get(normalized)
+    if onto:
         if hasattr(onto, "location"):
             return _location_to_lsp(onto.location, workspace_root)
 
     return None
+
+
+def _normalize_code(value: str) -> str:
+    return " ".join(value.strip().split()).lower()
 
 
 def _location_to_lsp(location, workspace_root: Path) -> Optional[Location]:

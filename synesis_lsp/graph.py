@@ -45,34 +45,25 @@ def get_relation_graph(cached_result, bibref: Optional[str] = None) -> dict:
     if not lp:
         return {"success": False, "error": "Projeto não carregado"}
 
+    template = getattr(getattr(cached_result, "result", None), "template", None)
+
     triples = getattr(lp, "all_triples", None)
-    if not triples:
+    if not triples and not bibref:
         logger.debug("get_relation_graph: No triples found")
         return {"success": True, "mermaidCode": "graph LR\n    empty[Sem relações]"}
 
     logger.debug(f"get_relation_graph: Found {len(triples)} total triples")
 
-    # Se bibref fornecido, filtrar relações
+    # Se bibref fornecido, filtrar relações para o SOURCE atual
     if bibref:
         logger.debug(f"get_relation_graph: Filtering by bibref='{bibref}'")
-
-        relevant_codes = _codes_for_bibref(lp, bibref)
-
-        if not relevant_codes:
-            logger.debug(f"get_relation_graph: No codes found for bibref '{bibref}'")
+        triples = _triples_for_bibref(lp, template, bibref)
+        if not triples:
+            logger.debug(f"get_relation_graph: No triples found for bibref '{bibref}'")
             return {
                 "success": True,
                 "mermaidCode": f"graph LR\n    empty[Sem relações para {bibref}]",
             }
-
-        logger.debug(f"get_relation_graph: Found {len(relevant_codes)} codes for bibref: {relevant_codes}")
-
-        triples = [
-            (s, r, o)
-            for s, r, o in triples
-            if _normalize_code(s) in relevant_codes or _normalize_code(o) in relevant_codes
-        ]
-
         logger.debug(f"get_relation_graph: Filtered to {len(triples)} triples")
 
     if not triples:
@@ -96,12 +87,87 @@ def get_relation_graph(cached_result, bibref: Optional[str] = None) -> dict:
     return {"success": True, "mermaidCode": mermaid_code}
 
 
+def _normalize_code(value: str) -> str:
+    return value.strip().lower()
+
+
+def _has_chain_relations(template) -> bool:
+    if not template:
+        return False
+    field_specs = getattr(template, "field_specs", None) or {}
+    chain_spec = field_specs.get("chain")
+    if chain_spec and getattr(chain_spec, "relations", None):
+        return True
+    return False
+
+
 def _normalize_bibref(value: str) -> str:
     return value.lstrip("@").strip().lower()
 
 
-def _normalize_code(value: str) -> str:
-    return value.strip().lower()
+def _find_source_by_bibref(lp, bibref: str):
+    normalized = _normalize_bibref(bibref)
+    sources = getattr(lp, "sources", {}) or {}
+    if isinstance(sources, dict):
+        source = sources.get(normalized)
+        if source:
+            return source
+        # Fallback: scan dict values
+        for src in sources.values():
+            if _normalize_bibref(getattr(src, "bibref", "")) == normalized:
+                return src
+        return None
+    if isinstance(sources, (list, tuple, set)):
+        for src in sources:
+            if _normalize_bibref(getattr(src, "bibref", "")) == normalized:
+                return src
+    return None
+
+
+def _chain_has_relations(chain, template) -> bool:
+    relations = getattr(chain, "relations", None)
+    if isinstance(relations, (list, tuple)) and relations:
+        return True
+    return _has_chain_relations(template)
+
+
+def _triples_for_bibref(lp, template, bibref: str) -> list[tuple[str, str, str]]:
+    source = _find_source_by_bibref(lp, bibref)
+    if not source:
+        return []
+    triples: list[tuple[str, str, str]] = []
+    items = getattr(source, "items", None) or []
+    for item in items:
+        for chain in getattr(item, "chains", None) or []:
+            if hasattr(chain, "to_triples"):
+                triples.extend(chain.to_triples(has_relations=_chain_has_relations(chain, template)))
+            else:
+                triple = _extract_chain_triple(chain)
+                if triple:
+                    triples.append(triple)
+    return triples
+
+
+def _extract_chain_triple(chain) -> Optional[tuple[str, str, str]]:
+    if isinstance(chain, (list, tuple)) and len(chain) >= 3:
+        subj, rel, obj = chain[0], chain[1], chain[2]
+        if isinstance(subj, str) and isinstance(rel, str) and isinstance(obj, str):
+            return subj, rel, obj
+
+    if isinstance(chain, dict):
+        for keys in (("from", "relation", "to"), ("subject", "relation", "object")):
+            if all(k in chain for k in keys):
+                subj, rel, obj = chain[keys[0]], chain[keys[1]], chain[keys[2]]
+                if isinstance(subj, str) and isinstance(rel, str) and isinstance(obj, str):
+                    return subj, rel, obj
+
+    nodes = getattr(chain, "nodes", None)
+    if isinstance(nodes, (list, tuple)) and len(nodes) >= 3:
+        subj, rel, obj = nodes[0], nodes[1], nodes[2]
+        if isinstance(subj, str) and isinstance(rel, str) and isinstance(obj, str):
+            return subj, rel, obj
+
+    return None
 
 
 def _codes_for_bibref(lp, bibref: str) -> set[str]:
@@ -135,6 +201,9 @@ def _codes_for_bibref(lp, bibref: str) -> set[str]:
         return relevant
 
     # Stage 2: Fallback to sources iteration (use _iter_codes_from_item_all)
+    ontology_codes = {
+        _normalize_code(code) for code in getattr(lp, "ontology_index", {}) or {}
+    }
     sources = getattr(lp, "sources", {}) or {}
     for src in _iter_sources(sources):
         src_bibref = getattr(src, "bibref", None)
@@ -147,7 +216,7 @@ def _codes_for_bibref(lp, bibref: str) -> set[str]:
 
         # Extract ALL codes from items in this source (no ontology filter)
         for item in getattr(src, "items", []) or []:
-            for code in _iter_codes_from_item_all(item):
+            for code in _iter_codes_from_item_all(item, ontology_codes=ontology_codes):
                 relevant.add(_normalize_code(code))
 
     if relevant:
@@ -246,7 +315,10 @@ def _iter_codes_from_item(item, ontology_codes: set[str]) -> Iterable[str]:
                     yield code
 
 
-def _iter_codes_from_item_all(item) -> Iterable[str]:
+def _iter_codes_from_item_all(
+    item,
+    ontology_codes: Optional[set[str]] = None
+) -> Iterable[str]:
     """
     Extract ALL codes from item without ontology filtering.
 
@@ -263,6 +335,19 @@ def _iter_codes_from_item_all(item) -> Iterable[str]:
     # Extract from chains (subject and object)
     chains = getattr(item, "chains", None) or []
     for chain in chains:
+        # ChainNode: use nodes list when available
+        nodes = getattr(chain, "nodes", None)
+        if isinstance(nodes, (list, tuple)):
+            for node in nodes:
+                if not isinstance(node, str) or not node.strip():
+                    continue
+                if ontology_codes:
+                    if _normalize_code(node) in ontology_codes:
+                        yield node
+                else:
+                    yield node
+            continue
+
         triple = _extract_chain_triple(chain)
         if not triple:
             continue

@@ -1,0 +1,1413 @@
+SOURCE @entrevista16
+	código: N/A
+END SOURCE
+
+ITEM @entrevista16
+    ordem_1a: "Deus me ama e eu sei disso porque a Bíblia fala."
+    ordem_2a: consultar_a_palavra_biblia
+    justificativa_interna: "Uso intencional das Escrituras como fonte normativa de orientação, critério moral e discernimento'. O entrevistado fundamenta sua certeza do amor de Deus explicitamente na Bíblia ('porque a Bíblia fala'), evidenciando uso das Escrituras como fonte de verdade."
+
+    ordem_2a: verdade_certo
+    justificativa_interna: "Reconhecimento de que a verdade moral é objetiva, não relativa, e fundamentada na revelação de Deus'. A afirmação 'eu sei disso porque a Bíblia fala' demonstra convicção de verdade objetiva baseada na revelação bíblica."
+
+    ordem_2a: deus_e_bom
+    justificativa_interna: "Convicção de que a bondade pertence essencialmente a Deus e que Suas ações são boas em si mesmas'. A declaração 'Deus me ama' expressa reconhecimento da bondade essencial de Deus manifestada em amor."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Então, eu, sabendo quem eu sou, tendo como espelho o nosso Senhor Jesus, isso me traz um constrangimento grande. Como que ele pode me amar?"
+    ordem_2a: constrangimento
+    justificativa_interna: "Sentimento de embaraço associado à consciência da ação de Deus na própria vida'. O termo literal 'constrangimento grande' diante do amor de Deus evidencia exatamente este sentimento de embaraço pela graça recebida."
+
+    ordem_2a: depravacao_total_pecado_queda_confissao_de_pecados
+    justificativa_interna: "Reconhecimento da gravidade da condição espiritual e moral humana'. A expressão 'sabendo quem eu sou' seguida da pergunta 'Como que ele pode me amar?' evidencia consciência da própria condição moral indigna."
+
+    ordem_2a: jesus_no_centro
+    justificativa_interna: "Centralidade explícita da pessoa e dos ensinamentos de Jesus Cristo como referência máxima'. O uso de 'tendo como espelho o nosso Senhor Jesus' demonstra Jesus como referência central para autoavaliação."
+
+    ordem_2a: imitacao_de_jesus
+    justificativa_interna: "Orientação prática da vida e das decisões pelo modelo de caráter, atitudes e ações de Jesus'. O termo 'tendo como espelho o nosso Senhor Jesus' indica uso de Jesus como modelo normativo de vida."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "E ao mesmo tempo um sentimento de valor. Ele me dá valor, ele me deu valor."
+    ordem_2a: imago_dei
+    justificativa_interna: "Reconhecimento da dignidade humana por ser imagem e semelhança de Deus'. A afirmação 'Ele me dá valor' expressa reconhecimento de dignidade conferida por Deus, núcleo da imago dei."
+
+    ordem_2a: identidade_em_cristo
+    justificativa_interna: "Compreensão de que o valor, o sentido e a identidade pessoal são definidos primariamente pela união com Cristo'. A declaração 'Ele me dá valor' evidencia que o valor pessoal é definido por Cristo, não por desempenho."
+
+    ordem_2a: gratidao_especial_ge
+    justificativa_interna: "Definição oficial: 'Reconhecimento consciente e pessoal de ter recebido a ação salvífica de Deus'. A expressão 'Ele me dá valor, ele me deu valor' evidencia reconhecimento pessoal da ação divina, característica de gratidao_especial_ge."
+
+    ordem_2a: graca_especial_ge
+    justificativa_interna: "Definição oficial: 'Ação soberana e específica de Deus que opera salvação, conversão e restauração espiritual em pessoas, reconhecida explicitamente como intervenção redentora divina'. O 'sentimento de valor' dado por Deus ('Ele me dá valor') evidencia graca_especial_ge."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "seria uma segurança, uma segurança de que algumas coisas vão sair do meu controle, mas elas não saem do controle de Deus."
+    ordem_2a: soberania_de_deus
+    justificativa_interna: "Crença de que Deus possui controle último sobre todas as coisas'. A afirmação literal 'elas não saem do controle de Deus' evidencia convicção no controle divino último sobre circunstâncias."
+
+    ordem_2a: providencia_divina
+    justificativa_interna: "Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho'. O reconhecimento de que coisas 'não saem do controle de Deus' expressa crença na providência governando eventos."
+
+    ordem_2a: dependencia_de_deus
+    justificativa_interna: "Reconhecimento explícito da limitação humana e da incapacidade de alcançar resultados desejáveis sem a ação, ajuda ou sustento de Deus'. A admissão 'algumas coisas vão sair do meu controle' evidencia reconhecimento de limitação humana."
+
+    ordem_2a: nao_confiar_no_homem_em_si_mesmo
+    justificativa_interna: "Reconhecimento da limitação humana e recusa de fundamentar decisões últimas apenas na própria capacidade'. A declaração 'algumas coisas vão sair do meu controle' expressa recusa de confiar apenas em si mesmo."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Obviamente que isso molda as minhas ações, molda a minha percepção de mundo."
+    ordem_2a: cosmovisao_crista
+    justificativa_interna: "Interpretação abrangente da realidade — econômica, social, moral e existencial — a partir das categorias, valores e narrativas da fé cristã'. A expressão 'molda a minha percepção de mundo' evidencia interpretação da realidade a partir da fé."
+
+    ordem_2a: coram_deo_vida_diante_de_deus
+    justificativa_interna: "Consciência permanente de viver, agir e decidir sob o olhar de Deus, sem separação entre vida pública, privada, espiritual e profissional'. A afirmação 'isso molda as minhas ações' demonstra integração da fé em todas as áreas da vida."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "A fé, ela me ajudou. A fé reformada me ajudou a entender o valor do trabalho."
+    ordem_2a: trabalho_como_adoracao_avoda_empresa_como_ministerio
+    justificativa_interna: "Compreensão do trabalho e da empresa como gesto de adoração, espaço legítimo de culto, serviço e obediência a Deus'. A expressão 'a fé reformada me ajudou a entender o valor do trabalho' evidencia compreensão teológica do trabalho."
+
+    ordem_2a: mandato_cultural
+    justificativa_interna: "Responsabilidade humana de desenvolver trabalho, cultura, economia e sociedade de forma ordenada e responsável, conforme os propósitos e limites estabelecidos por Deus'. O reconhecimento do 'valor do trabalho' pela fé reformada expressa compreensão do mandato cultural."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "eu e mais um sócio, o Renato, que não é cristão. Mas já foi evangelizado, foi falado de Jesus pra ele, mas não sei se o Davi sabe, mas a gente é presteriano, é calvinista, então, entendo que o senhor ainda não o chamou."
+    ordem_2a: evangelismo
+    justificativa_interna: "Ação intencional orientada a conduzir outras pessoas ao conhecimento, à aceitação e à conversão à fé cristã'. A expressão 'já foi evangelizado, foi falado de Jesus pra ele' evidencia ação evangelística intencional."
+
+    ordem_2a: diversidade_na_contratacao_evangelismo
+    justificativa_interna: "Composição intencional de equipes com cristãos e não cristãos, entendendo a diversidade do quadro funcional como oportunidade de convivência, testemunho e eventual evangelização'. A sociedade com não-cristão ('o Renato, que não é cristão') combinada com evangelização evidencia esta postura."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "justamente por ser crente, nessas horas ser crente atrapalha, porque eu poderia dar o golpe, mas aí vem aquele constrangimento que eu te falei lá atrás e eu não devo fazer isso."
+    ordem_2a: retidao_incorruptibilidade
+    justificativa_interna: "Postura ética inegociável que rejeita corrupção, ilegalidade ou compromissos morais duvidosos, mesmo sob pressão ou risco de perdas pessoais'. A recusa literal de 'dar o golpe' mesmo sob pressão financeira evidencia incorruptibilidade."
+
+    ordem_2a: constrangimento
+    justificativa_interna: "Sentimento de embaraço associado à consciência da ação de Deus na própria vida'. O termo literal 'aí vem aquele constrangimento' evidencia este sentimento moral que impede ação antiética."
+
+    ordem_2a: integridade_moral
+    justificativa_interna: "Coerência estável entre valores professados, discurso público e práticas concretas, sem duplicidade, oportunismo ou hipocrisia moral'. A recusa de 'dar o golpe' por ser crente evidencia coerência entre fé professada e prática."
+
+    ordem_2a: ser_etico_ser_correto
+    justificativa_interna: "Necessidade interna de agir conforme padrões morais objetivos, rejeitando práticas percebidas como viciosas ou imorais'. A declaração 'eu não devo fazer isso' expressa necessidade interna de agir corretamente."
+
+    ordem_2a: obediencia
+    justificativa_interna: "Disposição prática de fazer aquilo que Deus ordena, conformando ações e decisões às suas ordens, mesmo quando contrariam interesses pessoais ou conveniências'. A recusa do golpe ('eu não devo fazer isso') mesmo sob prejuízo evidencia obediência a princípios divinos."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Então nós temos que pagar. Não porque eu gosto de pagar imposto, porque eu não gosto de pagar imposto, mas tem que pagar."
+    ordem_2a: obediencia
+    justificativa_interna: "Disposição prática de fazer aquilo que Deus ordena, conformando ações e decisões às suas ordens, mesmo quando contrariam interesses pessoais ou conveniências'. A expressão 'tem que pagar' mesmo não gostando evidencia obediência a princípio moral acima de preferência pessoal."
+
+    ordem_2a: retidao_incorruptibilidade
+    justificativa_interna: "Postura ética inegociável que rejeita corrupção, ilegalidade ou compromissos morais duvidosos'. O compromisso de pagar dívidas fiscais ('tem que pagar') mesmo sob dificuldade evidencia postura incorruptível."
+
+    ordem_2a: sofrer_o_dano
+    justificativa_interna: "Aceitação consciente de prejuízo pessoal, profissional ou material como consequência de permanecer fiel a princípios cristãos'. A disposição de pagar dívidas fiscais mesmo não gostando ('Não porque eu gosto') evidencia aceitação de prejuízo por fidelidade ética."
+
+    ordem_2a: aspecto_juridico_13
+    justificativa_interna: "Definição oficial: 'Referência a normas, direitos, deveres e consequências institucionais como expressão de justiça'. A obrigação reconhecida ('tem que pagar') mesmo sem gostar evidencia aspecto_juridico_13."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como integridade — como fundamento das decisões empresariais'. A integridade em pagar impostos ('tem que pagar') apesar de não gostar evidencia aspecto_etico_14."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "eu acho que a empresa, ela não pode ser um meio somente de lucro, lucro pelo lucro, a empresa tem que ser um agente transformador da sociedade"
+    ordem_2a: reino_deus_em_primeiro_lugar_resultado_depois
+    justificativa_interna: "Orientação de gestão em que os valores do Reino de Deus e a justiça precedem objetivos financeiros, entendendo resultados econômicos como consequência e não como finalidade última'. A rejeição de 'lucro pelo lucro' e afirmação da empresa como 'agente transformador' evidencia priorização de valores acima de resultados."
+
+    ordem_2a: maximizacao_do_beneficio
+    justificativa_interna: "Orientação ética primariamente individual do gestor ou dono, expressa em decisões e práticas pessoais de trabalho, voltada a gerar o maior impacto positivo possível ao maior número de pessoas'. A afirmação 'agente transformador da sociedade' expressa orientação para maximizar benefício social."
+
+    ordem_2a: trabalho_como_adoracao_avoda_empresa_como_ministerio
+    justificativa_interna: "Compreensão do trabalho e da empresa como gesto de adoração, espaço legítimo de culto, serviço e obediência a Deus'. A visão da empresa como 'agente transformador' além de lucro evidencia compreensão ministerial da empresa."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "a empresa ela tem essa missão de não gerar riqueza, por riqueza por si só, mas de gerar pessoas prósperas"
+    ordem_2a: riqueza_para_as_nacoes
+    justificativa_interna: "Entendimento de que a prosperidade econômica possui finalidade coletiva, devendo servir ao bem comum e não apenas ao benefício individual'. A expressão 'gerar pessoas prósperas' ao invés de 'riqueza por si só' evidencia finalidade coletiva da prosperidade."
+
+    ordem_2a: maximizacao_do_beneficio
+    justificativa_interna: "Orientação ética voltada a gerar o maior impacto positivo possível ao maior número de pessoas'. A missão de 'gerar pessoas prósperas' expressa orientação para maximizar benefício a pessoas."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "ser prósperos o que é? É você dar valor para a sua família, é você ter tempo para estar com a sua família, é você ter tempo para cuidar da sua saúde, é você ter tempo para ganhar dinheiro, é você ter tempo para se inserir em ações entre aspas sociais"
+    ordem_2a: exigencia_profissional_limitada
+    justificativa_interna: "Definição consciente de metas, ritmos e cobranças profissionais que respeitam limites humanos, familiares e espirituais, evitando sobrecarga, adoecimento ou desgaste excessivo'. A definição de prosperidade incluindo 'tempo para estar com a sua família' e 'cuidar da sua saúde' evidencia limitação intencional de exigências profissionais."
+
+    ordem_2a: sabatico_descanso_guarda_do_domingo
+    justificativa_interna: "Observância deliberada do descanso periódico como ato de obediência, renovação espiritual e reconhecimento dos limites humanos'. A inclusão de 'ter tempo' para família e saúde na definição de prosperidade evidencia valorização do descanso e limites."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "para o cristão não pode haver essa dicotomia entre aquilo que é social e aquilo que não é social, tudo para nós envolve o outro, o amar ao próximo"
+    ordem_2a: amar_o_proximo
+    justificativa_interna: "Ação prática de cuidado, responsabilidade e socorro ao outro que surge diante de uma necessidade concreta, independentemente de proximidade, afinidade, identidade ou merecimento moral'. A expressão literal 'amar ao próximo' e 'tudo para nós envolve o outro' evidencia esta orientação relacional."
+
+    ordem_2a: unidade_e_integridade_de_vida_pessoal_e_profissional
+    justificativa_interna: "Convicção de que fé, valores e prática cristã devem orientar de forma integrada a vida pessoal e a atuação profissional, rejeitando qualquer separação entre espiritualidade e trabalho'. A rejeição literal de 'dicotomia entre aquilo que é social e aquilo que não é social' evidencia integração de vida."
+
+    ordem_2a: coram_deo_vida_diante_de_deus
+    justificativa_interna: "Consciência permanente de viver, agir e decidir sob o olhar de Deus, sem separação entre vida pública, privada, espiritual e profissional'. A afirmação 'não pode haver essa dicotomia' evidencia vida integrada diante de Deus."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "nós participamos ativamente da construção de escolas em vilarejos na Sérvia, na Bolívia, aqui na nossa região norte, ali no Amazonas, junto aos índios ou indígenas"
+    ordem_2a: grande_comissao_missao_no_mundo
+    justificativa_interna: "Compromisso ativo com a expansão da fé cristã por meio de discipulado, ensino e presença pública no mundo'. A participação literal em 'construção de escolas' em contextos missionários (Sérvia, Bolívia, Amazonas) evidencia compromisso com missão global."
+
+    ordem_2a: maximizacao_do_beneficio
+    justificativa_interna: "Orientação ética voltada a gerar o maior impacto positivo possível ao maior número de pessoas'. A construção de escolas em múltiplas localidades vulneráveis evidencia orientação para maximizar benefício."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "montamos uma igreja dentro da Cracolândia de São Paulo, em 2010, as crianças, os pais iam usar drogas ali, as crianças ficavam na rua, aí uma missionária, Edilane, que está comigo até hoje, ela juntava aquelas crianças para fazer contação de história na rua"
+    ordem_2a: cuidado_do_pobre_da_viuva_e_do_orfao
+    justificativa_interna: "Compromisso pessoal, moral ativo, de proteger, sustentar e defender pessoas socialmente vulneráveis, motivado por mandamento religioso cristão'. O cuidado literal com 'crianças' cujos 'pais iam usar drogas' evidencia proteção de vulneráveis."
+
+    ordem_2a: evangelismo
+    justificativa_interna: "Ação intencional orientada a conduzir outras pessoas ao conhecimento, à aceitação e à conversão à fé cristã'. A ação de 'montar uma igreja' e 'contação de história' (presumivelmente bíblica) evidencia intenção evangelística."
+
+    ordem_2a: grande_comissao_missao_no_mundo
+    justificativa_interna: "Compromisso ativo com a expansão da fé cristã por meio de discipulado, ensino e presença pública no mundo'. A montagem de igreja na Cracolândia evidencia presença missionária ativa em contexto urbano desafiador."
+
+    ordem_2a: educacao_de_qualidade
+    justificativa_interna: "Definição oficial: 'Acesso inclusivo, equitativo e contínuo à educação de qualidade'. A 'contação de história' para crianças vulneráveis evidencia educacao_de_qualidade."
+
+    ordem_2a: erradicacao_da_pobreza
+    justificativa_interna: "Definição oficial: 'Eliminação da pobreza extrema e à garantia de condições mínimas e estruturais de vida digna'. O atendimento a crianças na Cracolândia ('pais iam usar drogas', 'crianças ficavam na rua') evidencia erradicacao_da_pobreza."
+
+    ordem_2a: macro_rsc
+    justificativa_interna: "Definição oficial: 'Conjunto de políticas, estratégias e ações sociais adotadas pela organização em nível institucional'. A montagem de 'igreja' e programa estruturado evidencia macro_rsc."
+
+    ordem_2a: aspecto_espacial_2
+    justificativa_interna: "Definição oficial: 'Referência ao espaço físico, territorial ou estrutural do negócio'. A menção à 'Cracolândia de São Paulo' evidencia aspecto_espacial_2."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência'. O cuidado com crianças vulneráveis evidencia aspecto_social_10."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "ajudamos a formação de missionários de Guiné-Bissau que vinham para cá, a gente deu bolsa de estudo, demos bolsas para mais de 15 pessoas que hoje estão servindo no reino"
+    ordem_2a: grande_comissao_missao_no_mundo
+    justificativa_interna: "Compromisso ativo com a expansão da fé cristã por meio de discipulado, ensino e presença pública no mundo'. O apoio literal à 'formação de missionários' e bolsas para pessoas 'servindo no reino' evidencia compromisso com expansão da fé."
+
+    ordem_2a: liberalidade_financeira_discreta_generosidade
+    justificativa_interna: "Prática de doação financeira pessoal voluntária e intencional realizada sem busca de visibilidade, prestígio ou reconhecimento público'. A doação de 'bolsa de estudo' para 'mais de 15 pessoas' evidencia generosidade financeira intencional."
+
+    ordem_2a: mordomia
+    justificativa_interna: "Administração responsável de recursos, bens e resultados entendidos como pertencentes a Deus e confiados ao ser humano'. O uso de recursos empresariais para formar missionários evidencia administração de recursos para propósitos do Reino."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "eu entendo que a empresa precisa ser esse braço, não só um braço para ganhar dinheiro, mas para ajudar e ser um acréscimo dentro da sociedade."
+    ordem_2a: trabalho_como_adoracao_avoda_empresa_como_ministerio
+    justificativa_interna: "Compreensão do trabalho e da empresa como gesto de adoração, espaço legítimo de culto, serviço e obediência a Deus'. A visão da empresa como 'braço' para 'ajudar' além de 'ganhar dinheiro' evidencia compreensão ministerial da empresa."
+
+    ordem_2a: maximizacao_do_beneficio
+    justificativa_interna: "Orientação ética voltada a gerar o maior impacto positivo possível ao maior número de pessoas'. A missão de ser 'um acréscimo dentro da sociedade' expressa orientação para maximizar benefício social."
+
+    ordem_2a: sal_da_terra
+    justificativa_interna: "Convicção de que o cristão exerce influência ética e moral que preserva, limita a degradação e promove transformação social'. A visão da empresa como 'acréscimo dentro da sociedade' evidencia convicção de influência transformadora."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Como eu sou cristão, obviamente que sempre os meus apoios vão ser voltados para entidades que anunciem o evangelho de Jesus."
+    ordem_2a: evangelismo
+    justificativa_interna: "Ação intencional orientada a conduzir outras pessoas ao conhecimento, à aceitação e à conversão à fé cristã'. O direcionamento literal de apoios para 'entidades que anunciem o evangelho de Jesus' evidencia priorização da ação evangelística."
+
+    ordem_2a: grande_comissao_missao_no_mundo
+    justificativa_interna: "Compromisso ativo com a expansão da fé cristã por meio de discipulado, ensino e presença pública no mundo'. O apoio a entidades evangelísticas evidencia compromisso com expansão da fé."
+
+    ordem_2a: identidade_em_cristo
+    justificativa_interna: "Compreensão de que o valor, o sentido e a identidade pessoal são definidos primariamente pela união com Cristo'. A expressão 'Como eu sou cristão, obviamente' evidencia que a identidade cristã define as escolhas de apoio."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Eu tenho um entendimento que para distribuir cesta básica, sopa, já tem um monte de gente fazendo isso, fazendo até melhor que nós. Agora, a missão do evangelho ela cabe a nós."
+    ordem_2a: grande_comissao_missao_no_mundo
+    justificativa_interna: "Compromisso ativo com a expansão da fé cristã por meio de discipulado, ensino e presença pública no mundo'. A afirmação literal 'a missão do evangelho ela cabe a nós' evidencia senso de responsabilidade pela expansão da fé."
+
+    ordem_2a: evangelismo
+    justificativa_interna: "Ação intencional orientada a conduzir outras pessoas ao conhecimento, à aceitação e à conversão à fé cristã'. A priorização da 'missão do evangelho' sobre ações sociais evidencia centralidade da evangelização."
+
+    ordem_2a: primeiro_os_da_fe_os_de_casa
+    justificativa_interna: "Prioridade ética dada ao cuidado, sustento e compromisso com a própria família e com os da mesma fé'. A afirmação 'a missão do evangelho ela cabe a nós' expressa senso de responsabilidade prioritária da comunidade de fé."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "nós vamos distribuir sopa sim, nós vamos distribuir cesta básica sim, nós vamos ajudar isso, aquilo, tal, tal, tal, mas precisa falar do evangelho."
+    ordem_2a: evangelismo
+    justificativa_interna: "Ação intencional orientada a conduzir outras pessoas ao conhecimento, à aceitação e à conversão à fé cristã'. A condição literal 'mas precisa falar do evangelho' evidencia intenção evangelística como requisito para ação social."
+
+    ordem_2a: caridade
+    justificativa_interna: "Ação de ajudar o outro em situação de necessidade, ato de se compadecer'. A disposição de 'distribuir sopa' e 'cesta básica' evidencia ação caridosa."
+
+    ordem_2a: cuidado_do_pobre_da_viuva_e_do_orfao
+    justificativa_interna: "Compromisso pessoal, moral ativo, de proteger, sustentar e defender pessoas socialmente vulneráveis'. A distribuição de 'sopa' e 'cesta básica' evidencia cuidado com vulneráveis."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Se não tiver o evangelho vinculado a uma ação, a gente, eu não participo ativamente, já tem muita gente fazendo isso."
+    ordem_2a: evangelismo
+    justificativa_interna: "Ação intencional orientada a conduzir outras pessoas ao conhecimento, à aceitação e à conversão à fé cristã'. A exigência literal de 'evangelho vinculado a uma ação' como critério de participação evidencia centralidade da evangelização."
+
+    ordem_2a: testemunho
+    justificativa_interna: "Vivência coerente e visível da fé cristã expressa em atitudes, escolhas e conduta cotidiana, funcionando como exemplo público que aponta para Deus'. A vinculação do evangelho às ações evidencia testemunho público da fé."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Nós precisamos ser um braço ativo na formação de cidadãos e cidadãos para serem bênção aqui, mas cidadãos do reino."
+    ordem_2a: grande_comissao_missao_no_mundo
+    justificativa_interna: "Compromisso ativo com a expansão da fé cristã por meio de discipulado, ensino e presença pública no mundo'. A missão de formar 'cidadãos do reino' evidencia compromisso com discipulado e expansão da fé."
+
+    ordem_2a: esperanca_reino_vindouro_escatologica
+    justificativa_interna: "Convicção orientada para a futura plena manifestação do Reino de Deus e da nova criação'. A expressão 'cidadãos do reino' evidencia orientação escatológica para o Reino vindouro."
+
+    ordem_2a: sal_da_terra
+    justificativa_interna: "Convicção de que o cristão exerce influência ética e moral que preserva, limita a degradação e promove transformação social'. A missão de formar cidadãos 'para serem bênção aqui' evidencia convicção de influência transformadora."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "A gente teve que parar com a ação junto a essas entidades missionárias porque o dinheiro acabou."
+    ordem_2a: providencia_divina
+    justificativa_interna: "Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho, inclusive eventos aparentemente ordinários'. A aceitação de que 'o dinheiro acabou' como razão para parar evidencia reconhecimento de circunstâncias sob governo divino."
+
+    ordem_2a: dependencia_de_deus
+    justificativa_interna: "Reconhecimento explícito da limitação humana e da incapacidade de alcançar resultados desejáveis sem a ação, ajuda ou sustento de Deus'. A limitação financeira ('o dinheiro acabou') evidencia reconhecimento de dependência de recursos providos por Deus."
+
+    ordem_2a: contentamento
+    justificativa_interna: "Definição oficial: 'Disposição interior de satisfação com o que foi recebido de Deus, independentemente da quantidade, reduzindo desejo por acumular mais.' O entrevistado aceita a limitação financeira ('o dinheiro acabou') sem expressar frustração ou busca por acumular mais recursos, demonstrando contentamento com os limites impostos pela realidade econômica."
+
+    ordem_2a: dependencia_de_deus
+    justificativa_interna: "Definição oficial: 'Reconhecimento explícito da limitação humana e da incapacidade de alcançar resultados desejáveis sem a ação, ajuda ou sustento de Deus.' A interrupção das ações missionárias por falta de recursos evidencia o reconhecimento prático da limitação humana e da dependência de provisão para sustentar obras de missão."
+
+    ordem_2a: mordomia
+    justificativa_interna: "Definição oficial: 'Administração responsável de recursos, bens e resultados entendidos como pertencentes a Deus e confiados ao ser humano.' A decisão de parar quando os recursos acabaram demonstra administração responsável, reconhecendo limites financeiros e não comprometendo a sustentabilidade da empresa."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Nós nunca fizemos isso, sempre foi algo interno e dentro da empresa. Os nossos funcionários, o pessoal que estava com a gente, sabia o que era, sabia como era feito, mas a gente nunca divulgou isso para fora."
+    ordem_2a: liberalidade_financeira_discreta_generosidade
+    justificativa_interna: "Prática de doação financeira pessoal voluntária e intencional realizada sem busca de visibilidade, prestígio ou reconhecimento público'. A afirmação literal 'a gente nunca divulgou isso para fora' evidencia generosidade discreta sem busca de reconhecimento."
+
+    ordem_2a: nao_depender_de_reconhecimento
+    justificativa_interna: "Desapego de elogios, visibilidade ou recompensa humana'. A escolha deliberada de não divulgar ações ('nunca divulgou isso para fora') evidencia desapego de reconhecimento público."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Bom, David, eu nasci em berço evangélico. Minha família inteira é presbiteriana. Então, a minha família é presbiteriana há pelo menos 1900, mais 125 anos."
+    ordem_2a: hereditariedade_cultural
+    justificativa_interna: "Definição oficial: 'Narrativa da transmissão da fé, de pai pra filho, por meio da educação em família, sem exigência de conversão pessoal pontual consciente'. O trecho evidencia transmissão geracional da fé ('nasci em berço evangélico', 'família inteira é presbiteriana', '125 anos') característica da hereditariedade_cultural."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "meus avós maternos, eles eram do interior da Bahia, em uma cidade chamada Licuri, Mundo Novo. E as informações que eu recebi foi que missionários americanos foram até desbravar aquele interior, né? Reverendo Gordon True, Frederick Johnson e outros, né? Eles desbravaram aquele local e minha bisavó, a Geminiana Corte, foi a primeira convertida em nossa família"
+    ordem_2a: hereditariedade_cultural
+    justificativa_interna: "Definição oficial: 'Narrativa da transmissão da fé, de pai pra filho, por meio da educação em família'. O relato histórico da conversão da bisavó como 'primeira convertida' e subsequente transmissão familiar ('minha bisavó... minha avó... meu avô') caracteriza hereditariedade_cultural."
+
+    ordem_2a: evento_cristo
+    justificativa_interna: "Definição oficial: 'Narrativa da conversão do próprio gestor (conhecimento de Cristo), por meio de uma experiência existencial marcante'. A conversão da bisavó Geminiana Corte como 'primeira convertida' representa evento_cristo na origem da linhagem familiar."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Mas o meu encontro com Cristo verdadeiramente, ele se deu eu estou com 45 entre os 20 e 21 anos de idade foi quando eu, de fato, entreguei minha vida pro Senhor."
+    ordem_2a: evento_cristo
+    justificativa_interna: "Definição oficial: 'Narrativa da conversão do próprio gestor (conhecimento de Cristo), por meio de uma experiência existencial marcante'. A expressão 'encontro com Cristo verdadeiramente' e 'entreguei minha vida pro Senhor' evidencia evento_cristo pessoal e consciente aos 20-21 anos."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "A primeira é um sentimento de constrangimento, parafaseando até o teólogo Calbarte. Deus me ama e eu sei disso porque a Bíblia fala. Então, eu, sabendo quem eu sou, tendo como espelho o nosso Senhor Jesus, isso me traz um constrangimento grande. Como que ele pode me amar?"
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana, sendo inteiramente imerecida'. A pergunta 'Como que ele pode me amar?' e o 'constrangimento' ao reconhecer 'quem eu sou' evidenciam incongruencia_monergismo."
+
+    ordem_2a: gratidao_especial_ge
+    justificativa_interna: "Definição oficial: 'Reconhecimento consciente e pessoal de ter recebido a ação salvífica de Deus, acompanhado de resposta explícita de gratidão a Ele'. O 'constrangimento' diante do amor imerecido ('Deus me ama', 'Como que ele pode me amar?') caracteriza gratidao_especial_ge."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente'. A menção a 'Deus me ama', 'a Bíblia fala', 'nosso Senhor Jesus' como fundamento do constrangimento evidencia aspecto_pistico_15."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "E o segundo sentimento é uma... Cara, aí é difícil expressar, mas seria uma segurança, uma segurança de que algumas coisas vão sair do meu controle, mas elas não saem do controle de Deus."
+    ordem_2a: graca_comum_gc
+    justificativa_interna: "Definição oficial: 'Concessão divina de bens naturais, sociais e estruturais a toda a humanidade, percebida como ordem, sustento e prosperidade cotidiana'. A 'segurança' de que as coisas 'não saem do controle de Deus' evidencia percepção da ordem providencial, característica de graca_comum_gc."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente'. A 'segurança' fundamentada no 'controle de Deus' evidencia aspecto_pistico_15 como orientação existencial."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Então, esse constrangimento e essa segurança são os dois efeitos que me vêm à mente e que, vira e mexe, eu penso sobre isso. Então, obviamente que isso molda as minhas ações, molda a minha percepção de mundo."
+    ordem_2a: eficacia
+    justificativa_interna: "Definição oficial: 'Convicção de que a graça atua de modo plenamente eficaz, realizando integralmente aquilo que Deus determinou e produzindo transformação real'. A afirmação de que constrangimento e segurança 'molda as minhas ações, molda a minha percepção de mundo' evidencia eficacia da graça em produzir transformação real."
+
+    ordem_2a: aspecto_formativo_8
+    justificativa_interna: "Definição oficial: 'Ação deliberada de planejar, moldar e transformar estruturas, processos ou estratégias'. O verbo 'molda' aplicado a 'ações' e 'percepção de mundo' evidencia aspecto_formativo_8."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Mas eu venho de uma família muito simples, não tive nenhum relacionamento com meu pai, não o conheci. Então minha mãe, logo cedo, eu fui criado com minha mãe, com minha tia, com minha avó e com meu irmão mais velho"
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência'. A descrição da estrutura familiar ('criado com minha mãe, com minha tia, com minha avó') evidencia aspecto_social_10."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "A fé, ela me ajudou. A fé reformada me ajudou a entender o valor do trabalho. Então eu comecei a trabalhar muito cedo, com 13 para 14 anos"
+    ordem_2a: trabalho_decente_e_crescimento_economico
+    justificativa_interna: "Definição oficial: 'Emprego digno, condições justas de trabalho e crescimento econômico sustentável e inclusivo'. A valorização do trabalho ('entender o valor do trabalho', 'comecei a trabalhar muito cedo') evidencia trabalho_decente_e_crescimento_economico."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente'. A 'fé reformada' como fundamento para 'entender o valor do trabalho' evidencia aspecto_pistico_15."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro'. A valorização do trabalho desde cedo (13-14 anos) evidencia aspecto_economico_11."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "E no ano de 2005, eu resolvi abrir a minha empresa, chamada Gade, eu e mais um sócio, o Renato, que não é cristão. Mas já foi evangelizado, foi falado de Jesus pra ele, mas não sei se o Davi sabe, mas a gente é presteriano, é calvinista, então, entendo que o senhor ainda não o chamou."
+    ordem_2a: prioridade_monergismo
+    justificativa_interna: "Definição oficial: 'Compreensão de que a graça antecede toda ação, decisão ou mérito humano, sendo iniciativa soberana e primeira de Deus'. A expressão 'o senhor ainda não o chamou' evidencia prioridade_monergismo, reconhecendo a iniciativa divina anterior à conversão."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana'. A atribuição exclusiva ao Senhor ('o senhor ainda não o chamou') evidencia singularidade_monergismo."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente'. A menção à identidade 'presteriano, calvinista' e à soberania divina ('o senhor ainda não o chamou') evidencia aspecto_pistico_15."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Em 2016, uma das nossas empresas quebrou, a Acia. Até hoje eu carrego um problema muito grande fiscal com essa empresa, mas a gente vai ter que pagar, né. Então, justamente por ser crente, nessas horas ser crente atrapalha, porque eu poderia dar o golpe, mas aí vem aquele constrangimento que eu te falei lá atrás e eu não devo fazer isso."
+    ordem_2a: perda_financeira_sonegacao_suprimida
+    justificativa_interna: "Definição oficial: 'Redução de ganhos decorrente da recusa em adotar práticas ilegais, corruptas ou fiscalmente irregulares'. A expressão 'eu poderia dar o golpe' mas 'não devo fazer isso' por 'ser crente' evidencia perda_financeira_sonegacao_suprimida."
+
+    ordem_2a: aspecto_juridico_13
+    justificativa_interna: "Definição oficial: 'Referência a normas, direitos, deveres e consequências institucionais como expressão de justiça'. A menção ao 'problema fiscal' e à obrigação de pagar ('a gente vai ter que pagar') evidencia aspecto_juridico_13."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais'. O 'constrangimento' que impede 'dar o golpe' evidencia aspecto_etico_14 como fundamento da decisão."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro'. O 'problema fiscal' e a decisão de pagar evidenciam aspecto_economico_11."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Então hoje nós somos em quatro na GAD hospitalar. Hoje a empresa está bem, saudável financeiramente, estamos abrindo um escritório na Suíça, pra atender o mercado europeu, abrindo esse escritório, fortalecendo as ações lá nos Estados Unidos"
+    ordem_2a: aspecto_espacial_2
+    justificativa_interna: "Definição oficial: 'Referência ao espaço físico, territorial ou estrutural do negócio'. A menção a 'escritório na Suíça', 'mercado europeu', 'Estados Unidos' evidencia aspecto_espacial_2."
+
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades como critérios relevantes para gestão'. A menção 'quatro' sócios evidencia aspecto_numerico_1."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos'. A menção à saúde financeira ('saudável financeiramente') e expansão internacional evidencia aspecto_economico_11."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Aí esse ano eu montei uma empresa voltada pra área de ESG, embora eu tenha todas as ressalvas contigo, mas eu acho que tem um sistema que dá pra gente trabalhar de forma séria nisso"
+    ordem_2a: percepcao_positiva_generica
+    justificativa_interna: "Definição oficial: 'Avaliação geral favorável do ESG ou objetivos. Iniciativa legítima, relevante, benéfica para a organização ou para a sociedade'. A expressão 'tem um sistema que dá pra gente trabalhar de forma séria' evidencia percepcao_positiva_generica apesar das ressalvas."
+
+    ordem_2a: hipocrisia_corporativa_desconfianca
+    justificativa_interna: "Definição oficial: 'Avaliação negativa, que suspeita de incoerência entre o discurso do ESG e dos objetivos em relação à prática real das empresas'. A expressão 'embora eu tenha todas as ressalvas' evidencia hipocrisia_corporativa_desconfianca."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Davi, eu entendo que basicamente, eu dou graças a Deus, porque meus sócios hoje, não são convertidos, mas eles participam um pouco dessa ideia, quando eu geralmente peço alguma coisa nesse sentido que eu vou te explicar, nunca foi negado"
+    ordem_2a: gratidao_especial_ge
+    justificativa_interna: "Definição oficial: 'Reconhecimento consciente e pessoal de ter recebido a ação salvífica de Deus, acompanhado de resposta explícita de gratidão a Ele'. A expressão 'eu dou graças a Deus' evidencia gratidao_especial_ge."
+
+    ordem_2a: graca_comum_gc
+    justificativa_interna: "Definição oficial: 'Concessão divina de bens naturais, sociais e estruturais a toda a humanidade, percebida como ordem, sustento e prosperidade cotidiana'. A percepção de que sócios não convertidos 'participam' e 'nunca foi negado' evidencia graca_comum_gc operando em não-cristãos."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "mas eu acho que a empresa, ela não pode ser um meio somente de lucro, lucro pelo lucro, a empresa tem que ser um agente transformador da sociedade"
+    ordem_2a: lucratividade_aceitavel_diminuicao_do_lucro
+    justificativa_interna: "Definição oficial: 'Aceitação gerencial ou pessoal consciente de redução dos resultados financeiros em razão de escolhas éticas, sociais ou alinhadas a valores'. A rejeição de 'lucro pelo lucro' e a priorização de 'agente transformador' evidencia lucratividade_aceitavel_diminuicao_do_lucro."
+
+    ordem_2a: valorizacao_de_indicadores_nao_financeiros
+    justificativa_interna: "Definição oficial: 'Reconhecimento de impactos sociais, humanos, ambientais e éticos como dimensões legítimas do desempenho organizacional, além dos resultados financeiros'. A afirmação de que empresa 'tem que ser um agente transformador da sociedade' evidencia valorizacao_de_indicadores_nao_financeiros."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. A menção a 'agente transformador da sociedade' evidencia aspecto_social_10."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro'. A discussão sobre 'lucro pelo lucro' evidencia aspecto_economico_11."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "não como alguns, não como os políticos, mas a esquerda afirmam, que eu acho que é demagógico, eu geralmente não, como diria Milo Fernandes, eu não confio em idealistas que lucram com o seu ideal"
+    ordem_2a: hipocrisia_corporativa_desconfianca
+    justificativa_interna: "Definição oficial: 'Avaliação negativa, que suspeita de incoerência entre o discurso e a prática real'. A desconfiança de 'idealistas que lucram com o seu ideal' evidencia hipocrisia_corporativa_desconfianca."
+
+    ordem_2a: cinismo_politico
+    justificativa_interna: "Definição oficial: 'Leitura do ESG ou objetivos como ferramenta de poder político'. A crítica aos 'políticos' e à 'esquerda' como 'demagógicos' evidencia cinismo_politico."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "mas eu entendo que a empresa ela tem essa missão de não gerar riqueza, por riqueza por si só, mas de gerar pessoas prósperas"
+    ordem_2a: valorizacao_de_indicadores_nao_financeiros
+    justificativa_interna: "Definição oficial: 'Reconhecimento de impactos sociais, humanos, ambientais e éticos como dimensões legítimas do desempenho organizacional, além dos resultados financeiros'. A priorização de 'gerar pessoas prósperas' sobre 'riqueza por si só' evidencia valorizacao_de_indicadores_nao_financeiros."
+
+    ordem_2a: saude_e_bem_estar
+    justificativa_interna: "Definição oficial: 'Garantia e promoção de condições que favoreçam a saúde física, mental e social ao longo de todo o ciclo de vida'. A missão de 'gerar pessoas prósperas' evidencia saude_e_bem_estar."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos'. A discussão sobre 'gerar riqueza' versus 'pessoas prósperas' evidencia aspecto_economico_11."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "essa é uma coisa que eu bato muito na tecla dentro da empresa, que nós precisamos ser prósperos, e ser prósperos o que é? É você dar valor para a sua família, é você ter tempo para estar com a sua família, é você ter tempo para cuidar da sua saúde, é você ter tempo para ganhar dinheiro, é você ter tempo para se inserir em ações entre aspas sociais"
+    ordem_2a: valorizacao_de_indicadores_nao_financeiros
+    justificativa_interna: "Definição oficial: 'Reconhecimento de impactos sociais, humanos, ambientais e éticos como dimensões legítimas do desempenho organizacional'. A definição de prosperidade incluindo 'família', 'saúde', 'ações sociais' evidencia valorizacao_de_indicadores_nao_financeiros."
+
+    ordem_2a: saude_e_bem_estar
+    justificativa_interna: "Definição oficial: 'Garantia e promoção de condições que favoreçam a saúde física, mental e social'. A menção explícita a 'cuidar da sua saúde' e 'estar com a sua família' evidencia saude_e_bem_estar."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência'. A valorização de 'família' e 'ações sociais' evidencia aspecto_social_10."
+
+    ordem_2a: aspecto_biotico_5
+    justificativa_interna: "Definição oficial: 'Valorização da vida como critérios, incluindo saúde sobrevivência e cuidado físico de pessoas'. A menção a 'cuidar da sua saúde' evidencia aspecto_biotico_5."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro'. A menção explícita a 'tempo' como recurso ('ter tempo para') evidencia aspecto_economico_11."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "e eu falo entre aspas porque para o cristão não pode haver essa dicotomia entre aquilo que é social e aquilo que não é social, tudo para nós envolve o outro, o amar ao próximo"
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor — como fundamento das decisões empresariais'. A menção explícita ao 'amar ao próximo' como fundamento evidencia aspecto_etico_14."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência'. A afirmação de que 'tudo envolve o outro' evidencia aspecto_social_10."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último'. A fundamentação 'para o cristão' e o mandamento de 'amar ao próximo' evidenciam aspecto_pistico_15."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "então dentro da nossa empresa nós já temos servido de, já servimos mais, mas a empresa durante muitos anos, esse ano que vem, se Deus quiser nós vamos retomar isso, nós participamos ativamente da construção de escolas em vilarejos na Sérvia, na Bolívia, aqui na nossa região norte, ali no Amazonas, junto aos índios ou indígenas"
+    ordem_2a: educacao_de_qualidade
+    justificativa_interna: "Definição oficial: 'Acesso inclusivo, equitativo e contínuo à educação de qualidade e a oportunidades permanentes de aprendizagem'. A 'construção de escolas' evidencia educacao_de_qualidade."
+
+    ordem_2a: macro_rsc
+    justificativa_interna: "Definição oficial: 'Conjunto de políticas, estratégias e ações sociais adotadas pela organização em nível institucional, incluindo programas estruturados de filantropia e responsabilidade social'. A participação da empresa na 'construção de escolas' evidencia macro_rsc."
+
+    ordem_2a: aspecto_espacial_2
+    justificativa_interna: "Definição oficial: 'Referência ao espaço físico, territorial ou estrutural do negócio'. A menção a 'Sérvia', 'Bolívia', 'região norte', 'Amazonas' evidencia aspecto_espacial_2."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último'. A expressão 'se Deus quiser' evidencia aspecto_pistico_15."
+
+    ordem_2a: parcerias_e_meios_de_implementacao
+    justificativa_interna: "Definição oficial: 'Promoção de parcerias institucionais, interorganizacionais e multissetoriais'. A participação em construção de escolas em múltiplos países evidencia parcerias_e_meios_de_implementacao."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Nós nunca fizemos isso, sempre foi algo interno e dentro da empresa."
+    ordem_2a: nao_depender_de_reconhecimento
+    justificativa_interna: "Definição oficial: 'Desapego de elogios, visibilidade ou recompensa humana.' O entrevistado enfatiza que as ações sociais nunca foram divulgadas externamente ('sempre foi algo interno'), evidenciando desapego de visibilidade pública e reconhecimento externo."
+
+    ordem_2a: liberalidade_financeira_discreta_generosidade
+    justificativa_interna: "Definição oficial: 'Prática de doação financeira pessoal voluntária e intencional realizada sem busca de visibilidade, prestígio ou reconhecimento público.' A afirmação 'nunca fizemos isso' (propaganda) e 'sempre foi algo interno' caracteriza a liberalidade discreta, sem busca de prestígio público."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "os meus sócios são impactados por aquilo que a gente chama de graça comum. Mesmo eles não tendo nascido de novo em Cristo, mas eles têm um coração muito voltado para isso"
+    ordem_2a: deus_e_bom
+    justificativa_interna: "Definição oficial: 'Convicção de que a bondade pertence essencialmente a Deus e que Suas ações são boas em si mesmas.' O reconhecimento da 'graça comum' operando em não-cristãos evidencia a convicção de que a bondade de Deus alcança pessoas além da salvação especial, manifestando-se em inclinações ao bem."
+
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho, inclusive eventos aparentemente ordinários.' A atribuição do coração voltado ao bem dos sócios à 'graça comum' evidencia a crença de que Deus governa até mesmo as disposições morais de não-cristãos."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Eu não sei no coração deles qual é o íntimo deles quererem ajudar. Se é para receber algo em troca, o universo vai me dar de volta aquilo que eu estou dando."
+    ordem_2a: dom_reciprocidade_grega
+    justificativa_interna: "Definição oficial: 'Sistema sociocultural de troca honorífica em que o ato de dar cria obrigações formais de receber e retribuir, estruturando relações de status, honra e equilíbrio social.' A menção à possível expectativa dos sócios de que 'o universo vai me dar de volta' caracteriza a lógica de reciprocidade, onde a doação gera expectativa de retorno."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "o fato é que sempre quando eu sou questionado, eu digo que nós fazemos porque Cristo fez antes por mim. Então, nós precisamos fazer."
+    ordem_2a: sentir_se_em_divida
+    justificativa_interna: "Definição oficial: 'Senso moral de responsabilidade em servir, amar e beneficiar o próximo decorrentes do favor concedido por Deus em Cristo.' A afirmação 'Cristo fez antes por mim. Então, nós precisamos fazer' evidencia o senso de dívida moral derivado da graça recebida, motivando ações de benefício ao próximo."
+
+    ordem_2a: imitacao_de_jesus
+    justificativa_interna: "Definição oficial: 'Orientação prática da vida e das decisões pelo modelo de caráter, atitudes e ações de Jesus, buscando conformar a própria conduta à Sua forma de viver.' A justificativa 'Cristo fez antes por mim' como razão para fazer o bem evidencia a imitação de Jesus como modelo normativo de ação."
+
+    ordem_2a: de_graca_recebestes_de_graca_dai
+    justificativa_interna: "Definição oficial: 'Princípio de não reter benefícios recebidos, dispondo-se a compartilhar gratuitamente o que foi dado de graça por Deus.' A lógica 'Cristo fez antes por mim. Então, nós precisamos fazer' expressa o princípio de compartilhar gratuitamente o que foi recebido gratuitamente."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Confesso até a você, Davi, que o pecado que ainda habita em nós, quando da minha quebra, eu fiz alguns questionamentos em relação a isso. Falei, caramba, senhor, poxa vida, fizemos escola na Índia, fazia isso e agora, passando por isso"
+    ordem_2a: depravacao_total_pecado_queda_confissao_de_pecados
+    justificativa_interna: "Definição oficial: 'Reconhecimento da gravidade da condição espiritual e moral humana, erro moral ou espiritual acompanhado ou evidenciado de (ou para) mudança de postura.' A confissão 'o pecado que ainda habita em nós' e o reconhecimento dos questionamentos como erro evidenciam a consciência da condição pecaminosa e a confissão."
+
+    ordem_2a: frustracao
+    justificativa_interna: "Definição oficial: 'Vivência emocional de bloqueio, desapontamento ou impotência diante de limites, perdas ou resultados que frustram expectativas.' Os questionamentos durante a quebra ('fizemos escola na Índia... e agora, passando por isso') evidenciam frustração diante de expectativas não correspondidas."
+
+    ordem_2a: ambiguidade_duvida
+    justificativa_interna: "Definição oficial: 'Estado de incerteza decisória diante do conflito entre priorizar convicções de fé ou maximizar resultados econômicos.' Os questionamentos sobre ter feito ações sociais e ainda assim passar por quebra evidenciam dúvida sobre a relação entre fidelidade e resultados."
+
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana, sendo inteiramente imerecida'. O questionamento 'fizemos escola na Índia... e agora passando por isso' revela consciência de que boas obras não garantem retorno, evidenciando graça imerecida."
+
+    ordem_2a: inseguranca_financeira
+    justificativa_interna: "Definição oficial: 'Consciência de instabilidade econômica em decorrência de gestão ou ações amparadas por valores cristãos'. A 'quebra' mencionada após investimentos missionários ('escola na Índia') evidencia instabilidade financeira decorrente de valores cristãos."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro'. A menção à 'quebra' e aos investimentos ('escola na Índia') demonstra gestão de recursos escassos."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "mais uma vez volta o constrangimento. O amor de Deus nos constrange e, na realidade, é uma lição ali."
+    ordem_2a: constrangimento
+    justificativa_interna: "Definição oficial: 'Sentimento de embaraço associado à consciência da ação de Deus na própria vida.' A afirmação 'o amor de Deus nos constrange' evidencia o sentimento de embaraço moral diante da consciência do amor imerecido de Deus, mesmo após questionamentos."
+
+    ordem_2a: paciencia_e_longanimidade
+    justificativa_interna: "Definição oficial: 'Capacidade de suportar frustrações e dificuldades prolongadas sem perder a fé, a coerência ética ou o compromisso relacional.' A interpretação da quebra como 'uma lição' evidencia capacidade de suportar dificuldades sem perder a fé ou o compromisso com valores do Reino."
+
+    ordem_2a: gratidao_especial_ge
+    justificativa_interna: "Definição oficial: 'Reconhecimento consciente e pessoal de ter recebido a ação salvífica de Deus, acompanhado de resposta explícita de gratidão a Ele'. O 'amor de Deus nos constrange' é reconhecimento explícito da ação salvífica como motivação."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais'. A menção ao 'amor de Deus' como constrangimento moral evidencia disposição moral profunda."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente'. O 'amor de Deus nos constrange' é referência explícita à fé como orientação."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Nós temos um funcionário nosso que era presidiário. Então, dificilmente esse camarada ia arrumar emprego, ainda mais ligado ao PCC e tudo."
+    ordem_2a: cuidado_do_pobre_da_viuva_e_do_orfao
+    justificativa_interna: "Definição oficial: 'Compromisso pessoal, moral ativo, de proteger, sustentar e defender pessoas socialmente vulneráveis, motivado por mandamento religioso cristão.' A contratação de ex-presidiário ('dificilmente esse camarada ia arrumar emprego') evidencia compromisso ativo de sustentar pessoa socialmente vulnerável."
+
+    ordem_2a: defesa_dos_interesses_do_funcionario
+    justificativa_interna: "Definição oficial: 'Postura gerencial de priorizar a proteção e as necessidades do funcionário, aceitando custos, riscos ou prejuízos em favor do colaborador mais vulnerável.' A decisão de contratar ex-presidiário ligado ao PCC evidencia priorização das necessidades do colaborador vulnerável, aceitando riscos."
+
+    ordem_2a: reducao_das_desigualdades
+    justificativa_interna: "Definição oficial: 'Redução de desigualdades sociais, econômicas e de oportunidades entre indivíduos, grupos e países'. Contratar ex-presidiário ('dificilmente ia arrumar emprego') é ação direta de redução de desigualdade de oportunidades."
+
+    ordem_2a: trabalho_decente_e_crescimento_economico
+    justificativa_interna: "Definição oficial: 'Emprego digno, condições justas de trabalho e crescimento econômico sustentável e inclusivo'. Oferecer emprego a ex-presidiário evidencia promoção de trabalho digno e inclusão."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. A decisão de contratar ex-presidiário envolve avaliação de papéis sociais e convivência."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Mas ele é parente dos meus sócios, do Renato e da Maurício, irmãos, é parente. Se enfiou numa enrascada, ia transportar arma pros caras aqui na Baixada, a polícia pegou, ele não entregou ninguém, mas também não quis continuar no crime, pegou a pena, não entregou ninguém."
+    ordem_2a: primeiro_os_da_fe_os_de_casa
+    justificativa_interna: "Definição oficial: 'Prioridade ética dada ao cuidado, sustento e compromisso com a própria família e com os da mesma fé, refletida também em escolhas profissionais e de trabalho baseadas em responsabilidade moral e confiança relacional.' A contratação do parente dos sócios evidencia prioridade ao cuidado da própria família, refletida em escolha profissional."
+
+    ordem_2a: aspecto_juridico_13
+    justificativa_interna: "Definição oficial: 'Referência a normas, direitos, deveres e consequências institucionais como expressão de justiça'. A menção à 'pena' e ao processo criminal evidencia referência a normas e consequências institucionais."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. A menção a 'parente dos meus sócios' contextualiza relações sociais na decisão de contratação."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Agora mesmo, veio um casal de iranianos, baixou lá na igreja. Aí o pessoal que trata com isso veio falar, precisamos arrumar um emprego. Cara, iraniano não fala português, não fala inglês, fala só persa. Qual o currículo do cara? Ele sabe mexer com eletrônico. Da hora. Maurício e Renato, tô com essa situação, precisamos arrumar um emprego nesse cara. Não, leva pra lá. Vamos ajudar o cara."
+    ordem_2a: hospitalidade
+    justificativa_interna: "Definição oficial: 'Prática intencional de acolher pessoas com generosidade, cuidado e abertura relacional, promovendo dignidade e pertencimento.' A decisão de empregar iranianos que não falam português ('leva pra lá. Vamos ajudar o cara') evidencia acolhimento intencional com generosidade, promovendo dignidade."
+
+    ordem_2a: amar_o_proximo
+    justificativa_interna: "Definição oficial: 'Ação prática de cuidado, responsabilidade e socorro ao outro que surge diante de uma necessidade concreta, independentemente de proximidade, afinidade, identidade ou merecimento moral.' A contratação de iranianos desconhecidos, sem domínio do idioma, evidencia cuidado prático independente de proximidade ou afinidade."
+
+    ordem_2a: cuidado_do_pobre_da_viuva_e_do_orfao
+    justificativa_interna: "Definição oficial: 'Compromisso pessoal, moral ativo, de proteger, sustentar e defender pessoas socialmente vulneráveis, motivado por mandamento religioso cristão.' A decisão de empregar refugiados iranianos sem domínio do idioma evidencia compromisso ativo de sustentar pessoas vulneráveis."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Eu nunca tive esse problema de ter que convencê-los. Geralmente, quando chega alguma situação assim, mesmo antes, quando a gente ajudava esse monte de gente, uma parte considerável do nosso faturamento ia pra missões."
+    ordem_2a: dizimos_e_ofertas
+    justificativa_interna: "Definição oficial: 'Entrega regular e intencional de recursos financeiros como prática espiritual de reconhecimento da boa vontade de Deus.' A afirmação 'uma parte considerável do nosso faturamento ia pra missões' evidencia entrega regular e intencional de recursos financeiros para fins espirituais."
+
+    ordem_2a: grande_comissao_missao_no_mundo
+    justificativa_interna: "Definição oficial: 'Compromisso ativo com a expansão da fé cristã por meio de discipulado, ensino e presença pública no mundo.' O direcionamento de parte considerável do faturamento para missões evidencia compromisso ativo com a expansão da fé cristã."
+
+    ordem_2a: lucratividade_aceitavel_diminuicao_do_lucro
+    justificativa_interna: "Definição oficial: 'Aceitação gerencial ou pessoal consciente de redução dos resultados financeiros em razão de escolhas éticas, sociais ou alinhadas a valores'. A expressão 'parte considerável do faturamento ia pra missões' evidencia redução consciente de lucro por valores."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro'. A menção a 'parte considerável do faturamento' demonstra gestão consciente de recursos."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. A ausência de necessidade de 'convencê-los' evidencia padrão de convivência alinhado."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Eu tenho muita influência com algumas pessoas importantes aqui na área da saúde. Então, o que eu peço? Além de coisas ligadas ao meu trabalho. Me abre um espaço lá no hospital pra eu fazer uma capelania pra criança."
+    ordem_2a: evangelismo
+    justificativa_interna: "Definição oficial: 'Ação intencional orientada a conduzir outras pessoas ao conhecimento, à aceitação e à conversão à fé cristã.' O pedido de espaço no hospital para capelania evidencia ação intencional orientada a conduzir pessoas ao conhecimento da fé cristã."
+
+    ordem_2a: cuidado_do_pobre_da_viuva_e_do_orfao
+    justificativa_interna: "Definição oficial: 'Compromisso pessoal, moral ativo, de proteger, sustentar e defender pessoas socialmente vulneráveis, motivado por mandamento religioso cristão.' A capelania voltada para crianças hospitalizadas evidencia compromisso ativo de cuidar de pessoas vulneráveis (crianças doentes)."
+
+    ordem_2a: saude_e_bem_estar
+    justificativa_interna: "Definição oficial: 'Garantia e promoção de condições que favoreçam a saúde física, mental e social ao longo de todo o ciclo de vida'. A capelania hospitalar para crianças promove bem-estar mental e social."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. O uso de 'influência com pessoas importantes' evidencia avaliação de relações sociais."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente'. A 'capelania' é referência explícita à fé como orientação da ação."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Aí nós estamos lá. Nós com o Menino Jesus atendemos aproximadamente 100 crianças toda quinta-feira. E é evangelho. É evangelho que é anunciado. Claro, com um jeito pra não ter denúncia. Essas coisas todas, né? Mas é o evangelho que é falado ali."
+    ordem_2a: evangelismo
+    justificativa_interna: "Definição oficial: 'Ação intencional orientada a conduzir outras pessoas ao conhecimento, à aceitação e à conversão à fé cristã.' A afirmação repetida 'É evangelho. É evangelho que é anunciado' evidencia ação intencional de anunciar a fé cristã."
+
+    ordem_2a: medo_de_evangelizar_tornar_a_fe_publica
+    justificativa_interna: "Definição oficial: 'Receio subjetivo antecipatório específico de comunicar a fé com intenção evangelística, por medo de enfrentar rejeição, sanções formais ou prejuízos profissionais.' A expressão 'com um jeito pra não ter denúncia' evidencia receio de sanções formais ao evangelizar em ambiente hospitalar."
+
+    ordem_2a: sabedoria_prudencia
+    justificativa_interna: "Definição oficial: 'Discernimento prático expresso em decisões cautelosas, responsáveis e contextualizadas, nas quais o gestor pondera valores, consequências e riscos antes de agir.' A estratégia de evangelizar 'com um jeito pra não ter denúncia' evidencia discernimento prático cauteloso, ponderando riscos."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Hoje nós temos essa ação lá. Estamos indo pra outro hospital no Grajaú. Mesma ação. Capelania hospitalar. É evangelho pra criança, pros pais, acompanhante, pros profissionais que estão ali."
+    ordem_2a: evangelismo
+    justificativa_interna: "Definição oficial: 'Ação intencional orientada a conduzir outras pessoas ao conhecimento, à aceitação e à conversão à fé cristã.' A expansão da capelania para outro hospital ('Estamos indo pra outro hospital') evidencia ação intencional contínua de anunciar o evangelho."
+
+    ordem_2a: grande_comissao_missao_no_mundo
+    justificativa_interna: "Definição oficial: 'Compromisso ativo com a expansão da fé cristã por meio de discipulado, ensino e presença pública no mundo.' A multiplicação da capelania hospitalar para outros locais evidencia compromisso ativo com a expansão da fé cristã por meio de presença pública."
+
+    ordem_2a: saude_e_bem_estar
+    justificativa_interna: "Definição oficial: 'Garantia e promoção de condições que favoreçam a saúde física, mental e social ao longo de todo o ciclo de vida'. Capelania para 'criança, pais, acompanhante, profissionais' promove bem-estar mental e social."
+
+    ordem_2a: aspecto_espacial_2
+    justificativa_interna: "Definição oficial: 'Referência ao espaço físico, territorial ou estrutural do negócio'. A menção a 'outro hospital no Grajaú' evidencia referência espacial."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente'. A expressão 'é evangelho' é referência explícita à fé."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "O pessoal ora, mas sempre com uma certa cautela pra evitar problemas, né?"
+    ordem_2a: oracao
+    justificativa_interna: "Definição oficial: 'Prática intencional de comunicação com Deus por meio de pedido, escuta, entrega ou adoração, aplicada à vida pessoal e profissional.' A menção de que 'o pessoal ora' no contexto da capelania hospitalar evidencia prática intencional de comunicação com Deus aplicada ao trabalho."
+
+    ordem_2a: sabedoria_prudencia
+    justificativa_interna: "Definição oficial: 'Discernimento prático expresso em decisões cautelosas, responsáveis e contextualizadas, nas quais o gestor pondera valores, consequências e riscos antes de agir.' A oração 'com uma certa cautela pra evitar problemas' evidencia discernimento prático cauteloso, ponderando riscos."
+
+    ordem_2a: medo_de_perseguicao_religiosa_violenta
+    justificativa_interna: "Definição oficial: 'Receio subjetivo antecipatório específico de sofrer agressão física, violência extrema ou perseguição grave em razão da identidade ou prática religiosa ou ética cristã.' A cautela 'pra evitar problemas' ao orar em ambiente hospitalar evidencia receio antecipatório de enfrentar perseguição ou sanções."
+
+    ordem_2a: aspecto_juridico_13
+    justificativa_interna: "Definição oficial: 'Referência a normas, direitos, deveres e consequências institucionais como expressão de justiça'. A 'cautela pra evitar problemas' evidencia consideração de consequências institucionais."
+
+    ordem_2a: ameaca_de_denuncia_em_entidade_de_classe
+    justificativa_interna: "Definição oficial: 'Risco percebido de sofrer exposição formal, denúncia institucional ou sanção por órgãos de classe em razão de posicionamentos éticos ou convicções religiosas assumidas publicamente'. A 'cautela pra evitar problemas' evidencia risco percebido de sanção por prática religiosa."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente'. A menção à 'oração' é referência explícita à fé."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Eu acho que o ressurgimento da nossa empresa, ele só pode ser explicado pelo direcionamento de Deus."
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho, inclusive eventos aparentemente ordinários.' A atribuição do ressurgimento da empresa ao 'direcionamento de Deus' evidencia convicção de que Deus governa e direciona as circunstâncias do trabalho."
+
+    ordem_2a: deus_guiando_os_passos
+    justificativa_interna: "Definição oficial: 'Atribuição direta das decisões, caminhos e escolhas profissionais à orientação pessoal e intencional de Deus em cada detalhe, momento a momento.' A afirmação 'só pode ser explicado pelo direcionamento de Deus' evidencia atribuição direta dos caminhos profissionais à orientação divina."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Porque a gente tava numa situação muito difícil. Muito difícil. Muito difícil mesmo. Tinha uma boa ideia, um bom produto, mas onde que eu vou pôr?"
+    ordem_2a: dependencia_de_deus
+    justificativa_interna: "Definição oficial: 'Reconhecimento explícito da limitação humana e da incapacidade de alcançar resultados desejáveis sem a ação, ajuda ou sustento de Deus.' A pergunta 'onde que eu vou pôr?' em contexto de dificuldade extrema evidencia reconhecimento da limitação humana e incapacidade de resolver a situação sozinho."
+
+    ordem_2a: nao_confiar_no_homem_em_si_mesmo
+    justificativa_interna: "Definição oficial: 'Reconhecimento da limitação humana e recusa de fundamentar decisões últimas apenas na própria capacidade ou na confiança em outros.' A situação de ter 'uma boa ideia, um bom produto' mas não saber 'onde pôr' evidencia reconhecimento de que a capacidade humana sozinha é insuficiente."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Então, eu acho que isso fez toda a diferença. Poder suportar todo aquele problema, naquele momento muito ruim, eu tive um princípio de burnout, foi um negócio punk, né? Imagina, eu com duas filhas, grávida da terceira, começa essa enxurrada de problemas."
+    ordem_2a: paciencia_e_longanimidade
+    justificativa_interna: "Definição oficial: 'Capacidade de suportar frustrações e dificuldades prolongadas sem perder a fé, a coerência ética ou o compromisso relacional.' A capacidade de 'suportar todo aquele problema' incluindo burnout e enxurrada de problemas evidencia longanimidade sem perder a fé."
+
+    ordem_2a: fe_para_longevidade
+    justificativa_interna: "Definição oficial: 'Confiança em Deus associada à perseverança no tempo, especialmente diante de desafios prolongados relacionados à saúde, carreira ou sobrevivência do negócio.' A perseverança diante de burnout e problemas prolongados ('enxurrada de problemas') evidencia confiança em Deus para longevidade no negócio."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Então, eu não consigo enxergar de outra forma, né? É um direcionamento mesmo, porque o mercado que eu tô é um mercado difícil, um mercado complicado."
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho, inclusive eventos aparentemente ordinários.' A afirmação 'não consigo enxergar de outra forma... É um direcionamento mesmo' evidencia convicção de que Deus direciona as circunstâncias do trabalho."
+
+    ordem_2a: deus_guiando_os_passos
+    justificativa_interna: "Definição oficial: 'Atribuição direta das decisões, caminhos e escolhas profissionais à orientação pessoal e intencional de Deus em cada detalhe, momento a momento.' A expressão 'É um direcionamento mesmo' evidencia atribuição direta dos caminhos profissionais à orientação divina."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana'. A expressão 'é um direcionamento mesmo' atribui exclusivamente a Deus."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro'. A menção a 'mercado difícil, complicado' evidencia gestão em contexto de escassez."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "o mercado hospitalar é um mercado muito prostituído, né? Então, tem aquela prostituição velada, que as grandes farmacêuticas fazem, né? Ah, paga um congresso pra fulano, paga não sei o que pra Beltrana e tal, então esse pessoal fica meio amarrado."
+    ordem_2a: praticas_comerciais_antieticas_corrupcao
+    justificativa_interna: "Definição oficial: 'Adoção de práticas comerciais ilegais ou moralmente condenáveis, como sonegação, propina, fraudes ou negociações predatórias.' A descrição do mercado como 'prostituído' e a menção a pagamentos velados ('paga um congresso pra fulano') evidenciam práticas comerciais antiéticas."
+
+    ordem_2a: comissoes_indevidas_bolas
+    justificativa_interna: "Definição oficial: 'Recebimento oculto de vantagens financeiras ou benefícios para influenciar decisões, contratos ou indicações profissionais.' A menção a 'paga um congresso pra fulano, paga não sei o que pra Beltrana' evidencia recebimento oculto de vantagens para influenciar decisões."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "E nós tomamos o mercado de uma dessas empresas num determinado hospital e a médica, que eu sabia que era patrocinada, ela fez uma acusação gravíssima falando que o nosso produto tinha matado algumas pessoas dentro do hospital."
+    ordem_2a: concorrencia_desleal
+    justificativa_interna: "Definição oficial: 'Adoção de práticas de mercado injustas ou antiéticas para prejudicar concorrentes ou obter vantagem indevida.' A acusação falsa de que o produto 'tinha matado algumas pessoas' por médica patrocinada evidencia prática de mercado injusta para prejudicar concorrente."
+
+    ordem_2a: perseguicao_religiosa
+    justificativa_interna: "Definição oficial: 'Qualquer forma de desvalorização, hostilidade, ridicularização ou prejuízo profissional motivado pela identidade ou prática religiosa no trabalho.' Embora não explicitamente religiosa, a acusação gravíssima pode ser interpretada como hostilidade profissional no contexto de valores cristãos do entrevistado."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Isso é grave, isso é pra fechar a empresa. E nós tivemos quase isso. Por Deus, o antigo presidente de uma instituição grande que controla tudo isso, é meu amigo, contei pra ele a história toda e ele conhece a nossa empresa e ele conseguiu segurar isso politicamente, pra que não fechasse a nossa empresa."
+    ordem_2a: livramento
+    justificativa_interna: "Definição oficial: 'Interpretação de eventos concretos como intervenção direta de Deus para proteger, libertar ou preservar de perigos, perdas ou males específicos.' A expressão 'Por Deus' e a preservação da empresa por meio de um amigo evidenciam interpretação de livramento divino de perigo concreto."
+
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho, inclusive eventos aparentemente ordinários.' A atribuição da preservação da empresa a Deus ('Por Deus') evidencia convicção de que Deus governa as circunstâncias do trabalho."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "E nós revertemos a história lá pro hospital. Só não fui mais adiante pra fechar o hospital, e aí entra de novo o ser cristão, que eu poderia ter fechado o hospital, mas as pessoas que estão ali doentes não tem culpa da falta de profissionalismo dessa médica."
+    ordem_2a: amar_o_proximo
+    justificativa_interna: "Definição oficial: 'Ação prática de cuidado, responsabilidade e socorro ao outro que surge diante de uma necessidade concreta, independentemente de proximidade, afinidade, identidade ou merecimento moral.' A decisão de não fechar o hospital por causa dos doentes ('não tem culpa') evidencia cuidado prático pelo próximo independente de merecimento."
+
+    ordem_2a: sofrer_o_dano
+    justificativa_interna: "Definição oficial: 'Aceitação consciente de prejuízo pessoal, profissional ou material como consequência de permanecer fiel a princípios cristãos, sem retaliar, negociar valores ou buscar compensação indevida.' A decisão de não retaliar fechando o hospital ('poderia ter fechado') evidencia aceitação de não buscar compensação indevida por fidelidade a princípios cristãos."
+
+    ordem_2a: misericordia
+    justificativa_interna: "Definição oficial: 'Ação compassiva diante da fragilidade, culpa ou necessidade do outro.' A decisão de não fechar o hospital por compaixão aos doentes ('pessoas que estão ali doentes não tem culpa') evidencia ação compassiva diante da fragilidade do outro."
+
+    ordem_2a: pagar_o_mal_com_o_bem
+    justificativa_interna: "Definição oficial: 'Resposta ética ativa que devolve benevolência e ação construtiva diante de ofensa, injustiça ou prejuízo sofrido.' A decisão de não fechar o hospital apesar da acusação gravíssima evidencia resposta de benevolência diante de injustiça sofrida."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Permanece. A gente teve que parar com a ação junto a essas entidades missionárias porque o dinheiro acabou."
+    ordem_2a: lucratividade_aceitavel_suspensao_da_lucratividade
+    justificativa_interna: "Definição oficial: 'Disposição gerencial ou pessoal de operar temporariamente sem lucro, mantendo equilíbrio financeiro, para atender princípios éticos, humanos ou relacionais'. O trecho 'teve que parar porque o dinheiro acabou' evidencia que a ação foi mantida até o limite financeiro, operando sem lucro por princípios."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro'. A menção explícita a 'dinheiro acabou' demonstra gestão consciente de recursos escassos."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "A gente nunca fez nenhuma ação propagandeando isso. Nós nunca fizemos isso, sempre foi algo interno e dentro da empresa."
+    ordem_2a: gratidao_especial_ge
+    justificativa_interna: "Definição oficial: 'Reconhecimento consciente e pessoal de ter recebido a ação salvífica de Deus, acompanhado de resposta explícita de gratidão a Ele'. A recusa em 'propagar' as ações sociais indica que a motivação não é reputacional, mas resposta de gratidão."
+
+    ordem_2a: nao_circularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Compreensão de que a graça é intrinsecamente gratuita e não pode ser paga, retribuída ou compensada a Deus por nenhuma ação humana'. Não divulgar as ações ('nunca propagandeando') evidencia ausência de lógica de retribuição ou compensação."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "E assim, os meus sócios são impactados por aquilo que a gente chama de graça comum. Mesmo eles não tendo nascido de novo em Cristo, mas eles têm um coração muito voltado para isso, porque todos eles vêm de baixo, igual eu."
+    ordem_2a: graca_comum_gc
+    justificativa_interna: "Definição oficial: 'Concessão divina de bens naturais, sociais e estruturais a toda a humanidade, percebida como ordem, sustento e prosperidade cotidiana, sem referência direta à salvação'. O entrevistado usa explicitamente o termo 'graça comum' para descrever a disposição dos sócios não convertidos."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. A menção a 'todos vêm de baixo' contextualiza relações sociais e origem comum dos sócios."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Eu não sei no coração deles qual é o íntimo deles quererem ajudar. Se é para receber algo em troca, o universo vai me dar de volta aquilo que eu estou dando. Não sei se é isso, nunca questionei"
+    ordem_2a: singularidade_negativa_sinergismo
+    justificativa_interna: "Definição oficial: 'Leitura específica e focal da graça de maneira relativizada quanto sua origem exclusiva em Deus, atribuindo-a parcialmente ao esforço humano, mérito pessoal, sistemas ou condições favoráveis'. A expressão 'universo vai me dar de volta' relativiza a origem divina, atribuindo a sistemas impessoais."
+
+    ordem_2a: nao_circularidade_negativa_sinergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça recebida gera obrigação de retribuição a Deus, estabelecendo lógica de troca, compensação ou pagamento pelo favor concedido'. A frase 'receber algo em troca' estabelece explicitamente lógica de compensação."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "mas o fato é que sempre quando eu sou questionado, eu digo que nós fazemos porque Cristo fez antes por mim. Então, nós precisamos fazer."
+    ordem_2a: prioridade_monergismo
+    justificativa_interna: "Definição oficial: 'Compreensão de que a graça antecede toda ação, decisão ou mérito humano, sendo iniciativa soberana e primeira de Deus'. A expressão 'Cristo fez antes por mim' estabelece explicitamente a anterioridade temporal da graça."
+
+    ordem_2a: gratidao_especial_ge
+    justificativa_interna: "Definição oficial: 'Reconhecimento consciente e pessoal de ter recebido a ação salvífica de Deus, acompanhado de resposta explícita de gratidão a Ele'. O 'nós fazemos porque Cristo fez' é resposta explícita de gratidão pela salvação."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente'. A menção direta a 'Cristo fez antes por mim' como fundamento da ação empresarial evidencia orientação transcendente."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Aí eles vieram e conversaram, precisamos arrumar um emprego pra eles. Vamos trazer o cara pra cá, vai trabalhar com a gente."
+    ordem_2a: trabalho_decente_e_crescimento_economico
+    justificativa_interna: "Definição oficial: 'Emprego digno, condições justas de trabalho e crescimento econômico sustentável e inclusivo'. A decisão 'arrumar um emprego' para ex-presidiário evidencia promoção de trabalho digno."
+
+    ordem_2a: reducao_das_desigualdades
+    justificativa_interna: "Definição oficial: 'Redução de desigualdades sociais, econômicas e de oportunidades entre indivíduos, grupos e países'. Oferecer emprego a quem 'dificilmente ia arrumar' é redução de desigualdade de oportunidades."
+
+    ordem_2a: aspecto_linguistico_9
+    justificativa_interna: "Definição oficial: 'Uso da linguagem, do discurso e da comunicação como portadores de significado e coerência'. O diálogo 'vieram e conversaram' evidencia uso da comunicação na decisão."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Agora mesmo, veio um casal de iranianos, baixou lá na igreja. Aí o pessoal que trata com isso veio falar, precisamos arrumar um emprego. Cara, iraniano não fala português, não fala inglês, fala só persa. Qual o currículo do cara? Ele sabe mexer com eletrônico."
+    ordem_2a: reducao_das_desigualdades
+    justificativa_interna: "Definição oficial: 'Redução de desigualdades sociais, econômicas e de oportunidades entre indivíduos, grupos e países'. Contratar imigrantes iranianos sem domínio do idioma local é ação direta de redução de desigualdade."
+
+    ordem_2a: trabalho_decente_e_crescimento_economico
+    justificativa_interna: "Definição oficial: 'Emprego digno, condições justas de trabalho e crescimento econômico sustentável e inclusivo'. Oferecer emprego a imigrantes evidencia promoção de trabalho digno e inclusão."
+
+    ordem_2a: aspecto_linguistico_9
+    justificativa_interna: "Definição oficial: 'Uso da linguagem, do discurso e da comunicação como portadores de significado e coerência'. A menção explícita à barreira linguística ('não fala português, não fala inglês, fala só persa') evidencia consideração da comunicação."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Maurício e Renato, tô com essa situação, precisamos arrumar um emprego nesse cara. Não, leva pra lá. Vamos ajudar o cara. Vamos ajudar o cara."
+    ordem_2a: trabalho_decente_e_crescimento_economico
+    justificativa_interna: "Definição oficial: 'Emprego digno, condições justas de trabalho e crescimento econômico sustentável e inclusivo'. A decisão imediata 'leva pra lá, vamos ajudar' evidencia promoção de trabalho digno."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. A decisão conjunta dos sócios evidencia padrão de convivência e relações na empresa."
+
+    ordem_2a: aspecto_linguistico_9
+    justificativa_interna: "Definição oficial: 'Uso da linguagem, do discurso e da comunicação como portadores de significado e coerência'. O diálogo entre sócios evidencia uso da comunicação na decisão."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "A questão do lucro, como eu lhe disse, a gente não... A gente já tem um lucro muito bacana. Todo o dinheiro que entra, alguma coisa a gente usa pra fazer algum tipo de ação."
+    ordem_2a: lucratividade_aceitavel_diminuicao_do_lucro
+    justificativa_interna: "Definição oficial: 'Aceitação gerencial ou pessoal consciente de redução dos resultados financeiros em razão de escolhas éticas, sociais ou alinhadas a valores'. Usar 'alguma coisa' do dinheiro que entra para ações sociais evidencia redução consciente de lucro."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro'. A menção a 'lucro muito bacana' e alocação para ações evidencia gestão consciente."
+
+    ordem_2a: valorizacao_de_indicadores_nao_financeiros
+    justificativa_interna: "Definição oficial: 'Reconhecimento de impactos sociais, humanos, ambientais e éticos como dimensões legítimas do desempenho organizacional, além dos resultados financeiros'. Usar recursos para 'algum tipo de ação' evidencia valorização de impactos além do financeiro."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Aí nós estamos lá. Nós com o Menino Jesus atendemos aproximadamente 100 crianças toda quinta-feira. E é evangelho. É evangelho que é anunciado."
+    ordem_2a: saude_e_bem_estar
+    justificativa_interna: "Definição oficial: 'Garantia e promoção de condições que favoreçam a saúde física, mental e social ao longo de todo o ciclo de vida'. Atender '100 crianças' em hospital promove bem-estar."
+
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades como critérios relevantes para gestão'. A menção a '100 crianças' é uso explícito de quantidade."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente'. A expressão 'é evangelho que é anunciado' é referência explícita à fé."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Claro, com um jeito pra não ter denúncia. Essas coisas todas, né? Mas é o evangelho que é falado ali."
+    ordem_2a: aspecto_juridico_13
+    justificativa_interna: "Definição oficial: 'Referência a normas, direitos, deveres e consequências institucionais como expressão de justiça'. A preocupação com 'não ter denúncia' evidencia consideração de consequências institucionais."
+
+    ordem_2a: ameaca_de_denuncia_em_entidade_de_classe
+    justificativa_interna: "Definição oficial: 'Risco percebido de sofrer exposição formal, denúncia institucional ou sanção por órgãos de classe em razão de posicionamentos éticos ou convicções religiosas assumidas publicamente'. A expressão 'com um jeito pra não ter denúncia' evidencia risco percebido de denúncia por prática religiosa."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente'. A afirmação 'é o evangelho que é falado' é referência explícita à fé."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Eu acho que o ressurgimento da nossa empresa, ele só pode ser explicado pelo direcionamento de Deus. Porque a gente tá numa situação muito difícil. Muito difícil. Muito difícil mesmo."
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana'. A expressão 'só pode ser explicado pelo direcionamento de Deus' atribui exclusivamente a Deus."
+
+    ordem_2a: graca_comum_gc
+    justificativa_interna: "Definição oficial: 'Concessão divina de bens naturais, sociais e estruturais a toda a humanidade, percebida como ordem, sustento e prosperidade cotidiana, sem referência direta à salvação'. O 'ressurgimento da empresa' é percebido como sustento e prosperidade cotidiana."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro'. A menção à 'situação muito difícil' evidencia gestão de recursos escassos."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Tinha uma boa ideia, um bom produto, mas onde que eu vou pôr? Então, eu acho que isso fez toda a diferença. Poder suportar todo aquele problema, naquele momento muito ruim"
+    ordem_2a: inseguranca_financeira
+    justificativa_interna: "Definição oficial: 'Consciência de instabilidade econômica em decorrência de gestão ou ações amparadas por valores cristãos'. O 'momento muito ruim' e a dúvida 'onde vou pôr' evidenciam instabilidade econômica."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro'. A questão 'onde que eu vou pôr' evidencia gestão de recursos escassos."
+
+    ordem_2a: aspecto_sensitivo_6
+    justificativa_interna: "Definição oficial: 'Consideração explícita das experiências emocionais humanas relevantes — como dor, medo, empatia ou sofrimento'. A expressão 'momento muito ruim' evidencia experiência emocional."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "eu tive um princípio de burnout, foi um negócio punk, né? Imagina, eu com duas filhas, grávida da terceira, começa essa enxurrada de problemas."
+    ordem_2a: inseguranca_financeira
+    justificativa_interna: "Definição oficial: 'Consciência de instabilidade econômica em decorrência de gestão ou ações amparadas por valores cristãos'. O 'princípio de burnout' e 'enxurrada de problemas' evidenciam instabilidade."
+
+    ordem_2a: aspecto_sensitivo_6
+    justificativa_interna: "Definição oficial: 'Consideração explícita das experiências emocionais humanas relevantes — como dor, medo, empatia ou sofrimento'. O 'princípio de burnout' evidencia experiência emocional de sofrimento."
+
+    ordem_2a: aspecto_biotico_5
+    justificativa_interna: "Definição oficial: 'Valorização da vida como critérios, incluindo saúde sobrevivência e cuidado físico de pessoas, animais ou criação'. A menção à saúde ('burnout') e à gravidez evidencia valorização da vida e saúde."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Outra vez, agora, recentemente, isso deve ter uns dois anos, o mercado hospitalar é um mercado muito prostituído, né? Então, tem aquela prostituição velada, que as grandes farmacêuticas fazem, né?"
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais'. O uso do termo 'prostituído' evidencia julgamento moral profundo sobre práticas do mercado."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro'. A menção ao 'mercado hospitalar' evidencia contexto econômico."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "A gente deixa bem claro que não pode confundir o fato de você ser crente, evangélico, cristão, alguma coisa, com você sair, você perder o controle das ações das pessoas."
+    ordem_2a: unidade_e_integridade_de_vida_pessoal_e_profissional
+    justificativa_interna: "Definição oficial: 'Convicção de que fé, valores e prática cristã devem orientar de forma integrada a vida pessoal e a atuação profissional, rejeitando qualquer separação entre espiritualidade e trabalho.' O trecho evidencia a rejeição da separação entre identidade cristã ('ser crente, evangélico, cristão') e práticas gerenciais ('controle das ações das pessoas'), afirmando integração entre fé e gestão."
+
+    ordem_2a: sabedoria_prudencia
+    justificativa_interna: "Definição oficial: 'Discernimento prático expresso em decisões cautelosas, responsáveis e contextualizadas, nas quais o gestor pondera valores, consequências e riscos antes de agir.' A expressão 'deixa bem claro' e a distinção entre identidade religiosa e práticas gerenciais demonstram ponderação contextualizada sobre limites e responsabilidades na gestão."
+
+    ordem_2a: exigencia_profissional_limitada
+    justificativa_interna: "Definição oficial: 'Definição consciente de metas, ritmos e cobranças profissionais que respeitam limites humanos, familiares e espirituais.' O reconhecimento de que 'tem gente que você não pode dar muita corda, tem gente que você tem que puxar um pouco mais' evidencia ajuste contextual de exigências segundo características individuais."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente'. A menção direta a 'ser crente, evangélico, cristão' como elemento que não deve comprometer a gestão evidencia a fé como referência explícita."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais'. A preocupação em não 'perder o controle das ações' por causa da fé demonstra busca de integridade na gestão."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. A referência ao controle das ações das pessoas evidencia avaliação de relações e papéis na empresa."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Tem gente que você não pode dar muita corda, tem gente que você tem que puxar um pouco mais, e tem gente que não serve para trabalhar com você."
+    ordem_2a: sabedoria_prudencia
+    justificativa_interna: "Definição oficial: 'Discernimento prático expresso em decisões cautelosas, responsáveis e contextualizadas.' O trecho demonstra discernimento contextualizado ao reconhecer diferenças individuais e ajustar abordagens gerenciais de forma responsável."
+
+    ordem_2a: exigencia_profissional_limitada
+    justificativa_interna: "Definição oficial: 'Definição consciente de metas, ritmos e cobranças profissionais que respeitam limites humanos.' A diferenciação entre perfis ('não pode dar muita corda', 'tem que puxar um pouco mais') evidencia ajuste de cobranças segundo capacidades individuais."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Eu, humanamente, não teria esse comportamento se não fosse algo vindo de Deus."
+    ordem_2a: obra_do_espirito_santo
+    justificativa_interna: "Definição oficial: 'Atuação transformadora do Espírito Santo na vida humana.' O reconhecimento explícito de que o comportamento não seria possível 'humanamente' e a atribuição direta a 'algo vindo de Deus' caracteriza a obra transformadora do Espírito."
+
+    ordem_2a: dependencia_de_deus
+    justificativa_interna: "Definição oficial: 'Reconhecimento explícito da limitação humana e da incapacidade de alcançar resultados desejáveis sem a ação, ajuda ou sustento de Deus.' A negação da capacidade humana ('humanamente, não teria esse comportamento') evidencia dependência da ação divina."
+
+    ordem_2a: nao_confiar_no_homem_em_si_mesmo
+    justificativa_interna: "Definição oficial: 'Reconhecimento da limitação humana e recusa de fundamentar decisões últimas apenas na própria capacidade.' A afirmação de incapacidade humana autônoma ('humanamente, não teria') demonstra recusa de confiar na própria força."
+
+    ordem_2a: mover_do_espirito
+    justificativa_interna: "Definição oficial: 'Ação dinâmica do Espírito Santo orientando pessoas e decisões.' A atribuição do comportamento a 'algo vindo de Deus' em contexto decisório específico caracteriza orientação dinâmica do Espírito."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana'. A afirmação 'não teria esse comportamento se não fosse algo vindo de Deus' atribui exclusivamente a Deus a origem da ação."
+
+    ordem_2a: graca_especial_ge
+    justificativa_interna: "Definição oficial: 'Ação soberana e específica de Deus que opera salvação, conversão e restauração espiritual em pessoas, reconhecida explicitamente como intervenção redentora divina'. O reconhecimento explícito de 'algo vindo de Deus' caracteriza intervenção divina específica."
+
+    ordem_2a: prioridade_monergismo
+    justificativa_interna: "Definição oficial: 'Compreensão de que a graça antecede toda ação, decisão ou mérito humano, sendo iniciativa soberana e primeira de Deus'. A negação da capacidade humana ('humanamente, não teria') e atribuição a Deus evidencia anterioridade da graça."
+
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana, sendo inteiramente imerecida'. A declaração de incapacidade humana natural ('eu não sou assim') evidencia o caráter imerecido da ação divina."
+
+    ordem_2a: gratidao_especial_ge
+    justificativa_interna: "Definição oficial: 'Reconhecimento consciente e pessoal de ter recebido a ação salvífica de Deus, acompanhado de resposta explícita de gratidão a Ele'. O reconhecimento de que o comportamento veio de Deus evidencia gratidão pela ação divina específica."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Aí eu comecei a perguntar algumas coisas para ela, porque nós já estávamos sabendo que o marido dela tinha feito uma cirurgia na cabeça, por causa de um implante que ele foi fazer, não deu certo, enfim."
+    ordem_2a: cuidado_dignidade_e_desenvolvimento_humano
+    justificativa_interna: "Definição oficial (categoria agregada): O ato de perguntar sobre a situação pessoal difícil da funcionária ('marido tinha feito uma cirurgia na cabeça') em contexto de decisão de demissão evidencia cuidado com a pessoa além do desempenho profissional."
+
+    ordem_2a: misericordia
+    justificativa_interna: "Definição oficial: 'Ação compassiva diante da fragilidade, culpa ou necessidade do outro.' O interesse pela situação de fragilidade da funcionária ('cirurgia na cabeça', 'não deu certo') demonstra compaixão diante da necessidade."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Aí, na hora, eu comecei a perguntar isso e falei, como é que está a situação lá com o teu marido?"
+    ordem_2a: misericordia
+    justificativa_interna: "Definição oficial: 'Ação compassiva diante da fragilidade, culpa ou necessidade do outro.' A pergunta direta sobre a situação difícil ('como é que está a situação lá com o teu marido') em momento de tensão profissional evidencia compaixão."
+
+    ordem_2a: hospitalidade
+    justificativa_interna: "Definição oficial: 'Prática intencional de acolher pessoas com generosidade, cuidado e abertura relacional, promovendo dignidade e pertencimento.' A abertura para ouvir sobre questões pessoais graves em contexto profissional demonstra acolhimento relacional."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Ela respondeu, nada. Está muito difícil, não sei o que, agora estou tendo que cuidar da minha mãe com câncer, lá em Minas Gerais, minha mãe que me abandonou quando eu era criança, e para mim está muito difícil encarar isso, como é que eu vou cuidar de uma pessoa?"
+    ordem_2a: cuidado_do_pobre_da_viuva_e_do_orfao
+    justificativa_interna: "Definição oficial: 'Compromisso pessoal, moral ativo, de proteger, sustentar e defender pessoas socialmente vulneráveis.' A situação narrada pela funcionária ('mãe com câncer', 'me abandonou quando eu era criança') evidencia vulnerabilidade extrema que será objeto de cuidado pelo gestor."
+
+    ordem_2a: aspecto_biotico_5
+    justificativa_interna: "Definição oficial: 'Valorização da vida como critérios, incluindo saúde sobrevivência e cuidado físico de pessoas, animais ou criação'. A menção ao 'câncer' e necessidade de 'cuidar' evidencia questões de saúde e cuidado físico."
+
+    ordem_2a: aspecto_sensitivo_6
+    justificativa_interna: "Definição oficial: 'Consideração explícita das experiências emocionais humanas relevantes — como dor, medo, empatia ou sofrimento'. As expressões 'está muito difícil', 'me abandonou', 'muito difícil encarar' evidenciam sofrimento emocional explícito."
+
+    ordem_2a: saude_e_bem_estar
+    justificativa_interna: "Definição oficial: 'Garantia e promoção de condições que favoreçam a saúde física, mental e social ao longo de todo o ciclo de vida'. A referência ao câncer e à dificuldade de cuidar evidencia questões de saúde física e mental."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Aí eu falei assim, olha, posso falar uma coisa para você? Eu acho que o Maurício e o Renato vão concordar comigo, porque aí a Jéssica também depois falou, você não está bem mentalmente, você já foi a um psicólogo? Não, não foi. Você foi a um psiquiatra? Não, não foi. Você precisava ir."
+    ordem_2a: cuidado_dignidade_e_desenvolvimento_humano
+    justificativa_interna: "Definição oficial (categoria agregada): A preocupação explícita com a saúde mental da funcionária ('você não está bem mentalmente', 'você precisava ir') e o encaminhamento para cuidado profissional evidenciam cuidado integral com a pessoa."
+
+    ordem_2a: misericordia
+    justificativa_interna: "Definição oficial: 'Ação compassiva diante da fragilidade, culpa ou necessidade do outro.' O reconhecimento da fragilidade mental ('você não está bem mentalmente') e a orientação para buscar ajuda demonstram compaixão ativa."
+
+    ordem_2a: desenvolvimento_humano_dos_funcionarios
+    justificativa_interna: "Definição oficial: 'Promoção intencional do crescimento espiritual, ético e humano dos funcionários.' O encaminhamento para cuidado psicológico/psiquiátrico como parte da responsabilidade do gestor evidencia promoção do desenvolvimento humano integral."
+
+    ordem_2a: saude_e_bem_estar
+    justificativa_interna: "Definição oficial: 'Garantia e promoção de condições que favoreçam a saúde física, mental e social ao longo de todo o ciclo de vida'. A identificação de que 'você não está bem mentalmente' e recomendação de psicólogo/psiquiatra evidencia promoção de saúde mental."
+
+    ordem_2a: aspecto_biotico_5
+    justificativa_interna: "Definição oficial: 'Valorização da vida como critérios, incluindo saúde sobrevivência e cuidado físico de pessoas, animais ou criação'. A preocupação com a saúde mental e encaminhamento para profissionais evidencia valorização da vida e saúde."
+
+    ordem_2a: aspecto_sensitivo_6
+    justificativa_interna: "Definição oficial: 'Consideração explícita das experiências emocionais humanas relevantes — como dor, medo, empatia ou sofrimento'. O reconhecimento de que a pessoa 'não está bem mentalmente' demonstra consideração explícita do sofrimento emocional."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Porque você está esgotada mentalmente, não sei se é burnout, se é depressão, o que é. Então, acho que não é correto a gente dispensar você nesse momento."
+    ordem_2a: defesa_dos_interesses_do_funcionario
+    justificativa_interna: "Definição oficial: 'Postura gerencial de priorizar a proteção e as necessidades do funcionário, aceitando custos, riscos ou prejuízos em favor do colaborador mais vulnerável.' A decisão de não demitir ('não é correto a gente dispensar você nesse momento') apesar do desempenho insatisfatório evidencia priorização da proteção do funcionário vulnerável."
+
+    ordem_2a: misericordia
+    justificativa_interna: "Definição oficial: 'Ação compassiva diante da fragilidade, culpa ou necessidade do outro.' O reconhecimento do esgotamento mental ('você está esgotada mentalmente') e a decisão de não demitir demonstram compaixão diante da fragilidade."
+
+    ordem_2a: cuidado_do_pobre_da_viuva_e_do_orfao
+    justificativa_interna: "Definição oficial: 'Compromisso pessoal, moral ativo, de proteger, sustentar e defender pessoas socialmente vulneráveis.' A proteção da funcionária em situação de extrema vulnerabilidade (burnout/depressão, marido doente, mãe com câncer) caracteriza defesa ativa de pessoa vulnerável."
+
+    ordem_2a: lucratividade_aceitavel_diminuicao_do_lucro
+    justificativa_interna: "Definição oficial: 'Aceitação gerencial ou pessoal consciente de redução dos resultados financeiros em razão de escolhas éticas, sociais ou alinhadas a valores'. A decisão de não dispensar apesar da insatisfação com o trabalho evidencia aceitação de redução de performance por valores éticos."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais'. A afirmação 'não é correto a gente dispensar você nesse momento' evidencia misericórdia como fundamento da decisão."
+
+    ordem_2a: saude_e_bem_estar
+    justificativa_interna: "Definição oficial: 'Garantia e promoção de condições que favoreçam a saúde física, mental e social ao longo de todo o ciclo de vida'. O reconhecimento de 'esgotada mentalmente, burnout, depressão' e decisão de não dispensar evidencia promoção de saúde mental."
+
+    ordem_2a: perda_de_performance_x_favorecimento_funcionario
+    justificativa_interna: "Definição oficial: 'Priorização da dignidade, cuidado ou necessidade do colaborador mesmo quando isso implica redução de eficiência, desempenho ou retorno econômico imediato'. A decisão de manter a funcionária apesar da insatisfação com o trabalho evidencia priorização da dignidade sobre performance."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Vai se cuidar, vai se cuidar, a gente vai manter o seu cargo aqui, inclusive eu que estou tendo que fazer as coisas dela agora, porque eu gosto da área de marketing, vai se cuidar, fica uns 4, 5 meses em casa, reconstrua a relação sua com a sua mãe, e aí depois a gente conversa."
+    ordem_2a: defesa_dos_interesses_do_funcionario
+    justificativa_interna: "Definição oficial: 'Postura gerencial de priorizar a proteção e as necessidades do funcionário, aceitando custos, riscos ou prejuízos em favor do colaborador mais vulnerável.' A manutenção do cargo ('a gente vai manter o seu cargo aqui') e a aceitação de assumir as tarefas ('eu que estou tendo que fazer as coisas dela agora') evidenciam aceitação de custos em favor da funcionária."
+
+    ordem_2a: andar_a_segunda_milha
+    justificativa_interna: "Definição oficial: 'Disposição pessoal de fazer voluntariamente mais do que o exigido ou contratado.' A decisão de manter o cargo por 4-5 meses sem trabalho efetivo e assumir pessoalmente as tarefas da funcionária vai além de qualquer obrigação contratual."
+
+    ordem_2a: morrer_para_produzir_fruto_orientacao_sacrificial
+    justificativa_interna: "Definição oficial: 'Disposição deliberada de renunciar a interesses, ganhos ou reconhecimento pessoal.' A renúncia ao desempenho imediato da área ('eu que estou tendo que fazer as coisas dela agora') para promover restauração pessoal da funcionária caracteriza orientação sacrificial."
+
+    ordem_2a: exigencia_profissional_limitada
+    justificativa_interna: "Definição oficial: 'Definição consciente de metas, ritmos e cobranças profissionais que respeitam limites humanos, familiares e espirituais.' A liberação para 4-5 meses de afastamento ('fica uns 4, 5 meses em casa') evidencia respeito a limites humanos e familiares extremos."
+
+    ordem_2a: lucratividade_aceitavel_suspensao_da_lucratividade
+    justificativa_interna: "Definição oficial: 'Disposição gerencial ou pessoal de operar temporariamente sem lucro, mantendo equilíbrio financeiro, para atender princípios éticos, humanos ou relacionais'. A decisão de manter o cargo por '4, 5 meses' sem trabalho evidencia suspensão temporária de lucratividade por princípios humanos."
+
+    ordem_2a: perda_de_performance_x_favorecimento_funcionario
+    justificativa_interna: "Definição oficial: 'Priorização da dignidade, cuidado ou necessidade do colaborador mesmo quando isso implica redução de eficiência, desempenho ou retorno econômico imediato'. A afirmação 'eu que estou tendo que fazer as coisas dela agora' evidencia redução de eficiência para priorizar o cuidado."
+
+    ordem_2a: saude_e_bem_estar
+    justificativa_interna: "Definição oficial: 'Garantia e promoção de condições que favoreçam a saúde física, mental e social ao longo de todo o ciclo de vida'. A orientação 'vai se cuidar' repetida e o tempo de '4, 5 meses' evidenciam promoção de saúde e bem-estar."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais'. A decisão de manter o cargo e assumir as tarefas evidencia sacrifício e misericórdia como fundamento."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. A orientação para 'reconstrua a relação sua com a sua mãe' evidencia valorização de relações sociais."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Mas você precisa ir se cuidar. Nós vamos cobrar que você se cuide. Vai procurar um profissional, vai procurar..."
+    ordem_2a: desenvolvimento_humano_dos_funcionarios
+    justificativa_interna: "Definição oficial: 'Promoção intencional do crescimento espiritual, ético e humano dos funcionários.' A cobrança ativa pelo autocuidado ('Nós vamos cobrar que você se cuide') e o encaminhamento profissional evidenciam promoção intencional do desenvolvimento humano."
+
+    ordem_2a: cuidado_dignidade_e_desenvolvimento_humano
+    justificativa_interna: "Definição oficial (categoria agregada): A exigência de que a funcionária busque cuidado profissional ('Vai procurar um profissional') como condição para manutenção do vínculo evidencia cuidado integral estruturado."
+
+    ordem_2a: saude_e_bem_estar
+    justificativa_interna: "Definição oficial: 'Garantia e promoção de condições que favoreçam a saúde física, mental e social ao longo de todo o ciclo de vida'. A cobrança ativa 'nós vamos cobrar que você se cuide' e orientação para 'procurar um profissional' evidenciam promoção de saúde."
+
+    ordem_2a: aspecto_biotico_5
+    justificativa_interna: "Definição oficial: 'Valorização da vida como critérios, incluindo saúde sobrevivência e cuidado físico de pessoas, animais ou criação'. A insistência no cuidado e busca de profissional evidencia valorização da vida e saúde."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "E aí, cara, mudou a situação. E depois disso, aí finalizamos a reunião ali, desse jeito, aí meu sócio depois me ligava e falou, cara, a gente ia cometer um baita de um equívoco."
+    ordem_2a: livramento
+    justificativa_interna: "Definição oficial: 'Interpretação de eventos concretos como intervenção direta de Deus para proteger, libertar ou preservar de perigos, perdas ou males específicos.' O reconhecimento de que 'a gente ia cometer um baita de um equívoco' após a mudança de decisão sugere interpretação de livramento de erro grave."
+
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho.' A mudança de situação ('mudou a situação') em contexto de decisão crítica sugere direção providencial."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Falei, meu, vocês me conhecem, não pode ter vindo da minha cabeça essa questão."
+    ordem_2a: obra_do_espirito_santo
+    justificativa_interna: "Definição oficial: 'Atuação transformadora do Espírito Santo na vida humana.' A negação explícita de autoria humana ('não pode ter vindo da minha cabeça') em decisão moral crítica evidencia atribuição à obra do Espírito."
+
+    ordem_2a: dependencia_de_deus
+    justificativa_interna: "Definição oficial: 'Reconhecimento explícito da limitação humana e da incapacidade de alcançar resultados desejáveis sem a ação, ajuda ou sustento de Deus.' A afirmação de que a decisão 'não pode ter vindo da minha cabeça' evidencia reconhecimento de dependência da ação divina."
+
+    ordem_2a: nao_confiar_no_homem_em_si_mesmo
+    justificativa_interna: "Definição oficial: 'Reconhecimento da limitação humana e recusa de fundamentar decisões últimas apenas na própria capacidade.' A negação da própria capacidade como fonte da decisão ('não pode ter vindo da minha cabeça') demonstra recusa de confiar em si mesmo."
+
+    ordem_2a: mover_do_espirito
+    justificativa_interna: "Definição oficial: 'Ação dinâmica do Espírito Santo orientando pessoas e decisões.' A atribuição da decisão a fonte externa divina em momento crítico caracteriza orientação dinâmica do Espírito."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana'. A afirmação 'não pode ter vindo da minha cabeça' nega agência própria e atribui exclusivamente a Deus."
+
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana, sendo inteiramente imerecida'. A negação da própria capacidade ('vocês me conhecem') evidencia o caráter imerecido da ação."
+
+    ordem_2a: gratidao_especial_ge
+    justificativa_interna: "Definição oficial: 'Reconhecimento consciente e pessoal de ter recebido a ação salvífica de Deus, acompanhado de resposta explícita de gratidão a Ele'. O reconhecimento de que a ação não veio dele evidencia gratidão pela intervenção divina."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Então, eu acho que esse foi um fato recente, muito recente, deve ter um mês, mais ou menos, que claramente fica evidenciado que a gente, como cristão, não precisamos em todos os momentos pedir orientação de Deus para tomar as nossas decisões, para não encorrer em questões como, vai mandar uma pessoa embora que está doente."
+    ordem_2a: tomada_de_decisao_em_oracao
+    justificativa_interna: "Definição oficial: 'Adoção explícita da oração como critério central de discernimento para decisões gerenciais.' A referência a 'pedir orientação de Deus para tomar as nossas decisões' em contexto gerencial crítico evidencia oração como critério decisório."
+
+    ordem_2a: gestao_na_direcao_de_deus
+    justificativa_interna: "Definição oficial: 'Condução da gestão baseada prioritariamente na percepção de orientação divina.' A afirmação de que cristãos devem 'pedir orientação de Deus para tomar as nossas decisões' evidencia gestão baseada em direção divina."
+
+    ordem_2a: dependencia_de_deus
+    justificativa_interna: "Definição oficial: 'Reconhecimento explícito da limitação humana e da incapacidade de alcançar resultados desejáveis sem a ação, ajuda ou sustento de Deus.' A necessidade de 'pedir orientação de Deus' para evitar erros graves ('mandar uma pessoa embora que está doente') evidencia dependência."
+
+    ordem_2a: defesa_dos_interesses_do_funcionario
+    justificativa_interna: "Definição oficial: 'Postura gerencial de priorizar a proteção e as necessidades do funcionário.' A preocupação explícita em 'não encorrer em questões como, vai mandar uma pessoa embora que está doente' evidencia priorização da proteção do funcionário vulnerável."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente'. A referência a 'como cristão' e 'pedir orientação de Deus' evidencia a fé como orientação transcendente explícita."
+
+    ordem_2a: graca_especial_ge
+    justificativa_interna: "Definição oficial: 'Ação soberana e específica de Deus que opera salvação, conversão e restauração espiritual em pessoas, reconhecida explicitamente como intervenção redentora divina'. O reconhecimento de que Deus age mesmo sem pedido explícito evidencia ação soberana divina."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais'. A preocupação em 'não encorrer em questões como, vai mandar uma pessoa embora que está doente' evidencia misericórdia como fundamento."
+
+    ordem_2a: saude_e_bem_estar
+    justificativa_interna: "Definição oficial: 'Garantia e promoção de condições que favoreçam a saúde física, mental e social ao longo de todo o ciclo de vida'. A referência a 'pessoa embora que está doente' evidencia consideração da saúde nas decisões."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "O nosso produto, Davi, é um container que ele transforma resíduo orgânico em energia elétrica, ou energia seja lá o que for. Pega todo o resíduo orgânico e transforma aquilo em energia."
+    ordem_2a: mandato_cultural
+    justificativa_interna: "Definição oficial: 'Responsabilidade humana de desenvolver trabalho, cultura, economia e sociedade de forma ordenada e responsável, conforme os propósitos e limites estabelecidos por Deus.' O desenvolvimento de tecnologia para transformar resíduos em energia evidencia desenvolvimento responsável de economia e sociedade."
+
+    ordem_2a: dominio_sobre_toda_a_terra
+    justificativa_interna: "Definição oficial: 'Responsabilidade humana de administrar e governar a criação sob a autoridade e os limites estabelecidos por Deus.' A transformação de resíduos orgânicos em energia caracteriza administração responsável da criação."
+
+    ordem_2a: energia_limpa_e_acessivel
+    justificativa_interna: "Definição oficial: 'Ampliação do acesso a fontes de energia confiáveis, modernas, sustentáveis e economicamente acessíveis'. A transformação de 'resíduo orgânico em energia elétrica' evidencia fonte de energia sustentável."
+
+    ordem_2a: consumo_e_producao_responsaveis
+    justificativa_interna: "Definição oficial: 'Promoção de padrões responsáveis e sustentáveis de consumo e produção ao longo das cadeias produtivas'. A transformação de resíduo em energia evidencia padrão sustentável de produção."
+
+    ordem_2a: aspecto_fisico_4
+    justificativa_interna: "Definição oficial: 'Reconhecimento de limites materiais da realidade empresarial, considerando restrições físicas'. A referência ao 'container' e processo de transformação evidencia aspectos materiais e físicos."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "E o outro também é um container, que é de Lichtenstein, que ele é um filtro gigante que você consegue transformar águas turvas, ou mesmo águas de esgoto, em água potável."
+    ordem_2a: mandato_cultural
+    justificativa_interna: "Definição oficial: 'Responsabilidade humana de desenvolver trabalho, cultura, economia e sociedade de forma ordenada e responsável.' O desenvolvimento de tecnologia para transformar água de esgoto em água potável evidencia desenvolvimento responsável para benefício social."
+
+    ordem_2a: cuidado_do_pobre_da_viuva_e_do_orfao
+    justificativa_interna: "Definição oficial: 'Compromisso pessoal, moral ativo, de proteger, sustentar e defender pessoas socialmente vulneráveis.' A tecnologia de água potável tem aplicação direta para populações vulneráveis sem acesso a água tratada."
+
+    ordem_2a: agua_potavel_e_saneamento
+    justificativa_interna: "Definição oficial: 'Garantia de acesso universal, seguro e sustentável à água potável e a serviços adequados de saneamento básico'. A transformação de 'águas turvas' e 'águas de esgoto' em 'água potável' evidencia diretamente acesso à água potável e saneamento."
+
+    ordem_2a: saude_e_bem_estar
+    justificativa_interna: "Definição oficial: 'Garantia e promoção de condições que favoreçam a saúde física, mental e social ao longo de todo o ciclo de vida'. O acesso à água potável é condição fundamental para saúde."
+
+    ordem_2a: aspecto_fisico_4
+    justificativa_interna: "Definição oficial: 'Reconhecimento de limites materiais da realidade empresarial, considerando restrições físicas'. A referência ao 'filtro gigante' e processo de transformação evidencia aspectos materiais."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Então são essas duas tecnologias que eu estou trazendo para cá, para o Brasil, contratei uma consultoria para desenvolver todo o plano de negócio, que é uma linguagem que eu não conheço, justamente por conta das minhas restrições."
+    ordem_2a: sabedoria_prudencia
+    justificativa_interna: "Definição oficial: 'Discernimento prático expresso em decisões cautelosas, responsáveis e contextualizadas.' A contratação de consultoria para área desconhecida ('linguagem que eu não conheço') evidencia prudência e responsabilidade decisória."
+
+    ordem_2a: nao_confiar_no_homem_em_si_mesmo
+    justificativa_interna: "Definição oficial: 'Reconhecimento da limitação humana e recusa de fundamentar decisões últimas apenas na própria capacidade.' O reconhecimento explícito de limitação ('linguagem que eu não conheço') e busca de ajuda externa demonstra recusa de confiar apenas em si."
+
+    ordem_2a: aspecto_formativo_8
+    justificativa_interna: "Definição oficial: 'Ação deliberada de planejar, moldar e transformar estruturas, processos ou estratégias'. A contratação de consultoria para 'desenvolver todo o plano de negócio' evidencia ação de planejamento e transformação."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro'. A contratação de consultoria e desenvolvimento de plano de negócio evidenciam administração de recursos."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "E as minhas restrições, cara, elas se baseiam, as pessoas que geralmente levantam essas bandeiras são pessoas que eu não concordo com absolutamente nada do que elas falam e do comportamento delas."
+    ordem_2a: verdade_certo
+    justificativa_interna: "Definição oficial: 'Reconhecimento de que a verdade moral é objetiva, não relativa, e fundamentada na revelação de Deus.' A discordância absoluta ('absolutamente nada') baseada em comportamento evidencia critério moral objetivo para avaliação."
+
+    ordem_2a: cosmovisao_crista
+    justificativa_interna: "Definição oficial: 'Interpretação abrangente da realidade — econômica, social, moral e existencial — a partir das categorias, valores e narrativas da fé cristã.' A avaliação crítica de movimentos sociais ('essas bandeiras') a partir de critérios morais evidencia interpretação da realidade por cosmovisão cristã."
+
+    ordem_2a: hipocrisia_corporativa_desconfianca
+    justificativa_interna: "Definição oficial: 'Avaliação negativa, que suspeita de incoerência entre o discurso do ESG e dos objetivos em relação à prática real das empresas, interpretando-o apenas como estratégia oportunista de marca, marketing e lucro'. A discordância com 'o que elas falam e do comportamento delas' evidencia suspeita de incoerência entre discurso e prática."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais'. A preocupação com a coerência entre fala e comportamento evidencia integridade como fundamento."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Elas se encaixam basicamente na história do Milô, eu desconfio. Eu desconfio de tudo isso, eu acho que na maioria são pessoas hipócritas, são tecnocratas que querem determinar a ação"
+    ordem_2a: verdade_certo
+    justificativa_interna: "Definição oficial: 'Reconhecimento de que a verdade moral é objetiva, não relativa.' A identificação de hipocrisia ('pessoas hipócritas') evidencia aplicação de critério moral objetivo para discernir incoerência entre discurso e prática."
+
+    ordem_2a: incredulidade
+    justificativa_interna: "Definição oficial: 'Rejeição ou ausência de confiança na existência de Deus, suas verdades, suas obras, atos ou promessas.' A desconfiança ('eu desconfio de tudo isso') em relação a movimentos que não se fundamentam em verdades divinas caracteriza percepção de incredulidade alheia."
+
+    ordem_2a: progressismo_agenda
+    justificativa_interna: "Definição oficial: 'Conjunto geral de pautas culturais, morais percebidas como ideologizadas e impostas social ou institucionalmente.' A referência a 'tecnocratas que querem determinar a ação' evidencia percepção de agenda imposta."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "a gente está falando muito agora em voga de soberania nacional. Qual a soberania nacional que o Brasil tem sobre a Amazônia, por exemplo? Nenhuma. Quem dita as regras ali são ONGs internacionais que movimentam bilhões de reais na maioria lavagem de dinheiro"
+    ordem_2a: praticas_comerciais_antieticas_corrupcao
+    justificativa_interna: "Definição oficial: 'Adoção de práticas comerciais ilegais ou moralmente condenáveis, como sonegação, propina, fraudes.' A acusação de 'lavagem de dinheiro' por ONGs internacionais evidencia percepção de práticas antiéticas."
+
+    ordem_2a: progressismo_agenda
+    justificativa_interna: "Definição oficial: 'Conjunto geral de pautas culturais, morais percebidas como ideologizadas e impostas social ou institucionalmente.' A referência a ONGs internacionais que 'ditam as regras' evidencia percepção de agenda imposta externamente."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "E na minha visão, essas terminologias, elas servem apenas para você dificultar o surgimento de novas empresas, novos players no mercado."
+    ordem_2a: concorrencia_desleal
+    justificativa_interna: "Definição oficial: 'Adoção de práticas de mercado injustas ou antiéticas para prejudicar concorrentes ou obter vantagem indevida.' A percepção de que terminologias ESG servem para 'dificultar o surgimento de novas empresas' evidencia identificação de prática desleal de mercado."
+
+    ordem_2a: cosmovisao_crista
+    justificativa_interna: "Definição oficial: 'Interpretação abrangente da realidade — econômica, social, moral e existencial — a partir das categorias, valores e narrativas da fé cristã.' A análise crítica ('na minha visão') de estruturas econômicas evidencia interpretação da realidade econômica por valores cristãos."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Porque os grandes players conseguem se adequar a isso de uma forma muito rápida, porque tem que ter dinheiro para isso. Agora você vai participar de uma concorrência onde determinadas regras são colocadas, empresas pequenas, menores, não tem condição de participar."
+    ordem_2a: concorrencia_desleal
+    justificativa_interna: "Definição oficial: 'Adoção de práticas de mercado injustas ou antiéticas para prejudicar concorrentes ou obter vantagem indevida.' A descrição de regras que excluem empresas pequenas ('não tem condição de participar') evidencia identificação de prática injusta de mercado."
+
+    ordem_2a: vales_levantados_montes_nivelados
+    justificativa_interna: "Definição oficial: 'Princípio de justiça que busca corrigir assimetrias, elevando os vulneráveis e limitando privilégios excessivos.' A preocupação com empresas pequenas excluídas por regras que favorecem grandes players evidencia sensibilidade a assimetrias injustas."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Elas não vão conseguir entrar naquilo, porque aquilo encarece muito."
+    ordem_2a: concorrencia_desleal
+    justificativa_interna: "Definição oficial: 'Adoção de práticas de mercado injustas ou antiéticas para prejudicar concorrentes.' O encarecimento artificial ('aquilo encarece muito') que impede entrada de competidores caracteriza prática desleal."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Só que aí, o meu produto sendo fabricado por ele, ia custar quase 50% a mais do que fabricado por uma empresa que era dele, mas era uma empresa pequena, bem pequenininha."
+    ordem_2a: concorrencia_desleal
+    justificativa_interna: "Definição oficial: 'Adoção de práticas de mercado injustas ou antiéticas para prejudicar concorrentes.' O aumento de 50% no custo devido a exigências regulatórias evidencia impacto de práticas percebidas como desleais."
+
+    ordem_2a: frugalidade
+    justificativa_interna: "Definição oficial: 'Escolha consciente por simplicidade e moderação no uso de recursos, evitando excessos, desperdício.' A preferência pela empresa pequena que oferece custo menor evidencia moderação e evitação de desperdício."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Por quê? Porque lá ele tinha que respeitar, como ele estava em outros países, uma série de regras e normativas internacionais que envolviam a ODS, as ODS da ONU, que tinha essa questão do ESG"
+    ordem_2a: compliance_anti_cristao
+    justificativa_interna: "Definição oficial: 'Conjunto de normas, políticas ou práticas organizacionais percebidas como restritivas, inibidoras ou hostis à expressão da fé cristã.' A referência a 'regras e normativas internacionais' (ODS, ESG) como obstáculos evidencia percepção de compliance restritivo."
+
+    ordem_2a: progressismo_agenda
+    justificativa_interna: "Definição oficial: 'Conjunto geral de pautas culturais, morais percebidas como ideologizadas e impostas social ou institucionalmente.' A menção a ODS da ONU e ESG como imposições normativas evidencia percepção de agenda imposta."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Cara, tem um caso até recente agora, a gente estava muito insatisfeito com o trabalho da nossa profissional da área de marketing, todos nós, eu e o Wilson, estávamos muito satisfeitos e a gente estava decidido a mandar embora, demos algumas chances e a gente ia dispensar."
+    ordem_2a: maximizacao_do_lucro_aumento_da_lucratividade
+    justificativa_interna: "Definição oficial: 'Orientação gerencial estratégica centrada no crescimento máximo e contínuo dos resultados financeiros com objetivo prioritário de melhorar sempre a gestão'. A decisão inicial de dispensar a profissional por insatisfação com o trabalho evidencia priorização da performance e eficiência operacional."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro'. A avaliação do trabalho insatisfatório e a decisão de dispensar demonstram gestão consciente de recursos humanos e produtividade."
+
+    ordem_2a: aspecto_analitico_7
+    justificativa_interna: "Definição oficial: 'Uso consciente do julgamento racional, da distinção conceitual e da coerência lógica'. O processo deliberativo ('demos algumas chances', 'a gente estava decidido') evidencia análise racional antes da decisão."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Bom, chegou-se um momento, eu terminei a reunião com o cliente, você consegue entrar na reunião? Falei, consigo. Entrei para o vídeo, o clima estava muito tenso, já estava indo para o desfecho, a forma como ela estava falando, e ali, Davi, não tem como eu dizer que foi humano, porque eu não sou assim."
+    ordem_2a: graca_especial_ge
+    justificativa_interna: "Definição oficial: 'Ação soberana e específica de Deus que opera salvação, conversão e restauração espiritual em pessoas, reconhecida explicitamente como intervenção redentora divina'. A afirmação 'não tem como eu dizer que foi humano, porque eu não sou assim' prepara o reconhecimento de intervenção divina."
+
+    ordem_2a: aspecto_sensitivo_6
+    justificativa_interna: "Definição oficial: 'Consideração explícita das experiências emocionais humanas relevantes — como dor, medo, empatia ou sofrimento'. A percepção do 'clima estava muito tenso' evidencia consideração de experiências emocionais."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "E aí eu comecei a perguntar algumas coisas para ela, porque nós já estávamos sabendo que o marido dela tinha feito uma cirurgia na cabeça, por causa de um implante que ele foi fazer, não deu certo, enfim. Aí, na hora, eu comecei a perguntar isso e falei, como é que está a situação lá com o teu marido?"
+    ordem_2a: aspecto_biotico_5
+    justificativa_interna: "Definição oficial: 'Valorização da vida como critérios, incluindo saúde sobrevivência e cuidado físico de pessoas, animais ou criação'. A referência à 'cirurgia na cabeça' e preocupação com a saúde do marido evidencia valorização da vida e saúde."
+
+    ordem_2a: aspecto_sensitivo_6
+    justificativa_interna: "Definição oficial: 'Consideração explícita das experiências emocionais humanas relevantes — como dor, medo, empatia ou sofrimento'. A pergunta sobre a situação do marido demonstra empatia e consideração do sofrimento."
+
+    ordem_2a: saude_e_bem_estar
+    justificativa_interna: "Definição oficial: 'Garantia e promoção de condições que favoreçam a saúde física, mental e social ao longo de todo o ciclo de vida'. A preocupação com a cirurgia e situação de saúde evidencia atenção ao bem-estar."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "E aí, cara, mudou a situação. E depois disso, aí finalizamos a reunião ali, desse jeito, aí meu sócio depois me ligava e falou, cara, a gente ia cometer um baita de um equívoco. Obrigado por você ter aberto os olhos e tal."
+    ordem_2a: eficacia
+    justificativa_interna: "Definição oficial: 'Convicção de que a graça atua de modo plenamente eficaz, realizando integralmente aquilo que Deus determinou e produzindo transformação real'. A mudança de situação ('mudou a situação', 'a gente ia cometer um baita de um equívoco') evidencia transformação real produzida pela ação divina."
+
+    ordem_2a: gratidao_especial_ge
+    justificativa_interna: "Definição oficial: 'Reconhecimento consciente e pessoal de ter recebido a ação salvífica de Deus, acompanhado de resposta explícita de gratidão a Ele'. O reconhecimento do sócio ('Obrigado por você ter aberto os olhos') evidencia gratidão pela intervenção."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Então você dá uma destinação... Oi? É um container? É um container, um container de 40 pés, e ele vem com uma tecnologia interna, com algumas bactérias, então você joga ali o resíduo orgânico, seja animal, seja fruta, verdura, enfim, folha, e ele tem a capacidade de transformar aquilo em gás metano, e aquele gás você consegue transformar em energia elétrica, ar quente, ar frio, enfim, você dá uma destinação correta para esse resíduo orgânico."
+    ordem_2a: energia_limpa_e_acessivel
+    justificativa_interna: "Definição oficial: 'Ampliação do acesso a fontes de energia confiáveis, modernas, sustentáveis e economicamente acessíveis'. A transformação de 'gás metano' em 'energia elétrica' evidencia fonte de energia sustentável e moderna."
+
+    ordem_2a: consumo_e_producao_responsaveis
+    justificativa_interna: "Definição oficial: 'Promoção de padrões responsáveis e sustentáveis de consumo e produção ao longo das cadeias produtivas'. A 'destinação correta para esse resíduo orgânico' evidencia padrão responsável de produção."
+
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades como critérios relevantes para gestão'. A menção a 'container de 40 pés' evidencia uso de números como critério."
+
+    ordem_2a: aspecto_fisico_4
+    justificativa_interna: "Definição oficial: 'Reconhecimento de limites materiais da realidade empresarial, considerando restrições físicas'. A descrição detalhada do container, tecnologia e processo físico evidencia reconhecimento de aspectos materiais."
+END ITEM
+
+ITEM @entrevista16
+    ordem_1a: "Elas se encaixam basicamente na história do Milô, eu desconfio. Eu desconfio de tudo isso, eu acho que na maioria são pessoas hipócritas, são tecnocratas que querem determinar a ação, a gente está falando muito agora em voga de soberania nacional."
+    ordem_2a: hipocrisia_corporativa_desconfianca
+    justificativa_interna: "Definição oficial: 'Avaliação negativa, que suspeita de incoerência entre o discurso do ESG e dos objetivos em relação à prática real das empresas, interpretando-o apenas como estratégia oportunista de marca, marketing e lucro'. A afirmação direta 'eu desconfio de tudo isso' e 'são pessoas hipócritas' evidencia desconfiança de incoerência."
+
+    ordem_2a: cinismo_politico
+    justificativa_interna: "Definição oficial: 'Leitura do ESG ou objetivos como ferramenta de poder político'. A referência a 'tecnocratas que querem determinar a ação' e 'soberania nacional' evidencia leitura como ferramenta de poder político."
+
+    ordem_2a: globalismo
+    justificativa_interna: "Definição oficial: 'Visão do ESG ou objetivos como agenda supranacional que enfraquece soberanias nacionais e impõe padrões globais uniformes'. A menção a 'soberania nacional' no contexto de crítica evidencia visão de agenda supranacional."
+END ITEM

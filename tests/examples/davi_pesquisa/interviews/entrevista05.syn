@@ -1,0 +1,1491 @@
+SOURCE @entrevista05
+	código: N/A
+END SOURCE
+
+ITEM @entrevista05
+    ordem_1a: "eu não nasci num lar cristão. Minha mãe, na verdade, é católica, atualmente praticante. Meu pai, eu não sei o que ele é."
+    ordem_2a: familia_e_criacao_de_filhos_confusa
+    justificativa_interna: "Contexto sociocultural marcado por ambiguidade ou desorientação moral na formação dos filhos'. O relato de não saber a identidade religiosa do pai e a ausência de formação cristã no lar evidenciam ambiguidade na transmissão de valores familiares."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "eu fui conhecer Jesus com 26 anos de idade. Até esse momento, eu era o que se podia chamar de um homem do mundo."
+    ordem_2a: o_mundo_caido
+    justificativa_interna: "Condição histórica e cultural marcada pela oposição a Deus'. A autoidentificação como 'homem do mundo' antes da conversão evidencia a vivência em sistemas de valores afastados do divino."
+
+    ordem_2a: conversao_de_outros_como_resultado
+    justificativa_interna: "Narrativa da influência da conduta pessoal ou profissional de um gestor para a conversão de terceiros'. O relato descreve o processo de conversão do próprio entrevistado aos 26 anos."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Trabalhava. O meu trabalho era para financiar minhas noitadas, basicamente."
+    ordem_2a: hedonismo
+    justificativa_interna: "Orientação existencial centrada na busca de prazer imediato como valor supremo'. O trabalho orientado exclusivamente para financiar 'noitadas' evidencia busca de gratificação sensorial como finalidade."
+
+    ordem_2a: trabalho_como_panaceia_egito
+    justificativa_interna: "Visão em que o trabalho assume papel absoluto e redentor'. O trabalho como meio exclusivo para sustentar estilo de vida hedonista demonstra centralidade desproporcional do trabalho na vida pré-conversão."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Conheci Jesus, na verdade, por um... vamos dizer que por um interesse meio escuso. Eu conheci a minha esposa."
+    ordem_2a: providencia_divina
+    justificativa_interna: "Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida'. O reconhecimento retrospectivo de que um 'interesse escuso' foi usado por Deus para conduzir à conversão evidencia percepção de direção divina em eventos aparentemente ordinários."
+
+    ordem_2a: evento_cristo
+    justificativa_interna: "Definição oficial: 'Narrativa da conversão do próprio gestor (conhecimento de Cristo), por meio de uma experiência existencial marcante'. O entrevistado narra o início do processo de conversão ('conheci Jesus'), ainda que inicialmente motivado por interesse relacional, caracterizando o evento_cristo."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Ah, não vou casar com quem não é crente. E eu já tinha na minha cabeça que eu ia casar com essa mulher."
+    ordem_2a: primeiro_os_da_fe_os_de_casa
+    justificativa_interna: "Prioridade ética dada ao cuidado, sustento e compromisso com a própria família e com os da mesma fé'. A exigência da futura esposa de casar apenas com crente evidencia priorização de alinhamento de fé nas escolhas relacionais."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Então, na minha concepção, era assim, Ah, é só uma questão de igreja."
+    ordem_2a: incredulidade
+    justificativa_interna: "Rejeição ou ausência de confiança na existência de Deus, suas verdades, suas obras, atos ou promessas'. A redução da fé cristã a 'só uma questão de igreja' evidencia ausência de compreensão da dimensão espiritual antes da conversão."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "esse amigo pediu para orar por mim. Ah, beleza. Se bem não fizer, mal não faz."
+    ordem_2a: incredulidade
+    justificativa_interna: "Rejeição ou ausência de confiança'. A atitude cética diante da oração ('se bem não fizer, mal não faz') evidencia ausência de confiança na eficácia da oração antes da experiência sobrenatural."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "O cara pôs a mão no meu peito, e ele começou a falar algumas coisas, que hoje eu sei que eram palavras de conhecimento, que me derrubaram, basicamente."
+    ordem_2a: dons_do_espirito
+    justificativa_interna: "Capacitações concedidas soberanamente pelo Espírito Santo'. A identificação retrospectiva de 'palavras de conhecimento' evidencia reconhecimento de dom espiritual operando através de terceiro."
+
+    ordem_2a: mundo_espiritual
+    justificativa_interna: "Reconhecimento de uma realidade invisível que influencia a vida humana'. A experiência de ser 'derrubado' por palavras proféticas evidencia reconhecimento de realidade espiritual atuante."
+
+    ordem_2a: profecia_a_favor
+    justificativa_interna: "Mensagem atribuída a Deus que traz encorajamento, direção ou confirmação positiva'. As palavras de conhecimento trouxeram confirmação e direção que conduziram à conversão."
+
+    ordem_2a: obra_do_espirito_santo
+    justificativa_interna: "Atuação transformadora do Espírito Santo na vida humana'. A experiência com palavras de conhecimento marca o início da transformação que levou à conversão."
+
+    ordem_2a: graca_especial_ge
+    justificativa_interna: "Definição oficial: 'Ação soberana e específica de Deus que opera salvação, conversão e restauração espiritual em pessoas, reconhecida explicitamente como intervenção redentora divina'. As 'palavras de conhecimento' que 'derrubaram' o entrevistado são reconhecidas como intervenção divina específica, caracterizando graca_especial_ge."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana'. O entrevistado atribui as 'palavras de conhecimento' a uma fonte divina exclusiva ('hoje eu sei que eram palavras de conhecimento'), sem atribuir participação humana na origem da revelação."
+
+    ordem_2a: evento_cristo
+    justificativa_interna: "Definição oficial: 'Narrativa da conversão do próprio gestor (conhecimento de Cristo), por meio de uma experiência existencial marcante'. O momento em que foi 'derrubado' pelas palavras de conhecimento constitui a experiência existencial marcante da conversão, núcleo do evento_cristo."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "uns 3 meses antes disso acontecer, eu tinha perdido meu avô. E, na noite em que eu perdi meu avô, eu estava dirigindo sozinho no carro, e eu comecei a vociferar, chorando, evidentemente. Falei, cara, eu não acredito em Deus. Deus não existe. Ele não iria levar meu avô se ele existisse."
+    ordem_2a: incredulidade
+    justificativa_interna: "Rejeição ou ausência de confiança na existência de Deus'. A vociferação 'Deus não existe' evidencia rejeição explícita da existência divina motivada por sofrimento."
+
+    ordem_2a: frustracao
+    justificativa_interna: "Vivência emocional de bloqueio, desapontamento ou impotência diante de limites, perdas ou resultados que frustram expectativas'. O choro e a vociferação diante da perda do avô evidenciam frustração profunda."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "nesse dia que esse cara começou a orar por mim, uma das coisas que ele falou foi a seguinte, ele falou, olha, você já teve tudo na sua mão, você deixou escapar por aí dos seus dedos"
+    ordem_2a: profecia_a_favor
+    justificativa_interna: "Mensagem atribuída a Deus que traz encorajamento, direção ou confirmação positiva'. A palavra profética sobre ter deixado escapar e a promessa de restituição trouxe confirmação e encorajamento."
+
+    ordem_2a: dons_do_espirito
+    justificativa_interna: "Capacitações concedidas soberanamente pelo Espírito Santo'. A palavra de conhecimento sobre eventos passados não compartilhados evidencia dom espiritual operando."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Deus está te dando alguns recados hoje. O primeiro deles é que Ele vai restituir tudo aquilo que você deixou escapar."
+    ordem_2a: promessas
+    justificativa_interna: "Expectativa confiante e orientadora de vida baseada nos compromissos futuros declarados por Deus'. A promessa de restituição funciona como compromisso futuro declarado por Deus através da profecia."
+
+    ordem_2a: profecia_a_favor
+    justificativa_interna: "Mensagem atribuída a Deus que traz encorajamento, direção ou confirmação positiva'. A promessa de restituição traz encorajamento específico sobre o futuro."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "E o segundo, respondendo aquela alegação que você fez 3 meses atrás, naquela noite, Deus está te dando um recado de que Ele existe, e Ele quer você."
+    ordem_2a: dons_do_espirito
+    justificativa_interna: "Capacitações concedidas soberanamente pelo Espírito Santo'. O conhecimento sobrenatural de uma alegação feita em privado 3 meses antes evidencia dom de palavra de conhecimento."
+
+    ordem_2a: profecia_a_favor
+    justificativa_interna: "Mensagem atribuída a Deus que traz encorajamento, direção ou confirmação positiva'. A resposta direta à alegação passada e a afirmação 'Ele quer você' trazem confirmação e encorajamento decisivos."
+
+    ordem_2a: sobrenatural_sobrenaturalidade
+    justificativa_interna: "Presença mística, fora dos domínios do mundo físico e material'. O conhecimento de evento privado não compartilhado evidencia intervenção sobrenatural."
+
+    ordem_2a: mundo_espiritual
+    justificativa_interna: "Reconhecimento de uma realidade invisível que influencia a vida humana'. A experiência de ter pensamentos privados revelados evidencia realidade espiritual atuante."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Nessa hora eu falei assim, beleza, onde é que eu assino? Porque depois de algo nesse nível, algo muito profundo, cara, passei umas 3 horas sem falar nada, tipo, refletindo"
+    ordem_2a: maravilhamento
+    justificativa_interna: "Experiência de admiração reverente diante da ação de Deus'. A reação de ficar 3 horas sem falar, refletindo após experiência 'muito profunda', evidencia admiração reverente."
+
+    ordem_2a: conversao_de_outros_como_resultado
+    justificativa_interna: "Narrativa da influência da conduta pessoal ou profissional de um gestor para a conversão de terceiros'. O momento 'onde é que eu assino' marca a conversão do próprio entrevistado."
+
+    ordem_2a: arrependimento
+    justificativa_interna: "Reconhecimento consciente do pecado acompanhado de mudança intencional de direção'. A decisão imediata de se entregar ('onde é que eu assino') evidencia mudança intencional de direção."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "e a partir desse momento, foi o meu encontro com Jesus. Me entreguei naquele momento"
+    ordem_2a: conversao_de_outros_como_resultado
+    justificativa_interna: "Narrativa da influência da conduta pessoal ou profissional de um gestor para a conversão de terceiros'. O relato do 'encontro com Jesus' e da entrega marca o momento de conversão."
+
+    ordem_2a: arrependimento
+    justificativa_interna: "Reconhecimento consciente do pecado acompanhado de mudança intencional de direção'. A entrega consciente evidencia mudança de direção diante de Deus."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Então, 20 anos de conversão."
+    ordem_2a: identidade_em_cristo
+    justificativa_interna: "Compreensão de que o valor, o sentido e a identidade pessoal são definidos primariamente pela união com Cristo'. A marcação temporal '20 anos de conversão' evidencia que a identidade é definida a partir do encontro com Cristo."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Mas eu sempre fui uma pessoa muito intelectualizada, sempre amei ler. Não dá pra ver agora, mas a minha direita aqui tem um pouco mais de 300 livros. Todos eles livros. Alguns mais de uma vez."
+    ordem_2a: sabedoria_prudencia
+    justificativa_interna: "Discernimento prático expresso em decisões cautelosas, responsáveis e contextualizadas'. A ênfase na leitura extensa e no estudo evidencia busca de conhecimento que fundamenta discernimento prático."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Hoje eu sei que eu era uma criança considerada superdotada. Meus dois filhos também são."
+    ordem_2a: dons_do_espirito
+    justificativa_interna: "Capacitações concedidas soberanamente pelo Espírito Santo'. Embora o contexto seja intelectual, o reconhecimento de capacitações especiais pode ser interpretado como dons dados por Deus, especialmente ao mencionar que os filhos também possuem."
+
+    ordem_2a: aspecto_analitico_7
+    justificativa_interna: "Definição oficial: 'Uso consciente do julgamento racional, da distinção conceitual e da coerência lógica'. A identificação como 'superdotado' implica capacidade intelectual diferenciada, caracterizando aspecto_analitico_7."
+
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades como critérios relevantes para gestão'. A referência a 'dois filhos' utiliza quantificação explícita, caracterizando aspecto_numerico_1."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "E com 11 anos de idade, o que aconteceu? Meu pai sempre foi uma pessoa muito... de pão dura. E não tinha muito incentivo pra leitura. Então eu era um rato de biblioteca, só que eu queria também ter os meus livros. Teria os meus gibis. Aí eu falei assim, vou arrumar um emprego, que com o meu dinheiro eu mesmo compro as minhas coisas."
+    ordem_2a: aquele_que_nao_trabalha_que_nao_coma
+    justificativa_interna: "Princípio moral que associa sustento e dignidade ao exercício responsável do trabalho'. A decisão de trabalhar aos 11 anos para comprar os próprios livros evidencia associação entre trabalho e sustento próprio desde cedo."
+
+    ordem_2a: frugalidade
+    justificativa_interna: "Escolha consciente por simplicidade e moderação no uso de recursos'. A decisão de trabalhar para comprar apenas o necessário (livros e gibis) evidencia moderação e foco no essencial."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Nem pretendo, porque quando eu comecei na área de tecnologia, cara, eu já programava a fazer 3, 4 anos. Então não fazia sentido. Também nunca acreditei muito em educação formal. Eu sou do time de que se você sabe fazer, você faz. Se você não sabe fazer, você vai estudar."
+    ordem_2a: sabedoria_prudencia
+    justificativa_interna: "Discernimento prático expresso em decisões cautelosas, responsáveis e contextualizadas'. A decisão de não fazer faculdade baseada em avaliação prática de competência evidencia discernimento contextualizado."
+
+    ordem_2a: excelencia_crista_fazer_para_cristo
+    justificativa_interna: "Busca intencional de alta qualidade e zelo no trabalho'. A ênfase em 'se você sabe fazer, você faz' evidencia orientação para competência e qualidade na execução."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "E eu falo que eu sou movido a dor de cabeça em termos de trabalho. Porque quando começo a não ter dor de cabeça, eu procuro o próximo."
+    ordem_2a: proposito
+    justificativa_interna: "Compreensão de que a própria vida e atuação profissional possuem um sentido de missão'. A busca constante por desafios maiores evidencia senso de propósito que orienta escolhas profissionais."
+
+    ordem_2a: excelencia_crista_fazer_para_cristo
+    justificativa_interna: "Busca intencional de alta qualidade e zelo no trabalho'. A recusa de acomodação e busca constante por desafios evidencia zelo e busca de excelência."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Então o meu trabalho hoje é muito mais voltado para pessoas, embora dentro de tecnologia, do que tecnologia em si."
+    ordem_2a: servir_servico_servo_servo_de_cristo
+    justificativa_interna: "Postura voluntária de humildade e submissão que orienta a ação profissional e relacional ao bem do outro'. O foco em facilitar a vida de quem trabalha com tecnologia evidencia orientação ao serviço do outro."
+
+    ordem_2a: lideranca_servil_sacrificial
+    justificativa_interna: "Forma de liderança orientada ao serviço, em que o líder prioriza pessoas e propósitos acima do poder'. A ênfase em trabalho voltado para pessoas evidencia liderança orientada ao serviço."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Então eu não programo, não codo, não entrego nada, não faço nada de técnico. Mas eu facilito a vida de quem trabalha com tecnologia."
+    ordem_2a: servir_servico_servo_servo_de_cristo
+    justificativa_interna: "Postura voluntária de humildade e submissão que orienta a ação profissional e relacional ao bem do outro'. A função de facilitar a vida de outros evidencia postura de serviço."
+
+    ordem_2a: lideranca_servil_sacrificial
+    justificativa_interna: "Forma de liderança orientada ao serviço'. O papel de facilitador que não busca protagonismo técnico evidencia liderança servil."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "se você for perguntar a posição, o meu cargo é de Agile Coach. Eu sou um coach de agilidade. Então eu vou nas empresas, vejo o que presta, como está em Testalonicenses, eu vejo o que presta e retenho o que é bom. E jogo fora aquilo que não presta."
+    ordem_2a: consultar_a_palavra_biblia
+    justificativa_interna: "Uso intencional das Escrituras como fonte normativa de orientação'. A referência explícita a Tessalonicenses como critério de discernimento profissional evidencia uso da Bíblia como orientação para decisões de trabalho."
+
+    ordem_2a: sabedoria_prudencia
+    justificativa_interna: "Discernimento prático expresso em decisões cautelosas, responsáveis e contextualizadas'. A avaliação criteriosa do que 'presta' e do que 'não presta' evidencia discernimento prático."
+
+    ordem_2a: cosmovisao_crista
+    justificativa_interna: "Interpretação abrangente da realidade a partir das categorias, valores e narrativas da fé cristã'. O uso de critério bíblico (Tessalonicenses) para avaliar processos organizacionais evidencia interpretação da realidade profissional a partir da fé."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Eu também falo inglês desde os meus 16 anos de idade. E eu tenho focado muito meus esforços em carreiras internacionais. Primeiro, por quê? São campos em que a fé faz muita falta. Países fora do Brasil têm muito problema com o cristianismo."
+    ordem_2a: grande_comissao_missao_no_mundo
+    justificativa_interna: "Compromisso ativo com a expansão da fé cristã por meio de discipulado, ensino e presença pública no mundo'. A escolha deliberada de atuar em países onde 'a fé faz muita falta' evidencia compromisso missionário."
+
+    ordem_2a: sal_da_terra
+    justificativa_interna: "Convicção de que o cristão exerce influência ética e moral que preserva, limita a degradação e promove transformação social'. A percepção de que países fora do Brasil 'têm muito problema com o cristianismo' e a decisão de atuar lá evidencia convicção de exercer influência preservadora."
+
+    ordem_2a: testemunho
+    justificativa_interna: "Vivência coerente e visível da fé cristã expressa em atitudes, escolhas e conduta cotidiana'. A escolha de carreiras internacionais para levar a fé evidencia intenção de testemunho público."
+
+    ordem_2a: proposito
+    justificativa_interna: "Compreensão de que a própria vida e atuação profissional possuem um sentido de missão definido pela vontade de Deus'. A escolha profissional orientada por missão espiritual evidencia senso de propósito divino."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "E, obviamente, para ganhar pessoal, ganhar dólar é muito melhor. Diria que é 51% por causa da fé e 49% por causa do dinheiro."
+    ordem_2a: ambiguidade_duvida
+    justificativa_interna: "Estado de incerteza decisória diante do conflito entre priorizar convicções de fé ou maximizar resultados econômicos'. A divisão percentual entre fé (51%) e dinheiro (49%) evidencia tensão entre motivações espirituais e econômicas."
+
+    ordem_2a: contentamento
+    justificativa_interna: "Embora haja motivação financeira, a priorização da fé (51%) sobre o dinheiro (49%) sugere que há um equilíbrio onde o contentamento não é totalmente dependente de ganhos materiais, mas a tensão permanece."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Uma empresa bem conhecida chamada Riachuelo. Na Riachuelo eu era um prestador de serviço, contratado como gerente de projetos"
+    ordem_2a: chamado_vocacao
+    justificativa_interna: "Percepção de um chamado divino específico que orienta a escolha da profissão'. O contexto subsequente revela que a atuação na Riachuelo foi percebida como missão divina, evidenciando vocação."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "a Riachuelo foi a última grande empresa textil do Brasil a aderir ao e-commerce. Foi em 2018 isso. Eles não tinham, simplesmente não tinham e-commerce, e nessa época era impensável uma empresa sobreviver sem comércio eletrônico."
+    ordem_2a: baixa_produtividade_e_excelencia_validadas
+    justificativa_interna: "Aceitação organizacional de baixo desempenho, mediocridade ou ausência de excelência'. A resistência da Riachuelo em aderir ao e-commerce quando já era 'impensável' sobreviver sem ele evidencia aceitação de mediocridade organizacional."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Para te dar um pouco de contexto, a Riachuelo, apesar de ser enorme, ela é uma empresa familiar. Até 2020, se não me engano, o fundador dela ainda estava vivo e era quem dava as cartas. Depois quem assumiu foi o filho dele, o Flávio. E por ser uma empresa familiar, era uma empresa muito rígida. Lá dentro era muito tráfico de influência, era muito quem indica, eram paradigmas muito duros de serem quebrados."
+    ordem_2a: praticas_comerciais_antieticas_corrupcao
+    justificativa_interna: "Adoção de práticas comerciais ilegais ou moralmente condenáveis'. A menção explícita a 'tráfico de influência' e 'quem indica' evidencia práticas antiéticas na gestão."
+
+    ordem_2a: amoralidade_abandono_deliberado_de_valores
+    justificativa_interna: "Ambiente organizacional que abandona critérios morais claros em nome de resultados ou desempenho'. O sistema de 'tráfico de influência' e 'quem indica' evidencia abandono de critérios meritocráticos."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "vamos lançar esse e-commerce no modelo Scrum. E o modelo Scrum, ele desafia demais o status quo. E ele faz aparecer muito rápido aquilo que é errado. Então se você vai errar, você vai errar muito rápido."
+    ordem_2a: verdade_certo
+    justificativa_interna: "Reconhecimento de que a verdade moral é objetiva, não relativa'. A ênfase em fazer 'aparecer muito rápido aquilo que é errado' evidencia compromisso com verdade objetiva e transparência."
+
+    ordem_2a: retidao_incorruptibilidade
+    justificativa_interna: "Postura ética inegociável que rejeita corrupção, ilegalidade ou compromissos morais duvidosos'. A escolha de método que expõe rapidamente o que é errado evidencia compromisso com retidão."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Logicamente isso traz uma animosidade contra quem está aplicando essas coisas. Porque todas aquelas estruturas antigas, todo aquele castelo no ar que foi construído pelas gerações desabam muito rápido. E isso traz problemas para quem está implantando isso."
+    ordem_2a: sofrer_o_dano
+    justificativa_interna: "Aceitação consciente de prejuízo pessoal, profissional ou material como consequência de permanecer fiel a princípios cristãos'. A aceitação de 'animosidade' e 'problemas' como consequência de implementar transparência evidencia disposição de sofrer dano por princípios."
+
+    ordem_2a: perseguicao_religiosa
+    justificativa_interna: "Qualquer forma de desvalorização, hostilidade, ridicularização ou prejuízo profissional motivado pela identidade ou prática religiosa'. A 'animosidade' gerada pela implementação de valores de transparência pode ser interpretada como hostilidade à prática ética cristã."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "eu só consegui fazer essa implantação desse e-commerce, que deveria durar dois anos, eu implementei em um ano e um mês. Sem perder ninguém, sem pedir orçamentos maiores, sem nada de percalços mais graves, pela única e simples razão de que eu estava com o Espírito Santo."
+    ordem_2a: obra_do_espirito_santo
+    justificativa_interna: "Atuação transformadora do Espírito Santo na vida humana'. A atribuição explícita do sucesso à presença do Espírito Santo evidencia reconhecimento de atuação transformadora."
+
+    ordem_2a: dependencia_de_deus
+    justificativa_interna: "Reconhecimento explícito da limitação humana e da incapacidade de alcançar resultados desejáveis sem a ação, ajuda ou sustento de Deus'. A afirmação de que conseguiu 'pela única e simples razão de que eu estava com o Espírito Santo' evidencia reconhecimento de dependência total."
+
+    ordem_2a: providencia_divina
+    justificativa_interna: "Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho'. O sucesso atribuído ao Espírito Santo evidencia convicção de direção divina nas circunstâncias do projeto."
+
+    ordem_2a: milagres
+    justificativa_interna: "Evento percebido como intervenção divina fora do curso natural'. A conclusão do projeto em metade do tempo previsto, sem perdas ou percalços, atribuída ao Espírito Santo, evidencia percepção de intervenção sobrenatural."
+
+    ordem_2a: pra_cima
+    justificativa_interna: "Percepção de que a fé cristã contribui positivamente para desempenho financeiro, estabilidade econômica ou crescimento sustentável'. O sucesso do projeto atribuído à fé evidencia percepção de impacto positivo da fé nos resultados."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "inúmeras vezes fui confrontado, fui ameaçado, fui coagido. Todas as vezes."
+    ordem_2a: perseguicao_religiosa
+    justificativa_interna: "Qualquer forma de desvalorização, hostilidade, ridicularização ou prejuízo profissional motivado pela identidade ou prática religiosa'. As ameaças e coações enfrentadas no contexto de implementação de valores cristãos evidenciam perseguição."
+
+    ordem_2a: sofrer_o_dano
+    justificativa_interna: "Aceitação consciente de prejuízo pessoal, profissional ou material como consequência de permanecer fiel a princípios cristãos'. O enfrentamento de confrontos, ameaças e coações evidencia aceitação de dano por fidelidade."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "eu não nasci num lar cristão"
+    ordem_2a: evento_cristo
+    justificativa_interna: "Definição oficial: 'Narrativa da conversão do próprio gestor (conhecimento de Cristo), por meio de uma experiência existencial marcante'. O trecho nega a hereditariedade cultural ('não nasci num lar cristão'), preparando o contexto para uma conversão pessoal posterior, característica do evento_cristo."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Minha mãe, na verdade, é católica, atualmente praticante. Meu pai, eu não sei o que ele é."
+    ordem_2a: cristianismo_secular
+    justificativa_interna: "Definição oficial: 'Apropriação cultural ou ética de elementos do cristianismo como referência moral, identitária ou simbólica, sem reconhecimento de Jesus como Senhor'. A descrição do pai ('não sei o que ele é') sugere ausência de prática religiosa definida ou orientação existencial por Deus, característica do cristianismo_secular no contexto familiar."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "eu era o que se podia chamar de um homem do mundo. Trabalhava. O meu trabalho era para financiar minhas noitadas, basicamente."
+    ordem_2a: evento_cristo
+    justificativa_interna: "Definição oficial: 'Narrativa da conversão do próprio gestor (conhecimento de Cristo), por meio de uma experiência existencial marcante'. A descrição de vida pré-conversão ('homem do mundo', 'financiar minhas noitadas') estabelece o contraste necessário para caracterizar a experiência de conversão posterior como evento_cristo."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "eu tinha perdido meu avô. E, na noite em que eu perdi meu avô, eu estava dirigindo sozinho no carro, e eu comecei a vociferar, chorando, evidentemente. Falei, cara, eu não acredito em Deus. Deus não existe."
+    ordem_2a: evento_cristo
+    justificativa_interna: "Definição oficial: 'Narrativa da conversão do próprio gestor (conhecimento de Cristo), por meio de uma experiência existencial marcante'. A situação-limite da perda do avô e a crise existencial ('eu não acredito em Deus') contextualizam a experiência marcante que levará à conversão, característica do evento_cristo."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "esse rapaz orou por mim e falou, olha, você deixou tudo escapar por aí dos seus dedos, Deus está te dando alguns recados hoje. O primeiro deles é que Ele vai restituir tudo aquilo que você deixou escapar. E o segundo, respondendo aquela alegação que você fez 3 meses atrás, naquela noite, Deus está te dando um recado de que Ele existe, e Ele quer você."
+    ordem_2a: graca_especial_ge
+    justificativa_interna: "Definição oficial: 'Ação soberana e específica de Deus que opera salvação, conversão e restauração espiritual em pessoas, reconhecida explicitamente como intervenção redentora divina'. A palavra profética ('Deus está te dando alguns recados', 'Ele quer você') é reconhecida como intervenção divina específica operando conversão, caracterizando graca_especial_ge."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana'. A iniciativa é atribuída exclusivamente a Deus ('Deus está te dando recados', 'Ele quer você'), sem participação causal do entrevistado, caracterizando singularidade_monergismo."
+
+    ordem_2a: prioridade_monergismo
+    justificativa_interna: "Definição oficial: 'Compreensão de que a graça antecede toda ação, decisão ou mérito humano, sendo iniciativa soberana e primeira de Deus'. A palavra profética revela que Deus tomou a iniciativa ('Deus está te dando recados') antes de qualquer resposta humana, caracterizando prioridade_monergismo."
+
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana, sendo inteiramente imerecida'. O contexto mostra que a graça foi concedida a alguém que estava vociferando contra Deus ('eu não acredito em Deus'), evidenciando o caráter imerecido, núcleo da incongruencia_monergismo."
+
+    ordem_2a: eficacia
+    justificativa_interna: "Definição oficial: 'Convicção de que a graça atua de modo plenamente eficaz, realizando integralmente aquilo que Deus determinou e produzindo transformação real'. A promessa divina ('Ele vai restituir tudo', 'Ele quer você') é apresentada como determinação que será cumprida, evidenciando a eficacia da graça."
+
+    ordem_2a: evento_cristo
+    justificativa_interna: "Definição oficial: 'Narrativa da conversão do próprio gestor (conhecimento de Cristo), por meio de uma experiência existencial marcante'. A palavra profética constitui o momento existencial marcante que opera a conversão ('Nessa hora eu falei assim, beleza, onde é que eu assino?'), caracterizando evento_cristo."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Nessa hora eu falei assim, beleza, onde é que eu assino?"
+    ordem_2a: evento_cristo
+    justificativa_interna: "Definição oficial: 'Narrativa da conversão do próprio gestor (conhecimento de Cristo), por meio de uma experiência existencial marcante'. A resposta imediata ('onde é que eu assino?') marca o momento pontual consciente da conversão pessoal, núcleo do evento_cristo."
+
+    ordem_2a: eficacia
+    justificativa_interna: "Definição oficial: 'Convicção de que a graça atua de modo plenamente eficaz, realizando integralmente aquilo que Deus determinou e produzindo transformação real'. A resposta imediata e decisiva ('onde é que eu assino?') evidencia que a graça produziu o efeito determinado (conversão), caracterizando eficacia."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "depois de algo nesse nível, algo muito profundo, cara, passei umas 3 horas sem falar nada, tipo, refletindo"
+    ordem_2a: graca_especial_ge
+    justificativa_interna: "Definição oficial: 'Ação soberana e específica de Deus que opera salvação, conversão e restauração espiritual em pessoas, reconhecida explicitamente como intervenção redentora divina'. A descrição do impacto ('algo muito profundo', '3 horas sem falar nada') evidencia o reconhecimento da intervenção divina específica, caracterizando graca_especial_ge."
+
+    ordem_2a: eficacia
+    justificativa_interna: "Definição oficial: 'Convicção de que a graça atua de modo plenamente eficaz, realizando integralmente aquilo que Deus determinou e produzindo transformação real'. O impacto profundo e duradouro ('3 horas sem falar nada, tipo, refletindo') evidencia a eficácia plena da graça em produzir transformação, caracterizando eficacia."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Me entreguei naquele momento, um ano depois estava batizado"
+    ordem_2a: evento_cristo
+    justificativa_interna: "Definição oficial: 'Narrativa da conversão do próprio gestor (conhecimento de Cristo), por meio de uma experiência existencial marcante'. A entrega pessoal ('Me entreguei naquele momento') e o batismo posterior consolidam a narrativa da conversão pessoal, caracterizando evento_cristo."
+
+    ordem_2a: eficacia
+    justificativa_interna: "Definição oficial: 'Convicção de que a graça atua de modo plenamente eficaz, realizando integralmente aquilo que Deus determinou e produzindo transformação real'. A sequência entrega→batismo→vida cristã evidencia que a graça produziu transformação real e completa, caracterizando eficacia."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "desde então tenho vivido uma vida cristã, tenho 46 anos hoje. Então, 20 anos de conversão."
+    ordem_2a: evento_cristo
+    justificativa_interna: "Definição oficial: 'Narrativa da conversão do próprio gestor (conhecimento de Cristo), por meio de uma experiência existencial marcante'. A referência temporal ('20 anos de conversão') confirma a conversão como evento pontual marcante na vida do gestor, caracterizando evento_cristo."
+
+    ordem_2a: eficacia
+    justificativa_interna: "Definição oficial: 'Convicção de que a graça atua de modo plenamente eficaz, realizando integralmente aquilo que Deus determinou e produzindo transformação real'. A persistência de 20 anos de vida cristã evidencia que a graça produziu transformação real e duradoura, caracterizando eficacia."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "há 27 anos eu trabalho na área de tecnologia"
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades como critérios relevantes para gestão'. O uso de '27 anos' como marcador temporal quantitativo caracteriza aspecto_numerico_1."
+
+    ordem_2a: aspecto_cinetico_3
+    justificativa_interna: "Definição oficial: 'Avaliação de movimentos, fluxos e mudanças operacionais da empresa ao longo do tempo, como crescimento, retração ou rotatividade'. A referência temporal ('27 anos') contextualiza a trajetória profissional ao longo do tempo, caracterizando aspecto_cinetico_3."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "eu comecei a trabalhar em tecnologia com 18 anos de idade, só que a trabalhar efetivamente eu comecei com uso"
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades como critérios relevantes para gestão'. O uso de '18 anos de idade' como marcador temporal quantitativo caracteriza aspecto_numerico_1."
+
+    ordem_2a: aspecto_cinetico_3
+    justificativa_interna: "Definição oficial: 'Avaliação de movimentos, fluxos e mudanças operacionais da empresa ao longo do tempo, como crescimento, retração ou rotatividade'. A referência ao início da carreira ('comecei com 18 anos') marca o movimento temporal da trajetória profissional, caracterizando aspecto_cinetico_3."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Não por necessidade, né? Minha família nunca teve uma vida extremamente confortável, mas nunca faltou nada também."
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro'. A avaliação da condição econômica familiar ('nunca teve uma vida extremamente confortável, mas nunca faltou nada') evidencia consciência de recursos, caracterizando aspecto_economico_11."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "eu sempre fui uma pessoa muito intelectualizada, sempre amei ler"
+    ordem_2a: aspecto_analitico_7
+    justificativa_interna: "Definição oficial: 'Uso consciente do julgamento racional, da distinção conceitual e da coerência lógica'. A autodefinição como 'pessoa muito intelectualizada' e o amor pela leitura evidenciam valorização do julgamento racional, caracterizando aspecto_analitico_7."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "a minha direita aqui tem um pouco mais de 300 livros. Todos eles livros. Alguns mais de uma vez."
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades como critérios relevantes para gestão'. O uso de '300 livros' como quantificação explícita caracteriza aspecto_numerico_1."
+
+    ordem_2a: aspecto_espacial_2
+    justificativa_interna: "Definição oficial: 'Referência ao espaço físico, territorial ou estrutural do negócio'. A referência espacial ('a minha direita aqui') localiza fisicamente os livros, caracterizando aspecto_espacial_2."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "comecei a ler com 2 anos e meio"
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades como critérios relevantes para gestão'. O uso de '2 anos e meio' como marcador temporal quantitativo caracteriza aspecto_numerico_1."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "com 11 anos de idade, o que aconteceu? Meu pai sempre foi uma pessoa muito... de pão dura. E não tinha muito incentivo pra leitura."
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro'. A expressão 'pão duro' caracteriza postura de controle rigoroso de recursos financeiros, caracterizando aspecto_economico_11."
+
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades como critérios relevantes para gestão'. O uso de '11 anos de idade' como marcador temporal quantitativo caracteriza aspecto_numerico_1."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "eu falei assim, vou arrumar um emprego, que com o meu dinheiro eu mesmo compro as minhas coisas"
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro'. A decisão de trabalhar para ter 'meu dinheiro' evidencia consciência de administração de recursos financeiros, caracterizando aspecto_economico_11."
+
+    ordem_2a: aspecto_formativo_8
+    justificativa_interna: "Definição oficial: 'Ação deliberada de planejar, moldar e transformar estruturas, processos ou estratégias'. A decisão de 'arrumar um emprego' para alcançar um objetivo ('comprar minhas coisas') evidencia planejamento deliberado, caracterizando aspecto_formativo_8."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "por causa disso eu comecei a trabalhar muito cedo, trabalhando numa mecânica durante 8 anos. Até fazer dos 11 até os 18, 19 mais ou menos."
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades como critérios relevantes para gestão'. O uso de '8 anos', '11', '18, 19' como marcadores temporais quantitativos caracteriza aspecto_numerico_1."
+
+    ordem_2a: aspecto_cinetico_3
+    justificativa_interna: "Definição oficial: 'Avaliação de movimentos, fluxos e mudanças operacionais da empresa ao longo do tempo, como crescimento, retração ou rotatividade'. A referência temporal ('durante 8 anos', 'dos 11 até os 18, 19') marca o fluxo temporal da experiência profissional, caracterizando aspecto_cinetico_3."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Eu não sou formado em faculdade. Nem pretendo, porque quando eu comecei na área de tecnologia, cara, eu já programava a fazer 3, 4 anos."
+    ordem_2a: aspecto_analitico_7
+    justificativa_interna: "Definição oficial: 'Uso consciente do julgamento racional, da distinção conceitual e da coerência lógica'. A decisão de não fazer faculdade baseada em análise racional ('eu já programava a fazer 3, 4 anos') evidencia julgamento racional, caracterizando aspecto_analitico_7."
+
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades como critérios relevantes para gestão'. O uso de '3, 4 anos' como marcador temporal quantitativo caracteriza aspecto_numerico_1."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Também nunca acreditei muito em educação formal. Eu sou do time de que se você sabe fazer, você faz. Se você não sabe fazer, você vai estudar."
+    ordem_2a: aspecto_analitico_7
+    justificativa_interna: "Definição oficial: 'Uso consciente do julgamento racional, da distinção conceitual e da coerência lógica'. A posição crítica sobre educação formal baseada em distinção conceitual ('se você sabe fazer, você faz') evidencia julgamento racional, caracterizando aspecto_analitico_7."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Na época era uma linguagem que hoje é antiquíssima, chamada Visual Basic. Durante uns 5, 6 anos trabalhei como programador."
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades como critérios relevantes para gestão'. O uso de '5, 6 anos' como marcador temporal quantitativo caracteriza aspecto_numerico_1."
+
+    ordem_2a: aspecto_cinetico_3
+    justificativa_interna: "Definição oficial: 'Avaliação de movimentos, fluxos e mudanças operacionais da empresa ao longo do tempo, como crescimento, retração ou rotatividade'. A referência temporal ('Durante uns 5, 6 anos') marca o fluxo temporal da experiência profissional, caracterizando aspecto_cinetico_3."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "eu falo que eu sou movido a dor de cabeça em termos de trabalho. Porque quando começo a não ter dor de cabeça, eu procuro o próximo."
+    ordem_2a: aspecto_sensitivo_6
+    justificativa_interna: "Definição oficial: 'Consideração explícita das experiências emocionais humanas relevantes — como dor, medo, empatia ou sofrimento'. A metáfora 'dor de cabeça' representa experiência emocional de desafio e desconforto como motivador, caracterizando aspecto_sensitivo_6."
+
+    ordem_2a: aspecto_formativo_8
+    justificativa_interna: "Definição oficial: 'Ação deliberada de planejar, moldar e transformar estruturas, processos ou estratégias'. A busca ativa por novos desafios ('eu procuro o próximo') evidencia ação deliberada de transformação da própria carreira, caracterizando aspecto_formativo_8."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Então programar ficou muito fácil. Eu virei o que hoje é chamado de analista de negócios."
+    ordem_2a: aspecto_cinetico_3
+    justificativa_interna: "Definição oficial: 'Avaliação de movimentos, fluxos e mudanças operacionais da empresa ao longo do tempo, como crescimento, retração ou rotatividade'. A transição de função ('virei analista de negócios') marca mudança operacional na carreira ao longo do tempo, caracterizando aspecto_cinetico_3."
+
+    ordem_2a: aspecto_analitico_7
+    justificativa_interna: "Definição oficial: 'Uso consciente do julgamento racional, da distinção conceitual e da coerência lógica'. A função de 'analista de negócios' implica uso de julgamento racional e distinção conceitual, caracterizando aspecto_analitico_7."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Hoje em dia seria um product owner. Então eu começava a especificar coisas para programadores. Fiquei uns 3, 4 anos nessa brincadeira."
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades como critérios relevantes para gestão'. O uso de '3, 4 anos' como marcador temporal quantitativo caracteriza aspecto_numerico_1."
+
+    ordem_2a: aspecto_linguistico_9
+    justificativa_interna: "Definição oficial: 'Uso da linguagem, do discurso e da comunicação como portadores de significado e coerência'. A ação de 'especificar coisas para programadores' envolve uso da linguagem como portadora de significado técnico, caracterizando aspecto_linguistico_9."
+
+    ordem_2a: aspecto_cinetico_3
+    justificativa_interna: "Definição oficial: 'Avaliação de movimentos, fluxos e mudanças operacionais da empresa ao longo do tempo, como crescimento, retração ou rotatividade'. A referência temporal ('Fiquei uns 3, 4 anos') marca o fluxo temporal da experiência profissional, caracterizando aspecto_cinetico_3."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "por eu especificar coisas para programadores, naturalmente comecei a liderar esses times. Então de analista de negócios para gerente de projetos foi um pulo."
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. A transição para 'liderar esses times' evidencia mudança de papel social e padrão de convivência, caracterizando aspecto_social_10."
+
+    ordem_2a: aspecto_cinetico_3
+    justificativa_interna: "Definição oficial: 'Avaliação de movimentos, fluxos e mudanças operacionais da empresa ao longo do tempo, como crescimento, retração ou rotatividade'. A progressão de carreira ('de analista para gerente foi um pulo') marca mudança operacional ao longo do tempo, caracterizando aspecto_cinetico_3."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Eu já não especificava mais. Eu coordenava times de especificação, desenvolvimento e teste. Fiquei também uns 2, 3 anos nessa brincadeira."
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. A coordenação de 'times de especificação, desenvolvimento e teste' evidencia gestão de relações e papéis sociais, caracterizando aspecto_social_10."
+
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades como critérios relevantes para gestão'. O uso de '2, 3 anos' como marcador temporal quantitativo caracteriza aspecto_numerico_1."
+
+    ordem_2a: aspecto_cinetico_3
+    justificativa_interna: "Definição oficial: 'Avaliação de movimentos, fluxos e mudanças operacionais da empresa ao longo do tempo, como crescimento, retração ou rotatividade'. A referência temporal ('Fiquei também uns 2, 3 anos') marca o fluxo temporal da experiência profissional, caracterizando aspecto_cinetico_3."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "há mais ou menos uns 10, 11 anos eu trabalho exclusivamente como agilista"
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades como critérios relevantes para gestão'. O uso de '10, 11 anos' como marcador temporal quantitativo caracteriza aspecto_numerico_1."
+
+    ordem_2a: aspecto_cinetico_3
+    justificativa_interna: "Definição oficial: 'Avaliação de movimentos, fluxos e mudanças operacionais da empresa ao longo do tempo, como crescimento, retração ou rotatividade'. A referência temporal ('há mais ou menos uns 10, 11 anos') marca o fluxo temporal da experiência profissional, caracterizando aspecto_cinetico_3."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "O Espírito Santo trabalha de maneira muito sutil, às vezes."
+    ordem_2a: obra_do_espirito_santo
+    justificativa_interna: "Definição oficial: 'Atuação transformadora do Espírito Santo na vida humana'. O entrevistado reconhece explicitamente a ação do Espírito Santo, caracterizando-a como 'sutil', evidenciando a percepção de uma atuação divina concreta em sua experiência profissional."
+
+    ordem_2a: mundo_espiritual
+    justificativa_interna: "Definição oficial: 'Reconhecimento de uma realidade invisível que influencia a vida humana para além do mundo material'. A menção ao trabalho 'sutil' do Espírito Santo pressupõe o reconhecimento de uma dimensão espiritual invisível que atua na realidade concreta."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "dez minutos antes da reunião, este Flávio estava literalmente vociferando contra o tema da reunião. O pessoal não era muito discreto. E era todo um ambiente estilo loft, então não tinha divisórios. Mesmo a sala do CEO ficava aberta para todo mundo. E eu ouvi, distante, o cara xingando horrores essa ideia e algumas coisas que ele estava propondo. E era crucial que eu tivesse a decisão dele. Uma decisão favorável. Eu queria que o cérebro do rei se inclinasse. Orações depois. Chegou a hora da reunião. Do nada, literalmente, essa pessoa não só parou de vociferar, como já estava convencida."
+    ordem_2a: resposta_de_oracao
+    justificativa_interna: "Definição oficial: 'Relato ou interpretação de que uma oração específica foi atendida por Deus de maneira perceptível ou concreta'. O entrevistado narra uma mudança radical e inexplicável ('do nada, literalmente') na postura de um decisor após oração, interpretando o evento como resposta direta à oração."
+
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho, inclusive eventos aparentemente ordinários'. A mudança súbita e inexplicável na reunião é interpretada como direção divina sobre as circunstâncias profissionais."
+
+    ordem_2a: soberania_de_deus
+    justificativa_interna: "Definição oficial: 'Crença de que Deus possui controle último sobre todas as coisas, inclusive sobre os resultados finais, pessoais ou profissionais'. A expressão 'Eu queria que o cérebro do rei se inclinasse' seguida da mudança inexplicável evidencia a crença no controle divino sobre decisões humanas cruciais."
+
+    ordem_2a: livramento
+    justificativa_interna: "Definição oficial: 'Interpretação de eventos concretos como intervenção direta de Deus para proteger, libertar ou preservar de perigos, perdas ou males específicos'. O entrevistado interpreta a mudança de postura do decisor como livramento de uma situação profissional crítica ('era crucial')."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Eu não fiz absolutamente nada além de orações."
+    ordem_2a: oracao
+    justificativa_interna: "Definição oficial: 'Prática intencional de comunicação com Deus por meio de pedido, escuta, entrega ou adoração, aplicada à vida pessoal e profissional'. O entrevistado declara explicitamente ter usado a oração como única ação diante do desafio profissional."
+
+    ordem_2a: dependencia_de_deus
+    justificativa_interna: "Definição oficial: 'Reconhecimento explícito da limitação humana e da incapacidade de alcançar resultados desejáveis sem a ação, ajuda ou sustento de Deus'. A afirmação 'não fiz absolutamente nada além de orações' evidencia o reconhecimento da dependência total de Deus para o resultado."
+
+    ordem_2a: nao_confiar_no_homem_em_si_mesmo
+    justificativa_interna: "Definição oficial: 'Reconhecimento da limitação humana e recusa de fundamentar decisões últimas apenas na própria capacidade ou na confiança em outros'. Ao afirmar que não fez nada além de orar, o entrevistado demonstra recusa em confiar exclusivamente em sua própria capacidade técnica ou persuasiva."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana.' A negação absoluta de ação própria ('absolutamente nada') e atribuição exclusiva à oração evidencia unicidade da fonte divina."
+
+    ordem_2a: prioridade_monergismo
+    justificativa_interna: "Definição oficial: 'Compreensão de que a graça antecede toda ação, decisão ou mérito humano, sendo iniciativa soberana e primeira de Deus.' O entrevistado não agiu estrategicamente antes; a oração precedeu e determinou o resultado, evidenciando anterioridade da graça."
+
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana, sendo inteiramente imerecida.' A ausência total de ação própria ('nada além de orações') demonstra que o resultado não teve relação com mérito ou esforço técnico."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Não tenho explicação."
+    ordem_2a: fe_x_racionalismo
+    justificativa_interna: "Definição oficial: 'Tensão percebida entre confiar na ação e direção de Deus e depender exclusivamente de explicações, cálculos ou critérios puramente racionais'. A ausência de explicação racional para o evento evidencia a tensão entre fé e racionalismo, com o entrevistado optando pela interpretação de fé."
+
+    ordem_2a: sobrenatural_sobrenaturalidade
+    justificativa_interna: "Definição oficial: 'Presença mística, fora dos domínios do mundo físico e material'. A declaração 'não tenho explicação' diante de um evento concreto aponta para o reconhecimento de uma dimensão sobrenatural que transcende explicações naturais."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana.' A ausência de explicação natural reforça o reconhecimento de que a causa foi exclusivamente divina."
+
+    ordem_2a: superabundancia
+    justificativa_interna: "Definição oficial: 'Percepção da graça como benesses em quantidade muito grande, imensurável, que ultrapassa qualquer critério humano de cálculo, mérito ou expectativa.' A impossibilidade de explicação racional ('não tenho explicação') indica que o resultado ultrapassou critérios humanos de cálculo."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Eu posso imaginar que você estava tremendo nas bases. Tipo assim, ferrou, né? Não vou saber resolver isso daqui se Deus não resolver para mim."
+    ordem_2a: dependencia_de_deus
+    justificativa_interna: "Definição oficial: 'Reconhecimento explícito da limitação humana e da incapacidade de alcançar resultados desejáveis sem a ação, ajuda ou sustento de Deus'. A expressão 'não vou saber resolver isso daqui se Deus não resolver para mim' é reconhecimento explícito de dependência total de Deus."
+
+    ordem_2a: medo
+    justificativa_interna: "Definição oficial: 'Receio subjetivo antecipatório — não específicos — de consequências negativas pessoais ou profissionais'. A expressão 'tremendo nas bases' e 'ferrou' evidenciam receio antecipatório de consequências negativas profissionais."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "A situação era literalmente essa. Ferrou. E se essa decisão não acontecesse, basicamente o bagulho é prago baixo."
+    ordem_2a: medo
+    justificativa_interna: "Definição oficial: 'Receio subjetivo antecipatório — não específicos — de consequências negativas pessoais ou profissionais'. A expressão 'ferrou' e 'o bagulho é prago baixo' evidenciam receio intenso de consequências profissionais negativas."
+
+    ordem_2a: frustracao
+    justificativa_interna: "Definição oficial: 'Vivência emocional de bloqueio, desapontamento ou impotência diante de limites, perdas ou resultados que frustram expectativas'. A situação descrita como 'ferrou' e 'prago baixo' evidencia vivência de bloqueio e impotência diante de limites profissionais."
+
+    ordem_2a: inseguranca_financeira
+    justificativa_interna: "Definição oficial: 'Consciência de instabilidade econômica em decorrência de gestão ou ações amparadas por valores cristãos.' A expressão 'ferrou' e 'prago baixo' evidenciam consciência de risco econômico extremo no contexto profissional."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A referência ao impacto econômico catastrófico ('prago baixo') demonstra consciência da dimensão econômica da decisão."
+
+    ordem_2a: aspecto_sensitivo_6
+    justificativa_interna: "Definição oficial: 'Consideração explícita das experiências emocionais humanas relevantes — como dor, medo, empatia ou sofrimento.' A expressão 'ferrou' e o contexto de ansiedade evidenciam experiência emocional de medo e angústia."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Eu creio, Davi, que tudo começa com gratidão. Antes de orar, antes de pedir qualquer coisa."
+    ordem_2a: oracao
+    justificativa_interna: "Definição oficial: 'Prática intencional de comunicação com Deus por meio de pedido, escuta, entrega ou adoração, aplicada à vida pessoal e profissional'. O entrevistado descreve sua prática de oração começando com gratidão, evidenciando uma estrutura intencional de comunicação com Deus."
+
+    ordem_2a: gratidao_especial_ge
+    justificativa_interna: "Definição oficial: 'Reconhecimento consciente e pessoal de ter recebido a ação salvífica de Deus, acompanhado de resposta explícita de gratidão a Ele.' O entrevistado expressa gratidão como resposta primeira e consciente à ação divina, precedendo até mesmo a oração."
+
+    ordem_2a: prioridade_monergismo
+    justificativa_interna: "Definição oficial: 'Compreensão de que a graça antecede toda ação, decisão ou mérito humano, sendo iniciativa soberana e primeira de Deus.' A frase 'antes de orar, antes de pedir' evidencia que a gratidão reconhece a anterioridade da ação divina em relação a qualquer gesto humano."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' A gratidão como princípio primeiro evidencia disposição moral profunda orientando a vida profissional."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Se você tem uma hora para orar, você vai passar 55 minutos adorando."
+    ordem_2a: oracao
+    justificativa_interna: "Definição oficial: 'Prática intencional de comunicação com Deus por meio de pedido, escuta, entrega ou adoração, aplicada à vida pessoal e profissional'. A citação evidencia uma prática estruturada de oração que prioriza adoração sobre pedidos."
+
+    ordem_2a: glorificar_a_deus
+    justificativa_interna: "Definição oficial: 'Agir com a intenção consciente de honrar, exaltar a Deus por meio das próprias ações'. A prática de dedicar a maior parte do tempo de oração à adoração evidencia intenção consciente de honrar e exaltar a Deus."
+
+    ordem_2a: gratidao_especial_ge
+    justificativa_interna: "Definição oficial: 'Reconhecimento consciente e pessoal de ter recebido a ação salvífica de Deus, acompanhado de resposta explícita de gratidão a Ele.' A proporção temporal dedicada à adoração (55 de 60 minutos) evidencia resposta explícita e prioritária de gratidão."
+
+    ordem_2a: nao_circularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Compreensão de que a graça é intrinsecamente gratuita e não pode ser paga, retribuída ou compensada a Deus por nenhuma ação humana.' A adoração precede o pedido, evidenciando que a gratidão não é retribuição, mas reconhecimento da gratuidade."
+
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades como critérios relevantes para gestão.' A proporção '55 minutos' de '60' utiliza números como critério para expressar prioridade espiritual."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Como que eu respondo a isso? Eu agradeço antes. Não tem muito mais o que fazer. Deus sabe tudo aquilo que a gente precisa."
+    ordem_2a: soberania_de_deus
+    justificativa_interna: "Definição oficial: 'Crença de que Deus possui controle último sobre todas as coisas, inclusive sobre os resultados finais, pessoais ou profissionais'. A afirmação 'Deus sabe tudo aquilo que a gente precisa' evidencia crença no conhecimento e controle divino sobre todas as necessidades."
+
+    ordem_2a: dependencia_de_deus
+    justificativa_interna: "Definição oficial: 'Reconhecimento explícito da limitação humana e da incapacidade de alcançar resultados desejáveis sem a ação, ajuda ou sustento de Deus'. A postura de agradecer antes de pedir evidencia reconhecimento da dependência de Deus para suprir necessidades."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Então, viver a fé para mim é você, como diz a palavra, fé é aquilo que você não vê."
+    ordem_2a: fe_x_racionalismo
+    justificativa_interna: "Definição oficial: 'Tensão percebida entre confiar na ação e direção de Deus e depender exclusivamente de explicações, cálculos ou critérios puramente racionais'. A definição de fé como 'aquilo que você não vê' evidencia a tensão entre fé e evidências racionais visíveis."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Nessa brincadeira, só me resta agradecer."
+    ordem_2a: contentamento
+    justificativa_interna: "Definição oficial: 'Disposição interior de satisfação com o que foi recebido de Deus, independentemente da quantidade, reduzindo desejo por acumular mais'. A postura de 'só me resta agradecer' evidencia satisfação interior com o que foi recebido de Deus."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Ano passado, estava conversando com o CEO da BlackRock. Laurence Fink, o cara que em 15 minutos ganha o que eu ganhei em 30 anos."
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho, inclusive eventos aparentemente ordinários'. O contexto anterior indica que o entrevistado atribui oportunidades extraordinárias como essa à providência divina."
+
+    ordem_2a: superabundancia
+    justificativa_interna: "Definição oficial: 'Percepção da graça como benesses em quantidade muito grande, imensurável, que ultrapassa qualquer critério humano de cálculo, mérito ou expectativa.' O acesso a pessoa de altíssimo nível ('CEO da BlackRock') é apresentado como algo que ultrapassa expectativas normais de carreira."
+
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana, sendo inteiramente imerecida.' A desproporção salarial mencionada ('15 minutos ganha o que eu ganhei em 30 anos') evidencia a incongruência entre posição do entrevistado e acesso concedido."
+
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades como critérios relevantes para gestão.' Os números '15 minutos' versus '30 anos' são usados para expressar desproporção e magnitude da oportunidade."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A comparação salarial evidencia consciência da dimensão econômica e da escassez relativa de recursos."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Então, várias dessas oportunidades. Se você for pensar uma carreira normal, as pessoas com quem eu interajo, as pessoas que consomem aquilo que eu tenho para oferecer, jamais dariam crédito para uma pessoa que não tem formação, por exemplo, a não ser por conta de uma intervenção de vida."
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho, inclusive eventos aparentemente ordinários'. A expressão 'intervenção de vida' (interpretada como intervenção divina no contexto) evidencia a convicção de que Deus direciona oportunidades profissionais extraordinárias."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Embora esta variável esteja em fatores_classificatorios (fora do escopo), o trecho evidencia atribuição de oportunidades a uma fonte externa ('intervenção'), não ao próprio mérito."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Eu, pessoalmente, não acredito em educação superior."
+    ordem_2a: cosmovisao_crista
+    justificativa_interna: "Definição oficial: 'Interpretação abrangente da realidade — econômica, social, moral e existencial — a partir das categorias, valores e narrativas da fé cristã'. A posição crítica sobre educação superior, no contexto da entrevista, reflete uma interpretação da realidade profissional a partir de valores que priorizam capacidade prática e chamado divino sobre credenciais formais."
+
+    ordem_2a: aspecto_formativo_8
+    justificativa_interna: "Definição oficial: 'Ação deliberada de planejar, moldar e transformar estruturas, processos ou estratégias.' A rejeição da educação superior como critério evidencia posicionamento sobre processos formativos e estruturas educacionais."
+
+    ordem_2a: aspecto_analitico_7
+    justificativa_interna: "Definição oficial: 'Uso consciente do julgamento racional, da distinção conceitual e da coerência lógica.' A declaração de descrença na educação superior evidencia julgamento racional crítico sobre sistemas formativos convencionais."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Caso clássico. E esse caso eu entendo como vontade de Deus falando não."
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho, inclusive eventos aparentemente ordinários'. O entrevistado interpreta explicitamente a rejeição profissional como direção divina ('vontade de Deus falando não')."
+
+    ordem_2a: deus_guiando_os_passos
+    justificativa_interna: "Definição oficial: 'Atribuição direta das decisões, caminhos e escolhas profissionais à orientação pessoal e intencional de Deus em cada detalhe, momento a momento'. A interpretação da rejeição como 'vontade de Deus falando não' evidencia atribuição direta de caminhos profissionais à orientação divina."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Só que por conta de uma série de certificados e um pensamento muito antigo, não pegam liderança que não tenha graduação."
+    ordem_2a: baixa_produtividade_e_excelencia_validadas
+    justificativa_interna: "Definição oficial: 'Aceitação organizacional de baixo desempenho, mediocridade ou ausência de excelência, associada à perda de sentido transcendente e de propósito no trabalho'. A crítica ao 'pensamento muito antigo' que prioriza certificação sobre competência evidencia percepção de que organizações aceitam mediocridade ao valorizar credenciais formais sobre excelência real."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "E ok, se a empresa exige esse tipo de coisa, não é uma empresa na qual eu me daria bem. Porque eu sou muito a favor de inovação, sou muito a favor de quebrar padrões. De perguntar por quê?"
+    ordem_2a: integridade_moral
+    justificativa_interna: "Definição oficial: 'Coerência estável entre valores professados, discurso público e práticas concretas, sem duplicidade, oportunismo ou hipocrisia moral'. A recusa de trabalhar em empresas que não se alinham com seus valores evidencia coerência entre valores professados e práticas profissionais."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "E empresas que acreditam muito em certificação, também não acreditam em certificações, elas tendem a achar que uma certificação vale conhecimento, vale qualidade. Nem sempre é assim. Certificação significa que você sabe passar numa prova. Não significa que você sabe trabalhar necessariamente."
+    ordem_2a: baixa_produtividade_e_excelencia_validadas
+    justificativa_interna: "Definição oficial: 'Aceitação organizacional de baixo desempenho, mediocridade ou ausência de excelência, associada à perda de sentido transcendente e de propósito no trabalho'. A crítica à valorização de certificações sobre competência real evidencia percepção de aceitação organizacional de mediocridade."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Cara, fora do ambiente de trabalho, o ponto em que minha esposa e eu estamos, só pode ser explicado por intervenção divina."
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho, inclusive eventos aparentemente ordinários'. A expressão 'só pode ser explicado por intervenção divina' evidencia convicção explícita de que Deus governa as circunstâncias da vida."
+
+    ordem_2a: fe_x_racionalismo
+    justificativa_interna: "Definição oficial: 'Tensão percebida entre confiar na ação e direção de Deus e depender exclusivamente de explicações, cálculos ou critérios puramente racionais'. A afirmação de que a situação 'só pode ser explicado por intervenção divina' evidencia a tensão entre explicações racionais e fé."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana.' A expressão 'só pode ser explicado por intervenção divina' atribui exclusivamente a Deus a causa da situação."
+
+    ordem_2a: graca_comum_gc
+    justificativa_interna: "Definição oficial: 'Concessão divina de bens naturais, sociais e estruturais a toda a humanidade, percebida como ordem, sustento e prosperidade cotidiana, sem referência direta à salvação.' O contexto de provisão material ('pagar essa casa') evidencia reconhecimento de sustento cotidiano como graça comum."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "A gente sempre viveu num limite. Nós não somos os melhores do mundo em planejamento financeiro. Tanto ela quanto eu. Nós compramos e vendemos um apartamento quitado, e compramos essa casa que nós estamos agora, eu não faço ideia de onde está vindo o dinheiro para pagar essa casa. Nunca trazemos nada. Nunca faltou absolutamente nada."
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho, inclusive eventos aparentemente ordinários'. A afirmação 'não faço ideia de onde está vindo o dinheiro' seguida de 'nunca faltou absolutamente nada' evidencia convicção de sustento divino."
+
+    ordem_2a: dependencia_de_deus
+    justificativa_interna: "Definição oficial: 'Reconhecimento explícito da limitação humana e da incapacidade de alcançar resultados desejáveis sem a ação, ajuda ou sustento de Deus'. A admissão de não saber de onde vem o dinheiro mas reconhecer que nunca faltou evidencia reconhecimento de dependência de Deus para provisão."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Sempre fomos dizimistas. Então, no que fala que devorador será repreendido, no nosso caso, a gente assina embaixo."
+    ordem_2a: dizimos_e_ofertas
+    justificativa_interna: "Definição oficial: 'Entrega regular e intencional de recursos financeiros como prática espiritual de reconhecimento da boa vontade de Deus'. A afirmação 'sempre fomos dizimistas' evidencia prática regular e intencional de entrega de recursos financeiros."
+
+    ordem_2a: lei_da_semeadura
+    justificativa_interna: "Definição oficial: 'Crença de que atitudes, escolhas e ações produzem consequências correspondentes ao longo do tempo, inclusive espirituais e morais'. A referência a 'devorador será repreendido' e 'a gente assina embaixo' evidencia crença de que a prática do dízimo produz consequências positivas (proteção financeira)."
+
+    ordem_2a: gratidao_especial_ge
+    justificativa_interna: "Definição oficial: 'Reconhecimento consciente e pessoal de ter recebido a ação salvífica de Deus, acompanhado de resposta explícita de gratidão a Ele.' A prática do dízimo ('sempre fomos dizimistas') evidencia resposta explícita de gratidão pela provisão divina."
+
+    ordem_2a: nao_circularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Compreensão de que a graça é intrinsecamente gratuita e não pode ser paga, retribuída ou compensada a Deus por nenhuma ação humana.' O contexto de provisão inexplicável seguida de dízimo evidencia que o dízimo não é retribuição que gera provisão, mas resposta à graça já recebida."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A prática do dízimo evidencia administração consciente de recursos financeiros."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Cara, nunca pensei muito profundamente nisso, mas, de bate-pronto, eu posso te falar que é uma mostra de misericórdia muito grande."
+    ordem_2a: misericordia
+    justificativa_interna: "Definição oficial: 'Ação compassiva diante da fragilidade, culpa ou necessidade do outro'. O entrevistado identifica a graça de Deus como 'mostra de misericórdia', reconhecendo a ação compassiva divina diante de sua própria fragilidade."
+
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana, sendo inteiramente imerecida.' O termo 'misericórdia' evidencia compreensão de que a graça foi concedida de forma imerecida."
+
+    ordem_2a: superabundancia
+    justificativa_interna: "Definição oficial: 'Percepção da graça como benesses em quantidade muito grande, imensurável, que ultrapassa qualquer critério humano de cálculo, mérito ou expectativa.' A expressão 'misericórdia muito grande' evidencia percepção de quantidade que ultrapassa expectativas."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Realmente, tem uma frase que eu vi num filme que fala que Deus era poderoso e exibido. Então, essa graça de Deus mostra exatamente isso, sabe? O poder dEle e o quanto Ele gosta de mostrar para a gente que Ele nos ama, sabe?"
+    ordem_2a: soberania_de_deus
+    justificativa_interna: "Definição oficial: 'Crença de que Deus possui controle último sobre todas as coisas, inclusive sobre os resultados finais, pessoais ou profissionais'. A referência ao 'poder dEle' evidencia crença no controle e poder último de Deus."
+
+    ordem_2a: maravilhamento
+    justificativa_interna: "Definição oficial: 'Experiência de admiração reverente diante da ação de Deus ou da criação de Deus'. A expressão 'o quanto Ele gosta de mostrar para a gente que Ele nos ama' evidencia admiração reverente diante da ação de Deus."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Eu vejo muita misericórdia. Embora eu tenha esse conhecimento, eu tenha o conhecimento de que eu tenho o conhecimento, para mim, é um negócio muito simples fazer o que eu faço. E, às vezes, eu não valorizo isso. Para mim, é a síndrome de impostor básica, sabe?"
+    ordem_2a: misericordia
+    justificativa_interna: "Definição oficial: 'Ação compassiva diante da fragilidade, culpa ou necessidade do outro'. O entrevistado reconhece 'muita misericórdia' de Deus diante de sua própria percepção de não valorizar adequadamente seus dons."
+
+    ordem_2a: nao_depender_de_reconhecimento
+    justificativa_interna: "Definição oficial: 'Desapego de elogios, visibilidade ou recompensa humana'. A 'síndrome de impostor' e a não valorização de suas próprias capacidades evidenciam desapego de reconhecimento pessoal."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Então, é com muito temor que eu encaro essa graça de Deus. Mas, eu sei que eu não sei nada e eu sei que Ele vai cuidar."
+    ordem_2a: temor_do_senhor
+    justificativa_interna: "Definição oficial: 'Atitude de reverência profunda e respeito moral diante de Deus que estabelece limites éticos claros e orienta decisões práticas'. A expressão 'é com muito temor que eu encaro essa graça de Deus' evidencia reverência profunda diante de Deus."
+
+    ordem_2a: dependencia_de_deus
+    justificativa_interna: "Definição oficial: 'Reconhecimento explícito da limitação humana e da incapacidade de alcançar resultados desejáveis sem a ação, ajuda ou sustento de Deus'. A afirmação 'eu sei que eu não sei nada e eu sei que Ele vai cuidar' evidencia reconhecimento explícito de limitação humana e dependência de Deus."
+
+    ordem_2a: nao_confiar_no_homem_em_si_mesmo
+    justificativa_interna: "Definição oficial: 'Reconhecimento da limitação humana e recusa de fundamentar decisões últimas apenas na própria capacidade ou na confiança em outros'. A afirmação 'eu sei que eu não sei nada' evidencia reconhecimento da limitação humana e recusa de confiar apenas em si mesmo."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Implicações práticas? Não. Não tem nenhuma implicação prática a não ser reconhecer realmente que sem Ele eu não consigo nada. Sabe?"
+    ordem_2a: dependencia_de_deus
+    justificativa_interna: "Definição oficial: 'Reconhecimento explícito da limitação humana e da incapacidade de alcançar resultados desejáveis sem a ação, ajuda ou sustento de Deus'. A afirmação 'sem Ele eu não consigo nada' é reconhecimento explícito e literal de dependência total de Deus."
+
+    ordem_2a: nao_confiar_no_homem_em_si_mesmo
+    justificativa_interna: "Definição oficial: 'Reconhecimento da limitação humana e recusa de fundamentar decisões últimas apenas na própria capacidade ou na confiança em outros'. A declaração 'sem Ele eu não consigo nada' evidencia recusa de confiar na própria capacidade."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Se colocar num lugar de muito temor mesmo."
+    ordem_2a: temor_do_senhor
+    justificativa_interna: "Definição oficial: 'Atitude de reverência profunda e respeito moral diante de Deus que estabelece limites éticos claros e orienta decisões práticas'. A expressão 'lugar de muito temor' evidencia atitude de reverência profunda diante de Deus."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Já tive muito problema com o fato de precisar merecer a graça. Hoje eu sei que não há nada que eu faça que eu vá merecer."
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Embora esta variável esteja em fatores_classificatorios (fora do escopo), o trecho evidencia compreensão de que a graça é imerecida ('não há nada que eu faça que eu vá merecer')."
+
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana, sendo inteiramente imerecida.' A afirmação 'não há nada que eu faça que eu vá merecer' evidencia compreensão explícita do caráter imerecido da graça."
+
+    ordem_2a: singularidade_negativa_sinergismo
+    justificativa_interna: "Definição oficial: 'Leitura específica e focal da graça de maneira relativizada quanto sua origem exclusiva em Deus, atribuindo-a parcialmente ao esforço humano, mérito pessoal, sistemas ou condições favoráveis.' O problema passado ('precisar merecer a graça') evidencia leitura anterior sinergista, agora superada."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Então, a implicação prática é nesse temor e nessa admiração, sabe? Eu quero estar cada vez mais perto de Deus para poder entender melhor, porque eu sempre quis entender mais."
+    ordem_2a: temor_do_senhor
+    justificativa_interna: "Definição oficial: 'Atitude de reverência profunda e respeito moral diante de Deus que estabelece limites éticos claros e orienta decisões práticas'. A menção a 'temor' como implicação prática evidencia reverência profunda que orienta decisões."
+
+    ordem_2a: maravilhamento
+    justificativa_interna: "Definição oficial: 'Experiência de admiração reverente diante da ação de Deus ou da criação de Deus'. A menção a 'admiração' evidencia experiência de admiração reverente diante de Deus."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Eu não trabalho para empresas que não me aceitem como cristão. Esse é um dos princípios. Pode oferecer o quanto for. Não vou."
+    ordem_2a: integridade_moral
+    justificativa_interna: "Definição oficial: 'Coerência estável entre valores professados, discurso público e práticas concretas, sem duplicidade, oportunismo ou hipocrisia moral'. A recusa categórica de trabalhar em empresas que não aceitem sua fé evidencia coerência estável entre valores e práticas."
+
+    ordem_2a: retidao_incorruptibilidade
+    justificativa_interna: "Definição oficial: 'Postura ética inegociável que rejeita corrupção, ilegalidade ou compromissos morais duvidosos, mesmo sob pressão ou risco de perdas pessoais'. A afirmação 'pode oferecer o quanto for. Não vou' evidencia postura ética inegociável mesmo sob pressão financeira."
+
+    ordem_2a: unidade_e_integridade_de_vida_pessoal_e_profissional
+    justificativa_interna: "Definição oficial: 'Convicção de que fé, valores e prática cristã devem orientar de forma integrada a vida pessoal e a atuação profissional, rejeitando qualquer separação entre espiritualidade e trabalho'. A recusa de trabalhar onde não seja aceito como cristão evidencia rejeição de separação entre fé e trabalho."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Orações depois. Chegou a hora da reunião. Do nada, literalmente, essa pessoa não só parou de vociferar, como já estava convencida."
+    ordem_2a: graca_especial_ge
+    justificativa_interna: "Definição oficial: 'Ação soberana e específica de Deus que opera salvação, conversão e restauração espiritual em pessoas, reconhecida explicitamente como intervenção redentora divina.' O entrevistado atribui a mudança súbita e inexplicável ('do nada, literalmente') à oração, reconhecendo intervenção divina específica no contexto profissional."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana.' O trecho 'Eu não fiz absolutamente nada além de orações' evidencia o reconhecimento de que a mudança veio exclusivamente de Deus, sem agência humana."
+
+    ordem_2a: eficacia
+    justificativa_interna: "Definição oficial: 'Convicção de que a graça atua de modo plenamente eficaz, realizando integralmente aquilo que Deus determinou e produzindo transformação real.' A frase 'já estava convencida' demonstra que a graça produziu o efeito completo esperado (convencimento do decisor)."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A menção direta a 'orações' como único recurso utilizado evidencia orientação transcendente da ação profissional."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Deus sabe tudo aquilo que a gente precisa. Então, viver a fé para mim é você, como diz a palavra, fé é aquilo que você não vê."
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana.' A afirmação 'Deus sabe tudo' atribui exclusivamente a Deus o conhecimento e provisão das necessidades."
+
+    ordem_2a: prioridade_monergismo
+    justificativa_interna: "Definição oficial: 'Compreensão de que a graça antecede toda ação, decisão ou mérito humano, sendo iniciativa soberana e primeira de Deus.' O conhecimento prévio de Deus ('sabe tudo aquilo que a gente precisa') evidencia que Sua ação antecede a consciência humana da necessidade."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A definição de fé ('aquilo que você não vê') e sua centralidade ('viver a fé') evidenciam orientação transcendente da vida."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Então, a minha atitude com que eu respondo a tudo isso é com muita gratidão."
+    ordem_2a: gratidao_especial_ge
+    justificativa_interna: "Definição oficial: 'Reconhecimento consciente e pessoal de ter recebido a ação salvífica de Deus, acompanhado de resposta explícita de gratidão a Ele.' A declaração direta de gratidão como resposta ('respondo a tudo isso é com muita gratidão') evidencia reconhecimento consciente e resposta explícita."
+
+    ordem_2a: nao_circularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Compreensão de que a graça é intrinsecamente gratuita e não pode ser paga, retribuída ou compensada a Deus por nenhuma ação humana.' A gratidão como única resposta possível ('só me resta agradecer') evidencia impossibilidade de retribuição."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Várias dessas oportunidades. Se você for pensar uma carreira normal, as pessoas com quem eu interajo, as pessoas que consomem aquilo que eu tenho para oferecer, jamais dariam crédito para uma pessoa que não tem formação, por exemplo, a não ser por conta de uma intervenção de vida."
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana.' A expressão 'a não ser por conta de uma intervenção de vida' atribui exclusivamente à intervenção divina o acesso a oportunidades improváveis."
+
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana, sendo inteiramente imerecida.' A ausência de formação acadêmica ('não tem formação') evidencia que as oportunidades não foram merecidas por credenciais convencionais."
+
+    ordem_2a: superabundancia
+    justificativa_interna: "Definição oficial: 'Percepção da graça como benesses em quantidade muito grande, imensurável, que ultrapassa qualquer critério humano de cálculo, mérito ou expectativa.' O termo 'várias dessas oportunidades' e o acesso a pessoas de alto nível ('jamais dariam crédito') evidenciam quantidade que ultrapassa expectativas normais."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Semana passada, eu estava concorrendo a uma posição dentro do Albert Einstein. Tipo, eu ia ser praticamente o chefe do departamento de inovação. Tudo correndo bem, currículo maravilhoso, todo mundo olhando, falando, nossa, precisamos de você aqui. Aí chegou a pergunta fatídica, você é formado em quê? Na hora que eu falei não, não sou formado, eles falaram, não precisamos de você aqui."
+    ordem_2a: estagnacao_profissional_nao_promocao
+    justificativa_interna: "Definição oficial: 'Interrupção ou limitação do crescimento na carreira associada à manutenção de princípios éticos ou religiosos.' A perda da oportunidade ('não precisamos de você aqui') por ausência de formação acadêmica, mantida por princípio pessoal, evidencia limitação de crescimento."
+
+    ordem_2a: perda_financeira
+    justificativa_interna: "Definição oficial: 'Aceitação consciente de prejuízo econômico para preservar a coerência pública da fé, a integridade moral e o testemunho cristão.' A recusa em obter formação superior por princípio ('não acredito em educação superior') resultou em perda de posição de liderança com impacto financeiro."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A perda de posição de 'chefe do departamento de inovação' evidencia consciência do impacto econômico da decisão."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "E ok, se a empresa exige esse tipo de coisa, não é uma empresa na qual eu me daria bem. Porque eu sou muito a favor de inovação, sou muito a favor de quebrar padrões."
+    ordem_2a: aspecto_formativo_8
+    justificativa_interna: "Definição oficial: 'Ação deliberada de planejar, moldar e transformar estruturas, processos ou estratégias.' A expressão 'quebrar padrões' evidencia ação deliberada de transformar estruturas estabelecidas."
+
+    ordem_2a: aspecto_analitico_7
+    justificativa_interna: "Definição oficial: 'Uso consciente do julgamento racional, da distinção conceitual e da coerência lógica.' O questionamento 'De perguntar por quê?' evidencia uso consciente do julgamento racional e distinção conceitual."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Certificação significa que você sabe passar numa prova. Não significa que você sabe trabalhar necessariamente."
+    ordem_2a: aspecto_analitico_7
+    justificativa_interna: "Definição oficial: 'Uso consciente do julgamento racional, da distinção conceitual e da coerência lógica.' A distinção conceitual entre 'passar numa prova' e 'saber trabalhar' evidencia uso de julgamento racional e coerência lógica."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "A gente sempre viveu num limite. Nós não somos os melhores do mundo em planejamento financeiro."
+    ordem_2a: inseguranca_financeira
+    justificativa_interna: "Definição oficial: 'Consciência de instabilidade econômica em decorrência de gestão ou ações amparadas por valores cristãos.' A expressão 'sempre viveu num limite' evidencia consciência de instabilidade econômica."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A referência ao 'planejamento financeiro' evidencia consciência da administração de recursos escassos."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Nós compramos e vendemos um apartamento quitado, e compramos essa casa que nós estamos agora, eu não faço ideia de onde está vindo o dinheiro para pagar essa casa. Nunca trazemos nada. Nunca faltou absolutamente nada."
+    ordem_2a: superabundancia
+    justificativa_interna: "Definição oficial: 'Percepção da graça como benesses em quantidade muito grande, imensurável, que ultrapassa qualquer critério humano de cálculo, mérito ou expectativa.' A expressão 'não faço ideia de onde está vindo o dinheiro' e 'nunca faltou absolutamente nada' evidenciam provisão que ultrapassa cálculo humano."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana.' A impossibilidade de explicar a origem dos recursos ('não faço ideia') evidencia reconhecimento de fonte exclusivamente divina."
+
+    ordem_2a: eficacia
+    justificativa_interna: "Definição oficial: 'Convicção de que a graça atua de modo plenamente eficaz, realizando integralmente aquilo que Deus determinou e produzindo transformação real.' A afirmação 'nunca faltou absolutamente nada' evidencia eficácia plena da provisão divina."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A referência ao 'dinheiro para pagar essa casa' evidencia consciência da dimensão econômica."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Essa graça de Deus mostra exatamente isso, sabe? O poder dEle e o quanto Ele gosta de mostrar para a gente que Ele nos ama, sabe?"
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana.' A expressão 'o poder dEle' e 'Ele gosta de mostrar' atribui exclusivamente a Deus a iniciativa e fonte da graça."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' A referência ao amor divino ('Ele nos ama') como fundamento da graça evidencia disposição moral profunda."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Para mim, é a síndrome de impostor básica, sabe? Então, é com muito temor que eu encaro essa graça de Deus."
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana, sendo inteiramente imerecida.' A 'síndrome de impostor' e o 'temor' evidenciam consciência de que a graça foi concedida sem mérito próprio."
+
+    ordem_2a: aspecto_sensitivo_6
+    justificativa_interna: "Definição oficial: 'Consideração explícita das experiências emocionais humanas relevantes — como dor, medo, empatia ou sofrimento.' A expressão 'muito temor' evidencia experiência emocional de reverência e medo."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Mas, eu sei que eu não sei nada e eu sei que Ele vai cuidar."
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana.' A afirmação 'Ele vai cuidar' atribui exclusivamente a Deus a provisão e cuidado."
+
+    ordem_2a: prioridade_monergismo
+    justificativa_interna: "Definição oficial: 'Compreensão de que a graça antecede toda ação, decisão ou mérito humano, sendo iniciativa soberana e primeira de Deus.' A confiança no cuidado futuro de Deus ('Ele vai cuidar') evidencia que a ação divina antecede e independe da capacidade humana."
+
+    ordem_2a: aspecto_analitico_7
+    justificativa_interna: "Definição oficial: 'Uso consciente do julgamento racional, da distinção conceitual e da coerência lógica.' A afirmação paradoxal 'eu sei que eu não sei nada' evidencia uso de distinção conceitual e julgamento racional sobre os limites do conhecimento."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Não tem nenhuma implicação prática a não ser reconhecer realmente que sem Ele eu não consigo nada."
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana.' A expressão 'sem Ele eu não consigo nada' evidencia reconhecimento de dependência exclusiva de Deus."
+
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana, sendo inteiramente imerecida.' O reconhecimento de incapacidade própria ('não consigo nada') evidencia consciência de que a graça não tem relação com capacidade humana."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Eu nunca me aprofundei nisso. Eu sei que eles existem, mas não conheço os 17 princípios. Eu tenho para mim que se você consegue melhorar o mundo de alguma maneira, não vai ser um livro de regras ou uma lista que vai fazer isso."
+    ordem_2a: sabedoria_prudencia
+    justificativa_interna: "Definição oficial: 'Discernimento prático expresso em decisões cautelosas, responsáveis e contextualizadas, nas quais o gestor pondera valores, consequências e riscos antes de agir.' O entrevistado expressa discernimento prático ao afirmar que melhorar o mundo não depende de 'livro de regras ou uma lista', demonstrando ponderação sobre valores e consequências acima de conformidade formal."
+
+    ordem_2a: mandato_cultural
+    justificativa_interna: "Definição oficial: 'Responsabilidade humana de desenvolver trabalho, cultura, economia e sociedade de forma ordenada e responsável, conforme os propósitos e limites estabelecidos por Deus.' A frase 'se você consegue melhorar o mundo de alguma maneira' evidencia a responsabilidade de desenvolver e transformar a sociedade de forma ordenada."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "É muito paradoxal, porque eu citei para você que eu tenho uma síndrome de impostor fortíssimo. Então, embora eu saiba ou eu pense que eu não tenho tudo isso, que eu não seja todas essas coisas, eu tenho certeza que através da graça eu vou conseguir."
+    ordem_2a: dependencia_de_deus
+    justificativa_interna: "Definição oficial: 'Reconhecimento explícito da limitação humana e da incapacidade de alcançar resultados desejáveis sem a ação, ajuda ou sustento de Deus.' O entrevistado reconhece explicitamente sua limitação ('eu não tenho tudo isso') e sua incapacidade ('eu não seja todas essas coisas'), afirmando que só conseguirá 'através da graça'."
+
+    ordem_2a: nao_confiar_no_homem_em_si_mesmo
+    justificativa_interna: "Definição oficial: 'Reconhecimento da limitação humana e recusa de fundamentar decisões últimas apenas na própria capacidade ou na confiança em outros.' A expressão 'eu não tenho tudo isso, que eu não seja todas essas coisas' evidencia o reconhecimento da limitação humana e a recusa de confiar apenas em si mesmo."
+
+    ordem_2a: fe_x_racionalismo
+    justificativa_interna: "Definição oficial: 'Tensão percebida entre confiar na ação e direção de Deus e depender exclusivamente de explicações, cálculos ou critérios puramente racionais.' O termo 'paradoxal' e a tensão entre 'eu não tenho' versus 'através da graça eu vou conseguir' evidenciam a tensão entre racionalismo (síndrome do impostor) e fé (certeza pela graça)."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "todas as vezes que a gente, aqui em casa, discutiu sobre mudança de casa, sobre decisões importantes, eu sempre tive a resposta e eu não tive nenhuma dúvida de qual caminho seguir. E isso só pode ser colocado como graça."
+    ordem_2a: deus_guiando_os_passos
+    justificativa_interna: "Definição oficial: 'Atribuição direta das decisões, caminhos e escolhas profissionais à orientação pessoal e intencional de Deus em cada detalhe, momento a momento.' O entrevistado atribui diretamente a clareza nas decisões ('eu sempre tive a resposta') à graça de Deus, caracterizando orientação divina momento a momento."
+
+    ordem_2a: sinal_confirmacao
+    justificativa_interna: "Definição oficial: 'Evento, circunstância ou experiência interpretada como validação divina de uma decisão, caminho ou escolha previamente considerada.' A expressão 'eu não tive nenhuma dúvida de qual caminho seguir' e a atribuição à graça evidenciam interpretação de validação divina para decisões."
+
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho, inclusive eventos aparentemente ordinários.' A afirmação 'isso só pode ser colocado como graça' sobre decisões de mudança de casa evidencia a convicção de que Deus direciona circunstâncias ordinárias da vida."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus.' A afirmação 'isso só pode ser colocado como graça' atribui exclusivamente à graça divina a clareza nas decisões importantes."
+
+    ordem_2a: graca_comum_gc
+    justificativa_interna: "Definição oficial: 'Concessão divina de bens naturais, sociais e estruturais a toda a humanidade, percebida como ordem, sustento e prosperidade cotidiana.' A referência a decisões sobre 'mudança de casa' e 'decisões importantes' relaciona-se a bens estruturais e sustento cotidiano, característicos da graça comum."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Porque eu questiono absolutamente tudo. Na hora que... quem achou essa casa, inclusive, foi a Ana. Eu estava pesquisando há dois anos, ela foi numa tarde e achou. E ela falou assim, estava na igreja, inclusive, no dia que ela encontrou essa casa, e ela falou assim, olha, achei uma casa que está muito acima de tamanho e de valor. Cara, na hora eu falei assim, é essa? E eu só posso entender isso como graça, porque humanamente falando não tem como a gente explicar."
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho, inclusive eventos aparentemente ordinários.' O entrevistado interpreta o encontro da casa ('eu só posso entender isso como graça') como direção divina em evento ordinário, especialmente porque 'humanamente falando não tem como a gente explicar'."
+
+    ordem_2a: sobrenatural_sobrenaturalidade
+    justificativa_interna: "Definição oficial: 'Presença mística, fora dos domínios do mundo físico e material.' A expressão 'humanamente falando não tem como a gente explicar' evidencia reconhecimento de uma presença fora dos domínios físicos e materiais na situação."
+
+    ordem_2a: livramento
+    justificativa_interna: "Definição oficial: 'Interpretação de eventos concretos como intervenção direta de Deus para proteger, libertar ou preservar de perigos, perdas ou males específicos.' O entrevistado interpreta o evento concreto de encontrar a casa ('na hora eu falei assim, é essa?') como intervenção direta de Deus, preservando-os de dois anos de busca infrutífera."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Nossos planos eram muito diferentes do que Deus tinha para nós. Perdão, nossas limitações. Os planos ainda estão... E a gente está aprendendo a ousar agora também."
+    ordem_2a: soberania_de_deus
+    justificativa_interna: "Definição oficial: 'Crença de que Deus possui controle último sobre todas as coisas, inclusive sobre os resultados finais, pessoais ou profissionais, independentemente da competência, esforço ou planejamento humano.' A frase 'Nossos planos eram muito diferentes do que Deus tinha para nós' evidencia a crença de que Deus possui controle último sobre resultados, independentemente do planejamento humano."
+
+    ordem_2a: nao_confiar_no_homem_em_si_mesmo
+    justificativa_interna: "Definição oficial: 'Reconhecimento da limitação humana e recusa de fundamentar decisões últimas apenas na própria capacidade ou na confiança em outros.' A expressão 'nossas limitações' evidencia o reconhecimento explícito da limitação humana."
+
+    ordem_2a: dependencia_de_deus
+    justificativa_interna: "Definição oficial: 'Reconhecimento explícito da limitação humana e da incapacidade de alcançar resultados desejáveis sem a ação, ajuda ou sustento de Deus.' O contraste entre 'nossos planos' e 'o que Deus tinha para nós' evidencia reconhecimento da incapacidade de alcançar resultados sem a ação de Deus."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "muitas coisas relativas à fé dependem dessa gratidão, sabe? Você imaginar um plano, você imaginar que alguma coisa aconteça, você ter essa graça, para que você creia nessa graça, necessariamente você precisa ser grato por ela."
+    ordem_2a: fe_x_racionalismo
+    justificativa_interna: "Definição oficial: 'Tensão percebida entre confiar na ação e direção de Deus e depender exclusivamente de explicações, cálculos ou critérios puramente racionais.' A expressão 'para que você creia nessa graça, necessariamente você precisa ser grato por ela' evidencia a dinâmica de confiar na ação de Deus (graça) mediada pela gratidão, em contraste com critérios racionais."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "A minha gratidão não influencia na graça, efetivamente. Mas a gratidão, ela necessariamente baseia a minha fé. Eu sou tão agradecido que eu acredito?"
+    ordem_2a: fe_x_racionalismo
+    justificativa_interna: "Definição oficial: 'Tensão percebida entre confiar na ação e direção de Deus e depender exclusivamente de explicações, cálculos ou critérios puramente racionais.' A pergunta 'Eu sou tão agradecido que eu acredito?' evidencia a relação entre gratidão e fé, mostrando como a confiança em Deus se fundamenta em experiência (gratidão) e não apenas em racionalismo."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Antigamente tinha muito a ver com postos materiais. Muito a ver com postos materiais. E aí houve uma pregação do nosso pastor, que ele fez exatamente essa pergunta, só que ele fez com um twist. Falou assim, beleza. Chegamos no dia do julgamento. Certo? Está tudo resolvido. Demônio está no lago de enxofre. Você vai ser grato pelo quê? Comida? Não precisa. Saúde? Não precisa. Riqueza? Não precisa. Família? Não precisa. Você vai ser grato pelo quê?"
+    ordem_2a: esperanca_reino_vindouro_escatologica
+    justificativa_interna: "Definição oficial: 'Convicção orientada para a futura plena manifestação do Reino de Deus e da nova criação, que sustenta perseverança e fidelidade no presente.' A pregação sobre 'o dia do julgamento' e 'está tudo resolvido' evidencia orientação para a futura manifestação do Reino de Deus que redefine valores presentes."
+
+    ordem_2a: transitoriedade
+    justificativa_interna: "Definição oficial: 'Consciência de que bens, status ou vida terrena são passageiros.' A sequência 'Comida? Não precisa. Saúde? Não precisa. Riqueza? Não precisa. Família? Não precisa' evidencia consciência explícita de que bens e status terrenos são passageiros."
+
+    ordem_2a: ajuntar_tesouros_no_ceu
+    justificativa_interna: "Definição oficial: 'Orientação de vida que prioriza recompensas para a vida eterna ao viver uma vida cristã, acima da acumulação de bens materiais terrenos.' A pergunta 'Você vai ser grato pelo quê?' no contexto do julgamento final evidencia priorização de recompensas eternas acima de bens materiais ('Riqueza? Não precisa')."
+
+    ordem_2a: aconselhamento_biblico
+    justificativa_interna: "Definição oficial: 'Uso intencional das Escrituras como referência normativa principal para orientar decisões, corrigir condutas e definir critérios morais na vida pessoal e profissional.' A menção 'houve uma pregação do nosso pastor' que reorientou sua compreensão de gratidão evidencia uso da pregação bíblica como referência normativa para corrigir condutas."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Cara, foi umas três semanas pensando nisso. E eu falei, cara, a única resposta possível é eu sou grato porque Deus me conhece. Porque apesar dos zilhões de pessoas que ele já botou aqui, vai colocar ainda, o ser que criou o universo sabe quem eu sou."
+    ordem_2a: criacao_criatura
+    justificativa_interna: "Definição oficial: 'Reconhecimento de Deus como Criador soberano de todas as coisas e do ser humano como criatura dependente.' A expressão 'o ser que criou o universo sabe quem eu sou' evidencia reconhecimento explícito de Deus como Criador soberano e do entrevistado como criatura."
+
+    ordem_2a: imago_dei
+    justificativa_interna: "Definição oficial: 'Reconhecimento da dignidade humana por ser imagem e semelhança de Deus. Um representante de Deus na Terra.' A gratidão expressa em 'Deus me conhece' e 'sabe quem eu sou' evidencia reconhecimento da dignidade humana individual diante do Criador."
+
+    ordem_2a: identidade_em_cristo
+    justificativa_interna: "Definição oficial: 'Compreensão de que o valor, o sentido e a identidade pessoal são definidos primariamente pela união com Cristo, e não por desempenho, status social, sucesso profissional ou reconhecimento externo.' A afirmação 'eu sou grato porque Deus me conhece' como resposta última evidencia que o valor e identidade pessoal são definidos primariamente pela relação com Deus, não por posses materiais."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Tudo é passageiro aqui nessa terra. Então, eu não tenho... Na prática, o que fez para mim é eu não tenho medo de perder emprego em lugar nenhum."
+    ordem_2a: transitoriedade
+    justificativa_interna: "Definição oficial: 'Consciência de que bens, status ou vida terrena são passageiros.' A afirmação literal 'Tudo é passageiro aqui nessa terra' evidencia consciência explícita da transitoriedade."
+
+    ordem_2a: coragem_escatologica
+    justificativa_interna: "Definição oficial: 'Disposição de agir apesar do medo, fundamentada na esperança escatológica e nas promessas futuras de Deus, como ressurreição e Reino vindouro.' A expressão 'eu não tenho medo de perder emprego' fundamentada em 'tudo é passageiro aqui nessa terra' evidencia disposição de agir sem medo, baseada em perspectiva escatológica."
+
+    ordem_2a: peregrino_na_terra
+    justificativa_interna: "Definição oficial: 'Relato de quem não se sente pertencente a este mundo terreno, mas ao mundo espiritual vindouro de Deus. Tempo limitado.' A expressão 'aqui nessa terra' com ênfase na transitoriedade evidencia não pertencimento a este mundo terreno."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Então, eu falo aquilo que eu penso. Para todos os lugares. Aquilo que eu penso. Evidentemente, orientado. Não mando todo mundo para aquele lugar. Às vezes, à vontade. Mas, eu não tenho essa reserva que as pessoas têm, por exemplo, de não vou ter o que comer, vou ser desacreditado."
+    ordem_2a: coragem_simples
+    justificativa_interna: "Definição oficial: 'Disposição de agir apesar do medo.' A expressão 'eu falo aquilo que eu penso' e 'eu não tenho essa reserva que as pessoas têm' evidencia disposição de agir apesar de riscos potenciais."
+
+    ordem_2a: testemunho
+    justificativa_interna: "Definição oficial: 'Vivência coerente e visível da fé cristã expressa em atitudes, escolhas e conduta cotidiana, funcionando como exemplo público que aponta para Deus.' A postura de falar 'aquilo que eu penso' sem reservas evidencia vivência visível da fé em conduta cotidiana profissional."
+
+    ordem_2a: integridade_moral
+    justificativa_interna: "Definição oficial: 'Coerência estável entre valores professados, discurso público e práticas concretas, sem duplicidade, oportunismo ou hipocrisia moral.' A afirmação 'eu falo aquilo que eu penso. Para todos os lugares' evidencia coerência entre valores e discurso público sem duplicidade."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Eu creio que, se eu estou alinhado com o que o Espírito Santo quer, todo o resto é poeira. Todo o resto é vaidade."
+    ordem_2a: obediencia
+    justificativa_interna: "Definição oficial: 'Disposição prática de fazer aquilo que Deus ordena, conformando ações e decisões às suas ordens, mesmo quando contrariam interesses pessoais ou conveniências.' A expressão 'se eu estou alinhado com o que o Espírito Santo quer' evidencia disposição de conformar ações às ordens divinas."
+
+    ordem_2a: transitoriedade
+    justificativa_interna: "Definição oficial: 'Consciência de que bens, status ou vida terrena são passageiros.' A expressão 'todo o resto é poeira. Todo o resto é vaidade' evidencia consciência de que status e vida terrena são passageiros."
+
+    ordem_2a: vaidade
+    justificativa_interna: "Definição oficial: 'Busca de validação pessoal baseada em aparência, status, desempenho ou reconhecimento externo como fonte principal de valor.' O uso do termo literal 'vaidade' para descrever 'todo o resto' evidencia rejeição da busca de validação baseada em status ou reconhecimento externo."
+
+    ordem_2a: obra_do_espirito_santo
+    justificativa_interna: "Definição oficial: 'Atuação transformadora do Espírito Santo na vida humana.' A referência a 'o que o Espírito Santo quer' como critério de alinhamento evidencia reconhecimento da atuação transformadora do Espírito Santo na vida."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A referência ao 'Espírito Santo' e subordinação de 'todo o resto' a esse alinhamento caracteriza orientação transcendente explícita."
+
+    ordem_2a: prioridade_monergismo
+    justificativa_interna: "Definição oficial: 'Compreensão de que a graça antecede toda ação, decisão ou mérito humano, sendo iniciativa soberana e primeira de Deus.' O alinhamento com 'o que o Espírito Santo quer' como prioridade sobre 'todo o resto' evidencia anterioridade da vontade divina."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Estou conversando com os CEOs de empresas que, cara, se o cara acordar com a bunda descoberta, como eu falo, se o cara acordar desse jeito, ele vai mandar embora. Para mim, não importa. Porque eu sei que o meu Deus me conhece. Porque eu sei que Ele tem coisas para mim. E se Ele fechou essa porta, é porque Ele quer. O máximo que eu vou ser é agradecido."
+    ordem_2a: dependencia_de_deus
+    justificativa_interna: "Definição oficial: 'Reconhecimento explícito da limitação humana e da incapacidade de alcançar resultados desejáveis sem a ação, ajuda ou sustento de Deus.' A expressão 'eu sei que Ele tem coisas para mim' evidencia reconhecimento da dependência da ação e sustento de Deus."
+
+    ordem_2a: soberania_de_deus
+    justificativa_interna: "Definição oficial: 'Crença de que Deus possui controle último sobre todas as coisas, inclusive sobre os resultados finais, pessoais ou profissionais, independentemente da competência, esforço ou planejamento humano.' A afirmação 'se Ele fechou essa porta, é porque Ele quer' evidencia crença no controle último de Deus sobre resultados profissionais."
+
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho, inclusive eventos aparentemente ordinários.' A expressão 'Ele tem coisas para mim' evidencia convicção de que Deus direciona circunstâncias do trabalho."
+
+    ordem_2a: contentamento
+    justificativa_interna: "Definição oficial: 'Disposição interior de satisfação com o que foi recebido de Deus, independentemente da quantidade, reduzindo desejo por acumular mais.' A frase 'O máximo que eu vou ser é agradecido' mesmo diante de demissão evidencia disposição de satisfação com o que foi recebido de Deus."
+
+    ordem_2a: coragem_historica
+    justificativa_interna: "Definição oficial: 'Disposição de agir apesar do medo, sustentada pela memória de experiências passadas de cuidado, fidelidade e soberania de Deus.' A expressão 'eu sei que o meu Deus me conhece' e 'Ele tem coisas para mim' evidencia disposição de agir sem medo, sustentada pela memória de experiências passadas do cuidado de Deus."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "O amor lança fora todo medo, né?"
+    ordem_2a: coragem_escatologica
+    justificativa_interna: "Definição oficial: 'Disposição de agir apesar do medo, fundamentada na esperança escatológica e nas promessas futuras de Deus, como ressurreição e Reino vindouro.' A citação bíblica 'O amor lança fora todo medo' evidencia fundamentação da disposição de agir sem medo no amor de Deus."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício.' A referência explícita ao 'amor' como fundamento que elimina medo caracteriza disposição moral profunda."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último.' A citação bíblica (1 João 4:18) caracteriza orientação transcendente explícita."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "É isso. Para mim, como é que é? Morrer é lucro?"
+    ordem_2a: morrer_e_lucro
+    justificativa_interna: "Definição oficial: 'Convicção de que a morte não representa perda última, mas ganho espiritual e comunhão plena com Deus, o que relativiza riscos e sofrimentos na vida presente.' A citação literal 'Morrer é lucro' evidencia a convicção de que a morte representa ganho espiritual, relativizando riscos profissionais."
+
+    ordem_2a: esperanca_reino_vindouro_escatologica
+    justificativa_interna: "Definição oficial: 'Convicção orientada para a futura plena manifestação do Reino de Deus e da nova criação, que sustenta perseverança e fidelidade no presente.' A expressão 'Morrer é lucro' evidencia convicção orientada para o futuro com Deus que sustenta fidelidade no presente."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "De um ponto de vista muito íntimo, sim."
+    ordem_2a: unidade_e_integridade_de_vida_pessoal_e_profissional
+    justificativa_interna: "Definição oficial: 'Convicção de que fé, valores e prática cristã devem orientar de forma integrada a vida pessoal e a atuação profissional, rejeitando qualquer separação entre espiritualidade e trabalho.' A resposta 'De um ponto de vista muito íntimo, sim' sobre o impacto da fé cristã na responsabilidade social corporativa evidencia integração entre fé pessoal e atuação profissional."
+
+    ordem_2a: micro_rsc
+    justificativa_interna: "Definição oficial: 'Conjunto de práticas éticas manifestas nas decisões cotidianas, atitudes pessoais e comportamentos individuais adotados pelo gestor como pessoa no exercício da gestão.' A referência a 'ponto de vista muito íntimo' em resposta sobre responsabilidade social caracteriza práticas pessoais e individuais do gestor."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Por isso que eu falei que não gosto da hipocrisia de muitas das empresas. E eu falo isso. Para você ter essa micro responsabilidade corporativa, você necessariamente precisa amar as pessoas."
+    ordem_2a: amar_o_proximo
+    justificativa_interna: "Definição oficial: 'Ação prática de cuidado, responsabilidade e socorro ao outro que surge diante de uma necessidade concreta, independentemente de proximidade, afinidade, identidade ou merecimento moral.' A afirmação 'você necessariamente precisa amar as pessoas' como fundamento da responsabilidade corporativa evidencia ação prática de cuidado e responsabilidade pelo outro."
+
+    ordem_2a: integridade_moral
+    justificativa_interna: "Definição oficial: 'Coerência estável entre valores professados, discurso público e práticas concretas, sem duplicidade, oportunismo ou hipocrisia moral.' A expressão 'não gosto da hipocrisia de muitas das empresas' evidencia rejeição da duplicidade e hipocrisia moral."
+
+    ordem_2a: amoralidade_abandono_deliberado_de_valores
+    justificativa_interna: "Definição oficial: 'Ambiente organizacional que abandona critérios morais claros em nome de resultados ou desempenho.' A crítica à 'hipocrisia de muitas das empresas' evidencia percepção de ambientes que abandonam critérios morais claros."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "E isso é fundamentalmente cristão. Isso é fundamentalmente o que Cristo quer que a gente faça. Não dá para eu desenvolver uma pessoa, não dá para eu estimular uma pessoa se eu não amá-la."
+    ordem_2a: imitacao_de_jesus
+    justificativa_interna: "Definição oficial: 'Orientação prática da vida e das decisões pelo modelo de caráter, atitudes e ações de Jesus, buscando conformar a própria conduta à Sua forma de viver.' A expressão 'Isso é fundamentalmente o que Cristo quer que a gente faça' evidencia orientação prática da conduta pelo modelo de Jesus."
+
+    ordem_2a: amar_o_proximo
+    justificativa_interna: "Definição oficial: 'Ação prática de cuidado, responsabilidade e socorro ao outro que surge diante de uma necessidade concreta, independentemente de proximidade, afinidade, identidade ou merecimento moral.' A afirmação 'Não dá para eu desenvolver uma pessoa, não dá para eu estimular uma pessoa se eu não amá-la' evidencia ação prática de cuidado como fundamento do desenvolvimento do outro."
+
+    ordem_2a: desenvolvimento_humano_dos_funcionarios
+    justificativa_interna: "Definição oficial: 'Promoção intencional do crescimento espiritual, ético e humano dos funcionários, incorporando práticas religiosas cristãs no ambiente de trabalho como parte do cuidado integral com a pessoa.' A expressão 'desenvolver uma pessoa' e 'estimular uma pessoa' evidencia promoção intencional do crescimento humano dos funcionários."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Não necessariamente eu posso gostar dela. Ou gostar do jeito dela. Mas eu preciso amar a pessoa como o filho de Deus que ela é."
+    ordem_2a: amar_o_proximo
+    justificativa_interna: "Definição oficial: 'Ação prática de cuidado, responsabilidade e socorro ao outro que surge diante de uma necessidade concreta, independentemente de proximidade, afinidade, identidade ou merecimento moral.' A expressão 'Não necessariamente eu posso gostar dela' mas 'eu preciso amar a pessoa' evidencia ação de cuidado independentemente de afinidade."
+
+    ordem_2a: imago_dei
+    justificativa_interna: "Definição oficial: 'Reconhecimento da dignidade humana por ser imagem e semelhança de Deus. Um representante de Deus na Terra.' A expressão 'amar a pessoa como o filho de Deus que ela é' evidencia reconhecimento explícito da dignidade humana por ser imagem de Deus."
+
+    ordem_2a: igualdade_perante_deus
+    justificativa_interna: "Definição oficial: 'Crença de que todos os seres humanos possuem o mesmo valor moral e dignidade diante de Deus, sem hierarquias espirituais.' A afirmação de que toda pessoa é 'filho de Deus' evidencia crença no mesmo valor moral de todos diante de Deus."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Eu nunca me aprofundei nisso. Eu sei que eles existem, mas não conheço os 17 princípios."
+    ordem_2a: desconhece
+    justificativa_interna: "Definição oficial: 'Condição em que o entrevistado declara desconhecer o significado, funcionamento ou objetivos do ESG.' O entrevistado afirma explicitamente 'não conheço os 17 princípios' referindo-se aos ODS, caracterizando desconhecimento dos objetivos de desenvolvimento sustentável."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Eu tenho para mim que se você consegue melhorar o mundo de alguma maneira, não vai ser um livro de regras ou uma lista que vai fazer isso."
+    ordem_2a: criacao_de_obrigacoes
+    justificativa_interna: "Definição oficial: 'Percepção de que o ESG ou objetivos se transformam em obrigação normativa imposta às organizações.' O entrevistado critica 'livro de regras ou uma lista', rejeitando a ideia de que normas formalizadas (ODS) sejam o caminho para melhorar o mundo, caracterizando percepção negativa de obrigações normativas."
+
+    ordem_2a: complexo_e_burocratico
+    justificativa_interna: "Definição oficial: 'Percepção de que os ODS e objetivos são excessivamente complexos, burocráticos e formulados de modo abstrato.' A referência a 'livro de regras' e 'lista' sugere percepção de complexidade burocrática que não se traduz em ação prática efetiva."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "eu tenho certeza que através da graça eu vou conseguir"
+    ordem_2a: eficacia
+    justificativa_interna: "Definição oficial: 'Convicção de que a graça atua de modo plenamente eficaz, realizando integralmente aquilo que Deus determinou e produzindo transformação real.' A expressão 'tenho certeza que através da graça eu vou conseguir' demonstra convicção na eficácia plena da graça para realizar objetivos."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus.' O trecho 'através da graça' atribui exclusivamente à graça (ação divina) a capacidade de realização, sem mencionar esforço próprio."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Porque eu questiono absolutamente tudo. Na hora que... quem achou essa casa, inclusive, foi a Ana. Eu estava pesquisando há dois anos, ela foi numa tarde e achou."
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus.' O contraste entre 'eu estava pesquisando há dois anos' (esforço humano infrutífero) e 'ela foi numa tarde e achou' (resultado inesperado) evidencia que a provisão não veio do esforço próprio."
+
+    ordem_2a: prioridade_monergismo
+    justificativa_interna: "Definição oficial: 'Compreensão de que a graça antecede toda ação, decisão ou mérito humano, sendo iniciativa soberana e primeira de Deus.' A provisão da casa ocorreu independentemente e anteriormente ao esforço de pesquisa de dois anos, demonstrando anterioridade da graça."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "estava na igreja, inclusive, no dia que ela encontrou essa casa, e ela falou assim, olha, achei uma casa que está muito acima de tamanho e de valor. Cara, na hora eu falei assim, é essa?"
+    ordem_2a: superabundancia
+    justificativa_interna: "Definição oficial: 'Percepção da graça como benesses em quantidade muito grande, imensurável, que ultrapassa qualquer critério humano de cálculo, mérito ou expectativa.' A expressão 'muito acima de tamanho e de valor' caracteriza provisão que excede expectativas e critérios humanos de cálculo."
+
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana, sendo inteiramente imerecida.' A casa 'muito acima' das possibilidades evidencia recebimento desproporcional ao mérito ou capacidade financeira."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "E eu só posso entender isso como graça, porque humanamente falando não tem como a gente explicar."
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus.' A expressão 'só posso entender isso como graça' atribui exclusivamente à ação divina o que 'humanamente falando não tem como explicar'."
+
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana.' A impossibilidade de explicação humana evidencia ausência de relação com capacidade ou mérito próprio."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Nossos planos eram muito diferentes do que Deus tinha para nós. Perdão, nossas limitações."
+    ordem_2a: prioridade_monergismo
+    justificativa_interna: "Definição oficial: 'Compreensão de que a graça antecede toda ação, decisão ou mérito humano, sendo iniciativa soberana e primeira de Deus.' A afirmação de que 'Deus tinha' planos diferentes dos 'nossos planos' evidencia que a iniciativa e determinação divina antecedem e superam os planos humanos."
+
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana.' A menção a 'nossas limitações' reconhece que a provisão divina não guarda relação com capacidade ou adequação humana."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "muitas coisas relativas à fé dependem dessa gratidão, sabe?"
+    ordem_2a: gratidao_especial_ge
+    justificativa_interna: "Definição oficial: 'Reconhecimento consciente e pessoal de ter recebido a ação salvífica de Deus, acompanhado de resposta explícita de gratidão a Ele.' A afirmação de que 'coisas relativas à fé dependem dessa gratidão' conecta diretamente gratidão com dimensão salvífica e espiritual."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' O trecho menciona explicitamente 'fé' como dimensão orientadora da vida."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "você ter essa graça, para que você creia nessa graça, necessariamente você precisa ser grato por ela"
+    ordem_2a: gratidao_especial_ge
+    justificativa_interna: "Definição oficial: 'Reconhecimento consciente e pessoal de ter recebido a ação salvífica de Deus, acompanhado de resposta explícita de gratidão a Ele.' O entrevistado estabelece conexão necessária entre 'creia nessa graça' (dimensão salvífica) e 'ser grato por ela'."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último.' A expressão 'creia nessa graça' refere-se explicitamente à fé como orientação transcendente."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Eu sou tão agradecido por algo que já está, já me foi dado de graça"
+    ordem_2a: gratidao_especial_ge
+    justificativa_interna: "Definição oficial: 'Reconhecimento consciente e pessoal de ter recebido a ação salvífica de Deus, acompanhado de resposta explícita de gratidão a Ele.' A expressão 'sou tão agradecido' seguida de 'já me foi dado de graça' evidencia resposta consciente de gratidão pela ação divina."
+
+    ordem_2a: prioridade_monergismo
+    justificativa_interna: "Definição oficial: 'Compreensão de que a graça antecede toda ação, decisão ou mérito humano.' A expressão 'já me foi dado' enfatiza a anterioridade temporal da graça em relação a qualquer resposta humana."
+
+    ordem_2a: incongruencia_monergismo
+    justificativa_interna: "Definição oficial: 'Entendimento de que a graça é concedida sem qualquer relação com mérito, esforço ou adequação moral humana.' A expressão 'dado de graça' caracteriza o recebimento como inteiramente imerecido."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "A minha gratidão não influencia na graça, efetivamente."
+    ordem_2a: nao_circularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Compreensão de que a graça é intrinsecamente gratuita e não pode ser paga, retribuída ou compensada a Deus por nenhuma ação humana.' A afirmação explícita de que 'gratidão não influencia na graça' nega qualquer lógica de retribuição ou compensação."
+
+    ordem_2a: prioridade_monergismo
+    justificativa_interna: "Definição oficial: 'Compreensão de que a graça antecede toda ação, decisão ou mérito humano.' Ao negar que gratidão influencie a graça, o entrevistado afirma que a graça é anterior e independente de qualquer resposta humana."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Mas a gratidão, ela necessariamente baseia a minha fé. Eu sou tão agradecido que eu acredito?"
+    ordem_2a: gratidao_especial_ge
+    justificativa_interna: "Definição oficial: 'Reconhecimento consciente e pessoal de ter recebido a ação salvífica de Deus, acompanhado de resposta explícita de gratidão a Ele.' O entrevistado conecta 'gratidão' com 'fé' ('acredito'), estabelecendo relação entre reconhecimento grato e dimensão salvífica."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último.' A menção explícita a 'minha fé' e 'acredito' caracteriza orientação transcendente."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Antigamente tinha muito a ver com postos materiais. Muito a ver com postos materiais."
+    ordem_2a: gratidao_comum_gc
+    justificativa_interna: "Definição oficial: 'Resposta geral de reconhecimento por benefícios, circunstâncias favoráveis e bens da vida, percebidos como dádivas, sem referência direta à salvação.' A gratidão por 'postos materiais' caracteriza reconhecimento por bens da vida sem referência direta à salvação."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A referência a 'postos materiais' relaciona-se à dimensão econômica e de recursos."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Chegamos no dia do julgamento. Certo? Está tudo resolvido. Demônio está no lago de enxofre. Você vai ser grato pelo quê? Comida? Não precisa. Saúde? Não precisa. Riqueza? Não precisa. Família? Não precisa."
+    ordem_2a: gratidao_especial_ge
+    justificativa_interna: "Definição oficial: 'Reconhecimento consciente e pessoal de ter recebido a ação salvífica de Deus.' O contexto escatológico ('dia do julgamento', 'demônio no lago de enxofre') e a negação de bens materiais como objeto de gratidão direcionam para gratidão pela salvação."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A referência ao 'dia do julgamento' e cenário escatológico caracteriza orientação transcendente explícita."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "a única resposta possível é eu sou grato porque Deus me conhece. Porque apesar dos zilhões de pessoas que ele já botou aqui, vai colocar ainda, o ser que criou o universo sabe quem eu sou."
+    ordem_2a: gratidao_especial_ge
+    justificativa_interna: "Definição oficial: 'Reconhecimento consciente e pessoal de ter recebido a ação salvífica de Deus, acompanhado de resposta explícita de gratidão a Ele.' A gratidão por 'Deus me conhece' em contexto escatológico caracteriza reconhecimento da ação salvífica pessoal de Deus."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus.' A ênfase em 'Deus me conhece' e 'o ser que criou o universo sabe quem eu sou' focaliza exclusivamente na pessoa de Deus como fonte."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último.' A referência a 'Deus', 'criou o universo' e conhecimento pessoal divino caracteriza orientação transcendente explícita."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Tudo é passageiro aqui nessa terra."
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A afirmação da transitoriedade terrena implica orientação por realidade transcendente permanente."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "eu não tenho medo de perder emprego em lugar nenhum. Então, eu falo aquilo que eu penso. Para todos os lugares."
+    ordem_2a: ameaca_ao_emprego
+    justificativa_interna: "Definição oficial: 'Percepção situacional concreta de risco iminente de perda do emprego em razão de decisões éticas ou religiosas assumidas.' A afirmação 'não tenho medo de perder emprego' seguida de 'falo aquilo que eu penso' evidencia consciência do risco de perda de emprego por posicionamentos assumidos."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' A disposição de 'falar aquilo que penso' mesmo com risco de perder emprego expressa integridade moral como fundamento."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Eu não tenho essa reserva que as pessoas têm, por exemplo, de não vou ter o que comer, vou ser desacreditado."
+    ordem_2a: inseguranca_financeira
+    justificativa_interna: "Definição oficial: 'Consciência de instabilidade econômica em decorrência de gestão ou ações amparadas por valores cristãos.' A menção a 'não vou ter o que comer' evidencia consciência de possível instabilidade econômica, embora o entrevistado afirme não ter essa reserva."
+
+    ordem_2a: reputacao_imagem_pessoal_arranhada
+    justificativa_interna: "Definição oficial: 'Percepção de prejuízo à imagem ou credibilidade profissional decorrente da associação pública a valores, práticas ou posicionamentos cristãos.' A expressão 'vou ser desacreditado' caracteriza percepção de prejuízo à credibilidade profissional."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Estou conversando com os CEOs de empresas que, cara, se o cara acordar com a bunda descoberta, como eu falo, se o cara acordar desse jeito, ele vai mandar embora. Para mim, não importa."
+    ordem_2a: ser_demitido
+    justificativa_interna: "Definição oficial: 'Desligamento profissional sofrido diretamente em função de posicionamentos éticos, práticas ou identidade cristã no ambiente de trabalho.' A expressão 'ele vai mandar embora' seguida de 'para mim, não importa' evidencia aceitação consciente do risco de demissão por posicionamentos assumidos."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' A disposição de aceitar demissão ('não importa') expressa integridade moral como fundamento prioritário."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Porque eu sei que o meu Deus me conhece. Porque eu sei que Ele tem coisas para mim. E se Ele fechou essa porta, é porque Ele quer."
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus.' A expressão 'meu Deus me conhece' e 'Ele tem coisas para mim' focaliza exclusivamente na pessoa de Deus como fonte de provisão."
+
+    ordem_2a: prioridade_monergismo
+    justificativa_interna: "Definição oficial: 'Compreensão de que a graça antecede toda ação, decisão ou mérito humano, sendo iniciativa soberana e primeira de Deus.' A afirmação 'se Ele fechou essa porta, é porque Ele quer' evidencia que a iniciativa e determinação divina antecedem circunstâncias."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último.' A referência a 'meu Deus' e confiança em sua vontade caracteriza orientação transcendente explícita."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "O máximo que eu vou ser é agradecido."
+    ordem_2a: gratidao_especial_ge
+    justificativa_interna: "Definição oficial: 'Reconhecimento consciente e pessoal de ter recebido a ação salvífica de Deus, acompanhado de resposta explícita de gratidão a Ele.' A afirmação de que 'o máximo que eu vou ser é agradecido' mesmo diante de portas fechadas caracteriza resposta de gratidão pela ação divina."
+
+    ordem_2a: nao_circularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Compreensão de que a graça é intrinsecamente gratuita e não pode ser paga, retribuída ou compensada a Deus por nenhuma ação humana.' A gratidão como 'máximo' que pode oferecer (sem expectativa de retribuição ou mudança da situação) evidencia impossibilidade de compensação."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Para mim, como é que é? Morrer é lucro?"
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A citação bíblica (Filipenses 1:21) caracteriza orientação transcendente explícita."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' O uso do termo 'lucro' em contexto transcendente redefine a própria noção de ganho econômico."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Para você ter essa micro responsabilidade corporativa, você necessariamente precisa amar as pessoas."
+    ordem_2a: micro_rsc
+    justificativa_interna: "Definição oficial: 'Conjunto de práticas éticas manifestas nas decisões cotidianas, atitudes pessoais e comportamentos individuais adotados pelo gestor como pessoa no exercício da gestão.' A menção explícita a 'micro responsabilidade corporativa' e sua conexão com 'amar as pessoas' caracteriza práticas individuais do gestor."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' A afirmação de que é 'necessário amar as pessoas' expressa amor como fundamento moral das decisões."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa.' A referência a 'amar as pessoas' no contexto de responsabilidade corporativa caracteriza avaliação de relações sociais."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "E isso é fundamentalmente cristão. Isso é fundamentalmente o que Cristo quer que a gente faça."
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A referência explícita a 'fundamentalmente cristão' e 'o que Cristo quer' caracteriza orientação transcendente explícita."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' A conexão entre amor às pessoas e 'o que Cristo quer' estabelece fundamento moral cristão para decisões."
+END ITEM
+
+ITEM @entrevista05
+    ordem_1a: "Não dá para eu desenvolver uma pessoa, não dá para eu estimular uma pessoa se eu não amá-la."
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' A afirmação de que 'não dá para desenvolver' sem 'amar' estabelece amor como fundamento necessário das decisões de gestão."
+
+    ordem_2a: micro_rsc
+    justificativa_interna: "Definição oficial: 'Conjunto de práticas éticas manifestas nas decisões cotidianas, atitudes pessoais e comportamentos individuais adotados pelo gestor como pessoa no exercício da gestão.' A referência a 'desenvolver' e 'estimular' pessoas caracteriza práticas individuais do gestor no exercício da gestão."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa.' A referência ao desenvolvimento e estímulo de pessoas caracteriza avaliação de relações sociais na empresa."
+END ITEM

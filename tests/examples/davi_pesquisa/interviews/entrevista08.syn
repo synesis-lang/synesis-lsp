@@ -1,0 +1,1845 @@
+SOURCE @entrevista08
+	código: N/A
+END SOURCE
+
+ITEM @entrevista08
+    ordem_1a: "eu venho de uma família cristã de berço, vamos dizer assim. O meu avô foi pastor presteriano."
+    ordem_2a: igreja_como_povo_de_deus
+    justificativa_interna: "Definição oficial: 'Compreensão da igreja como uma comunidade viva de pessoas chamadas e reunidas por Deus, que compartilham identidade, fé e missão comuns'. O relato de pertencimento familiar multigeracional à igreja ('família cristã de berço', 'avô foi pastor') evidencia a transmissão de identidade religiosa como herança comunitária."
+
+    ordem_2a: identidade_em_cristo
+    justificativa_interna: "Definição oficial: 'Compreensão de que o valor, o sentido e a identidade pessoal são definidos primariamente pela união com Cristo'. A narrativa de origem ('venho de uma família cristã de berço') estabelece a fé como fundamento identitário desde o nascimento."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Não tive um evento de conversão chocante. Um dia que eu me lembre que isso aconteceu. Acho que eu fui me solidificando na fé e entendendo a importância disso."
+    ordem_2a: fe_x_racionalismo
+    justificativa_interna: "Definição oficial: 'Tensão percebida entre confiar na ação e direção de Deus e depender exclusivamente de explicações, cálculos ou critérios puramente racionais'. O processo gradual de 'solidificação' e 'entendimento' da fé contrasta com a ausência de 'evento chocante', evidenciando uma trajetória racional-progressiva de adesão."
+
+    ordem_2a: conversao_de_outros_como_resultado
+    justificativa_interna: "Definição oficial: 'Narrativa da influência da conduta pessoal ou profissional de um gestor para a conversão de terceiros'. Embora o entrevistado relate sua própria conversão gradual (não de terceiros), o trecho documenta o processo de conversão pessoal como fenômeno relevante para a pesquisa."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "comprando a ideia de coração, não só porque eu era levado lá, mas fui entendendo que eu queria seguir esse caminho."
+    ordem_2a: obediencia
+    justificativa_interna: "Definição oficial: 'Disposição prática de fazer aquilo que Deus ordena, conformando ações e decisões às suas ordens'. A expressão 'queria seguir esse caminho' evidencia a disposição voluntária de conformar a vida à direção percebida como divina."
+
+    ordem_2a: chamado_vocacao
+    justificativa_interna: "Definição oficial: 'Percepção de um chamado divino específico que orienta a escolha da profissão, do negócio ou da atuação no trabalho'. A decisão consciente de 'seguir esse caminho' indica o reconhecimento de uma direção vocacional."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Tive alguns deslizes na juventude, faculdade e tal. Mas nada que me afastasse permanentemente. Nada que me abalasse a convicção e o meu coração de verdade."
+    ordem_2a: depravacao_total_pecado_queda_confissao_de_pecados
+    justificativa_interna: "Definição oficial: 'Reconhecimento da gravidade da condição espiritual e moral humana, erro moral ou espiritual'. O termo 'deslizes' evidencia o reconhecimento de erros morais durante a juventude."
+
+    ordem_2a: paciencia_e_longanimidade
+    justificativa_interna: "Definição oficial: 'Capacidade de suportar frustrações e dificuldades prolongadas sem perder a fé, a coerência ética ou o compromisso relacional'. A afirmação de que nada 'abalasse a convicção' demonstra perseverança na fé apesar dos 'deslizes'."
+
+    ordem_2a: fe_para_longevidade
+    justificativa_interna: "Definição oficial: 'Confiança em Deus associada à perseverança no tempo'. A manutenção da convicção ao longo do tempo ('nada que me afastasse permanentemente') evidencia fé sustentada temporalmente."
+
+    ordem_2a: hereditariedade_cultural
+    justificativa_interna: "Definição oficial: 'Narrativa da transmissão da fé, de pai pra filho, por meio da educação em família.' A manutenção da convicção ('nada que me abalasse a convicção') apesar de deslizes evidencia a solidez da transmissão familiar, característica da hereditariedade_cultural."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "eu acho que tem e eu acho que tem que ter. As duas coisas."
+    ordem_2a: unidade_e_integridade_de_vida_pessoal_e_profissional
+    justificativa_interna: "Definição oficial: 'Convicção de que fé, valores e prática cristã devem orientar de forma integrada a vida pessoal e a atuação profissional'. A afirmação categórica de que 'tem que ter' interação entre fé e trabalho evidencia a convicção de integração necessária."
+
+    ordem_2a: coram_deo_vida_diante_de_deus
+    justificativa_interna: "Definição oficial: 'Consciência permanente de viver, agir e decidir sob o olhar de Deus, sem separação entre vida pública, privada, espiritual e profissional'. A dupla afirmação ('tem e tem que ter') expressa a consciência de indivisibilidade da vida diante de Deus."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "durante muito tempo, eu fui, assim, acho que um cristão agente secreto, sabe? Que está lá, que mantém os seus valores e faz aquilo que eu acredito, etc."
+    ordem_2a: dicotomia_fe_trabalho
+    justificativa_interna: "Definição oficial: 'Postura em que cristãos separam a fé pessoal do ambiente de trabalho, propiciando um ambiente de trabalho não permeável a valores cristãos'. A expressão 'cristão agente secreto' evidencia literalmente a separação entre identidade religiosa e atuação profissional pública."
+
+    ordem_2a: medo_de_evangelizar_tornar_a_fe_publica
+    justificativa_interna: "Definição oficial: 'Receio subjetivo antecipatório específico de comunicar a fé com intenção evangelística, por medo de enfrentar rejeição, sanções formais ou prejuízos profissionais'. A postura de 'agente secreto' implica receio de tornar a fé visível publicamente."
+
+    ordem_2a: testemunho
+    justificativa_interna: "Definição oficial: 'Vivência coerente e visível da fé cristã expressa em atitudes, escolhas e conduta cotidiana'. Embora o entrevistado relate a ausência de testemunho público ('agente secreto'), o trecho documenta a consciência da necessidade de testemunho."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "eu sempre fui muito passivo nesse sentido e entendia que a minha fé e o meu trabalho não se conversavam. Não deviam se conversar, não podiam se conversar."
+    ordem_2a: dicotomia_fe_trabalho
+    justificativa_interna: "Definição oficial: 'Postura em que cristãos separam a fé pessoal do ambiente de trabalho'. A tripla negação ('não se conversavam, não deviam, não podiam') evidencia literalmente a separação radical entre fé e trabalho."
+
+    ordem_2a: medo
+    justificativa_interna: "Definição oficial: 'Receio subjetivo antecipatório de consequências negativas pessoais ou profissionais ao expressar publicamente a fé cristã'. A postura 'passiva' e a crença de que fé e trabalho 'não podiam se conversar' sugerem receio subjacente."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Talvez até fosse uma posição cômoda, né? Porque aí é uma maneira de se dizer, não, eu não misturo essas duas coisas."
+    ordem_2a: dicotomia_fe_trabalho
+    justificativa_interna: "Definição oficial: 'Postura em que cristãos separam a fé pessoal do ambiente de trabalho'. A expressão 'não misturo essas duas coisas' evidencia literalmente a separação intencional entre fé e trabalho."
+
+    ordem_2a: depravacao_total_pecado_queda_confissao_de_pecados
+    justificativa_interna: "Definição oficial: 'Reconhecimento da gravidade da condição espiritual e moral humana'. O reconhecimento autocrítico de que a posição era 'cômoda' evidencia confissão de erro moral."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "no meu trabalho eu não falo ativamente de Jesus, nem do Evangelho, nada. E na minha vida pessoal eu exerço a minha fé."
+    ordem_2a: dicotomia_fe_trabalho
+    justificativa_interna: "Definição oficial: 'Postura em que cristãos separam a fé pessoal do ambiente de trabalho'. A separação explícita entre 'trabalho' (sem falar de Jesus) e 'vida pessoal' (exercer a fé) evidencia literalmente a dicotomia."
+
+    ordem_2a: medo_de_evangelizar_tornar_a_fe_publica
+    justificativa_interna: "Definição oficial: 'Receio subjetivo antecipatório específico de comunicar a fé com intenção evangelística'. A ausência deliberada de falar 'ativamente de Jesus' no trabalho sugere receio de evangelização pública."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "E isso mudou e graças a Deus que mudou porque é um entendimento errado na minha visão."
+    ordem_2a: arrependimento
+    justificativa_interna: "Definição oficial: 'Reconhecimento consciente do pecado acompanhado de mudança intencional de direção, atitude e comportamento diante de Deus'. A afirmação de que 'mudou' e que o entendimento anterior era 'errado' evidencia arrependimento e mudança de postura."
+
+    ordem_2a: obra_do_espirito_santo
+    justificativa_interna: "Definição oficial: 'Atuação transformadora do Espírito Santo na vida humana'. A expressão 'graças a Deus que mudou' atribui a mudança de entendimento à ação divina."
+
+    ordem_2a: gratidao_especial_ge
+    justificativa_interna: "Definição oficial: 'Reconhecimento consciente e pessoal de ter recebido a ação salvífica de Deus, acompanhado de resposta explícita de gratidão a Ele.' A expressão 'graças a Deus que mudou' evidencia reconhecimento consciente de ação divina (mudança de entendimento) com resposta de gratidão, caracterizando a gratidao_especial_ge."
+
+    ordem_2a: graca_especial_ge
+    justificativa_interna: "Definição oficial: 'Ação soberana e específica de Deus que opera salvação, conversão e restauração espiritual em pessoas, reconhecida explicitamente como intervenção redentora divina.' A mudança de entendimento ('isso mudou') atribuída a Deus evidencia ação divina de restauração espiritual, caracterizando a graca_especial_ge."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A expressão 'graças a Deus' evidencia a fé como orientação transcendente, caracterizando o aspecto_pistico_15."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "O primeiro acho que foi uma provocação do Espírito Santo que deu alguns eventos na minha vida, né?"
+    ordem_2a: obra_do_espirito_santo
+    justificativa_interna: "Definição oficial: 'Atuação transformadora do Espírito Santo na vida humana'. A expressão literal 'provocação do Espírito Santo' atribui diretamente ao Espírito a iniciativa de transformação."
+
+    ordem_2a: mover_do_espirito
+    justificativa_interna: "Definição oficial: 'Ação dinâmica do Espírito Santo orientando pessoas e decisões'. A 'provocação' que gerou 'eventos' evidencia a ação dinâmica e orientadora do Espírito."
+
+    ordem_2a: sinal_confirmacao
+    justificativa_interna: "Definição oficial: 'Evento, circunstância ou experiência interpretada como validação divina de uma decisão, caminho ou escolha'. Os 'eventos' são interpretados como sinais da ação do Espírito Santo."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "um dia eu decidi perguntar pra ele, eu lembro bem aonde que eu estava aqui na minha casa sentado, era um telefone isso, decidi perguntar pra ele o que que, como é que era esse negócio de chamado, de missão, etc."
+    ordem_2a: chamado_vocacao
+    justificativa_interna: "Definição oficial: 'Percepção de um chamado divino específico que orienta a escolha da profissão, do negócio ou da atuação no trabalho'. A busca ativa por entender 'esse negócio de chamado, de missão' evidencia o despertar para a questão vocacional."
+
+    ordem_2a: aconselhamento_biblico
+    justificativa_interna: "Definição oficial: 'Uso intencional das Escrituras como referência normativa principal para orientar decisões'. A busca de orientação com um pastor ('amigo pastor') sobre questões de chamado evidencia busca de aconselhamento baseado em princípios bíblicos."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "não é um evento, pode ser, obviamente, tem exemplos na Bíblia disso, mas não necessariamente é um evento sobrenatural, de que alguém fica cego por um tempo até enxergar a realidade, ou que abre uma escada e vem um anjo falar com você"
+    ordem_2a: sobrenatural_sobrenaturalidade
+    justificativa_interna: "Definição oficial: 'Presença mística, fora dos domínios do mundo físico e material'. A referência a 'evento sobrenatural', 'anjo', 'escada' evidencia o reconhecimento da dimensão sobrenatural como possibilidade real."
+
+    ordem_2a: milagres
+    justificativa_interna: "Definição oficial: 'Evento percebido como intervenção divina fora do curso natural'. Os exemplos de 'alguém fica cego' e 'vem um anjo' são referências a eventos miraculosos bíblicos."
+
+    ordem_2a: consultar_a_palavra_biblia
+    justificativa_interna: "Definição oficial: 'Uso intencional das Escrituras como fonte normativa de orientação'. A expressão 'tem exemplos na Bíblia disso' evidencia o uso da Escritura como referência para validar experiências."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "eu entendo que o chamado existe pra todos nós que somos cristãos e somos alcançados."
+    ordem_2a: chamado_vocacao
+    justificativa_interna: "Definição oficial: 'Percepção de um chamado divino específico que orienta a escolha da profissão'. A afirmação de que 'o chamado existe pra todos' universaliza a noção de vocação divina."
+
+    ordem_2a: resgate
+    justificativa_interna: "Definição oficial: 'Ação soberana de Deus que liberta o ser humano da condição de pecado e perdição'. A expressão 'somos alcançados' evidencia a compreensão de que a salvação é iniciativa divina que 'alcança' o ser humano."
+
+    ordem_2a: igreja_como_povo_de_deus
+    justificativa_interna: "Definição oficial: 'Compreensão da igreja como uma comunidade viva de pessoas chamadas e reunidas por Deus'. A expressão 'todos nós que somos cristãos' evidencia a identidade coletiva do povo de Deus."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "onde você mora hoje, os ambientes que você frequenta, as pessoas com quem você se relaciona, quantas pessoas iguais a você, assim, que são cristãos e que não têm receio de se assumir cristão, de agir como cristão, efetivamente, você conhece."
+    ordem_2a: medo_de_evangelizar_tornar_a_fe_publica
+    justificativa_interna: "Definição oficial: 'Receio subjetivo antecipatório específico de comunicar a fé com intenção evangelística'. A expressão 'não têm receio de se assumir cristão' evidencia, por contraste, a existência de receio em outros (incluindo o entrevistado)."
+
+    ordem_2a: testemunho
+    justificativa_interna: "Definição oficial: 'Vivência coerente e visível da fé cristã expressa em atitudes, escolhas e conduta cotidiana'. A expressão 'agir como cristão, efetivamente' evidencia a necessidade de testemunho prático e visível."
+
+    ordem_2a: sal_da_terra
+    justificativa_interna: "Definição oficial: 'Convicção de que o cristão exerce influência ética e moral que preserva, limita a degradação e promove transformação social'. A provocação sobre a presença de cristãos nos ambientes frequentados evidencia a consciência da necessidade de influência cristã nos espaços sociais."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "onde você está, fazendo o que você faz, dentro de uma empresa grande, de alguma relevância global no Brasil, falando com os clientes que você fala, contratando e liderando a equipe que você lidera, essa é a sua noção."
+    ordem_2a: chamado_vocacao
+    justificativa_interna: "Definição oficial: 'Percepção de um chamado divino específico que orienta a escolha da profissão, do negócio ou da atuação no trabalho'. A afirmação de que 'essa é a sua noção' (missão) no contexto profissional específico evidencia o reconhecimento do trabalho como vocação divina."
+
+    ordem_2a: proposito
+    justificativa_interna: "Definição oficial: 'Compreensão de que a própria vida e atuação profissional possuem um sentido de missão definido pela vontade de Deus'. A identificação do trabalho atual como 'missão' evidencia a compreensão de propósito divino na atuação profissional."
+
+    ordem_2a: trabalho_como_adoracao_avoda_empresa_como_ministerio
+    justificativa_interna: "Definição oficial: 'Compreensão do trabalho e da empresa como gesto de adoração, espaço legítimo de culto, serviço e obediência a Deus'. A expressão 'essa é a sua noção' (missão) aplicada ao trabalho corporativo evidencia a ressignificação do trabalho como ministério."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "É aí que você tem que fazer, tem que brilhar e tem que fazer diferença na vida das pessoas."
+    ordem_2a: testemunho
+    justificativa_interna: "Definição oficial: 'Vivência coerente e visível da fé cristã expressa em atitudes, escolhas e conduta cotidiana, funcionando como exemplo público que aponta para Deus'. A expressão 'tem que brilhar' evidencia literalmente a necessidade de testemunho visível."
+
+    ordem_2a: sal_da_terra
+    justificativa_interna: "Definição oficial: 'Convicção de que o cristão exerce influência ética e moral que preserva, limita a degradação e promove transformação social'. A expressão 'fazer diferença na vida das pessoas' evidencia a consciência de influência transformadora."
+
+    ordem_2a: glorificar_a_deus
+    justificativa_interna: "Definição oficial: 'Agir com a intenção consciente de honrar, exaltar a Deus por meio das próprias ações'. A expressão 'tem que brilhar' no contexto de missão cristã evidencia a intenção de glorificar a Deus através do trabalho."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A expressão 'tem que fazer' (imperativo moral) no contexto de chamado/missão evidencia a fé como orientação transcendente, caracterizando o aspecto_pistico_15."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' A expressão 'fazer diferença na vida das pessoas' evidencia disposição moral profunda como fundamento, caracterizando o aspecto_etico_14."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa.' A expressão 'fazer diferença na vida das pessoas' evidencia avaliação de relações sociais, caracterizando o aspecto_social_10."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Deus usa você onde ele te colocou na história de vida que você tem e onde ele tem te levado."
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho, inclusive eventos aparentemente ordinários'. A expressão 'onde ele te colocou' e 'onde ele tem te levado' evidencia a crença na direção providencial de Deus sobre a trajetória profissional."
+
+    ordem_2a: deus_guiando_os_passos
+    justificativa_interna: "Definição oficial: 'Atribuição direta das decisões, caminhos e escolhas profissionais à orientação pessoal e intencional de Deus em cada detalhe'. A expressão 'onde ele tem te levado' evidencia literalmente a atribuição da trajetória à orientação divina."
+
+    ordem_2a: soberania_de_deus
+    justificativa_interna: "Definição oficial: 'Crença de que Deus possui controle último sobre todas as coisas, inclusive sobre os resultados finais, pessoais ou profissionais'. A afirmação de que 'Deus usa você onde ele te colocou' evidencia a crença no controle divino sobre a localização e função profissional."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Não necessariamente ele precisa te dar um evento sobrenatural e te mudar geograficamente, ou te, sabe falar, eu desisto de tudo que eu estou fazendo para fazer outra coisa."
+    ordem_2a: sobrenatural_sobrenaturalidade
+    justificativa_interna: "Definição oficial: 'Presença mística, fora dos domínios do mundo físico e material'. A referência a 'evento sobrenatural' evidencia o reconhecimento da dimensão sobrenatural como possibilidade real, embora não necessária."
+
+    ordem_2a: chamado_vocacao
+    justificativa_interna: "Definição oficial: 'Percepção de um chamado divino específico que orienta a escolha da profissão'. A discussão sobre 'mudar geograficamente' ou 'desistir de tudo' evidencia a reflexão sobre a natureza do chamado vocacional."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Eu tenho que ser cristão no meu trabalho, 100% do tempo, em tudo que eu faço na minha vida."
+    ordem_2a: unidade_e_integridade_de_vida_pessoal_e_profissional
+    justificativa_interna: "Definição oficial: 'Convicção de que fé, valores e prática cristã devem orientar de forma integrada a vida pessoal e a atuação profissional, rejeitando qualquer separação entre espiritualidade e trabalho'. A expressão '100% do tempo, em tudo' evidencia literalmente a convicção de integração total."
+
+    ordem_2a: coram_deo_vida_diante_de_deus
+    justificativa_interna: "Definição oficial: 'Consciência permanente de viver, agir e decidir sob o olhar de Deus, sem separação entre vida pública, privada, espiritual e profissional'. A expressão '100% do tempo' evidencia a consciência de vida integral diante de Deus."
+
+    ordem_2a: identidade_em_cristo
+    justificativa_interna: "Definição oficial: 'Compreensão de que o valor, o sentido e a identidade pessoal são definidos primariamente pela união com Cristo'. A afirmação 'tenho que ser cristão no meu trabalho' evidencia a identidade cristã como definidora primária da atuação profissional."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "E se Deus me colocou ali, tem me mantido ali, é ali que é o meu ministério."
+    ordem_2a: trabalho_como_adoracao_avoda_empresa_como_ministerio
+    justificativa_interna: "Definição oficial: 'Compreensão do trabalho e da empresa como gesto de adoração, espaço legítimo de culto, serviço e obediência a Deus'. A expressão literal 'é ali que é o meu ministério' aplicada ao trabalho corporativo evidencia a ressignificação do trabalho como ministério."
+
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho'. A expressão 'Deus me colocou ali, tem me mantido ali' evidencia a crença na direção providencial sobre a permanência no trabalho."
+
+    ordem_2a: chamado_vocacao
+    justificativa_interna: "Definição oficial: 'Percepção de um chamado divino específico que orienta a escolha da profissão, do negócio ou da atuação no trabalho'. A identificação do trabalho atual como 'meu ministério' evidencia o reconhecimento de chamado vocacional."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "É um ministério tão importante quanto o de um pastor."
+    ordem_2a: trabalho_como_adoracao_avoda_empresa_como_ministerio
+    justificativa_interna: "Definição oficial: 'Compreensão do trabalho e da empresa como gesto de adoração, espaço legítimo de culto, serviço e obediência a Deus'. A equiparação explícita do trabalho secular ao 'ministério de um pastor' evidencia a ressignificação do trabalho como ministério legítimo."
+
+    ordem_2a: igualdade_perante_deus
+    justificativa_interna: "Definição oficial: 'Crença de que todos os seres humanos possuem o mesmo valor moral e dignidade diante de Deus, sem hierarquias espirituais'. A afirmação de que o ministério secular é 'tão importante quanto o de um pastor' evidencia a rejeição de hierarquia espiritual entre vocações."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Tem essa expressão, né, um pastor em tempo integral. Na verdade, todos nós que somos cristãos deveríamos ser pastor em tempo integral e ter o mesmo objetivo do que um pastor de igreja, por exemplo."
+    ordem_2a: trabalho_como_adoracao_avoda_empresa_como_ministerio
+    justificativa_interna: "Definição oficial: 'Compreensão do trabalho e da empresa como gesto de adoração, espaço legítimo de culto, serviço e obediência a Deus'. A afirmação de que 'todos deveríamos ser pastor em tempo integral' evidencia a compreensão do trabalho secular como ministério contínuo."
+
+    ordem_2a: grande_comissao_missao_no_mundo
+    justificativa_interna: "Definição oficial: 'Compromisso ativo com a expansão da fé cristã por meio de discipulado, ensino e presença pública no mundo'. A afirmação de que todos devem 'ter o mesmo objetivo do que um pastor' evidencia o compromisso com a missão cristã no mundo."
+
+    ordem_2a: igreja_como_povo_de_deus
+    justificativa_interna: "Definição oficial: 'Compreensão da igreja como uma comunidade viva de pessoas chamadas e reunidas por Deus, que compartilham identidade, fé e missão comuns'. A expressão 'todos nós que somos cristãos' evidencia a identidade coletiva do povo de Deus com missão compartilhada."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Só que o nosso campo é outro, a nossa maneira de falar é outra, mas o objetivo tem que ser exatamente igual."
+    ordem_2a: grande_comissao_missao_no_mundo
+    justificativa_interna: "Definição oficial: 'Compromisso ativo com a expansão da fé cristã por meio de discipulado, ensino e presença pública no mundo'. A afirmação de que 'o objetivo tem que ser exatamente igual' (ao de um pastor) evidencia o compromisso com a missão cristã no contexto profissional."
+
+    ordem_2a: mandato_cultural
+    justificativa_interna: "Definição oficial: 'Responsabilidade humana de desenvolver trabalho, cultura, economia e sociedade de forma ordenada e responsável, conforme os propósitos e limites estabelecidos por Deus'. A expressão 'nosso campo é outro' aplicada ao trabalho secular evidencia o reconhecimento de diferentes esferas de atuação sob propósito divino."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "A primeira foi a leitura do livro do Tim Keller, lá sobre como integrar fé e trabalho, que você deve conhecer, lá de Capa Vermelha."
+    ordem_2a: unidade_e_integridade_de_vida_pessoal_e_profissional
+    justificativa_interna: "Definição oficial: 'Convicção de que fé, valores e prática cristã devem orientar de forma integrada a vida pessoal e a atuação profissional'. A busca por 'integrar fé e trabalho' através da leitura evidencia a convicção de integração necessária."
+
+    ordem_2a: aconselhamento_biblico
+    justificativa_interna: "Definição oficial: 'Uso intencional das Escrituras como referência normativa principal para orientar decisões'. A leitura de livro cristão sobre fé e trabalho evidencia a busca de orientação baseada em princípios bíblicos para decisões profissionais."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Eu venho de uma família cristã de berço, vamos dizer assim. O meu avô foi pastor presteriano. E os dois lados do meu pai e da minha mãe já eram convertidos na geração dos avós."
+    ordem_2a: hereditariedade_cultural
+    justificativa_interna: "Definição oficial: 'Narrativa da transmissão da fé, de pai pra filho, por meio da educação em família, sem exigência de conversão pessoal pontual consciente ou experiência individual de fé por meio de um evento.' O entrevistado descreve literalmente a transmissão geracional da fé ('família cristã de berço', 'avô foi pastor', 'dois lados já eram convertidos na geração dos avós'), caracterizando a hereditariedade cultural."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "E eu nasci na igreja, então. E fui criado na igreja, dentro da fé cristã, mais especificamente do presterianismo."
+    ordem_2a: hereditariedade_cultural
+    justificativa_interna: "Definição oficial: 'Narrativa da transmissão da fé, de pai pra filho, por meio da educação em família, sem exigência de conversão pessoal pontual consciente.' O trecho 'nasci na igreja' e 'fui criado na igreja' evidencia a transmissão familiar sem evento de conversão pontual, núcleo da hereditariedade_cultural."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Não tive um evento de conversão chocante. Um dia que eu me lembre que isso aconteceu."
+    ordem_2a: hereditariedade_cultural
+    justificativa_interna: "Definição oficial: 'Narrativa da transmissão da fé, de pai pra filho, por meio da educação em família, sem exigência de conversão pessoal pontual consciente ou experiência individual de fé por meio de um evento.' A negação explícita de 'evento de conversão chocante' e de um dia específico caracteriza a ausência de evento_cristo, reforçando a hereditariedade_cultural."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Acho que eu fui me solidificando na fé e entendendo a importância disso. E comprando a ideia de coração, não só porque eu era levado lá, mas fui entendendo que eu queria seguir esse caminho."
+    ordem_2a: hereditariedade_cultural
+    justificativa_interna: "Definição oficial: 'Narrativa da transmissão da fé, de pai pra filho, por meio da educação em família, sem exigência de conversão pessoal pontual consciente.' O processo gradual ('fui me solidificando', 'fui entendendo') sem evento pontual caracteriza a hereditariedade_cultural, mesmo com apropriação pessoal posterior."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Eu trabalho em uma empresa de software, já tem mais de 20 anos. Sempre na área de finanças."
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades como critérios relevantes para gestão.' O uso de '20 anos' como marcador temporal quantitativo caracteriza o aspecto_numerico_1."
+
+    ordem_2a: aspecto_cinetico_3
+    justificativa_interna: "Definição oficial: 'Avaliação de movimentos, fluxos e mudanças operacionais da empresa ao longo do tempo.' A expressão 'já tem mais de 20 anos' evidencia a dimensão temporal e a continuidade ao longo do tempo, caracterizando o aspecto_cinetico_3."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Muito tempo fazendo controladoria ao planejamento financeiro, apoio ao negócio e tal."
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' As funções de 'controladoria' e 'planejamento financeiro' evidenciam a administração de recursos financeiros, núcleo do aspecto_economico_11."
+
+    ordem_2a: aspecto_formativo_8
+    justificativa_interna: "Definição oficial: 'Ação deliberada de planejar, moldar e transformar estruturas, processos ou estratégias.' O termo 'planejamento financeiro' evidencia a ação de planejar, característica do aspecto_formativo_8."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "A empresa é alemã, tem uma presença forte fora do Brasil, nos Estados Unidos, na Europa, na Ásia."
+    ordem_2a: aspecto_espacial_2
+    justificativa_interna: "Definição oficial: 'Referência ao espaço físico, territorial ou estrutural do negócio.' A menção a localizações geográficas ('Brasil', 'Estados Unidos', 'Europa', 'Ásia') caracteriza o aspecto_espacial_2."
+
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades.' A expressão 'presença forte' implica escala e proporção de atuação, caracterizando o aspecto_numerico_1."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "E eu trabalho daqui de São Paulo, de onde eu moro, numa função global de finanças já há quase quatro anos."
+    ordem_2a: aspecto_espacial_2
+    justificativa_interna: "Definição oficial: 'Referência ao espaço físico, territorial ou estrutural do negócio.' A referência a 'São Paulo' e 'função global' evidencia a dimensão espacial e territorial, caracterizando o aspecto_espacial_2."
+
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades.' O uso de 'quatro anos' como marcador temporal quantitativo caracteriza o aspecto_numerico_1."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A menção a 'função global de finanças' evidencia a administração de recursos financeiros, núcleo do aspecto_economico_11."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "E hoje eu estou como CFO, como diretor financeiro de algumas unidades de negócio global da empresa."
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A função de 'CFO' e 'diretor financeiro' evidencia diretamente a administração de recursos financeiros, núcleo do aspecto_economico_11."
+
+    ordem_2a: aspecto_espacial_2
+    justificativa_interna: "Definição oficial: 'Referência ao espaço físico, territorial ou estrutural do negócio.' A expressão 'unidades de negócio global' evidencia a dimensão espacial e estrutural, caracterizando o aspecto_espacial_2."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Minha função lá é como conselheiro, é conselho consultivo. Somos em sete pessoas. Estou lá, acho que já tenho seis anos"
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades.' O uso de 'sete pessoas' e 'seis anos' como marcadores quantitativos caracteriza o aspecto_numerico_1."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa.' A menção a 'conselho consultivo' e 'somos em sete pessoas' evidencia papéis sociais e estrutura relacional, caracterizando o aspecto_social_10."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Eu contribuo lá no conselho para ajudar a própria Bluefields a sobreviver em primeiro lugar como empresa que é, a gerar fontes de receita, a melhorar o produto, a melhorar o serviço que ela presta para as startups e tal."
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' As expressões 'sobreviver', 'gerar fontes de receita' evidenciam a administração de recursos financeiros, núcleo do aspecto_economico_11."
+
+    ordem_2a: aspecto_formativo_8
+    justificativa_interna: "Definição oficial: 'Ação deliberada de planejar, moldar e transformar estruturas, processos ou estratégias.' Os termos 'melhorar o produto' e 'melhorar o serviço' evidenciam ação de transformação e moldagem, característica do aspecto_formativo_8."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa.' A expressão 'serviço que ela presta para as startups' evidencia relações e papéis sociais, caracterizando o aspecto_social_10."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Davi, eu acho que tem e eu acho que tem que ter. As duas coisas."
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A afirmação 'tem que ter' em resposta à pergunta sobre interação entre fé e trabalho evidencia a fé como orientação normativa, caracterizando o aspecto_pistico_15."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "E eu te diria que, durante muito tempo, eu fui, assim, acho que um cristão agente secreto, sabe? Que está lá, que mantém os seus valores e faz aquilo que eu acredito, etc."
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A expressão 'cristão agente secreto' e 'mantém os seus valores' evidencia a fé cristã como orientação, mesmo que não explicitada publicamente, caracterizando o aspecto_pistico_15."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' A menção a 'mantém os seus valores' evidencia disposições morais como fundamento, caracterizando o aspecto_etico_14."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Eu acho que tive a benção de Deus encontrar um ambiente que fosse possível exercitar os valores cristãos sem confronto, né? Um ambiente que proporcionava que isso acontecesse, né?"
+    ordem_2a: graca_comum_gc
+    justificativa_interna: "Definição oficial: 'Concessão divina de bens naturais, sociais e estruturais a toda a humanidade, percebida como ordem, sustento e prosperidade cotidiana, sem referência direta à salvação.' A expressão 'benção de Deus' e 'ambiente que proporcionava' evidencia a percepção de concessão divina de condições favoráveis (ambiente de trabalho), caracterizando a graca_comum_gc."
+
+    ordem_2a: gratidao_comum_gc
+    justificativa_interna: "Definição oficial: 'Resposta geral de reconhecimento por benefícios, circunstâncias favoráveis e bens da vida, percebidos como dádivas, sem referência direta à salvação.' A expressão 'benção de Deus' evidencia reconhecimento de benefício (ambiente favorável) como dádiva, caracterizando a gratidao_comum_gc."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A menção a 'benção de Deus' e 'valores cristãos' evidencia a fé como orientação transcendente, caracterizando o aspecto_pistico_15."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa.' A expressão 'ambiente que proporcionava' evidencia avaliação de padrões de convivência, caracterizando o aspecto_social_10."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Mas eu sempre fui muito passivo nesse sentido e entendia que a minha fé e o meu trabalho não se conversavam. Não deviam se conversar, não podiam se conversar."
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A menção explícita à separação entre 'minha fé' e 'meu trabalho' evidencia a fé como dimensão distinta (mesmo que separada), caracterizando o aspecto_pistico_15."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Então, no meu trabalho eu não falo ativamente de Jesus, nem do Evangelho, nada. E na minha vida pessoal eu exerço a minha fé."
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A menção explícita a 'Jesus', 'Evangelho' e 'exerço a minha fé' evidencia a fé cristã como orientação transcendente, caracterizando o aspecto_pistico_15."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Alguns eventos aí, Davi. O primeiro acho que foi uma provocação do Espírito Santo que deu alguns eventos na minha vida, né?"
+    ordem_2a: graca_especial_ge
+    justificativa_interna: "Definição oficial: 'Ação soberana e específica de Deus que opera salvação, conversão e restauração espiritual em pessoas, reconhecida explicitamente como intervenção redentora divina.' A expressão 'provocação do Espírito Santo' evidencia ação divina específica de restauração espiritual, caracterizando a graca_especial_ge."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana.' A atribuição da mudança ao 'Espírito Santo' (não a si mesmo) evidencia o reconhecimento da graça como procedente exclusivamente de Deus, caracterizando a singularidade_monergismo."
+
+    ordem_2a: prioridade_monergismo
+    justificativa_interna: "Definição oficial: 'Compreensão de que a graça antecede toda ação, decisão ou mérito humano, sendo iniciativa soberana e primeira de Deus.' A expressão 'provocação do Espírito Santo' evidencia a iniciativa divina anterior à ação humana, caracterizando a prioridade_monergismo."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A menção ao 'Espírito Santo' evidencia a fé cristã como orientação transcendente, caracterizando o aspecto_pistico_15."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "E um dia eu decidi perguntar pra ele, eu lembro bem aonde que eu estava aqui na minha casa sentado, era um telefone isso, decidi perguntar pra ele o que que, como é que era esse negócio de chamado, de missão, etc."
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A menção a 'chamado' e 'missão' evidencia a fé cristã como orientação transcendente, caracterizando o aspecto_pistico_15."
+
+    ordem_2a: aspecto_linguistico_9
+    justificativa_interna: "Definição oficial: 'Uso da linguagem, do discurso e da comunicação como portadores de significado e coerência.' A ação de 'perguntar' evidencia o uso da comunicação como portadora de significado, caracterizando o aspecto_linguistico_9."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Ele foi missionário lá no Amazonas e tal. E falei, cara, me fala aí, como é que é isso? Como é que você sente que você tem um chamado missionário pra você fazer determinado trabalho, evangelístico e etc."
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A menção a 'missionário', 'chamado missionário' e 'evangelístico' evidencia a fé cristã como orientação transcendente, caracterizando o aspecto_pistico_15."
+
+    ordem_2a: aspecto_espacial_2
+    justificativa_interna: "Definição oficial: 'Referência ao espaço físico, territorial ou estrutural do negócio.' A menção ao 'Amazonas' evidencia a dimensão espacial e territorial, caracterizando o aspecto_espacial_2."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Primeiro ele falou, não é um evento, pode ser, obviamente, tem exemplos na Bíblia disso, mas não necessariamente é um evento sobrenatural, de que alguém fica cego por um tempo até enxergar a realidade, ou que abre uma escada e vem um anjo falar com você, tudo isso pode acontecer, Deus é capaz disso."
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A menção a 'Bíblia', 'evento sobrenatural', 'anjo' e 'Deus' evidencia a fé cristã como orientação transcendente, caracterizando o aspecto_pistico_15."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Mas ele falando, né, eu entendo que o chamado existe pra todos nós que somos cristãos e somos alcançados."
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A menção a 'chamado', 'cristãos' e 'somos alcançados' evidencia a fé cristã como orientação transcendente, caracterizando o aspecto_pistico_15."
+
+    ordem_2a: graca_especial_ge
+    justificativa_interna: "Definição oficial: 'Ação soberana e específica de Deus que opera salvação, conversão e restauração espiritual em pessoas, reconhecida explicitamente como intervenção redentora divina.' A expressão 'somos alcançados' evidencia ação divina de salvação, caracterizando a graca_especial_ge."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição oficial: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana.' A expressão 'somos alcançados' (voz passiva) evidencia que a ação procede de Deus, não do sujeito, caracterizando a singularidade_monergismo."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "E aí ele fez a seguinte provocação, perguntas, onde você mora hoje, os ambientes que você frequenta, as pessoas com quem você se relaciona, quantas pessoas iguais a você, assim, que são cristãos e que não têm receio de se assumir cristão, de agir como cristão, efetivamente, você conhece."
+    ordem_2a: aspecto_espacial_2
+    justificativa_interna: "Definição oficial: 'Referência ao espaço físico, territorial ou estrutural do negócio.' A menção a 'onde você mora' e 'ambientes que você frequenta' evidencia a dimensão espacial, caracterizando o aspecto_espacial_2."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa.' A expressão 'pessoas com quem você se relaciona' evidencia avaliação de relações sociais, caracterizando o aspecto_social_10."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A menção a 'cristãos', 'assumir cristão' e 'agir como cristão' evidencia a fé cristã como orientação transcendente, caracterizando o aspecto_pistico_15."
+
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades como critérios relevantes para gestão.' A pergunta 'quantas pessoas' evidencia o uso de quantidade como critério, caracterizando o aspecto_numerico_1."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "E talvez fossem mais um ou dois só, né, que me ocorreu."
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades como critérios relevantes para gestão.' O uso de 'um ou dois' como marcador quantitativo caracteriza o aspecto_numerico_1."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "E ele falou, pois é, então, onde você está, fazendo o que você faz, dentro de uma empresa grande, de alguma relevância global no Brasil, falando com os clientes que você fala, contratando e liderando a equipe que você lidera, essa é a sua noção."
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A expressão 'essa é a sua noção' (chamado/missão) evidencia a fé como orientação transcendente do trabalho, caracterizando o aspecto_pistico_15."
+
+    ordem_2a: aspecto_espacial_2
+    justificativa_interna: "Definição oficial: 'Referência ao espaço físico, territorial ou estrutural do negócio.' A menção a 'onde você está', 'empresa grande' e 'relevância global no Brasil' evidencia a dimensão espacial e estrutural, caracterizando o aspecto_espacial_2."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa.' As expressões 'falando com os clientes', 'contratando' e 'liderando a equipe' evidenciam relações e papéis sociais, caracterizando o aspecto_social_10."
+
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades.' A expressão 'empresa grande' e 'relevância global' implicam escala e proporção, caracterizando o aspecto_numerico_1."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "As pessoas normalmente têm receio de falar de trabalho, ou têm aquela coisa, não, o trabalho é uma coisa, é a vida real, e aqui, domingo, talvez um outro dia, eu exerço a minha fé e tal, mas o meu trabalho é assim, eu faço ali, sabe como é no Brasil, não dá para ser certinho, eu faço as minhas coisas para sobreviver, etc."
+    ordem_2a: dicotomia_fe_trabalho
+    justificativa_interna: "Postura em que cristãos separam a fé pessoal do ambiente de trabalho, propiciando um ambiente de trabalho não permeável a valores cristãos.' O trecho evidencia literalmente a separação entre 'exerço a minha fé' (domingo) e 'meu trabalho' (vida real), caracterizando a dicotomia."
+
+    ordem_2a: praticas_comerciais_antieticas_corrupcao
+    justificativa_interna: "Adoção de práticas comerciais ilegais ou moralmente condenáveis.' A expressão 'não dá para ser certinho' e 'faço as minhas coisas para sobreviver' evidencia a normalização de práticas antiéticas no contexto brasileiro."
+
+    ordem_2a: amoralidade_abandono_deliberado_de_valores
+    justificativa_interna: "Ambiente organizacional que abandona critérios morais claros em nome de resultados ou desempenho.' O trecho 'não dá para ser certinho' demonstra o abandono de valores morais justificado pela necessidade de 'sobreviver'."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Eu não entendo que ser cristão é o que vai me fazer prosperar, é o que vai me fazer subir na escala corporativa e ter influência nas pessoas. Deus pode fazer isso, mas uma coisa não implica na outra, absolutamente não."
+    ordem_2a: teologia_da_prosperidade
+    justificativa_interna: "Doutrina que interpreta fé, obediência e práticas religiosas como meios necessários para obter prosperidade material.' O entrevistado REJEITA explicitamente essa doutrina ao negar que 'ser cristão é o que vai me fazer prosperar'."
+
+    ordem_2a: dependencia_de_deus
+    justificativa_interna: "Reconhecimento explícito da limitação humana e da incapacidade de alcançar resultados desejáveis sem a ação, ajuda ou sustento de Deus.' A frase 'Deus pode fazer isso' reconhece que prosperidade depende da ação divina, não do esforço humano."
+
+    ordem_2a: soberania_de_deus
+    justificativa_interna: "Crença de que Deus possui controle último sobre todas as coisas, inclusive sobre os resultados finais.' O trecho 'Deus pode fazer isso, mas uma coisa não implica na outra' evidencia que resultados estão sob controle divino."
+
+    ordem_2a: superabundancia_negativa
+    justificativa_interna: "Definição: 'Interpretação crítica da abundância associada à fé como excesso material ilegítimo, frequentemente vinculada à teologia da prosperidade ou à distorção do sentido da graça'. O entrevistado critica explicitamente ('absolutamente não') a associação entre fé cristã e prosperidade material ('subir na escala corporativa'), rejeitando teologia da prosperidade."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana'. A frase 'Deus pode fazer isso' reconhece que prosperidade, se ocorrer, procede exclusivamente da vontade soberana de Deus, não do esforço humano de 'ser cristão'."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro'. Menção a 'prosperar' e 'escala corporativa' refere-se a recursos econômicos e posição hierárquica como dimensões da realidade empresarial."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Aqueles vídeos, né? O cara acorda às cinco da manhã, vai para a academia, e depois ele lê a Bíblia, e depois ele pega o carro importado, aí ele chega e trabalha, e tudo vai bem e prospera. Eu não acredito nisso, tá?"
+    ordem_2a: teologia_da_prosperidade
+    justificativa_interna: "Doutrina que interpreta fé, obediência e práticas religiosas como meios necessários para obter prosperidade material, sucesso pessoal e experiências extraordinárias.' O entrevistado critica explicitamente essa narrativa de sucesso material vinculado à fé."
+
+    ordem_2a: trabalho_como_panaceia_egito
+    justificativa_interna: "Visão em que o trabalho assume papel absoluto e redentor, substituindo a fé e outras dimensões de sentido.' A descrição da rotina ('acorda às cinco da manhã, vai para a academia') evidencia o trabalho como eixo total da vida."
+
+    ordem_2a: superabundancia_negativa
+    justificativa_interna: "Definição: 'Interpretação crítica da abundância associada à fé como excesso material ilegítimo, frequentemente vinculada à teologia da prosperidade ou à distorção do sentido da graça'. O entrevistado critica explicitamente ('Eu não acredito nisso') narrativa que associa práticas religiosas ('lê a Bíblia') com prosperidade material ('carro importado', 'tudo vai bem e prospera')."
+
+    ordem_2a: incongruencia_negativa_sinergismo
+    justificativa_interna: "Definição: 'Interpretação segundo a qual a graça depende, ao menos em parte, do desempenho ou decisão humana, reduzindo o caráter imerecido e soberano da ação divina'. O entrevistado critica narrativa sinérgica implícita nos 'vídeos' onde prosperidade resulta de desempenho humano (acordar cedo, academia, ler Bíblia)."
+
+    ordem_2a: aspecto_cinetico_3
+    justificativa_interna: "Definição: 'Avaliação de movimentos, fluxos e mudanças operacionais da empresa ao longo do tempo, como crescimento, retração ou rotatividade'. A sequência temporal descrita ('acorda', 'vai', 'lê', 'pega', 'chega', 'prospera') representa fluxo e movimento ao longo do tempo."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Acho que ser cristão é a obrigação que eu tenho, porque eu fui alcançado por ele."
+    ordem_2a: sentir_se_em_divida
+    justificativa_interna: "Senso moral de responsabilidade em servir, amar e beneficiar o próximo decorrentes do favor concedido por Deus em Cristo.' A palavra 'obrigação' e 'fui alcançado por ele' evidenciam o senso de dívida moral."
+
+    ordem_2a: resgate
+    justificativa_interna: "Ação soberana de Deus que liberta o ser humano da condição de pecado e perdição.' A expressão 'fui alcançado por ele' denota a ação divina de resgate."
+
+    ordem_2a: prioridade_monergismo
+    justificativa_interna: "Definição: 'Compreensão de que a graça antecede toda ação, decisão ou mérito humano, sendo iniciativa soberana e primeira de Deus'. A expressão 'eu fui alcançado por ele' evidencia que a ação divina ('alcançado') antecede temporalmente a resposta humana ('obrigação que eu tenho')."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana'. O uso da voz passiva ('fui alcançado') atribui a agência exclusivamente a Deus ('por ele'), sem participação causal do entrevistado."
+
+    ordem_2a: gratidao_especial_ge
+    justificativa_interna: "Definição: 'Reconhecimento consciente e pessoal de ter recebido a ação salvífica de Deus, acompanhado de resposta explícita de gratidão a Ele'. A 'obrigação' mencionada representa resposta consciente ao reconhecimento de ter sido 'alcançado' (ação salvífica) por Deus."
+
+    ordem_2a: evento_cristo
+    justificativa_interna: "Definição: 'Narrativa da conversão do próprio gestor (conhecimento de Cristo), por meio de uma experiência existencial marcante, frequentemente associada a situações-limite'. A expressão 'fui alcançado por ele' descreve experiência pessoal de conversão, evento existencial de conhecimento de Cristo."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Mas o normal é que aconteça o contrário, é isso que está escrito na Bíblia. Quando você se declara cristão, você seja perseguido, você tenha mais sofrimento, e você tenha menos vitória dentro do que o mundo aí de trabalho entende que seja vitória."
+    ordem_2a: consultar_a_palavra_biblia
+    justificativa_interna: "Uso intencional das Escrituras como fonte normativa de orientação, critério moral e discernimento.' A expressão 'é isso que está escrito na Bíblia' evidencia o uso das Escrituras como critério."
+
+    ordem_2a: perseguicao_religiosa
+    justificativa_interna: "Qualquer forma de desvalorização, hostilidade, ridicularização ou prejuízo profissional motivado pela identidade ou prática religiosa no trabalho.' O trecho 'você seja perseguido' menciona literalmente a perseguição."
+
+    ordem_2a: sofrer_o_dano
+    justificativa_interna: "Aceitação consciente de prejuízo pessoal, profissional ou material como consequência de permanecer fiel a princípios cristãos.' A frase 'tenha mais sofrimento' e 'menos vitória' evidencia a aceitação de prejuízo."
+
+    ordem_2a: cosmovisao_crista
+    justificativa_interna: "Interpretação abrangente da realidade — econômica, social, moral e existencial — a partir das categorias, valores e narrativas da fé cristã.' O entrevistado interpreta 'vitória' no trabalho a partir de categorias bíblicas."
+
+    ordem_2a: perseguicao
+    justificativa_interna: "Definição: 'Vivência de hostilidade recorrente, rejeição ou oposição sistemática em decorrência de gestão ou ações amparadas por valores cristãos'. O entrevistado menciona explicitamente 'perseguido' como consequência esperada ('o normal') de 'se declara cristão'."
+
+    ordem_2a: sacrificio_como_prefigurador_positivo_visao_positiva
+    justificativa_interna: "Definição: 'Compreensão de que uma perda ou renúncia momentânea resultou em crescimento, benefícios ou resultados positivos'. O entrevistado compreende 'sofrimento' e 'menos vitória' como padrão esperado ('o normal', 'está escrito na Bíblia') da vida cristã, interpretando-os dentro de moldura teológica positiva."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente'. Menção direta à 'Bíblia' como fonte de orientação transcendente sobre sofrimento e perseguição."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro'. Referência a 'vitória dentro do que o mundo aí de trabalho entende' implica critérios econômicos e profissionais de sucesso."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "E aí eu fui para o banheiro e pedi para Deus me dar uma instrução, porque eu não tinha a mínima ideia do que fazer."
+    ordem_2a: oracao
+    justificativa_interna: "Prática intencional de comunicação com Deus por meio de pedido, escuta, entrega ou adoração, aplicada à vida pessoal e profissional.' O trecho 'pedi para Deus me dar uma instrução' evidencia literalmente a oração."
+
+    ordem_2a: dependencia_de_deus
+    justificativa_interna: "Reconhecimento explícito da limitação humana e da incapacidade de alcançar resultados desejáveis sem a ação, ajuda ou sustento de Deus.' A frase 'eu não tinha a mínima ideia do que fazer' evidencia a limitação humana."
+
+    ordem_2a: tomada_de_decisao_em_oracao
+    justificativa_interna: "Adoção explícita da oração como critério central de discernimento para decisões gerenciais, estratégicas ou práticas.' O contexto de 'função de tomada de decisão importante' e 'pedi para Deus' evidencia a oração como critério decisório."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente'. O ato de 'pedi para Deus me dar uma instrução' evidencia busca de orientação transcendente em momento de decisão profissional."
+
+    ordem_2a: prioridade_monergismo
+    justificativa_interna: "Definição: 'Compreensão de que a graça antecede toda ação, decisão ou mérito humano, sendo iniciativa soberana e primeira de Deus'. O entrevistado busca que Deus 'me dar uma instrução' ANTES de tomar decisão, reconhecendo que iniciativa divina deve anteceder ação humana."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana'. A expressão 'pedi para Deus' atribui exclusivamente a Deus a fonte da solução, reconhecendo incapacidade humana ('não tinha a mínima ideia')."
+
+    ordem_2a: micro_rsc
+    justificativa_interna: "Definição: 'Conjunto de práticas éticas manifestas nas decisões cotidianas, atitudes pessoais e comportamentos individuais adotados pelo gestor como pessoa no exercício da gestão'. A oração ('pedi para Deus') representa prática ética individual no exercício da gestão ('diretor de finanças')."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "E a solução apareceu assim no caminho retornando para a mesa. Isso no final de trimestre, umas 10h30 da noite, com poucas horas para acabar o trimestre."
+    ordem_2a: resposta_de_oracao
+    justificativa_interna: "Relato ou interpretação de que uma oração específica foi atendida por Deus de maneira perceptível ou concreta.' A sequência 'pedi para Deus' seguida de 'a solução apareceu' evidencia resposta de oração."
+
+    ordem_2a: providencia_divina
+    justificativa_interna: "Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho, inclusive eventos aparentemente ordinários.' A solução que 'apareceu' é interpretada como direção divina."
+
+    ordem_2a: deus_guiando_os_passos
+    justificativa_interna: "Atribuição direta das decisões, caminhos e escolhas profissionais à orientação pessoal e intencional de Deus em cada detalhe, momento a momento.' A solução que 'apareceu no caminho' evidencia orientação divina momento a momento."
+
+    ordem_2a: graca_especial_ge
+    justificativa_interna: "Definição: 'Ação soberana e específica de Deus que opera salvação, conversão e restauração espiritual em pessoas, reconhecida explicitamente como intervenção redentora divina'. A expressão 'a solução apareceu' (voz passiva, sem agente humano) após oração evidencia reconhecimento de intervenção divina específica em resposta à súplica."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana'. A solução 'apareceu' sem esforço analítico próprio ('não tinha a mínima ideia'), atribuindo exclusivamente a Deus a origem da resposta."
+
+    ordem_2a: eficacia
+    justificativa_interna: "Definição: 'Convicção de que a graça atua de modo plenamente eficaz, realizando integralmente aquilo que Deus determinou e produzindo transformação real'. A solução 'apareceu' de forma completa e oportuna ('poucas horas para acabar o trimestre'), evidenciando eficácia plena da intervenção divina."
+
+    ordem_2a: aspecto_cinetico_3
+    justificativa_interna: "Definição: 'Avaliação de movimentos, fluxos e mudanças operacionais da empresa ao longo do tempo'. Menção a 'final de trimestre' e 'poucas horas para acabar' evidencia fluxo temporal crítico da operação empresarial."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "E eu falei, cara, deixa eu te falar qual é o nome desse buraco e o que pode te preencher nesse sentido aí."
+    ordem_2a: evangelismo
+    justificativa_interna: "Ação intencional orientada a conduzir outras pessoas ao conhecimento, à aceitação e à conversão à fé cristã.' A disposição de 'falar qual é o nome desse buraco' evidencia ação evangelística."
+
+    ordem_2a: testemunho
+    justificativa_interna: "Vivência coerente e visível da fé cristã expressa em atitudes, escolhas e conduta cotidiana, funcionando como exemplo público que aponta para Deus.' O contexto de 'amigos em particular' e 'momentos difíceis' evidencia testemunho relacional."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente'. A expressão 'qual é o nome desse buraco e o que pode te preencher' refere-se implicitamente a Deus/Cristo como resposta ao vazio existencial, orientação transcendente."
+
+    ordem_2a: aspecto_linguistico_9
+    justificativa_interna: "Definição: 'Uso da linguagem, do discurso e da comunicação como portadores de significado e coerência'. O ato de 'falar' e explicar ('deixa eu te falar qual é o nome') evidencia uso da linguagem como veículo de significado espiritual."
+
+    ordem_2a: micro_rsc
+    justificativa_interna: "Definição: 'Conjunto de práticas éticas manifestas nas decisões cotidianas, atitudes pessoais e comportamentos individuais adotados pelo gestor como pessoa no exercício da gestão'. O testemunho verbal ('deixa eu te falar') representa prática ética individual de compartilhar a fé no contexto profissional."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "E são pessoas que eu convivo até hoje, não entendo que não se converteram, nada disso, mas a minha função é levar e não... ser um instrumento, não tocar no coração de ninguém."
+    ordem_2a: evangelismo
+    justificativa_interna: "Ação intencional orientada a conduzir outras pessoas ao conhecimento, à aceitação e à conversão à fé cristã.' A expressão 'minha função é levar' evidencia a ação evangelística."
+
+    ordem_2a: soberania_de_deus
+    justificativa_interna: "Crença de que Deus possui controle último sobre todas as coisas.' A frase 'não tocar no coração de ninguém' reconhece que a conversão está sob controle divino, não humano."
+
+    ordem_2a: servir_servico_servo_servo_de_cristo
+    justificativa_interna: "Postura voluntária de humildade e submissão que orienta a ação profissional e relacional ao bem do outro.' A expressão 'ser um instrumento' evidencia postura de servo."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana'. A expressão 'não tocar no coração de ninguém' reconhece que conversão ('tocar no coração') é obra exclusiva de Deus, não do esforço humano de evangelização."
+
+    ordem_2a: prioridade_monergismo
+    justificativa_interna: "Definição: 'Compreensão de que a graça antecede toda ação, decisão ou mérito humano, sendo iniciativa soberana e primeira de Deus'. O entrevistado reconhece que sua 'função é levar' (ação humana) mas que conversão depende de iniciativa divina anterior ('tocar no coração'), não de mérito evangelístico."
+
+    ordem_2a: micro_rsc
+    justificativa_interna: "Definição: 'Conjunto de práticas éticas manifestas nas decisões cotidianas, atitudes pessoais e comportamentos individuais adotados pelo gestor como pessoa no exercício da gestão'. A 'função' de 'ser um instrumento' representa prática ética individual de testemunho no contexto de convivência profissional ('pessoas que eu convivo')."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. Menção a 'pessoas que eu convivo até hoje' evidencia relações sociais duradouras no contexto profissional."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Quando Deus te livra da sua própria vontade, quando ele te livra do seu próprio ego, do seu próprio desejo de fazer coisas que você entende que são boas e são legais e vão agradar a você mesmo, mas que são grandes furadas na vida."
+    ordem_2a: livramento
+    justificativa_interna: "Interpretação de eventos concretos como intervenção direta de Deus para proteger, libertar ou preservar de perigos, perdas ou males específicos.' A expressão 'Deus te livra' evidencia literalmente o livramento."
+
+    ordem_2a: providencia_divina
+    justificativa_interna: "Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho.' O trecho evidencia que Deus direciona circunstâncias para evitar 'grandes furadas'."
+
+    ordem_2a: vaidade
+    justificativa_interna: "Busca de validação pessoal baseada em aparência, status, desempenho ou reconhecimento externo como fonte principal de valor.' A menção ao 'próprio ego' e 'agradar a você mesmo' evidencia vaidade."
+
+    ordem_2a: nao_confiar_no_homem_em_si_mesmo
+    justificativa_interna: "Reconhecimento da limitação humana e recusa de fundamentar decisões últimas apenas na própria capacidade.' A expressão 'te livra da sua própria vontade' evidencia desconfiança na capacidade humana."
+
+    ordem_2a: graca_especial_ge
+    justificativa_interna: "Definição: 'Ação soberana e específica de Deus que opera salvação, conversão e restauração espiritual em pessoas, reconhecida explicitamente como intervenção redentora divina'. A expressão 'Deus te livra' evidencia reconhecimento de intervenção divina redentora que opera restauração espiritual ao libertar de 'ego' e 'própria vontade'."
+
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana'. O sujeito exclusivo da ação é 'Deus' ('ele te livra'), sem participação causal humana no livramento."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais'. O livramento do 'ego' e 'própria vontade' representa transformação moral profunda que fundamenta decisões ('grandes furadas na vida')."
+
+    ordem_2a: aspecto_analitico_7
+    justificativa_interna: "Definição: 'Uso consciente do julgamento racional, da distinção conceitual e da coerência lógica'. O entrevistado faz distinção conceitual entre o que 'você entende que são boas' (julgamento humano falível) e 'grandes furadas' (realidade objetiva), demonstrando análise crítica."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Eu queria ir para determinada função porque eu queria sair de finanças, eu queria fazer essa função, que era um negócio muito mais exposição, estava mais perto do negócio, da área de vendas e tudo mais. E eu me apliquei, fiz o processo, etc. Não fui escolhido"
+    ordem_2a: livramento
+    justificativa_interna: "Interpretação de eventos concretos como intervenção direta de Deus para proteger, libertar ou preservar de perigos, perdas ou males específicos.' O entrevistado interpreta 'não fui escolhido' como livramento divino."
+
+    ordem_2a: providencia_divina
+    justificativa_interna: "Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho, inclusive eventos aparentemente ordinários.' O evento ordinário (processo seletivo) é interpretado como direção divina."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "a pessoa que foi escolhida foi, entrou, sofreu absurdamente porque mudou a liderança dessa área e foi uma coisa muito pesada de cobrança, de expectativa acima do que deveria ser. E esse cara depois saiu rapidamente, não aguentou e saiu da empresa."
+    ordem_2a: livramento
+    justificativa_interna: "Interpretação de eventos concretos como intervenção direta de Deus para proteger, libertar ou preservar de perigos, perdas ou males específicos.' O sofrimento da outra pessoa valida a interpretação de que não ser escolhido foi livramento."
+
+    ordem_2a: assedio_moral
+    justificativa_interna: "Prática recorrente de pressão psicológica no trabalho que humilha, constrange ou enfraquece emocionalmente o profissional.' A descrição 'coisa muito pesada de cobrança, de expectativa acima do que deveria ser' evidencia assédio moral."
+
+    ordem_2a: degradacao_das_condicoes_de_trabalho_trabalhador
+    justificativa_interna: "Deterioração das condições de trabalho que ignora dignidade, bem-estar físico e emocional.' O trecho 'não aguentou e saiu' evidencia deterioração das condições."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Eu sei que as pessoas são instrumentos da vontade soberana de Deus. As pessoas, sendo cristãs ou não, elas usam as pessoas."
+    ordem_2a: soberania_de_deus
+    justificativa_interna: "Crença de que Deus possui controle último sobre todas as coisas.' A expressão 'vontade soberana de Deus' evidencia literalmente a soberania."
+
+    ordem_2a: providencia_divina
+    justificativa_interna: "Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho.' A frase 'pessoas são instrumentos da vontade soberana de Deus' evidencia que Deus direciona circunstâncias através de pessoas."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "E eu sei que aquilo foi um livramento para a minha vida em vários sentidos."
+    ordem_2a: livramento
+    justificativa_interna: "Interpretação de eventos concretos como intervenção direta de Deus para proteger, libertar ou preservar de perigos, perdas ou males específicos.' O termo 'livramento' é usado literalmente."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "E a maneira como eu entendo isso é, mais uma vez, Deus evitando que aquilo que eu quero, que a minha vontade acontecesse, porque, de novo, ia ser uma coisa massacrante e não ia ter um fim bom."
+    ordem_2a: livramento
+    justificativa_interna: "Interpretação de eventos concretos como intervenção direta de Deus para proteger, libertar ou preservar de perigos, perdas ou males específicos.' A expressão 'Deus evitando' evidencia livramento."
+
+    ordem_2a: providencia_divina
+    justificativa_interna: "Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho.' O trecho evidencia que Deus direciona circunstâncias para evitar 'coisa massacrante'."
+
+    ordem_2a: nao_confiar_no_homem_em_si_mesmo
+    justificativa_interna: "Reconhecimento da limitação humana e recusa de fundamentar decisões últimas apenas na própria capacidade.' A frase 'aquilo que eu quero' sendo evitado por Deus evidencia desconfiança na própria vontade."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Não é o fato de ser cristão que me evitou disso, mas foi a misericórdia de Deus de me tirar dessa situação, de evitar que eu entrasse nisso."
+    ordem_2a: misericordia
+    justificativa_interna: "Ação compassiva diante da fragilidade, culpa ou necessidade do outro.' O termo 'misericórdia de Deus' é usado literalmente."
+
+    ordem_2a: livramento
+    justificativa_interna: "Interpretação de eventos concretos como intervenção direta de Deus para proteger, libertar ou preservar de perigos, perdas ou males específicos.' A expressão 'me tirar dessa situação' evidencia livramento."
+
+    ordem_2a: teologia_da_prosperidade
+    justificativa_interna: "Doutrina que interpreta fé, obediência e práticas religiosas como meios necessários para obter prosperidade material.' O entrevistado REJEITA essa doutrina ao negar que 'ser cristão' automaticamente evita problemas."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Ele poderia ter desejado que eu estivesse nessa posição para cumprir a vontade dele numa outra situação, até para me quebrar no meio absolutamente, para me demitir, para fazer qualquer outra coisa nesse sentido"
+    ordem_2a: soberania_de_deus
+    justificativa_interna: "Crença de que Deus possui controle último sobre todas as coisas, inclusive sobre os resultados finais.' A expressão 'cumprir a vontade dele' evidencia controle divino sobre resultados."
+
+    ordem_2a: providencia_divina
+    justificativa_interna: "Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho.' O trecho evidencia que Deus poderia direcionar circunstâncias de múltiplas formas."
+
+    ordem_2a: sofrer_o_dano
+    justificativa_interna: "Aceitação consciente de prejuízo pessoal, profissional ou material como consequência de permanecer fiel a princípios cristãos.' A menção a 'me quebrar' e 'me demitir' evidencia aceitação de prejuízo."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "mas ele não estava no plano de Deus que eu fizesse essas duas funções nesse momento, porque, e eu entendo que foi uma dádiva de me livrar de coisas ruins que poderiam vir junto."
+    ordem_2a: providencia_divina
+    justificativa_interna: "Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho.' A expressão 'plano de Deus' evidencia direção divina."
+
+    ordem_2a: livramento
+    justificativa_interna: "Interpretação de eventos concretos como intervenção direta de Deus para proteger, libertar ou preservar de perigos, perdas ou males específicos.' O termo 'livrar de coisas ruins' evidencia literalmente livramento."
+
+    ordem_2a: soberania_de_deus
+    justificativa_interna: "Crença de que Deus possui controle último sobre todas as coisas.' A expressão 'plano de Deus' evidencia controle divino sobre circunstâncias."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Eu venho de uma família que é cristã, como eu te falei, mas que é uma foi uma família assim, pobre, que não tinha não tinha muita oportunidade na vida"
+    ordem_2a: contentamento
+    justificativa_interna: "Disposição interior de satisfação com o que foi recebido de Deus, independentemente da quantidade.' O contexto de 'família pobre' seguido de narrativa de gratidão evidencia contentamento."
+
+    ordem_2a: frugalidade
+    justificativa_interna: "Escolha consciente por simplicidade e moderação no uso de recursos, evitando excessos, desperdício e consumo orientado pelo status.' A descrição de 'não tinha muita oportunidade' e vida simples evidencia frugalidade."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "a gente morou muitos anos na casa, nos fundos, na casa da minha avó e ali porque não tinha como comprar casa, nem como pagar a lanterna, a gente não tinha carro em casa"
+    ordem_2a: frugalidade
+    justificativa_interna: "Escolha consciente por simplicidade e moderação no uso de recursos.' A descrição literal de condições simples ('fundos da casa da avó', 'não tinha carro') evidencia frugalidade."
+
+    ordem_2a: contentamento
+    justificativa_interna: "Disposição interior de satisfação com o que foi recebido de Deus, independentemente da quantidade.' O tom narrativo sem amargura evidencia contentamento com as condições."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "no tempo da inflação aí, talvez seja talvez você tenha uma memória disso, que tinha muita restrição de coisas que queria fazer, de qualquer tipo de superfluo, de luxo, vamos dizer assim, de comida, de viagem, mas isso era possível para nós, né?"
+    ordem_2a: frugalidade
+    justificativa_interna: "Escolha consciente por simplicidade e moderação no uso de recursos, evitando excessos, desperdício e consumo orientado pelo status.' A menção a 'restrição de supérfluo, de luxo' evidencia frugalidade."
+
+    ordem_2a: contentamento
+    justificativa_interna: "Disposição interior de satisfação com o que foi recebido de Deus, independentemente da quantidade.' A expressão 'mas isso era possível para nós' evidencia satisfação com as condições."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "E aí quando eu cheguei na adolescência, com 16 anos, meu pai faleceu e ele era uma pessoa de Deus, era um ministro de música da igreja"
+    ordem_2a: providencia_divina
+    justificativa_interna: "Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho.' O contexto posterior evidencia que o entrevistado interpreta esse evento como parte do plano divino."
+
+    ordem_2a: sofrer_o_dano
+    justificativa_interna: "Aceitação consciente de prejuízo pessoal, profissional ou material.' A morte do pai representa prejuízo pessoal aceito dentro da narrativa de fé."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "e de repente isso veio na nossa vida e e isso com certeza moldou grande parte da minha formação como adolescente e depois como como jovem, né, agora já jovem mais tempo, mas isso moldou bastante a maneira como eu vejo as coisas e como eu penso, né, a relação com o dinheiro"
+    ordem_2a: providencia_divina
+    justificativa_interna: "Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho.' A interpretação de que o evento 'moldou' sua formação evidencia direção divina através de circunstâncias."
+
+    ordem_2a: frugalidade
+    justificativa_interna: "Escolha consciente por simplicidade e moderação no uso de recursos.' A menção à 'relação com o dinheiro' moldada por escassez evidencia frugalidade."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "esse dinheiro nunca mais voltou e aí um ano depois eu me vi saindo do interior de São Paulo, mudando pra capital de São Paulo pra estudar numa faculdade uma faculdade particular cara, e que a minha mãe, o salário inteiro da minha mãe era 60% do valor da faculdade"
+    ordem_2a: providencia_divina
+    justificativa_interna: "Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho.' O contexto de impossibilidade financeira seguido de realização evidencia provisão divina."
+
+    ordem_2a: dependencia_de_deus
+    justificativa_interna: "Reconhecimento explícito da limitação humana e da incapacidade de alcançar resultados desejáveis sem a ação, ajuda ou sustento de Deus.' A desproporção entre salário (60%) e mensalidade evidencia dependência de provisão divina."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "e aí como é que as coisas foram possíveis de acontecer, e aí talvez eu consiga chegar um pouco na sua pergunta, é porque Deus tinha um plano traçado, cara, assim, tinha uma ideia do que aquilo ia, como é que ele ia usar aquele evento da morte do meu pai pra impactar a minha vida"
+    ordem_2a: providencia_divina
+    justificativa_interna: "Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho.' A expressão 'Deus tinha um plano traçado' evidencia literalmente providência divina."
+
+    ordem_2a: soberania_de_deus
+    justificativa_interna: "Crença de que Deus possui controle último sobre todas as coisas.' A frase 'como é que ele ia usar aquele evento' evidencia controle divino sobre circunstâncias."
+
+    ordem_2a: proposito
+    justificativa_interna: "Compreensão de que a própria vida e atuação profissional possuem um sentido de missão definido pela vontade de Deus.' A expressão 'plano traçado' e 'impactar a minha vida' evidenciam propósito divino."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "pra impactar a vida da minha mãe, que poucos anos depois veio a ser a ser diretora de uma escola cristã bem grande, e que isso meio que só foi possível porque meu pai não existia mais, não estava disponível, então ela foi escolhida em vez dele"
+    ordem_2a: providencia_divina
+    justificativa_interna: "Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho.' A interpretação de que a morte do pai possibilitou a promoção da mãe evidencia direção divina."
+
+    ordem_2a: soberania_de_deus
+    justificativa_interna: "Crença de que Deus possui controle último sobre todas as coisas.' O evento trágico sendo usado para bem evidencia controle divino sobre resultados."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "eu fiz uma carreira, tenho feito uma carreira em finanças, que é um pouco o que estava no meu DNA, uma organização grande, e, assim, falando com você hoje aqui, porque esse evento lá atrás aconteceu, né"
+    ordem_2a: providencia_divina
+    justificativa_interna: "Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho.' A conexão causal entre 'evento lá atrás' e carreira atual evidencia direção divina."
+
+    ordem_2a: proposito
+    justificativa_interna: "Compreensão de que a própria vida e atuação profissional possuem um sentido de missão definido pela vontade de Deus.' A carreira sendo resultado de evento passado evidencia propósito divino."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "esse ministério hoje faz algumas coisas, por exemplo, como uma escola bíblica dominical, que eu sou um dos professores, que fala sobre integração em fé e trabalho"
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente'. O trecho menciona explicitamente 'fé e trabalho' como tema de ensino em contexto religioso ('escola bíblica dominical'), evidenciando orientação transcendente aplicada ao labor."
+
+    ordem_2a: aspecto_formativo_8
+    justificativa_interna: "Definição: 'Ação deliberada de planejar, moldar e transformar estruturas, processos ou estratégias'. O entrevistado atua como 'professor' em 'escola bíblica', ação formativa deliberada de ensino estruturado."
+
+    ordem_2a: aspecto_linguistico_9
+    justificativa_interna: "Definição: 'Uso da linguagem, do discurso e da comunicação como portadores de significado e coerência'. A função de 'professor' que 'fala sobre' implica uso sistemático da linguagem como veículo de significado."
+
+    ordem_2a: educacao_de_qualidade
+    justificativa_interna: "Definição: 'Acesso inclusivo, equitativo e contínuo à educação de qualidade e a oportunidades permanentes de aprendizagem'. A 'escola bíblica dominical' representa estrutura educacional contínua ('já está no terceiro ano') oferecendo aprendizagem permanente."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "o trabalho pode e deve ser uma maneira de levar o evangelho, de fazer a grande comissão"
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente'. Menção direta a 'evangelho' e 'grande comissão' (mandamento cristão) como orientação transcendente do trabalho."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais'. O imperativo moral ('pode e deve ser') de 'levar o evangelho' expressa disposição moral profunda como fundamento da ação laboral."
+
+    ordem_2a: micro_rsc
+    justificativa_interna: "Definição: 'Conjunto de práticas éticas manifestas nas decisões cotidianas, atitudes pessoais e comportamentos individuais adotados pelo gestor como pessoa no exercício da gestão'. O trecho descreve prática ética individual ('levar o evangelho') no exercício cotidiano do trabalho."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "As pessoas normalmente têm receio de falar de trabalho, ou têm aquela coisa, não, o trabalho é uma coisa, é a vida real, e aqui, domingo, talvez um outro dia, eu exerço a minha fé e tal, mas o meu trabalho é assim, eu faço ali, sabe como é no Brasil, não dá para ser certinho, eu faço as minhas coisas para sobreviver"
+    ordem_2a: cristianismo_secular
+    justificativa_interna: "Definição: 'Apropriação cultural ou ética de elementos do cristianismo como referência moral, identitária ou simbólica, sem reconhecimento de Jesus como Senhor, sem experiência pessoal de fé, sem prática religiosa e sem orientação existencial da vida por Deus'. O trecho descreve postura de separação entre fé ('domingo') e trabalho ('vida real'), sem orientação existencial da vida profissional por Deus."
+
+    ordem_2a: aspecto_juridico_13
+    justificativa_interna: "Definição: 'Referência a normas, direitos, deveres e consequências institucionais como expressão de justiça'. A expressão 'não dá para ser certinho' e 'eu faço as minhas coisas para sobreviver' implica tensão com normas e padrões de conformidade legal."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. O trecho avalia padrão social coletivo ('As pessoas normalmente') de convivência entre fé e trabalho."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "eu entendo que a gente não pode ligar o fato de ser cristão com algum sucesso dentro dos KPIs que a gente entende de sucesso"
+    ordem_2a: gratidao_comum_negativa_gcn
+    justificativa_interna: "Definição: 'Postura em que conquistas e benefícios são atribuídos exclusivamente ao esforço pessoal, sem reconhecimento de dependência ou gratidão a Deus'. O entrevistado REJEITA essa postura ao negar ('não pode ligar') a conexão automática entre fé e sucesso em KPIs, criticando implicitamente quem atribui sucesso à fé como mérito."
+
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição: 'Uso explícito de números, proporções, escalas ou quantidades como critérios relevantes para gestão'. Menção a 'KPIs' (Key Performance Indicators) como critério quantitativo de avaliação de sucesso."
+
+    ordem_2a: aspecto_analitico_7
+    justificativa_interna: "Definição: 'Uso consciente do julgamento racional, da distinção conceitual e da coerência lógica'. O entrevistado faz distinção conceitual clara ('não pode ligar') entre categorias (fé vs. sucesso em KPIs), demonstrando julgamento racional."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "E o que isso vai significar? Se ele quiser me dar algum sucesso, ou conforto, ou algo assim, que bom, e eu sou agradecido por isso."
+    ordem_2a: singularidade_monergismo
+    justificativa_interna: "Definição: 'Reconhecimento específico e focal da graça como procedente exclusivamente da pessoa e da vontade de Deus, sem participação causal humana'. A condicional 'Se ele quiser me dar' atribui exclusivamente a Deus ('ele') a agência sobre 'sucesso' e 'conforto', sem participação causal humana."
+
+    ordem_2a: gratidao_especial_ge
+    justificativa_interna: "Definição: 'Reconhecimento consciente e pessoal de ter recebido a ação salvífica de Deus, acompanhado de resposta explícita de gratidão a Ele'. A expressão 'eu sou agradecido por isso' manifesta resposta explícita de gratidão a Deus por bênçãos recebidas."
+
+    ordem_2a: graca_comum_gc
+    justificativa_interna: "Definição: 'Concessão divina de bens naturais, sociais e estruturais a toda a humanidade, percebida como ordem, sustento e prosperidade cotidiana, sem referência direta à salvação'. Menção a 'sucesso' e 'conforto' como bens materiais e sociais concedidos por Deus, sem referência direta à salvação."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Eu já tive situações de uma função de tomada de decisão importante na empresa de não saber o que fazer, e as pessoas olhando para mim no final do trimestre queriam alguma solução ali, como diretor de finanças, e eu não sabia o que fazer."
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro'. Menção a 'diretor de finanças' e 'final do trimestre' evidencia administração de recursos financeiros em contexto de pressão temporal."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. A expressão 'as pessoas olhando para mim' e 'queriam alguma solução' evidencia relações hierárquicas e expectativas sociais sobre papel de liderança."
+
+    ordem_2a: aspecto_analitico_7
+    justificativa_interna: "Definição: 'Uso consciente do julgamento racional, da distinção conceitual e da coerência lógica'. A 'tomada de decisão importante' implica uso de julgamento racional, embora o entrevistado reconheça limitação ('não sabia o que fazer')."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Eu já tive a oportunidade de falar, eu me lembro agora de dois amigos em particular que estavam em momentos difíceis, uma com uma filha, a filha com um diagnóstico difícil, preocupante, e o outro com uma angústia, uma coisa que ele dizia que era um vazio, um buraco dentro de si."
+    ordem_2a: aspecto_biotico_5
+    justificativa_interna: "Definição: 'Valorização da vida como critérios, incluindo saúde sobrevivência e cuidado físico de pessoas, animais ou criação'. Menção a 'diagnóstico difícil, preocupante' evidencia preocupação com saúde e vida da filha do amigo."
+
+    ordem_2a: aspecto_sensitivo_6
+    justificativa_interna: "Definição: 'Consideração explícita das experiências emocionais humanas relevantes — como dor, medo, empatia ou sofrimento'. Menção a 'angústia', 'vazio' e 'buraco dentro de si' evidencia consideração de experiências emocionais de sofrimento."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. Menção a 'dois amigos' evidencia relações sociais no contexto profissional."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "E que têm potencial de se fazer muito mal para você, para a sua família, ou até mesmo para o seu trabalho, para as pessoas que estão ali perto do seu trabalho."
+    ordem_2a: aspecto_biotico_5
+    justificativa_interna: "Definição: 'Valorização da vida como critérios, incluindo saúde sobrevivência e cuidado físico de pessoas, animais ou criação'. Menção a 'fazer muito mal para você, para a sua família' evidencia preocupação com bem-estar e cuidado físico/emocional de pessoas."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. Menção a 'pessoas que estão ali perto do seu trabalho' evidencia consideração de relações sociais e impacto sobre outros no contexto profissional."
+
+    ordem_2a: colocar_familia_em_risco
+    justificativa_interna: "Definição: 'Situação em que a família é exposta a prejuízo, negligência ou risco em nome da fé ou sacrifício religioso'. O entrevistado reconhece que decisões movidas por 'ego' e 'própria vontade' (não por fé) poderiam 'fazer muito mal para a sua família', evidenciando consciência de risco familiar."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "E eu já tive uma situação clara que eu me lembro, eu queria ir para determinada função porque eu queria sair de finanças, eu queria fazer essa função, que era um negócio muito mais exposição, estava mais perto do negócio, da área de vendas e tudo mais."
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro'. Menção a 'finanças' e 'área de vendas' evidencia contexto de administração de recursos econômicos e comerciais."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa'. Menção a 'exposição' e estar 'mais perto do negócio' evidencia avaliação de papéis sociais e posicionamento hierárquico na empresa."
+
+    ordem_2a: aspecto_cinetico_3
+    justificativa_interna: "Definição: 'Avaliação de movimentos, fluxos e mudanças operacionais da empresa ao longo do tempo, como crescimento, retração ou rotatividade'. O desejo de 'sair de finanças' e 'ir para determinada função' evidencia movimento e mudança de posição ao longo do tempo."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Nos KPIs... Nos exemplos, você não pode dizer. Não, talvez não. Talvez eu arriscaria dizer que não. Porque deixou-se de fazer negócio, deixou-se de assinar contratos por causa de algumas decisões assim."
+    ordem_2a: morrer_para_produzir_fruto_orientacao_sacrificial
+    justificativa_interna: "Definição oficial: 'Disposição deliberada de renunciar a interesses, ganhos ou reconhecimento pessoal para que ações gerem frutos espirituais, éticos ou coletivos duradouros'. O trecho evidencia renúncia explícita ('deixou-se de fazer negócio, deixou-se de assinar contratos') motivada por decisões de fé, caracterizando orientação sacrificial."
+
+    ordem_2a: reino_deus_em_primeiro_lugar_resultado_depois
+    justificativa_interna: "Definição oficial: 'Orientação de gestão em que os valores do Reino de Deus e a justiça precedem objetivos financeiros'. O entrevistado afirma que decisões baseadas em fé resultaram em perda de negócios ('deixou-se de fazer negócio'), indicando que valores precederam resultados econômicos."
+
+    ordem_2a: sofrer_o_dano
+    justificativa_interna: "Definição oficial: 'Aceitação consciente de prejuízo pessoal, profissional ou material como consequência de permanecer fiel a princípios cristãos'. O trecho documenta aceitação de prejuízo material concreto ('deixou-se de assinar contratos') por fidelidade a princípios."
+
+    ordem_2a: lucratividade_aceitavel_diminuicao_do_lucro
+    justificativa_interna: "Definição oficial: 'Aceitação gerencial ou pessoal consciente de redução dos resultados financeiros em razão de escolhas éticas, sociais ou alinhadas a valores.' O trecho evidencia literalmente que 'deixou-se de fazer negócio, deixou-se de assinar contratos' por causa de decisões baseadas em valores, caracterizando aceitação consciente de redução de resultados."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A menção explícita a 'KPIs', 'fazer negócio' e 'assinar contratos' evidencia a dimensão econômica da decisão gerencial."
+
+    ordem_2a: valorizacao_de_indicadores_nao_financeiros
+    justificativa_interna: "Definição oficial: 'Reconhecimento de impactos sociais, humanos, ambientais e éticos como dimensões legítimas do desempenho organizacional, além dos resultados financeiros.' O entrevistado afirma que decisões foram tomadas 'por causa de algumas decisões assim' (éticas), mesmo impactando negativamente os KPIs financeiros."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' As decisões que levaram a 'deixar de fazer negócio' foram fundamentadas em valores morais, não em critérios puramente econômicos."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "O processo de decisão e a maneira como as pessoas souberam disso, para mim, é o que mais importa."
+    ordem_2a: testemunho
+    justificativa_interna: "Definição oficial: 'Vivência coerente e visível da fé cristã expressa em atitudes, escolhas e conduta cotidiana, funcionando como exemplo público que aponta para Deus'. O entrevistado prioriza o impacto público do processo decisório ('como as pessoas souberam disso') sobre resultados financeiros, caracterizando testemunho."
+
+    ordem_2a: sal_da_terra
+    justificativa_interna: "Definição oficial: 'Convicção de que o cristão exerce influência ética e moral que preserva, limita a degradação e promove transformação social'. A ênfase em como as pessoas perceberam decisões diferentes ('por que essa decisão foi assim') evidencia consciência de influência ética transformadora."
+
+    ordem_2a: nao_depender_de_reconhecimento
+    justificativa_interna: "Definição oficial: 'Desapego de elogios, visibilidade ou recompensa humana'. Embora o entrevistado valorize que pessoas vejam o processo, ele afirma que isso importa mais que KPIs financeiros, sugerindo desapego de reconhecimento econômico tradicional."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa.' O foco explícito em 'como as pessoas souberam disso' evidencia a dimensão relacional e social como critério prioritário."
+
+    ordem_2a: aspecto_linguistico_9
+    justificativa_interna: "Definição oficial: 'Uso da linguagem, do discurso e da comunicação como portadores de significado e coerência.' A ênfase em 'a maneira como as pessoas souberam disso' destaca a comunicação como elemento central do processo decisório."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' O 'processo de decisão' valorizado pelo entrevistado tem fundamento moral, não apenas técnico ou econômico."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Agora, essas decisões impactaram a vida das pessoas que viram essa decisão ser tomada como ela aconteceu e vamos dizer que surpreenderam essas pessoas para falar, opa, peraí, por que essa decisão foi assim, sempre que o normal seria que todo mundo faz daquele outro jeito?"
+    ordem_2a: testemunho
+    justificativa_interna: "Definição oficial: 'Vivência coerente e visível da fé cristã expressa em atitudes, escolhas e conduta cotidiana, funcionando como exemplo público'. O trecho descreve impacto observável de decisões ('impactaram a vida das pessoas que viram') que geraram questionamento sobre diferença ética."
+
+    ordem_2a: sal_da_terra
+    justificativa_interna: "Definição oficial: 'Convicção de que o cristão exerce influência ética e moral que preserva, limita a degradação e promove transformação social'. A surpresa das pessoas diante de decisões contrárias ao padrão ('por que essa decisão foi assim') evidencia influência moral diferenciadora."
+
+    ordem_2a: maximizacao_do_beneficio
+    justificativa_interna: "Definição oficial: 'Orientação ética primariamente individual do gestor expressa em decisões e práticas pessoais de trabalho, voltada a gerar o maior impacto positivo possível ao maior número de pessoas'. O foco no impacto nas pessoas ('impactaram a vida das pessoas') caracteriza orientação para maximização de benefício."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "essas decisões influenciadas pela fé possam até ter tido um efeito contrário em alguns aspectos do ponto de vista meramente financeiro. Mas que tinha gente olhando, tinha gente experimentando, tinha gente vivendo, tinha gente sei lá, pode ter algum outro tipo de bem, de valor, ali."
+    ordem_2a: morrer_para_produzir_fruto_orientacao_sacrificial
+    justificativa_interna: "Definição oficial: 'Disposição deliberada de renunciar a interesses, ganhos ou reconhecimento pessoal para que ações gerem frutos espirituais, éticos ou coletivos duradouros'. O trecho reconhece 'efeito contrário' financeiro mas valoriza 'outro tipo de bem, de valor', caracterizando renúncia por frutos não-econômicos."
+
+    ordem_2a: reino_deus_em_primeiro_lugar_resultado_depois
+    justificativa_interna: "Definição oficial: 'Orientação de gestão em que os valores do Reino de Deus e a justiça precedem objetivos financeiros, entendendo resultados econômicos como consequência e não como finalidade última'. A aceitação de 'efeito contrário' financeiro em favor de 'outro tipo de bem' evidencia precedência de valores sobre resultados."
+
+    ordem_2a: testemunho
+    justificativa_interna: "Definição oficial: 'Vivência coerente e visível da fé cristã expressa em atitudes, escolhas e conduta cotidiana, funcionando como exemplo público'. A ênfase em 'tinha gente olhando, tinha gente experimentando, tinha gente vivendo' caracteriza testemunho público através de decisões."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "o fato das empresas se sentirem, e das pessoas que trabalham lá, se sentirem bem, fazendo o bem para o outro voluntariamente, além das suas obrigações, é uma expressão da graça comum de Deus, do ser humano feito a imagem e semelhança de Deus."
+    ordem_2a: imago_dei
+    justificativa_interna: "Definição oficial: 'Reconhecimento da dignidade humana por ser imagem e semelhança de Deus'. O trecho cita explicitamente 'ser humano feito a imagem e semelhança de Deus' como fundamento para ações de bem."
+
+    ordem_2a: altruismo
+    justificativa_interna: "Definição oficial: 'Ação orientada exclusivamente ao bem do outro, sem expectativa de retorno, vantagem ou reconhecimento pessoal'. O trecho descreve 'fazendo o bem para o outro voluntariamente, além das suas obrigações', caracterizando altruísmo."
+
+    ordem_2a: graca_comum_gc
+    justificativa_interna: "Definição oficial: 'Concessão divina de bens naturais, sociais e estruturais a toda a humanidade, percebida como ordem, sustento e prosperidade cotidiana, sem referência direta à salvação.' O entrevistado identifica explicitamente 'fazer o bem para o outro' como 'expressão da graça comum de Deus'."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A menção a 'graça comum de Deus' e 'ser humano feito a imagem e semelhança de Deus' evidencia a fé como fundamento interpretativo."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' O 'fazer o bem para o outro voluntariamente' evidencia disposição moral profunda."
+
+    ordem_2a: macro_rsc
+    justificativa_interna: "Definição oficial: 'Conjunto de políticas, estratégias e ações sociais adotadas pela organização em nível institucional, incluindo programas estruturados de filantropia e responsabilidade social.' O trecho descreve ações 'das empresas' e 'das pessoas que trabalham lá' fazendo bem 'além das suas obrigações'."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Não é porque as pessoas acordaram e falaram, hoje eu vou lá na minha empresa, vou fazer um trabalho voluntário, vou pintar a parede de uma creche. A sensação que dá de estar fazendo algo bom e algo que te satisfaz é porque a gente é feito a imagem do criador que colocou isso em nós, a vontade de fazer o bem."
+    ordem_2a: imago_dei
+    justificativa_interna: "Definição oficial: 'Reconhecimento da dignidade humana por ser imagem e semelhança de Deus'. O entrevistado fundamenta a 'vontade de fazer o bem' no fato de sermos 'feito a imagem do criador', evidenciando imago dei."
+
+    ordem_2a: criacao_criatura
+    justificativa_interna: "Definição oficial: 'Reconhecimento de Deus como Criador soberano de todas as coisas e do ser humano como criatura dependente'. A referência ao 'criador que colocou isso em nós' reconhece Deus como Criador que dotou o ser humano de características específicas."
+
+    ordem_2a: graca_comum_gc
+    justificativa_interna: "Definição oficial: 'Concessão divina de bens naturais, sociais e estruturais a toda a humanidade, percebida como ordem, sustento e prosperidade cotidiana, sem referência direta à salvação.' A 'vontade de fazer o bem' é atribuída ao 'criador que colocou isso em nós', caracterizando graça comum."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A referência ao 'criador' e à 'imagem' evidencia fundamento teológico cristão."
+
+    ordem_2a: aspecto_sensitivo_6
+    justificativa_interna: "Definição oficial: 'Consideração explícita das experiências emocionais humanas relevantes — como dor, medo, empatia ou sofrimento.' A menção à 'sensação que dá de estar fazendo algo bom e algo que te satisfaz' evidencia a dimensão emocional."
+
+    ordem_2a: macro_rsc
+    justificativa_interna: "Definição oficial: 'Conjunto de políticas, estratégias e ações sociais adotadas pela organização em nível institucional, incluindo programas estruturados de filantropia e responsabilidade social.' O exemplo de 'trabalho voluntário' e 'pintar a parede de uma creche' evidencia ações de responsabilidade social."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "De novo, quando você está cuidando do próximo, é uma expressão do que Deus mandou fazer."
+    ordem_2a: amar_o_proximo
+    justificativa_interna: "Definição oficial: 'Ação prática de cuidado, responsabilidade e socorro ao outro que surge diante de uma necessidade concreta'. O trecho menciona explicitamente 'cuidando do próximo' como mandamento divino, caracterizando amar_o_proximo."
+
+    ordem_2a: obediencia
+    justificativa_interna: "Definição oficial: 'Disposição prática de fazer aquilo que Deus ordena, conformando ações e decisões às suas ordens'. O entrevistado enquadra cuidado do próximo como 'expressão do que Deus mandou fazer', evidenciando obediência."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' O 'cuidar do próximo' evidencia disposição moral profunda de amor e misericórdia."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A referência a 'o que Deus mandou fazer' evidencia a fé como fundamento normativo."
+
+    ordem_2a: obrigacoes_que_jesus_ordenou
+    justificativa_interna: "Definição oficial: 'Interpretação do ESG ou objetivos como expressão prática de mandamentos éticos ensinados por Jesus, entendidos como coerentes com a fé cristã.' O entrevistado interpreta 'cuidar do próximo' como 'o que Deus mandou fazer', conectando ação social a mandamento divino."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Você pode dizer, tá bom, mas várias pessoas que não confessam o mesmo Deus que a gente, também ajudam o próximo. Mas não deixa de ser uma expressão da graça comum nesse estado."
+    ordem_2a: imago_dei
+    justificativa_interna: "Definição oficial: 'Reconhecimento da dignidade humana por ser imagem e semelhança de Deus'. O conceito de 'graça comum' que permite não-cristãos ajudarem o próximo fundamenta-se na imago dei presente em todos os seres humanos."
+
+    ordem_2a: graca_comum_gc
+    justificativa_interna: "Definição oficial: 'Concessão divina de bens naturais, sociais e estruturais a toda a humanidade, percebida como ordem, sustento e prosperidade cotidiana, sem referência direta à salvação.' O entrevistado identifica explicitamente que pessoas 'que não confessam o mesmo Deus' também 'ajudam o próximo' como 'expressão da graça comum'."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A referência a 'graça comum' evidencia interpretação teológica cristã."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "E fica um gostinho, talvez, essas pessoas que, sabe aquele preenchimento que eu tive quando fiz uma ação social como parte da minha empresa, ou que eu vi a empresa que eu trabalho ajudando alguém com doação, com, sei lá, com parte do imposto, de incentivo fiscal, etc. Quando a pessoa vê a empresa fazendo isso, ela se sente bem, e esse bem quem sabe um dia desperta nela o desejo de conhecer o bem permanente, e aprofundar um pouco nessa conversa."
+    ordem_2a: evangelismo
+    justificativa_interna: "Definição oficial: 'Ação intencional orientada a conduzir outras pessoas ao conhecimento, à aceitação e à conversão à fé cristã'. O entrevistado expressa esperança de que ações sociais despertem 'o desejo de conhecer o bem permanente', caracterizando intenção evangelística."
+
+    ordem_2a: testemunho
+    justificativa_interna: "Definição oficial: 'Vivência coerente e visível da fé cristã expressa em atitudes, escolhas e conduta cotidiana, funcionando como exemplo público que aponta para Deus'. A estratégia de fazer ações sociais visíveis para despertar interesse espiritual caracteriza testemunho."
+
+    ordem_2a: graca_comum_gc
+    justificativa_interna: "Definição oficial: 'Concessão divina de bens naturais, sociais e estruturais a toda a humanidade, percebida como ordem, sustento e prosperidade cotidiana, sem referência direta à salvação.' O 'bem' temporário (sentir-se bem com ação social) é distinguido do 'bem permanente' (salvação), caracterizando graça comum como ponte para graça especial."
+
+    ordem_2a: aspecto_sensitivo_6
+    justificativa_interna: "Definição oficial: 'Consideração explícita das experiências emocionais humanas relevantes — como dor, medo, empatia ou sofrimento.' A menção a 'gostinho', 'preenchimento' e 'se sente bem' evidencia a dimensão emocional."
+
+    ordem_2a: macro_rsc
+    justificativa_interna: "Definição oficial: 'Conjunto de políticas, estratégias e ações sociais adotadas pela organização em nível institucional, incluindo programas estruturados de filantropia e responsabilidade social.' A menção a 'ação social como parte da minha empresa' e 'doação' evidencia RSC institucional."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A referência ao 'bem permanente' evidencia orientação transcendente cristã."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "O risco disso, Davi, talvez você tenha escutado isso, é de as pessoas viverem uma vida totalmente errática e fora qualquer padrão moral, cristão, e depois fazer o trabalho de CSR, ou a empresa fazer o trabalho de social responsibility como uma penitência pelas suas besteiras que foram feitas."
+    ordem_2a: integridade_moral
+    justificativa_interna: "Definição oficial: 'Coerência estável entre valores professados, discurso público e práticas concretas, sem duplicidade, oportunismo ou hipocrisia moral'. O entrevistado critica a falta de integridade quando CSR é usado como 'penitência' desconectada de conduta ética consistente."
+
+    ordem_2a: spiritual_washing
+    justificativa_interna: "Definição oficial: 'Uso instrumental de linguagem ou ações do ESG ou objetivos para compensar falhas éticas ou espirituais passadas e produzir absolvição ou legitimidade simbólica.' O entrevistado descreve literalmente o uso de 'trabalho de CSR' como 'penitência pelas suas besteiras', caracterizando uso compensatório."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' A menção a 'padrão moral, cristão' evidencia critério ético como fundamento de avaliação."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A referência a 'padrão moral, cristão' evidencia fundamento teológico."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Tipo, eu faço uma fraude contábil na empresa, eu engano todo mundo, eu pago bônus elevado em função dessa fraude contábil, e depois eu faço uma ação com as crianças necessitadas do sertão do Brasil, do Nordeste, porque aquilo deixa menos culpado pelo que eu fiz."
+    ordem_2a: integridade_moral
+    justificativa_interna: "Definição oficial: 'Coerência estável entre valores professados, discurso público e práticas concretas, sem duplicidade, oportunismo ou hipocrisia moral'. O exemplo de fraude seguida de ação social evidencia crítica à falta de integridade e hipocrisia moral."
+
+    ordem_2a: praticas_comerciais_antieticas_corrupcao
+    justificativa_interna: "Definição oficial: 'Adoção de práticas comerciais ilegais ou moralmente condenáveis, como sonegação, propina, fraudes ou negociações predatórias'. O trecho menciona explicitamente 'fraude contábil' como exemplo de prática antiética."
+
+    ordem_2a: spiritual_washing
+    justificativa_interna: "Definição oficial: 'Uso instrumental de linguagem ou ações do ESG ou objetivos para compensar falhas éticas ou espirituais passadas e produzir absolvição ou legitimidade simbólica.' O exemplo de 'fazer uma ação com as crianças necessitadas' para 'deixar menos culpado' pela 'fraude contábil' caracteriza uso compensatório literal."
+
+    ordem_2a: aspecto_juridico_13
+    justificativa_interna: "Definição oficial: 'Referência a normas, direitos, deveres e consequências institucionais como expressão de justiça.' A menção a 'fraude contábil' evidencia violação de normas legais."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' A 'fraude' e 'enganar todo mundo' evidenciam violação de integridade moral."
+
+    ordem_2a: erradicacao_da_pobreza
+    justificativa_interna: "Definição oficial: 'Eliminação da pobreza extrema e à garantia de condições mínimas e estruturais de vida digna.' A menção a 'crianças necessitadas' evidencia contexto de pobreza."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "cuidar da criação é uma ordem que a gente recebeu, e a gente não cuida. Daqui a pouco as coisas vão se acabar, os recursos, a temperatura, etc."
+    ordem_2a: dominio_sobre_toda_a_terra
+    justificativa_interna: "Definição oficial: 'Responsabilidade humana de administrar e governar a criação sob a autoridade e os limites estabelecidos por Deus'. O entrevistado reconhece 'cuidar da criação' como 'ordem que a gente recebeu', caracterizando domínio responsável."
+
+    ordem_2a: mordomia
+    justificativa_interna: "Definição oficial: 'Administração responsável de recursos, bens e resultados entendidos como pertencentes a Deus e confiados ao ser humano'. A preocupação com recursos naturais ('as coisas vão se acabar, os recursos') evidencia mordomia da criação."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Cuidar do próximo, no sentido de erradicar a pobreza e promover educação, também é algo que Jesus nos mandou fazer."
+    ordem_2a: amar_o_proximo
+    justificativa_interna: "Definição oficial: 'Ação prática de cuidado, responsabilidade e socorro ao outro que surge diante de uma necessidade concreta'. O trecho menciona explicitamente 'cuidar do próximo' em necessidades concretas (pobreza, educação)."
+
+    ordem_2a: cuidado_do_pobre_da_viuva_e_do_orfao
+    justificativa_interna: "Definição oficial: 'Compromisso pessoal, moral ativo, de proteger, sustentar e defender pessoas socialmente vulneráveis, motivado por mandamento religioso cristão'. A menção a 'erradicar a pobreza' como mandamento de Jesus caracteriza cuidado dos vulneráveis."
+
+    ordem_2a: obediencia
+    justificativa_interna: "Definição oficial: 'Disposição prática de fazer aquilo que Deus ordena'. O entrevistado enquadra cuidado do próximo como 'algo que Jesus nos mandou fazer', evidenciando obediência."
+
+    ordem_2a: obrigacoes_que_jesus_ordenou
+    justificativa_interna: "Definição oficial: 'Interpretação do ESG ou objetivos como expressão prática de mandamentos éticos ensinados por Jesus, entendidos como coerentes com a fé cristã.' O entrevistado afirma literalmente que 'erradicar a pobreza e promover educação' é 'algo que Jesus nos mandou fazer'."
+
+    ordem_2a: erradicacao_da_pobreza
+    justificativa_interna: "Definição oficial: 'Eliminação da pobreza extrema e à garantia de condições mínimas e estruturais de vida digna.' A menção literal a 'erradicar a pobreza' evidencia o ODS 1."
+
+    ordem_2a: educacao_de_qualidade
+    justificativa_interna: "Definição oficial: 'Acesso inclusivo, equitativo e contínuo à educação de qualidade e a oportunidades permanentes de aprendizagem.' A menção literal a 'promover educação' evidencia o ODS 4."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A referência a 'Jesus nos mandou fazer' evidencia fundamento teológico cristão."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' O 'cuidar do próximo' evidencia disposição moral profunda."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Transparência, ética e compliance, etc., também são coisas que batem com os valores cristãos."
+    ordem_2a: retidao_incorruptibilidade
+    justificativa_interna: "Definição oficial: 'Postura ética inegociável que rejeita corrupção, ilegalidade ou compromissos morais duvidosos'. A menção a 'transparência, ética e compliance' como valores cristãos evidencia retidão."
+
+    ordem_2a: integridade_moral
+    justificativa_interna: "Definição oficial: 'Coerência estável entre valores professados, discurso público e práticas concretas'. A valorização de 'transparência' e 'ética' caracteriza integridade moral."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Agora, se as pessoas usam isso pra se aliviar das suas mazelas, ou se usam isso pra achar que isso vai levar pro céu, ou vai beneficiar a sua vida de alguma maneira, olhando pra si mesmo, aí é uma discussão individual, mas o bem que isso causa não deixa de existir."
+    ordem_2a: fe_sem_obras_e_morta
+    justificativa_interna: "Definição oficial: 'Convicção de que a fé autêntica se manifesta necessariamente por ações práticas e observáveis'. O entrevistado critica a inversão (obras sem fé genuína) mas reconhece que 'o bem que isso causa não deixa de existir', dialogando com a relação fé-obras."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "A empresa ganha no sentido de se parecer socialmente responsável, ser socialmente responsável, é algo que traz valor pra empresa. É algo que traz valor."
+    ordem_2a: testemunho
+    justificativa_interna: "Definição oficial: 'Vivência coerente e visível da fé cristã expressa em atitudes, escolhas e conduta cotidiana, funcionando como exemplo público'. O reconhecimento de que 'se parecer socialmente responsável' traz valor evidencia dimensão pública e testemunhal de ações éticas."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Se não trouxer, eu acho que ela não existiria como é hoje, Davi. Não existiria como é hoje. Se algumas coisas desse gênero fossem obrigação de uma empresa que estava aberta, não existiria."
+    ordem_2a: reducao_da_vida_a_valores_economicos
+    justificativa_interna: "Definição oficial: 'Postura organizacional ou profissional que reduz pessoas a instrumentos de geração de lucro, subordinando dignidade humana, saúde e bem-estar a critérios exclusivamente econômicos'. O entrevistado reconhece que ações sociais só existem se trouxerem retorno econômico ('se não trouxer... não existiria'), evidenciando subordinação de valores a critérios econômicos."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Se as ações sociais ou de responsabilidade que a empresa faz não gerassem o que a empresa espera que gerasse, eu acredito que ela seria muito menor, ou não existiria, ou seria algo coordenado pelas pessoas, não institucionalmente, e não pela empresa."
+    ordem_2a: reducao_da_vida_a_valores_economicos
+    justificativa_interna: "Definição oficial: 'Postura organizacional ou profissional que reduz pessoas a instrumentos de geração de lucro, subordinando dignidade humana, saúde e bem-estar a critérios exclusivamente econômicos'. A condicionalidade das ações sociais ao retorno esperado ('não gerassem o que a empresa espera') evidencia subordinação a valores econômicos."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Pega o seu horário de trabalho e faz isso, mas talvez a empresa não promoveria isso se não tivesse um benefício de business por trás."
+    ordem_2a: reducao_da_vida_a_valores_economicos
+    justificativa_interna: "Definição oficial: 'Postura organizacional ou profissional que reduz pessoas a instrumentos de geração de lucro, subordinando dignidade humana, saúde e bem-estar a critérios exclusivamente econômicos'. A afirmação de que a empresa só promove ações com 'benefício de business por trás' evidencia subordinação de valores a critérios econômicos."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "O que não quer dizer que as empresas, ao fazerem isso, não estão fazendo algo certo. Como falei anteriormente, não tem briga nesse sentido."
+    ordem_2a: imago_dei
+    justificativa_interna: "Definição oficial: 'Reconhecimento da dignidade humana por ser imagem e semelhança de Deus'. O reconhecimento de que empresas fazem 'algo certo' mesmo com motivações mistas conecta-se ao conceito de graça comum e imago dei presente em todos."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Eu acho que a minha vida seria mais fácil, talvez, é a palavra, mas seria... É, talvez seria mais fácil se eu não fosse cristão. Porque... E acho que me daria menos responsabilidade do que aquela que eu carrego hoje."
+    ordem_2a: sentir_se_em_divida
+    justificativa_interna: "Definição oficial: 'Senso moral de responsabilidade em servir, amar e beneficiar o próximo decorrentes do favor concedido por Deus em Cristo'. O entrevistado expressa que ser cristão traz 'responsabilidade que eu carrego hoje', caracterizando senso de dívida moral."
+
+    ordem_2a: chamado_vocacao
+    justificativa_interna: "Definição oficial: 'Percepção de um chamado divino específico que orienta a escolha da profissão, do negócio ou da atuação no trabalho como resposta obediente à vontade de Deus'. A responsabilidade adicional por ser cristão ('me daria menos responsabilidade') evidencia percepção de chamado."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Por Deus ter me dado o que deu, me colocado onde colocou e por ter me escolhido. Então, eu tenho que fazer alguma coisa."
+    ordem_2a: sentir_se_em_divida
+    justificativa_interna: "Definição oficial: 'Senso moral de responsabilidade em servir, amar e beneficiar o próximo decorrentes do favor concedido por Deus em Cristo'. A expressão 'Deus ter me dado... me colocado... me escolhido' seguida de 'eu tenho que fazer alguma coisa' evidencia senso de dívida moral."
+
+    ordem_2a: chamado_vocacao
+    justificativa_interna: "Definição oficial: 'Percepção de um chamado divino específico que orienta a escolha da profissão, do negócio ou da atuação no trabalho'. A percepção de que Deus 'me colocado onde colocou' evidencia chamado vocacional."
+
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho'. A atribuição da posição profissional a Deus ('me colocado onde colocou') evidencia providência divina."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Olhando o meu exemplo, eu já ajudei a tomar decisões da empresa de se fazer ações de responsabilidade social porque eu via nisso a oportunidade de fazer o que eu fui chamado pra fazer. E de ajudar o próximo de alguma maneira de uma maneira melhor."
+    ordem_2a: chamado_vocacao
+    justificativa_interna: "Definição oficial: 'Percepção de um chamado divino específico que orienta a escolha da profissão, do negócio ou da atuação no trabalho como resposta obediente à vontade de Deus'. O entrevistado menciona explicitamente 'fazer o que eu fui chamado pra fazer' como motivação para decisões."
+
+    ordem_2a: amar_o_proximo
+    justificativa_interna: "Definição oficial: 'Ação prática de cuidado, responsabilidade e socorro ao outro que surge diante de uma necessidade concreta'. A motivação de 'ajudar o próximo de alguma maneira' caracteriza amar_o_proximo."
+
+    ordem_2a: unidade_e_integridade_de_vida_pessoal_e_profissional
+    justificativa_interna: "Definição oficial: 'Convicção de que fé, valores e prática cristã devem orientar de forma integrada a vida pessoal e a atuação profissional'. O uso da posição profissional para cumprir chamado espiritual ('fazer o que eu fui chamado pra fazer') evidencia integração vida-trabalho."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Por exemplo, atuei durante três anos no conselho consultivo de uma startup. Propono, não ganhei nada por isso, que eu conheci através da empresa que eu trabalho e que inventou uma máquina que faz a purificação da água que vem da cisterna do sertão nordestino."
+    ordem_2a: servir_servico_servo_servo_de_cristo
+    justificativa_interna: "Definição oficial: 'Postura voluntária de humildade e submissão que orienta a ação profissional e relacional ao bem do outro'. A atuação voluntária ('não ganhei nada por isso') em conselho consultivo caracteriza serviço."
+
+    ordem_2a: cuidado_do_pobre_da_viuva_e_do_orfao
+    justificativa_interna: "Definição oficial: 'Compromisso pessoal, moral ativo, de proteger, sustentar e defender pessoas socialmente vulneráveis'. O trabalho voluntário para purificação de água no 'sertão nordestino' evidencia cuidado com vulneráveis."
+
+    ordem_2a: altruismo
+    justificativa_interna: "Definição oficial: 'Ação orientada exclusivamente ao bem do outro, sem expectativa de retorno, vantagem ou reconhecimento pessoal'. A atuação sem remuneração ('não ganhei nada por isso') caracteriza altruísmo."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "A tecnologia que foi inventada, ela purifica a água pra pessoa poder beber e poder cozinhar. Então, na sua pergunta, não foi ninguém que me pediu pra fazer isso, mas através de uma competição de ESG da empresa, eu conheci esse grupo, eu apoiei essa competição, promovi, participei como jurado, etc."
+    ordem_2a: cuidado_do_pobre_da_viuva_e_do_orfao
+    justificativa_interna: "Definição oficial: 'Compromisso pessoal, moral ativo, de proteger, sustentar e defender pessoas socialmente vulneráveis'. O engajamento voluntário em tecnologia para purificação de água evidencia cuidado ativo com vulneráveis."
+
+    ordem_2a: servir_servico_servo_servo_de_cristo
+    justificativa_interna: "Definição oficial: 'Postura voluntária de humildade e submissão que orienta a ação profissional e relacional ao bem do outro'. A iniciativa voluntária ('não foi ninguém que me pediu') de apoiar, promover e participar caracteriza serviço."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Conheci essa startup e atuei durante alguns anos nessa startup pra tentar ajudá-los a crescer, se estruturar, etc., pra levar mais dignidade pras pessoas."
+    ordem_2a: cuidado_do_pobre_da_viuva_e_do_orfao
+    justificativa_interna: "Definição oficial: 'Compromisso pessoal, moral ativo, de proteger, sustentar e defender pessoas socialmente vulneráveis'. A finalidade explícita de 'levar mais dignidade pras pessoas' evidencia cuidado com vulneráveis."
+
+    ordem_2a: igualdade_perante_deus
+    justificativa_interna: "Definição oficial: 'Crença de que todos os seres humanos possuem o mesmo valor moral e dignidade diante de Deus'. A motivação de 'levar mais dignidade pras pessoas' fundamenta-se no reconhecimento de dignidade universal."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "A decisão em si não vai gerar mais valor para o acionista, não. Não é esse que a gente vai atrás. Não é esse nosso KPI de sucesso."
+    ordem_2a: valorizacao_de_indicadores_nao_financeiros
+    justificativa_interna: "Definição oficial: 'Reconhecimento de impactos sociais, humanos, ambientais e éticos como dimensões legítimas do desempenho organizacional, além dos resultados financeiros.' O entrevistado nega explicitamente que 'gerar mais valor para o acionista' seja o KPI de sucesso buscado."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A referência direta a 'valor para o acionista' e 'KPI' evidencia a dimensão econômica sendo conscientemente relativizada."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "essas decisões impactaram a vida das pessoas que viram essa decisão ser tomada como ela aconteceu e vamos dizer que surpreenderam essas pessoas para falar, opa, peraí, por que essa decisão foi assim, sempre que o normal seria que todo mundo faz daquele outro jeito?"
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa.' O impacto nas 'pessoas que viram essa decisão' e a surpresa gerada evidenciam a dimensão relacional como critério de avaliação."
+
+    ordem_2a: aspecto_sensitivo_6
+    justificativa_interna: "Definição oficial: 'Consideração explícita das experiências emocionais humanas relevantes — como dor, medo, empatia ou sofrimento.' A menção a 'surpreenderam essas pessoas' evidencia a consideração da experiência emocional dos observadores."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' A decisão que contraria 'o normal' e 'o que todo mundo faz' revela fundamento moral distinto."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "empresas vão buscar geração de riqueza, mas que talvez essas decisões influenciadas pela fé possam até ter tido um efeito contrário em alguns aspectos do ponto de vista meramente financeiro."
+    ordem_2a: lucratividade_aceitavel_diminuicao_do_lucro
+    justificativa_interna: "Definição oficial: 'Aceitação gerencial ou pessoal consciente de redução dos resultados financeiros em razão de escolhas éticas, sociais ou alinhadas a valores.' O trecho evidencia literalmente que decisões 'influenciadas pela fé' tiveram 'efeito contrário' no aspecto 'meramente financeiro'."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A menção direta a 'decisões influenciadas pela fé' evidencia a dimensão transcendente como fundamento decisório."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A referência a 'geração de riqueza' e 'ponto de vista meramente financeiro' evidencia a dimensão econômica sendo conscientemente relativizada."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "tinha gente olhando, tinha gente experimentando, tinha gente vivendo, tinha gente sei lá, pode ter algum outro tipo de bem, de valor, ali."
+    ordem_2a: valorizacao_de_indicadores_nao_financeiros
+    justificativa_interna: "Definição oficial: 'Reconhecimento de impactos sociais, humanos, ambientais e éticos como dimensões legítimas do desempenho organizacional, além dos resultados financeiros.' A expressão 'algum outro tipo de bem, de valor' além do financeiro evidencia o reconhecimento de dimensões não econômicas."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa.' A repetição enfática de 'tinha gente' (olhando, experimentando, vivendo) evidencia a dimensão relacional como critério de valor."
+
+    ordem_2a: aspecto_biotico_5
+    justificativa_interna: "Definição oficial: 'Valorização da vida como critérios, incluindo saúde sobrevivência e cuidado físico de pessoas, animais ou criação.' A menção a 'gente vivendo' evidencia a valorização da dimensão vital das pessoas."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "quando a gente vê essa pauta de SG, de responsabilidade social, etc., das empresas crescer, eu entendo que isso tem o seu aspecto de que isso gera visões positivas, gera negócio para a empresa, gera credibilidade, gera dinheiro, gera produto, etc."
+    ordem_2a: comercial_e_branding_percepcao_positiva
+    justificativa_interna: "Definição oficial: 'Avaliação positiva do uso estratégico do ESG ou objetivos para fortalecer reputação, imagem institucional e valor de marca perante o mercado e a sociedade.' O entrevistado reconhece que ESG 'gera visões positivas, gera negócio, gera credibilidade' para a empresa."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A menção explícita a 'gera dinheiro, gera produto' evidencia a dimensão econômica do ESG."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "já participei de exemplos, nesse sentido, de várias ações de social responsibility. Algumas vezes, até essas mais estereotipadas, talvez, de fazer uma ação social junto com grupo, etc., como dar aula de finanças para jovem do ensino médio."
+    ordem_2a: macro_rsc
+    justificativa_interna: "Definição oficial: 'Conjunto de políticas, estratégias e ações sociais adotadas pela organização em nível institucional, incluindo programas estruturados de filantropia e responsabilidade social.' O entrevistado descreve literalmente 'ações de social responsibility' e 'ação social junto com grupo'."
+
+    ordem_2a: educacao_de_qualidade
+    justificativa_interna: "Definição oficial: 'Acesso inclusivo, equitativo e contínuo à educação de qualidade e a oportunidades permanentes de aprendizagem.' A ação de 'dar aula de finanças para jovem do ensino médio' evidencia contribuição direta para educação."
+
+    ordem_2a: aspecto_formativo_8
+    justificativa_interna: "Definição oficial: 'Ação deliberada de planejar, moldar e transformar estruturas, processos ou estratégias.' A ação de 'dar aula' evidencia ação formativa deliberada."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "A empresa que eu trabalho faz várias viagens de apoio social a organizações, com ONGs, etc., tem um engajamento grande na Amazônia, no Nordeste também já fez várias ações lá, então já tive a oportunidade de participar disso."
+    ordem_2a: macro_rsc
+    justificativa_interna: "Definição oficial: 'Conjunto de políticas, estratégias e ações sociais adotadas pela organização em nível institucional, incluindo programas estruturados de filantropia e responsabilidade social.' O trecho descreve literalmente 'viagens de apoio social' e 'engajamento' institucional da empresa."
+
+    ordem_2a: parcerias_e_meios_de_implementacao
+    justificativa_interna: "Definição oficial: 'Promoção de parcerias institucionais, interorganizacionais e multissetoriais.' A menção a 'apoio social a organizações, com ONGs' evidencia parcerias interorganizacionais."
+
+    ordem_2a: aspecto_espacial_2
+    justificativa_interna: "Definição oficial: 'Referência ao espaço físico, territorial ou estrutural do negócio.' A menção explícita a 'Amazônia' e 'Nordeste' evidencia a dimensão territorial das ações."
+
+    ordem_2a: vida_terrestre
+    justificativa_interna: "Definição oficial: 'Proteção, recuperação e uso sustentável dos ecossistemas terrestres e da biodiversidade.' O 'engajamento grande na Amazônia' sugere ações relacionadas à proteção de ecossistemas terrestres."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Não é isso que vai te salvar, te levar para o céu, mas é isso, é uma maneira de cuidar do próximo, acho que é válido."
+    ordem_2a: graca_comum_gc
+    justificativa_interna: "Definição oficial: 'Concessão divina de bens naturais, sociais e estruturais a toda a humanidade, percebida como ordem, sustento e prosperidade cotidiana, sem referência direta à salvação.' A afirmação explícita 'Não é isso que vai te salvar' caracteriza a distinção entre graça comum (cuidar do próximo) e graça especial (salvação)."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' O 'cuidar do próximo' evidencia disposição moral profunda."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A referência a 'salvar' e 'levar para o céu' evidencia fundamento teológico cristão."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Eu acho que faz sentido. Sem julgar a motivação disso, mas eu acho que faz sentido, porque cuidar da criação é uma ordem que a gente recebeu, e a gente não cuida. Daqui a pouco as coisas vão se acabar, os recursos, a temperatura, etc. Isso é um das ODS."
+    ordem_2a: obrigacoes_que_jesus_ordenou
+    justificativa_interna: "Definição oficial: 'Interpretação do ESG ou objetivos como expressão prática de mandamentos éticos ensinados por Jesus, entendidos como coerentes com a fé cristã.' O entrevistado interpreta ODS como coerente com 'uma ordem que a gente recebeu' (mandamento divino)."
+
+    ordem_2a: acao_contra_a_mudanca_global_do_clima
+    justificativa_interna: "Definição oficial: 'Implementação de ações para mitigar causas e adaptar-se aos impactos das mudanças climáticas globais.' A menção a 'temperatura' e 'recursos' que 'vão se acabar' evidencia preocupação com mudanças climáticas."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A referência a 'ordem que a gente recebeu' evidencia fundamento teológico cristão."
+
+    ordem_2a: aspecto_fisico_4
+    justificativa_interna: "Definição oficial: 'Reconhecimento de limites materiais da realidade empresarial, considerando restrições físicas.' A menção a 'recursos' e 'temperatura' evidencia reconhecimento de limites materiais da criação."
+
+    ordem_2a: percepcao_positiva_generica
+    justificativa_interna: "Definição oficial: 'Avaliação geral favorável do ESG ou objetivos.' A afirmação 'faz sentido' evidencia avaliação positiva dos ODS."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "As decisões de curto prazo que maximizam o valor do acionista, a ação, o valuation, qualquer que seja a métrica que você queira medir, às vezes ela custa caro no longo prazo na sustentabilidade da empresa e não é inteligente."
+    ordem_2a: ambidestria_na_gestao
+    justificativa_interna: "Definição oficial: 'Capacidade gerencial de equilibrar simultaneamente a viabilidade econômica do negócio com o cuidado genuíno com pessoas e a promoção do bem comum.' O trecho evidencia a tensão entre maximização de curto prazo e sustentabilidade de longo prazo, demonstrando a necessidade de equilibrar viabilidade econômica com outros valores."
+
+    ordem_2a: reino_deus_em_primeiro_lugar_resultado_depois
+    justificativa_interna: "Definição oficial: 'Orientação de gestão em que os valores do Reino de Deus e a justiça precedem objetivos financeiros, entendendo resultados econômicos como consequência e não como finalidade última.' O entrevistado questiona a maximização pura do valor do acionista, sugerindo que há valores superiores aos resultados financeiros imediatos."
+
+    ordem_2a: maximizacao_do_lucro_aumento_da_lucratividade
+    justificativa_interna: "Definição oficial: 'Orientação gerencial estratégica centrada no crescimento máximo e contínuo dos resultados financeiros com objetivo prioritário de melhorar sempre a gestão.' O trecho menciona explicitamente 'maximizam o valor do acionista' e 'valuation', referindo-se diretamente à orientação de maximização."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' As referências a 'valor do acionista', 'valuation' e 'métrica' demonstram administração consciente de recursos econômicos."
+
+    ordem_2a: aspecto_cinetico_3
+    justificativa_interna: "Definição oficial: 'Avaliação de movimentos, fluxos e mudanças operacionais da empresa ao longo do tempo, como crescimento, retração ou rotatividade.' A distinção entre 'curto prazo' e 'longo prazo' e a referência a 'sustentabilidade' evidenciam avaliação de mudanças ao longo do tempo."
+
+    ordem_2a: aspecto_analitico_7
+    justificativa_interna: "Definição oficial: 'Uso consciente do julgamento racional, da distinção conceitual e da coerência lógica.' A análise comparativa entre decisões de curto e longo prazo, com avaliação de 'inteligente' ou não, demonstra uso de julgamento racional."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Mas se você olhar recortes de tempo de curto prazo, seja um trimestre, um ano, cinco anos, etc, sim, eu acho que é possível impactar esse resultado da empresa com decisões assim."
+    ordem_2a: sofrer_o_dano
+    justificativa_interna: "Definição oficial: 'Aceitação consciente de prejuízo pessoal, profissional ou material como consequência de permanecer fiel a princípios cristãos, sem retaliar, negociar valores ou buscar compensação indevida.' O entrevistado reconhece explicitamente que decisões baseadas em princípios podem impactar negativamente os resultados da empresa."
+
+    ordem_2a: lucratividade_aceitavel_diminuicao_do_lucro
+    justificativa_interna: "Definição oficial: 'Aceitação gerencial ou pessoal consciente de redução dos resultados financeiros em razão de escolhas éticas, sociais ou alinhadas a valores.' O reconhecimento de que é 'possível impactar esse resultado' (negativamente, pelo contexto) evidencia aceitação de redução de resultados."
+
+    ordem_2a: aspecto_cinetico_3
+    justificativa_interna: "Definição oficial: 'Avaliação de movimentos, fluxos e mudanças operacionais da empresa ao longo do tempo, como crescimento, retração ou rotatividade.' A referência explícita a 'recortes de tempo', 'trimestre', 'um ano', 'cinco anos' demonstra avaliação temporal de mudanças."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A menção a 'resultado da empresa' evidencia consideração de recursos econômicos."
+
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades como critérios relevantes para gestão.' As referências a 'um trimestre', 'um ano', 'cinco anos' demonstram uso explícito de números como critérios."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Agora, de novo, assim, e eu sei que tem empresários, tem gente que tem negócios próprios, etc, que decidem lucrar menos, aquela coisa de o que é o que Jesus mandou fazer da visão sacrificial, redentiva das coisas."
+    ordem_2a: morrer_para_produzir_fruto_orientacao_sacrificial
+    justificativa_interna: "Definição oficial: 'Disposição deliberada de renunciar a interesses, ganhos ou reconhecimento pessoal para que ações gerem frutos espirituais, éticos ou coletivos duradouros, associados ao Reino de Deus.' O termo 'visão sacrificial, redentiva' e 'decidem lucrar menos' evidenciam a renúncia deliberada a ganhos financeiros."
+
+    ordem_2a: imitacao_de_jesus
+    justificativa_interna: "Definição oficial: 'Orientação prática da vida e das decisões pelo modelo de caráter, atitudes e ações de Jesus, buscando conformar a própria conduta à Sua forma de viver.' A expressão 'o que é o que Jesus mandou fazer' demonstra a orientação explícita pelas ações e mandamentos de Jesus."
+
+    ordem_2a: jesus_no_centro
+    justificativa_interna: "Definição oficial: 'Centralidade explícita da pessoa e dos ensinamentos de Jesus Cristo como referência máxima para sentido, ética e ação prática na vida e no trabalho.' A menção direta a 'o que Jesus mandou fazer' como critério de decisão empresarial evidencia a centralidade de Jesus."
+
+    ordem_2a: lucratividade_aceitavel_diminuicao_do_lucro
+    justificativa_interna: "Definição oficial: 'Aceitação gerencial ou pessoal consciente de redução dos resultados financeiros em razão de escolhas éticas, sociais ou alinhadas a valores.' A expressão 'decidem lucrar menos' por razões ligadas a 'o que Jesus mandou fazer' evidencia aceitação consciente de redução por valores religiosos."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A menção a 'Jesus mandou fazer' e 'visão sacrificial, redentiva' demonstra referência explícita à fé cristã como orientação."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A referência a 'lucrar menos' evidencia administração consciente de recursos econômicos."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' A menção à 'visão sacrificial, redentiva' como fundamento da decisão de 'lucrar menos' evidencia disposição moral profunda."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Então eu e Jesus perco pra você ganhar."
+    ordem_2a: morrer_para_produzir_fruto_orientacao_sacrificial
+    justificativa_interna: "Definição oficial: 'Disposição deliberada de renunciar a interesses, ganhos ou reconhecimento pessoal para que ações gerem frutos espirituais, éticos ou coletivos duradouros, associados ao Reino de Deus.' A expressão 'eu perco pra você ganhar' evidencia literalmente a renúncia a ganhos pessoais em favor do outro."
+
+    ordem_2a: lideranca_servil_sacrificial
+    justificativa_interna: "Definição oficial: 'Forma de liderança orientada ao serviço, em que o líder prioriza pessoas e propósitos acima do poder, aceitando sacrifícios pessoais para promover o bem comum.' O trecho 'eu perco pra você ganhar' demonstra a aceitação de sacrifício pessoal para benefício do outro."
+
+    ordem_2a: servir_servico_servo_servo_de_cristo
+    justificativa_interna: "Definição oficial: 'Postura voluntária de humildade e submissão que orienta a ação profissional e relacional ao bem do outro, tomando Cristo como modelo de serviço.' A disposição de perder para o outro ganhar, associada a Jesus, evidencia a postura de serviço."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A menção a 'Jesus' como sujeito da ação ('eu e Jesus') demonstra referência explícita à fé cristã."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' A expressão 'perco pra você ganhar' evidencia disposição de sacrifício como fundamento moral."
+
+    ordem_2a: lucratividade_aceitavel_diminuicao_do_lucro
+    justificativa_interna: "Definição oficial: 'Aceitação gerencial ou pessoal consciente de redução dos resultados financeiros em razão de escolhas éticas, sociais ou alinhadas a valores.' A expressão 'perco pra você ganhar' evidencia aceitação de perda (redução) em favor de outro, por valores éticos."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "A empresa, o Chicken Filé, lá dos Estados Unidos, que não abre no domingo, que é uma rede, não sei se vocês conhecem essa história dessa rede, é uma rede grande de fast food, de frango, tipo KFC, etc., bem grande, e que eles não abrem no domingo, e não abrem no domingo porque os fundadores e os controladores são cristãos e entendem que domingo é o dia do descanso, e ponto final."
+    ordem_2a: sabatico_descanso_guarda_do_domingo
+    justificativa_interna: "Definição oficial: 'Observância deliberada do descanso periódico como ato de obediência, renovação espiritual e reconhecimento dos limites humanos diante da soberania divina.' O trecho evidencia literalmente a prática de não trabalhar no domingo por convicção religiosa cristã sobre o descanso."
+
+    ordem_2a: obediencia
+    justificativa_interna: "Definição oficial: 'Disposição prática de fazer aquilo que Deus ordena, conformando ações e decisões às suas ordens, mesmo quando contrariam interesses pessoais ou conveniências.' A decisão de não abrir no domingo 'porque entendem que domingo é o dia do descanso' demonstra conformação da ação empresarial a uma ordem percebida de Deus."
+
+    ordem_2a: coram_deo_vida_diante_de_deus
+    justificativa_interna: "Definição oficial: 'Consciência permanente de viver, agir e decidir sob o olhar de Deus, sem separação entre vida pública, privada, espiritual e profissional.' A decisão empresarial fundamentada em convicção religiosa ('porque os fundadores e os controladores são cristãos') evidencia a ausência de separação entre fé e negócio."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Então, poderia ganhar muito mais dinheiro se trabalhas no domingo, que é o dia que todo mundo quer comer fora e tal, mas não faz. Então, ganha menos pra poder fazer o que tem que fazer."
+    ordem_2a: sofrer_o_dano
+    justificativa_interna: "Definição oficial: 'Aceitação consciente de prejuízo pessoal, profissional ou material como consequência de permanecer fiel a princípios cristãos, sem retaliar, negociar valores ou buscar compensação indevida.' A expressão 'poderia ganhar muito mais dinheiro' mas 'não faz' e 'ganha menos' evidencia a aceitação consciente de prejuízo financeiro por fidelidade a princípios."
+
+    ordem_2a: reino_deus_em_primeiro_lugar_resultado_depois
+    justificativa_interna: "Definição oficial: 'Orientação de gestão em que os valores do Reino de Deus e a justiça precedem objetivos financeiros, entendendo resultados econômicos como consequência e não como finalidade última.' O trecho 'ganha menos pra poder fazer o que tem que fazer' demonstra que valores religiosos precedem maximização financeira."
+
+    ordem_2a: mordomia
+    justificativa_interna: "Definição oficial: 'Administração responsável de recursos, bens e resultados entendidos como pertencentes a Deus e confiados ao ser humano.' A decisão de não maximizar lucro para cumprir o descanso sabático evidencia a compreensão de que a gestão dos recursos está subordinada a princípios divinos."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Alguém caminhando num caminho bonito, etc, mas que tem um barranco, um declive enorme do lado, e alguém caminhando, recebendo pedras ou flechas que potencialmente me fariam cair nesse buraco."
+    ordem_2a: mundo_espiritual
+    justificativa_interna: "Definição oficial: 'Reconhecimento de uma realidade invisível que influencia a vida humana para além do mundo material.' A metáfora de 'pedras ou flechas' que atacam o caminhante sugere forças espirituais invisíveis que tentam fazer a pessoa 'cair'."
+
+    ordem_2a: o_mundo_caido
+    justificativa_interna: "Definição oficial: 'Condição histórica e cultural marcada pela oposição a Deus e aos seus princípios, caracterizada por secularismo, corrupção moral e sistemas de valores que normalizam o afastamento do divino como padrão de vida e organização social.' As 'pedras ou flechas' e o 'barranco' representam as ameaças e tentações do mundo caído."
+
+    ordem_2a: aspecto_espacial_2
+    justificativa_interna: "Definição oficial: 'Referência ao espaço físico, territorial ou estrutural do negócio.' As referências a 'caminho', 'barranco', 'declive', 'lado', 'buraco' evidenciam consideração explícita de espaço físico na metáfora."
+
+    ordem_2a: aspecto_fisico_4
+    justificativa_interna: "Definição oficial: 'Reconhecimento de limites materiais da realidade empresarial, considerando restrições físicas.' A menção a 'barranco', 'declive enorme', 'buraco' evidencia reconhecimento de limites materiais e físicos."
+
+    ordem_2a: aspecto_cinetico_3
+    justificativa_interna: "Definição oficial: 'Avaliação de movimentos, fluxos e mudanças operacionais da empresa ao longo do tempo, como crescimento, retração ou rotatividade.' A referência a 'caminhando' e 'cair' evidencia movimento e mudança ao longo do tempo."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Pedras e flechas que mexem com todo tipo de coisa, com as coisas que o ser humano se corrompe. Todas essas clássicas aí."
+    ordem_2a: depravacao_total_pecado_queda_confissao_de_pecados
+    justificativa_interna: "Definição oficial: 'Reconhecimento da gravidade da condição espiritual e moral humana, erro moral ou espiritual acompanhado ou evidenciado de (ou para) mudança de postura.' A expressão 'as coisas que o ser humano se corrompe' evidencia o reconhecimento da condição moral humana corrompida."
+
+    ordem_2a: operacao_do_mal_por_distorcao_moral
+    justificativa_interna: "Definição oficial: 'Compreensão de que o mal atua predominantemente por distorção, concessões parciais e aparentes zonas de neutralidade moral dentro da humanidade, para tornar a inclinação malígnia humana socialmente aceitável, funcional ou justificável.' As 'pedras e flechas' que 'mexem com todo tipo de coisa' representam as tentações que exploram as vulnerabilidades morais humanas."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Mas, mesmo assim, não deixa de caminhar e, mesmo assim, tenta pegar as pessoas que já caíram, ou que estão quase caindo, e jogar elas um pouquinho para cá."
+    ordem_2a: amar_o_proximo
+    justificativa_interna: "Definição oficial: 'Ação prática de cuidado, responsabilidade e socorro ao outro que surge diante de uma necessidade concreta, independentemente de proximidade, afinidade, identidade ou merecimento moral.' O ato de 'pegar as pessoas que já caíram' e 'jogar elas um pouquinho para cá' evidencia ação prática de socorro ao outro em necessidade."
+
+    ordem_2a: resgate
+    justificativa_interna: "Definição oficial: 'Ação soberana de Deus que liberta o ser humano da condição de pecado e perdição, incluindo a esperança futura de comunhão plena com Cristo.' A metáfora de 'pegar as pessoas que já caíram' e trazê-las de volta ao caminho seguro representa a ação de resgate espiritual."
+
+    ordem_2a: evangelismo
+    justificativa_interna: "Definição oficial: 'Ação intencional orientada a conduzir outras pessoas ao conhecimento, à aceitação e à conversão à fé cristã.' O esforço de 'pegar as pessoas que já caíram, ou que estão quase caindo' e trazê-las para o caminho correto sugere ação evangelística."
+
+    ordem_2a: grande_comissao_missao_no_mundo
+    justificativa_interna: "Definição oficial: 'Compromisso ativo com a expansão da fé cristã por meio de discipulado, ensino e presença pública no mundo.' A ação de resgatar pessoas que caíram ou estão caindo evidencia o compromisso ativo com a missão no mundo."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' A ação de 'pegar as pessoas que já caíram' e 'jogar elas um pouquinho para cá' evidencia disposição de misericórdia e amor como fundamento."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa.' A referência a 'pessoas' e a ação de ajudá-las evidencia avaliação de relações sociais."
+
+    ordem_2a: aspecto_cinetico_3
+    justificativa_interna: "Definição oficial: 'Avaliação de movimentos, fluxos e mudanças operacionais da empresa ao longo do tempo, como crescimento, retração ou rotatividade.' As referências a 'caminhar', 'caíram', 'caindo', 'jogar' evidenciam movimento e mudança."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "E para dizer, olha, dá para caminhar nesse caminho aqui fazendo a coisa certa."
+    ordem_2a: testemunho
+    justificativa_interna: "Definição oficial: 'Vivência coerente e visível da fé cristã expressa em atitudes, escolhas e conduta cotidiana, funcionando como exemplo público que aponta para Deus.' A expressão 'dá para caminhar nesse caminho aqui fazendo a coisa certa' evidencia a vivência como exemplo visível de que é possível viver segundo princípios cristãos."
+
+    ordem_2a: sal_da_terra
+    justificativa_interna: "Definição oficial: 'Convicção de que o cristão exerce influência ética e moral que preserva, limita a degradação e promove transformação social.' A afirmação de que 'dá para caminhar fazendo a coisa certa' demonstra a convicção de exercer influência moral preservadora."
+
+    ordem_2a: integridade_moral
+    justificativa_interna: "Definição oficial: 'Coerência estável entre valores professados, discurso público e práticas concretas, sem duplicidade, oportunismo ou hipocrisia moral.' A expressão 'fazendo a coisa certa' no contexto de caminhar sob ataque evidencia a coerência entre valores e prática."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' A expressão 'fazendo a coisa certa' evidencia disposição moral de integridade como fundamento."
+
+    ordem_2a: aspecto_linguistico_9
+    justificativa_interna: "Definição oficial: 'Uso da linguagem, do discurso e da comunicação como portadores de significado e coerência.' A expressão 'para dizer, olha' evidencia uso da comunicação como portadora de significado."
+
+    ordem_2a: aspecto_cinetico_3
+    justificativa_interna: "Definição oficial: 'Avaliação de movimentos, fluxos e mudanças operacionais da empresa ao longo do tempo, como crescimento, retração ou rotatividade.' A referência a 'caminhar nesse caminho' evidencia movimento ao longo do tempo."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Davi, eu te conheço quase nada, mas eu ousaria dizer que você poderia estar fazendo várias outras coisas na vida mais ordinárias ou mais monetárias, mais de sucesso do que a tese que você decidiu fazer."
+    ordem_2a: chamado_vocacao
+    justificativa_interna: "Definição oficial: 'Percepção de um chamado divino específico que orienta a escolha da profissão, do negócio ou da atuação no trabalho como resposta obediente à vontade de Deus.' O entrevistado reconhece que o pesquisador escolheu um caminho menos 'monetário' ou 'de sucesso', sugerindo uma vocação específica."
+
+    ordem_2a: proposito
+    justificativa_interna: "Definição oficial: 'Compreensão de que a própria vida e atuação profissional possuem um sentido de missão definido pela vontade de Deus, orientando escolhas, prioridades e perseverança.' A observação de que o pesquisador poderia fazer 'outras coisas mais monetárias' mas escolheu a tese sugere um propósito que transcende ganhos materiais."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A referência a 'mais monetárias' e 'mais de sucesso' evidencia consideração de recursos econômicos."
+
+    ordem_2a: lucratividade_aceitavel_diminuicao_do_lucro
+    justificativa_interna: "Definição oficial: 'Aceitação gerencial ou pessoal consciente de redução dos resultados financeiros em razão de escolhas éticas, sociais ou alinhadas a valores.' A sugestão de que o entrevistador 'poderia estar fazendo' coisas 'mais monetárias' mas escolheu 'a tese' evidencia aceitação de redução de ganhos por valores."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Então, eu te dou parabéns aí pelo que você está fazendo. Imagino que você não encontra muita gente falando que legal a sua tese, que bacana, vamos criar uma startup a partir do que você está falando."
+    ordem_2a: nao_depender_de_reconhecimento
+    justificativa_interna: "Definição oficial: 'Desapego de elogios, visibilidade ou recompensa humana.' O entrevistado reconhece que o pesquisador não recebe reconhecimento externo ('não encontra muita gente falando que legal'), sugerindo que a motivação não depende de aprovação humana."
+
+    ordem_2a: paciencia_e_longanimidade
+    justificativa_interna: "Definição oficial: 'Capacidade de suportar frustrações e dificuldades prolongadas sem perder a fé, a coerência ética ou o compromisso relacional.' A observação de que o pesquisador persiste em um trabalho sem entusiasmo externo evidencia capacidade de suportar dificuldades prolongadas."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Mas continue, porque se é isso que Deus te mandou fazer, você está fazendo a sua missão também."
+    ordem_2a: chamado_vocacao
+    justificativa_interna: "Definição oficial: 'Percepção de um chamado divino específico que orienta a escolha da profissão, do negócio ou da atuação no trabalho como resposta obediente à vontade de Deus.' A expressão 'se é isso que Deus te mandou fazer' evidencia literalmente a percepção de um chamado divino específico."
+
+    ordem_2a: obediencia
+    justificativa_interna: "Definição oficial: 'Disposição prática de fazer aquilo que Deus ordena, conformando ações e decisões às suas ordens, mesmo quando contrariam interesses pessoais ou conveniências.' A expressão 'Deus te mandou fazer' e 'você está fazendo a sua missão' evidencia a conformação da ação à ordem divina."
+
+    ordem_2a: proposito
+    justificativa_interna: "Definição oficial: 'Compreensão de que a própria vida e atuação profissional possuem um sentido de missão definido pela vontade de Deus, orientando escolhas, prioridades e perseverança.' A expressão 'você está fazendo a sua missão' evidencia literalmente a compreensão de um sentido de missão definido por Deus."
+
+    ordem_2a: trabalho_como_adoracao_avoda_empresa_como_ministerio
+    justificativa_interna: "Definição oficial: 'Compreensão do trabalho e da empresa como gesto de adoração, espaço legítimo de culto, serviço e obediência a Deus.' A expressão 'você está fazendo a sua missão' no contexto do trabalho acadêmico evidencia a compreensão do trabalho como serviço e obediência a Deus."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A expressão 'Deus te mandou fazer' e 'sua missão' demonstra referência explícita à fé cristã como orientação de sentido último."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' A referência a 'missão' como fundamento da ação evidencia disposição moral profunda."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "O senhor guia as nossas histórias e a gente nunca sabe quantos nossos caminhos podem se cruzar de novo."
+    ordem_2a: providencia_divina
+    justificativa_interna: "Definição oficial: 'Convicção de que Deus sustenta, governa e direciona todas as circunstâncias da vida e do trabalho, inclusive eventos aparentemente ordinários.' A expressão 'o senhor guia as nossas histórias' evidencia literalmente a convicção de que Deus direciona as circunstâncias da vida."
+
+    ordem_2a: deus_guiando_os_passos
+    justificativa_interna: "Definição oficial: 'Atribuição direta das decisões, caminhos e escolhas profissionais à orientação pessoal e intencional de Deus em cada detalhe, momento a momento.' A expressão 'o senhor guia as nossas histórias' e 'nossos caminhos podem se cruzar' evidencia a atribuição da orientação dos caminhos a Deus."
+
+    ordem_2a: soberania_de_deus
+    justificativa_interna: "Definição oficial: 'Crença de que Deus possui controle último sobre todas as coisas, inclusive sobre os resultados finais, pessoais ou profissionais, independentemente da competência, esforço ou planejamento humano.' A afirmação de que 'o senhor guia as nossas histórias' evidencia a crença no controle último de Deus sobre os eventos."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A expressão 'O senhor guia as nossas histórias' demonstra referência explícita à fé cristã como orientação transcendente."
+
+    ordem_2a: aspecto_cinetico_3
+    justificativa_interna: "Definição oficial: 'Avaliação de movimentos, fluxos e mudanças operacionais da empresa ao longo do tempo, como crescimento, retração ou rotatividade.' A referência a 'caminhos podem se cruzar de novo' evidencia avaliação de movimento e mudança ao longo do tempo."
+
+    ordem_2a: aspecto_espacial_2
+    justificativa_interna: "Definição oficial: 'Referência ao espaço físico, territorial ou estrutural do negócio.' A metáfora de 'caminhos' evidencia referência espacial."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "A pobre empresa poderia ter lucrado mais também se você tivesse falado um sim um pouco diferente do não que você falou."
+    ordem_2a: lucratividade_aceitavel_diminuicao_do_lucro
+    justificativa_interna: "Definição oficial: 'Aceitação gerencial ou pessoal consciente de redução dos resultados financeiros em razão de escolhas éticas, sociais ou alinhadas a valores.' O trecho evidencia que a empresa 'poderia ter lucrado mais' mas não lucrou devido a uma decisão ('um sim um pouco diferente do não'), caracterizando aceitação de redução de lucro."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A referência explícita a 'lucrado mais' demonstra consideração sobre recursos econômicos e lucro como critério de decisão."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Em algum nível, você acha que é um pouco desviante do comportamento de maximização de lucro pro acionista?"
+    ordem_2a: maximizacao_do_lucro_aumento_da_lucratividade
+    justificativa_interna: "Definição oficial: 'Orientação gerencial estratégica centrada no crescimento máximo e contínuo dos resultados financeiros com objetivo prioritário de melhorar sempre a gestão.' A expressão 'maximização de lucro pro acionista' refere-se diretamente ao conceito de maximização de lucros como orientação gerencial."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A menção a 'lucro pro acionista' evidencia consideração explícita de recursos econômicos."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "A gente sabe, por exemplo, a empresa, o Chicken Filé, lá dos Estados Unidos, que não abre no domingo, que é uma rede, não sei se vocês conhecem essa história dessa rede, é uma rede grande de fast food, de frango, tipo KFC, etc., bem grande, e que eles não abrem no domingo, e não abrem no domingo porque os fundadores e os controladores são cristãos e entendem que domingo é o dia do descanso, e ponto final."
+    ordem_2a: lucratividade_aceitavel_diminuicao_do_lucro
+    justificativa_interna: "Definição oficial: 'Aceitação gerencial ou pessoal consciente de redução dos resultados financeiros em razão de escolhas éticas, sociais ou alinhadas a valores.' A decisão de 'não abrem no domingo' por razões religiosas ('são cristãos') implica redução de receita por valores."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A menção a 'são cristãos' e 'domingo é o dia do descanso' demonstra referência explícita à fé cristã como orientação da decisão empresarial."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A decisão de não operar em um dia comercialmente relevante evidencia administração consciente de recursos econômicos."
+
+    ordem_2a: aspecto_cinetico_3
+    justificativa_interna: "Definição oficial: 'Avaliação de movimentos, fluxos e mudanças operacionais da empresa ao longo do tempo, como crescimento, retração ou rotatividade.' A referência a 'não abre no domingo' evidencia consideração de fluxo operacional temporal (dias da semana)."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Então, poderia ganhar muito mais dinheiro se trabalhas no domingo, que é o dia que todo mundo quer comer fora e tal, mas não faz."
+    ordem_2a: lucratividade_aceitavel_diminuicao_do_lucro
+    justificativa_interna: "Definição oficial: 'Aceitação gerencial ou pessoal consciente de redução dos resultados financeiros em razão de escolhas éticas, sociais ou alinhadas a valores.' A expressão 'poderia ganhar muito mais dinheiro' mas 'não faz' evidencia aceitação consciente de redução de resultados."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A referência explícita a 'ganhar muito mais dinheiro' demonstra administração consciente de recursos econômicos."
+
+    ordem_2a: aspecto_cinetico_3
+    justificativa_interna: "Definição oficial: 'Avaliação de movimentos, fluxos e mudanças operacionais da empresa ao longo do tempo, como crescimento, retração ou rotatividade.' A referência a 'domingo' como momento específico de fluxo comercial evidencia avaliação temporal."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Então, ganha menos pra poder fazer o que tem que fazer."
+    ordem_2a: lucratividade_aceitavel_diminuicao_do_lucro
+    justificativa_interna: "Definição oficial: 'Aceitação gerencial ou pessoal consciente de redução dos resultados financeiros em razão de escolhas éticas, sociais ou alinhadas a valores.' A expressão 'ganha menos' por razão de 'fazer o que tem que fazer' (obrigação moral/religiosa) evidencia aceitação de redução por valores."
+
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A referência a 'ganha menos' demonstra administração consciente de recursos econômicos."
+
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' A expressão 'fazer o que tem que fazer' evidencia disposição moral como fundamento da decisão de ganhar menos."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "eu queria entender um pouco melhor como que você enxerga, como que a graça impactou, assim, como é que você vê a graça de Deus na sua vida profissional"
+    ordem_2a: graca_especial_ge
+    justificativa_interna: "Definição oficial: 'Ação soberana e específica de Deus que opera salvação, conversão e restauração espiritual em pessoas, reconhecida explicitamente como intervenção redentora divina.' A referência explícita a 'graça de Deus' no contexto da 'vida profissional' evidencia reconhecimento de ação divina específica."
+
+    ordem_2a: aspecto_pistico_15
+    justificativa_interna: "Definição oficial: 'Referência explícita à fé cristã como fonte de sentido último, orientação transcendente.' A menção a 'graça de Deus' demonstra referência explícita à fé cristã."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Pedras e flechas que mexem com todo tipo de coisa, com as coisas que o ser humano se corrompe."
+    ordem_2a: aspecto_etico_14
+    justificativa_interna: "Definição oficial: 'Expressão direta de disposições morais profundas — como amor, misericórdia, integridade e sacrifício — como fundamento das decisões empresariais.' A referência a 'se corrompe' evidencia consideração de disposições morais e integridade."
+
+    ordem_2a: aspecto_sensitivo_6
+    justificativa_interna: "Definição oficial: 'Consideração explícita das experiências emocionais humanas relevantes — como dor, medo, empatia ou sofrimento.' A expressão 'mexem com todo tipo de coisa' evidencia consideração de experiências emocionais humanas."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Imagino que você não encontra muita gente falando que legal a sua tese, que bacana, vamos criar uma startup a partir do que você está falando."
+    ordem_2a: aspecto_economico_11
+    justificativa_interna: "Definição oficial: 'Administração consciente de recursos escassos — como dinheiro, tempo e lucro.' A referência a 'criar uma startup' evidencia consideração de recursos econômicos e empreendedorismo."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa.' A referência a 'muita gente falando' evidencia avaliação de relações e padrões sociais."
+
+    ordem_2a: aspecto_linguistico_9
+    justificativa_interna: "Definição oficial: 'Uso da linguagem, do discurso e da comunicação como portadores de significado e coerência.' A referência a 'gente falando' evidencia uso da comunicação."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Então, parabéns por fazer isso."
+    ordem_2a: aspecto_linguistico_9
+    justificativa_interna: "Definição oficial: 'Uso da linguagem, do discurso e da comunicação como portadores de significado e coerência.' A expressão 'parabéns' evidencia uso da comunicação como portadora de reconhecimento e significado."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa.' O ato de parabenizar evidencia relação social e reconhecimento."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Idealmente, eu preciso chegar em umas 50 pessoas."
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades como critérios relevantes para gestão.' A referência explícita a '50 pessoas' demonstra uso de número como critério."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Eu tenho você a sétima pessoa, a oitava pessoa que eu converso, de reunião, eu tenho mais cinco reuniões marcadas, cinco ou seis reuniões marcadas, então tenho aí na casa umas 14 pessoas já agendadas"
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades como critérios relevantes para gestão.' As referências a 'sétima', 'oitava', 'cinco', 'seis', '14 pessoas' demonstram uso explícito de números como critérios."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa.' A referência a 'pessoas' e 'reuniões' evidencia avaliação de relações sociais."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "e eu tenho um universo de umas 35 de umas 35 pessoas que sinalizaram, tipo, quero participar, vou participar, mas que por algum motivo ainda não aderiram em alguma das etapas."
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades como critérios relevantes para gestão.' A referência a '35 pessoas' demonstra uso explícito de número como critério."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa.' A referência a 'pessoas que sinalizaram' e 'participar' evidencia avaliação de relações sociais."
+
+    ordem_2a: aspecto_cinetico_3
+    justificativa_interna: "Definição oficial: 'Avaliação de movimentos, fluxos e mudanças operacionais da empresa ao longo do tempo, como crescimento, retração ou rotatividade.' A referência a 'etapas' e 'ainda não aderiram' evidencia avaliação de fluxo e mudança ao longo do tempo."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Então, estou falando questão desse funil, né?"
+    ordem_2a: aspecto_formativo_8
+    justificativa_interna: "Definição oficial: 'Ação deliberada de planejar, moldar e transformar estruturas, processos ou estratégias.' A referência a 'funil' evidencia planejamento e estruturação de processo."
+
+    ordem_2a: aspecto_espacial_2
+    justificativa_interna: "Definição oficial: 'Referência ao espaço físico, territorial ou estrutural do negócio.' A metáfora de 'funil' evidencia referência a estrutura espacial."
+END ITEM
+
+ITEM @entrevista08
+    ordem_1a: "Então, aqueles participantes que aderem, que gostam, que percebem valor e tal, eles são muito importantes porque eles estão sempre me indicando duas ou três pessoas, duas ou três pessoas, e aí amplia um pouco a amostra, né?"
+    ordem_2a: aspecto_numerico_1
+    justificativa_interna: "Definição oficial: 'Uso explícito de números, proporções, escalas ou quantidades como critérios relevantes para gestão.' As referências a 'duas ou três pessoas' demonstram uso explícito de números como critérios."
+
+    ordem_2a: aspecto_social_10
+    justificativa_interna: "Definição oficial: 'Avaliação das relações, papéis sociais e padrões de convivência na empresa.' A referência a 'participantes', 'pessoas' e 'indicando' evidencia avaliação de relações sociais."
+
+    ordem_2a: aspecto_cinetico_3
+    justificativa_interna: "Definição oficial: 'Avaliação de movimentos, fluxos e mudanças operacionais da empresa ao longo do tempo, como crescimento, retração ou rotatividade.' A expressão 'amplia um pouco a amostra' evidencia avaliação de crescimento ao longo do tempo."
+END ITEM
