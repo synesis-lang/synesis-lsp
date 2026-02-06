@@ -69,21 +69,23 @@ def compute_hover(
 
     field_name, value_start = _field_in_line(line)
     in_value = field_name is not None and position.character >= value_start
-    spec = field_specs.get(field_name) if field_specs and field_name else None
+    spec = _find_field_spec(field_specs, field_name) if field_name else None
     spec_type = getattr(getattr(spec, "type", None), "name", None) if spec else None
 
-    # Hover em nome de campo somente se for CODE/CHAIN
+    # Hover em nome de campo (qualquer tipo)
     if _is_field_name(line, position.character, word):
-        if spec_type in {"CODE", "CHAIN"}:
-            return _hover_field(word, cached_result)
-        return None
+        return _hover_field(word, cached_result)
 
-    # Hover em valores apenas para CODE/CHAIN ou linhas de chain (multiline)
-    in_chain_line = "->" in line
-    if spec_type in {"CODE", "CHAIN"} or in_chain_line:
-        rel_hover = _hover_relation(word, cached_result)
-        if rel_hover:
-            return rel_hover
+    block_hover = _hover_block(word, cached_result)
+    if block_hover:
+        return block_hover
+
+    # Hover em valores apenas para CODE/CHAIN conforme template
+    if spec_type in {"CODE", "CHAIN"} and in_value:
+        if spec_type == "CHAIN":
+            rel_hover = _hover_relation(word, cached_result)
+            if rel_hover:
+                return rel_hover
         return _hover_code(word, cached_result)
 
     return None
@@ -133,7 +135,7 @@ def _hover_field(word: str, cached_result) -> Optional[Hover]:
     if not field_specs:
         return None
 
-    spec = field_specs.get(word)
+    spec = _find_field_spec(field_specs, word)
     if not spec:
         return None
 
@@ -214,6 +216,59 @@ def _hover_relation(word: str, cached_result) -> Optional[Hover]:
                 return Hover(contents=MarkupContent(kind=MarkupKind.Markdown, value=md))
 
     return None
+
+
+def _find_field_spec(field_specs, name: Optional[str]):
+    if not field_specs or not name:
+        return None
+    spec = field_specs.get(name)
+    if spec:
+        return spec
+    lowered = str(name).lower()
+    for key, value in field_specs.items():
+        if str(key).lower() == lowered:
+            return value
+    return None
+
+
+def _hover_block(word: str, cached_result) -> Optional[Hover]:
+    if not cached_result:
+        return None
+
+    block = word.strip().upper()
+    if block not in {"SOURCE", "ITEM", "ONTOLOGY"}:
+        return None
+
+    result = cached_result.result
+    template = getattr(result, "template", None)
+    field_specs = getattr(template, "field_specs", None) if template else None
+    if not field_specs:
+        return None
+
+    fields = []
+    for spec in field_specs.values():
+        scope = getattr(spec, "scope", None)
+        scope_name = getattr(scope, "name", None) or str(scope or "")
+        scope_name = scope_name.split(".")[-1].upper()
+        if scope_name == block:
+            fields.append(spec)
+
+    if not fields:
+        return None
+
+    fields.sort(key=lambda entry: str(entry.name).lower())
+    preview = fields[:10]
+
+    md = f"**Bloco {block}**\n\n"
+    md += f"Campos definidos ({len(fields)}):\n"
+    for spec in preview:
+        type_name = getattr(spec.type, "name", str(spec.type))
+        md += f"- `{spec.name}` ({type_name})\n"
+
+    if len(fields) > len(preview):
+        md += f"... e mais {len(fields) - len(preview)} campos"
+
+    return Hover(contents=MarkupContent(kind=MarkupKind.Markdown, value=md))
 
 
 def _get_word_at_position(line: str, character: int) -> Optional[str]:

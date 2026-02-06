@@ -94,8 +94,8 @@ def get_codes(cached_result) -> dict:
     field_specs = getattr(template, "field_specs", {}) if template else {}
 
     code_fields, chain_fields, chain_relations = _item_field_maps(field_specs)
-    file_cache: dict[str, list[str]] = {}
-    item_occ_cache: dict[tuple[str, int], dict[str, list[dict]]] = {}
+    include_code = True
+    include_chain = True
 
     codes = []
     raw_usage = _get_code_usage(lp, field_specs) or {}
@@ -109,18 +109,35 @@ def get_codes(cached_result) -> dict:
     for code in ontology_index.keys():
         code_usage.setdefault(code, [])
 
+    # Deduplicar items por identidade de objeto (normalizacao pode mesclar
+    # listas de chaves diferentes que referenciam o mesmo ItemNode)
+    for code in code_usage:
+        items = code_usage[code]
+        seen_ids: set[int] = set()
+        unique: list = []
+        for item in items:
+            item_id = id(item)
+            if item_id not in seen_ids:
+                seen_ids.add(item_id)
+                unique.append(item)
+        code_usage[code] = unique
+
     for code, items in (code_usage or {}).items():
         occurrences = _build_code_occurrences(
             code,
             items,
             field_specs,
             workspace_root,
-            file_cache=file_cache,
-            item_occ_cache=item_occ_cache,
             code_fields=code_fields,
             chain_fields=chain_fields,
             chain_relations=chain_relations,
         )
+        occurrences = _filter_occurrences_by_template(
+            occurrences,
+            include_code=include_code,
+            include_chain=include_chain,
+        )
+        occurrences = _dedupe_occurrences(occurrences)
         codes.append(
             {
                 "code": code,
@@ -320,11 +337,9 @@ def _is_chain_field(spec) -> bool:
 def _is_code_field(spec) -> bool:
     if not spec:
         return False
-    if _is_chain_field(spec):
-        return True
     spec_type = getattr(spec, "type", None)
     type_name = getattr(spec_type, "name", None) or str(spec_type or "")
-    return "CODE" in type_name.upper()
+    return "CODE" in type_name.upper() and "CHAIN" not in type_name.upper()
 
 
 def _item_field_maps(field_specs: dict) -> tuple[set[str], set[str], dict[str, bool]]:
@@ -357,6 +372,7 @@ def _item_field_maps(field_specs: dict) -> tuple[set[str], set[str], dict[str, b
 
 
 def _get_code_usage(lp, field_specs) -> dict:
+    raw_usage = None
     for attr_name in (
         "code_usage",
         "code_usage_index",
@@ -365,160 +381,97 @@ def _get_code_usage(lp, field_specs) -> dict:
     ):
         value = getattr(lp, attr_name, None)
         if value and hasattr(value, "items"):
-            return value
-    return _build_code_usage_from_sources(lp, field_specs)
+            raw_usage = value
+            break
+
+    if not raw_usage:
+        return _build_code_usage_from_sources(
+            lp,
+            field_specs,
+            include_code=True,
+            include_chain=True,
+        )
+
+    usage: dict[str, list] = {}
+    for code, items in raw_usage.items():
+        usage[code] = list(items)
+
+    # Complementar com códigos de CHAIN que não aparecem em code_usage.
+    chain_usage = _build_code_usage_from_sources(
+        lp,
+        field_specs,
+        include_code=False,
+        include_chain=True,
+    )
+    for code, items in chain_usage.items():
+        if code in usage:
+            continue
+        usage[code] = list(items)
+
+    return usage
 
 
-def _build_code_usage_from_sources(lp, field_specs) -> dict:
+def _build_code_usage_from_sources(
+    lp,
+    field_specs,
+    *,
+    include_code: bool = True,
+    include_chain: bool = True,
+) -> dict:
     usage: dict[str, list] = {}
     sources = getattr(lp, "sources", {}) or {}
     for src in _iter_sources(sources):
         for item in getattr(src, "items", []) or []:
-            for code in _iter_codes_from_item(item, field_specs):
+            for code in _iter_codes_from_item(
+                item,
+                field_specs,
+                include_code=include_code,
+                include_chain=include_chain,
+            ):
                 usage.setdefault(code, []).append(item)
     return usage
 
 
-def _iter_codes_from_item(item, field_specs) -> Iterable[str]:
-    codes = getattr(item, "codes", None) or []
-    for code in codes:
-        if isinstance(code, str) and code.strip():
-            yield code
+def _iter_codes_from_item(
+    item,
+    field_specs,
+    *,
+    include_code: bool = True,
+    include_chain: bool = True,
+) -> Iterable[str]:
+    if include_code:
+        codes = getattr(item, "codes", None) or []
+        for code in codes:
+            if isinstance(code, str) and code.strip():
+                yield code
 
-    chains = getattr(item, "chains", None) or []
-    chain_spec = field_specs.get("chain") if field_specs else None
-    for chain in chains:
-        for chain_code in _extract_chain_codes(chain, chain_spec):
-            if isinstance(chain_code, str) and chain_code.strip():
-                yield chain_code
+    if include_chain:
+        chains = getattr(item, "chains", None) or []
+        chain_spec = field_specs.get("chain") if field_specs else None
+        for chain in chains:
+            for chain_code in _extract_chain_codes(chain, chain_spec):
+                if isinstance(chain_code, str) and chain_code.strip():
+                    yield chain_code
 
     extra_fields = getattr(item, "extra_fields", {}) or {}
     for field_name, value in extra_fields.items():
         spec = field_specs.get(field_name) if field_specs else None
         if _is_chain_field(spec):
-            for candidate in _iter_chain_values(value):
-                for chain_code in _extract_chain_codes(candidate, spec):
-                    if isinstance(chain_code, str) and chain_code.strip():
-                        yield chain_code
+            if include_chain:
+                for candidate in _iter_chain_values(value):
+                    for chain_code in _extract_chain_codes(candidate, spec):
+                        if isinstance(chain_code, str) and chain_code.strip():
+                            yield chain_code
             continue
         if not _is_code_field(spec):
+            continue
+        if not include_code:
             continue
         for code in _iter_string_values(value):
             if isinstance(code, str) and code.strip():
                 yield code
 
 
-def _stringify_value(value) -> str:
-    """
-    Convert field value to string for token searching.
-
-    Handles: strings, lists, dicts, tuples.
-    """
-    if isinstance(value, str):
-        return value
-    if isinstance(value, (list, tuple)):
-        return ' '.join(str(v) for v in value)
-    if isinstance(value, dict):
-        return ' '.join(str(v) for v in value.values())
-    return str(value)
-
-
-def _extract_field_location(item, field_name, source_text=None) -> Optional[tuple[int, int]]:
-    """
-    Extract the line/column where a field's value starts within an item.
-
-    Strategy:
-        1. Check if item has field_locations dict/attribute
-        2. Check if field object has location attribute
-        3. Fallback: use item.location (existing behavior)
-    """
-    # Strategy 1: Check item.field_locations
-    field_locations = getattr(item, 'field_locations', None)
-    if field_locations and field_name in field_locations:
-        loc = field_locations[field_name]
-        return (loc.line, loc.column)
-
-    # Strategy 2: Check field object location
-    extra_fields = getattr(item, 'extra_fields', {})
-    if field_name in extra_fields:
-        field_obj = extra_fields[field_name]
-        loc = getattr(field_obj, 'location', None)
-        if loc:
-            return (loc.line, loc.column)
-
-    # Strategy 3: Check codes/chains lists for location
-    if field_name == "CODE":
-        codes = getattr(item, 'codes', [])
-        if codes:
-            loc = getattr(codes, 'location', None)
-            if loc:
-                return (loc.line, loc.column)
-
-    if field_name == "CHAIN" or _is_chain_field_name(field_name):
-        chains = getattr(item, 'chains', [])
-        if chains and len(chains) > 0:
-            loc = getattr(chains[0], 'location', None)
-            if loc:
-                return (loc.line, loc.column)
-
-    # Fallback: use item location
-    item_loc = getattr(item, 'location', None)
-    if item_loc:
-        return (item_loc.line, item_loc.column)
-
-    return None
-
-
-def _is_chain_field_name(field_name: str) -> bool:
-    """Check if field name suggests it's a chain field."""
-    return "CHAIN" in field_name.upper()
-
-
-def _find_code_in_field_value(
-    field_value: str,
-    code: str,
-    field_start_line: int,
-    field_start_column: int
-) -> list[tuple[int, int]]:
-    """
-    Find exact positions of code within field value.
-
-    Args:
-        field_value: The field value text (possibly multiline)
-        code: The code to search for (normalized comparison)
-        field_start_line: 1-based line number where field starts
-        field_start_column: 1-based column where field value starts
-
-    Returns:
-        List of (line, column) tuples (1-based) for each occurrence.
-        Empty list if code not found.
-    """
-    import re
-
-    normalized_code = _normalize_code(code)
-    positions = []
-
-    # Handle multiline values
-    lines = field_value.split('\n')
-
-    for line_offset, line_text in enumerate(lines):
-        # Calculate absolute line number
-        abs_line = field_start_line + line_offset
-
-        # Tokenize by word boundaries
-        for match in re.finditer(r'\b\w+\b', line_text):
-            if _normalize_code(match.group(0)) == normalized_code:
-                # Calculate column:
-                # - First line: relative to field_start_column
-                # - Other lines: relative to line start (column 1)
-                if line_offset == 0:
-                    abs_column = field_start_column + match.start()
-                else:
-                    abs_column = match.start() + 1  # 1-based
-
-                positions.append((abs_line, abs_column))
-
-    return positions
 
 
 def _get_item_location(item):
@@ -533,6 +486,218 @@ def _get_item_location(item):
     return loc or source_loc
 
 
+def _location_to_occurrence(
+    location,
+    workspace_root: Optional[Path],
+    fallback_file: Optional[str] = None,
+) -> Optional[tuple[str, int, int]]:
+    if not location:
+        return None
+    if isinstance(location, dict):
+        file_val = location.get("file")
+        line = location.get("line")
+        column = location.get("column")
+    else:
+        file_val = getattr(location, "file", None)
+        line = getattr(location, "line", None)
+        column = getattr(location, "column", None)
+    if not file_val:
+        file_val = fallback_file
+    if not file_val or line is None or column is None:
+        return None
+    return (
+        _relativize_path(str(file_val), workspace_root),
+        int(line),
+        int(column),
+    )
+
+
+def _iter_value_locations(values: list[str], locations: list) -> Iterable[tuple[str, object]]:
+    if not values or not locations:
+        return []
+    limit = min(len(values), len(locations))
+    return [(values[idx], locations[idx]) for idx in range(limit)]
+
+
+
+def _select_code_location_values(
+    field_name,
+    locs,
+    item,
+    extra_fields,
+    normalized_code,
+    code_fields: set[str],
+    chain_fields: set[str],
+):
+    field_key = str(field_name).lower()
+    if field_key not in {"code", "codes"}:
+        values = [str(v) for v in _iter_string_values(extra_fields.get(field_name))]
+        return field_name, values
+
+    candidates: list[tuple[str, list[str]]] = []
+
+    codes_list = [str(v) for v in (getattr(item, "codes", None) or [])]
+    if codes_list:
+        candidates.append((field_name, codes_list))
+
+    candidate_fields = set(code_fields or set()) - set(chain_fields or set())
+    for name, value in extra_fields.items():
+        if candidate_fields and name not in candidate_fields:
+            continue
+        values = [str(v) for v in _iter_string_values(value)]
+        if values:
+            candidates.append((name, values))
+
+    matched = [(name, values) for name, values in candidates if len(values) == len(locs)]
+    if matched:
+        if normalized_code:
+            for name, values in matched:
+                if any(_normalize_code(val) == normalized_code for val in values):
+                    return name, values
+        for name, values in matched:
+            if str(name).lower() in {"code", "codes"}:
+                return name, values
+        return matched[0]
+
+    return field_name, []
+
+
+def _iter_chain_code_locations(chain, has_relations: bool) -> list[tuple[str, object]]:
+    nodes = getattr(chain, "nodes", None) or []
+    locations = getattr(chain, "node_locations", None) or []
+    if not nodes or not locations or len(nodes) != len(locations):
+        return []
+    if has_relations and len(nodes) >= 3 and len(nodes) % 2 == 1:
+        indices = range(0, len(nodes), 2)
+    else:
+        indices = range(len(nodes))
+    return [(nodes[idx], locations[idx]) for idx in indices]
+
+
+def _append_precise_occurrences(
+    occurrences: list[dict],
+    seen: set[tuple],
+    normalized_code: str,
+    item,
+    field_specs: dict,
+    workspace_root: Optional[Path],
+    code_fields: set[str],
+    chain_fields: set[str],
+    chain_relations: dict[str, bool],
+) -> tuple[bool, bool]:
+    """
+    Append precise occurrences from compiler-provided locations.
+
+    Returns:
+        tuple[bool, bool]: (found_any, found_code_precise)
+            - found_any: True if any occurrence was found (even if already in seen)
+            - found_code_precise: True if a precise CODE occurrence was found
+    """
+    found_any = False
+    found_code_precise = False
+    item_loc = _get_item_location(item)
+    fallback_file = getattr(item_loc, "file", None) if item_loc else None
+
+    code_locations = getattr(item, "code_locations", None) or {}
+    extra_fields = getattr(item, "extra_fields", {}) or {}
+
+    for field_name, locs in code_locations.items():
+        value_field, values = _select_code_location_values(
+            field_name,
+            locs,
+            item,
+            extra_fields,
+            normalized_code,
+            code_fields,
+            chain_fields,
+        )
+        if not values:
+            continue
+        for value, loc in _iter_value_locations(values, locs):
+            if _normalize_code(value) != normalized_code:
+                continue
+            loc_info = _location_to_occurrence(loc, workspace_root, fallback_file)
+            if not loc_info:
+                continue
+            file_rel, line, column = loc_info
+            key = (file_rel, line, column, value_field, "code")
+            if key in seen:
+                found_any = True
+                found_code_precise = True
+                continue
+            seen.add(key)
+            occurrences.append(
+                {
+                    "file": file_rel,
+                    "line": line,
+                    "column": column,
+                    "context": "code",
+                    "field": value_field,
+                }
+            )
+            found_any = True
+            found_code_precise = True
+
+    for chain in getattr(item, "chains", None) or []:
+        field_name = (
+            getattr(chain, "field_name", None)
+            or getattr(chain, "field", None)
+            or "chain"
+        )
+        has_relations = chain_relations.get(str(field_name).lower(), False)
+        for value, loc in _iter_chain_code_locations(chain, has_relations):
+            if _normalize_code(value) != normalized_code:
+                continue
+            loc_info = _location_to_occurrence(loc, workspace_root, fallback_file)
+            if not loc_info:
+                continue
+            file_rel, line, column = loc_info
+            key = (file_rel, line, column, field_name, "chain")
+            if key in seen:
+                found_any = True
+                continue
+            seen.add(key)
+            occurrences.append(
+                {
+                    "file": file_rel,
+                    "line": line,
+                    "column": column,
+                    "context": "chain",
+                    "field": field_name,
+                }
+            )
+            found_any = True
+
+    for field_name, value in extra_fields.items():
+        spec = field_specs.get(field_name) if field_specs else None
+        has_relations = bool(getattr(spec, "relations", None))
+        for chain in _iter_chain_values(value):
+            for chain_value, loc in _iter_chain_code_locations(chain, has_relations):
+                if _normalize_code(chain_value) != normalized_code:
+                    continue
+                loc_info = _location_to_occurrence(loc, workspace_root, fallback_file)
+                if not loc_info:
+                    continue
+                file_rel, line, column = loc_info
+                key = (file_rel, line, column, field_name, "chain")
+                if key in seen:
+                    found_any = True
+                    continue
+                seen.add(key)
+                occurrences.append(
+                    {
+                        "file": file_rel,
+                        "line": line,
+                        "column": column,
+                        "context": "chain",
+                        "field": field_name,
+                    }
+                )
+                found_any = True
+
+    return found_any, found_code_precise
+
+
 def _build_code_occurrences(
     code,
     items,
@@ -540,8 +705,6 @@ def _build_code_occurrences(
     workspace_root: Optional[Path],
     source_text=None,
     *,
-    file_cache: Optional[dict[str, list[str]]] = None,
-    item_occ_cache: Optional[dict[tuple[str, int], dict[str, list[dict]]]] = None,
     code_fields: Optional[set[str]] = None,
     chain_fields: Optional[set[str]] = None,
     chain_relations: Optional[dict[str, bool]] = None,
@@ -550,8 +713,6 @@ def _build_code_occurrences(
     seen: set[tuple] = set()
     normalized_code = _normalize_code(code)
 
-    file_cache = file_cache or {}
-    item_occ_cache = item_occ_cache or {}
     if code_fields is None or chain_fields is None or chain_relations is None:
         code_fields, chain_fields, chain_relations = _item_field_maps(field_specs or {})
 
@@ -568,28 +729,36 @@ def _build_code_occurrences(
         if line is None or column is None:
             continue
 
-        # Prefer exact positions from raw source text (CODE/CHAIN fields)
-        found_text = False
-        text_occurrences = _get_item_text_occurrences(
+        # Prefer exact positions from compiler-provided locations
+        found_any, _found_code_precise = _append_precise_occurrences(
+            occurrences,
+            seen,
+            normalized_code,
             item,
+            field_specs,
             workspace_root,
-            file_cache,
-            item_occ_cache,
             code_fields,
             chain_fields,
             chain_relations,
         )
-        if text_occurrences:
-            for occ in text_occurrences.get(normalized_code, []):
-                key = (occ["file"], occ["line"], occ["column"], occ["field"], occ["context"])
-                if key not in seen:
-                    seen.add(key)
-                    occurrences.append(occ)
-                    found_text = True
-        if found_text:
+        if found_any:
             continue
 
-        # Search in extra_fields with exact positioning (compiler-driven fallback)
+        # Coarse fallback (no regex): item/chain locations only
+        item_label = (
+            getattr(item, "bibref", None)
+            or getattr(item, "name", None)
+            or getattr(item, "id", None)
+            or "unknown-item"
+        )
+        logger.info(
+            "getCodes fallback to item location (code=%s, item=%s, file=%s, line=%s, column=%s)",
+            code,
+            item_label,
+            file_path,
+            line,
+            column,
+        )
         extra_fields = getattr(item, "extra_fields", {}) or {}
         for field_name, value in extra_fields.items():
             spec = field_specs.get(field_name) if field_specs else None
@@ -598,22 +767,13 @@ def _build_code_occurrences(
             if is_chain_field:
                 if not _chain_value_contains_code(value, code, spec):
                     continue
-
-                field_loc = _extract_field_location(item, field_name, source_text)
                 for candidate in _iter_chain_values(value):
                     chain_codes = _extract_chain_codes(candidate, spec)
                     if not any(_normalize_code(c) == normalized_code for c in chain_codes):
                         continue
-
                     chain_loc = getattr(candidate, "location", None)
-                    if chain_loc:
-                        occ_line = getattr(chain_loc, "line", line)
-                        occ_column = getattr(chain_loc, "column", column)
-                    elif field_loc:
-                        occ_line, occ_column = field_loc
-                    else:
-                        occ_line, occ_column = line, column
-
+                    occ_line = getattr(chain_loc, "line", line) if chain_loc else line
+                    occ_column = getattr(chain_loc, "column", column) if chain_loc else column
                     key = (file_path, occ_line, occ_column, field_name, "chain")
                     if key not in seen:
                         seen.add(key)
@@ -629,382 +789,109 @@ def _build_code_occurrences(
             if not _value_contains_code(value, code):
                 continue
 
-            context = "code"
+            key = (file_path, line, column, field_name, "code")
+            if key not in seen:
+                seen.add(key)
+                occurrences.append({
+                    "file": file_path,
+                    "line": line,
+                    "column": column,
+                    "context": "code",
+                    "field": field_name,
+                })
 
-            # Try to get exact field location
-            field_loc = _extract_field_location(item, field_name, source_text)
-            if field_loc:
-                field_line, field_column = field_loc
-                field_value_str = _stringify_value(value)
-
-                # Find exact token positions within field value
-                positions = _find_code_in_field_value(
-                    field_value_str, code, field_line, field_column
-                )
-
-                for pos_line, pos_column in positions:
-                    key = (file_path, pos_line, pos_column, field_name, context)
-                    if key not in seen:
-                        seen.add(key)
-                        occurrences.append({
-                            "file": file_path,
-                            "line": pos_line,
-                            "column": pos_column,
-                            "context": context,
-                            "field": field_name,
-                        })
-            else:
-                # Fallback to item location if field location unavailable
-                key = (file_path, line, column, field_name, context)
-                if key not in seen:
-                    seen.add(key)
-                    occurrences.append({
-                        "file": file_path,
-                        "line": line,
-                        "column": column,
-                        "context": context,
-                        "field": field_name,
-                    })
-
-        # Search in chains with exact positioning
         chains = getattr(item, "chains", None) or []
         chain_spec = field_specs.get("chain") if field_specs else None
         for chain in chains:
             chain_codes = _extract_chain_codes(chain, chain_spec)
             if not chain_codes:
                 continue
-
-            # Check if code matches subject or object
             if any(_normalize_code(c) == normalized_code for c in chain_codes):
                 field_name = (
                     getattr(chain, "field_name", None)
                     or getattr(chain, "field", None)
                     or "CHAIN"
                 )
-
-                # Try to extract chain location
-                chain_loc = getattr(chain, 'location', None)
-                if chain_loc:
-                    chain_line = getattr(chain_loc, 'line', line)
-                    chain_column = getattr(chain_loc, 'column', column)
-                else:
-                    chain_line = line
-                    chain_column = column
-
-                key = (file_path, chain_line, chain_column, field_name, "chain")
+                chain_loc = getattr(chain, "location", None)
+                occ_line = getattr(chain_loc, "line", line) if chain_loc else line
+                occ_column = getattr(chain_loc, "column", column) if chain_loc else column
+                key = (file_path, occ_line, occ_column, field_name, "chain")
                 if key not in seen:
                     seen.add(key)
                     occurrences.append({
                         "file": file_path,
-                        "line": chain_line,
-                        "column": chain_column,
+                        "line": occ_line,
+                        "column": occ_column,
                         "context": "chain",
                         "field": field_name,
                     })
 
-        # Fallback: Search in codes list if not found in extra_fields or chains
         codes_list = getattr(item, "codes", None) or []
         if any(_normalize_code(c) == normalized_code for c in codes_list):
-            # Check if already covered by extra_fields
-            already_covered = any(
-                occ["file"] == file_path and
-                occ["field"] in ["CODE", "CODES"] and
-                (occ["line"], occ["column"]) != (line, column)
-                for occ in occurrences
-            )
-
-            if not already_covered:
-                key = (file_path, line, column, "CODE", "code")
-                if key not in seen:
-                    seen.add(key)
-                    occurrences.append({
-                        "file": file_path,
-                        "line": line,
-                        "column": column,
-                        "context": "code",
-                        "field": "CODE",
-                    })
+            key = (file_path, line, column, "CODE", "code")
+            if key not in seen:
+                seen.add(key)
+                occurrences.append({
+                    "file": file_path,
+                    "line": line,
+                    "column": column,
+                    "context": "code",
+                    "field": "CODE",
+                })
 
     return occurrences
 
 
-def _resolve_file_for_read(file_val: str, workspace_root: Optional[Path]) -> Optional[Path]:
-    path = _normalize_file_path(file_val)
-    if not path:
-        return None
-    if path.is_absolute():
-        return path
-    if workspace_root:
-        return workspace_root / path
-    return path
+def _filter_occurrences_by_template(
+    occurrences: list[dict],
+    *,
+    include_code: bool,
+    include_chain: bool,
+) -> list[dict]:
+    if include_code and include_chain:
+        return occurrences
+    if not include_code and not include_chain:
+        return []
+    filtered = []
+    for occ in occurrences:
+        context = (occ or {}).get("context")
+        if context == "code" and include_code:
+            filtered.append(occ)
+        elif context == "chain" and include_chain:
+            filtered.append(occ)
+    return filtered
 
 
-def _strip_comment(text: str) -> str:
-    idx = text.find("#")
-    return text if idx < 0 else text[:idx]
 
 
-def _split_with_offsets(text: str, delimiter: str) -> list[tuple[str, int]]:
-    segments: list[tuple[str, int]] = []
-    start = 0
-    while True:
-        idx = text.find(delimiter, start)
-        if idx == -1:
-            segments.append((text[start:], start))
-            break
-        segments.append((text[start:idx], start))
-        start = idx + len(delimiter)
-    return segments
+def _dedupe_occurrences(occurrences: list[dict]) -> list[dict]:
+    """
+    Remove exact duplicates based on file/line/column/context/field.
 
-
-def _iter_code_tokens(value_text: str, base_offset: int) -> list[tuple[str, int]]:
-    text = _strip_comment(value_text)
-    tokens: list[tuple[str, int]] = []
-    start = 0
-    while start <= len(text):
-        comma_idx = text.find(",", start)
-        if comma_idx == -1:
-            segment = text[start:]
-            segment_start = start
-        else:
-            segment = text[start:comma_idx]
-            segment_start = start
-
-        token_text = segment.strip()
-        if token_text:
-            leading_ws = len(segment) - len(segment.lstrip())
-            token_start = segment_start + leading_ws
-            tokens.append((token_text, base_offset + token_start))
-
-        if comma_idx == -1:
-            break
-        start = comma_idx + 1
-
-    return tokens
-
-
-def _segment_to_token(segment: str, segment_start: int) -> Optional[tuple[str, int]]:
-    leading_ws = len(segment) - len(segment.lstrip())
-    trimmed = segment.strip()
-    if not trimmed:
-        return None
-
-    token_text = trimmed
-    token_start = leading_ws
-
-    if "::" in trimmed:
-        idx = trimmed.rfind("::") + 2
-        while idx < len(trimmed) and trimmed[idx].isspace():
-            idx += 1
-        if idx < len(trimmed):
-            token_text = trimmed[idx:].strip()
-            token_start = leading_ws + idx
-
-    return (token_text, segment_start + token_start)
-
-
-def _iter_chain_tokens(value_text: str, base_offset: int, has_relations: bool) -> list[tuple[str, int]]:
-    text = _strip_comment(value_text)
-    segments = _split_with_offsets(text, "->")
-    nodes: list[tuple[str, int]] = []
-    for segment, segment_start in segments:
-        token = _segment_to_token(segment, segment_start)
-        if token:
-            nodes.append(token)
-
-    if not nodes:
+    This prevents duplicates that may arise from multiple compilation phases
+    (transformer + linker) both populating code_locations.  Field names are
+    normalized to lowercase so that "CODE" and "code" are treated as the same.
+    """
+    if not occurrences:
         return []
 
-    if has_relations and len(nodes) >= 3 and len(nodes) % 2 == 1:
-        nodes = nodes[::2]
-
-    return [(token, base_offset + start) for token, start in nodes]
-
-
-def _record_value_occurrences(
-    occurrences: dict[str, list[dict]],
-    value_text: str,
-    base_offset: int,
-    line_idx: int,
-    file_rel: str,
-    field_name: str,
-    is_chain: bool,
-    has_relations: bool,
-) -> None:
-    context = "chain" if is_chain else "code"
-    if is_chain:
-        tokens = _iter_chain_tokens(value_text, base_offset, has_relations)
-    else:
-        tokens = _iter_code_tokens(value_text, base_offset)
-
-    for token_text, start_idx in tokens:
-        code_key = _normalize_code(token_text)
-        if not code_key:
+    seen: set[tuple] = set()
+    result: list[dict] = []
+    for occ in occurrences:
+        if not occ:
             continue
-        occurrences.setdefault(code_key, []).append(
-            {
-                "file": file_rel,
-                "line": line_idx + 1,
-                "column": start_idx + 1,
-                "context": context,
-                "field": field_name,
-            }
+        key = (
+            occ.get("file"),
+            occ.get("line"),
+            occ.get("column"),
+            occ.get("context"),
+            (occ.get("field") or "").lower(),
         )
+        if key not in seen:
+            seen.add(key)
+            result.append(occ)
 
-
-def _parse_item_block_occurrences(
-    lines: list[str],
-    start_idx: int,
-    code_fields: set[str],
-    chain_fields: set[str],
-    chain_relations: dict[str, bool],
-    file_rel: str,
-) -> dict[str, list[dict]]:
-    occurrences: dict[str, list[dict]] = {}
-    if start_idx < 0 or start_idx >= len(lines):
-        return occurrences
-
-    item_line = lines[start_idx]
-    item_indent = len(item_line) - len(item_line.lstrip(" \t"))
-
-    end_idx = len(lines)
-    for idx in range(start_idx + 1, len(lines)):
-        line = lines[idx]
-        stripped = line.strip()
-        if not stripped:
-            continue
-        indent = len(line) - len(line.lstrip(" \t"))
-        if stripped.upper().startswith("END ITEM") and indent <= item_indent:
-            end_idx = idx
-            break
-
-    current_field: Optional[str] = None
-    current_field_indent: Optional[int] = None
-    current_field_is_chain = False
-    current_field_has_relations = False
-
-    for idx in range(start_idx + 1, end_idx):
-        line = lines[idx]
-        stripped = line.strip()
-        if not stripped:
-            continue
-
-        indent = len(line) - len(line.lstrip(" \t"))
-
-        if current_field and indent <= (current_field_indent or 0) and not stripped.startswith("#"):
-            current_field = None
-            current_field_indent = None
-            current_field_is_chain = False
-            current_field_has_relations = False
-
-        if stripped.startswith("#"):
-            continue
-
-        field_match = re.match(r"^(\s*)([\w._-]+)\s*:\s*(.*)$", line)
-        if field_match:
-            field_name = field_match.group(2)
-            field_key = field_name.lower()
-            current_field_indent = len(field_match.group(1))
-
-            if field_key in chain_fields:
-                current_field = field_name
-                current_field_is_chain = True
-                current_field_has_relations = chain_relations.get(field_key, False)
-            elif field_key in code_fields:
-                current_field = field_name
-                current_field_is_chain = False
-                current_field_has_relations = False
-            else:
-                current_field = None
-                current_field_indent = None
-                current_field_is_chain = False
-                current_field_has_relations = False
-
-            if current_field:
-                value_text = field_match.group(3)
-                if value_text.strip():
-                    _record_value_occurrences(
-                        occurrences,
-                        value_text,
-                        field_match.start(3),
-                        idx,
-                        file_rel,
-                        current_field,
-                        current_field_is_chain,
-                        current_field_has_relations,
-                    )
-            continue
-
-        if not current_field:
-            continue
-
-        if indent <= (current_field_indent or 0):
-            current_field = None
-            current_field_indent = None
-            current_field_is_chain = False
-            current_field_has_relations = False
-            continue
-
-        _record_value_occurrences(
-            occurrences,
-            line,
-            0,
-            idx,
-            file_rel,
-            current_field,
-            current_field_is_chain,
-            current_field_has_relations,
-        )
-
-    return occurrences
-
-
-def _get_item_text_occurrences(
-    item,
-    workspace_root: Optional[Path],
-    file_cache: dict[str, list[str]],
-    item_occ_cache: dict[tuple[str, int], dict[str, list[dict]]],
-    code_fields: set[str],
-    chain_fields: set[str],
-    chain_relations: dict[str, bool],
-) -> Optional[dict[str, list[dict]]]:
-    item_loc = _get_item_location(item)
-    if not item_loc:
-        return None
-    file_val = getattr(item_loc, "file", None)
-    line = getattr(item_loc, "line", None)
-    if not file_val or line is None:
-        return None
-
-    file_path = _resolve_file_for_read(str(file_val), workspace_root)
-    if not file_path:
-        return None
-
-    cache_key = (str(file_path), int(line))
-    if cache_key in item_occ_cache:
-        return item_occ_cache[cache_key]
-
-    lines = file_cache.get(str(file_path))
-    if lines is None:
-        try:
-            content = file_path.read_text(encoding="utf-8")
-        except OSError:
-            item_occ_cache[cache_key] = {}
-            return item_occ_cache[cache_key]
-        lines = content.splitlines()
-        file_cache[str(file_path)] = lines
-
-    file_rel = _relativize_path(str(file_val), workspace_root)
-    occurrences = _parse_item_block_occurrences(
-        lines,
-        int(line) - 1,
-        code_fields,
-        chain_fields,
-        chain_relations,
-        file_rel,
-    )
-    item_occ_cache[cache_key] = occurrences
-    return occurrences
+    return result
 
 
 def _extract_chain_triple(chain) -> Optional[tuple[str, str, str]]:

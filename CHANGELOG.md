@@ -5,10 +5,106 @@ All notable changes to the Synesis LSP project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.14.14] - 2026-02-05
+
+### Fixed
+- **CODE occurrence duplication in OntologyAnnotationExplorer**: Adicionada função `_dedupe_occurrences()` em `ontology_annotations.py` para eliminar duplicatas
+  - Bug: campos CODE apareciam duplicados (2x) no Ontology Annotations Explorer
+  - Mecanismo: `_build_occurrences` não tinha deduplicação final, permitindo que a mesma occurrence fosse adicionada múltiplas vezes
+  - Solução: Implementada mesma função `_dedupe_occurrences()` de `explorer_requests.py` (Phase 1 only - exact dedup)
+  - Normalização de field names para lowercase evita duplicatas "CODE" vs "code"
+- Ontology Annotations Explorer agora mostra cada occurrence CODE apenas 1x (comportamento idêntico ao Code Explorer)
+
+### Architecture
+- **Consistência**: `ontology_annotations.py` e `explorer_requests.py` agora usam mesma lógica de deduplicação
+- **Fix at source**: Correção no LSP (server-side) ao invés de compensação no cliente
+- **Exact-match only**: Apenas Phase 1 deduplication (file/line/column/context/field) sem proximity heuristics
+
+## [0.14.13] - 2026-02-05
+
+### Fixed
+- **CHAIN last-occurrence-only bug**: Removida Phase 2 "semantic deduplication" de `_dedupe_occurrences()` que colapsava occurrences próximas (≤5 linhas)
+  - Bug: quando um código (ex: CCS_Support) aparecia em múltiplas CHAINs consecutivas no mesmo ITEM, apenas a última occurrence era retornada
+  - Mecanismo: Phase 2 agrupava por (file, field, context) e mantinha apenas linha mais alta, colapsando todas as 4 chains em uma só
+  - Solução: Phase 1 (exact dedup por file/line/column/context/field) é suficiente - cenários de near-duplicate já prevenidos por: (1) item dedup por `id()`, (2) `found_any=True` defense, (3) linker's `existing_keys` check
+- Code Explorer agora mostra TODAS as occurrences de códigos em campos CHAIN, não apenas a última
+
+### Architecture
+- **Lição aprendida**: Heurísticas baseadas em proximidade para deduplicação são perigosas - removem dados legítimos silenciosamente
+- **Princípio**: Sempre preferir exact-match deduplication ao invés de proximity-based heuristics
+
+## [0.14.12] - 2026-02-05
+
+### Fixed
+- **CODE occurrence duplication (root cause)**: `get_codes()` agora deduplica items por identidade de objeto (`id(item)`) após normalização de códigos, eliminando duplicação quando chaves diferentes (ex: "A201" e "a201") mapeiam para o mesmo ItemNode
+- **Defensive fix in `_append_precise_occurrences`**: Marca `found_any=True` mesmo quando occurrence já existe em `seen`, prevenindo execução indevida do fallback que adiciona localização do bloco ITEM
+- **Field name normalization**: `_dedupe_occurrences()` agora normaliza field names para lowercase em ambas as fases de deduplicação (exact + semantic), capturando duplicatas com diferença de case ("code" vs "CODE")
+- Code Explorer e Ontology Annotations Explorer agora mostram apenas occurrences nas linhas exatas dos campos CODE/CHAIN, não no início do bloco ITEM
+
+### Architecture
+- Implementação de 3 camadas de defesa (defense in depth): (1) dedup items por `id()`, (2) `found_any` defensivo, (3) field name normalization
+- Pattern de deduplicação por `id(item)` alinhado com `ontology_annotations.py:_add_item_to_usage` (já implementado)
+- Remoção de banda-aid client-side (VSCode extension) que compensava incorretamente o problema na fonte
+
+## [0.14.11] - 2026-02-05
+
+### Fixed
+- `_dedupe_occurrences()` agora usa deduplicação semântica para remover duplicatas com linhas próximas (≤5 linhas), mantendo a localização mais específica (linha maior = mais dentro do bloco)
+- Code Explorer não mostra mais duplicatas de códigos CODE com linha do ITEM + linha do campo (ex: linha 115 ITEM + linha 117 CODE)
+- Correção definitiva para problema de múltiplas fases de compilação (transformer + linker) gerando localizações ligeiramente diferentes do mesmo código
+
+## [0.14.10] - 2026-02-04
+
+### Fixed
+- `_dedupe_occurrences()` agora inclui `column` na chave de deduplicação (correção definitiva para duplicatas CODE/CHAIN)
+- Tree views do Explorer não mostram mais ocorrências duplicadas (localização ITEM + CODE)
+- Correção complementar ao synesis v0.2.9 para garantir deduplicação em camada LSP
+
+## [0.14.9] - 2026-02-04
+
+### Fixed
+- Minor fixes
+
+## [0.14.8] - 2026-02-04
+
+### Fixed
+- `synesis/getCodes` agora respeita campos CODE/CHAIN definidos no template ao calcular ocorrências e contagens.
+- Hover agora exibe ajuda para campos em SOURCE/ITEM/ONTOLOGY e resume blocos conforme o template.
+- `synesis/getCodes` remove duplicatas de ocorrências e mantém a localização mais precisa por linha.
+- `synesis/getRelationGraph` voltou a filtrar por bibref usando `code_usage` com fallback por fontes.
+- `synesis/getOntologyTopics` agora aceita hierarquias simples sem bloco `ONTOLOGY`.
+- Rename de códigos em `.syn` passa a funcionar mesmo sem template carregado (fallback).
+
+### Changed
+- Completion passa a disparar também em `:` e `>` e sugere ontologia automaticamente.
 
 ### Planned
 - Centralizar lista de comandos/keywords no compilador/gramatica e expor ao LSP, evitando duplicacao em `template_diagnostics.py`.
+
+## [0.14.7] - 2026-02-04
+
+### Fixed
+- `synesis/getCodes` gerando campos duplicados (correção complementar)
+- `_dedupe_occurrences()` agora inclui `column` na chave de deduplicação para remover duplicatas exatas
+- Tree views do Explorer agora mostram apenas 1 ocorrência por CODE/CHAIN (não mais localização ITEM + localização CODE) 
+
+## [0.14.6] - 2026-02-04
+
+### Fixed
+- `synesis/getCodes` e `synesis/getOntologyAnnotations` agora alinham `code_locations` com o campo real do template quando a chave vem como `code`/`codes`, garantindo linha/coluna exatas para campos CODE com nomes customizados.
+
+## [0.14.5] - 2026-02-04
+
+### Fixed
+- `synesis/getCodes` agora utiliza localizações precisas de CODE/CHAIN mesmo quando o template não reconhece o nome do campo, reduzindo fallback por item.
+
+## [0.14.4] - 2026-02-04
+
+### Changed
+- `synesis/getCodes` agora usa localizações exatas fornecidas pelo compilador para CODE/CHAIN (inclui multiline), evitando fallback regex.
+
+### Fixed
+- Ontology annotations agora retornam posições exatas de CODE/CHAIN usando `code_locations` e `node_locations` do compilador.
 
 ## [0.14.3] - 2026-02-03
 

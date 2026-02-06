@@ -274,7 +274,7 @@ def _build_code_pattern(old_code_raw: str, old_code_key: str) -> re.Pattern:
 
 
 def _ontology_code_fields(template) -> set[str]:
-    fields: set[str] = {"parent", "parents", "is_a", "isa", "chain", "chains"}
+    fields: set[str] = set()
     if not template:
         return fields
     field_specs = getattr(template, "field_specs", None) or {}
@@ -289,7 +289,7 @@ def _ontology_code_fields(template) -> set[str]:
 
 
 def _item_code_fields(template) -> set[str]:
-    fields: set[str] = {"code", "codes"}
+    fields: set[str] = set()
     if not template:
         return fields
     field_specs = getattr(template, "field_specs", None) or {}
@@ -304,7 +304,7 @@ def _item_code_fields(template) -> set[str]:
 
 
 def _item_chain_fields(template) -> set[str]:
-    fields: set[str] = {"chain", "chains"}
+    fields: set[str] = set()
     if not template:
         return fields
     field_specs = getattr(template, "field_specs", None) or {}
@@ -359,7 +359,10 @@ def _find_and_replace_in_syn(
         field_match = re.match(r"^(\s*)([\w._-]+)(\s*:)\s*(.*)$", line)
         if field_match:
             field_name = field_match.group(2).lower()
-            current_code_field = field_name in item_code_fields or field_name in item_chain_fields
+            current_code_field = (
+                field_name in item_code_fields
+                or field_name in item_chain_fields
+            )
             current_field_indent = len(field_match.group(1)) if current_code_field else None
             if current_code_field:
                 value = field_match.group(4)

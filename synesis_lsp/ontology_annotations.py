@@ -51,6 +51,45 @@ def _iter_chain_values(value):
     yield value
 
 
+def _iter_value_locations(values, locations):
+    if not values or not locations:
+        return []
+    limit = min(len(values), len(locations))
+    return [(values[idx], locations[idx]) for idx in range(limit)]
+
+
+
+def _select_code_location_values(field_name, locs, item, extra_fields, target):
+    field_key = str(field_name).lower()
+    if field_key not in {"code", "codes"}:
+        values = [str(v) for v in _iter_string_values(extra_fields.get(field_name))]
+        return field_name, values
+
+    candidates: list[tuple[str, list[str]]] = []
+
+    codes_list = [str(v) for v in (getattr(item, "codes", None) or [])]
+    if codes_list:
+        candidates.append((field_name, codes_list))
+
+    for name, value in extra_fields.items():
+        values = [str(v) for v in _iter_string_values(value)]
+        if values:
+            candidates.append((name, values))
+
+    matched = [(name, values) for name, values in candidates if len(values) == len(locs)]
+    if matched:
+        if target:
+            for name, values in matched:
+                if any(_normalize_code(val) == target for val in values):
+                    return name, values
+        for name, values in matched:
+            if str(name).lower() in {"code", "codes"}:
+                return name, values
+        return matched[0]
+
+    return field_name, []
+
+
 def _chain_nodes(chain) -> list[str]:
     if chain is None:
         return []
@@ -75,8 +114,26 @@ def _chain_nodes(chain) -> list[str]:
     return []
 
 
+def _iter_chain_code_locations(chain):
+    nodes = getattr(chain, "nodes", None) or []
+    locations = getattr(chain, "node_locations", None) or []
+    if not nodes or not locations or len(nodes) != len(locations):
+        return []
+    return [(nodes[idx], locations[idx]) for idx in range(len(nodes))]
+
+
+def _location_line_column(location):
+    if not location:
+        return (None, None)
+    if isinstance(location, dict):
+        return (location.get("line"), location.get("column"))
+    return (getattr(location, "line", None), getattr(location, "column", None))
+
+
 def _chain_contains_code(chain, code: str) -> bool:
     target = _normalize_code(code)
+    if isinstance(chain, str) and _normalize_code(chain) == target:
+        return True
     for node in _chain_nodes(chain):
         if _normalize_code(node) == target:
             return True
@@ -302,6 +359,9 @@ def get_ontology_annotations(
             active_file=None
         )
 
+        # Deduplicate occurrences (Phase 1 only - exact match)
+        occurrences = _dedupe_occurrences(occurrences)
+
         # Adicionar annotation
         annotation = {
             "code": code,
@@ -403,6 +463,8 @@ def _find_code_in_item(
         Lista de occurrences encontradas neste item
     """
     occurrences = []
+    seen: set[tuple] = set()
+    target = _normalize_code(code)
 
     # Extrair location base do item
     location = getattr(item, "location", None)
@@ -411,6 +473,100 @@ def _find_code_in_item(
 
     # Procurar em extra_fields (CODE, CHAIN, etc.)
     extra_fields = getattr(item, "extra_fields", {}) or {}
+
+    # Preferir posições precisas fornecidas pelo compilador
+    code_locations = getattr(item, "code_locations", None) or {}
+    for field_name, locs in code_locations.items():
+        value_field, values = _select_code_location_values(
+            field_name, locs, item, extra_fields, target
+        )
+        if not values:
+            continue
+        for value, loc in _iter_value_locations(values, locs):
+            if _normalize_code(value) != target:
+                continue
+            line, column = _location_line_column(loc)
+            if line is None or column is None:
+                continue
+            key = (file_path, line, column, (value_field or "").lower(), "code")
+            if key in seen:
+                continue
+            seen.add(key)
+            occurrences.append(
+                {
+                    "file": file_path,
+                    "itemName": item_name,
+                    "line": line,
+                    "column": column,
+                    "context": "code",
+                    "field": value_field,
+                }
+            )
+
+    # Posições precisas para chains em item.chains
+    chains = getattr(item, "chains", []) or []
+    for chain in chains:
+        field_name = (
+            getattr(chain, "field_name", None)
+            or getattr(chain, "field", None)
+            or "CHAIN"
+        )
+        for node, loc in _iter_chain_code_locations(chain):
+            if _normalize_code(node) != target:
+                continue
+            line, column = _location_line_column(loc)
+            if line is None or column is None:
+                continue
+            key = (file_path, line, column, str(field_name).lower(), "chain")
+            if key in seen:
+                continue
+            seen.add(key)
+            occurrences.append(
+                {
+                    "file": file_path,
+                    "itemName": item_name,
+                    "line": line,
+                    "column": column,
+                    "context": "chain",
+                    "field": field_name,
+                }
+            )
+
+    # Posições precisas para chains em extra_fields
+    for field_name, field_value in extra_fields.items():
+        for candidate in _iter_chain_values(field_value):
+            for node, loc in _iter_chain_code_locations(candidate):
+                if _normalize_code(node) != target:
+                    continue
+                line, column = _location_line_column(loc)
+                if line is None or column is None:
+                    continue
+                key = (file_path, line, column, str(field_name).lower(), "chain")
+                if key in seen:
+                    continue
+                seen.add(key)
+                occurrences.append(
+                    {
+                        "file": file_path,
+                        "itemName": item_name,
+                        "line": line,
+                        "column": column,
+                        "context": "chain",
+                        "field": field_name,
+                    }
+                )
+
+    if occurrences:
+        return occurrences
+
+    logger.info(
+        "getOntologyAnnotations fallback to item location (code=%s, item=%s, file=%s, line=%s, column=%s)",
+        code,
+        item_name,
+        file_path,
+        item_line,
+        item_column,
+    )
 
     for field_name, field_value in extra_fields.items():
         if not field_value:
@@ -480,3 +636,33 @@ def _extract_chain_location(chain, fallback_location):
         return chain_loc
 
     return fallback_location
+
+
+def _dedupe_occurrences(occurrences: list[dict]) -> list[dict]:
+    """
+    Remove exact duplicates based on file/line/column/context/field.
+
+    This prevents duplicates that may arise from multiple compilation phases
+    (transformer + linker) both populating code_locations.  Field names are
+    normalized to lowercase so that "CODE" and "code" are treated as the same.
+    """
+    if not occurrences:
+        return []
+
+    seen: set[tuple] = set()
+    result: list[dict] = []
+    for occ in occurrences:
+        if not occ:
+            continue
+        key = (
+            occ.get("file"),
+            occ.get("line"),
+            occ.get("column"),
+            occ.get("context"),
+            (occ.get("field") or "").lower(),
+        )
+        if key not in seen:
+            seen.add(key)
+            result.append(occ)
+
+    return result

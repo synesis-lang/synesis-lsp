@@ -152,7 +152,7 @@ class SynesisLanguageServer(LanguageServer):
 
 
 # Instância global do servidor
-server = SynesisLanguageServer("synesis-lsp", "v0.14.2")
+server = SynesisLanguageServer("synesis-lsp", "v0.14.5")
 
 
 def _resolve_workspace_root(ls: SynesisLanguageServer, params) -> Optional[str]:
@@ -570,7 +570,7 @@ def code_action(ls: SynesisLanguageServer, params: CodeActionParams):
 
 @server.feature(
     TEXT_DOCUMENT_COMPLETION,
-    CompletionOptions(trigger_characters=["@"]),
+    CompletionOptions(trigger_characters=["@", ":", ">"]),
 )
 def completion(ls: SynesisLanguageServer, params: CompletionParams):
     """

@@ -132,12 +132,23 @@ def _chain_has_relations(chain, template) -> bool:
 
 
 def _triples_for_bibref(lp, template, bibref: str) -> list[tuple[str, str, str]]:
+    relevant = _codes_for_bibref(lp, bibref)
+    if not relevant:
+        return []
+
+    triples = []
+    for subj, rel, obj in getattr(lp, "all_triples", None) or []:
+        if _normalize_code(subj) in relevant or _normalize_code(obj) in relevant:
+            triples.append((subj, rel, obj))
+
+    if triples:
+        return triples
+
     source = _find_source_by_bibref(lp, bibref)
     if not source:
         return []
-    triples: list[tuple[str, str, str]] = []
-    items = getattr(source, "items", None) or []
-    for item in items:
+
+    for item in getattr(source, "items", None) or []:
         for chain in getattr(item, "chains", None) or []:
             if hasattr(chain, "to_triples"):
                 triples.extend(chain.to_triples(has_relations=_chain_has_relations(chain, template)))
@@ -145,6 +156,7 @@ def _triples_for_bibref(lp, template, bibref: str) -> list[tuple[str, str, str]]
                 triple = _extract_chain_triple(chain)
                 if triple:
                     triples.append(triple)
+
     return triples
 
 
