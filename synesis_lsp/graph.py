@@ -132,6 +132,26 @@ def _chain_has_relations(chain, template) -> bool:
 
 
 def _triples_for_bibref(lp, template, bibref: str) -> list[tuple[str, str, str]]:
+    # Stage 1: Extração direta dos chains do SOURCE (escopo restrito)
+    source = _find_source_by_bibref(lp, bibref)
+    if source:
+        triples = []
+        for item in getattr(source, "items", None) or []:
+            for chain in getattr(item, "chains", None) or []:
+                if hasattr(chain, "to_triples"):
+                    triples.extend(
+                        chain.to_triples(
+                            has_relations=_chain_has_relations(chain, template)
+                        )
+                    )
+                else:
+                    triple = _extract_chain_triple(chain)
+                    if triple:
+                        triples.append(triple)
+        if triples:
+            return triples
+
+    # Stage 2 (fallback): Filtro por códigos em all_triples
     relevant = _codes_for_bibref(lp, bibref)
     if not relevant:
         return []
@@ -140,22 +160,6 @@ def _triples_for_bibref(lp, template, bibref: str) -> list[tuple[str, str, str]]
     for subj, rel, obj in getattr(lp, "all_triples", None) or []:
         if _normalize_code(subj) in relevant or _normalize_code(obj) in relevant:
             triples.append((subj, rel, obj))
-
-    if triples:
-        return triples
-
-    source = _find_source_by_bibref(lp, bibref)
-    if not source:
-        return []
-
-    for item in getattr(source, "items", None) or []:
-        for chain in getattr(item, "chains", None) or []:
-            if hasattr(chain, "to_triples"):
-                triples.extend(chain.to_triples(has_relations=_chain_has_relations(chain, template)))
-            else:
-                triple = _extract_chain_triple(chain)
-                if triple:
-                    triples.append(triple)
 
     return triples
 

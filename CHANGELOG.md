@@ -5,6 +5,15 @@ All notable changes to the Synesis LSP project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.14.15] - 2026-02-28
+
+### Fixed
+- **Graph Viewer mostra apenas relações do SOURCE atual**: `_triples_for_bibref()` em `graph.py` agora prioriza extração direta dos chains dos ITEMs do SOURCE (escopo restrito), ao invés de filtrar `all_triples` do projeto inteiro por presença de código
+  - Bug: `Ctrl+Alt+G` gerava grafo ilegível incluindo relações de outros SOURCEs que compartilhavam os mesmos códigos
+  - Mecanismo: Stage 1 anterior coletava códigos do SOURCE e varria `all_triples` globais, trazendo triples de outras fontes
+  - Solução: Stage 1 agora itera `source.items → item.chains` e extrai triples diretamente; filtro por `all_triples` ficou como fallback (Stage 2)
+- Graph Viewer (`Ctrl+Alt+G`) agora exibe apenas as relações CHAIN definidas nos ITEMs do SOURCE onde o cursor está posicionado
+
 ## [0.14.14] - 2026-02-05
 
 ### Fixed
