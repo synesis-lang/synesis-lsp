@@ -225,6 +225,8 @@ def _allowed_commands(kind: str) -> set[str]:
             "OPTIONAL",
             "FORBIDDEN",
             "BUNDLE",
+            "GUIDELINES",
+            "END GUIDELINES",
         }
     return set()
 

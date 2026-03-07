@@ -5,6 +5,13 @@ All notable changes to the Synesis LSP project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.14.16] - 2026-03-06
+
+### Fixed
+- **GUIDELINES reconhecido como comando válido em `.synt`**: `_allowed_commands()` em `template_diagnostics.py` agora inclui `"GUIDELINES"` e `"END GUIDELINES"` na lista de comandos válidos para arquivos de template
+  - Bug: o LSP gerava falso warning `Comando invalido 'GUIDELINES'` ao abrir templates `.synt` com blocos `GUIDELINES...END GUIDELINES`
+  - Causa: a lista `_allowed_commands("synt")` não havia sido atualizada quando o suporte a `GUIDELINES` foi adicionado ao compilador (`synesis 0.3.0`)
+
 ## [0.14.15] - 2026-02-28
 
 ### Fixed
