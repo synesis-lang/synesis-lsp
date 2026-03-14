@@ -16,6 +16,7 @@ from pathlib import Path
 from typing import Optional
 
 from lsprotocol.types import Location, Position, Range
+from synesis.ast.normalize import normalize_code as _normalize_code
 
 logger = logging.getLogger(__name__)
 
@@ -197,10 +198,6 @@ def _extract_item_bibref(item) -> Optional[str]:
 def _normalize_bibref(bibref: str) -> str:
     """Normaliza bibref removendo @ prefix."""
     return bibref.lstrip("@").strip().lower()
-
-
-def _normalize_code(code: str) -> str:
-    return " ".join(code.strip().split()).lower()
 
 
 def _convert_to_lsp_location(

@@ -22,11 +22,15 @@ import logging
 from pathlib import Path
 from typing import Iterable, Optional
 from urllib.parse import unquote, urlparse
+from synesis.ast.normalize import normalize_code as _normalize_code
 
 logger = logging.getLogger(__name__)
 
 _RELATIONS_CACHE: dict[tuple[str, float], dict] = {}
 _RELATIONS_CACHE_MAX = 4
+
+_CODES_CACHE: dict[tuple, dict] = {}
+_CODES_CACHE_MAX = 4
 
 
 def _relations_cache_key(cached_result, workspace_root: Optional[Path]) -> Optional[tuple[str, int, float]]:
@@ -84,12 +88,18 @@ def get_codes(cached_result) -> dict:
     Retorna lista de códigos com frequência de uso.
 
     Cada código inclui: code, usageCount, ontologyDefined, occurrences.
+    Resultado cacheado por (id(cached_result), timestamp) — mesmo padrão de get_relations.
     """
     lp = _get_linked_project(cached_result)
     if lp is None:
         return {"success": False, "error": "Projeto não carregado"}
 
     workspace_root = getattr(cached_result, "workspace_root", None)
+    cache_key = _relations_cache_key(cached_result, workspace_root)
+    cached = _CODES_CACHE.get(cache_key) if cache_key else None
+    if cached is not None:
+        return cached
+
     template = getattr(getattr(cached_result, "result", None), "template", None)
     field_specs = getattr(template, "field_specs", {}) if template else {}
 
@@ -147,7 +157,14 @@ def get_codes(cached_result) -> dict:
             }
         )
 
-    return {"success": True, "codes": codes}
+    result = {"success": True, "codes": codes}
+    if cache_key:
+        _CODES_CACHE[cache_key] = result
+        if len(_CODES_CACHE) > _CODES_CACHE_MAX:
+            oldest_key = next(iter(_CODES_CACHE))
+            if oldest_key != cache_key:
+                _CODES_CACHE.pop(oldest_key, None)
+    return result
 
 
 def get_relations(cached_result) -> dict:
@@ -203,10 +220,6 @@ def _iter_sources(sources) -> Iterable:
     if isinstance(sources, (list, tuple, set)):
         yield from sources
         return
-
-
-def _normalize_code(value: str) -> str:
-    return value.strip().lower()
 
 
 def _normalize_triple(subject: str, relation: str, obj: str) -> tuple[str, str, str]:

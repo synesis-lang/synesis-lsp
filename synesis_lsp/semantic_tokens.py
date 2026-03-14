@@ -85,19 +85,28 @@ _RE_PROJECT_KEYWORDS = re.compile(
 # RawToken: (line_0based, col_0based, length, token_type_index, modifier_bitmask)
 RawToken = Tuple[int, int, int, int, int]
 
+_TOKENS_CACHE: dict[tuple[str, int], SemanticTokens] = {}
+
 
 def compute_semantic_tokens(source: str, uri: str) -> SemanticTokens:
     """
     Computa tokens semânticos para um arquivo Synesis.
 
-    Usa compile_string para validar que o fonte é parseable, depois
-    escaneia linha a linha para extrair posições exatas dos tokens.
-    Em caso de erro de sintaxe, tenta extrair tokens via regex puro
-    (degradação graciosa).
+    Resultado cacheado por (uri, hash(source)) — cache hit retorna em 0ms
+    sem re-escanear o arquivo. Cache limpo a cada novo resultado para manter
+    apenas a entrada mais recente por URI.
     """
+    cache_key = (uri, hash(source))
+    cached = _TOKENS_CACHE.get(cache_key)
+    if cached is not None:
+        return cached
+
     tokens = _extract_tokens_from_source(source)
     data = _encode_deltas(tokens)
-    return SemanticTokens(data=data)
+    result = SemanticTokens(data=data)
+    _TOKENS_CACHE.clear()  # manter apenas o resultado mais recente
+    _TOKENS_CACHE[cache_key] = result
+    return result
 
 
 def _extract_tokens_from_source(source: str) -> List[RawToken]:

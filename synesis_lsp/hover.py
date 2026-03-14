@@ -25,6 +25,7 @@ import re
 from typing import Optional
 
 from lsprotocol.types import Hover, MarkupContent, MarkupKind, Position
+from synesis.ast.normalize import normalize_code as _normalize_code
 
 logger = logging.getLogger(__name__)
 
@@ -146,10 +147,6 @@ def _hover_field(word: str, cached_result) -> Optional[Hover]:
         md += f"- Descrição: {spec.description}\n"
 
     return Hover(contents=MarkupContent(kind=MarkupKind.Markdown, value=md))
-
-
-def _normalize_code(value: str) -> str:
-    return " ".join(value.strip().split()).lower()
 
 
 def _hover_code(word: str, cached_result) -> Optional[Hover]:

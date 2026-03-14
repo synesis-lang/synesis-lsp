@@ -18,6 +18,8 @@ import logging
 import re
 from typing import Iterable, Optional
 
+from synesis.ast.normalize import normalize_code as _normalize_code
+
 logger = logging.getLogger(__name__)
 
 
@@ -85,10 +87,6 @@ def get_relation_graph(cached_result, bibref: Optional[str] = None) -> dict:
     logger.debug(f"get_relation_graph: Generated {len(lines)-1} edges")
 
     return {"success": True, "mermaidCode": mermaid_code}
-
-
-def _normalize_code(value: str) -> str:
-    return value.strip().lower()
 
 
 def _has_chain_relations(template) -> bool:

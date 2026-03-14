@@ -30,23 +30,34 @@ from lsprotocol.types import DocumentSymbol, Position, Range, SymbolKind
 
 logger = logging.getLogger(__name__)
 
+_SYMBOLS_CACHE: dict[tuple[str, int], List[DocumentSymbol]] = {}
+
 
 def compute_document_symbols(source: str, uri: str) -> List[DocumentSymbol]:
     """
     Computa document symbols para um arquivo Synesis.
 
-    Usa compile_string para obter AST nodes, depois agrupa ItemNodes
-    como children de seus SourceNodes correspondentes (por bibref).
+    Resultado cacheado por (uri, hash(source)) — cache hit retorna em 0ms
+    sem chamar compile_string. Cache limpo a cada novo resultado para manter
+    apenas a entrada mais recente por URI.
     """
+    cache_key = (uri, hash(source))
+    cached = _SYMBOLS_CACHE.get(cache_key)
+    if cached is not None:
+        return cached
+
     try:
         import synesis
 
         nodes = synesis.compile_string(source, uri)
     except Exception:
-        # Fallback: tenta extrair symbols via regex
+        # Fallback: tenta extrair symbols via regex (não cacheado — conteúdo inválido)
         return _extract_symbols_regex(source)
 
-    return _build_symbols_from_nodes(nodes, source)
+    result = _build_symbols_from_nodes(nodes, source)
+    _SYMBOLS_CACHE.clear()  # manter apenas o resultado mais recente
+    _SYMBOLS_CACHE[cache_key] = result
+    return result
 
 
 def _build_symbols_from_nodes(nodes: list, source: str) -> List[DocumentSymbol]:

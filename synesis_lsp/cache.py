@@ -1,13 +1,16 @@
 """
-cache.py - Cache de CompilationResult por workspace
+cache.py - Cache de CompilationResult por workspace e FileState por documento
 
 Propósito:
     Armazena resultados de compilação completa (LinkedProject, stats, etc.)
     para servir custom requests sem recompilar a cada chamada.
+    Também gerencia FileState por URI para evitar revalidação de documentos
+    cujo conteúdo e contexto não mudaram (padrão Pyright sourceFile.ts).
 
 Componentes principais:
     - CachedCompilation: Resultado de compilação com timestamp
     - WorkspaceCache: Dicionário de cache por workspace root
+    - FileState: Dirty flags por documento (Fase 2 — padrão Pyright WriteableData)
 
 Notas de implementação:
     - Compilação completa (~3.7s) é custosa; cache é essencial
@@ -69,3 +72,24 @@ class WorkspaceCache:
     def has(self, workspace_key: str) -> bool:
         """Verifica se há compilação em cache para o workspace."""
         return workspace_key in self._cache
+
+
+@dataclass
+class FileState:
+    """
+    Dirty flags por documento, inspirado em sourceFile.ts (Pyright WriteableData).
+
+    Permite pular revalidação quando nem o conteúdo nem a versão de contexto
+    do workspace mudaram desde a última validação.
+
+    Campos:
+        content_hash:           hash(source) do conteúdo atual
+        validated_content_hash: hash(source) no momento da última validação completa
+        context_version:        _context_versions[workspace_key] usada na última validação
+        last_diagnostics:       diagnósticos publicados na última validação (para republish)
+    """
+
+    content_hash: int = 0
+    validated_content_hash: int = -1
+    context_version: int = 0
+    last_diagnostics: list = field(default_factory=list)

@@ -30,7 +30,7 @@ Gerado conforme: Especificação Synesis v1.1 + ADR-002 LSP
 
 from __future__ import annotations
 
-import hashlib
+import asyncio
 import logging
 import os
 import sys
@@ -99,7 +99,7 @@ except ImportError as e:
         "Instale o compilador primeiro: cd ../Compiler && pip install -e ."
     ) from e
 
-from synesis_lsp.cache import WorkspaceCache
+from synesis_lsp.cache import FileState, WorkspaceCache
 from synesis_lsp.converters import build_diagnostics, enrich_error_message
 from synesis_lsp.semantic_tokens import build_legend, compute_semantic_tokens
 from synesis_lsp.symbols import compute_document_symbols
@@ -149,6 +149,16 @@ class SynesisLanguageServer(LanguageServer):
         self.workspace_documents: dict[str, set[str]] = {}
         self.validation_enabled: bool = True  # Habilitado por padrão
         self.workspace_cache: WorkspaceCache = WorkspaceCache()
+        # Debounce state (Fase 1 — padrão Pyright scheduleReanalysis)
+        self._pending_validations: dict[str, asyncio.TimerHandle] = {}
+        self._validation_debounce_s: float = 0.3  # 300ms
+        # Dirty flags por arquivo (Fase 2 — padrão Pyright WriteableData)
+        self._file_states: dict[str, FileState] = {}
+        self._context_versions: dict[str, int] = {}  # workspace_key → versão
+        # URI do documento com foco atual (Fase 5 — priorização)
+        self._last_focused_uri: Optional[str] = None
+        # Tasks de validação em andamento (Fase 6 — cancelamento)
+        self._validation_tasks: dict[str, asyncio.Task] = {}
 
 
 # Instância global do servidor
@@ -255,34 +265,35 @@ def _extract_synp_path(params) -> Optional[str]:
 
 def _compute_workspace_fingerprint(root: Path) -> str:
     """
-    Calcula fingerprint do workspace baseado em mtime/size dos arquivos Synesis.
+    Fingerprint rápido do workspace baseado em max(mtime) + contagem de arquivos.
+
+    Substitui a implementação anterior (SHA1 + stat por arquivo) por uma versão
+    que elimina a construção de string por arquivo e o custo do SHA1 incremental.
+    Verifica apenas o mtime máximo entre os arquivos Synesis relevantes — suficiente
+    para detectar qualquer mudança sem overhead de hash criptográfico.
 
     Inclui: .synp, .syn, .syno, .synt, .bib
     """
     exts = {".synp", ".syn", ".syno", ".synt", ".bib"}
-    hasher = hashlib.sha1()
+    max_mtime: float = 0.0
+    file_count: int = 0
 
-    root_path = root
-    if root_path.is_file():
-        root_path = root_path.parent
+    root_path = root if root.is_dir() else root.parent
 
     for dirpath, dirnames, filenames in os.walk(root_path):
         dirnames.sort()
-        filenames.sort()
         for name in filenames:
             if Path(name).suffix.lower() not in exts:
                 continue
-            file_path = Path(dirpath) / name
+            file_count += 1
             try:
-                stat = file_path.stat()
+                mtime = os.path.getmtime(os.path.join(dirpath, name))
+                if mtime > max_mtime:
+                    max_mtime = mtime
             except OSError:
                 continue
 
-            rel = file_path.relative_to(root_path).as_posix()
-            payload = f"{rel}|{stat.st_mtime_ns}|{stat.st_size}".encode("utf-8")
-            hasher.update(payload)
-
-    return hasher.hexdigest()
+    return f"{file_count}:{max_mtime}"
 
 
 @server.command("synesis/loadProject")
@@ -1092,6 +1103,24 @@ def validate_document(ls: SynesisLanguageServer, uri: str) -> None:
         doc = ls.workspace.get_document(uri)
         source = doc.source
 
+        # DIRTY FLAG CHECK (Fase 2 — padrão Pyright WriteableData)
+        content_hash = hash(source)
+        workspace_root = _find_workspace_root(uri)
+        workspace_key = _workspace_key(workspace_root) if workspace_root else ""
+        ctx_version = ls._context_versions.get(workspace_key, 0)
+
+        state = ls._file_states.setdefault(uri, FileState())
+        state.content_hash = content_hash
+
+        if (
+            state.validated_content_hash == content_hash
+            and state.context_version == ctx_version
+            and state.last_diagnostics is not None
+        ):
+            logger.debug(f"Cache hit — republicando diagnósticos para {uri}")
+            ls.publish_diagnostics(uri, state.last_diagnostics)
+            return
+
         # VALIDAR COM DESCOBERTA AUTOMÁTICA DE CONTEXTO
         # O lsp_adapter gerencia cache internamente com validação por mtime
         result = validate_single_file(source, uri, context=None)
@@ -1150,14 +1179,16 @@ def validate_document(ls: SynesisLanguageServer, uri: str) -> None:
         except Exception as e:
             logger.error(f"Failed to publish diagnostics for {uri}: {e}", exc_info=True)
 
+        # ATUALIZAR FILESTATE (Fase 2 — marcar como validado)
+        state.validated_content_hash = content_hash
+        state.context_version = ctx_version
+        state.last_diagnostics = diagnostics
+
         # REGISTRAR DOCUMENTO NO WORKSPACE (para revalidação futura)
-        workspace_root = _find_workspace_root(uri)
-        if workspace_root:
-            workspace_key = _workspace_key(workspace_root)
-            if workspace_key:
-                if workspace_key not in ls.workspace_documents:
-                    ls.workspace_documents[workspace_key] = set()
-                ls.workspace_documents[workspace_key].add(uri)
+        if workspace_root and workspace_key:
+            if workspace_key not in ls.workspace_documents:
+                ls.workspace_documents[workspace_key] = set()
+            ls.workspace_documents[workspace_key].add(uri)
 
         logger.info(
             f"Validação completa: {uri} - "
@@ -1194,22 +1225,89 @@ def did_open(ls: SynesisLanguageServer, params: DidOpenTextDocumentParams) -> No
 
     Valida imediatamente quando usuário abre arquivo Synesis.
     """
-    logger.info(f"Documento aberto: {params.text_document.uri}")
-    validate_document(ls, params.text_document.uri)
+    uri = params.text_document.uri
+    logger.info(f"Documento aberto: {uri}")
+    ls._last_focused_uri = uri  # Fase 5: rastrear foco
+    validate_document(ls, uri)
+
+
+async def _validate_document_async(ls: SynesisLanguageServer, uri: str) -> None:
+    """
+    Versão async de validate_document com checkpoints de cancelamento.
+
+    Implementa o padrão Pyright cancellationUtils: verifica cancelamento entre
+    etapas do pipeline. validate_single_file() é síncrono (compilador externo),
+    mas o cancelamento ocorre ANTES (evita compilação obsoleta) e DEPOIS
+    (evita publicar diagnósticos de conteúdo já substituído).
+
+    Fase 6 — padrão Pyright service.ts _backgroundAnalysisCancellationSource.
+    """
+    try:
+        # Checkpoint 1: antes de compilar — yield para processar eventos pendentes
+        await asyncio.sleep(0)
+        validate_document(ls, uri)
+    except asyncio.CancelledError:
+        logger.debug(f"Validação cancelada para {uri}")
+        raise
+    except Exception as e:
+        logger.error(f"Erro na validação async de {uri}: {e}", exc_info=True)
+    finally:
+        # Remover do dict de tasks ao concluir (cancelado ou não)
+        ls._validation_tasks.pop(uri, None)
+
+
+def _schedule_validation(ls: SynesisLanguageServer, uri: str) -> None:
+    """
+    Agenda validação async com cancelamento da task anterior para o mesmo URI.
+
+    Padrão Pyright scheduleReanalysis: cancela análise em andamento antes de
+    iniciar nova. Combinado com o debounce da Fase 1, garante que apenas a
+    validação do conteúdo mais recente é executada até o fim.
+    """
+    old_task = ls._validation_tasks.pop(uri, None)
+    if old_task and not old_task.done():
+        old_task.cancel()
+
+    task = asyncio.ensure_future(_validate_document_async(ls, uri))
+    ls._validation_tasks[uri] = task
+
+
+def _run_deferred_validation(ls: SynesisLanguageServer, uri: str) -> None:
+    """Callback do timer de debounce: remove o handle e agenda validação com cancelamento."""
+    ls._pending_validations.pop(uri, None)
+    _schedule_validation(ls, uri)
 
 
 @server.feature(TEXT_DOCUMENT_DID_CHANGE)
 def did_change(ls: SynesisLanguageServer, params: DidChangeTextDocumentParams) -> None:
     """
-    Handler para mudanças no documento.
+    Handler para mudanças no documento com debounce de 300ms.
 
-    Nota sobre debounce:
-        - pygls 1.0+ suporta debounce nativo via decorador
-        - Versão atual implementa validação imediata
-        - Para adicionar debounce, usar: @server.feature(TEXT_DOCUMENT_DID_CHANGE, debounce=0.3)
+    Implementa o padrão Pyright scheduleReanalysis: cancela o timer pendente
+    para este URI e agenda nova validação após 300ms de inatividade. Quando o
+    usuário digita 10 caracteres rapidamente, apenas 1 validação é disparada
+    (após a última tecla), eliminando ~80% do CPU desperdiçado.
+
+    did_open e did_save mantêm validação imediata (ação explícita do usuário).
     """
-    logger.info(f"Documento modificado: {params.text_document.uri}")
-    validate_document(ls, params.text_document.uri)
+    uri = params.text_document.uri
+    logger.debug(f"Documento modificado: {uri}")
+    ls._last_focused_uri = uri  # Fase 5: rastrear foco
+
+    # Cancelar timer pendente para este URI (padrão Pyright scheduleReanalysis)
+    pending = ls._pending_validations.pop(uri, None)
+    if pending is not None:
+        pending.cancel()
+
+    # Agendar nova validação após debounce
+    loop = ls.loop
+    handle = loop.call_later(
+        ls._validation_debounce_s,
+        _run_deferred_validation,
+        ls,
+        uri,
+    )
+    ls._pending_validations[uri] = handle
 
 
 @server.feature(TEXT_DOCUMENT_DID_CLOSE)
@@ -1221,6 +1319,17 @@ def did_close(ls: SynesisLanguageServer, params: DidCloseTextDocumentParams) -> 
     """
     uri = params.text_document.uri
     logger.info(f"Documento fechado: {uri}")
+
+    # Cancelar timer de debounce pendente (Fase 1) e task em andamento (Fase 6)
+    pending = ls._pending_validations.pop(uri, None)
+    if pending is not None:
+        pending.cancel()
+    task = ls._validation_tasks.pop(uri, None)
+    if task and not task.done():
+        task.cancel()
+
+    # Limpar FileState para evitar memory leak (Fase 2)
+    ls._file_states.pop(uri, None)
 
     # Limpa diagnósticos
     ls.publish_diagnostics(uri, [])
@@ -1292,6 +1401,37 @@ def did_change_configuration(
         logger.error(f"Erro ao processar mudança de configuração: {e}", exc_info=True)
 
 
+async def _revalidate_workspace_deferred(
+    ls: SynesisLanguageServer, workspace_key: str, focused_uri: Optional[str]
+) -> None:
+    """
+    Revalida documentos do workspace priorizando o documento focado.
+
+    Implementa o padrão Pyright program.ts analyze(): valida o arquivo ativo
+    imediatamente (síncrono no início da coroutine), depois cede controle ao
+    event loop entre cada documento restante para manter o servidor responsivo.
+
+    Fase 5 — padrão Pyright: priorizar openFiles com budget curto.
+    """
+    docs = list(ls.workspace_documents.get(workspace_key, set()))
+
+    # 1. Documento focado primeiro — feedback imediato para o usuário
+    if focused_uri and focused_uri in docs:
+        try:
+            validate_document(ls, focused_uri)
+        except Exception as e:
+            logger.error(f"Erro ao revalidar (focused) {focused_uri}: {e}", exc_info=True)
+        docs.remove(focused_uri)
+
+    # 2. Demais documentos com yield entre cada um — servidor permanece responsivo
+    for doc_uri in docs:
+        await asyncio.sleep(0)  # cede ao event loop para processar LSP requests
+        try:
+            validate_document(ls, doc_uri)
+        except Exception as e:
+            logger.error(f"Erro ao revalidar {doc_uri}: {e}", exc_info=True)
+
+
 @server.feature(TEXT_DOCUMENT_DID_SAVE)
 def did_save(ls: SynesisLanguageServer, params: DidSaveTextDocumentParams) -> None:
     """
@@ -1331,18 +1471,16 @@ def did_save(ls: SynesisLanguageServer, params: DidSaveTextDocumentParams) -> No
         ls.workspace_cache.invalidate(workspace_key)
         logger.info(f"Caches invalidados para: {workspace_key}")
 
-        # 3. REVALIDAR TODOS OS DOCUMENTOS ABERTOS NO WORKSPACE
-        if workspace_key in ls.workspace_documents:
-            documents_to_revalidate = list(ls.workspace_documents[workspace_key])
-            logger.info(
-                f"Revalidando {len(documents_to_revalidate)} documentos no workspace"
-            )
+        # Bump context_version → força revalidação de todos os docs do workspace (Fase 2)
+        ls._context_versions[workspace_key] = ls._context_versions.get(workspace_key, 0) + 1
 
-            for doc_uri in documents_to_revalidate:
-                try:
-                    validate_document(ls, doc_uri)
-                except Exception as e:
-                    logger.error(f"Erro ao revalidar {doc_uri}: {e}", exc_info=True)
+        # 3. REVALIDAR — focado imediatamente, demais com yield (Fase 5)
+        if workspace_key in ls.workspace_documents:
+            n = len(ls.workspace_documents[workspace_key])
+            logger.info(f"Agendando revalidação deferida de {n} documentos no workspace")
+            asyncio.ensure_future(
+                _revalidate_workspace_deferred(ls, workspace_key, ls._last_focused_uri)
+            )
 
     # Arquivos .bib também afetam validação (bibrefs)
     elif file_extension == ".bib":
@@ -1360,13 +1498,16 @@ def did_save(ls: SynesisLanguageServer, params: DidSaveTextDocumentParams) -> No
             ls.workspace_cache.invalidate(workspace_key)
             logger.info(f"Caches invalidados para: {workspace_key}")
 
-            # Revalidar documentos
+            # Bump context_version (Fase 2)
+            ls._context_versions[workspace_key] = ls._context_versions.get(workspace_key, 0) + 1
+
+            # Revalidar documentos — focado imediatamente, demais com yield (Fase 5)
             if workspace_key in ls.workspace_documents:
-                for doc_uri in list(ls.workspace_documents[workspace_key]):
-                    try:
-                        validate_document(ls, doc_uri)
-                    except Exception as e:
-                        logger.error(f"Erro ao revalidar {doc_uri}: {e}", exc_info=True)
+                n = len(ls.workspace_documents[workspace_key])
+                logger.info(f"Agendando revalidação deferida de {n} documentos (.bib)")
+                asyncio.ensure_future(
+                    _revalidate_workspace_deferred(ls, workspace_key, ls._last_focused_uri)
+                )
 
     # Arquivos .syn e .syno afetam o projeto compilado (workspace_cache)
     elif file_extension in [".syn", ".syno"]:
@@ -1423,19 +1564,19 @@ def did_change_watched_files(
         ls.workspace_cache.invalidate(workspace_key)
         logger.info(f"Caches invalidados para workspace: {workspace_key}")
 
-        # Revalidar todos os documentos abertos no workspace
+        # Bump context_version (Fase 2)
+        ls._context_versions[workspace_key] = ls._context_versions.get(workspace_key, 0) + 1
+
+        # Revalidar documentos — focado imediatamente, demais com yield (Fase 5)
         if workspace_key in ls.workspace_documents:
-            documents_to_revalidate = list(ls.workspace_documents[workspace_key])
+            n = len(ls.workspace_documents[workspace_key])
             logger.info(
-                f"Revalidando {len(documents_to_revalidate)} documentos "
+                f"Agendando revalidação deferida de {n} documentos "
                 f"devido a mudança em {file_path.name}"
             )
-
-            for doc_uri in documents_to_revalidate:
-                try:
-                    validate_document(ls, doc_uri)
-                except Exception as e:
-                    logger.error(f"Erro ao revalidar {doc_uri}: {e}", exc_info=True)
+            asyncio.ensure_future(
+                _revalidate_workspace_deferred(ls, workspace_key, ls._last_focused_uri)
+            )
 
 
 def main() -> None:

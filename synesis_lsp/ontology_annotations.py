@@ -15,15 +15,12 @@ import logging
 from pathlib import Path
 from typing import Optional
 from urllib.parse import unquote, urlparse
+from synesis.ast.normalize import normalize_code as _normalize_code
 
 logger = logging.getLogger(__name__)
 
 _ANNOTATIONS_CACHE: dict[tuple[str, float], dict] = {}
 _ANNOTATIONS_CACHE_MAX = 4
-
-
-def _normalize_code(value: str) -> str:
-    return " ".join(str(value).strip().split()).lower()
 
 
 def _iter_string_values(value):
@@ -151,7 +148,22 @@ def _field_value_contains_code(value, code: str) -> bool:
     return False
 
 
-def _merge_code_usage_with_chains(lp, ontology_index=None) -> dict:
+def _source_file(src) -> Optional[str]:
+    """Extrai o path do arquivo de um source node."""
+    loc = getattr(src, "location", None)
+    return getattr(loc, "file", None) if loc else None
+
+
+def _merge_code_usage_with_chains(
+    lp, ontology_index=None, active_file: Optional[str] = None
+) -> dict:
+    """
+    Mescla code_usage com nós de chains dos sources.
+
+    Fase 7: quando active_file é fornecido, aplica pre-filtro por source antes
+    de iterar chains — evita O(total_sources × total_items × chains) quando o
+    Explorer mostra anotações apenas para o arquivo ativo.
+    """
     base_usage = getattr(lp, "code_usage", {}) or {}
     usage: dict[str, list] = {}
     seen: dict[str, set[int]] = {}
@@ -172,6 +184,12 @@ def _merge_code_usage_with_chains(lp, ontology_index=None) -> dict:
         sources_iter = []
 
     for src in sources_iter:
+        # PRE-FILTRO (Fase 7): pular sources de outros arquivos quando active_file fornecido
+        if active_file:
+            src_file = _source_file(src)
+            if src_file and not _file_matches(active_file, src_file):
+                continue
+
         for item in getattr(src, "items", []) or []:
             # Add codes found in chains (item.chains + chain-like extra fields)
             chains = getattr(item, "chains", None) or []
@@ -311,15 +329,22 @@ def get_ontology_annotations(
 
     effective_root = workspace_root or getattr(cached_result, "workspace_root", None)
     cache_key = _annotations_cache_key(cached_result, effective_root)
+
+    # Cache hit: disponível apenas para consultas sem filtro de arquivo (projeto completo).
+    # Com active_file, o pre-filtro em _merge_code_usage_with_chains torna o resultado
+    # específico por arquivo — não reutilizável como cache global. Contudo, se o cache
+    # do projeto completo já existe, aplicamos _filter_annotations_by_file sobre ele
+    # (caminho rápido que evita recompilação completa).
     cached_payload = _ANNOTATIONS_CACHE.get(cache_key) if cache_key else None
     if cached_payload is not None:
         if active_file:
             return _filter_annotations_by_file(cached_payload, active_file)
         return cached_payload
 
-    # Extrair dados da ontologia e code_usage
+    # Extrair dados da ontologia e code_usage.
+    # Fase 7: passar active_file para pre-filtrar sources antes de iterar chains.
     ontology_index = getattr(lp, "ontology_index", {}) or {}
-    code_usage = _merge_code_usage_with_chains(lp, ontology_index)
+    code_usage = _merge_code_usage_with_chains(lp, ontology_index, active_file=active_file)
 
     if not ontology_index:
         logger.debug("Ontology index vazio, retornando lista vazia")
@@ -380,8 +405,12 @@ def get_ontology_annotations(
     annotations.sort(key=lambda a: a["code"])
 
     result = {"success": True, "annotations": annotations}
-    _annotations_cache_set(cache_key, result)
-    return _filter_annotations_by_file(result, active_file) if active_file else result
+    # Só armazenar no cache global quando o resultado é para o projeto completo.
+    # Com active_file, code_usage foi pré-filtrado por source — resultado parcial
+    # não deve ser reutilizado para consultas sem filtro.
+    if not active_file:
+        _annotations_cache_set(cache_key, result)
+    return result
 
 
 def _build_occurrences(

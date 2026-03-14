@@ -5,6 +5,108 @@ All notable changes to the Synesis LSP project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.14.23] - 2026-03-13
+
+### Changed
+- **Fase 0 — Consolidação de `_normalize_code`**: as 7 cópias locais de `_normalize_code`
+  em `definition.py`, `explorer_requests.py`, `graph.py`, `hover.py`,
+  `ontology_annotations.py`, `references.py` e `rename.py` foram removidas e substituídas
+  por `from synesis.ast.normalize import normalize_code as _normalize_code`. Todos os
+  call sites permanecem inalterados (alias drop-in). Elimina risco de divergência entre
+  implementações e unifica com o compilador.
+
+- **Fase 7 — Pre-filtro de Ontology Annotations por arquivo ativo**
+  (`ontology_annotations.py`): quando `active_file` é fornecido, `_merge_code_usage_with_chains`
+  agora aplica pre-filtro por source antes de iterar chains — sources de outros arquivos são
+  descartados sem processar seus items. Nova função auxiliar `_source_file(src)` extrai o
+  path do source node. Resultado filtrado não é armazenado no cache global (evita poluir
+  cache com resultado parcial); se o cache completo do projeto já existe, aplica
+  `_filter_annotations_by_file` sobre ele como atalho.
+
+## [0.14.22] - 2026-03-13
+
+### Changed
+- **Cancelamento de validação em progresso** (Fase 6, padrão Pyright `_backgroundAnalysisCancellationSource`):
+  - `SynesisLanguageServer.__init__` ganha `_validation_tasks: dict[str, asyncio.Task]`
+  - Nova coroutine `_validate_document_async(ls, uri)`: faz `await asyncio.sleep(0)` antes
+    de chamar `validate_document()` — checkpoint que permite cancelamento antes de compilar
+    conteúdo já obsoleto; captura `CancelledError` e faz cleanup do dict em `finally`
+  - Nova função `_schedule_validation(ls, uri)`: cancela a task anterior para o URI (se
+    existir e não concluída) antes de criar nova via `asyncio.ensure_future()`
+  - `_run_deferred_validation`: atualizado para chamar `_schedule_validation` em vez de
+    `validate_document` diretamente — une debounce (Fase 1) + cancelamento (Fase 6)
+  - `did_close`: cancela task em andamento além do timer de debounce
+
+## [0.14.21] - 2026-03-13
+
+### Changed
+- **Revalidação deferida de documentos não-focados** (Fase 5, padrão Pyright `program.ts analyze()`):
+  - Nova coroutine `_revalidate_workspace_deferred(ls, workspace_key, focused_uri)`: valida o
+    documento focado imediatamente (síncrono), depois cede ao event loop via `await asyncio.sleep(0)`
+    entre cada documento restante — servidor permanece responsivo para hover/completion durante
+    revalidação de arquivos não focados
+  - `did_save` (.synp/.synt e .bib) e `did_change_watched_files`: substituem loops síncronos
+    bloqueantes por `asyncio.ensure_future(_revalidate_workspace_deferred(...))` — bloqueio
+    passa de ~N×50ms para ~50ms (apenas arquivo focado)
+  - `did_open` e `did_change`: atualizam `ls._last_focused_uri` para priorização correta
+  - `SynesisLanguageServer.__init__` ganha `_last_focused_uri: Optional[str]`
+
+## [0.14.20] - 2026-03-13
+
+### Changed
+- **Cache de providers** (Fase 4): resultados de `compute_document_symbols`,
+  `compute_semantic_tokens` e `get_codes` agora são cacheados e retornados em 0ms
+  quando o conteúdo não mudou entre requests.
+  - `symbols.py`: `_SYMBOLS_CACHE: dict[(uri, hash), list]` — cache hit evita
+    chamada a `compile_string()` (~3-69ms); limpo a cada novo resultado para manter
+    apenas a entrada mais recente
+  - `semantic_tokens.py`: `_TOKENS_CACHE: dict[(uri, hash), SemanticTokens]` — cache
+    hit evita scan regex linha-a-linha; mesmo padrão de limpeza
+  - `explorer_requests.py`: `_CODES_CACHE: dict[cache_key, dict]` — mesmo padrão de
+    `_RELATIONS_CACHE` (key via `_relations_cache_key`, max 4 entradas); elimina
+    iteração O(codes × items × fields) em requests repetidos (~99% para Explorer refresh
+    sem mudanças)
+
+## [0.14.19] - 2026-03-13
+
+### Changed
+- **Fingerprint leve com mtime-max** (Fase 3): `_compute_workspace_fingerprint()` substituiu
+  SHA1 incremental + `stat()` por arquivo por verificação de `max(mtime)` + contagem de
+  arquivos — elimina construção de string e hash criptográfico por arquivo. `import hashlib`
+  removido. Semântica preservada: qualquer mudança em `.synp/.syn/.syno/.synt/.bib` altera
+  o fingerprint e invalida o cache do workspace.
+
+## [0.14.18] - 2026-03-13
+
+### Changed
+- **Dirty flags por documento — cache de validação** (Fase 2, padrão Pyright `WriteableData`):
+  - `cache.py`: novo dataclass `FileState` com `content_hash`, `validated_content_hash`,
+    `context_version` e `last_diagnostics`
+  - `SynesisLanguageServer.__init__` ganha `_file_states: dict[str, FileState]` e
+    `_context_versions: dict[str, int]`
+  - `validate_document`: antes de compilar, verifica se `content_hash` e `context_version`
+    não mudaram desde a última validação; se não mudaram, republica os diagnósticos cacheados
+    sem chamar `validate_single_file` (0ms vs 3-69ms)
+  - `did_save` e `did_change_watched_files`: fazem bump de `_context_versions[workspace_key]`
+    ao invalidar caches, forçando revalidação de todos os docs do workspace
+  - `did_close`: remove `FileState` do dict para evitar memory leak
+  - **Ganho principal:** ao salvar `.syn` sem mudar `.synt`, os outros docs abertos no
+    workspace não são recompilados (context_version não mudou + content não mudou)
+
+## [0.14.17] - 2026-03-13
+
+### Changed
+- **Debounce de 300ms no `did_change`** (`server.py`): validação por keystroke substituída
+  por timer de debounce — padrão Pyright `scheduleReanalysis`. Ao digitar 10 caracteres
+  rapidamente, apenas 1 validação é disparada (~300ms após a última tecla), eliminando
+  ~80% do CPU desperdiçado durante digitação ativa.
+  - `SynesisLanguageServer.__init__` ganha `_pending_validations: dict[str, TimerHandle]`
+    e `_validation_debounce_s: float = 0.3`
+  - `did_change` cancela o timer anterior para o URI e agenda novo via `loop.call_later()`
+  - `did_close` cancela timer pendente para evitar validação após fechar documento
+  - `did_open` e `did_save` mantêm validação **imediata** (ação explícita do usuário)
+  - Extrai helper `_run_deferred_validation(ls, uri)` como função de módulo (thread-safe)
+
 ## [0.14.16] - 2026-03-06
 
 ### Fixed

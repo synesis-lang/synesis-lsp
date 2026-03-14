@@ -30,6 +30,7 @@ from lsprotocol.types import (
 )
 
 from synesis_lsp.hover import _get_word_at_position
+from synesis.ast.normalize import normalize_code as _normalize_code
 
 logger = logging.getLogger(__name__)
 
@@ -242,10 +243,6 @@ def _rename_code(
 
 def _normalize_bibref(bibref: str) -> str:
     return bibref.lstrip("@").strip().lower()
-
-
-def _normalize_code(code: str) -> str:
-    return " ".join(code.strip().split()).lower()
 
 
 def _collect_files(workspace_root: Path, suffix: str) -> set[Path]:

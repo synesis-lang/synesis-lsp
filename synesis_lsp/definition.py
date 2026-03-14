@@ -23,6 +23,7 @@ from typing import Optional
 from lsprotocol.types import Location, Position, Range
 
 from synesis_lsp.hover import _get_word_at_position
+from synesis.ast.normalize import normalize_code as _normalize_code
 
 logger = logging.getLogger(__name__)
 
@@ -75,10 +76,6 @@ def compute_definition(
             return _location_to_lsp(onto.location, workspace_root)
 
     return None
-
-
-def _normalize_code(value: str) -> str:
-    return " ".join(value.strip().split()).lower()
 
 
 def _location_to_lsp(location, workspace_root: Path) -> Optional[Location]:
