@@ -36,6 +36,7 @@ import os
 import sys
 import time
 from importlib import metadata
+from importlib.metadata import PackageNotFoundError, version as _pkg_version
 from pathlib import Path
 from typing import Optional
 from urllib.parse import unquote, urlparse
@@ -104,14 +105,13 @@ from synesis_lsp.converters import build_diagnostics, enrich_error_message
 from synesis_lsp.semantic_tokens import build_legend, compute_semantic_tokens
 from synesis_lsp.symbols import compute_document_symbols
 from synesis_lsp.hover import compute_hover
-from synesis_lsp.explorer_requests import get_references, get_codes, get_relations
+from synesis_lsp.explorer_requests import get_references, get_codes, get_relations, get_excerpts
 from synesis_lsp.inlay_hints import compute_inlay_hints
 from synesis_lsp.definition import compute_definition
 from synesis_lsp.completion import compute_completions
 from synesis_lsp.graph import get_relation_graph
 from synesis_lsp.signature_help import compute_signature_help
 from synesis_lsp.rename import prepare_rename, compute_rename
-from synesis_lsp.template_diagnostics import build_template_diagnostics, build_command_diagnostics
 from synesis_lsp.ontology_topics import get_ontology_topics
 from synesis_lsp.ontology_annotations import get_ontology_annotations
 from synesis_lsp.abstract_viewer import get_abstract
@@ -296,6 +296,28 @@ def _compute_workspace_fingerprint(root: Path) -> str:
     return f"{file_count}:{max_mtime}"
 
 
+def _get_versions() -> dict:
+    """Retorna versões do LSP e do compilador para incluir nas respostas."""
+    try:
+        lsp_ver = _pkg_version("synesis-lsp")
+    except PackageNotFoundError:
+        try:
+            from synesis_lsp import __version__ as lsp_ver  # type: ignore
+        except Exception:
+            lsp_ver = "unknown"
+
+    try:
+        compiler_ver = _pkg_version("synesis")
+    except PackageNotFoundError:
+        try:
+            import synesis as _syn
+            compiler_ver = getattr(_syn, "__version__", "unknown")
+        except Exception:
+            compiler_ver = "unknown"
+
+    return {"lsp_version": lsp_ver, "compiler_version": compiler_ver}
+
+
 @server.command("synesis/loadProject")
 def load_project(ls: SynesisLanguageServer, params) -> dict:
     """
@@ -355,6 +377,7 @@ def load_project(ls: SynesisLanguageServer, params) -> dict:
                 },
                 "has_errors": cached.result.has_errors(),
                 "has_warnings": cached.result.has_warnings(),
+                **_get_versions(),
             }
 
         logger.info(f"Compilando projeto: {synp_files[0]}")
@@ -383,6 +406,7 @@ def load_project(ls: SynesisLanguageServer, params) -> dict:
             },
             "has_errors": result.has_errors(),
             "has_warnings": result.has_warnings(),
+            **_get_versions(),
         }
     except ImportError:
         return {"success": False, "error": "Compilador synesis não encontrado"}
@@ -682,21 +706,6 @@ def _get_cached_for_uri(ls: SynesisLanguageServer, uri: str):
     return ls.workspace_cache.get(workspace_key)
 
 
-def _collect_existing_field_errors(result) -> set[tuple[str, Optional[str]]]:
-    """Coleta erros já reportados pelo compilador para evitar duplicatas."""
-    existing: set[tuple[str, Optional[str]]] = set()
-    if not result:
-        return existing
-    all_errors = result.errors + result.warnings + result.info
-    for error in all_errors:
-        field = getattr(error, "field_name", None)
-        if not field:
-            continue
-        block = getattr(error, "block_type", None)
-        block_name = str(block).upper() if block else None
-        existing.add((field, block_name))
-    return existing
-
 
 def _iter_sources_local(sources):
     """Itera sobre fontes, aceitando dict/list/tuple/set."""
@@ -735,6 +744,24 @@ def cmd_get_relations(ls: SynesisLanguageServer, params) -> dict:
     return get_relations(cached)
 
 
+@server.command("synesis/getExcerpts")
+def cmd_get_excerpts(ls: SynesisLanguageServer, params) -> dict:
+    """Retorna items de um bibref com seus campos de conteúdo (sem I/O de disco na extensão)."""
+    cached, error = _get_cached_for_workspace(ls, params)
+    if error and not cached:
+        return get_excerpts(None, "")
+
+    bibref = ""
+    if isinstance(params, dict):
+        bibref = params.get("bibref", "")
+    elif isinstance(params, list) and len(params) > 0:
+        first = params[0]
+        if isinstance(first, dict):
+            bibref = first.get("bibref", "")
+
+    return get_excerpts(cached, bibref)
+
+
 @server.command("synesis/getRelationGraph")
 def cmd_get_relation_graph(ls: SynesisLanguageServer, params) -> dict:
     """Retorna código Mermaid.js do grafo de relações."""
@@ -771,7 +798,7 @@ def debug_diagnostics(ls: SynesisLanguageServer, params) -> dict:
 
     status = {
         "validation_enabled": ls.validation_enabled,
-        "template_diagnostics_module": "imported",
+        "command_diagnostics_module": "imported",
     }
 
     if uri:
@@ -1127,49 +1154,6 @@ def validate_document(ls: SynesisLanguageServer, uri: str) -> None:
 
         # CONVERTER PARA DIAGNÓSTICOS LSP
         diagnostics = build_diagnostics(result)
-
-        # Diagnósticos adicionais baseados em template (fallback)
-        try:
-            template = None
-            cached = _get_cached_for_uri(ls, uri)
-            if cached:
-                template = getattr(cached.result, "template", None)
-                if template:
-                    logger.debug(f"Template found in cache for {uri}")
-                else:
-                    logger.debug(f"No template in cache for {uri}")
-
-            if not template:
-                logger.debug(f"Attempting template discovery for {uri}")
-                context = _discover_context(uri)
-                template = getattr(context, "template", None)
-                if template:
-                    logger.debug(f"Template discovered for {uri}")
-                else:
-                    logger.debug(f"Template discovery failed for {uri}")
-
-            if template:
-                existing_fields = _collect_existing_field_errors(result)
-                logger.debug(f"Collected {len(existing_fields)} existing field errors")
-
-                template_diags = build_template_diagnostics(source, uri, template, existing_fields)
-                logger.debug(f"Generated {len(template_diags)} template diagnostics")
-
-                diagnostics.extend(template_diags)
-            else:
-                logger.info(f"No template available for {uri}, skipping template diagnostics")
-
-        except Exception as e:
-            logger.warning(f"Template diagnostics failed for {uri}: {e}", exc_info=True)
-
-        # Avisos para comandos inválidos (SOURCE/ITEM/ONTOLOGY, etc.)
-        try:
-            command_diags = build_command_diagnostics(source, uri)
-            if command_diags:
-                logger.debug(f"Generated {len(command_diags)} command diagnostics")
-                diagnostics.extend(command_diags)
-        except Exception as e:
-            logger.warning(f"Command diagnostics failed for {uri}: {e}", exc_info=True)
 
         # PUBLICAR DIAGNÓSTICOS
         try:

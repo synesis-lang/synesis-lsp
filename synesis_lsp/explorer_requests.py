@@ -1167,3 +1167,98 @@ def _index_chain(index: dict, chain, item, workspace_root: Optional[Path]) -> No
     # Only add to index if we have at least one piece of info
     if entry:
         index[key] = entry
+
+
+def get_excerpts(cached_result, bibref: str) -> dict:
+    """
+    Retorna items de um bibref com seus campos de conteúdo.
+
+    Elimina a necessidade da extensão ler todos os .syn do disco e parsear
+    com regex — o LinkedProject já tem tudo em memória após loadProject.
+
+    Cada item retornado inclui:
+        - extra_fields: dict com todos os campos do item (texto, memo, chain, code, etc.)
+        - codes: list[str] — códigos do campo codes/CODE
+        - chains: list[str] — valores de cadeia serializados como "A -> B -> C"
+        - line: int — linha do item (1-based, como recebido do compilador)
+        - file: str — path relativo ao workspace_root
+
+    Returns:
+        {"success": True, "items": [...]} ou {"success": False, "error": "..."}
+    """
+    if not bibref:
+        return {"success": False, "error": "bibref não especificado"}
+
+    lp = _get_linked_project(cached_result)
+    if lp is None:
+        return {"success": False, "error": "Projeto não carregado"}
+
+    workspace_root = getattr(cached_result, "workspace_root", None)
+    # Normalizar bibref para comparação insensível a @
+    target = str(bibref).lstrip("@").lower()
+
+    items_out = []
+    sources = getattr(lp, "sources", {}) or {}
+    for src in _iter_sources(sources):
+        for item in getattr(src, "items", []) or []:
+            item_bibref = str(getattr(item, "bibref", "") or "").lstrip("@").lower()
+            if item_bibref != target:
+                continue
+
+            # Localização
+            item_loc = _get_item_location(item)
+            file_str = ""
+            line_val = 0
+            if item_loc:
+                raw_file = getattr(item_loc, "file", None)
+                if raw_file:
+                    file_str = _relativize_path(str(raw_file), workspace_root)
+                line_val = int(getattr(item_loc, "line", 0) or 0)
+
+            # extra_fields: serializar valores para tipos JSON-safe
+            raw_extra = getattr(item, "extra_fields", {}) or {}
+            extra_fields = {}
+            for fname, fval in raw_extra.items():
+                extra_fields[str(fname)] = _serialize_field_value(fval)
+
+            # codes
+            codes = [str(c) for c in (getattr(item, "codes", None) or []) if c]
+
+            # chains: serializar como lista de strings "A -> B -> C"
+            chain_strings = []
+            for chain in (getattr(item, "chains", None) or []):
+                nodes = _chain_nodes(chain)
+                if nodes:
+                    chain_strings.append(" -> ".join(nodes))
+
+            items_out.append({
+                "extra_fields": extra_fields,
+                "codes": codes,
+                "chains": chain_strings,
+                "line": line_val,
+                "file": file_str,
+            })
+
+    return {"success": True, "items": items_out}
+
+
+def _serialize_field_value(value) -> object:
+    """Serializa um valor de campo para tipo JSON-safe (str, list[str], ou None)."""
+    if value is None:
+        return None
+    if isinstance(value, str):
+        return value
+    if isinstance(value, (list, tuple)):
+        result = []
+        for item in value:
+            serialized = _serialize_field_value(item)
+            if serialized is not None:
+                result.append(serialized)
+        return result
+    if isinstance(value, dict):
+        return {str(k): _serialize_field_value(v) for k, v in value.items()}
+    # ChainNode ou outros objetos — serializar nós como string
+    nodes = _chain_nodes(value)
+    if nodes:
+        return " -> ".join(nodes)
+    return str(value)

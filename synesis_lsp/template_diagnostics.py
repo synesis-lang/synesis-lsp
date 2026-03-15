@@ -109,6 +109,10 @@ def build_template_diagnostics(
     return diagnostics
 
 
+_GUIDELINES_START_RE = re.compile(r"^\s*GUIDELINES\s*$", re.IGNORECASE)
+_GUIDELINES_END_RE = re.compile(r"^\s*END\s+GUIDELINES\b", re.IGNORECASE)
+
+
 def build_command_diagnostics(source: str, uri: str) -> list[Diagnostic]:
     """
     Gera avisos para comandos inválidos (palavras reservadas).
@@ -119,10 +123,22 @@ def build_command_diagnostics(source: str, uri: str) -> list[Diagnostic]:
         return []
 
     diagnostics: list[Diagnostic] = []
+    in_guidelines = False
     for line_idx, line in enumerate(source.splitlines()):
         stripped = line.strip()
         if not stripped or stripped.startswith("#"):
             continue
+
+        # Rastrear blocos GUIDELINES — conteúdo é texto livre, nunca validar
+        if _GUIDELINES_END_RE.match(stripped):
+            in_guidelines = False
+            continue
+        if _GUIDELINES_START_RE.match(stripped):
+            in_guidelines = True
+            continue
+        if in_guidelines:
+            continue
+
         if ":" in stripped:
             continue
 
@@ -234,7 +250,20 @@ def _allowed_commands(kind: str) -> set[str]:
 def _parse_blocks(source: str) -> list[dict]:
     blocks: list[dict] = []
     current = None
+    in_guidelines = False
     for idx, line in enumerate(source.splitlines()):
+        stripped = line.strip()
+
+        # Rastrear blocos GUIDELINES — conteúdo é texto livre, nunca coletar campos
+        if _GUIDELINES_END_RE.match(stripped):
+            in_guidelines = False
+            continue
+        if _GUIDELINES_START_RE.match(stripped):
+            in_guidelines = True
+            continue
+        if in_guidelines:
+            continue
+
         block_match = _BLOCK_RE.match(line)
         if block_match:
             current = {"scope": block_match.group(1), "fields": {}, "line": idx}

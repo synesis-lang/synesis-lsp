@@ -5,6 +5,100 @@ All notable changes to the Synesis LSP project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.14.32] - 2026-03-15
+
+### Fixed
+- **Semantic tokens emitidos dentro de blocos GUIDELINES** (`semantic_tokens.py`)
+  - `_extract_tokens_from_source` não rastreava estado de bloco GUIDELINES — linhas como `Economic:`, `Trust -> "High Trust"`, `GOOD:` dentro de GUIDELINES geravam tokens `Property`/`EnumMember`, que sobrepunham a gramática TextMate da extensão (`semanticHighlighting: true`).
+  - Fix: adicionado `in_guidelines` com `_RE_GUIDELINES_START`/`_RE_GUIDELINES_END` (mesmos patterns de `template_diagnostics.py`). Linhas internas não emitem tokens; `GUIDELINES` e `END GUIDELINES` emitem `_TK_KEYWORD` com `_MOD_DECLARATION`.
+
+## [0.14.31] - 2026-03-15
+
+### Fixed
+- **Falsos diagnósticos dentro de blocos GUIDELINES** (`template_diagnostics.py`)
+  - `_parse_blocks` não rastreava `GUIDELINES ... END GUIDELINES`, causando falsos positivos para qualquer linha `palavra:` ou `PALAVRA` dentro do bloco (ex.: `YES`, `PRESERVE`, `Trust: ...`).
+  - Fix: adicionado rastreamento `in_guidelines` idêntico ao já existente em `build_command_diagnostics`, usando os regexes `_GUIDELINES_START_RE` e `_GUIDELINES_END_RE` já definidos no módulo.
+
+## [0.14.30] - 2026-03-15
+
+### Fixed
+- **`AttributeError: 'WindowsPath' object has no attribute 'startswith'`** em `getOntologyAnnotations` — segundo ponto de falha (`ontology_annotations.py`)
+  - `_source_file()` retornava `location.file` como `WindowsPath`; esse valor chegava em `_file_matches` → `_normalize_path_value(src_file)` → `src_file.startswith("file://")` → crash.
+  - Fix: `_source_file()` agora faz `str(val)` antes de retornar, garantindo que o resultado é sempre `str | None`.
+
+## [0.14.29] - 2026-03-15
+
+### Removed
+- **`build_command_diagnostics` removido** (`server.py`, `template_diagnostics.py`)
+  - Função redundante: o compilador Lark (`validate_single_file` → `_parse_with_error_handling`) já reporta erros de sintaxe com linha/coluna precisos via `propagate_positions=True`.
+  - O regex linha a linha não tinha contexto de AST — gerava falsos positivos para qualquer palavra em maiúsculas no início de uma linha (incluindo conteúdo de blocos GUIDELINES, memos analíticos, etc.).
+  - Nenhum diagnóstico legítimo era produzido por esta função que o compilador não entregasse com maior precisão.
+
+## [0.14.28] - 2026-03-15
+
+### Fixed
+- **`build_command_diagnostics` ignorava conteúdo de blocos GUIDELINES** (`template_diagnostics.py`)
+  - O validador regex linha a linha não rastreava contexto de bloco — linhas dentro de `GUIDELINES ... END GUIDELINES` eram analisadas como possíveis comandos, gerando falsos positivos (ex: `YES`, `PRESERVE`).
+  - Fix: rastreamento de estado `in_guidelines` com `_GUIDELINES_START_RE` / `_GUIDELINES_END_RE`; linhas dentro do bloco são completamente ignoradas pelo validador.
+
+## [0.14.27] - 2026-03-15
+
+### Fixed
+- **Grafo funciona com cursor em ITEM filho de SOURCE** (`symbols.py`)
+  - O range do symbol SOURCE não englobava seus children ITEM — ao posicionar o cursor num ITEM, `findSymbolPath` no extension não encontrava o parent SOURCE, impedindo a extração do bibref.
+  - Fix: após calcular ranges de todos os children ITEM, o range do SOURCE é expandido para o fim do último child se necessário (LSP: parent range must contain children ranges).
+
+- **`AttributeError: 'WindowsPath' object has no attribute 'startswith'`** em `getOntologyAnnotations` (`ontology_annotations.py`)
+  - `SourceLocation.file` é `WindowsPath` no compilador; quando passado como `file_path` diretamente para `_normalize_path_value(value: str)`, o `value.startswith("file://")` falhava.
+  - Fix: `file_path = str(file_path)` imediatamente após extrair de `location.file`.
+
+## [0.14.26] - 2026-03-15
+
+### Fixed
+- **Document symbols com range de bloco completo** (`symbols.py`)
+  - `_make_range` cobria apenas a linha de declaração (`SOURCE @ref`, `ITEM @ref`), não o bloco inteiro.
+  - Consequência: ao posicionar o cursor no **conteúdo** de um bloco (abaixo da linha de cabeçalho), `executeDocumentSymbolProvider` não encontrava nenhum símbolo contendo a posição → Graph Viewer e Abstract Viewer reportavam "cursor should be inside a SOURCE or ITEM block".
+  - Fix: nova função `_make_block_range` calcula o range do bloco até a linha anterior ao próximo bloco (ou fim do arquivo), usando as posições de todos os nós ordenados. `selection_range` mantém apenas a linha de declaração (para navegação de cursor).
+
+### Added
+- **Versões do LSP e compilador no retorno de `loadProject`** (`server.py`)
+  - `load_project` agora inclui `lsp_version` e `compiler_version` em todas as respostas de sucesso.
+  - Helper `_get_versions()` resolve as versões via `importlib.metadata` com fallbacks.
+
+## [0.14.25] - 2026-03-15
+
+### Added
+- **`synesis/getExcerpts`** — novo comando LSP que retorna todos os items de um bibref com seus campos de conteúdo (`extra_fields`, `codes`, `chains`, `line`, `file`), eliminando a necessidade da extensão ler arquivos `.syn` do disco e parsear com regex:
+  - `get_excerpts(cached_result, bibref)` adicionado em `explorer_requests.py`
+  - Handler `cmd_get_excerpts` registrado em `server.py` seguindo o mesmo padrão dos demais comandos
+  - Bibref comparado de forma insensível a `@` e case-insensitive
+  - Valores de campos serializados recursivamente para tipos JSON-safe (strings, listas, dicts); `ChainNode` serializado como `"A -> B -> C"`
+  - Retorna `{"success": True, "items": [...]}` ou `{"success": False, "error": "..."}` se projeto não carregado
+
+## [0.14.24] - 2026-03-15
+
+### Changed
+
+- **Novos diagnósticos do compilador agora propagados ao editor** (requer `synesis >= 0.4.1`):
+  o LSP é um protocol adapter puro — nenhum código foi alterado, mas o compilador passou a emitir
+  38 novos tipos de `ValidationError` (Fases 1–4 do plano de implementação de erros), todos
+  propagados automaticamente via `converters.build_diagnostics()` → `to_diagnostic()` / `CODE`.
+  Categorias de diagnósticos agora cobertas:
+  - **Template estrutural** (erros 6, 18, 39–59, 69): campos sem definição `FIELD`, `BUNDLE`
+    com 1 campo, `CHAIN` sem `ARITY`, `SCALE` sem `FORMAT`, operadores inválidos em `ARITY`,
+    `FORMAT`/`ARITY`/`RELATIONS` em tipos errados, valores duplicados em `VALUES`, etc.
+  - **Semântica de anotações** (erros 5, 8, 9, 23, 26, 31–33): ontologia sem `ONTOLOGY FIELDS`,
+    `chain:` qualificada sem `RELATIONS` no template (e vice-versa), bloco `ITEM` vazio, valor
+    decimal em campo `SCALE` inteiro, código duplicado no mesmo campo.
+  - **Cross-entity** (erros 13–15, 68, 70, 71): conceito `chain:` com espaços, nome de conceito
+    igual a nome de relação, ontologia duplicada, `SOURCE` duplicado no mesmo arquivo, ontologias
+    com `description` idêntica.
+  - **Estrutura de projeto** (erros 61–63, 65–67): arquivo `.bib` não encontrado, `.syn`/`.syno`
+    não referenciados no `.synp`, `PROJECT` sem `TEMPLATE`, dois blocos `PROJECT`, data
+    `MODIFIED` anterior a `CREATED`.
+  Cada novo erro carrega `CODE` no padrão `SYNESIS_EXXX` — `code_actions.py` pode realizar
+  matching type-safe sem depender de substrings da mensagem.
+
 ## [0.14.23] - 2026-03-13
 
 ### Changed

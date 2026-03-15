@@ -138,11 +138,13 @@ def build_diagnostic(error: ValidationError) -> Diagnostic:
         if humanized:
             message = f"{message}\n\nEsperado: {humanized}"
 
+    code = getattr(error, "CODE", None)
     return Diagnostic(
         range=convert_location(error.location, length=1),
         severity=convert_severity(error.severity),
         source="synesis",
         message=message,
+        code=code,
     )
 
 

@@ -89,6 +89,36 @@ def _build_symbols_from_nodes(nodes: list, source: str) -> List[DocumentSymbol]:
         elif ProjectNode and isinstance(node, ProjectNode):
             project_nodes.append(node)
 
+    # Calcular linhas-de-início de todos os nodes top-level para inferir fins de bloco.
+    # Cada bloco vai da sua linha de início até a linha anterior ao próximo bloco.
+    all_start_lines: list[int] = sorted(set(
+        node.location.line
+        for node in nodes
+        if getattr(node, "location", None) is not None
+    ))
+
+    def _block_end_line(start_line_1based: int) -> int:
+        """Retorna a última linha (0-based) do bloco que começa em start_line_1based."""
+        idx = all_start_lines.index(start_line_1based) if start_line_1based in all_start_lines else -1
+        if idx >= 0 and idx + 1 < len(all_start_lines):
+            # Termina 1 linha antes do próximo bloco (0-based)
+            return all_start_lines[idx + 1] - 2
+        # Último bloco: vai até o fim do arquivo
+        return max(0, len(lines) - 1)
+
+    def _make_block_range(location, next_start_line_1based: Optional[int] = None) -> Range:
+        """Range que cobre o bloco inteiro (declaração até início do próximo bloco)."""
+        if location is None:
+            return Range(start=Position(line=0, character=0), end=Position(line=0, character=0))
+        start_0 = max(0, location.line - 1)
+        start_col = max(0, location.column - 1)
+        end_0 = _block_end_line(location.line)
+        end_char = len(lines[end_0]) if end_0 < len(lines) else 0
+        return Range(
+            start=Position(line=start_0, character=start_col),
+            end=Position(line=end_0, character=end_char),
+        )
+
     # Agrupar items por bibref para associar a sources
     items_by_bibref: dict[str, list] = defaultdict(list)
     for item in item_nodes:
@@ -107,30 +137,40 @@ def _build_symbols_from_nodes(nodes: list, source: str) -> List[DocumentSymbol]:
             matched_bibrefs.add(bibref)
 
         for i, item in enumerate(matching_items):
-            item_range = _make_range(item.location, lines)
-            # Exibe o quote truncado ou um índice
-            item_detail = ""
-            if hasattr(item, "quote") and item.quote:
-                item_detail = item.quote[:60]
+            item_range = _make_block_range(item.location)
+            item_sel = _make_range(item.location, lines)  # selection_range: só a linha de declaração
+            item_detail = item.quote[:60] if getattr(item, "quote", None) else None
             children.append(
                 DocumentSymbol(
                     name=f"ITEM #{i + 1}",
                     kind=SymbolKind.Method,
                     range=item_range,
-                    selection_range=item_range,
-                    detail=item_detail if item_detail else None,
+                    selection_range=item_sel,
+                    detail=item_detail,
                 )
             )
 
-        source_range = _make_range(snode.location, lines)
-        # bibref já inclui @ quando vem do compilador
+        # O range do SOURCE deve englobar todos os ITEM children (LSP requirement:
+        # parent.range must contain children ranges). Expandimos o fim do range
+        # do SOURCE até o fim do último ITEM filho.
+        source_range = _make_block_range(snode.location)
+        if children:
+            last_child_end = children[-1].range.end
+            if (last_child_end.line > source_range.end.line or
+                    (last_child_end.line == source_range.end.line and
+                     last_child_end.character > source_range.end.character)):
+                source_range = Range(
+                    start=source_range.start,
+                    end=last_child_end,
+                )
+        source_sel = _make_range(snode.location, lines)
         display_bibref = bibref if bibref.startswith("@") else f"@{bibref}"
         symbols.append(
             DocumentSymbol(
                 name=f"SOURCE {display_bibref}",
                 kind=SymbolKind.Class,
                 range=source_range,
-                selection_range=source_range,
+                selection_range=source_sel,
                 children=children if children else None,
             )
         )
@@ -141,37 +181,40 @@ def _build_symbols_from_nodes(nodes: list, source: str) -> List[DocumentSymbol]:
             continue
         display_ref = bibref if bibref.startswith("@") else f"@{bibref}"
         for i, item in enumerate(items):
-            item_range = _make_range(item.location, lines)
+            item_range = _make_block_range(item.location)
+            item_sel = _make_range(item.location, lines)
             symbols.append(
                 DocumentSymbol(
                     name=f"ITEM {display_ref} #{i + 1}",
                     kind=SymbolKind.Method,
                     range=item_range,
-                    selection_range=item_range,
+                    selection_range=item_sel,
                 )
             )
 
     # ONTOLOGY nodes
     for onode in ontology_nodes:
-        onto_range = _make_range(onode.location, lines)
+        onto_range = _make_block_range(onode.location)
+        onto_sel = _make_range(onode.location, lines)
         symbols.append(
             DocumentSymbol(
                 name=f"ONTOLOGY {onode.concept}",
                 kind=SymbolKind.Struct,
                 range=onto_range,
-                selection_range=onto_range,
+                selection_range=onto_sel,
             )
         )
 
     # PROJECT nodes
     for pnode in project_nodes:
-        proj_range = _make_range(pnode.location, lines)
+        proj_range = _make_block_range(pnode.location)
+        proj_sel = _make_range(pnode.location, lines)
         symbols.append(
             DocumentSymbol(
                 name=f"PROJECT {pnode.name}",
                 kind=SymbolKind.Namespace,
                 range=proj_range,
-                selection_range=proj_range,
+                selection_range=proj_sel,
             )
         )
 

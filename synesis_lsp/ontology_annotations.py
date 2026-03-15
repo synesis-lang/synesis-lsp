@@ -149,9 +149,10 @@ def _field_value_contains_code(value, code: str) -> bool:
 
 
 def _source_file(src) -> Optional[str]:
-    """Extrai o path do arquivo de um source node."""
+    """Extrai o path do arquivo de um source node como str."""
     loc = getattr(src, "location", None)
-    return getattr(loc, "file", None) if loc else None
+    val = getattr(loc, "file", None) if loc else None
+    return str(val) if val is not None else None
 
 
 def _merge_code_usage_with_chains(
@@ -445,6 +446,7 @@ def _build_occurrences(
         file_path = getattr(location, "file", None)
         if not file_path:
             continue
+        file_path = str(file_path)  # SourceLocation.file pode ser WindowsPath
 
         # Relativizar path
         relative_file = file_path

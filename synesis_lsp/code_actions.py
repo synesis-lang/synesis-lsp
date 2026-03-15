@@ -56,22 +56,40 @@ def compute_code_actions(
         if result:
             template = getattr(result, "template", None)
 
-    # Processar cada diagnóstico
+    # Processar cada diagnóstico — match por code type-safe, com fallback em mensagem
     for diagnostic in diagnostics:
-        # Quick fix para campo desconhecido
-        if "unknown field" in diagnostic.message.lower() or "campo desconhecido" in diagnostic.message.lower():
+        code = getattr(diagnostic, "code", None)
+
+        # Quick fix para campo desconhecido (SYNESIS_E022 = UnknownFieldName)
+        if code == "SYNESIS_E022" or (
+            not code and (
+                "unknown field" in diagnostic.message.lower()
+                or "campo desconhecido" in diagnostic.message.lower()
+            )
+        ):
             field_actions = _suggest_field_corrections(uri, diagnostic, template)
             if field_actions:
                 actions.extend(field_actions)
 
-        # Quick fix para campo obrigatório faltando
-        elif "required field" in diagnostic.message.lower() or "campo obrigatório" in diagnostic.message.lower():
+        # Quick fix para campo obrigatório faltando (SYNESIS_E020 = MissingRequiredField)
+        elif code == "SYNESIS_E020" or (
+            not code and (
+                "required field" in diagnostic.message.lower()
+                or "campo obrigatório" in diagnostic.message.lower()
+                or "campo obrigatorio" in diagnostic.message.lower()
+            )
+        ):
             required_actions = _suggest_required_field(uri, diagnostic, template)
             if required_actions:
                 actions.extend(required_actions)
 
-        # Quick fix para valor inválido
-        elif "invalid value" in diagnostic.message.lower() or "valor inválido" in diagnostic.message.lower():
+        # Quick fix para valor inválido em ENUMERATED (SYNESIS_E027 = InvalidEnumeratedValue)
+        elif code == "SYNESIS_E027" or (
+            not code and (
+                "invalid value" in diagnostic.message.lower()
+                or "valor inválido" in diagnostic.message.lower()
+            )
+        ):
             value_actions = _suggest_value_corrections(uri, diagnostic, template)
             if value_actions:
                 actions.extend(value_actions)

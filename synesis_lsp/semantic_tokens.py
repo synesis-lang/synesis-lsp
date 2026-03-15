@@ -81,6 +81,8 @@ _RE_FIELD_LINE = re.compile(r'^(\s*)(\w+)\s*:\s*(.*?)$')
 _RE_PROJECT_KEYWORDS = re.compile(
     r'^(\s*)(PROJECT|TEMPLATE|INCLUDE|BIBLIOGRAPHY|ANNOTATIONS|END\s+PROJECT)\b'
 )
+_RE_GUIDELINES_START = re.compile(r'^\s*GUIDELINES\s*$', re.IGNORECASE)
+_RE_GUIDELINES_END = re.compile(r'^\s*END\s+GUIDELINES\b', re.IGNORECASE)
 
 # RawToken: (line_0based, col_0based, length, token_type_index, modifier_bitmask)
 RawToken = Tuple[int, int, int, int, int]
@@ -113,9 +115,28 @@ def _extract_tokens_from_source(source: str) -> List[RawToken]:
     """Extrai tokens escaneando o texto-fonte linha a linha."""
     tokens: List[RawToken] = []
     lines = source.splitlines()
+    in_guidelines = False
 
     for line_idx, line in enumerate(lines):
         if not line.strip():
+            continue
+
+        stripped = line.strip()
+
+        # Bloco GUIDELINES — conteúdo é texto livre, não emitir tokens
+        if _RE_GUIDELINES_END.match(stripped):
+            in_guidelines = False
+            col = len(line) - len(line.lstrip())
+            tokens.append((line_idx, col, len(stripped), _TK_KEYWORD, _MOD_DECLARATION))
+            continue
+
+        if _RE_GUIDELINES_START.match(stripped):
+            in_guidelines = True
+            col = len(line) - len(line.lstrip())
+            tokens.append((line_idx, col, len(stripped), _TK_KEYWORD, _MOD_DECLARATION))
+            continue
+
+        if in_guidelines:
             continue
 
         # 1. Keywords de projeto/template (PROJECT, INCLUDE, etc.)
