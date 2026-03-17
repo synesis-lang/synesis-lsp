@@ -5,6 +5,14 @@ All notable changes to the Synesis LSP project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.14.33] - 2026-03-17
+
+### Fixed
+- **Diagnósticos não aparecem ao abrir workspace** (`server.py`, depende de `synesis>=0.4.4`)
+  - **Causa 1 — URI Windows** (`synesis/lsp_adapter.py`): `_find_workspace_root()` transformava `file:///C:/...` em `/C:/...` (inválido no Windows) via `Path(uri.replace("file://",""))` → workspace não encontrado → contexto vazio → zero diagnósticos. Fix no compilador `synesis 0.4.3`: substituído por `urlparse/unquote`. Testado: 0 → 10 diagnósticos em T01.
+  - **Causa 2 — Ontologia ausente no contexto LSP** (`synesis/lsp_adapter.py`): `_load_context_from_project` ignorava entradas `INCLUDE ONTOLOGY` do `.synp`, retornando sempre `ontology_index={}` → todos os códigos marcados como "não definidos na ontologia". Fix no compilador `synesis 0.4.4`: bloco de carregamento de ontologias adicionado, mesmo padrão de `compiler.py:parse_ontologies`.
+  - **Causa 3 — `loadProject` não disparava revalidação** (`server.py`): documentos com diagnósticos stale do `did_open` (sem contexto) nunca eram revalidados. Fix: após `workspace_cache.put()` e no path de cache-hit, incrementa `_context_versions[ws_key]` e agenda `_revalidate_workspace_deferred()` via `asyncio.ensure_future()` — padrão idêntico ao `did_save` (linhas 1465-1466).
+
 ## [0.14.32] - 2026-03-15
 
 ### Fixed

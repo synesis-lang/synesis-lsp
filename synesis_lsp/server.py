@@ -364,6 +364,21 @@ def load_project(ls: SynesisLanguageServer, params) -> dict:
         cached = ls.workspace_cache.get(ws_key) if ws_key else None
         if cached and cached.fingerprint == fingerprint:
             stats = cached.result.stats
+
+            # Bump context_version → dirty-flag força revalidação dos docs abertos.
+            # Necessário porque o LSP pode ter validado arquivos com contexto vazio
+            # (did_open antes de loadProject completar) e o cache de diagnósticos ficou stale.
+            if ws_key:
+                ls._context_versions[ws_key] = ls._context_versions.get(ws_key, 0) + 1
+            if ws_key and ws_key in ls.workspace_documents:
+                logger.debug(
+                    "loadProject (cached): agendando revalidação de %d documentos",
+                    len(ls.workspace_documents[ws_key]),
+                )
+                asyncio.ensure_future(
+                    _revalidate_workspace_deferred(ls, ws_key, ls._last_focused_uri)
+                )
+
             return {
                 "success": True,
                 "cached": True,
@@ -392,6 +407,24 @@ def load_project(ls: SynesisLanguageServer, params) -> dict:
         if not ws_key:
             return {"success": False, "error": "Workspace inválido"}
         ls.workspace_cache.put(ws_key, result, workspace_path, fingerprint=fingerprint)
+
+        # Invalidar _context_cache do lsp_adapter para forçar redescoberta de contexto
+        # na próxima chamada a validate_single_file (garante template atualizado)
+        _invalidate_cache(workspace_path)
+
+        # Bump context_version → dirty-flag força revalidação dos docs abertos
+        if ws_key:
+            ls._context_versions[ws_key] = ls._context_versions.get(ws_key, 0) + 1
+
+        # Agendar revalidação deferida de todos os documentos abertos no workspace
+        if ws_key and ws_key in ls.workspace_documents:
+            logger.debug(
+                "loadProject: agendando revalidação de %d documentos",
+                len(ls.workspace_documents[ws_key]),
+            )
+            asyncio.ensure_future(
+                _revalidate_workspace_deferred(ls, ws_key, ls._last_focused_uri)
+            )
 
         # Retornar estatísticas (leve)
         return {
