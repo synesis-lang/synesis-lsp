@@ -95,14 +95,15 @@ def build_template_diagnostics(
             message = f"Campo obrigatorio ausente em {scope}: '{field_name}'."
             diagnostics.append(_make_diag(block["line"], 1, message))
 
-        bundle_pairs = bundled_by_scope.get(scope, [])
-        for a, b in bundle_pairs:
-            a_present = a in fields
-            b_present = b in fields
-            if a_present ^ b_present:
+        bundle_tuples = bundled_by_scope.get(scope, [])
+        for bundle in bundle_tuples:
+            present = {f for f in bundle if f in fields}
+            absent = set(bundle) - present
+            if present and absent:
                 message = (
                     f"Bundle incompleto em {scope}: "
-                    f"'{a}' e '{b}' devem aparecer juntos."
+                    f"'{', '.join(sorted(present))}' presente(s) mas "
+                    f"'{', '.join(sorted(absent))}' ausente(s) — devem aparecer juntos."
                 )
                 diagnostics.append(_make_diag(block["line"], 1, message))
 
@@ -304,17 +305,17 @@ def _scope_to_fields(mapping) -> dict[str, list[str]]:
     return scoped
 
 
-def _scope_to_bundles(mapping) -> dict[str, list[tuple[str, str]]]:
-    scoped: dict[str, list[tuple[str, str]]] = {}
+def _scope_to_bundles(mapping) -> dict[str, list[tuple[str, ...]]]:
+    scoped: dict[str, list[tuple[str, ...]]] = {}
     for scope, bundles in mapping.items():
         name = _scope_name(scope)
         if not name:
             continue
-        pairs: list[tuple[str, str]] = []
+        result: list[tuple[str, ...]] = []
         for bundle in bundles or []:
             if isinstance(bundle, (list, tuple)) and len(bundle) >= 2:
-                pairs.append((bundle[0], bundle[1]))
-        scoped[name] = pairs
+                result.append(tuple(bundle))
+        scoped[name] = result
     return scoped
 
 

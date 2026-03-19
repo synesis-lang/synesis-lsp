@@ -76,3 +76,5 @@ synesis_lsp.egg-info/
 
 # LSP Study symlink at repo root
 LSP_Study
+.gitnexus
+.claude

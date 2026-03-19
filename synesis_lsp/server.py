@@ -90,9 +90,9 @@ try:
     from synesis.lsp_adapter import (
         ValidationContext,
         validate_single_file,
-        _find_workspace_root,
-        _discover_context,
-        _invalidate_cache,
+        find_workspace_root,
+        discover_context,
+        invalidate_cache,
     )
 except ImportError as e:
     raise ImportError(
@@ -410,7 +410,7 @@ def load_project(ls: SynesisLanguageServer, params) -> dict:
 
         # Invalidar _context_cache do lsp_adapter para forçar redescoberta de contexto
         # na próxima chamada a validate_single_file (garante template atualizado)
-        _invalidate_cache(workspace_path)
+        invalidate_cache(workspace_path)
 
         # Bump context_version → dirty-flag força revalidação dos docs abertos
         if ws_key:
@@ -724,7 +724,7 @@ def _get_cached_for_uri(ls: SynesisLanguageServer, uri: str):
     Usa _find_workspace_root (lsp_adapter) e, se falhar, tenta folders do LSP.
     Retorna cached_result ou None.
     """
-    workspace_root = _find_workspace_root(uri)
+    workspace_root = find_workspace_root(uri)
     if not workspace_root and ls.workspace and hasattr(ls.workspace, "folders"):
         folders = ls.workspace.folders
         if folders:
@@ -848,7 +848,7 @@ def debug_diagnostics(ls: SynesisLanguageServer, params) -> dict:
                     field_specs = getattr(template, "field_specs", {})
                     status["template_fields"] = list(field_specs.keys())
 
-            context = _discover_context(uri)
+            context = discover_context(uri)
             status["context_discoverable"] = context is not None
 
         except Exception as e:
@@ -1165,7 +1165,7 @@ def validate_document(ls: SynesisLanguageServer, uri: str) -> None:
 
         # DIRTY FLAG CHECK (Fase 2 — padrão Pyright WriteableData)
         content_hash = hash(source)
-        workspace_root = _find_workspace_root(uri)
+        workspace_root = find_workspace_root(uri)
         workspace_key = _workspace_key(workspace_root) if workspace_root else ""
         ctx_version = ls._context_versions.get(workspace_key, 0)
 
@@ -1352,7 +1352,7 @@ def did_close(ls: SynesisLanguageServer, params: DidCloseTextDocumentParams) -> 
     ls.publish_diagnostics(uri, [])
 
     # Remove do rastreamento de workspace
-    workspace_root = _find_workspace_root(uri)
+    workspace_root = find_workspace_root(uri)
     if workspace_root:
         workspace_key = _workspace_key(workspace_root)
         if workspace_key and workspace_key in ls.workspace_documents:
@@ -1473,7 +1473,7 @@ def did_save(ls: SynesisLanguageServer, params: DidSaveTextDocumentParams) -> No
         logger.info(f"Arquivo de contexto modificado: {uri}")
 
         # 1. ENCONTRAR WORKSPACE ROOT
-        workspace_root = _find_workspace_root(uri)
+        workspace_root = find_workspace_root(uri)
         if not workspace_root:
             logger.warning(f"Workspace root não encontrado para {uri}")
             return
@@ -1484,7 +1484,7 @@ def did_save(ls: SynesisLanguageServer, params: DidSaveTextDocumentParams) -> No
             return
 
         # 2. INVALIDAR CACHES
-        _invalidate_cache(workspace_root)
+        invalidate_cache(workspace_root)
         ls.workspace_cache.invalidate(workspace_key)
         logger.info(f"Caches invalidados para: {workspace_key}")
 
@@ -1503,7 +1503,7 @@ def did_save(ls: SynesisLanguageServer, params: DidSaveTextDocumentParams) -> No
     elif file_extension == ".bib":
         logger.info(f"Bibliografia modificada: {uri}")
 
-        workspace_root = _find_workspace_root(uri)
+        workspace_root = find_workspace_root(uri)
         if workspace_root:
             workspace_key = _workspace_key(workspace_root)
             if not workspace_key:
@@ -1511,7 +1511,7 @@ def did_save(ls: SynesisLanguageServer, params: DidSaveTextDocumentParams) -> No
                 return
 
             # Invalidar caches
-            _invalidate_cache(workspace_root)
+            invalidate_cache(workspace_root)
             ls.workspace_cache.invalidate(workspace_key)
             logger.info(f"Caches invalidados para: {workspace_key}")
 
@@ -1528,7 +1528,7 @@ def did_save(ls: SynesisLanguageServer, params: DidSaveTextDocumentParams) -> No
 
     # Arquivos .syn e .syno afetam o projeto compilado (workspace_cache)
     elif file_extension in [".syn", ".syno"]:
-        workspace_root = _find_workspace_root(uri)
+        workspace_root = find_workspace_root(uri)
         if workspace_root:
             workspace_key = _workspace_key(workspace_root)
             if workspace_key:
@@ -1568,7 +1568,7 @@ def did_change_watched_files(
             continue
 
         # Encontrar workspace root
-        workspace_root = _find_workspace_root(uri)
+        workspace_root = find_workspace_root(uri)
         if not workspace_root:
             continue
 
@@ -1577,7 +1577,7 @@ def did_change_watched_files(
             continue
 
         # Invalidar caches
-        _invalidate_cache(workspace_root)
+        invalidate_cache(workspace_root)
         ls.workspace_cache.invalidate(workspace_key)
         logger.info(f"Caches invalidados para workspace: {workspace_key}")
 

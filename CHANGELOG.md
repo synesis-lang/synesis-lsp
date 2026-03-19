@@ -5,6 +5,19 @@ All notable changes to the Synesis LSP project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.14.34] - 2026-03-18
+
+### Fixed
+- **Imports de API privada do compilador migrados para nomes públicos** (`server.py`)
+  - `_find_workspace_root`, `_discover_context`, `_invalidate_cache` substituídos por `find_workspace_root`, `discover_context`, `invalidate_cache` no bloco de imports (linha 90-96) e em todos os 11 call sites.
+  - Requer `synesis >= 0.4.5`. Aliases backward-compat no compilador garantem que versões anteriores do LSP continuam funcionando.
+
+### Fixed
+- **Validação de bundles N-ários truncada para 2 campos** (`template_diagnostics.py`)
+  - `_scope_to_bundles()` usava `(bundle[0], bundle[1])` — campos além do 2º eram silenciosamente ignorados.
+  - Validação usava `for a, b in bundle_pairs` com XOR binário — incompatível com bundles de 3+ campos.
+  - Fix: `_scope_to_bundles` agora retorna `tuple[str, ...]` completo via `tuple(bundle)`. Validação usa `present`/`absent` por contagem de presença parcial — funciona para 2 ou N campos sem regressão nos casos existentes.
+
 ## [0.14.33] - 2026-03-17
 
 ### Fixed
