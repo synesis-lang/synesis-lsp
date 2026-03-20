@@ -188,6 +188,44 @@ def build_diagnostics(result: ValidationResult) -> List[Diagnostic]:
     return diagnostics
 
 
+def group_diagnostics_by_file(
+    result: ValidationResult,
+    workspace_root: Optional[Path] = None,
+) -> dict[str, list[Diagnostic]]:
+    """
+    Agrupa ValidationErrors por arquivo e converte para Diagnostic LSP.
+
+    Usado para publicar diagnosticos de compilacao completa (workspace-wide)
+    a partir do CompilationResult do SynesisCompiler.
+
+    Args:
+        result: ValidationResult com errors/warnings/info de todo o projeto
+        workspace_root: Raiz do workspace para resolver paths relativos.
+            SourceLocation.file do compilador pode ser relativo ao diretorio
+            do projeto (ex: "interviews/entrevista01.syn").
+
+    Returns:
+        Dict mapeando file URIs para listas de Diagnostic LSP
+    """
+    from collections import defaultdict
+
+    grouped: dict[str, list[Diagnostic]] = defaultdict(list)
+
+    for error in result.errors + result.warnings + result.info:
+        try:
+            file_path = error.location.file
+            if not file_path.is_absolute() and workspace_root:
+                file_path = (workspace_root / file_path).resolve()
+            elif not file_path.is_absolute():
+                file_path = file_path.resolve()
+            uri = file_path.as_uri()
+            grouped[uri].append(build_diagnostic(error))
+        except Exception as e:
+            logger.warning(f"Erro ao agrupar diagnostico: {e}")
+
+    return dict(grouped)
+
+
 # ---------------------------------------------------------------------------
 # Integração com error_handler (Step 9)
 # ---------------------------------------------------------------------------

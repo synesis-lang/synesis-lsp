@@ -368,6 +368,11 @@ def load_project(ls: SynesisLanguageServer, params) -> dict:
             # Bump context_version → dirty-flag força revalidação dos docs abertos.
             # Necessário porque o LSP pode ter validado arquivos com contexto vazio
             # (did_open antes de loadProject completar) e o cache de diagnósticos ficou stale.
+            # Publicar diagnósticos do compilador para todos os arquivos do projeto
+            _publish_compilation_diagnostics(
+                ls, cached.result.validation_result, fingerprint_root
+            )
+
             if ws_key:
                 ls._context_versions[ws_key] = ls._context_versions.get(ws_key, 0) + 1
             if ws_key and ws_key in ls.workspace_documents:
@@ -407,6 +412,11 @@ def load_project(ls: SynesisLanguageServer, params) -> dict:
         if not ws_key:
             return {"success": False, "error": "Workspace inválido"}
         ls.workspace_cache.put(ws_key, result, workspace_path, fingerprint=fingerprint)
+
+        # Publicar diagnósticos de compilação para TODOS os arquivos do projeto
+        # (não apenas os abertos no editor). Erros cross-file (linkagem, ontologia,
+        # duplicatas) só existem no resultado do compilador.
+        _publish_compilation_diagnostics(ls, result.validation_result, fingerprint_root)
 
         # Invalidar _context_cache do lsp_adapter para forçar redescoberta de contexto
         # na próxima chamada a validate_single_file (garante template atualizado)
@@ -1076,51 +1086,73 @@ def cmd_get_abstract(ls: SynesisLanguageServer, params) -> dict:
 
 
 @server.command("synesis/validateWorkspace")
-def cmd_validate_workspace(ls: SynesisLanguageServer, params) -> dict:
+async def cmd_validate_workspace(ls: SynesisLanguageServer, params) -> dict:
     """
-    Valida todos os arquivos Synesis no workspace.
+    Valida todos os arquivos Synesis no workspace usando o compilador completo.
+
+    Executa SynesisCompiler.compile() em background thread via run_in_executor
+    para não bloquear o event loop do LSP. Detecta erros cross-file (linkagem,
+    ontologia, duplicatas) que a validação per-file não encontra.
 
     Returns dict com resultados de validação por arquivo.
     """
-    # Extrair workspace_root dos params
-    workspace_root = None
+    try:
+        workspace_root = _resolve_workspace_root(ls, params)
+        if not workspace_root:
+            return {"success": False, "error": "Workspace não encontrado"}
 
-    if isinstance(params, dict):
-        workspace_root_str = params.get("workspaceRoot")
-        if workspace_root_str:
-            workspace_root = Path(workspace_root_str)
-    elif isinstance(params, list) and len(params) > 0:
-        first = params[0]
-        if isinstance(first, dict):
-            workspace_root_str = first.get("workspaceRoot")
-            if workspace_root_str:
-                workspace_root = Path(workspace_root_str)
+        workspace_path = _normalize_workspace_path(workspace_root)
+        if not workspace_path:
+            return {"success": False, "error": "Workspace inválido"}
 
-    if not workspace_root:
-        return {"success": False, "error": "Workspace root não fornecido"}
+        # Tentar usar resultado em cache primeiro
+        ws_key = _workspace_key(workspace_path)
+        cached = ls.workspace_cache.get(ws_key) if ws_key else None
+        if cached:
+            result = cached.result
+        else:
+            # Localizar .synp
+            if workspace_path.suffix.lower() == ".synp":
+                synp_files = [workspace_path]
+            else:
+                search_dir = workspace_path if workspace_path.is_dir() else workspace_path.parent
+                synp_files = sorted(search_dir.glob("**/*.synp"))
 
-    # Função de validação para passar ao compute_workspace_diagnostics
-    def validate_func(uri: str, file_path: Path) -> list:
-        return validate_workspace_file(uri, file_path, validate_single_file)
+            if not synp_files:
+                return {"success": False, "error": "Nenhum arquivo .synp encontrado"}
 
-    # Computar diagnósticos para todo workspace
-    diagnostics_map = compute_workspace_diagnostics(workspace_root, validate_func)
+            # Compilar em background thread (não bloqueia event loop)
+            from synesis.compiler import SynesisCompiler
 
-    # Publicar diagnósticos para cada arquivo
-    for uri, diagnostics in diagnostics_map.items():
-        ls.publish_diagnostics(uri, diagnostics)
+            loop = asyncio.get_event_loop()
+            result = await loop.run_in_executor(
+                None, lambda: SynesisCompiler(synp_files[0]).compile()
+            )
 
-    # Retornar resumo
-    total_files = len(diagnostics_map)
-    files_with_errors = sum(1 for diags in diagnostics_map.values() if diags)
-    total_diagnostics = sum(len(diags) for diags in diagnostics_map.values())
+        # Publicar diagnósticos para todos os arquivos
+        ws_root = workspace_path if workspace_path.is_dir() else workspace_path.parent
+        _publish_compilation_diagnostics(ls, result.validation_result, ws_root)
 
-    return {
-        "success": True,
-        "totalFiles": total_files,
-        "filesWithErrors": files_with_errors,
-        "totalDiagnostics": total_diagnostics
-    }
+        # Contar totais
+        from synesis_lsp.converters import group_diagnostics_by_file
+
+        file_diagnostics = group_diagnostics_by_file(result.validation_result, ws_root)
+        total_files = len(file_diagnostics)
+        files_with_errors = sum(1 for diags in file_diagnostics.values() if diags)
+        total_diagnostics = sum(len(diags) for diags in file_diagnostics.values())
+
+        return {
+            "success": True,
+            "totalFiles": total_files,
+            "filesWithErrors": files_with_errors,
+            "totalDiagnostics": total_diagnostics,
+        }
+
+    except ImportError:
+        return {"success": False, "error": "Compilador synesis não encontrado"}
+    except Exception as e:
+        logger.error(f"validateWorkspace falhou: {e}", exc_info=True)
+        return {"success": False, "error": str(e)}
 
 
 def validate_document(ls: SynesisLanguageServer, uri: str) -> None:
@@ -1416,6 +1448,38 @@ def did_change_configuration(
 
     except Exception as e:
         logger.error(f"Erro ao processar mudança de configuração: {e}", exc_info=True)
+
+
+def _publish_compilation_diagnostics(
+    ls: SynesisLanguageServer, validation_result, workspace_root: Optional[Path] = None
+) -> None:
+    """
+    Publica diagnósticos de compilação completa para todos os arquivos do projeto.
+
+    Agrupa ValidationErrors do CompilationResult por arquivo e publica via
+    publish_diagnostics. Isso torna visíveis erros cross-file (linkagem,
+    ontologia, duplicatas) que a validação per-file não detecta.
+
+    Diagnósticos publicados aqui são sobrescritos quando o usuário abre o
+    arquivo (did_open → validate_document publica diagnósticos frescos).
+    """
+    try:
+        from synesis_lsp.converters import group_diagnostics_by_file
+
+        file_diagnostics = group_diagnostics_by_file(validation_result, workspace_root)
+        published = 0
+        for uri, diagnostics in file_diagnostics.items():
+            ls.publish_diagnostics(uri, diagnostics)
+            published += 1
+
+        total_diags = sum(len(d) for d in file_diagnostics.values())
+        logger.info(
+            "Diagnósticos de compilação publicados: %d diagnósticos em %d arquivos",
+            total_diags,
+            published,
+        )
+    except Exception as e:
+        logger.error(f"Erro ao publicar diagnósticos de compilação: {e}", exc_info=True)
 
 
 async def _revalidate_workspace_deferred(

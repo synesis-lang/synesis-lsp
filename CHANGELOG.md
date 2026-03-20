@@ -5,6 +5,21 @@ All notable changes to the Synesis LSP project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.14.35] - 2026-03-20
+
+### Added
+- **Diagnósticos de compilação publicados para todos os arquivos do workspace** (`server.py`, `converters.py`)
+  - Após `loadProject` completar (fresh ou cache hit), diagnósticos do `CompilationResult` são agrupados por arquivo e publicados via `publish_diagnostics`. Erros cross-file (linkagem, ontologia, duplicatas entre arquivos) agora aparecem no Problems panel sem precisar abrir cada arquivo.
+  - Nova função `group_diagnostics_by_file()` em `converters.py`: agrupa `ValidationError` por `SourceLocation.file`, resolve paths relativos contra `workspace_root`, converte para `Diagnostic` LSP.
+  - Nova função `_publish_compilation_diagnostics()` em `server.py`: orquestra agrupamento e publicação com logging de totais.
+  - Custo: <10ms para 107 diagnósticos em 33 arquivos (Projeto_Davi).
+
+### Changed
+- **`synesis/validateWorkspace` refatorado para async com compilador completo** (`server.py`)
+  - Comando agora usa `SynesisCompiler.compile()` via `run_in_executor` em vez de validação per-file sequencial. Event loop permanece responsivo durante compilação.
+  - Usa cache do `loadProject` quando disponível (zero latência adicional).
+  - Detecta erros cross-file que a validação per-file não encontra.
+
 ## [0.14.34] - 2026-03-18
 
 ### Fixed
