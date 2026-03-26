@@ -65,12 +65,15 @@ def get_references(cached_result) -> dict:
         return {"success": False, "error": "Projeto não carregado"}
 
     workspace_root = getattr(cached_result, "workspace_root", None)
+    bibliography = getattr(cached_result.result, "bibliography", None) or {}
     refs = []
     for bibref, src in lp.sources.items():
+        bib_entry = bibliography.get(src.bibref) or bibliography.get(src.bibref.lower()) or {}
         ref_entry = {
             "bibref": src.bibref,
             "itemCount": len(src.items),
             "fields": dict(src.fields) if src.fields else {},
+            "title": bib_entry.get("title", ""),
         }
         if src.location:
             ref_entry["location"] = {
