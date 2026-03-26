@@ -5,6 +5,35 @@ All notable changes to the Synesis LSP project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.15.0] - 2026-03-26
+
+### Changed
+- **Inlay hint de `@bibref` alterado de autor/ano para trecho do título** (`inlay_hints.py`)
+  - Hint exibe `· Primeiras palavras do título…` (truncado em 50 chars, corte na palavra) em vez de `(Autor, Ano)` — elimina redundância com a própria chave bibliográfica, que já codifica autor e ano.
+  - Tooltip ao passar o mouse sobre o hint exibe o título completo.
+  - Bibrefs sem campo `title` na bibliography não geram hint.
+
+### Added
+- **Inlay hints para campos ORDERED e ENUMERATED** (`inlay_hints.py`)
+  - Campos com tipo `ORDERED` exibem `← Label` inline após o valor numérico (ex: `aspect: 15 ← Fiducial`), com tooltip `**Label** — description` completa em Markdown.
+  - Campos com tipo `ENUMERATED` exibem `← description` truncada (55 chars, corte na palavra) inline após o valor categórico (ex: `confidence: HIGH ← Alta frequência e amplo suporte empírico…`), com tooltip contendo a description completa.
+  - Lookup é feito via `cached_result.result.template.field_specs` — dinâmico, sem hardcode de nomes de campo.
+  - Fallback case-insensitive para templates com nomes de campo em maiúsculas.
+  - Degradação graciosa: sem template carregado ou valor sem correspondência em VALUES, nenhum hint é emitido.
+
+- **Semantic tokens para comentários, setas e relações de chain** (`semantic_tokens.py`)
+  - Comentários (`#...`) emitidos como token `Comment` — têm precedência sobre todos os outros patterns.
+  - Setas (`->`) emitidas como token `Operator`.
+  - Relações de chain (`INFLUENCES`, `ENABLES`, `CONSTRAINS`, `CONTESTED-BY`, `RELATES-TO`, `CAUSES`, `PREVENTS`, `REQUIRES`, `EXCLUDES`, `CORRELATES`, `DEPENDS-ON`) emitidas como `EnumMember`.
+  - Conteúdo de blocos `GUIDELINES` emitido como `String` com modifier `modification` (itálico em temas que suportam).
+  - Nova função `_tokenize_chain_value` para tokenizar linhas de chain em códigos, setas e relações.
+  - Novos tipos na legend: `Comment` (índice 6), `Operator` (índice 7).
+  - Novo modifier na legend: `Modification` (bit 1).
+
+### Changed
+- **Semantic tokens agora cobrem todos os elementos visuais do arquivo .syn/.syno** (`semantic_tokens.py`)
+  - Elimina a dependência de fallback da gramática TextMate para comentários, setas, relações e conteúdo de GUIDELINES — o LSP é agora a única fonte de coloração para esses elementos.
+
 ## [0.14.35] - 2026-03-20
 
 ### Added

@@ -13,6 +13,10 @@ Mapeamento de tokens Synesis → LSP:
     valor de campo                                     → String
     PROJECT, TEMPLATE, INCLUDE, BIBLIOGRAPHY,
     ANNOTATIONS                                        → Namespace
+    # comentário                                       → Comment
+    ->                                                 → Operator
+    INFLUENCES, ENABLES, CONSTRAINS, ...               → EnumMember (modifier)
+    conteúdo de GUIDELINES                             → String (modification)
 
 Notas de implementação:
     - Extrai posições dos tokens escaneando o texto-fonte linha a linha
@@ -41,13 +45,16 @@ TOKEN_TYPES: List[str] = [
     SemanticTokenTypes.Keyword.value,     # 0: SOURCE, ITEM, END, ONTOLOGY
     SemanticTokenTypes.Variable.value,    # 1: @bibref
     SemanticTokenTypes.Property.value,    # 2: nome_campo:
-    SemanticTokenTypes.String.value,      # 3: valor de campo
-    SemanticTokenTypes.EnumMember.value,  # 4: código (em campos de código)
+    SemanticTokenTypes.String.value,      # 3: valor de campo / conteúdo GUIDELINES
+    SemanticTokenTypes.EnumMember.value,  # 4: código / relações (INFLUENCES, ...)
     SemanticTokenTypes.Namespace.value,   # 5: PROJECT, TEMPLATE, INCLUDE
+    SemanticTokenTypes.Comment.value,     # 6: # comentário
+    SemanticTokenTypes.Operator.value,    # 7: ->
 ]
 
 TOKEN_MODIFIERS: List[str] = [
-    SemanticTokenModifiers.Declaration.value,  # 0: para keywords de declaração
+    SemanticTokenModifiers.Declaration.value,   # 0: para keywords de declaração
+    SemanticTokenModifiers.Modification.value,  # 1: para conteúdo de GUIDELINES
 ]
 
 
@@ -68,9 +75,12 @@ _TK_PROPERTY = 2
 _TK_STRING = 3
 _TK_ENUM_MEMBER = 4
 _TK_NAMESPACE = 5
+_TK_COMMENT = 6
+_TK_OPERATOR = 7
 
 # Modifier bitmask
-_MOD_DECLARATION = 1 << 0  # bit 0
+_MOD_DECLARATION = 1 << 0   # bit 0
+_MOD_MODIFICATION = 1 << 1  # bit 1: conteúdo GUIDELINES (texto livre itálico)
 
 # Patterns para extração de tokens por linha
 _RE_KEYWORD_LINE = re.compile(
@@ -83,6 +93,12 @@ _RE_PROJECT_KEYWORDS = re.compile(
 )
 _RE_GUIDELINES_START = re.compile(r'^\s*GUIDELINES\s*$', re.IGNORECASE)
 _RE_GUIDELINES_END = re.compile(r'^\s*END\s+GUIDELINES\b', re.IGNORECASE)
+_RE_COMMENT = re.compile(r'^(\s*)(#.*)$')
+_RE_ARROW = re.compile(r'->')
+_RE_RELATION = re.compile(
+    r'\b(INFLUENCES|ENABLES|CONSTRAINS|CONTESTED-BY|RELATES-TO|'
+    r'CAUSES|PREVENTS|REQUIRES|EXCLUDES|CORRELATES|DEPENDS-ON)\b'
+)
 
 # RawToken: (line_0based, col_0based, length, token_type_index, modifier_bitmask)
 RawToken = Tuple[int, int, int, int, int]
@@ -123,7 +139,14 @@ def _extract_tokens_from_source(source: str) -> List[RawToken]:
 
         stripped = line.strip()
 
-        # Bloco GUIDELINES — conteúdo é texto livre, não emitir tokens
+        # Comentários — têm precedência sobre tudo
+        m = _RE_COMMENT.match(line)
+        if m:
+            col = len(m.group(1))
+            tokens.append((line_idx, col, len(m.group(2)), _TK_COMMENT, 0))
+            continue
+
+        # Bloco GUIDELINES — conteúdo é texto livre
         if _RE_GUIDELINES_END.match(stripped):
             in_guidelines = False
             col = len(line) - len(line.lstrip())
@@ -137,6 +160,8 @@ def _extract_tokens_from_source(source: str) -> List[RawToken]:
             continue
 
         if in_guidelines:
+            col = len(line) - len(line.lstrip())
+            tokens.append((line_idx, col, len(stripped), _TK_STRING, _MOD_MODIFICATION))
             continue
 
         # 1. Keywords de projeto/template (PROJECT, INCLUDE, etc.)
@@ -157,9 +182,7 @@ def _extract_tokens_from_source(source: str) -> List[RawToken]:
         if m:
             col = len(m.group(1))
             kw = m.group(2)
-            # Normaliza "END  SOURCE" -> comprimento real no texto
-            kw_len = len(kw)
-            tokens.append((line_idx, col, kw_len, _TK_KEYWORD, _MOD_DECLARATION))
+            tokens.append((line_idx, col, len(kw), _TK_KEYWORD, _MOD_DECLARATION))
 
             # @bibref após SOURCE ou ITEM
             rest = line[m.end():]
@@ -192,22 +215,73 @@ def _extract_tokens_from_source(source: str) -> List[RawToken]:
                 (line_idx, col, colon_pos - col + 1, _TK_PROPERTY, 0)
             )
 
-            # Valor do campo
+            # Valor do campo — pode conter setas e relações (campo chain)
             if value.strip():
                 val_stripped = value.strip()
                 val_col = line.index(val_stripped, colon_pos + 1)
-                # Valores entre aspas -> String; valores simples (códigos) -> EnumMember
                 if val_stripped.startswith('"'):
                     tokens.append(
                         (line_idx, val_col, len(val_stripped), _TK_STRING, 0)
                     )
+                elif _RE_ARROW.search(val_stripped) or _RE_RELATION.search(val_stripped):
+                    _tokenize_chain_value(line_idx, val_col, val_stripped, tokens)
                 else:
                     tokens.append(
                         (line_idx, val_col, len(val_stripped), _TK_ENUM_MEMBER, 0)
                     )
             continue
 
+        # 4. Linhas de continuação de chain (sem ':') — setas e relações
+        if _RE_ARROW.search(stripped) or _RE_RELATION.search(stripped):
+            col = len(line) - len(line.lstrip())
+            _tokenize_chain_value(line_idx, col, stripped, tokens)
+            continue
+
     return tokens
+
+
+def _tokenize_chain_value(line_idx: int, start_col: int, text: str, tokens: List[RawToken]) -> None:
+    """Emite tokens de operator (->) e enumMember (relações e códigos) para uma linha de chain."""
+    pos = 0
+    while pos < len(text):
+        # Tenta seta
+        arrow = _RE_ARROW.search(text, pos)
+        relation = _RE_RELATION.search(text, pos)
+
+        next_match = None
+        if arrow and relation:
+            next_match = arrow if arrow.start() <= relation.start() else relation
+        elif arrow:
+            next_match = arrow
+        elif relation:
+            next_match = relation
+
+        if next_match is None:
+            # Restante do texto: token ou código
+            rest = text[pos:].strip()
+            if rest:
+                rest_offset = text.index(rest, pos)
+                tokens.append((line_idx, start_col + rest_offset, len(rest), _TK_ENUM_MEMBER, 0))
+            break
+
+        # Texto antes do match (código/nome)
+        before = text[pos:next_match.start()].strip()
+        if before:
+            before_offset = text.index(before, pos)
+            tokens.append((line_idx, start_col + before_offset, len(before), _TK_ENUM_MEMBER, 0))
+
+        if next_match == arrow:
+            tokens.append((line_idx, start_col + next_match.start(), 2, _TK_OPERATOR, 0))
+        else:
+            tokens.append((
+                line_idx,
+                start_col + next_match.start(),
+                len(next_match.group(0)),
+                _TK_ENUM_MEMBER,
+                0,
+            ))
+
+        pos = next_match.end()
 
 
 def _encode_deltas(tokens: List[RawToken]) -> List[int]:
