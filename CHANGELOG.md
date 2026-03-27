@@ -5,6 +5,13 @@ All notable changes to the Synesis LSP project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.15.1] - 2026-03-26
+
+### Fixed
+- **`getCodes` — `usageCount` corrigido** (`explorer_requests.py`)
+  - `usageCount` agora reflete o número de ocorrências individuais (`len(occurrences)`) em vez do número de ITEMs distintos que contêm o código (`len(items)`).
+  - O valor anterior subestimava a contagem quando um único ITEM tinha o mesmo código em múltiplos campos CHAIN.
+
 ## [0.15.0] - 2026-03-26
 
 ### Changed

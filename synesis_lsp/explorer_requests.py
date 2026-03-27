@@ -154,7 +154,7 @@ def get_codes(cached_result) -> dict:
         codes.append(
             {
                 "code": code,
-                "usageCount": len(items),
+                "usageCount": len(occurrences),
                 "ontologyDefined": _normalize_code(code) in lp.ontology_index,
                 "occurrences": occurrences,
             }
