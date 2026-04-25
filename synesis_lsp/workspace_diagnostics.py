@@ -76,7 +76,7 @@ def _find_synesis_files(workspace_root: Path) -> list[Path]:
     Returns:
         Lista de Path para arquivos .syn, .synp, .synt, .syno
     """
-    synesis_extensions = [".syn", ".synp", ".synt", ".syno"]
+    synesis_extensions = [".syn", ".synp", ".synt", ".syno", ".synr"]
     files = []
 
     try:

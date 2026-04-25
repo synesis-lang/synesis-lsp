@@ -169,7 +169,7 @@ def _is_syn_document(uri: str) -> bool:
         path = unquote(parsed.path or "")
     else:
         path = uri
-    return path.lower().endswith(".syn")
+    return path.lower().endswith(".syn") or path.lower().endswith(".synr")
 
 
 def _file_kind(uri: str) -> str:
@@ -181,7 +181,7 @@ def _file_kind(uri: str) -> str:
     else:
         path = uri
     lower = path.lower()
-    if lower.endswith(".syn"):
+    if lower.endswith(".syn") or lower.endswith(".synr"):
         return "syn"
     if lower.endswith(".syno"):
         return "syno"

@@ -5,6 +5,16 @@ All notable changes to the Synesis LSP project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.15.2] - 2026-04-25
+
+### Added
+- **Suporte a `.synr` (formato de revisão do pipeline ACT)** (3 arquivos)
+  - `workspace_diagnostics.py` — `.synr` adicionado a `synesis_extensions`: a varredura de diagnóstico de workspace agora inclui arquivos `.synr`.
+  - `template_diagnostics.py` — `_is_syn_document()` e `_file_kind()` reconhecem `.synr` como variante de `.syn`: diagnósticos de campo de template e de comandos inválidos são aplicados igualmente a arquivos `.synr`.
+  - `rename.py` — `_rename_code()` varre `.synr` além de `.syn` e usa `_find_and_replace_in_syn` neles: renomear um código via LSP propaga a mudança também para os arquivos de revisão intermediários do pipeline, mantendo consistência entre o corpus compilado e as sugestões de revisão pendentes.
+
+---
+
 ## [0.15.1] - 2026-03-26
 
 ### Fixed

@@ -206,6 +206,7 @@ def _rename_code(
 
     # Varredura completa dos arquivos do workspace
     files_to_edit.update(_collect_files(workspace_root, ".syn"))
+    files_to_edit.update(_collect_files(workspace_root, ".synr"))
     files_to_edit.update(_collect_files(workspace_root, ".syno"))
 
     if not files_to_edit:
@@ -224,7 +225,7 @@ def _rename_code(
             edits = _find_and_replace_in_syno(
                 file_path, pattern, new_code, ontology_code_fields
             )
-        elif suffix == ".syn":
+        elif suffix in (".syn", ".synr"):
             edits = _find_and_replace_in_syn(
                 file_path, pattern, new_code, item_code_fields, item_chain_fields
             )
