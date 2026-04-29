@@ -5,6 +5,17 @@ All notable changes to the Synesis LSP project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.15.3] - 2026-04-29
+
+### Fixed
+- **`synesis` adicionado às dependências do pacote** (`pyproject.toml`)
+  - `synesis>=0.4.5` declarado em `dependencies` — ausência causava falha imediata do servidor em ambientes novos: `pip install synesis-lsp` instalava `pygls` e `lsprotocol` mas não o compilador, e o servidor falhava ao iniciar com `ImportError` (8 módulos importam `synesis` diretamente: `lsp_adapter`, `SynesisCompiler`, `synesis.ast.normalize`).
+  - Versão mínima `>=0.4.5` alinhada com o requisito documentado em v0.14.34 (introdução de `synesis.ast.normalize`).
+- **Mensagem de erro do `ImportError` corrigida** (`server.py`)
+  - Substituída mensagem de desenvolvimento `"cd ../Compiler && pip install -e ."` por instrução PyPI correta: `"pip install synesis"`.
+
+---
+
 ## [0.15.2] - 2026-04-25
 
 ### Added

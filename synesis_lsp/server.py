@@ -96,8 +96,7 @@ try:
     )
 except ImportError as e:
     raise ImportError(
-        "Pacote 'synesis' não encontrado. "
-        "Instale o compilador primeiro: cd ../Compiler && pip install -e ."
+        "Pacote 'synesis' não encontrado. Execute: pip install synesis"
     ) from e
 
 from synesis_lsp.cache import FileState, WorkspaceCache

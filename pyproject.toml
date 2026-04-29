@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "synesis-lsp"
-version = "0.15.2"
+version = "0.15.3"
 description = "Language Server Protocol para Synesis v1.1"
 readme = "README.md"
 authors = [
@@ -25,6 +25,7 @@ classifiers = [
 ]
 requires-python = ">=3.10"
 dependencies = [
+    "synesis>=0.4.5",
     "pygls>=1.0.0,<2.0.0",
     "lsprotocol>=2023.0.0,<2024.0.0",
 ]
