@@ -5,6 +5,21 @@ All notable changes to the Synesis LSP project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.15.4] - 2026-06-12
+
+### Changed
+- **Startup splash screen** (`server.py`)
+  - Replaced line-by-line `logger.info()` startup messages with a structured splash screen printed to `stderr` before `server.start_io()`.
+  - Header: `SYNESIS LANGUAGE SERVER (vX.Y.Z) | Core (vX.Y.Z)` with ANSI colors (suppressed when stderr is not a TTY).
+  - Two labeled sections: `Runtime Environment` (Python version + path, Core module path) and `Registered Capabilities` (grouped by domain: LSP Core, Workspace, Synesis Graph, Synesis Engine).
+  - Single `[INFO]` line after the splash confirms the server is waiting for client requests.
+- **pygls log suppression** (`server.py`)
+  - `pygls.feature_manager`, `pygls.server`, and `pygls.protocol` loggers set to `WARNING` level — eliminates ~36 per-handler registration messages that leaked implementation details on every startup.
+- **Removed unused import** (`server.py`)
+  - `from importlib import metadata` removed (was only used in the old `main()` startup logging).
+
+---
+
 ## [0.15.3] - 2026-04-29
 
 ### Fixed

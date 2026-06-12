@@ -35,7 +35,6 @@ import logging
 import os
 import sys
 import time
-from importlib import metadata
 from importlib.metadata import PackageNotFoundError, version as _pkg_version
 from pathlib import Path
 from typing import Optional
@@ -118,13 +117,73 @@ from synesis_lsp.references import compute_references
 from synesis_lsp.code_actions import compute_code_actions
 from synesis_lsp.workspace_diagnostics import compute_workspace_diagnostics, validate_workspace_file
 
-# Configuração de logging
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
-)
+# Silence pygls internal chatter — only warnings and errors are relevant to the user.
+logging.getLogger("pygls.feature_manager").setLevel(logging.WARNING)
+logging.getLogger("pygls.server").setLevel(logging.WARNING)
+logging.getLogger("pygls.protocol").setLevel(logging.WARNING)
+
+logging.basicConfig(level=logging.INFO, format="[%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
 _startup_logged = False
+
+
+def _tty() -> bool:
+    return hasattr(sys.stderr, "isatty") and sys.stderr.isatty()
+
+
+def _splash() -> None:
+    """Print the startup splash screen to stderr."""
+    try:
+        from synesis_lsp import __version__ as lsp_ver
+    except Exception:
+        lsp_ver = "unknown"
+
+    try:
+        from importlib.metadata import version as _v
+        core_ver = _v("synesis")
+    except Exception:
+        try:
+            import synesis as _syn
+            core_ver = getattr(_syn, "__version__", "unknown")
+        except Exception:
+            core_ver = "unknown"
+
+    try:
+        import synesis as _syn
+        core_file = getattr(_syn, "__file__", None)
+        core_path = str(Path(core_file).resolve()) if core_file else "unknown"
+    except Exception:
+        core_path = "unknown"
+
+    python_ver = f"Python {sys.version_info.major}.{sys.version_info.minor}"
+    python_exe = str(Path(sys.executable).resolve())
+
+    def _c(text: str, code: str) -> str:
+        return f"\033[{code}m{text}\033[0m" if _tty() else text
+
+    col = 17  # label column width
+
+    lines = [
+        "",
+        _c("SYNESIS LANGUAGE SERVER", "1;32") + f" (v{lsp_ver})"
+        + " | " + _c(f"Core (v{core_ver})", "2"),
+        "Language server for knowledge engineering.",
+        "",
+        _c("Runtime Environment:", "33"),
+        f"  {'Interpreter'.ljust(col)}  {python_ver}  ({python_exe})",
+        f"  {'Core Module'.ljust(col)}  {core_path}",
+        "",
+        _c("Registered Capabilities:", "33"),
+        f"  {'LSP Core'.ljust(col)}  Semantic Tokens, Hover, Completion, Definition, Rename, Inlay Hints",
+        f"  {'Workspace'.ljust(col)}  Document Synchronization, File Watching",
+        f"  {'Synesis Graph'.ljust(col)}  getRelationGraph, getCodes, getReferences, getOntologyTopics",
+        f"  {'Synesis Engine'.ljust(col)}  loadProject, validateWorkspace, getProjectStats",
+        "",
+    ]
+
+    out = "\n".join(lines) + "\n"
+    sys.stderr.write(out)
+    sys.stderr.flush()
 
 
 class SynesisLanguageServer(LanguageServer):
@@ -1660,25 +1719,12 @@ def did_change_watched_files(
 
 
 def main() -> None:
-    """
-    Ponto de entrada principal do servidor.
-
-    Inicia servidor LSP em modo STDIO para comunicação com VSCode.
-    """
+    """Entry point — starts the LSP server in STDIO mode."""
     global _startup_logged
-    logger.info("Iniciando Synesis Language Server...")
     if not _startup_logged:
         _startup_logged = True
-        logger.info("Python executable: %s", sys.executable)
-        try:
-            import synesis  # type: ignore
-
-            logger.info("synesis module: %s", getattr(synesis, "__file__", "<unknown>"))
-        except Exception as exc:
-            logger.warning("Falha ao importar synesis: %s", exc)
-        logger.info(
-            "synesis-lsp package: %s", metadata.version("synesis-lsp")
-        )
+        _splash()
+    logger.info("IO server started. Waiting for client requests...")
     server.start_io()
 
 
