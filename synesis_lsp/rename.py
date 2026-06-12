@@ -28,9 +28,9 @@ from lsprotocol.types import (
     TextEdit,
     WorkspaceEdit,
 )
+from synesis.ast.normalize import normalize_code as _normalize_code
 
 from synesis_lsp.hover import _get_word_at_position
-from synesis.ast.normalize import normalize_code as _normalize_code
 
 logger = logging.getLogger(__name__)
 

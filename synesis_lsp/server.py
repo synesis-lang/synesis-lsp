@@ -35,92 +35,100 @@ import logging
 import os
 import sys
 import time
-from importlib.metadata import PackageNotFoundError, version as _pkg_version
+from importlib.metadata import PackageNotFoundError
+from importlib.metadata import version as _pkg_version
 from pathlib import Path
 from typing import Optional
 from urllib.parse import unquote, urlparse
 
 from lsprotocol.types import (
+    TEXT_DOCUMENT_CODE_ACTION,
+    TEXT_DOCUMENT_COMPLETION,
+    TEXT_DOCUMENT_DEFINITION,
     TEXT_DOCUMENT_DID_CHANGE,
     TEXT_DOCUMENT_DID_CLOSE,
     TEXT_DOCUMENT_DID_OPEN,
     TEXT_DOCUMENT_DID_SAVE,
+    TEXT_DOCUMENT_DOCUMENT_SYMBOL,
+    TEXT_DOCUMENT_HOVER,
+    TEXT_DOCUMENT_INLAY_HINT,
+    TEXT_DOCUMENT_PREPARE_RENAME,
+    TEXT_DOCUMENT_REFERENCES,
+    TEXT_DOCUMENT_RENAME,
+    TEXT_DOCUMENT_SEMANTIC_TOKENS_FULL,
+    TEXT_DOCUMENT_SIGNATURE_HELP,
     WORKSPACE_DID_CHANGE_CONFIGURATION,
     WORKSPACE_DID_CHANGE_WATCHED_FILES,
+    CodeActionParams,
+    CompletionOptions,
+    CompletionParams,
+    DefinitionParams,
     DidChangeConfigurationParams,
     DidChangeTextDocumentParams,
+    DidChangeWatchedFilesParams,
     DidCloseTextDocumentParams,
     DidOpenTextDocumentParams,
     DidSaveTextDocumentParams,
-    DidChangeWatchedFilesParams,
-    FileChangeType,
-    FileEvent,
-    FileSystemWatcher,
-    WatchKind,
-    TEXT_DOCUMENT_SEMANTIC_TOKENS_FULL,
-    SemanticTokensParams,
-    TEXT_DOCUMENT_DOCUMENT_SYMBOL,
     DocumentSymbolParams,
-    TEXT_DOCUMENT_HOVER,
     HoverParams,
-    TEXT_DOCUMENT_INLAY_HINT,
     InlayHintParams,
-    TEXT_DOCUMENT_DEFINITION,
-    DefinitionParams,
-    TEXT_DOCUMENT_COMPLETION,
-    CompletionParams,
-    CompletionOptions,
-    TEXT_DOCUMENT_SIGNATURE_HELP,
-    SignatureHelpParams,
-    SignatureHelpOptions,
-    TEXT_DOCUMENT_RENAME,
-    RenameParams,
-    TEXT_DOCUMENT_PREPARE_RENAME,
     PrepareRenameParams,
-    TEXT_DOCUMENT_REFERENCES,
     ReferenceParams,
-    TEXT_DOCUMENT_CODE_ACTION,
-    CodeActionParams,
+    RenameParams,
+    SemanticTokens,
+    SemanticTokensParams,
+    SignatureHelpOptions,
+    SignatureHelpParams,
 )
 from pygls.server import LanguageServer
 
 # Importa do compilador e converters locais
 try:
     from synesis.lsp_adapter import (
-        ValidationContext,
-        validate_single_file,
-        find_workspace_root,
         discover_context,
+        find_workspace_root,
         invalidate_cache,
+        validate_single_file,
     )
 except ImportError as e:
     raise ImportError(
         "Pacote 'synesis' não encontrado. Execute: pip install synesis"
     ) from e
 
-from synesis_lsp.cache import FileState, WorkspaceCache
-from synesis_lsp.converters import build_diagnostics, enrich_error_message
-from synesis_lsp.semantic_tokens import build_legend, compute_semantic_tokens
-from synesis_lsp.symbols import compute_document_symbols
-from synesis_lsp.hover import compute_hover
-from synesis_lsp.explorer_requests import get_references, get_codes, get_relations, get_excerpts
-from synesis_lsp.inlay_hints import compute_inlay_hints
-from synesis_lsp.definition import compute_definition
-from synesis_lsp.completion import compute_completions
-from synesis_lsp.graph import get_relation_graph
-from synesis_lsp.signature_help import compute_signature_help
-from synesis_lsp.rename import prepare_rename, compute_rename
-from synesis_lsp.ontology_topics import get_ontology_topics
-from synesis_lsp.ontology_annotations import get_ontology_annotations
 from synesis_lsp.abstract_viewer import get_abstract
-from synesis_lsp.references import compute_references
+from synesis_lsp.cache import FileState, WorkspaceCache
 from synesis_lsp.code_actions import compute_code_actions
-from synesis_lsp.workspace_diagnostics import compute_workspace_diagnostics, validate_workspace_file
+from synesis_lsp.completion import compute_completions
+from synesis_lsp.converters import build_diagnostics, enrich_error_message
+from synesis_lsp.definition import compute_definition
+from synesis_lsp.explorer_requests import get_codes, get_excerpts, get_references, get_relations
+from synesis_lsp.graph import get_relation_graph
+from synesis_lsp.hover import _get_word_at_position, compute_hover
+from synesis_lsp.inlay_hints import compute_inlay_hints
+from synesis_lsp.ontology_annotations import get_ontology_annotations
+from synesis_lsp.ontology_topics import get_ontology_topics
+from synesis_lsp.references import compute_references
+from synesis_lsp.rename import compute_rename, prepare_rename
+from synesis_lsp.semantic_tokens import build_legend, compute_semantic_tokens
+from synesis_lsp.signature_help import compute_signature_help
+from synesis_lsp.symbols import compute_document_symbols
 
 # Silence pygls internal chatter — only warnings and errors are relevant to the user.
 logging.getLogger("pygls.feature_manager").setLevel(logging.WARNING)
 logging.getLogger("pygls.server").setLevel(logging.WARNING)
 logging.getLogger("pygls.protocol").setLevel(logging.WARNING)
+
+_LOG_LEVEL_MAP = {
+    "DEBUG": logging.DEBUG,
+    "INFO": logging.INFO,
+    "WARNING": logging.WARNING,
+    "ERROR": logging.ERROR,
+}
+
+def _resolve_log_level(cli_level: Optional[str]) -> int:
+    """Resolve log level: CLI arg → env var SYNESIS_LSP_LOG_LEVEL → INFO."""
+    raw = cli_level or os.environ.get("SYNESIS_LSP_LOG_LEVEL", "INFO")
+    return _LOG_LEVEL_MAP.get(raw.upper(), logging.INFO)
 
 logging.basicConfig(level=logging.INFO, format="[%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
@@ -1720,6 +1728,25 @@ def did_change_watched_files(
 
 def main() -> None:
     """Entry point — starts the LSP server in STDIO mode."""
+    import argparse
+
+    parser = argparse.ArgumentParser(
+        description="Synesis Language Server (STDIO mode)",
+        add_help=False,
+    )
+    parser.add_argument(
+        "--log-level",
+        metavar="LEVEL",
+        default=None,
+        help="Log level: DEBUG, INFO, WARNING, ERROR (default: INFO). "
+             "Overridden by SYNESIS_LSP_LOG_LEVEL env var if this flag is absent.",
+    )
+    args, _ = parser.parse_known_args()
+
+    level = _resolve_log_level(args.log_level)
+    logging.getLogger().setLevel(level)
+    logger.setLevel(level)
+
     global _startup_logged
     if not _startup_logged:
         _startup_logged = True

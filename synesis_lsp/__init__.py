@@ -24,9 +24,10 @@ Notas de implementação:
 
 Gerado conforme: Especificação Synesis v1.1 + ADR-002 LSP
 """
-from importlib.metadata import PackageNotFoundError, version as _pkg_version
-from pathlib import Path
 import re
+from importlib.metadata import PackageNotFoundError
+from importlib.metadata import version as _pkg_version
+from pathlib import Path
 
 
 def _read_version_from_pyproject() -> str:

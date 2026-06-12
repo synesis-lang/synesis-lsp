@@ -62,7 +62,7 @@ def compute_document_symbols(source: str, uri: str) -> List[DocumentSymbol]:
 
 def _build_symbols_from_nodes(nodes: list, source: str) -> List[DocumentSymbol]:
     """Constrói DocumentSymbol[] a partir dos AST nodes do compilador."""
-    from synesis.ast.nodes import SourceNode, ItemNode, OntologyNode
+    from synesis.ast.nodes import ItemNode, OntologyNode, SourceNode
 
     # Tenta importar ProjectNode (pode não existir em todas as versões)
     try:

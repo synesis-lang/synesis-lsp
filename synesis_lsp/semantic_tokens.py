@@ -32,10 +32,10 @@ import re
 from typing import List, Tuple
 
 from lsprotocol.types import (
+    SemanticTokenModifiers,
     SemanticTokens,
     SemanticTokensLegend,
     SemanticTokenTypes,
-    SemanticTokenModifiers,
 )
 
 logger = logging.getLogger(__name__)

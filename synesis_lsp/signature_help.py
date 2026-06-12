@@ -20,9 +20,9 @@ from typing import Optional
 
 from lsprotocol.types import (
     ParameterInformation,
+    Position,
     SignatureHelp,
     SignatureInformation,
-    Position,
 )
 
 logger = logging.getLogger(__name__)

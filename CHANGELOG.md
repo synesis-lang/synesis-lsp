@@ -5,7 +5,31 @@ All notable changes to the Synesis LSP project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.15.5] - 2026-06-12
+
+### Added
+
+- **`--log-level` CLI flag and `SYNESIS_LSP_LOG_LEVEL` env var** (`synesis_lsp/server.py`)
+  - `synesis-lsp --log-level DEBUG` (or `WARNING`, `ERROR`, `INFO`) configures logging before the STDIO loop starts.
+  - `SYNESIS_LSP_LOG_LEVEL` env var is read as fallback when `--log-level` is absent; defaults to `INFO`.
+  - Resolution order: `--log-level` CLI arg → `SYNESIS_LSP_LOG_LEVEL` env var → `INFO`.
+  - Replaces the previous hardcoded `logging.basicConfig(level=logging.INFO)`.
+  - pygls internal loggers (`pygls.feature_manager`, `pygls.server`, `pygls.protocol`) remain silenced at `WARNING` regardless of user level.
+  - Implemented via `_resolve_log_level(cli_level)` helper and `argparse.parse_known_args()` before `server.start_io()`.
+
 ## [0.15.4] - 2026-06-12
+
+### Added
+
+- **Quality toolchain and CI** (`pyproject.toml`, `.pre-commit-config.yaml`, `.github/workflows/ci.yml`)
+  - Replaced `black>=23.0.0` with `ruff==0.15.17` (format + lint); `mypy==1.15.0` added to `dev` extras — both pinned in sync with the ecosystem.
+  - `ruff-format` configured with `line-length=100` (same as prior `black` setting); reflow applied as isolated commit.
+  - `[tool.ruff.lint]`: `["E","F","I","UP","B","SIM","C4"]`. `[tool.mypy]`: `ignore_missing_imports=true`.
+  - `.pre-commit-config.yaml`: `ruff` (lint + `--fix`), `ruff-format`, `mypy`, standard file-hygiene hooks.
+  - CI workflow (3 OS × 3 Python): `test`, `lint`, `build`, `integration` — integration uses `python -c "import synesis_lsp.server"` + splash capture (never launches the blocking STDIO loop).
+
+- **`synesis>=0.5.5` constraint** (`pyproject.toml`)
+  - Updated from `>=0.4.5`; aligns with the compatibility matrix.
 
 ### Changed
 - **Startup splash screen** (`server.py`)

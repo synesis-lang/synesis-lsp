@@ -21,9 +21,9 @@ from pathlib import Path
 from typing import Optional
 
 from lsprotocol.types import Location, Position, Range
+from synesis.ast.normalize import normalize_code as _normalize_code
 
 from synesis_lsp.hover import _get_word_at_position
-from synesis.ast.normalize import normalize_code as _normalize_code
 
 logger = logging.getLogger(__name__)
 

@@ -15,6 +15,7 @@ import logging
 from pathlib import Path
 from typing import Optional
 from urllib.parse import unquote, urlparse
+
 from synesis.ast.normalize import normalize_code as _normalize_code
 
 logger = logging.getLogger(__name__)

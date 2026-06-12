@@ -27,7 +27,16 @@ Synesis LSP is a protocol adapter: it does not re-implement parsing or semantics
 ## Requirements
 
 - Python 3.10+
-- Synesis compiler installed
+- [synesis](https://github.com/synesis-lang/synesis) compiler ≥ 0.5.5 installed
+
+### Compatibility matrix
+
+| Package | This version | Requires `synesis` | Python |
+|---|---|---|---|
+| synesis | 0.5.5 | — | ≥3.10 |
+| synesis-coder | 0.4.1 | ≥0.5.5 | ≥3.10 |
+| synesis-lsp | 0.15.4 | ≥0.5.5 | ≥3.10 |
+| synesis-graph | 0.2.0 | ≥0.5.5 | ≥3.10 |
 
 ## Installation
 

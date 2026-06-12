@@ -35,7 +35,10 @@ Gerado conforme: Especificação Synesis v1.1 + ADR-002 LSP
 from __future__ import annotations
 
 import logging
-from typing import List, Optional
+from typing import TYPE_CHECKING, List, Optional
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 from lsprotocol.types import (
     Diagnostic,

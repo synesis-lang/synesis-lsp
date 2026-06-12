@@ -165,9 +165,6 @@ def _parse_syno_file(
         except ValueError:
             pass
 
-    # Criar mapa de conceitos conhecidos (code -> line)
-    concept_lines = {code: line for code, line in concepts}
-
     # Parsear linha por linha
     topics = []
     stack = []  # (level, topic_dict)
