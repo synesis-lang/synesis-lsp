@@ -96,6 +96,8 @@ except ImportError as e:
     ) from e
 
 from synesis_lsp.abstract_viewer import get_abstract
+from synesis_lsp.blocks import get_blocks
+from synesis_lsp.template_info import serialize_template
 from synesis_lsp.cache import FileState, WorkspaceCache
 from synesis_lsp.code_actions import compute_code_actions
 from synesis_lsp.completion import compute_completions
@@ -175,6 +177,7 @@ def _splash() -> None:
         "",
         _c("SYNESIS LANGUAGE SERVER", "1;32") + f" (v{lsp_ver})"
         + " | " + _c(f"Core (v{core_ver})", "2"),
+        "Copyright (c) 2011-2026 Christian Maciel de Britto — https://github.com/synesis-lang",
         "Language server for knowledge engineering.",
         "",
         _c("Runtime Environment:", "33"),
@@ -585,11 +588,31 @@ def semantic_tokens_full(
     """
     Retorna tokens semânticos para colorização baseada no AST.
 
-    Usa análise do texto-fonte (~0ms) para extrair tokens.
+    Extrai relações válidas do template compilado (via workspace_cache) para que
+    relações custom do template sejam reconhecidas. Se o cache ainda não existir
+    (LSP não terminou loadProject), usa as relações padrão como fallback.
     """
     uri = params.text_document.uri
     doc = ls.workspace.get_document(uri)
-    return compute_semantic_tokens(doc.source, uri)
+    relation_names = _extract_relation_names(ls, uri)
+    return compute_semantic_tokens(doc.source, uri, relation_names)
+
+
+def _extract_relation_names(ls: SynesisLanguageServer, uri: str) -> frozenset[str] | None:
+    """Extrai nomes de relação de todos os FieldSpec do template em cache para o workspace do URI."""
+    cached = _get_cached_for_uri(ls, uri)
+    if not cached:
+        return None
+    template = getattr(cached.result, "template", None)
+    if not template:
+        return None
+    field_specs = getattr(template, "field_specs", {}) or {}
+    names: set[str] = set()
+    for spec in field_specs.values():
+        relations = getattr(spec, "relations", None)
+        if isinstance(relations, dict):
+            names.update(relations.keys())
+    return frozenset(names) if names else None
 
 
 @server.feature(TEXT_DOCUMENT_DOCUMENT_SYMBOL)
@@ -878,16 +901,31 @@ def cmd_get_relation_graph(ls: SynesisLanguageServer, params) -> dict:
     if error and not cached:
         return get_relation_graph(None)
 
-    # Extrai bibref opcional dos params
+    # Extrai bibref, item, item_line e file opcionais dos params
     bibref = None
+    item = None
+    item_line = None
+    item_file = None
+    file = None
     if isinstance(params, dict):
         bibref = params.get("bibref")
+        item = params.get("item")
+        item_line = params.get("itemLine")
+        item_file = params.get("itemFile")
+        file = params.get("file")
     elif isinstance(params, list) and len(params) > 0:
         first = params[0]
         if isinstance(first, dict):
             bibref = first.get("bibref")
+            item = first.get("item")
+            item_line = first.get("itemLine")
+            item_file = first.get("itemFile")
+            file = first.get("file")
 
-    return get_relation_graph(cached, bibref=bibref)
+    return get_relation_graph(
+        cached, bibref=bibref, item=item,
+        item_line=item_line, item_file=item_file, file=file
+    )
 
 
 @server.command("synesis/debug/diagnostics")
@@ -1149,6 +1187,60 @@ def cmd_get_abstract(ls: SynesisLanguageServer, params) -> dict:
         cached = ls.workspace_cache.get(ws_key) if ws_key else None
 
     return get_abstract(file_path, cached_result=cached, workspace_root=workspace_root)
+
+
+@server.command("synesis/getBlocks")
+def cmd_get_blocks(ls: SynesisLanguageServer, params) -> dict:
+    """Retorna blocos SOURCE/ITEM de um .syn com bibref e range estruturados."""
+    file_path = None
+    workspace_root = None
+
+    if isinstance(params, dict):
+        file_path = params.get("file")
+        workspace_root_str = params.get("workspaceRoot")
+        if workspace_root_str:
+            workspace_root = Path(workspace_root_str)
+    elif isinstance(params, list) and len(params) > 0:
+        first = params[0]
+        if isinstance(first, dict):
+            file_path = first.get("file")
+            workspace_root_str = first.get("workspaceRoot")
+            if workspace_root_str:
+                workspace_root = Path(workspace_root_str)
+
+    if not file_path:
+        return {"success": False, "error": "Parâmetro 'file' não fornecido"}
+
+    return get_blocks(file_path, workspace_root=workspace_root)
+
+
+@server.command("synesis/getTemplate")
+def cmd_get_template(ls: SynesisLanguageServer, params) -> dict:
+    """Retorna field-specs e requirements do template compilado."""
+    workspace_root = _resolve_workspace_root(ls, params)
+    if not workspace_root:
+        return {"success": False, "error": "Workspace não encontrado"}
+
+    workspace_key = _workspace_key(workspace_root)
+    if not workspace_key:
+        return {"success": False, "error": "Workspace inválido"}
+
+    cached = ls.workspace_cache.get(workspace_key)
+    if not cached:
+        return {
+            "success": False,
+            "error": "Projeto não carregado. Chame synesis/loadProject primeiro.",
+        }
+
+    template = getattr(getattr(cached, "result", None), "template", None)
+    if template is None:
+        return {"success": False, "error": "Template não disponível no projeto compilado"}
+
+    try:
+        return {"success": True, "template": serialize_template(template)}
+    except Exception as exc:
+        logger.exception("Erro ao serializar template: %s", exc)
+        return {"success": False, "error": f"Erro interno: {exc}"}
 
 
 @server.command("synesis/validateWorkspace")

@@ -1,54 +1,57 @@
-# Synesis LSP
+# synesis-lsp
 
-> **Real-time validation and language features for Synesis v1.1 files.**
+**Real-time validation and language intelligence for Synesis projects.**
 
-A Language Server Protocol (LSP) implementation that provides diagnostics and editor features for Synesis projects in VSCode and other compatible editors.
+A Language Server Protocol (LSP) implementation that brings the full power of the Synesis compiler into VS Code and any LSP-compatible editor — diagnostics, hover, completion, semantic tokens, relation graphs, and more.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![PyPI version](https://img.shields.io/pypi/v/synesis-lsp)](https://pypi.org/project/synesis-lsp/)
+[![Python 3.10+](https://img.shields.io/pypi/pyversions/synesis-lsp)](https://pypi.org/project/synesis-lsp/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/synesis-lang/synesis-lsp/blob/main/LICENSE)
 
-## Overview
+> **Copyright (c) 2011–2026 Christian Maciel de Britto**
+> [`https://github.com/synesis-lang`](https://github.com/synesis-lang) · [`ORCID`](https://orcid.org/0000-0003-1431-3924)
 
-Synesis LSP is a protocol adapter: it does not re-implement parsing or semantics. All validation is delegated to the Synesis compiler, and the server focuses on translating compiler output into LSP diagnostics and features.
+---
+
+## What is synesis-lsp?
+
+`synesis-lsp` is a **protocol adapter**, not a second parser. All validation is delegated entirely to the Synesis compiler — the server translates compiler output into LSP diagnostics and editor features. This means the language server and the CLI always agree: if `synesis check` passes, the editor shows no errors.
+
+The result is a live editorial environment where ontological constraints, required fields, and relational rules are enforced as you type — with pedagogical error messages that explain *why* a construct is invalid, not just *that* it is.
+
+---
 
 ## Features
 
-- Real-time syntax and semantic validation (template rules, REQUIRED/OPTIONAL, BUNDLE, ARITY)
-- Pedagogical diagnostics with clear explanations
-- Automatic discovery of templates and bibliography
-- Fuzzy matching for missing bibrefs
-- Full support for `.syn`, `.synp`, `.synt`, `.syno`
-- Semantic tokens for syntax highlighting
-- Document symbols (SOURCE/ITEM/ONTOLOGY)
-- Hover, completion, and inlay hints
-- Go-to-definition and rename (bibrefs and codes)
-- Relation graph generation (Mermaid)
+- **Real-time validation** — syntax and semantic errors as you type, delegated to the Synesis compiler
+- **Pedagogical diagnostics** — clear explanations of template rules, `REQUIRED`/`OPTIONAL`, `BUNDLE`, `ARITY`
+- **Semantic tokens** — AST-driven syntax highlighting (not regex)
+- **Document symbols** — structured outline of `SOURCE`, `ITEM`, `ONTOLOGY` blocks
+- **Hover documentation** — field definitions, ontology entries, and template rules on hover
+- **Completion** — context-aware suggestions for codes, bibrefs, relation types, and field names
+- **Inlay hints** — inline field type annotations
+- **Go-to-definition & Rename** — for bibrefs and ontology codes, across files
+- **Relation graph** — Mermaid diagram of the current project's relational structure
+- **Fuzzy matching** — suggestions for mistyped bibrefs and codes
+- **Full file type support** — `.syn`, `.synp`, `.synt`, `.syno`
+
+---
 
 ## Requirements
 
 - Python 3.10+
-- [synesis](https://github.com/synesis-lang/synesis) compiler ≥ 0.5.5 installed
+- `synesis` compiler ≥ 0.5.5
 
-### Compatibility matrix
-
-| Package | This version | Requires `synesis` | Python |
-|---|---|---|---|
-| synesis | 0.5.5 | — | ≥3.10 |
-| synesis-coder | 0.4.1 | ≥0.5.5 | ≥3.10 |
-| synesis-lsp | 0.15.4 | ≥0.5.5 | ≥3.10 |
-| synesis-graph | 0.2.0 | ≥0.5.5 | ≥3.10 |
+---
 
 ## Installation
-
-### From PyPI
 
 ```bash
 pip install synesis
 pip install synesis-lsp
 ```
 
-### From Source
-
+**From source:**
 ```bash
 git clone https://github.com/synesis-lang/synesis.git
 git clone https://github.com/synesis-lang/synesis-lsp.git
@@ -57,60 +60,129 @@ pip install -e synesis
 pip install -e synesis-lsp
 ```
 
+---
+
 ## Usage
 
-### Standalone Server
+### Standalone server (STDIO)
 
 ```bash
 python -m synesis_lsp
 ```
 
-The server communicates via STDIO.
+The server communicates via JSON-RPC over STDIO and is compatible with any LSP client.
 
-### VSCode
+### VS Code
 
-The Synesis Explorer extension manages the LSP server automatically.
+The **Synesis Explorer** extension manages the LSP server automatically. No manual configuration required — install the extension, open a Synesis project, and the server starts.
 
-### Synesis Workspace Requirements
+### Workspace requirements
 
 For full semantic validation, the workspace should contain:
-- A project file `*.synp` (required)
-- A template `*.synt` referenced by the `.synp`
-- Bibliography `*.bib`, annotations `*.syn`, and ontologies `*.syno` as needed
 
-Notes:
-- Multiple `.synt` files may exist, but the **only** valid one is the template referenced by `.synp`.
-- Without a `.synp`, the LSP provides only syntax validation and grammar keywords.
+| File | Role |
+|---|---|
+| `*.synp` | Project file — **required** for full validation |
+| `*.synt` | Template referenced by `.synp` |
+| `*.bib` | BibTeX bibliography |
+| `*.syn` | Annotation files |
+| `*.syno` | Ontology files |
 
-## Project Structure
+> Without a `.synp`, the LSP provides syntax validation and grammar keywords only — no template or ontology enforcement.
+
+---
+
+## Architecture
 
 ```
-synesis-lsp/
-├── synesis_lsp/           # Python package (server)
-│   ├── __init__.py
-│   ├── __main__.py        # Entry point (python -m synesis_lsp)
-│   ├── server.py          # LSP server (pygls)
-│   ├── converters.py      # ValidationError → LSP Diagnostic
-│   ├── cache.py           # Workspace cache
-│   ├── semantic_tokens.py # Semantic tokens
-│   ├── symbols.py         # Document symbols
-│   ├── hover.py           # Hover provider
-│   ├── definition.py      # Go-to-definition
-│   ├── completion.py      # Autocomplete
-│   ├── inlay_hints.py     # Inlay hints
-│   ├── explorer_requests.py # Custom explorer requests
-│   ├── graph.py           # Relation graph (Mermaid)
-│   ├── signature_help.py  # Signature help
-│   └── rename.py          # Rename provider
-├── tests/                 # Test suite
-├── pyproject.toml         # Package configuration
-├── INTERFACES.md          # Compiler ↔ LSP contracts
-├── CHANGELOG.md           # Release history
-├── LICENSE                # MIT License
-└── README.md              # This file
+┌─────────────┐
+│   VS Code   │  (or any LSP client)
+└──────┬──────┘
+       │ JSON-RPC / STDIO
+       ▼
+┌──────────────────────────────────┐
+│   synesis_lsp.server             │
+│                                  │
+│  Handlers: did_open, did_change  │
+│  Providers: tokens · symbols     │
+│             hover · completion   │
+│             definition · inlay   │
+│             signature · rename   │
+│  Commands:  loadProject · stats  │
+│             explorer · graph     │
+└──────┬───────────────────────────┘
+       │ delegates all validation to
+       ▼
+┌──────────────────────────────────┐
+│   synesis.lsp_adapter            │
+│   validate_single_file()         │
+│   Context discovery              │
+└──────┬───────────────────────────┘
+       │
+       ▼
+┌──────────────────────────────────┐
+│   synesis.compiler               │
+│   Lark LALR(1) parser            │
+│   Semantic validator             │
+│   ValidationResult               │
+└──────────────────────────────────┘
 ```
 
-## Tests
+**Design principle:** this layer never re-implements parsing or semantics. If a diagnostic is incorrect, the issue is in the compiler — reproduce it with `synesis check file.syn` and report in the [compiler issue tracker](https://github.com/synesis-lang/synesis/issues).
+
+---
+
+## Custom LSP Commands
+
+Cross-file features (hover, definition, completion, rename, graph) depend on the workspace cache loaded via `synesis/loadProject`.
+
+| Command | Description |
+|---|---|
+| `synesis/loadProject` | Load and cache the full project |
+| `synesis/getProjectStats` | Compilation statistics |
+| `synesis/getReferences` | All source references in scope |
+| `synesis/getCodes` | All ontology codes in scope |
+| `synesis/getRelations` | All declared relation types |
+| `synesis/getRelationGraph` | Mermaid diagram of project relations |
+
+---
+
+## Compatibility
+
+| Package | Latest | Requires synesis | Python |
+|---|---|---|---|
+| synesis | 0.6.0 | — | ≥ 3.10 |
+| synesis-lsp | 0.16.0 | ≥ 0.5.5 | ≥ 3.10 |
+| synesis-coder | 0.4.1 | ≥ 0.5.5 | ≥ 3.10 |
+| synesis-graph | 0.2.0 | ≥ 0.5.5 | ≥ 3.10 |
+
+---
+
+## Troubleshooting
+
+**`Error: Package 'synesis' not found`**
+```bash
+pip install synesis
+```
+
+**LSP does not validate after editing**
+
+1. Check logs: *Output → Synesis LSP* in VS Code
+2. Reload window: `Ctrl+Shift+P → Reload Window`
+3. Ensure `.synp` references the correct template and bibliography
+4. Look for log messages: `Projeto Synesis carregado`, `Template carregado`, `Bibliografia carregada`
+
+**Incorrect diagnostics**
+
+The LSP delegates all validation to the compiler. To isolate the issue:
+```bash
+synesis check your_file.syn
+```
+If the CLI also reports it, the issue is in the compiler — report it in the [compiler repository](https://github.com/synesis-lang/synesis/issues). If the CLI passes but the LSP flags it, report in the [LSP repository](https://github.com/synesis-lang/synesis-lsp/issues).
+
+---
+
+## Development
 
 ```bash
 pip install -e ".[dev]"
@@ -118,93 +190,69 @@ pytest tests/
 pytest --cov=synesis_lsp tests/
 ```
 
-## Development Notes
+**Contributing guidelines:**
 
-- This LSP is a protocol adapter; do not implement parsing/semantics here.
-- All validation must use `synesis.lsp_adapter.validate_single_file`.
-- Always convert `SourceLocation` (1-based) to LSP `Range` (0-based).
-- If you change error/result contracts, update `INTERFACES.md` and `converters.py`.
-- Keep the server resilient: exceptions must become diagnostics, never crashes.
+- This server is a protocol adapter — do not implement parsing or semantics here
+- All validation must use `synesis.lsp_adapter.validate_single_file`
+- Always convert `SourceLocation` (1-based) to LSP `Range` (0-based)
+- If you change error/result contracts, update `INTERFACES.md` and `converters.py`
+- Keep the server resilient: exceptions must become diagnostics, never crashes
 
-## Architecture
+---
+
+## Project Structure
 
 ```
-┌─────────────┐
-│   VSCode    │  (Editor)
-└──────┬──────┘
-       │ LSP Protocol (JSON-RPC via STDIO)
-       ▼
-┌─────────────────────────────────┐
-│   synesis_lsp.server.py         │  (Python Server)
-├─────────────────────────────────┤
-│ • Handlers: did_open, did_change│
-│ • Converters: Error → Diagnostic│
-│ • Providers: tokens, symbols,   │
-│   hover, completion, definition,│
-│   inlay, signature, rename      │
-│ • Commands: loadProject, stats, │
-│   explorer, relation graph      │
-└──────┬──────────────────────────┘
-       │ imports
-       ▼
-┌─────────────────────────────────┐
-│   synesis.lsp_adapter           │  (Compiler Adapter)
-├─────────────────────────────────┤
-│ • validate_single_file()        │
-│ • Context discovery             │
-└──────┬──────────────────────────┘
-       │ uses
-       ▼
-┌─────────────────────────────────┐
-│   synesis.compiler              │  (Compiler)
-├─────────────────────────────────┤
-│ • Lark Parser (LALR)            │
-│ • SemanticValidator             │
-│ • ValidationResult              │
-└─────────────────────────────────┘
+synesis-lsp/
+├── synesis_lsp/
+│   ├── server.py            # LSP server (pygls)
+│   ├── converters.py        # ValidationError → LSP Diagnostic
+│   ├── cache.py             # Workspace cache
+│   ├── semantic_tokens.py   # Semantic tokens
+│   ├── symbols.py           # Document symbols
+│   ├── hover.py             # Hover provider
+│   ├── definition.py        # Go-to-definition
+│   ├── completion.py        # Autocomplete
+│   ├── inlay_hints.py       # Inlay hints
+│   ├── graph.py             # Relation graph (Mermaid)
+│   ├── rename.py            # Rename provider
+│   └── explorer_requests.py # Custom explorer commands
+├── tests/
+├── INTERFACES.md            # Compiler ↔ LSP contracts
+├── CHANGELOG.md
+├── LICENSE
+└── README.md
 ```
 
-## Advanced Features
+---
 
-- Custom commands: `synesis/loadProject`, `synesis/getProjectStats`,
-  `synesis/getReferences`, `synesis/getCodes`, `synesis/getRelations`,
-  `synesis/getRelationGraph`
-- Cross-file features (hover, definition, completion, rename, graph) depend
-  on the workspace cache loaded via `synesis/loadProject`
+## Intellectual Genealogy
 
-## Troubleshooting
+`synesis-lsp` is part of the Synesis ecosystem. The compiler and language it serves are the formal culmination of a research and development trajectory spanning more than a decade. See the [compiler README](https://github.com/synesis-lang/synesis#intellectual-genealogy) and the project's [NOTICE file](https://github.com/synesis-lang/synesis/blob/main/NOTICE) for the full intellectual genealogy and copyright notices for predecessor works.
 
-### Error: "Package 'synesis' not found"
-
-```bash
-pip install synesis
-```
-
-### LSP does not validate after editing
-
-1. Check logs: **Output → Synesis LSP** in VSCode
-2. Reload window: `Ctrl+Shift+P` → "Reload Window"
-3. Ensure the `.synp` references the correct template and bibliography
-4. Look for log messages like: `Projeto Synesis carregado`, `Template carregado`, `Bibliografia carregada`
-
-### Incorrect diagnostics
-
-The LSP uses the compiler output. If a diagnostic is wrong:
-1. Test with CLI: `synesis check arquivo.syn`
-2. If CLI also reports it, the bug is in the compiler
-3. Report in the compiler issue tracker
+---
 
 ## License
 
-MIT License - Synesis Project
+MIT — see [LICENSE](https://github.com/synesis-lang/synesis-lsp/blob/main/LICENSE).
 
-## Contributing
+> A license change to **AGPL-3.0-only** (with Synesis Data Output Exception) is planned for an upcoming release, aligned with the compiler.
 
-Contributions are welcome. Please follow the code conventions and add tests for new features.
+---
 
 ## References
 
+- [Synesis compiler](https://github.com/synesis-lang/synesis) — the core engine this server wraps
+- [Synesis Explorer](https://github.com/synesis-lang/synesis-explorer) — VS Code extension
 - [LSP Specification](https://microsoft.github.io/language-server-protocol/)
 - [pygls Documentation](https://pygls.readthedocs.io/)
-- [Interfaces and Contracts](INTERFACES.md)
-- [Changelog](CHANGELOG.md)
+- [Interfaces and Contracts](https://github.com/synesis-lang/synesis-lsp/blob/main/INTERFACES.md)
+- [Changelog](https://github.com/synesis-lang/synesis-lsp/blob/main/CHANGELOG.md)
+
+---
+
+## Author
+
+**Dr. Christian Maciel de Britto**
+
+[GitHub](https://github.com/synesis-lang) · [ORCID](https://orcid.org/0000-0003-1431-3924) · [Lattes](https://lattes.cnpq.br/2334832147379385)

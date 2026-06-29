@@ -46,10 +46,11 @@ TOKEN_TYPES: List[str] = [
     SemanticTokenTypes.Variable.value,    # 1: @bibref
     SemanticTokenTypes.Property.value,    # 2: nome_campo:
     SemanticTokenTypes.String.value,      # 3: valor de campo / conteúdo GUIDELINES
-    SemanticTokenTypes.EnumMember.value,  # 4: código / relações (INFLUENCES, ...)
+    SemanticTokenTypes.EnumMember.value,  # 4: código ontológico (Trust, CCS_Support)
     SemanticTokenTypes.Namespace.value,   # 5: PROJECT, TEMPLATE, INCLUDE
     SemanticTokenTypes.Comment.value,     # 6: # comentário
     SemanticTokenTypes.Operator.value,    # 7: ->
+    SemanticTokenTypes.Type.value,        # 8: relações de chain (INFLUENCES, ENABLES, ...)
 ]
 
 TOKEN_MODIFIERS: List[str] = [
@@ -73,10 +74,11 @@ _TK_KEYWORD = 0
 _TK_VARIABLE = 1
 _TK_PROPERTY = 2
 _TK_STRING = 3
-_TK_ENUM_MEMBER = 4
+_TK_ENUM_MEMBER = 4  # códigos ontológicos
 _TK_NAMESPACE = 5
 _TK_COMMENT = 6
 _TK_OPERATOR = 7
+_TK_RELATION = 8     # relações de chain (INFLUENCES, ENABLES, ...)
 
 # Modifier bitmask
 _MOD_DECLARATION = 1 << 0   # bit 0
@@ -95,10 +97,21 @@ _RE_GUIDELINES_START = re.compile(r'^\s*GUIDELINES\s*$', re.IGNORECASE)
 _RE_GUIDELINES_END = re.compile(r'^\s*END\s+GUIDELINES\b', re.IGNORECASE)
 _RE_COMMENT = re.compile(r'^(\s*)(#.*)$')
 _RE_ARROW = re.compile(r'->')
-_RE_RELATION = re.compile(
-    r'\b(INFLUENCES|ENABLES|CONSTRAINS|CONTESTED-BY|RELATES-TO|'
-    r'CAUSES|PREVENTS|REQUIRES|EXCLUDES|CORRELATES|DEPENDS-ON)\b'
-)
+
+# Relações padrão usadas como fallback quando o template ainda não foi compilado
+# (ex: documento aberto antes do LSP terminar loadProject).
+_DEFAULT_RELATIONS: frozenset[str] = frozenset({
+    "INFLUENCES", "ENABLES", "CONSTRAINS", "CONTESTED-BY", "RELATES-TO",
+    "CAUSES", "PREVENTS", "REQUIRES", "EXCLUDES", "CORRELATES", "DEPENDS-ON",
+})
+
+_RE_RELATION: re.Pattern | None = None  # compilado sob demanda por _build_relation_re()
+
+
+def _build_relation_re(relation_names: frozenset[str]) -> re.Pattern:
+    """Compila regex para o conjunto de nomes de relação fornecido."""
+    escaped = [re.escape(r) for r in sorted(relation_names, key=len, reverse=True)]
+    return re.compile(r'\b(' + '|'.join(escaped) + r')\b')
 
 # RawToken: (line_0based, col_0based, length, token_type_index, modifier_bitmask)
 RawToken = Tuple[int, int, int, int, int]
@@ -106,28 +119,37 @@ RawToken = Tuple[int, int, int, int, int]
 _TOKENS_CACHE: dict[tuple[str, int], SemanticTokens] = {}
 
 
-def compute_semantic_tokens(source: str, uri: str) -> SemanticTokens:
+def compute_semantic_tokens(
+    source: str,
+    uri: str,
+    relation_names: frozenset[str] | None = None,
+) -> SemanticTokens:
     """
     Computa tokens semânticos para um arquivo Synesis.
 
-    Resultado cacheado por (uri, hash(source)) — cache hit retorna em 0ms
-    sem re-escanear o arquivo. Cache limpo a cada novo resultado para manter
-    apenas a entrada mais recente por URI.
+    relation_names: conjunto de nomes de relação válidos extraídos do template
+    (ex: {"INFLUENCES", "ENABLES", "CONSTRAINS"}). Se None, usa _DEFAULT_RELATIONS
+    como fallback para cobrir o período entre abertura do documento e loadProject.
+
+    Resultado cacheado por (uri, hash(source), frozenset(relation_names)).
+    Cache limpo a cada novo resultado para manter apenas a entrada mais recente.
     """
-    cache_key = (uri, hash(source))
+    effective_relations = relation_names if relation_names is not None else _DEFAULT_RELATIONS
+    cache_key = (uri, hash(source), effective_relations)
     cached = _TOKENS_CACHE.get(cache_key)
     if cached is not None:
         return cached
 
-    tokens = _extract_tokens_from_source(source)
+    re_relation = _build_relation_re(effective_relations)
+    tokens = _extract_tokens_from_source(source, re_relation)
     data = _encode_deltas(tokens)
     result = SemanticTokens(data=data)
-    _TOKENS_CACHE.clear()  # manter apenas o resultado mais recente
+    _TOKENS_CACHE.clear()  # manter apenas o resultado mais recente por URI
     _TOKENS_CACHE[cache_key] = result
     return result
 
 
-def _extract_tokens_from_source(source: str) -> List[RawToken]:
+def _extract_tokens_from_source(source: str, re_relation: re.Pattern) -> List[RawToken]:
     """Extrai tokens escaneando o texto-fonte linha a linha."""
     tokens: List[RawToken] = []
     lines = source.splitlines()
@@ -223,8 +245,8 @@ def _extract_tokens_from_source(source: str) -> List[RawToken]:
                     tokens.append(
                         (line_idx, val_col, len(val_stripped), _TK_STRING, 0)
                     )
-                elif _RE_ARROW.search(val_stripped) or _RE_RELATION.search(val_stripped):
-                    _tokenize_chain_value(line_idx, val_col, val_stripped, tokens)
+                elif _RE_ARROW.search(val_stripped) or re_relation.search(val_stripped):
+                    _tokenize_chain_value(line_idx, val_col, val_stripped, tokens, re_relation)
                 else:
                     tokens.append(
                         (line_idx, val_col, len(val_stripped), _TK_ENUM_MEMBER, 0)
@@ -232,21 +254,27 @@ def _extract_tokens_from_source(source: str) -> List[RawToken]:
             continue
 
         # 4. Linhas de continuação de chain (sem ':') — setas e relações
-        if _RE_ARROW.search(stripped) or _RE_RELATION.search(stripped):
+        if _RE_ARROW.search(stripped) or re_relation.search(stripped):
             col = len(line) - len(line.lstrip())
-            _tokenize_chain_value(line_idx, col, stripped, tokens)
+            _tokenize_chain_value(line_idx, col, stripped, tokens, re_relation)
             continue
 
     return tokens
 
 
-def _tokenize_chain_value(line_idx: int, start_col: int, text: str, tokens: List[RawToken]) -> None:
-    """Emite tokens de operator (->) e enumMember (relações e códigos) para uma linha de chain."""
+def _tokenize_chain_value(
+    line_idx: int,
+    start_col: int,
+    text: str,
+    tokens: List[RawToken],
+    re_relation: re.Pattern,
+) -> None:
+    """Emite tokens de operator (->) e type (relações) e enumMember (códigos) para uma chain."""
     pos = 0
     while pos < len(text):
         # Tenta seta
         arrow = _RE_ARROW.search(text, pos)
-        relation = _RE_RELATION.search(text, pos)
+        relation = re_relation.search(text, pos)
 
         next_match = None
         if arrow and relation:
@@ -277,7 +305,7 @@ def _tokenize_chain_value(line_idx: int, start_col: int, text: str, tokens: List
                 line_idx,
                 start_col + next_match.start(),
                 len(next_match.group(0)),
-                _TK_ENUM_MEMBER,
+                _TK_RELATION,
                 0,
             ))
 

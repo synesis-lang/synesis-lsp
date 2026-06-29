@@ -28,17 +28,22 @@ def _sanitize_id(name: str) -> str:
     return re.sub(r"[^a-zA-Z0-9_]", "_", name)
 
 
-def get_relation_graph(cached_result, bibref: Optional[str] = None) -> dict:
+def get_relation_graph(
+    cached_result,
+    bibref: Optional[str] = None,
+    item: Optional[str] = None,
+    item_line: Optional[int] = None,
+    item_file: Optional[str] = None,
+    file: Optional[str] = None,
+) -> dict:
     """
     Gera código Mermaid.js a partir das relações do projeto.
 
-    Args:
-        cached_result: CachedCompilation do workspace_cache
-        bibref: Se fornecido, filtra relações que envolvem códigos
-                usados por esse bibref
-
-    Returns:
-        dict com 'success' e 'mermaidCode' ou 'error'
+    Filtros (mutuamente exclusivos, por prioridade):
+        file   → agrega todos os bibrefs (SOURCE + ITEM) presentes no arquivo
+        item   → chains apenas do ITEM especificado
+        bibref → chains do SOURCE especificado (todos os ITEMs do SOURCE)
+        (none) → grafo completo do projeto
     """
     if not cached_result:
         return {"success": False, "error": "Projeto não carregado"}
@@ -50,18 +55,37 @@ def get_relation_graph(cached_result, bibref: Optional[str] = None) -> dict:
     template = getattr(getattr(cached_result, "result", None), "template", None)
 
     triples = getattr(lp, "all_triples", None)
-    if not triples and not bibref:
+    if not triples and not bibref and not item and not file:
         logger.debug("get_relation_graph: No triples found")
         return {"success": True, "mermaidCode": "graph LR\n    empty[Sem relações]"}
 
-    logger.debug(f"get_relation_graph: Found {len(triples)} total triples")
+    logger.debug(f"get_relation_graph: Found {len(triples) if triples else 0} total triples")
 
-    # Se bibref fornecido, filtrar relações para o SOURCE atual
-    if bibref:
+    # Filtro por arquivo: agrega todos os bibrefs do arquivo
+    if file:
+        logger.debug(f"get_relation_graph: Filtering by file='{file}'")
+        triples = _triples_for_file(lp, template, file, cached_result)
+        if not triples:
+            return {
+                "success": True,
+                "mermaidCode": "graph LR\n    empty[Sem relações no arquivo]",
+            }
+        logger.debug(f"get_relation_graph: Filtered to {len(triples)} triples (file scope)")
+    # Filtro por ITEM específico (bibref + arquivo + linha para desambiguar ITEMs com mesmo bibref)
+    elif item:
+        logger.debug(f"get_relation_graph: Filtering by item='{item}' file={item_file} line={item_line}")
+        triples = _triples_for_item(lp, template, item, item_line, item_file)
+        if not triples:
+            return {
+                "success": True,
+                "mermaidCode": f"graph LR\n    empty[Sem relações para {item}]",
+            }
+        logger.debug(f"get_relation_graph: Filtered to {len(triples)} triples (item scope)")
+    # Filtro por SOURCE (todos os ITEMs do SOURCE)
+    elif bibref:
         logger.debug(f"get_relation_graph: Filtering by bibref='{bibref}'")
         triples = _triples_for_bibref(lp, template, bibref)
         if not triples:
-            logger.debug(f"get_relation_graph: No triples found for bibref '{bibref}'")
             return {
                 "success": True,
                 "mermaidCode": f"graph LR\n    empty[Sem relações para {bibref}]",
@@ -127,6 +151,144 @@ def _chain_has_relations(chain, template) -> bool:
     if isinstance(relations, (list, tuple)) and relations:
         return True
     return _has_chain_relations(template)
+
+
+def _item_chain_triples(item, template) -> list[tuple[str, str, str]]:
+    """Extrai as triples dos chains de um único ITEM (chains nomeados + extra_fields)."""
+    triples: list[tuple[str, str, str]] = []
+    for chain in getattr(item, "chains", None) or []:
+        if hasattr(chain, "to_triples"):
+            triples.extend(
+                chain.to_triples(has_relations=_chain_has_relations(chain, template))
+            )
+        else:
+            triple = _extract_chain_triple(chain)
+            if triple:
+                triples.append(triple)
+    # campos CHAIN com nome customizado ficam em extra_fields
+    for val in (getattr(item, "extra_fields", None) or {}).values():
+        if hasattr(val, "to_triples"):
+            triples.extend(
+                val.to_triples(has_relations=_chain_has_relations(val, template))
+            )
+    return triples
+
+
+def _triples_for_file(lp, template, file_path: str, cached_result) -> list[tuple[str, str, str]]:
+    """
+    Agrega triples apenas dos ITEMs cujo location.file bate com o arquivo.
+
+    Importante: filtra por ITEM, não por bibref. Num projeto onde todos os ITEMs
+    compartilham o mesmo SOURCE (ex.: @biblia com um ITEM por versículo espalhados
+    em vários .syn), expandir por bibref devolveria o grafo do projeto inteiro. Aqui
+    coletamos somente as chains dos ITEMs declarados neste arquivo.
+    """
+    from pathlib import Path
+
+    norm_file = Path(file_path).resolve()
+
+    sources = getattr(lp, "sources", {}) or {}
+    src_iter = sources.values() if isinstance(sources, dict) else sources
+
+    seen: set[tuple] = set()
+    result: list[tuple[str, str, str]] = []
+    item_count = 0
+
+    for src in src_iter:
+        for it in getattr(src, "items", None) or []:
+            it_loc = getattr(it, "location", None)
+            it_file = getattr(it_loc, "file", None) if it_loc else None
+            if it_file is None:
+                continue
+            try:
+                if Path(it_file).resolve() != norm_file:
+                    continue
+            except Exception:
+                continue
+
+            item_count += 1
+            for triple in _item_chain_triples(it, template):
+                if triple not in seen:
+                    seen.add(triple)
+                    result.append(triple)
+
+    logger.debug(
+        f"_triples_for_file: '{file_path}' — {item_count} items, {len(result)} triples"
+    )
+    return result
+
+
+def _triples_for_item(
+    lp,
+    template,
+    item_bibref: str,
+    item_line: Optional[int] = None,
+    item_file: Optional[str] = None,
+) -> list[tuple[str, str, str]]:
+    """
+    Extrai triples dos chains do ITEM especificado.
+
+    Usa (item_file, item_line) para desambiguar quando múltiplos ITEMs
+    compartilham o mesmo bibref (ex: todos os versículos de @biblia num projeto
+    onde cada passagem é um ITEM diferente no mesmo SOURCE).
+    """
+    from pathlib import Path
+
+    normalized = _normalize_bibref(item_bibref)
+    norm_file = Path(item_file).resolve() if item_file else None
+
+    logger.debug(
+        f"_triples_for_item: bibref={item_bibref!r} normalized={normalized!r} "
+        f"item_line={item_line!r} item_file={item_file!r} norm_file={norm_file!r}"
+    )
+
+    sources = getattr(lp, "sources", {}) or {}
+    items_iter = sources.values() if isinstance(sources, dict) else sources
+
+    for src in items_iter:
+        for item in getattr(src, "items", None) or []:
+            if _normalize_bibref(getattr(item, "bibref", "") or "") != normalized:
+                continue
+
+            loc = getattr(item, "location", None)
+            loc_file = getattr(loc, "file", None) if loc else None
+            loc_line = getattr(loc, "line", None) if loc else None
+            item_start_0 = max(0, loc_line - 1) if loc_line is not None else None
+            logger.debug(
+                f"_triples_for_item: candidate item loc_file={loc_file!r} "
+                f"loc_line={loc_line!r} item_start_0={item_start_0!r}"
+            )
+
+            # Filtro por arquivo
+            if norm_file is not None and loc is not None:
+                if loc_file is not None:
+                    try:
+                        resolved = Path(loc_file).resolve()
+                        if resolved != norm_file:
+                            logger.debug(
+                                f"_triples_for_item: skip — file mismatch "
+                                f"{resolved!r} != {norm_file!r}"
+                            )
+                            continue
+                    except Exception:
+                        pass
+
+            # Filtro por linha (0-based)
+            if item_line is not None and loc is not None:
+                if item_start_0 != item_line:
+                    logger.debug(
+                        f"_triples_for_item: skip — line mismatch "
+                        f"{item_start_0!r} != {item_line!r}"
+                    )
+                    continue
+
+            triples = _item_chain_triples(item, template)
+            logger.debug(f"_triples_for_item: matched item — {len(triples)} triples")
+            if triples:
+                return triples
+
+    logger.debug("_triples_for_item: no matching item found")
+    return []
 
 
 def _triples_for_bibref(lp, template, bibref: str) -> list[tuple[str, str, str]]:

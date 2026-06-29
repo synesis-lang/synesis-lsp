@@ -5,6 +5,39 @@ All notable changes to the Synesis LSP project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.16.0] - 2026-06-22
+
+### Fixed
+
+- **`_triples_for_item` — logging detalhado de filtros** (`synesis_lsp/graph.py`)
+  - Adicionado `logger.debug` em cada passo do filtro de arquivo e linha — permite diagnóstico preciso via `synesis-lsp --log-file` quando o grafo por ITEM retorna resultado inesperado.
+
+- **`synesis/getRelationGraph` — grafo por arquivo filtra por ITEM, não por bibref** (`synesis_lsp/graph.py`)
+  - `_triples_for_file` agora agrega as chains **apenas dos ITEMs cujo `location.file` bate com o arquivo**, em vez de coletar os bibrefs do arquivo e expandir via `_triples_for_bibref`.
+  - Antes: num projeto onde todos os ITEMs compartilham o mesmo `SOURCE` (ex.: `@biblia` com um ITEM por versículo espalhado em vários `.syn`), o "grafo por arquivo" devolvia o grafo do projeto inteiro — incluía conceitos de ITEMs declarados em outros arquivos.
+  - Após: a hierarquia de escopo fica coerente — ITEM ⊂ FILE ⊂ BIBREF. O grafo por arquivo mostra só as relações dos ITEMs daquele arquivo.
+  - Refatoração de suporte: extraído `_item_chain_triples(item, template)` no nível do módulo, reutilizado por `_triples_for_file` e `_triples_for_item`.
+
+### Added
+
+- **`synesis/getBlocks`** (`synesis_lsp/blocks.py`, `server.py`)
+  - Novo comando LSP que retorna blocos `SOURCE` e `ITEM` de um arquivo `.syn` com `kind`, `bibref` (normalizado, sem `@`) e `range` (coordenadas 0-based, padrão LSP).
+  - Usa `compile_string()` → AST nodes para máxima fidelidade; fallback regex Unicode (`regex` module, `\p{L}\p{N}`) para documentos em edição com parse inválido.
+  - Substitui `synesisParser.js` (regex hardcoded) no `coderService` e no `abstractViewer` da extensão.
+  - Params: `{ "file": "<path>", "workspaceRoot": "<path>" }` — padrão idêntico a `synesis/getAbstract`.
+
+- **`synesis/getTemplate`** (`synesis_lsp/template_info.py`, `server.py`)
+  - Novo comando LSP que serializa o `TemplateNode` compilado (do cache do workspace) para o cliente.
+  - Shape: `{ "name", "fields": [{name, type, scope, relations, arity, values}], "requirements": { SOURCE/ITEM/ONTOLOGY: {required, optional, forbidden, bundles, optional_bundles} } }`.
+  - Inclui `optional_bundles` por escopo — exposição correta da feature `OPTIONAL BUNDLE` introduzida no compilador 0.6.0.
+  - `arity` serializado como `{operator, value}` compatível com o shape anterior do `templateParser.js`.
+  - Substitui `templateParser.js` (regex hardcoded de `.synt`) no `templateManager` da extensão.
+
+### Changed
+
+- **Dependência mínima do compilador** (`pyproject.toml`)
+  - `synesis>=0.5.5` → `synesis>=0.6.0` para garantir disponibilidade de `optional_bundles` no `TemplateNode`.
+
 ## [0.15.5] - 2026-06-12
 
 ### Added
