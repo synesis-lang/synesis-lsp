@@ -5,6 +5,20 @@ All notable changes to the Synesis LSP project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.17.0] - 2026-07-13
+
+### Added
+
+- **Contrato LSP↔extensão versionado** (`contracts/`, `tests/test_contract.py`)
+  - JSON Schema (draft 2020-12) para os 4 custom requests — `getReferences`, `getCodes`, `getRelations`, `getOntologyAnnotations` — mais exemplos canônicos gerados de compilação real. Este diretório é a **fonte de verdade** do formato; a extensão mantém uma cópia versionada.
+  - Teste de contrato (16 casos) valida a **saída real dos handlers** (compilada das fixtures do `synesis`) e os exemplos contra os schemas. Fecha o diagnóstico D6 do Golden Standard: o contrato antes era implícito e foi origem dos bugs de dedup CODE/CHAIN. Se o formato divergir, o CI de produtor e consumidor fica vermelho.
+  - `jsonschema>=4.18` adicionado aos extras `[dev]`. Política de versionamento/depreciação e matriz de compatibilidade em `contracts/README.md`.
+
+### Security
+
+- **Higiene de supply chain no CI** (`.github/workflows/ci.yml`, `.pre-commit-config.yaml`)
+  - Novo job `security`: `pip-audit` sobre as dependências de runtime declaradas (synesis, pygls, lsprotocol), isolado dos extras `[dev]` para ser determinístico; e Gitleaks (varredura de segredos no histórico). Gitleaks também adicionado ao `pre-commit`. Alinha o CI do LSP à Frente 1 do Golden Baseline, espelhando o compilador.
+
 ## [0.16.0] - 2026-06-22
 
 ### Fixed
