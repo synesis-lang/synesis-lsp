@@ -97,7 +97,6 @@ except ImportError as e:
 
 from synesis_lsp.abstract_viewer import get_abstract
 from synesis_lsp.blocks import get_blocks
-from synesis_lsp.template_info import serialize_template
 from synesis_lsp.cache import FileState, WorkspaceCache
 from synesis_lsp.code_actions import compute_code_actions
 from synesis_lsp.completion import compute_completions
@@ -114,6 +113,7 @@ from synesis_lsp.rename import compute_rename, prepare_rename
 from synesis_lsp.semantic_tokens import build_legend, compute_semantic_tokens
 from synesis_lsp.signature_help import compute_signature_help
 from synesis_lsp.symbols import compute_document_symbols
+from synesis_lsp.template_info import serialize_template
 
 # Silence pygls internal chatter — only warnings and errors are relevant to the user.
 logging.getLogger("pygls.feature_manager").setLevel(logging.WARNING)
