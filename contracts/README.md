@@ -33,7 +33,7 @@ in the same change (see the deprecation policy below).
 
 ## Versioning & deprecation policy
 
-- The contract is versioned with the LSP package (`synesis-lsp` `0.16.0`).
+- The contract is versioned with the LSP package (`synesis-lsp` `0.17.0`).
 - A **breaking** change to a response shape (removing/renaming a field, tightening
   a type, changing an enum) requires: a new schema revision here, the mirrored
   copy updated in `synesis-vscode`, both contract tests updated, and a CHANGELOG
@@ -48,4 +48,4 @@ in the same change (see the deprecation policy below).
 
 | synesis-vscode | requires synesis-lsp | contract |
 |---|---|---|
-| ≥ 0.6.4 | ≥ 0.16.0 | v1 (this directory) |
+| ≥ 0.7.0 | ≥ 0.17.0 | v1 (this directory) |
