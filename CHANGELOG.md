@@ -5,6 +5,26 @@ All notable changes to the Synesis LSP project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.18.0] - 2026-07-15
+
+### Fixed
+
+- **Cache servia dados obsoletos quando a ontologia compartilhada mudava** (`synesis_lsp/server.py`)
+  - `_compute_workspace_fingerprint` fazia `os.walk` **apenas na raiz do workspace**. Uma ontologia declarada com `INCLUDE SHARED ONTOLOGY` vive fora dessa raiz (outro drive, rede, `..`), então nunca entrava no fingerprint: editá-la não invalidava o cache e o `loadProject` devolvia o projeto compilado **antigo**, silenciosamente. Verificado antes da correção — o fingerprint permanecia byte-idêntico após alterar o arquivo compartilhado.
+  - O fingerprint agora inclui o `mtime` de cada alvo `INCLUDE SHARED ONTOLOGY`. Um alvo ausente entra como `0.0` em vez de ser ignorado, para que **criar** o arquivo depois também invalide o cache.
+  - Projeto sem `SHARED` produz fingerprint **byte-idêntico** ao anterior (sufixo vazio) — nenhum cache legado é invalidado e o custo de indexação é zero.
+
+### Added
+
+- **Índice reverso dos alvos de `INCLUDE SHARED ONTOLOGY`** (`synesis_lsp/shared_includes.py`)
+  - Novo módulo que resolve os alvos externos declarados nos `.synp` do workspace e monta o índice `alvo → projetos que o incluem`. Alimenta tanto a correção do fingerprint quanto os watchers da extensão, que precisam saber **quais** projetos invalidar quando um alvo muda.
+  - `.synp` inválido não derruba o índice (nem o servidor): falha de parse é ignorada, já que o arquivo quebrado é reportado por outra via.
+  - `INCLUDE ONTOLOGY` comum (sem `SHARED`) não entra no índice.
+- **`loadProject` retorna `sharedIncludes`** (`synesis_lsp/server.py`)
+  - Campo aditivo com `[{target, projects}]`, consumido pela extensão para instalar um `FileSystemWatcher` por alvo externo. Lista vazia para todo projeto sem `SHARED`. Presente nas duas respostas (cache e compilação nova). `loadProject` não é governado pelos schemas de `contracts/`, então nenhuma versão de contrato muda.
+
+---
+
 ## [0.17.0] - 2026-07-13
 
 ### Added

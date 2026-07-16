@@ -111,6 +111,10 @@ from synesis_lsp.ontology_topics import get_ontology_topics
 from synesis_lsp.references import compute_references
 from synesis_lsp.rename import compute_rename, prepare_rename
 from synesis_lsp.semantic_tokens import build_legend, compute_semantic_tokens
+from synesis_lsp.shared_includes import (
+    build_shared_include_index,
+    shared_targets_fingerprint,
+)
 from synesis_lsp.signature_help import compute_signature_help
 from synesis_lsp.symbols import compute_document_symbols
 from synesis_lsp.template_info import serialize_template
@@ -342,6 +346,10 @@ def _compute_workspace_fingerprint(root: Path) -> str:
     para detectar qualquer mudança sem overhead de hash criptográfico.
 
     Inclui: .synp, .syn, .syno, .synt, .bib
+
+    Inclui tambem os alvos de `INCLUDE SHARED ONTOLOGY`, que vivem FORA da raiz
+    e portanto escapam do os.walk. Sem isso, editar a ontologia compartilhada
+    nao mudaria o fingerprint e o loadProject devolveria cache obsoleto.
     """
     exts = {".synp", ".syn", ".syno", ".synt", ".bib"}
     max_mtime: float = 0.0
@@ -362,7 +370,38 @@ def _compute_workspace_fingerprint(root: Path) -> str:
             except OSError:
                 continue
 
-    return f"{file_count}:{max_mtime}"
+    base = f"{file_count}:{max_mtime}"
+
+    # Alvos externos de INCLUDE SHARED ONTOLOGY (fora do os.walk acima).
+    # Projeto sem SHARED: sufixo vazio -> fingerprint byte-identico ao anterior.
+    try:
+        shared = shared_targets_fingerprint(build_shared_include_index(root))
+    except Exception as exc:  # nunca derrubar o fingerprint por causa disto
+        logger.debug("fingerprint: falha ao indexar INCLUDE SHARED: %s", exc)
+        shared = ""
+
+    return f"{base}|{shared}" if shared else base
+
+
+def _shared_includes_payload(root: Path) -> list:
+    """Alvos de INCLUDE SHARED ONTOLOGY para a extensao instalar watchers.
+
+    A ontologia compartilhada vive fora da pasta do projeto, entao o
+    `onDidSaveTextDocument` do editor nunca ve suas edicoes (git pull, outra
+    janela, arquivo de rede). A extensao precisa de um FileSystemWatcher por
+    alvo — e do indice reverso, para saber quais projetos invalidar.
+
+    Lista vazia quando nenhum projeto usa SHARED (todo projeto legado).
+    """
+    try:
+        index = build_shared_include_index(root)
+    except Exception as exc:
+        logger.debug("sharedIncludes: falha ao indexar: %s", exc)
+        return []
+    return [
+        {"target": str(target), "projects": [str(p) for p in projects]}
+        for target, projects in sorted(index.targets.items())
+    ]
 
 
 def _get_versions() -> dict:
@@ -466,6 +505,7 @@ def load_project(ls: SynesisLanguageServer, params) -> dict:
                 },
                 "has_errors": cached.result.has_errors(),
                 "has_warnings": cached.result.has_warnings(),
+                "sharedIncludes": _shared_includes_payload(fingerprint_root),
                 **_get_versions(),
             }
 
@@ -518,6 +558,7 @@ def load_project(ls: SynesisLanguageServer, params) -> dict:
             },
             "has_errors": result.has_errors(),
             "has_warnings": result.has_warnings(),
+            "sharedIncludes": _shared_includes_payload(fingerprint_root),
             **_get_versions(),
         }
     except ImportError:
