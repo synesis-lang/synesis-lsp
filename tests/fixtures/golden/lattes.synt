@@ -1,0 +1,1045 @@
+TEMPLATE lattes
+# version: 0.10.0
+# author: Quinto Andar Case Study
+# corpus: currículos Lattes de pesquisadores candidatos (68 perfis planejados)
+# domains: IA, Dados, Engenharia de Software, pesquisa aplicada
+#
+# ─────────────────────────────────────────────
+# FUNDAMENTOS TEÓRICOS
+# ─────────────────────────────────────────────
+#
+# O currículo Lattes é o documento oficial de registro de carreira acadêmica
+# no contexto brasileiro — presume-se que toda informação relevante de um
+# pesquisador esteja registrada nele, estruturada em seções Markdown
+# previsíveis. A extração parte dessa premissa e se divide em dois grupos
+# temáticos complementares:
+#
+#   SISTEMATIZAÇÃO DA FORMAÇÃO PROFISSIONAL — abordagem sistemática e
+#   determinística, focada em categorização. Identifica a zona curricular do
+#   trecho e, quando a evidência sustentar, aplica um score segundo o
+#   critério do Golden List correspondente. A zona não tem função própria
+#   além de habilitar essa localização — não gera entrada de ontologia nem é
+#   avaliada por si; sua única finalidade é restringir a busca de trechos ao
+#   segmento do currículo onde um critério pode legitimamente ser evidenciado.
+#
+#   MAPEAMENTO SISTÊMICO DE CONHECIMENTO — abordagem sistêmica e
+#   interpretativa. Identifica conceitos técnicos relevantes ao domínio de
+#   IA/Dados e os inter-relaciona como grafo de conhecimento, com trilha de
+#   auditoria (`memo`) para cada vínculo registrado.
+#
+# ZONEAMENTO CURRICULAR — LSZ (Lattes Semantic Zones)
+#
+#   Adaptação do esquema CoreSC x AZ-II para currículos Lattes.
+#   Base original: Liakata, Teufel, Siddharthan e Batchelor (2010).
+#   "Corpora for conceptualisation and zoning of scientific papers."
+#   LREC, p. 2054–2061.
+#
+#   No Lattes, a estrutura de seções é um sinal primário forte: o título da
+#   seção Markdown determina a zona com quase nenhuma ambiguidade. O LSZ
+#   mapeia cada seção a uma função semântica análoga ao CoreSC/AZ-II:
+#
+#     Identificacao_Resumo   
+#     Formacao_Academica     
+#     Atuacao_Profissional  
+#     Pesquisa_Projetos      
+#     Eventos_Congressos    
+#     Producao_Bibliografica 
+#     Orientacoes_Bancas    
+#     Premios_Titulos    
+#     Producao_Tecnica     
+#
+# ─────────────────────────────────────────────
+# ARQUITETURA DO TEMPLATE
+# ─────────────────────────────────────────────
+#
+# Cada SOURCE = 1 pesquisador (bibref = ID Lattes)
+# Cada ITEM   = 1 trecho curricular classificado em UMA zona LSZ, opcionalmente
+#               ligado a UM critério do Golden List Synesis com score sugerido.
+#               Um mesmo trecho pode gerar múltiplos ITEMs se evidenciar múltiplos
+#               critérios (ex.: Doutorado_Instituicao + Doutorado_Area).
+#
+# ARQUITETURA EM DUAS CAMADAS:
+#   1. ZONA curricular (`zona`): faixa semântica previsível do Lattes — uma por ITEM.
+#   2. CHAIN: todo conceito de conhecimento entra no grafo como nó de uma chain —
+#      não há mais CODE autônomo (`area_tematica`/`metodo` removidos). Relações
+#      causais/de aplicação (APPLIES, ENABLES, PREDICTS etc.) quando sustentadas
+#      pelo texto; ASSOCIATED_WITH como fallback obrigatório para co-ocorrência
+#      sem vínculo mais forte. Critério 5A (`criterio` + `score`)
+#      alimenta a avaliação do Golden List, independente da camada de chain.
+#      O campo `memo` (independente, opcional) registra interpretação analítica
+#      livre — incluindo a âncora textual e o raciocínio por trás de uma chain —
+#      quando o insight do trecho não se resolve inteiramente como par conceitual.
+#
+# REGRA DE OURO (do glossário): todo score exige trecho literal no campo `trecho`.
+#   Sem trecho que sustente → score 1 (ou "ausente"). NÃO inferir de plausibilidade.
+#
+# ─────────────────────────────────────────────
+# HISTÓRICO DE VERSÕES
+# ─────────────────────────────────────────────
+#
+# v0.10.0 — FIELD topic: categorias Output, Impact e Theory removidas do
+#           vocabulário fixo — zero ocorrências em 78 conceitos reais do corpus
+#           piloto (Lattes + Abstracts), evidência insuficiente para justificar
+#           3 das 8 categorias. Par de fronteira "Theory vs Knowledge" removido
+#           (órfão sem a categoria Theory). Vocabulário passa de 8 para 5
+#           categorias (Method, Technology, Knowledge, Innovation, Economics),
+#           mudança espelhada em abstracts.synt para manter o vocabulário de
+#           topic idêntico entre os dois templates (mesma razão que unifica as
+#           10 RELATIONS de chain). Anotações .syno anteriores continuam válidas
+#           (nenhum nó existente usava as categorias removidas).
+#
+# v0.9.0 — Conformidade com o documento de referência lattes_estrutura_template.md:
+#           (0) Campos `criterio_5a`/`score_sugerido` renomeados para `criterio`/
+#           `score` (paridade com abstracts.synt). (1) POLARIDADE de `score`
+#           INVERTIDA — agora 4 = melhor evidência, 1 = pior/ausente (ordem
+#           crescente), alinhada ao dashboard HTML "Scores — Lista Consolidada
+#           (Synesis v8)" e ao glossário 5A_criterios_curriculo_lattes.md
+#           original. As 14 réguas do FIELD score foram reescritas; anotações
+#           .syn anteriores à v0.9.0 usam a polaridade antiga e precisam de
+#           recodificação. (2) Zona nova `Eventos_Congressos` (seção
+#           '## Eventos'): participação/organização de congressos aciona
+#           Laboratorio_Pesquisa com a mesma régua de Pesquisa_Projetos.
+#           (3) Gatilho de Pesquisa_Projetos explicita as variantes
+#           '## Projetos de Desenvolvimento' e '## Projetos de Extensão'.
+#           (4) Lista de PROIBIDO em `criterio` simplificada para citar apenas a
+#           categoria comportamental/cultural/mercado, sem nomes de versões
+#           anteriores do glossário.
+#
+# v0.8.0 — Migração estrutural completa para paridade com abstracts.synt v2.7:
+#           (1) FIELD confidence eliminado (definição e referência em ITEM
+#           FIELDS) — o corpus Lattes já é majoritariamente determinístico por
+#           título de seção Markdown; a triagem [H] deixa de depender de sinal
+#           próprio do template. (2) CODE autônomo eliminado: area_tematica e
+#           metodo removidos de ITEM FIELDS — todo conceito de domínio/método
+#           passa a entrar no grafo exclusivamente via chain (mesma lógica da
+#           v2.6 do abstracts: elimina nós "ilha" por construção). (3)
+#           Vocabulário de chain unificado ao do abstracts.synt: 10 relações
+#           PascalCase (APPLIES, USES, MEASURES, PART_OF, PREDICTS, ENABLES,
+#           INHIBITS, CONTRASTS_WITH, ASSOCIATED_WITH, RELATES_TO), substituindo
+#           as 6 relações lowercase próprias — resolve a divergência de
+#           vocabulário que impedia consultas GraphRAG uniformes entre os dois
+#           subgrafos (join via autor_lattes_id). (4) Campo `note` (pareado
+#           posicionalmente 1:1 com chain, contrato de parse rígido) renomeado
+#           e substituído por `memo`: mesma função de auditoria de chain, mas
+#           sem pareamento posicional — um único memo pode cobrir múltiplas
+#           chains do ITEM, citando cada par para desambiguar. (5) `chain` e
+#           `memo` migrados para `OPTIONAL BUNDLE chain, memo`, validado pelo
+#           compilador synesis >= 0.6.0: toda chain agora exige memo no mesmo
+#           ITEM e vice-versa (antes a co-dependência era apenas textual via
+#           GUIDELINES, sem validação automática). (6) ONTOLOGY FIELDS
+#           simplificado para paridade com abstracts.synt: `node_level` (distinção
+#           knowledge/theme) removido — a granularidade do conceito passa a ser
+#           expressa apenas na nomenclatura (ver HIERARQUIA DE REFERÊNCIA em
+#           FIELD chain), não em um campo paralelo de ontologia.
+#
+# v0.7.0 — Vocabulário de `chain`/`basis` expandido de 4 para 6 relações,
+#           em paridade com abstracts.synt v2.2 (measurement, contrast),
+#           preservando o join Neo4j via mesmo vocabulário de RELATIONS entre
+#           os dois templates. FIELD chain: novos blocos CASO measurement e
+#           CASO contrast, normalização de direção e guia por zona atualizados.
+#
+# v0.6.0 — Incorporação de estratégias do face85 v5.7:
+#           FIELD confidence adicionado (triagem [H] em corpus multi-chunk);
+#           FIELD chain reescrito: CASO-a-CASO, NORMALIZAÇÃO DE DIREÇÃO,
+#           GUIA POR ZONA, FATORES PARALELOS, COBERTURA, RESTRIÇÃO GAP;
+#           FIELD descricao: estrutura de 3 partes + proibição de causalidade;
+#           FIELD topic: PARES COM FRONTEIRA IMPRECISA adaptados ao corpus IA/dados;
+#           FIELD zona: par crítico Identificacao_Resumo/Pesquisa_Projetos;
+#           FIELD area_tematica: DIVISÃO DE COMPOSTOS + QUALIFICADORES CONTEXTUAIS;
+#           Cabeçalho expandido: fundamentos LSZ, pipeline [C][O][D][J][H],
+#           histórico de versões.
+#
+# v0.5.0 — Zoneamento semântico LSZ (CoreSC/AZ-II adaptado) + filtro 5A Framework.
+#           Arquitetura em 3 camadas: zona / criterio_5a+score_sugerido / chain+note.
+#
+# ─────────────────────────────────────────────
+# ASSIMETRIAS INTENCIONAIS EM RELAÇÃO AO abstracts.synt
+# ─────────────────────────────────────────────
+#
+# `cot` (chain-of-thought) — ausente por design. O corpus Lattes é processado em
+#   12 chunks com decisões de zona determinadas pelo título de seção Markdown —
+#   ambiguidade de codificação é rara. Se o pipeline passar a exigir raciocínio
+#   de processo, adicionar `cot` como OPTIONAL.
+#
+# `score FORMAT [1..4]` vs. `[1..2]` em abstracts.synt — diferença intencional:
+#   o lattes cobre critérios com escalas de até 4 faixas; o abstracts cobre
+#   apenas `Conhecimento_IA_Real` (2 faixas). Os dois campos têm o mesmo nome
+#   mas formatos diferentes — o join Neo4j é feito via `autor_lattes_id` e
+#   critério, não por schema de coluna. Pós-processamento deve normalizar a
+#   propriedade `score` no nó (:Criterio5A) para int sem restrição de formato.
+#   POLARIDADE (a partir da v0.9.0): 4 = melhor evidência, 1 = pior/ausente, em
+#   ambos os templates — verificar que o abstracts.synt use a mesma direção antes
+#   de comparar scores no grafo unificado.
+#
+# `criterio` (CODE, mantido) vs. eliminação do CODE de domínio — assimetria
+#   intencional: `criterio`/`score` continuam fora da camada de chain porque
+#   avaliam o Golden List, não o grafo de conceitos técnicos (mesmo papel de
+#   `criterio`/`score` no abstracts.synt, que também não viraram chain).
+
+# ============================================
+# CAMPOS DE SOURCE
+# ============================================
+SOURCE FIELDS
+    REQUIRED lattes_id, nome, cargo_institucional
+    OPTIONAL bolsa_produtividade, areas_de_atuacao, links_externos
+END SOURCE FIELDS
+
+FIELD lattes_id TYPE TEXT
+    SCOPE SOURCE
+    IDENTIFIES researcher
+    DESCRIPTION ID numérico do currículo Lattes (16 dígitos)
+    GUIDELINES
+        FORMATO DE ORIGEM (linha de cabeçalho, sempre perto do topo do arquivo):
+        **ID Lattes:** [3474555741700167](http://lattes.cnpq.br/3474555741700167)
+
+        Passo 1: Localize a linha que começa literalmente com "**ID Lattes:**".
+        Passo 2: Extraia a sequência numérica entre colchetes `[...]` logo após
+        o rótulo — é o texto do link Markdown, não a URL.
+        Passo 3: Copie exatamente os dígitos, sem espaços, pontos, hífens ou
+        markdown residual (sem `[`, `]`, sem o link `(http://...)`).
+        Passo 4: Confira que o valor tem exatamente 16 dígitos numéricos.
+
+        PROIBIDO:
+        - Nunca derive o ID do nome do arquivo, mesmo que o arquivo tenha o
+          padrão "Nome_Sobrenome_<16digitos>.md" — extraia sempre do conteúdo
+          do documento, nunca do nome do arquivo.
+        - Nunca extraia dígitos da URL entre parênteses `(http://lattes.cnpq.br/...)`
+          isoladamente sem confirmar que são os mesmos do texto entre colchetes.
+        - Se a linha "**ID Lattes:**" não existir ou o valor não tiver 16
+          dígitos, NÃO invente nem complete o número — omita o campo e não
+          gere o SOURCE.
+
+        Exemplo: linha "**ID Lattes:** [3474555741700167](http://lattes.cnpq.br/3474555741700167)"
+        → lattes_id: 3474555741700167
+    END GUIDELINES
+END FIELD
+
+FIELD nome TYPE TEXT
+    SCOPE SOURCE
+    DESCRIPTION Nome do profissional
+    GUIDELINES
+        FORMATO DE ORIGEM: título Markdown de nível 1 (`# `), sempre a
+        primeira linha não vazia do arquivo — precede a linha "**ID Lattes:**".
+        Ex: "# Vítor Mourão Hanriot"
+
+        Passo 1: Leia a primeira linha do documento que começa com `# ` (um
+        único `#`, não `##` ou mais).
+        Passo 2: Copie o texto após `# ` literalmente, preservando acentos,
+        maiúsculas/minúsculas e a ordem dos nomes exatamente como aparecem.
+        Passo 3: Não confunda com o campo "Nome em citações" (lista de
+        variações abreviadas do nome, ex.: "HANRIOT, V. M.") — esse campo é
+        apenas para desambiguação bibliográfica, nunca para preencher `nome`.
+
+        PROIBIDO:
+        - Nunca derive o nome do nome do arquivo.
+        - Nunca use uma das variações de "Nome em citações" — sempre o título
+          H1 por extenso.
+        - Se não houver título H1 no documento, NÃO infira o nome de outra
+          seção — omita o campo e não gere o SOURCE.
+
+        Exemplo: primeira linha "# Vítor Mourão Hanriot"
+        → nome: Vítor Mourão Hanriot
+    END GUIDELINES
+END FIELD
+
+FIELD cargo_institucional TYPE TEXT
+    SCOPE SOURCE
+    DESCRIPTION Cargo e instituição do vínculo ATUAL
+    GUIDELINES
+        FORMATO DE ORIGEM (seção '## Atuação Profissional'): lista de vínculos,
+        cada um em 1-2 linhas. O Lattes frequentemente duplica o MESMO vínculo
+        em entradas consecutivas — uma com cargo nomeado, outra idêntica só
+        com datas — e às vezes trunca o nome da instituição:
+          - **Universidade Federal de Minas Gerais, UFMG, Brasil. — Servidor
+            público (2019 - Atual)**
+            Professor Associado
+          - **Universidade Federal de Minas Gerais, UFMG, Brasil**            <- linha de eco, ignore
+          - **Universidade Federal de (2014 - Atual)**                        <- nome truncado, ignore
+            Professor Adjunto
+
+        Passo 1: Filtre candidatos com marcador "Atual" (dentro do parêntese
+        de datas: "(AAAA - Atual)" ou "(MM/AAAA - Atual)").
+        Passo 2: Descarte candidatos cujo nome de instituição esteja
+        visivelmente truncado ou incompleto (ex.: "Universidade Federal de"
+        sem sigla/sufixo) — não são um vínculo distinto, são artefato de
+        parsing do Lattes.
+        Passo 3: Descarte entradas "de eco" — linha que repete o nome da
+        instituição de uma entrada anterior sem cargo nem novo intervalo de
+        datas.
+        Passo 4: Entre os candidatos restantes, escolha o vínculo "Atual" com
+        CARGO EXPLICITAMENTE NOMEADO na linha seguinte (ex.: "Professor
+        Associado", "Diretor") — não o parêntese de data isolado sem cargo.
+        Passo 5: Se houver múltiplos vínculos "Atual" com cargo nomeado (ex.:
+        um cargo acadêmico e uma função em sociedade científica), prefira o
+        de maior data de início mais recente cuja instituição corresponda ao
+        `cargo_institucional` de vínculo empregatício principal (normalmente
+        universidade/empresa, não sociedade científica ou associação).
+
+        FORMATO DE SAÍDA: "<Cargo> — <Instituição, Sigla>"
+        Ex.: "Professor Associado — Universidade Federal de Minas Gerais, UFMG"
+
+        Se nenhum vínculo "Atual" com cargo nomeado e instituição íntegra for
+        identificável, omita o campo — não infira cargo a partir de vínculos
+        sem marcador "Atual" nem complete nomes de instituição truncados.
+    END GUIDELINES
+END FIELD
+
+FIELD bolsa_produtividade TYPE TEXT
+    SCOPE SOURCE
+    DESCRIPTION Nível da Bolsa de Produtividade CNPq, se houver
+    GUIDELINES
+        FORMATO DE ORIGEM (linha de cabeçalho, opcional, entre "Atualização
+        do CV" e o separador "---"):
+        **Bolsa de Produtividade:** Nível 1B
+
+        Extraia literalmente o valor após "Nível" (ex.: "1B", "B", "2").
+        Se a linha "**Bolsa de Produtividade:**" não existir no cabeçalho,
+        omita o campo — não infira bolsa a partir de menções no Resumo
+        (ex.: "É Bolsista de Produtividade em Pesquisa do CNPq (nível 1B)")
+        quando a linha de cabeçalho estruturada estiver ausente; se ambas
+        existirem e divergirem, prevaleça a linha de cabeçalho.
+    END GUIDELINES
+END FIELD
+
+FIELD areas_de_atuacao TYPE TEXT
+    SCOPE SOURCE
+    DESCRIPTION Grandes áreas e subáreas CNPq declaradas
+    GUIDELINES
+        FORMATO DE ORIGEM (seção '## Áreas de Atuação'): uma linha por área,
+        iniciada por hífen, com segmentos separados por "/":
+        - Grande área: Engenharias / Área: Engenharia de Produção / Subárea: Pesquisa Operacional.
+        - Grande área: Ciências Exatas e da Terra / Área: Ciência da Computação / Subárea: Matemática da Computação/Especialidade: Modelos Analíticos e de Simulação.
+
+        Passo 1: Para cada linha da seção, remova os rótulos "Grande área:",
+        "Área:", "Subárea:" e "Especialidade:" e o ponto final, preservando
+        apenas os valores separados por " / ".
+        Passo 2: Concatene as linhas resultantes separadas por ponto-e-vírgula
+        (";"), na ordem em que aparecem no documento.
+        Passo 3: Se a seção '## Áreas de Atuação' não existir no currículo,
+        omita o campo — não infira áreas a partir do Resumo em texto livre.
+
+        Exemplo de saída (2 linhas de origem):
+        "Engenharias / Engenharia de Produção / Pesquisa Operacional; Ciências Exatas e da Terra / Ciência da Computação / Matemática da Computação / Modelos Analíticos e de Simulação"
+    END GUIDELINES
+END FIELD
+
+FIELD links_externos TYPE TEXT
+    SCOPE SOURCE
+    DESCRIPTION Identificadores externos citados (ORCID, Scopus, ResearcherID, Google Scholar, ResearchGate, GitHub)
+    GUIDELINES
+        FORMATO DE ORIGEM: não há seção dedicada — os identificadores aparecem
+        embutidos em texto corrido no '## Resumo', em formatos heterogêneos:
+          "Researcher ID: K-1108-2012, Orcid code: 0000-0001-7781-0034, Scopus ID: 16204085000."
+          "ISI Web of Science (ResearcherID F-3937-2010), Google Scholar (https://scholar.google.com/citations?user=...) e Research Gate (https://www.researchgate.net/profile/...)"
+
+        Passo 1: Percorra o '## Resumo' procurando rótulos conhecidos —
+        variações de grafia são esperadas: "Researcher ID"/"ResearcherID",
+        "Orcid code"/"Orcid"/"ORCID", "Scopus ID"/"Scopus", "Google Scholar",
+        "Research Gate"/"ResearchGate", "GitHub".
+        Passo 2: Para cada rótulo encontrado, copie literalmente o
+        identificador ou URL que o segue — não normalize nem reformate
+        (ex.: mantenha a URL completa do Google Scholar como está, não
+        extraia apenas o parâmetro `user=`).
+        Passo 3: Registre no formato "Rótulo: valor", separados por
+        ponto-e-vírgula, na ordem em que aparecem no texto.
+        Passo 4: Se nenhum identificador externo for mencionado no Resumo,
+        omita o campo — não busque em outras seções nem infira a partir do
+        nome do pesquisador.
+
+        O ID de GitHub aqui registrado é insumo para enriquecimento externo
+        (GitHub API); não gera `criterio` diretamente — atividade de
+        repositório não é extraível do Lattes.
+
+        Exemplo de saída:
+        "ResearcherID: K-1108-2012; Orcid: 0000-0001-7781-0034; Scopus: 16204085000"
+    END GUIDELINES
+END FIELD
+
+# ============================================
+# CAMPOS DE ITEM
+# ============================================
+
+ITEM FIELDS
+    REQUIRED trecho, zona
+    OPTIONAL criterio, score
+    OPTIONAL BUNDLE chain, memo
+END ITEM FIELDS
+
+FIELD trecho TYPE QUOTATION
+    SCOPE ITEM
+    DESCRIPTION Trecho literal do currículo que fundamenta a anotação
+    GUIDELINES
+        Copie texto literal e contíguo do Lattes, sem parafrasear.
+        Mantenha 1-2 frases completas de UMA única zona.
+        Deve ser autocontido. Alvo: 3-8 ITEMs por currículo nas zonas relevantes.
+        Se a evidência não existir no texto, NÃO crie o ITEM.
+    END GUIDELINES
+END FIELD
+
+FIELD zona TYPE ENUMERATED
+    SCOPE ITEM
+    DESCRIPTION Zona curricular semântica do trecho (esquema LSZ — CoreSC/AZ-II adaptado ao Lattes)
+    VALUES
+        Identificacao_Resumo:   Cabeçalho, endereço, bolsa, resumo livre, links, áreas CNPq
+        Formacao_Academica:     Graduação, mestrado, doutorado, pós-doc, sanduíches 
+        Atuacao_Profissional:   Vínculos datados, cargos, coordenações, diretorias 
+        Pesquisa_Projetos:      Linhas de pesquisa, laboratórios, projetos PD&I 
+        Eventos_Congressos:     Participação e organização de congressos, workshops, escolas 
+        Producao_Bibliografica: Artigos, capítulos, trabalhos em congressos 
+        Orientacoes_Bancas:     Orientações e participação em bancas 
+        Premios_Titulos:        Prêmios, honrarias, distinções 
+        Producao_Tecnica:       Software, trabalhos técnicos, entregas aplicadas 
+    END VALUES
+    GUIDELINES
+        Atribua exatamente UMA zona por ITEM, pela seção do Lattes de origem.
+        Use o título de seção do Markdown como sinal primário:
+          '## Formação Acadêmica'                              -> Formacao_Academica
+          '## Atuação Profissional'                            -> Atuacao_Profissional
+          '## Projetos de Pesquisa' / '## Projetos de Desenvolvimento' /
+          '## Projetos de Extensão' / '## Linhas de Pesquisa'  -> Pesquisa_Projetos
+          '## Eventos'                                         -> Eventos_Congressos
+          '## Produção Bibliográfica'                          -> Producao_Bibliografica
+          '## Orientações' / '## Participação em Bancas'      -> Orientacoes_Bancas
+          '## Prêmios e Títulos'                               -> Premios_Titulos
+          '## Produção Técnica'                                -> Producao_Tecnica
+        `zona` é metadado funcional: NÃO gera entrada de ONTOLOGY.
+
+        PAR CRÍTICO — use quando houver dúvida entre duas zonas:
+
+        Identificacao_Resumo vs Pesquisa_Projetos:
+          Identificacao_Resumo → trecho está na seção de cabeçalho ou resumo livre
+                                 do pesquisador; linha de pesquisa mencionada como
+                                 autodeclaração de identidade científica sem projeto
+                                 nomeado: "Atuo nas áreas de otimização e IA."
+          Pesquisa_Projetos   → trecho está na seção '## Linhas de Pesquisa',
+                                 '## Projetos de Pesquisa' ou equivalente; nomeia um
+                                 laboratório, grupo ou projeto com identidade própria:
+                                 "Laboratório de Otimização Aplicada (LOA/UFMG)."
+          Teste rápido: há um nome próprio de grupo, laboratório ou projeto (Pesquisa_Projetos)
+          ou apenas uma declaração de interesse temático sem entidade nomeada (Identificacao_Resumo)?
+    END GUIDELINES
+END FIELD
+
+FIELD criterio TYPE CODE
+    SCOPE ITEM
+    DESCRIPTION Critério do Golden List Synesis que este trecho evidencia
+    GUIDELINES
+        Acione apenas critérios EXTRAÍVEIS do Lattes. Vocabulário permitido
+        (nomes canônicos conforme o glossário 5A Framework / Golden List Synesis):
+
+          Graduacao_Instituicao | Graduacao_Curso | Mestrado_Instituicao |
+          Mestrado_Area | Doutorado_Instituicao | Doutorado_Area | Titulo |
+          Laboratorio_Pesquisa | Premios_Destaque | Premios_Outros |
+          Conhecimento_IA_Real | Background_Cargos |
+          Tempo_Na_Area | Empresa_Atual | Classificacao_Cargo | Cidade |
+          MBA | Especializacao | Certificados
+
+        NOTA DE MAPEAMENTO — correspondência com o glossário 5A:
+          `Conhecimento_IA_Real` mapeia o critério PUBLICACAO_ACADEMICA do glossário
+          (a evidência de profundidade técnica em IA, neste template, é inferida da
+          zona e do venue — não há campo separado PROFUNDIDADE_TECNICA_IA).
+          `Premios_Destaque` e `Premios_Outros` são subdivisões do critério PREMIOS
+          do glossário; a divisão é necessária porque o glossário usa escalas distintas
+          para prêmios de destaque (Score 4/1) e outros prêmios (Score 3/1).
+          O grafo Neo4j usa estes nomes canônicos — o join com o subgrafo de abstracts.synt
+          é feito via `autor_lattes_id`, não pelo nome do critério.
+
+        CRITÉRIOS EXCLUÍDOS EXPLICITAMENTE (não acionar no Lattes):
+          Quantas_Empresas / Tempo_Mesma_Empresa — o Lattes lista vínculos mas
+            não permite calcular número total de empresas ou tenure por empresa com
+            confiabilidade; a verificação é feita em etapa de enriquecimento pós-Lattes.
+          Pais — o Lattes registra endereço e vínculo, mas `Cidade` captura a
+            localização; `Pais` seria redundante quando o trecho já fornece cidade e
+            estado. Se o Lattes declarar país explicitamente sem cidade, use `Cidade`
+            com o valor do país no `trecho`.
+          Todos os critérios BibTeX/GitHub/LinkedIn (PUBLICACAO_ACADEMICA via venue,
+            EXPERIENCIA_IA_GENERATIVA, PENSAMENTO_ECONOMICO_IA etc.) — evidência
+            inacessível via Lattes; resolvidos em pós-processamento externo.
+
+        CRITICAL — CO-DEPENDÊNCIA (parser: OPTIONAL; contrato: obrigatório):
+          IF `criterio` presente THEN `score` é OBRIGATÓRIO no mesmo ITEM.
+          IF `score` presente THEN `criterio` é OBRIGATÓRIO no mesmo ITEM.
+          ITEM com apenas um dos dois é inválido para o grafo Neo4j — descarte-o.
+          Domínios/métodos técnicos (GenAI_Aplicado, Agentes_IA, metaheurística
+          etc.) NÃO pertencem aqui — registre-os como nós de `chain` (ver FIELD
+          chain, NOMENCLATURA E GRANULARIDADE DOS NÓS).
+
+        OBRIGATÓRIO por zona — sempre que a evidência existir, acione o critério.
+        Sem o critério, o grafo Synesis no Neo4j fica cego à avaliação.
+
+        GATILHOS POR ZONA:
+          Formacao_Academica:
+            - doutorado  -> EMITA 3 ITEMs: Doutorado_Instituicao + Doutorado_Area + Titulo
+            - mestrado   -> EMITA 2 ITEMs: Mestrado_Instituicao + Mestrado_Area
+                           (+ 1 ITEM Titulo se for o grau máximo declarado)
+            - graduação  -> EMITA 2 ITEMs: Graduacao_Instituicao + Graduacao_Curso
+            - MBA nomeado formalmente (não confundir com pós lato genérica) -> MBA
+            - especialização ou intercâmbio com instituição identificada -> Especializacao
+          Formacao_Academica (seção '## Formação Complementar'):
+            - certificado nomeado com entidade emissora (cloud, ML, IA, dados) -> Certificados
+          Atuacao_Profissional:
+            - vínculo marcado "Atual" -> EMITA 2 ITEMs: Empresa_Atual + Classificacao_Cargo
+            - vínculos com datas início-fim -> Tempo_Na_Area (some apenas períodos correlatos)
+            - cargo sem vínculo "Atual" explícito -> Classificacao_Cargo
+          Pesquisa_Projetos:
+            - laboratório ou linha de pesquisa com nome próprio -> Laboratorio_Pesquisa
+          Eventos_Congressos:
+            - participação ou organização de congresso/workshop na linha de
+              pesquisa do candidato -> Laboratorio_Pesquisa
+          Premios_Titulos:
+            - bolsa de produtividade CNPq, melhor tese, rank #1 -> Premios_Destaque
+            - outros prêmios, distinções, menções honrosas -> Premios_Outros
+          Producao_Bibliografica:
+            - artigo técnico de IA em conferência ou periódico revisado -> Conhecimento_IA_Real
+          Identificacao_Resumo:
+            - cidade ou estado declarado -> Cidade
+            - anos de experiência declarados explicitamente -> Tempo_Na_Area
+
+        REGRA DE MULTIPLICIDADE: quando dois critérios emergem do mesmo trecho,
+        emita dois ITEMs com o mesmo `trecho` e `zona`, variando apenas
+        `criterio` e `score`. Nunca dois critérios em um único ITEM.
+
+        PROIBIDO: critérios comportamentais, culturais ou de mercado — o Lattes
+        não os sustenta. Estes são resolvidos por outras fontes (LinkedIn, GitHub,
+        entrevistas), nunca pelo currículo Lattes. Ver a lista "Não extraíveis do
+        Lattes" no documento de referência lattes_estrutura_template.md.
+    END GUIDELINES
+END FIELD
+
+FIELD score TYPE SCALE
+    SCOPE ITEM
+    FORMAT [1..4]
+    DESCRIPTION Score sugerido pela evidência do trecho (escala Golden List, conforme o critério)
+    GUIDELINES
+        Atribua apenas quando `criterio` está presente. Use o valor inteiro.
+        Escalas são IRREGULARES — nem todo critério usa todas as faixas 1..4.
+        Cada critério tem seu próprio subconjunto de faixas válidas (listadas abaixo).
+        Nunca inferir faixa por plausibilidade; o `trecho` deve sustentar literalmente.
+
+        POLARIDADE: neste template, Score 4 = melhor evidência; Score 1 = ausente/NA.
+        (Ordem crescente, conforme dashboard Synesis v8 e glossário 5A original.)
+        Exceção: critérios com faixa máxima < 4 (ex.: Cidade, Score máximo = 4 e
+        mínimo = 2) não têm todas as faixas — use as faixas documentadas para o critério.
+
+        4: Faixa máxima — melhor evidência possível para o critério
+        3: Segunda melhor faixa (somente critérios que a possuem — indicado abaixo)
+        2: Terceira faixa (somente critérios que a possuem — indicado abaixo)
+        1: Faixa mínima / ausente / NA / não informado
+
+        ── FORMAÇÃO ACADÊMICA 
+
+        Titulo
+          4 = PhD / Doutorado concluído ou Doutorando
+          3 = Master / Mestrado concluído ou Mestrando
+          2 = BSc / Graduação (bacharelado)
+          1 = autodidata / sem grau formal declarado
+          Falso positivo: "masterclass", MBA ou curso livre NÃO são graus acadêmicos.
+
+        Graduacao_Instituicao | Mestrado_Instituicao | Doutorado_Instituicao
+          4 = ITA, IME ou instituição estrangeira top-100 mundial (ref. THE/QS/RUF)
+          3 = USP, UNICAMP, UFMG, UFRJ, UFPE, UFSC, UFSCar, UFRGS ou estrangeira na faixa 100–500 mundial
+          2 = qualquer outra instituição de ensino superior reconhecida
+          1 = instituição não informada / não localizável no trecho
+          Atenção: NÃO confunda a instituição do doutorado com a do emprego atual.
+
+        Graduacao_Curso | Mestrado_Area | Doutorado_Area
+          4 = Ciência da Computação, Engenharia Elétrica, Sistemas de Informação,
+              Engenharia de Controle e Automação e áreas afins diretas a Data/IA
+          3 = outras engenharias, matemática ou física
+          2 = outros cursos/áreas fora das faixas 4 e 3
+          1 = curso/área não informado(a) / não localizável
+          Falso positivo: nome com apelo tecnológico mas conteúdo administrativo -> 2.
+
+        MBA
+          4 = MBA internacional ou Fundação Dom Cabral
+          3 = MBA nacional (instituições brasileiras exceto FDC)
+          1 = não possui MBA  (SEM faixa 2)
+          Falso positivo: especialização lato sensu, curso executivo curto ou
+          pós-graduação chamada informalmente de MBA NÃO contam.
+
+        Especializacao
+          4 = especialização ou intercâmbio em área diretamente aplicada a Data/IA,
+              por instituição renomada
+          3 = curso/especialização relacionado à área OU por instituição de baixa
+              relevância internacional (Udemy, Coursera etc.), inclui técnico
+          1 = não possui especialização relevante  (SEM faixa 2)
+
+        Certificados
+          4 = certificado em área correlata (cloud, ML, IA, dados) por entidade
+              renomada (AWS, Google Cloud, Microsoft, Databricks etc.)
+          3 = certificado correlato por entidade de baixa relevância internacional
+          1 = não possui certificados relevantes  (SEM faixa 2)
+          Falso positivo: certificado de participação, badge sem carga horária.
+
+        ── ATUAÇÃO PROFISSIONAL 
+
+        Empresa_Atual
+          4 = ICT core / great startup / great university
+              (tecnologia/IA/dados são o core da organização)
+          3 = ICT non-core com bom departamento de TI / startup mediana
+          2 = ICT non-core com departamento de TI mediano / startup abaixo da média
+          1 = não trabalha atualmente / autônomo sem escopo claro
+          Falso positivo: empresa famosa em área não técnica NÃO é Score 4.
+
+        Classificacao_Cargo
+          4 = líder / altamente qualificado / pesquisador / professor
+          3 = engenheiro / desenvolvedor / consultor
+          2 = analista / estagiário
+          1 = NA / autônomo com cargo ambíguo
+          Classifique pelo nível REAL de responsabilidade, não pelo título formal.
+
+        Tempo_Na_Area
+          4 = 10 ou mais anos em funções correlatas a Data/IA/Eng.
+          3 = 5 a 10 anos
+          2 = 1 a 4 anos
+          1 = 0 anos / sem experiência correlata
+          REGRA DE EXTRAÇÃO:
+            IF o Lattes declara explicitamente "X anos de experiência" ou equivalente
+              THEN use esse valor literal como `trecho` — não recalcule.
+            ELSE some os períodos (ano_fim − ano_início) de vínculos correlatos listados.
+              Use apenas funções em Data/IA/Eng. com datas início-fim identificáveis.
+              Exclua períodos acadêmicos sem prática profissional e cargos não técnicos.
+              Se as datas estiverem incompletas ou ausentes, atribua score 1.
+
+        Background_Cargos
+          4 = histórico de cargos correlatos a Data/IA/Eng. em empresas relevantes
+          3 = cargos correlatos (empresas não necessariamente de destaque)
+          2 = pouca experiência, em áreas apenas indiretamente ligadas
+          1 = sem experiência na área
+
+        ── PESQUISA E PROJETOS 
+
+        Laboratorio_Pesquisa
+          4 = laboratório ou linha de pesquisa relacionada a Data/IA/perfil buscado
+          3 = laboratório ou linha de pesquisa NÃO relacionada ao perfil
+          1 = não participou de laboratório de pesquisa  (SEM faixa 2)
+          Falso positivo: disciplina acadêmica comum ou TCC sem grupo de pesquisa.
+
+        ── PRODUÇÃO BIBLIOGRÁFICA
+
+        Conhecimento_IA_Real
+          4 = artigo técnico de IA publicado em conferência ou periódico revisado
+              por pares (aceito, não apenas submetido)
+          3 = artigo correlato a Data/Eng. mas não central a IA
+          1 = sem publicação identificável  (SEM faixa 2)
+
+        ── PRÊMIOS E TÍTULOS
+
+        Premios_Destaque
+          4 = melhor tese, melhor aluno, rank #1, bolsa de produtividade CNPq,
+              prêmio de destaque em competição ou empresa relevante
+          1 = ausência de prêmio de destaque  (SEM faixas 3 e 2)
+
+        Premios_Outros
+          3 = outros prêmios, distinções, menções honrosas, publicações premiadas
+          1 = ausência de prêmio  (SEM faixas 4 e 2)
+
+        ── IDENTIFICAÇÃO / RESUMO
+
+        Cidade
+          4 = Sudeste do Brasil (SP, RJ, MG, ES)
+          3 = demais regiões do Brasil, Inglaterra, Irlanda ou EUA
+          2 = outros países  (SEM faixa 1)
+          Use apenas localização atual ou base profissional declarada.
+          Não infira por universidade antiga ou sede da instituição.
+
+        ── REGRA DE OURO
+        Se o `trecho` não sustenta a faixa, atribua 1 (ou, para critérios sem
+        faixa 1 como Cidade, use a faixa mínima disponível).
+        Nunca eleve score por plausibilidade, título informal ou cargo não confirmado.
+    END GUIDELINES
+END FIELD
+
+FIELD memo TYPE MEMO
+    SCOPE ITEM
+    DESCRIPTION Interpretação analítica livre do trecho — inclui a auditoria de chains presentes no ITEM
+    GUIDELINES
+        Escreva em linguagem natural, sem formato fixo e sem contrato de
+        parse posicional. CONTRATO DE BUNDLE (validado pelo compilador):
+        `chain` e `memo` formam um OPTIONAL BUNDLE — se o ITEM tiver
+        qualquer chain, memo é OBRIGATÓRIO no mesmo ITEM (e vice-versa); um
+        ITEM sem nenhum dos dois é válido. Nunca escreva uma chain sem
+        memo — o compilador rejeita (`Bundle (chain, memo): campos ausentes`).
+        Diferente do antigo campo `note`, não há pareamento posicional 1:1
+        entre entradas individuais: um único memo pode cobrir todas as
+        chains do ITEM, citando cada par de conceitos para desambiguar.
+
+        DUAS FUNÇÕES DESTE CAMPO:
+
+        1. AUDITORIA DE CHAIN (substitui o antigo campo `note` pareado):
+           Quando o ITEM contém uma ou mais chains, use memo para citar
+           literalmente (entre aspas duplas) o trecho do Lattes que ancora
+           cada link e para registrar o raciocínio por trás da relação
+           escolhida. Cite cada relação pelo par de conceitos para
+           desambiguar quando houver mais de uma chain no ITEM.
+
+        2. INSIGHT SEM VÍNCULO FORMAL:
+           Use também quando o trecho carregar um insight analítico que NÃO
+           se resolve como vínculo formal entre dois conceitos — por exemplo:
+           - uma observação sobre trajetória profissional sem par conceitual
+             reutilizável;
+           - um contraste implícito entre domínios não enunciado como
+             oposição explícita (portanto insuficiente para CONTRASTS_WITH
+             em chain, mas relevante para leitura humana);
+           - uma ressalva ou nuance sobre a extração feita.
+
+        Não reescreva o `trecho` do ITEM verbatim; interprete-o.
+        Máximo 40 palavras por chain auditada ou por insight registrado.
+
+        Exemplo (auditoria de chain):
+        trecho: "aprendizado de máquina federado, que será testado no contexto
+                 veicular para preservar a privacidade dos dados dos usuários"
+        chain: Aprendizado_Federado -> APPLIES -> Conectividade_Veicular
+        memo: Ancorado em "testado no contexto veicular" — instanciação de
+              domínio em contexto aplicado, não mecanismo causal; por isso
+              APPLIES e não ENABLES.
+
+        Exemplo (insight sem vínculo formal):
+        trecho: "atuou como pesquisador visitante, migrando de uma linha
+                 puramente teórica para projetos com forte componente aplicado"
+        memo: Contraste implícito entre pesquisa teórica e aplicada na
+              trajetória do candidato — não nomeado como oposição entre
+              construtos reutilizáveis; insuficiente para CONTRASTS_WITH em chain.
+    END GUIDELINES
+END FIELD
+
+FIELD chain TYPE CHAIN
+    SCOPE ITEM
+    ARITY >= 2
+    DESCRIPTION Todo conceito do trecho entra no grafo via chain — nó e aresta nomeada (não existe mais CODE autônomo).
+    RELATIONS
+        APPLIES:          Um método, modelo ou framework é aplicado a um objeto ou contexto (Pesquisa_Projetos, Producao_Tecnica)
+        USES:             Um conceito emprega outro como instrumento, dado ou insumo (Formacao_Academica, Pesquisa_Projetos)
+        MEASURES:         Um indicador ou instrumento quantifica um construto (Premios_Titulos, Producao_Bibliografica)
+        PART_OF:          Um conceito é componente, dimensão ou subconjunto de outro (Formacao_Academica, Pesquisa_Projetos)
+        PREDICTS:         Um fator é empiricamente associado a variação em outro — sem mecanismo afirmado (Producao_Bibliografica)
+        ENABLES:          Um conceito cria condição para outro ocorrer ou se expandir (Pesquisa_Projetos, Producao_Bibliografica)
+        INHIBITS:         Um conceito reduz, bloqueia ou constrange outro (Producao_Bibliografica)
+        CONTRASTS_WITH:   O trecho opõe explicitamente dois CONSTRUTOS — "em vez de", "ao invés de" (Formacao_Academica, Atuacao_Profissional)
+        ASSOCIATED_WITH:  Fallback obrigatório: conceitos aparecem no mesmo trecho sem relação causal, de aplicação ou de medição sustentada — inclui mera co-ocorrência (Atuacao_Profissional, Identificacao_Resumo)
+        RELATES_TO:       Fallback neutro para links não direcionais ou inclassificáveis quando ASSOCIATED_WITH também não se aplica (Identificacao_Resumo, Pesquisa_Projetos)
+    END RELATIONS
+    GUIDELINES
+        NÃO HÁ CAMPO CODE AUTÔNOMO: todo construto de conhecimento, método,
+        domínio ou objeto nomeado no trecho DEVE entrar em pelo menos uma
+        chain. Não existe mais uma forma de registrar um conceito "solto"
+        sem aresta — se dois ou mais conceitos aparecem no mesmo ITEM sem
+        relação causal, de aplicação ou de medição sustentada pelo texto,
+        conecte-os via ASSOCIATED_WITH (ver CASO ASSOCIATED_WITH abaixo).
+        Um ITEM com um único conceito nomeado e nenhum outro para relacionar
+        pode ficar sem chain (não há par a formar) — mas nunca omita a chain
+        apenas por não ter identificado uma relação mais forte que ASSOCIATED_WITH.
+
+        NOMENCLATURA E GRANULARIDADE DOS NÓS (aplica-se a todo conceito
+        usado em qualquer lado de uma chain):
+        Nomeie o construto de conhecimento, método, domínio ou objeto
+        específico que o trecho nomeia. Prefira grafias já existentes na
+        ontologia. PascalCase com underscore. Singular. Todo conceito usado
+        em chain DEVE ter um bloco ONTOLOGY correspondente.
+
+        GRANULARIDADE — regra epistêmica (operacionalizável trecho a trecho):
+        Registre o construto mais específico que seja um CONCEITO NOMEADO NA
+        LITERATURA DA ÁREA — identificável por um pesquisador do campo sem
+        conhecimento prévio deste currículo específico.
+        Operacionalizações particulares de um único currículo, sem nome
+        estabelecido, devem ser generalizadas para o construto que instanciam.
+        Não generalize além do necessário.
+
+        HIERARQUIA DE REFERÊNCIA (para consistência de nomenclatura — não é
+        uma escala de generalização automática):
+        Nível 1 (genérico):      Optimization, Learning, Machine_Learning
+        Nível 2 (qualificado):   Combinatorial_Optimization, Federated_Learning,
+                                 Reinforcement_Learning
+        Nível 3 (especificação): Genetic_Algorithm, GRASP_Metaheuristic, BERT_Fine_Tuning
+        Use o nível mais específico que ainda seja um conceito nomeado na
+        literatura. Avance ao Nível 3 apenas quando o Nível 2 perde distinção
+        analítica relevante para o corpus Quinto Andar.
+
+        TESTE DE REÚSO (contém proliferação de vocabulário no corpus):
+        Antes de cunhar um nome de nível 3, pergunte: "este termo
+        provavelmente aparecerá em outros currículos do corpus, ou é único a
+        este candidato?" Se for provavelmente único, prefira o nível 2. Alvo:
+        manter o vocabulário de conceitos do corpus abaixo de 300 nós distintos.
+
+        DIVISÃO DE COMPOSTOS: se "e" une dois construtos distintos com padrões
+        relacionais diferentes, divida em dois conceitos e ligue-os por chain.
+        Errado: Otimizacao_E_Aprendizado_De_Maquina
+        Certo:  Combinatorial_Optimization, Machine_Learning (ligados por
+                ASSOCIATED_WITH se não houver relação mais específica)
+
+        CONECTIVOS CAUSAIS: se um nome candidato codifica uma relação
+        ("IA_Para_Otimizacao"), divida em dois conceitos e expresse o link como chain.
+        Errado: IA_Para_Otimizacao
+        Certo:  chain: Artificial_Intelligence -> APPLIES -> Combinatorial_Optimization
+
+        QUALIFICADORES CONTEXTUAIS: não crie nós de chain para período, amostra,
+        instituição, cargo ou rótulos de contexto (ex.: faixas de anos, nome de
+        empresa) salvo quando o trecho os trate como construtos independentes
+        em investigação. Contexto vai em `trecho`.
+
+        Forma preferida: Concept_A -> RELATION -> Concept_B (dois conceitos, uma relação).
+
+        SELEÇÃO DA RELAÇÃO — aplique o primeiro caso que corresponder ao texto:
+
+        CASO APPLIES:
+            O texto afirma que um método, modelo ou framework é aplicado a,
+            usado em, ou exemplificado em um objeto ou contexto?
+            SIM → APPLIES. Direção: método/framework à ESQUERDA, objeto à DIREITA.
+            Ex: "aprendizado federado aplicado a redes veiculares"
+            → Federated_Learning -> APPLIES -> Vehicular_Networks
+
+        CASO USES:
+            O texto afirma que um conceito emprega outro como instrumento,
+            insumo ou componente — dentro de um contexto metodológico?
+            SIM → USES. Direção: conceito que emprega à ESQUERDA, instrumento à DIREITA.
+            Ex: "usamos metaheurísticas para resolver problemas de escalonamento"
+            → Medical_Scheduling -> USES -> Metaheuristic
+
+        CASO MEASURES:
+            O texto afirma que um indicador, teste ou instrumento quantifica
+            ou operacionaliza um construto?
+            SIM → MEASURES. Direção: instrumento à ESQUERDA, construto à DIREITA.
+            Ex: "Índice H utilizado para avaliar sua produção em aprendizado de máquina"
+            → H_Index -> MEASURES -> Machine_Learning
+
+        CASO PART_OF:
+            O texto afirma explicitamente que A é parte, componente, dimensão,
+            tipo ou subconjunto de B (usando palavras como "parte", "componente",
+            "dimensão", "tipo", "subconjunto", "inclui")?
+            SIM → PART_OF. Direção: parte à ESQUERDA, todo à DIREITA.
+            Ex: "redes neurais são o núcleo do aprendizado de máquina"
+            → Neural_Network -> PART_OF -> Machine_Learning
+            NÃO use para enquadramento contextual ou de domínio ("IA no contexto de saúde").
+
+        CASO PREDICTS:
+            O texto relata uma associação empírica onde A está ligado a variação
+            em B, sem afirmar mecanismo ou suficiência?
+            SIM → PREDICTS. Direção: fator à ESQUERDA, resultado à DIREITA.
+            NÃO use quando o texto afirma mecanismo ou condição suficiente — use ENABLES.
+            NÃO use quando o texto afirma bloqueio ou redução — use INHIBITS.
+            DÚVIDA entre PREDICTS e ENABLES: o texto apenas reporta covariação
+            (PREDICTS) ou afirma que A torna B possível / cria a condição para B
+            existir (ENABLES)? Se só covariação, use PREDICTS.
+
+        CASO ENABLES:
+            O texto afirma que A cria condição, mecanismo ou suficiência para B
+            ocorrer, se expandir ou se tornar possível?
+            SIM → ENABLES. Direção: condição à ESQUERDA, resultado à DIREITA.
+            Ex: "privacidade diferencial permitiu conformidade com regulação sem
+            perda de utilidade do modelo"
+            → Differential_Privacy -> ENABLES -> Regulatory_Compliance
+            NÃO use quando o texto apenas reporta covariação estatística sem
+            mecanismo — use PREDICTS.
+
+        CASO INHIBITS:
+            O texto afirma que A reduz, bloqueia ou constrange B?
+            SIM → INHIBITS. Direção: inibidor à ESQUERDA, inibido à DIREITA.
+
+        CASO CONTRASTS_WITH:
+            O texto opõe explicitamente dois CONSTRUTOS REUTILIZÁVEIS usando
+            linguagem como "em vez de", "ao invés de", "diferente de"?
+            SIM → CONTRASTS_WITH.
+            NUNCA use para oposição entre qualificadores contextuais (período,
+            instituição, cargo, empresa). Se o contraste é entre contextos de
+            trajetória, registre apenas em memo.
+
+        CASO ASSOCIATED_WITH (fallback obrigatório):
+            Dois ou mais conceitos nomeados aparecem no mesmo trecho, mas
+            nenhum dos casos acima (APPLIES, USES, MEASURES, PART_OF,
+            PREDICTS, ENABLES, INHIBITS, CONTRASTS_WITH) é sustentado pelo
+            texto — incluindo o caso de simples co-ocorrência sem qualquer
+            vínculo semântico afirmado (ex.: áreas de atuação listadas juntas
+            no cabeçalho)?
+            SIM → ASSOCIATED_WITH. NÃO omita a chain neste caso: todo conceito
+            nomeado precisa entrar no grafo por alguma aresta.
+            Direção: sem direção preferencial semântica; registre na ordem em
+            que os conceitos aparecem no texto.
+            Para 3+ conceitos co-ocorrentes sem vínculo mais forte, crie um
+            par ASSOCIATED_WITH para cada par relevante citado no texto — não
+            infira pares entre conceitos que nunca aparecem próximos na frase.
+
+        CASO RELATES_TO:
+            Nenhum dos casos acima se aplica, incluindo ASSOCIATED_WITH (ex.:
+            o vínculo é direcional mas nenhuma relação nomeada captura bem
+            a natureza do link)?
+            SIM → RELATES_TO. Use em menos de 10% das chains — na prática,
+            ASSOCIATED_WITH cobre a quase totalidade dos casos de fallback.
+            NUNCA use em zonas Producao_Bibliografica ou Pesquisa_Projetos se
+            uma relação mais específica for defensável.
+
+        NORMALIZAÇÃO DE DIREÇÃO — antes de escrever a chain, verifique o verbo:
+        'requer', 'depende de', 'precisa de'
+            → dependência à ESQUERDA: Dependency -> ENABLES -> Outcome
+        'é limitado por', 'é bloqueado por', 'é restringido por'
+            → limitador à ESQUERDA: Limiter -> INHIBITS -> Constrained
+        'leva a', 'resulta em', 'causa'
+            → causa à ESQUERDA: use ENABLES se o texto afirma mecanismo ou
+              suficiência; use PREDICTS se o texto apenas reporta covariação.
+        'permite', 'possibilita', 'viabiliza'
+            → facilitador à ESQUERDA: Enabler -> ENABLES -> Outcome
+        'é aplicado a', 'é usado para estudar', 'no contexto de'
+            → método/domínio à ESQUERDA: Method -> APPLIES -> Object
+        'usa', 'emprega', 'utiliza como instrumento'
+            → conceito que emprega à ESQUERDA: Concept -> USES -> Instrument
+        'avalia', 'quantifica', 'classifica'
+            → indicador à ESQUERDA: Indicator -> MEASURES -> Construct
+        'em vez de', 'ao invés de', 'diferente de'
+            → primeiro construto mencionado à ESQUERDA: Concept_A -> CONTRASTS_WITH -> Concept_B
+
+        COMPRIMENTO DA CHAIN:
+        Prefira chains de dois conceitos. Três ou mais conceitos apenas quando o
+        texto afirma explicitamente uma sequência que não pode ser dividida em
+        pares independentes.
+        Teste: cada link pode ser ancorado independentemente no texto?
+        SIM → divida em chains separadas.
+        NÃO → mantenha como uma chain sequencial.
+        Nunca adicione um salto para codificar contexto de instituição/período —
+        contexto vai em memo.
+        Não infira transitividade: A->B e B->C não autoriza A->B->C salvo se o
+        texto afirma o caminho completo como uma única afirmação.
+
+        FATORES PARALELOS (mesmo resultado, múltiplos fatores independentes):
+        Crie uma chain por par fator->resultado dentro do mesmo ITEM.
+        Teste: cada link fator->resultado sustenta-se sozinho com sua própria âncora?
+        SIM → chains paralelas, uma por par.
+        Não mescle fatores independentes em uma única chain.
+
+        COBERTURA:
+        Todo conceito usado em uma chain DEVE ter uma entrada ONTOLOGY.
+        Não repita Concept_A -> Concept_B dentro do mesmo SOURCE salvo se
+        a relação for claramente diferente.
+        chain é o único mecanismo de registro de conceito no grafo; é
+        OPCIONAL apenas no sentido de que um ITEM sem nenhum conceito
+        nomeado (puramente factual, ex.: apenas data ou cargo) pode não ter
+        chain — mas se dois ou mais conceitos nomeados aparecem, ao menos
+        uma chain (com ASSOCIATED_WITH como piso) é esperada. Toda chain
+        exige memo no mesmo ITEM (OPTIONAL BUNDLE chain, memo em ITEM
+        FIELDS — validado pelo compilador; ver FIELD memo).
+
+        RESTRIÇÃO PESQUISA_PROJETOS / IDENTIFICACAO_RESUMO:
+        Um trecho que lista linhas de pesquisa ou declara áreas de interesse
+        enuncia intenção de investigar, não um vínculo estabelecido. NÃO use
+        relações causais/de aplicação (APPLIES, ENABLES, PREDICTS etc.)
+        nessas zonas apenas porque dois conceitos são co-mencionados como
+        área de atuação. Se necessário registrar a co-menção, use
+        ASSOCIATED_WITH ou RELATES_TO (ver guia de relação por zona abaixo) —
+        nunca inferir um vínculo mais forte do que o texto sustenta.
+
+        Guia de relação por zona:
+        Formacao_Academica     → preferidos: PART_OF, USES, ASSOCIATED_WITH (fallback)
+        Atuacao_Profissional   → preferidos: APPLIES, ASSOCIATED_WITH
+        Pesquisa_Projetos      → preferidos: APPLIES, ENABLES, ASSOCIATED_WITH (fallback)
+        Producao_Bibliografica → preferidos: PREDICTS, ENABLES, MEASURES, ASSOCIATED_WITH (fallback)
+        Orientacoes_Bancas     → preferidos: ENABLES, ASSOCIATED_WITH
+        Premios_Titulos        → preferidos: MEASURES, CONTRASTS_WITH
+        Producao_Tecnica       → preferidos: APPLIES, USES
+        Identificacao_Resumo   → preferidos: ASSOCIATED_WITH ou RELATES_TO para
+                     co-menção de área (chains causais/de aplicação são raras
+                     nesta zona — ver RESTRIÇÃO PESQUISA_PROJETOS/IDENTIFICACAO_RESUMO)
+
+        Exemplo few-shot (relação específica):
+        Trecho: "Índice H utilizado para avaliar sua produção em aprendizado de máquina"
+        → chain: H_Index -> MEASURES -> Machine_Learning
+
+        Exemplo few-shot (fallback ASSOCIATED_WITH):
+        Trecho: "Atuo nas áreas de otimização, aprendizado de máquina e
+                sistemas complexos."
+        → chain: Optimization -> ASSOCIATED_WITH -> Machine_Learning
+        → chain: Machine_Learning -> ASSOCIATED_WITH -> Complex_Systems
+        (áreas de atuação autodeclaradas no cabeçalho, sem projeto ou
+        mecanismo que as ligue — ASSOCIATED_WITH registra a co-ocorrência
+        sem forçar uma relação mais forte que o texto não sustenta)
+    END GUIDELINES
+END FIELD
+
+# ============================================
+# CAMPOS DE ONTOLOGY
+# ============================================
+#
+# A ontologia serve a um único tipo de nó: construtos de conhecimento
+# (nós de chain — não há mais CODE autônomo), com granularidade expressa na
+# própria nomenclatura do conceito (ver HIERARQUIA DE REFERÊNCIA em FIELD chain).
+# Zonas (`zone`) e critérios (`criterio`/`score`) NÃO geram
+# entradas de ontologia.
+
+ONTOLOGY FIELDS
+    REQUIRED ontology_description
+    OPTIONAL topic
+END ONTOLOGY FIELDS
+
+FIELD ontology_description TYPE TEXT
+    SCOPE ONTOLOGY
+    DESCRIPTION Definição semântica do conceito (40-70 palavras), baseada exclusivamente no uso no corpus.
+    GUIDELINES
+        Estrutura:
+        (1) Significado central no domínio de produção de conhecimento acadêmico.
+        (2) O que o distingue de conceitos próximos.
+        (3) Como pesquisadores o operacionalizam neste corpus.
+        Escreva definições neutras quanto a relação: prefira "ligado a", "associado com",
+        "aparece com" em vez de termos de papel causal (influencia, causa, determina,
+        antecedente, resultado, preditor).
+        Baseie-se exclusivamente nos trechos coletados. Sem teoria externa ou resultados.
+    END GUIDELINES
+END FIELD
+
+FIELD topic TYPE TOPIC
+    SCOPE ONTOLOGY
+    DESCRIPTION Categoria-pai do conceito no domínio Synesis
+    GUIDELINES
+        Escolha uma categoria:
+        Method      — algoritmos, técnicas, abordagens computacionais
+                      (ex.: Genetic_Algorithm, Neural_Network, Integer_Programming)
+        Technology  — plataformas, ferramentas, stacks aplicadas
+                      (ex.: Generative_AI, MLOps, Knowledge_Graph)
+        Knowledge   — domínios de conhecimento científico ou disciplinar
+                      (ex.: Operations_Research, Graph_Theory, Statistics)
+        Innovation  — aplicações e produtos emergentes em contexto de negócio
+                      (ex.: Agent_Systems, Real_Estate_Tech)
+        Economics   — domínios de negócio, mercado, finanças aplicadas
+                      (ex.: Credit_Risk, Financial_Optimization)
+
+        Use a categoria-pai mais próxima. Não crie subcategorias.
+        Para conceitos que expressam um domínio de aplicação amplo (ex.:
+        Machine_Learning, Artificial_Intelligence, Real_Estate_Tech), escolha
+        a categoria que melhor captura esse campo de aplicação
+        (ex.: Machine_Learning -> Method; Artificial_Intelligence -> Knowledge;
+        Real_Estate_Tech -> Innovation).
+
+        PARES COM FRONTEIRA IMPRECISA — use quando houver dúvida:
+
+        Method vs Technology:
+          Method      → algoritmo, técnica ou abordagem computacional — o que é
+                        feito metodologicamente (ex.: Genetic_Algorithm, BERT_Fine_Tuning,
+                        Gradient_Boosting, Integer_Programming).
+          Technology  → plataforma, ferramenta, stack ou paradigma tecnológico —
+                        o ambiente ou infraestrutura em que métodos operam
+                        (ex.: MLOps, Knowledge_Graph, Generative_AI, Edge_Computing).
+          Teste: o conceito nomeia um procedimento/algoritmo (Method) ou um
+          sistema/plataforma habilitador (Technology)?
+
+        Knowledge vs Innovation:
+          Knowledge   → domínio disciplinar ou campo científico estabelecido, sem
+                        vínculo primário com produto ou negócio
+                        (ex.: Operations_Research, Graph_Theory, Information_Theory).
+          Innovation  → aplicação emergente com impacto em produto ou mercado,
+                        mesmo que baseada em conhecimento científico
+                        (ex.: Agent_Systems, Real_Estate_Tech, Recommender_System).
+          Teste: o conceito é um campo de estudo (Knowledge) ou uma aplicação
+          com valor de produto (Innovation)?
+
+        Economics vs Innovation:
+          Economics   → grandeza, variável ou sistema de mercado/negócio avaliado
+                        em termos quantitativos ou de dimensionamento, sem ênfase
+                        em novidade de produto (ex.: Biogas_Consumption,
+                        Biomass_Demand, Credit_Risk).
+          Innovation  → aplicação, produto ou sistema tecnológico emergente cujo
+                        valor está na novidade ou no potencial de mercado do
+                        artefato em si (ex.: Decentralized_Energy_System,
+                        Turbocharger, Agent_Systems).
+          Teste: o conceito é uma grandeza ou insumo mensurável dentro de um
+          sistema (Economics) ou é o próprio sistema/artefato emergente sendo
+          avaliado (Innovation)? Conceitos correlatos do mesmo domínio (ex.:
+          Biogas_Production vs Biogas) podem legitimamente cair em categorias
+          diferentes — não force uniformidade entre termos da mesma família.
+    END GUIDELINES
+END FIELD

@@ -77,12 +77,25 @@ def get_blocks(file_path: str, workspace_root: Optional[Path] = None) -> dict:
 
 
 def _extract_blocks(source: str, uri: str) -> list[dict]:
-    """Extrai blocos via compile_string; fallback regex se parse falhar."""
+    """
+    Extrai blocos via compile_string; se o parse falhar, cai para o lexer.
+
+    Escada de degradação (mais preciso → menos):
+      1. AST      — documento compila
+      2. lexer    — documento inválido (estado normal durante digitação)
+      3. regex    — lexer indisponível/falhou; último recurso
+    """
     try:
         import synesis
         nodes = synesis.compile_string(source, uri)
         return _blocks_from_nodes(nodes, source)
     except Exception:
+        pass
+
+    try:
+        return _blocks_from_lex(source)
+    except Exception:
+        logger.debug("blocks: lexer falhou, usando fallback regex", exc_info=True)
         return _blocks_from_regex(source)
 
 
@@ -154,6 +167,89 @@ def _blocks_from_nodes(nodes: list, source: str) -> list[dict]:
 
     # Ordenar por linha de início
     blocks.sort(key=lambda b: b["range"]["start"]["line"])
+    return blocks
+
+
+_FREE_TEXT_BLOCKS = frozenset({"KW_GUIDELINES", "KW_DESCRIPTION"})
+_CONTROL_TERMINALS = frozenset({"NEWLINE", "_INDENT", "_DEDENT"})
+
+
+def _blocks_from_lex(source: str) -> list[dict]:
+    """
+    Extrai blocos via `synesis.lex_tokens` quando compile_string falha.
+
+    Preferível ao fallback regex porque respeita a estrutura da linguagem: um
+    `SOURCE @x` escrito na prosa de um bloco GUIDELINES/DESCRIPTION é texto, não
+    declaração. O regex reporta esse bloco fantasma; aqui ele é ignorado.
+    """
+    from synesis import lex_tokens
+
+    toks = [t for t in lex_tokens(source) if t.type not in _CONTROL_TERMINALS]
+    lines = source.splitlines()
+
+    # (line_idx_0based, kind, bibref)
+    achados: list[tuple[int, str, str]] = []
+    free_text_depth = 0
+
+    for i, tok in enumerate(toks):
+        prev = toks[i - 1].type if i else None
+        nxt = toks[i + 1] if i + 1 < len(toks) else None
+
+        # Só a forma de BLOCO abre texto livre (`GUIDELINES` sozinho na linha);
+        # a forma de campo (`description: x`) tem valor na mesma linha.
+        if tok.type in _FREE_TEXT_BLOCKS:
+            if prev == "KW_END":
+                free_text_depth = max(0, free_text_depth - 1)
+            elif not (nxt is not None and nxt.line == tok.line):
+                free_text_depth += 1
+            continue
+
+        if free_text_depth > 0:
+            continue
+
+        if tok.type not in ("KW_SOURCE", "KW_ITEM") or prev == "KW_END":
+            continue
+
+        # bibref vem no token seguinte, na mesma linha (o lexer colapsa em
+        # TEXT_LINE em vez de BIBREF neste contexto)
+        if nxt is None or nxt.line != tok.line:
+            continue
+        m = re.match(r"\s*@?([^\s]+)", nxt.value)
+        if not m:
+            continue
+
+        achados.append((tok.line - 1, tok.type[3:], m.group(1)))
+
+    return _build_ranges(achados, lines)
+
+
+def _build_ranges(
+    achados: list[tuple[int, str, str]], lines: list[str]
+) -> list[dict]:
+    """Converte (linha, kind, bibref) em blocos com range LSP 0-based."""
+    achados.sort(key=lambda t: t[0])
+    blocks: list[dict] = []
+
+    for i, (line_idx, kind, bibref) in enumerate(achados):
+        if i + 1 < len(achados):
+            end_line = achados[i + 1][0] - 1
+        else:
+            end_line = max(0, len(lines) - 1)
+        end_char = len(lines[end_line]) if end_line < len(lines) else 0
+        col = (
+            len(lines[line_idx]) - len(lines[line_idx].lstrip())
+            if line_idx < len(lines)
+            else 0
+        )
+        blocks.append({
+            "kind": kind,
+            "bibref": _normalize_bibref(bibref),
+            "range": {
+                "start": {"line": line_idx, "character": col},
+                "end":   {"line": end_line,  "character": end_char},
+            },
+        })
+
     return blocks
 
 

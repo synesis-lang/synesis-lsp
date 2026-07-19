@@ -5,6 +5,87 @@ All notable changes to the Synesis LSP project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.19.1] - 2026-07-18
+
+### Fixed
+
+- **Vários construtos com keywords embutidas sem cor** (`synesis_lsp/semantic_tokens.py`)
+
+  Classe comum: o lexer contextual colapsa keywords num `TEXT_LINE` opaco.
+  Encontrados por varredura sistemática de todos os construtos da gramática que
+  produzem `TEXT_LINE` estruturado, mais fuzzing sobre as fixtures reais.
+
+  - **Cabeçalho de FIELD** (`FIELD x TYPE SCALE`): `TYPE` e o tipo
+    (`SCALE`/`TEXT`/`ENUMERATED`/...) ficavam sem cor. Agora o nome vira
+    property, `TYPE` e o tipo viram keyword, e props na mesma linha (`ARITY`,
+    `VALUES`, `FORMAT`, `BUNDLE`) também.
+  - **`REFERS TO abstract ON BIBLIOGRAPHY`**: `ON`/`BIBLIOGRAPHY` embutidos num
+    `TEXT_LINE`; agora keyword, com o alvo como enumMember.
+  - **`REQUIRED/OPTIONAL ... ON BIBLIOGRAPHY`** em `SOURCE FIELDS`: mesmo padrão;
+    nomes de campo como property, `ON`/`BIBLIOGRAPHY` como keyword.
+  - **`FIELD memo TYPE MEMO`**: nome `memo` (colide com `KW_MEMO`) era colorido
+    como keyword; agora property.
+  - **Nome de campo que começa com keyword** (`source_date`, `item_id`,
+    `ontology_description`): keywords de bloco não têm lookahead de fronteira, o
+    lexer partia o nome em `KW_SOURCE` + `_date`. O nome inteiro é reconstruído
+    como property. Presente em arquivos reais do case study.
+  - **Valor de campo colidente** (`memo:`, `code:`): vinha como enumMember; agora
+    string, consistente com campos não-colidentes (`note:`, `tag:`).
+  - **Consistência IDENTIFIES/REFERS TO**: o rótulo de entidade em ambos os lados
+    do par de ligação multiprojeto agora é enumMember.
+
+## [0.19.0] - 2026-07-18
+
+### Fixed
+
+- **`getBlocks` reportava blocos fantasma citados na prosa** (`synesis_lsp/blocks.py`)
+  - Quando o documento não compila (estado normal durante digitação), a extração
+    caía num fallback regex que casava `^\s*SOURCE\s+@x` em qualquer linha —
+    inclusive dentro de `GUIDELINES`/`DESCRIPTION`, onde o texto é livre. Um
+    exemplo escrito na documentação de um campo virava um bloco inexistente na
+    árvore da extensão.
+  - A extração agora degrada em escada: **AST → lexer → regex**. O degrau do
+    lexer (`synesis.lex_tokens`) respeita a estrutura da linguagem e ignora
+    keywords dentro de blocos de texto livre. O regex permanece como último
+    recurso.
+
+### Changed
+
+- **Colorização semântica passa a derivar da gramática** (`synesis_lsp/semantic_tokens.py`)
+  - O módulo reimplementava a sintaxe do Synesis em listas de regex escritas à
+    mão, que divergiam da gramática a cada construto novo. Agora consome
+    `synesis.lex_tokens()` — o fluxo de tokens do próprio lexer do compilador.
+  - Keywords novas na gramática passam a ser coloridas **sem editar este
+    módulo**: terminais `KW_*` desconhecidos caem num fallback para `keyword`.
+    Coberto pelo teste de contrato `test_toda_keyword_da_gramatica_recebe_cor`.
+  - Requer `synesis>=0.9.0`.
+
+### Fixed
+
+- **`IDENTIFIES` / `REFERS TO` não recebiam cor.** Existiam na gramática
+  (`KW_IDENTIFIES`, `KW_REFERS`) desde a implementação multiprojeto, mas não em
+  nenhuma das listas de regex. Não emitiam token algum.
+- **Keywords eram coloridas dentro de `DESCRIPTION`.** O conteúdo desses blocos
+  é texto livre na gramática (`description_lines: TEXT_LINE`), mas o motor de
+  regex marcava `FIELD`/`TYPE`/`SCOPE` como keywords no meio da prosa. Havia
+  tratamento manual para `GUIDELINES` e nenhum para `DESCRIPTION`; o lexer
+  contextual resolve ambos sem caso especial.
+- **Cache fazia thrashing entre arquivos.** Mantinha uma única entrada global,
+  invalidada a cada troca de documento; agora é por URI. A chave de conteúdo
+  passou de `hash()` (salted por processo, colisível) para digest blake2b.
+
+### Added
+
+- `tests/test_semantic_tokens.py` — 23 testes de comportamento, incluindo o
+  contrato de propagação automática de keywords.
+- `tests/test_blocks_lex_fallback.py` — 14 testes do fallback de `getBlocks`,
+  cobrindo blocos fantasma e paridade com o comportamento anterior.
+- `tests/test_semantic_tokens_golden.py` + `tests/capture_golden.py` —
+  characterization tests sobre fixtures reais, capturados com o motor anterior
+  para detectar regressões não previstas na troca. Atualizar com
+  `python tests/capture_golden.py` após mudanças intencionais.
+- `invalidate_cache(uri=None)` para descartar tokens de um documento.
+
 ## [0.18.0] - 2026-07-15
 
 ### Fixed
