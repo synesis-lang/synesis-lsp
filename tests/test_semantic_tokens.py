@@ -358,3 +358,67 @@ def test_namespace_keywords_sao_subconjunto_da_gramatica():
         f"_NAMESPACE_KEYWORDS cita terminais inexistentes: "
         f"{sorted(_NAMESPACE_KEYWORDS - keywords)}"
     )
+
+
+# ------------------------------------------- ON DATASET / CONTEXT FROM DATASET
+
+def test_include_dataset_e_namespace():
+    """INCLUDE DATASET: DATASET colore como namespace, igual a BIBLIOGRAPHY."""
+    src = 'PROJECT p\n    TEMPLATE "t.synt"\n    INCLUDE DATASET "c/*.toml"\nEND PROJECT\n'
+    assert tipos_de(src, "DATASET") == ["namespace"]
+    assert tipos_de(src, "INCLUDE") == ["namespace"]
+
+
+def test_required_com_on_dataset():
+    """`REQUIRED x ON DATASET "cam"`: x é property; ON/DATASET keywords.
+
+    O lexer colapsa `x ON DATASET "cam"` num TEXT_LINE; a recuperação por regex
+    (_RE_TRAILING_KEYWORDS) precisa reconhecer DATASET como keyword — mesma
+    classe do bug de ON BIBLIOGRAPHY.
+    """
+    src = (
+        "SOURCE FIELDS\n"
+        '    REQUIRED lattes_id ON DATASET "informacoes_pessoais.id_lattes"\n'
+        "END SOURCE FIELDS\n"
+    )
+    assert tipos_de(src, "ON") == ["keyword"]
+    assert tipos_de(src, "DATASET") == ["keyword"]
+
+
+def test_context_from_dataset_sao_keywords():
+    """CONTEXT FROM DATASET: propriedade de FIELD (não cláusula de FIELDS).
+
+    CONTEXT, FROM e DATASET são tokens KW_* reais (o lexer os isola). CONTEXT/
+    FROM caem no fallback → keyword; DATASET está em _NAMESPACE_KEYWORDS (como
+    BIBLIOGRAPHY em INCLUDE) → namespace. Consistente: o nome do tipo de dado
+    recebe cor de namespace onde quer que apareça como token real.
+    """
+    src = (
+        "FIELD chain TYPE CHAIN\n"
+        "    SCOPE ITEM\n"
+        '    CONTEXT FROM DATASET "linhas_de_pesquisa"\n'
+        "END FIELD\n"
+    )
+    assert tipos_de(src, "CONTEXT") == ["keyword"]
+    assert tipos_de(src, "FROM") == ["keyword"]
+    assert tipos_de(src, "DATASET") == ["namespace"]
+
+
+def test_context_from_dataset_convive_com_guidelines():
+    """CONTEXT antes de GUIDELINES: a cláusula colore sem contaminar a prosa.
+
+    Guarda o risco real de a palavra "contexto"/"CONTEXT" dentro de GUIDELINES
+    ser colorida como keyword — o conteúdo de GUIDELINES é texto livre.
+    """
+    src = (
+        "FIELD cargo TYPE TEXT\n"
+        "    SCOPE SOURCE\n"
+        '    CONTEXT FROM DATASET "atuacao_profissional[ano_fim=Atual]"\n'
+        "    GUIDELINES\n"
+        "        O contexto traz os vinculos filtrados.\n"
+        "    END GUIDELINES\n"
+        "END FIELD\n"
+    )
+    # Uma única keyword CONTEXT (a da cláusula); a prosa não gera outra.
+    assert tipos_de(src, "CONTEXT") == ["keyword"]
+    assert tipos_de(src, "DATASET") == ["namespace"]

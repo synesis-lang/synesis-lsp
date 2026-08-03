@@ -1,17 +1,17 @@
 [build-system]
-requires = ["setuptools>=65.0", "wheel"]
+requires = ["setuptools>=77", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "synesis-lsp"
-version = "0.19.1"
+version = "0.20.0"
 description = "Language Server Protocol para Synesis v1.1"
 readme = "README.md"
 authors = [
     {name = "Synesis Project", email = "noreply@synesis.org"}
 ]
-license = "MIT"
-license-files = ["LICENSE"]
+license = "AGPL-3.0-only AND LicenseRef-Synesis-data-output-exception"
+license-files = ["LICENSE", "LICENSE.exception"]
 urls = { "Homepage" = "https://github.com/synesis-lang/synesis-lsp", "Repository" = "https://github.com/synesis-lang/synesis-lsp", "Issues" = "https://github.com/synesis-lang/synesis-lsp/issues" }
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -25,7 +25,7 @@ classifiers = [
 ]
 requires-python = ">=3.10"
 dependencies = [
-    "synesis>=0.9.0",
+    "synesis>=0.10.0",
     "pygls>=1.0.0,<2.0.0",
     "lsprotocol>=2023.0.0,<2024.0.0",
 ]

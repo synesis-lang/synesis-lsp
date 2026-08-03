@@ -91,9 +91,11 @@ _MOD_DECLARATION = 1 << 0   # bit 0
 _MOD_MODIFICATION = 1 << 1  # bit 1: conteúdo GUIDELINES (texto livre itálico)
 
 # Keywords que declaram estrutura de projeto, coloridas como namespace.
+# (Demais KW_* já colorem como keyword pelo fallback em _token_type_for; só os
+# tipos de include/estrutura recebem a cor de namespace.)
 _NAMESPACE_KEYWORDS: frozenset[str] = frozenset({
     "KW_PROJECT", "KW_TEMPLATE", "KW_INCLUDE",
-    "KW_BIBLIOGRAPHY", "KW_ANNOTATIONS", "KW_SHARED",
+    "KW_BIBLIOGRAPHY", "KW_ANNOTATIONS", "KW_SHARED", "KW_DATASET",
 })
 
 # Terminais não-KW_* com colorização própria. Terminais ausentes deste mapa e
@@ -146,9 +148,13 @@ _RE_FIELD_HEADER = re.compile(
     re.IGNORECASE,
 )
 # Keywords soltas dentro de um TEXT_LINE que o lexer não isolou. Usado no valor
-# de REFERS TO (`abstract ON BIBLIOGRAPHY`): o alvo é identificador, ON e
-# BIBLIOGRAPHY são keywords.
-_RE_TRAILING_KEYWORDS = re.compile(r'\b(ON|BIBLIOGRAPHY|ANNOTATIONS|ONTOLOGY)\b', re.IGNORECASE)
+# de REFERS TO (`abstract ON BIBLIOGRAPHY`), de ON DATASET
+# (`campo ON DATASET "caminho"`) e de CONTEXT FROM DATASET (propriedade de
+# FIELD), onde o alvo colapsa com o sufixo num único TEXT_LINE: o alvo é
+# identificador; ON/FROM/BIBLIOGRAPHY/DATASET/CONTEXT são keywords.
+_RE_TRAILING_KEYWORDS = re.compile(
+    r'\b(ON|FROM|CONTEXT|BIBLIOGRAPHY|ANNOTATIONS|ONTOLOGY|DATASET)\b', re.IGNORECASE
+)
 # Comentário de linha inteira. A gramática declara `%ignore COMMENT`, então o
 # lexer NUNCA emite esses tokens — precisam ser recuperados do texto.
 _RE_COMMENT_LINE = re.compile(r'^(\s*)(#.*)$')
@@ -522,7 +528,7 @@ def _emit_field_header(
 
 
 _RE_FIELD_PROP_KEYWORDS = re.compile(
-    r'\b(ARITY|VALUES|FORMAT|RELATIONS|SCOPE|BUNDLE)\b', re.IGNORECASE
+    r'\b(ARITY|VALUES|FORMAT|RELATIONS|SCOPE|BUNDLE|CONTEXT|FROM)\b', re.IGNORECASE
 )
 
 

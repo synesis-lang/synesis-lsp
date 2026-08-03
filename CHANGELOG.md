@@ -5,6 +5,58 @@ All notable changes to the Synesis LSP project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.20.0] - 2026-07-24
+
+### Licença — MIT → AGPL-3.0-only + Synesis Data-Output Exception
+
+- Acompanha a migração do compilador (`synesis` 0.10.0) — o LSP importa o
+  core no mesmo processo, o que aciona o copyleft da AGPL. Estudo completo:
+  `synesis-planning/synesis/new_licence_policy.md`.
+  - `LICENSE` (AGPL-3.0 integral) e `LICENSE.exception` replicados do core.
+  - `pyproject.toml`: `license = "AGPL-3.0-only AND LicenseRef-Synesis-data-output-exception"`
+    + `license-files = ["LICENSE", "LICENSE.exception"]`; `setuptools>=77`;
+    dependência `synesis>=0.10.0`.
+  - `CITATION.cff`, `README.md` e badge de licença atualizados.
+  - Releases publicados antes desta mudança (≤ 0.19.1) permanecem sob MIT.
+
+### Added
+
+- **Coloração de `INCLUDE DATASET` / `ON DATASET` / `CONTEXT ... FROM DATASET`**
+  (`synesis_lsp/semantic_tokens.py`), acompanhando a sintaxe nova do
+  `synesis` 0.10.0. Requer `synesis >= 0.10.0`.
+  - `KW_DATASET` adicionado a `_NAMESPACE_KEYWORDS`: `INCLUDE DATASET` e o
+    `DATASET` de `CONTEXT ... FROM DATASET` coram como namespace, igual a
+    `INCLUDE BIBLIOGRAPHY`.
+  - `_RE_TRAILING_KEYWORDS` ganha `DATASET`, `FROM` e `CONTEXT`: recupera as
+    keywords quando `REQUIRED/OPTIONAL <campo> ON DATASET "<caminho>"` ou
+    `CONTEXT FROM DATASET "<seção>"` colapsam num único `TEXT_LINE` (mesma
+    classe de recuperação já usada para `ON BIBLIOGRAPHY`).
+  - `_RE_FIELD_PROP_KEYWORDS` ganha `CONTEXT|FROM`: a cláusula passou a ser
+    propriedade do bloco `FIELD` (ver `synesis` 0.10.0, D1 revisado), logo
+    aparece na mesma posição de `SCOPE`/`FORMAT`/`ARITY`.
+
+### Testing
+
+- 4 testes novos em `test_semantic_tokens.py` cobrindo os três construtos, mais
+  um que garante que a palavra "contexto" na prosa de `GUIDELINES` não é
+  colorida como keyword. Guardrails existentes
+  (`test_..._cobre_todos_os_KW`,
+  `test_namespace_keywords_sao_subconjunto_da_gramatica`) validam que as
+  adições são terminais reais da gramática. Suíte completa: 96 passed.
+
+### Known limitation
+
+- A coloração dessas cláusulas depende de **recuperação por regex** sobre
+  `TEXT_LINE`, não de tokens vindos do compilador. Causa: o lexer contextual da
+  gramática colapsa a linha inteira num único `TEXT_LINE` nesses contextos, então
+  os `KW_*` não chegam separados ao LSP. O regex é sintoma dessa limitação da
+  gramática, não escolha de design do LSP. Correção estrutural (fazer a gramática
+  emitir os tokens separados e eliminar `_RE_TRAILING_KEYWORDS` /
+  `_RE_FIELD_PROP_KEYWORDS`) fica pendente — afeta o lexer de todos os blocos e
+  merece tarefa própria.
+
+---
+
 ## [0.19.1] - 2026-07-18
 
 ### Fixed

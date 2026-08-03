@@ -6,7 +6,7 @@ A Language Server Protocol (LSP) implementation that brings the full power of th
 
 [![PyPI version](https://img.shields.io/pypi/v/synesis-lsp)](https://pypi.org/project/synesis-lsp/)
 [![Python 3.10+](https://img.shields.io/pypi/pyversions/synesis-lsp)](https://pypi.org/project/synesis-lsp/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/synesis-lang/synesis-lsp/blob/main/LICENSE)
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3%20%2B%20exception-blue.svg)](https://github.com/synesis-lang/synesis-lsp/blob/main/LICENSE)
 
 > **Copyright (c) 2011–2026 Christian Maciel de Britto**
 > [`https://github.com/synesis-lang`](https://github.com/synesis-lang) · [`ORCID`](https://orcid.org/0000-0003-1431-3924)
@@ -234,9 +234,24 @@ synesis-lsp/
 
 ## License
 
-MIT — see [LICENSE](https://github.com/synesis-lang/synesis-lsp/blob/main/LICENSE).
+This program is distributed under the **GNU Affero General Public License,
+version 3 only (AGPL-3.0-only), with the Synesis Data-Output Exception** — see
+[LICENSE](https://github.com/synesis-lang/synesis-lsp/blob/main/LICENSE) and
+[LICENSE.exception](https://github.com/synesis-lang/synesis-lsp/blob/main/LICENSE.exception).
 
-> A license change to **AGPL-3.0-only** (with Synesis Data Output Exception) is planned for an upcoming release, aligned with the compiler.
+SPDX identifier: `AGPL-3.0-only AND LicenseRef-Synesis-data-output-exception`
+
+**Your research data and outputs are yours.** Files you author and the
+artifacts Synesis produces from them are **not** covered by the AGPL and carry
+no copyleft obligation toward Synesis. See `LICENSE.exception` for the terms.
+
+The AGPL applies to synesis-lsp itself: if you modify it and distribute it, or
+run it as a network service, you must share your changes under the AGPL.
+
+Releases published before this change remain available under the MIT license
+they were issued under.
+
+This license grants no rights to the "Synesis" name or logo.
 
 ---
 

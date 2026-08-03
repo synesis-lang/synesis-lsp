@@ -1,5 +1,6 @@
 include README.md
 include LICENSE
+include LICENSE.exception
 include CHANGELOG.md
 include INTERFACES.md
 include LSP_Implementation.md
