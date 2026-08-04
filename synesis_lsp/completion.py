@@ -1,17 +1,26 @@
 """
-completion.py - Autocomplete para bibrefs, códigos e campos
+completion.py - Autocomplete para bibrefs, códigos, campos e blocos
 
 Propósito:
     Fornece sugestões de completamento contextual:
     - Após @: bibrefs da bibliography
     - Códigos da ontologia (ontology_index)
     - Campos do template (field_specs)
+    - Blocos SOURCE/ITEM/ONTOLOGY já preenchidos com os campos obrigatórios
+      DAQUELE projeto (snippet)
 
 Notas de implementação:
     - Depende do workspace_cache para dados do projeto compilado
     - trigger_char="@" ativa sugestões de bibrefs
     - Sem cache, retorna lista vazia
-    - CompletionItemKind: Reference (bibrefs), EnumMember (códigos), Property (campos)
+    - CompletionItemKind: Reference (bibrefs), EnumMember (códigos),
+      Property (campos), Snippet (blocos)
+
+Por que os blocos vivem aqui, e não em snippets estáticos da extensão:
+    quais campos um bloco SOURCE exige depende do TEMPLATE do projeto aberto
+    (`linkedin` pede slug+nome; `lattes` pede lattes_id+nome+cargo). Um arquivo
+    .code-snippets é estático e não teria como saber. O LSP tem o template
+    carregado, então gera o bloco certo para o projeto em questão.
 """
 
 from __future__ import annotations
@@ -23,10 +32,14 @@ from lsprotocol.types import (
     CompletionItem,
     CompletionItemKind,
     CompletionList,
+    InsertTextFormat,
     Position,
 )
 
 logger = logging.getLogger(__name__)
+
+#: Blocos de anotação e o atributo de TemplateNode que lista seus campos.
+_ANNOTATION_BLOCKS = ("SOURCE", "ITEM", "ONTOLOGY")
 
 
 def compute_completions(
@@ -112,7 +125,87 @@ def compute_completions(
                 )
             )
 
+    # Blocos de anotacao com os campos obrigatorios DESTE projeto.
+    # Suprimidos quando um bloco inteiro nao faria sentido: dentro do valor de
+    # um campo (`campo: ...`) e logo apos `@`, onde o usuario quer um bibref.
+    after_at = trigger_char == "@" or _is_after_at(line, position.character)
+    if template and not in_value and not after_at:
+        for scope_name in _ANNOTATION_BLOCKS:
+            block = _block_snippet(template, scope_name)
+            if block is not None:
+                items.append(block)
+
     return CompletionList(is_incomplete=False, items=items)
+
+
+def _scope_fields(template, scope_name: str) -> tuple[list[str], list[str], list[tuple]]:
+    """(obrigatorios, opcionais, bundles opcionais) de um escopo do template.
+
+    As chaves de required_fields/optional_fields sao membros do enum Scope; a
+    comparacao e por `.value`/nome para nao depender de importar o enum aqui
+    (o LSP tolera versoes distintas do compilador).
+    """
+    def _pick(mapping) -> list:
+        for key, value in (mapping or {}).items():
+            key_name = getattr(key, "value", None) or getattr(key, "name", None) or str(key)
+            if str(key_name).upper() == scope_name:
+                return list(value or [])
+        return []
+
+    return (
+        _pick(getattr(template, "required_fields", None)),
+        _pick(getattr(template, "optional_fields", None)),
+        _pick(getattr(template, "optional_bundles", None)),
+    )
+
+
+def _block_snippet(template, scope_name: str) -> Optional[CompletionItem]:
+    """Monta o snippet de um bloco de anotacao para o template do projeto.
+
+    Inclui os campos OBRIGATORIOS daquele escopo — que e a informacao que o
+    pesquisador nao tem de cor e que muda de projeto para projeto. Opcionais
+    ficam de fora para o bloco nao virar um formulario gigante; eles ja sao
+    sugeridos individualmente pelo completion de campos.
+    """
+    required, optional, bundles = _scope_fields(template, scope_name)
+    if not required and not optional:
+        return None  # escopo nao declarado neste template
+
+    # ONTOLOGY identifica o bloco por nome de conceito; os demais, por bibref.
+    header_arg = "${1:nome_do_conceito}" if scope_name == "ONTOLOGY" else "@${1:bibref}"
+    lines = [f"{scope_name} {header_arg}"]
+
+    tab = 2
+    for field in required:
+        lines.append(f"    {field}: ${{{tab}:valor}}")
+        tab += 1
+    lines.append(f"END {scope_name}")
+    lines.append("$0")
+
+    if required:
+        detail = f"{len(required)} campo(s) obrigatorio(s): " + ", ".join(required)
+    else:
+        detail = "sem campos obrigatorios neste template"
+
+    documentation = detail
+    if optional:
+        documentation += "\n\nOpcionais: " + ", ".join(optional)
+    if bundles:
+        pairs = "; ".join("+".join(b) for b in bundles)
+        documentation += f"\n\nBundles opcionais (tudo ou nada): {pairs}"
+
+    return CompletionItem(
+        label=f"{scope_name} (bloco)",
+        kind=CompletionItemKind.Snippet,
+        detail=detail,
+        documentation=documentation,
+        insert_text="\n".join(lines),
+        insert_text_format=InsertTextFormat.Snippet,
+        # Ordena os blocos antes dos campos soltos: quem digita "SOURCE"
+        # quase sempre quer o bloco, nao um campo de nome parecido.
+        sort_text=f"0_{scope_name}",
+        filter_text=scope_name,
+    )
 
 
 def _is_after_at(line: str, character: int) -> bool:

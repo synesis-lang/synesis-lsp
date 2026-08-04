@@ -5,6 +5,74 @@ All notable changes to the Synesis LSP project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.21.0] - 2026-08-04
+
+### Added — Blocos SOURCE/ITEM/ONTOLOGY no autocomplete
+
+- O completion passa a oferecer **blocos de anotação completos**, já com os
+  campos obrigatórios **do template daquele projeto**:
+
+  ```
+  SOURCE @bibref
+      slug: valor
+      nome: valor
+  END SOURCE
+  ```
+
+  Entregues como snippet (`InsertTextFormat.Snippet`), com tab-stops: `Tab`
+  navega bibref → cada valor → fim do bloco.
+
+- **Por que no LSP e não em snippets estáticos da extensão.** Quais campos um
+  bloco `SOURCE` exige varia por projeto — `linkedin` pede `slug`+`nome`,
+  `lattes` pede `lattes_id`+`nome`+`cargo_institucional`. Um arquivo
+  `.code-snippets` é estático e não teria como saber; o LSP tem o template
+  carregado e gera o bloco correto. Verificado por teste: mudar o template muda
+  o bloco.
+
+- **Só os obrigatórios entram no corpo** — incluir opcionais transformaria o
+  bloco num formulário. Opcionais e *bundles* aparecem na documentação do item
+  (ex.: `Bundles opcionais (tudo ou nada): chain+memo`), e os campos seguem
+  sendo sugeridos individualmente pelo completion existente.
+
+- Escopo não declarado no template não gera bloco. Blocos são suprimidos dentro
+  do valor de um campo e logo após `@`, onde o usuário quer um bibref.
+
+- Verificado por teste permanente: os blocos expandidos **fazem parse** como
+  Synesis válido; os tab-stops são sequenciais e não se repetem; o completion
+  de campos e bibrefs continua funcionando.
+
+### Fixed — Suíte de testes não coletava nada
+
+- **`jsonschema` da série 3.x quebrava a coleta inteira.** `tests/test_contract.py`
+  importa `Draft202012Validator`, ausente antes da 4.18 (versão já declarada em
+  `[dev]`). O erro de import abortava a coleta de **toda** a suíte — não só
+  desse arquivo.
+
+  Efeito combinado com o passo de testes do CI, que tolerava exit code 5
+  (`no tests collected`) como sucesso: **CI verde com zero testes executados**.
+  Ambos corrigidos.
+
+- **`RefResolver` → `referencing`** em `tests/test_contract.py`. A API antiga
+  está deprecada desde `jsonschema` 4.18 e será removida. Verificado que a
+  resolução de `$ref` continua funcionando (um registro mal montado passaria
+  silenciosamente — testado com exemplo inválido de propósito).
+
+- **Passo de testes do CI** deixa de mascarar suíte vazia:
+
+  ```
+  python -c "... sys.exit(0 if code == 5 else code)"   # antes
+  pytest --cov=synesis_lsp --cov-report=xml --cov-report=term   # agora
+  ```
+
+- **Baseline de mypy do workflow atualizado**: 51 → 49 erros. Permanece
+  não-bloqueante.
+
+### Notas
+
+- Requer `synesis >= 0.10.0` (inalterado — o LSP não consome as APIs
+  introduzidas em 0.11.0).
+- Suíte: 112 testes (antes: 0 coletados).
+
 ## [0.20.0] - 2026-07-24
 
 ### Licença — MIT → AGPL-3.0-only + Synesis Data-Output Exception

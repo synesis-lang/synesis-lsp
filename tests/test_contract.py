@@ -19,7 +19,7 @@ import pytest
 
 jsonschema = pytest.importorskip("jsonschema")
 from jsonschema import Draft202012Validator
-from jsonschema.validators import RefResolver
+from referencing import Registry, Resource
 
 CONTRACTS = Path(__file__).resolve().parents[1] / "contracts"
 SCHEMAS = CONTRACTS / "schemas"
@@ -33,16 +33,20 @@ def _load(path: Path) -> dict:
 
 
 def _validator(endpoint: str) -> Draft202012Validator:
-    """Validador que resolve os $ref para common.schema.json localmente."""
+    """Validador que resolve os $ref para common.schema.json localmente.
+
+    Usa `referencing` (jsonschema >= 4.18); o antigo `RefResolver` foi
+    deprecado e sera removido numa versao futura.
+    """
     schema = _load(SCHEMAS / f"{endpoint}.schema.json")
     common = _load(SCHEMAS / "common.schema.json")
-    store = {
-        "common.schema.json": common,
-        common["$id"]: common,
-        schema["$id"]: schema,
-    }
-    resolver = RefResolver(base_uri=schema["$id"], referrer=schema, store=store)
-    return Draft202012Validator(schema, resolver=resolver)
+    common_resource = Resource.from_contents(common)
+    registry = Registry().with_resources([
+        ("common.schema.json", common_resource),
+        (common["$id"], common_resource),
+        (schema["$id"], Resource.from_contents(schema)),
+    ])
+    return Draft202012Validator(schema, registry=registry)
 
 
 # ---------------------------------------------------------------------------
