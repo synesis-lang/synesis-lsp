@@ -101,11 +101,12 @@ def test_source_block_carries_required_fields_of_this_template():
     assert "END SOURCE" in body
 
 
-def test_optional_fields_stay_out_of_the_block():
-    """Opcionais nao entram no corpo — o bloco viraria um formulario. Elas
-    aparecem na documentacao e no completion de campos."""
+def test_optional_fields_are_commented_not_active():
+    """Opcionais entram COMENTADOS: documentam o que o escopo aceita sem que
+    um campo vazio quebre a validacao. Tambem seguem na documentacao do item."""
     block = _blocks()["SOURCE (bloco)"]
-    assert "headline:" not in block.insert_text
+    assert "# headline:" in block.insert_text
+    assert "\n    headline:" not in block.insert_text  # nao como linha ativa
     assert "headline" in block.documentation
 
 
@@ -217,3 +218,114 @@ def test_bibref_completion_still_offered():
         linha, Position(line=0, character=len(linha)), cached, trigger_char="@"
     )
     assert any(i.label == "@silva2023" for i in result.items)
+
+
+# --------------------------------------------------------------------------
+# Regressao: REQUIRED BUNDLE tambem e obrigatorio
+# --------------------------------------------------------------------------
+
+_TEMPLATE_REQUIRED_BUNDLE = """TEMPLATE com_bundle
+SOURCE FIELDS
+    REQUIRED slug
+END SOURCE FIELDS
+ITEM FIELDS
+    REQUIRED text
+    REQUIRED BUNDLE note, chain
+END ITEM FIELDS
+FIELD slug TYPE TEXT
+    SCOPE SOURCE
+END FIELD
+FIELD text TYPE QUOTATION
+    SCOPE ITEM
+END FIELD
+FIELD note TYPE MEMO
+    SCOPE ITEM
+END FIELD
+FIELD chain TYPE CHAIN
+    SCOPE ITEM
+    ARITY >= 2
+END FIELD
+"""
+
+
+def test_required_bundle_fields_are_in_the_block():
+    """`REQUIRED BUNDLE a, b` vive em `bundled_fields`, estrutura separada de
+    `required_fields`. Ler so a segunda produzia blocos incompletos — bug real
+    observado com social_acceptance.synt, onde `note` e `chain` sumiam."""
+    blocks = _blocks(cached=_cached(_TEMPLATE_REQUIRED_BUNDLE))
+    body = blocks["ITEM (bloco)"].insert_text
+    assert "text:" in body
+    assert "note:" in body, "campo de REQUIRED BUNDLE ausente"
+    assert "chain:" in body, "campo de REQUIRED BUNDLE ausente"
+
+
+def test_required_bundle_counted_in_detail():
+    detail = _blocks(cached=_cached(_TEMPLATE_REQUIRED_BUNDLE))["ITEM (bloco)"].detail
+    assert "3 campo" in detail
+
+
+def test_block_with_required_bundle_parses():
+    from synesis.parser.lexer import parse_string
+
+    body = _blocks(cached=_cached(_TEMPLATE_REQUIRED_BUNDLE))["ITEM (bloco)"].insert_text
+    parse_string(_expand(body) + "\n", "<snippet>")
+
+
+# --------------------------------------------------------------------------
+# Caixa: a gramatica aceita item/Item/ITEM — o snippet segue o que foi digitado
+# --------------------------------------------------------------------------
+
+def test_block_keyword_follows_typed_case():
+    """A keyword inserida e sempre COMPLETA; so a caixa acompanha o prefixo
+    digitado (`ite` -> `item`, `It` -> `Item`)."""
+    for typed, expected in [
+        ("ITEM", "ITEM"), ("item", "item"), ("Item", "Item"),
+        ("ite", "item"), ("It", "Item"), ("I", "ITEM"),
+    ]:
+        block = _blocks(source=typed, character=len(typed))["ITEM (bloco)"]
+        first, last = block.insert_text.splitlines()[0], block.insert_text.splitlines()[-2]
+        assert first.startswith(expected), f"{typed!r} -> {first!r}"
+        assert last == f"END {expected}", f"{typed!r} -> {last!r}"
+
+
+def test_block_defaults_to_uppercase_without_input():
+    """Sem nada digitado, segue a convencao dos templates do ecossistema."""
+    body = _blocks()["SOURCE (bloco)"].insert_text
+    assert body.startswith("SOURCE ")
+    assert "END SOURCE" in body
+
+
+def test_lowercase_block_still_parses():
+    from synesis.parser.lexer import parse_string
+
+    block = _blocks(source="item", character=4)["ITEM (bloco)"]
+    parse_string(_expand(block.insert_text) + "\n", "<snippet>")
+
+
+# --------------------------------------------------------------------------
+# Opcionais entram comentados
+# --------------------------------------------------------------------------
+
+def test_optional_section_has_a_hint_line():
+    """Uma linha explica o que fazer com as linhas comentadas."""
+    assert "descomente" in _blocks()["SOURCE (bloco)"].insert_text
+
+
+def test_scope_without_optionals_has_no_comment_section():
+    body = _blocks()["ONTOLOGY (bloco)"].insert_text
+    assert "descomente" not in body
+
+
+def test_block_with_commented_optionals_parses():
+    from synesis.parser.lexer import parse_string
+
+    parse_string(_expand(_blocks()["SOURCE (bloco)"].insert_text) + "\n", "<snippet>")
+
+
+def test_commented_optionals_have_no_tabstops():
+    """Tab nao deve parar em linha comentada — o pesquisador so preenche o que
+    descomentar."""
+    body = _blocks()["SOURCE (bloco)"].insert_text
+    for line in body.splitlines():
+        if line.strip().startswith("#"):
+            assert "${" not in line, f"tab-stop em linha comentada: {line!r}"

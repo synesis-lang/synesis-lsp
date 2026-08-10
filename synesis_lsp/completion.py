@@ -26,6 +26,7 @@ Por que os blocos vivem aqui, e não em snippets estáticos da extensão:
 from __future__ import annotations
 
 import logging
+import re
 from typing import Optional
 
 from lsprotocol.types import (
@@ -130,20 +131,57 @@ def compute_completions(
     # um campo (`campo: ...`) e logo apos `@`, onde o usuario quer um bibref.
     after_at = trigger_char == "@" or _is_after_at(line, position.character)
     if template and not in_value and not after_at:
+        typed = _word_before_cursor(line, position.character)
         for scope_name in _ANNOTATION_BLOCKS:
-            block = _block_snippet(template, scope_name)
+            block = _block_snippet(
+                template, scope_name, _match_case(scope_name, typed)
+            )
             if block is not None:
                 items.append(block)
 
     return CompletionList(is_incomplete=False, items=items)
 
 
+def _word_before_cursor(line: str, character: int) -> str:
+    """Palavra que o usuario esta digitando imediatamente antes do cursor."""
+    prefix = line[:character]
+    match = re.search(r"([A-Za-z_]+)$", prefix)
+    return match.group(1) if match else ""
+
+
+def _match_case(keyword: str, typed: str) -> str:
+    """Adapta a grafia da keyword ao que o usuario digitou.
+
+    A gramatica aceita `item`, `Item` e `ITEM` igualmente; o snippet nao deve
+    reescrever a caixa embaixo do cursor. Reconhece as tres formas usuais e,
+    fora delas, mantem MAIUSCULAS (a convencao dos templates do ecossistema).
+    """
+    if not typed or not keyword.upper().startswith(typed.upper()):
+        return keyword
+    # Prefixo de uma letra maiuscula ("I") ou capitalizado ("It", "Item") e
+    # ambiguo entre ITEM e Item; `str.isupper()` responde True para "I" e para
+    # "IT", entao a checagem de capitalizacao vem primeiro e cobre os dois.
+    if len(typed) > 1 and typed[0].isupper() and typed[1:].islower():
+        return keyword.capitalize()
+    if typed.isupper():
+        return keyword.upper()
+    if typed.islower():
+        return keyword.lower()
+    return keyword
+
+
 def _scope_fields(template, scope_name: str) -> tuple[list[str], list[str], list[tuple]]:
     """(obrigatorios, opcionais, bundles opcionais) de um escopo do template.
 
-    As chaves de required_fields/optional_fields sao membros do enum Scope; a
-    comparacao e por `.value`/nome para nao depender de importar o enum aqui
-    (o LSP tolera versoes distintas do compilador).
+    Os obrigatorios reunem DUAS estruturas do TemplateNode: `required_fields`
+    (REQUIRED a, b) e `bundled_fields` (REQUIRED BUNDLE a, b). Um bundle
+    obrigatorio e tao exigido quanto um campo solto — ler so `required_fields`
+    produzia blocos incompletos (ex.: social_acceptance.synt declara
+    `REQUIRED BUNDLE note, chain` em ITEM, e ambos sumiam do snippet).
+
+    As chaves sao membros do enum Scope; a comparacao e por `.value`/nome para
+    nao depender de importar o enum aqui (o LSP tolera versoes distintas do
+    compilador).
     """
     def _pick(mapping) -> list:
         for key, value in (mapping or {}).items():
@@ -152,34 +190,53 @@ def _scope_fields(template, scope_name: str) -> tuple[list[str], list[str], list
                 return list(value or [])
         return []
 
+    required = _pick(getattr(template, "required_fields", None))
+    for bundle in _pick(getattr(template, "bundled_fields", None)):
+        for field_name in bundle:
+            if field_name not in required:
+                required.append(field_name)
+
     return (
-        _pick(getattr(template, "required_fields", None)),
+        required,
         _pick(getattr(template, "optional_fields", None)),
         _pick(getattr(template, "optional_bundles", None)),
     )
 
 
-def _block_snippet(template, scope_name: str) -> Optional[CompletionItem]:
+def _block_snippet(
+    template, scope_name: str, keyword: Optional[str] = None
+) -> Optional[CompletionItem]:
     """Monta o snippet de um bloco de anotacao para o template do projeto.
 
-    Inclui os campos OBRIGATORIOS daquele escopo — que e a informacao que o
-    pesquisador nao tem de cor e que muda de projeto para projeto. Opcionais
-    ficam de fora para o bloco nao virar um formulario gigante; eles ja sao
-    sugeridos individualmente pelo completion de campos.
+    Campos OBRIGATORIOS entram como linhas normais; OPCIONAIS entram
+    COMENTADOS logo abaixo. Assim o bloco documenta o que o escopo aceita —
+    `social_acceptance.synt` declara 8 opcionais em ONTOLOGY, invisiveis para
+    quem nao decorou o template — sem que um campo vazio quebre a validacao.
+    Basta descomentar o que for usar.
+
+    `keyword` e a grafia a inserir. A gramatica aceita qualquer caixa
+    (`item`, `Item`, `ITEM`), entao o bloco respeita o que o pesquisador ja
+    digitou em vez de impor MAIUSCULAS — trocar a caixa embaixo do cursor
+    seria uma surpresa. Abertura e `END` usam a mesma grafia.
     """
     required, optional, bundles = _scope_fields(template, scope_name)
     if not required and not optional:
         return None  # escopo nao declarado neste template
 
+    word = keyword or scope_name
+
     # ONTOLOGY identifica o bloco por nome de conceito; os demais, por bibref.
     header_arg = "${1:nome_do_conceito}" if scope_name == "ONTOLOGY" else "@${1:bibref}"
-    lines = [f"{scope_name} {header_arg}"]
+    lines = [f"{word} {header_arg}"]
 
     tab = 2
     for field in required:
         lines.append(f"    {field}: ${{{tab}:valor}}")
         tab += 1
-    lines.append(f"END {scope_name}")
+    if optional:
+        lines.append("    # opcionais — descomente o que for usar:")
+        lines.extend(f"    # {field}: " for field in optional)
+    lines.append(f"END {word}")
     lines.append("$0")
 
     if required:
@@ -229,8 +286,6 @@ def _field_in_line(line: str) -> tuple[Optional[str], int]:
     Retorna (field_name, value_start_index) se a linha contém 'field: value'.
     Caso contrário, retorna (None, 0).
     """
-    import re
-
     match = re.match(r"^(\s*)([\w._-]+)(\s*:)\s*(.*)$", line)
     if not match:
         return (None, 0)

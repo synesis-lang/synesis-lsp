@@ -5,6 +5,92 @@ All notable changes to the Synesis LSP project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.22.0] - 2026-08-10
+
+### Changed — Blocos de anotação no autocomplete
+
+Refina os blocos `SOURCE`/`ITEM`/`ONTOLOGY` introduzidos em 0.21.0
+(`completion.py`).
+
+- **Obrigatórios como linhas ativas; opcionais comentados logo abaixo.** Em
+  0.21.0 os opcionais ficavam só na documentação do item, sob o argumento de que
+  incluí-los transformaria o bloco num formulário. O comentário resolve os dois
+  lados: documenta o que o escopo aceita sem que um campo vazio quebre a
+  validação — basta descomentar o que for usar:
+
+  ```
+  ONTOLOGY nome_do_conceito
+      ontology_description: valor
+      # opcionais — descomente o que for usar:
+      # topic:
+      # aspect:
+      # dimension:
+  END ONTOLOGY
+  ```
+
+  Sem isso, os 8 opcionais de `ONTOLOGY` em `social_acceptance.synt` ficavam
+  invisíveis para quem não decorou o template. Linhas comentadas não recebem
+  tab-stop: o `Tab` só para no que precisa ser preenchido.
+
+- **A grafia acompanha o que foi digitado.** A gramática aceita `item`, `Item` e
+  `ITEM` igualmente, então o bloco não reescreve a caixa sob o cursor: digitar
+  `ite` insere `item … END item`; `It` insere `Item … END Item`. Sem nada
+  digitado, mantém MAIÚSCULAS, a convenção dos templates do ecossistema.
+
+### Fixed
+
+- **`REQUIRED BUNDLE` não contava como obrigatório** (`completion.py`) — o
+  `TemplateNode` guarda os bundles em `bundled_fields`, estrutura separada de
+  `required_fields`; ler apenas a segunda produzia blocos incompletos. Em
+  `social_acceptance.synt`, que declara `REQUIRED BUNDLE note, chain` em `ITEM`,
+  os dois campos sumiam do bloco.
+
+- **Campos MEMO e QUOTATION nunca chegavam ao cliente** (`explorer_requests.py`,
+  `synesis/getExcerpts`)
+  - O transformer do compilador roteia campos do ITEM por **nome literal**, não
+    pelo tipo declarado no template (`synesis/parser/transformer.py:682–700`):
+    `quote`/`quotation` → `item.quote`, `note`/`notes`/`memo`/`memos` →
+    `item.notes`, `code`/`codes` → `item.codes`, `chain`/`chains` →
+    `item.chains`. Todo o resto vai para `extra_fields`.
+  - `get_excerpts` serializava **apenas** `extra_fields` (mais `codes` e
+    `chains`). Consequência: um `FIELD memo TYPE MEMO` declarado no template
+    existia no `.syn`, era compilado corretamente, e **desaparecia** no caminho
+    até a extensão — sem erro, sem aviso.
+  - **Medido no face85** (`case-studies/ufmg/face85`): todos os ITEMs têm `memo`
+    preenchido e `extra_fields` chegava com apenas `text`, `zone` e
+    `confidence`. O campo `text` escapava por acaso — é `QUOTATION` mas não se
+    chama `quote`, então não era promovido.
+  - Novo `_reinsert_promoted_fields()` recoloca `item.quote` e `item.notes` em
+    `extra_fields` usando `item.field_names` para recuperar o **nome original**
+    do campo (`memo` num projeto, `note` noutro), preservando a correspondência
+    com o template. Não sobrescreve chave já existente.
+  - Sem `field_names` (item sem tokens), cai nos nomes canônicos `quote`/`memo`:
+    perder o dado em silêncio é pior que nomeá-lo canonicamente, e assim ele
+    continua auditável.
+  - Múltiplas ocorrências do mesmo campo viram lista, sem parear por índice com
+    outras listas do bloco.
+
+### Added — testes
+
+- `tests/test_excerpts_promoted_fields.py` (novo) — 10 testes cobrindo
+  reinserção de MEMO/QUOTATION, preservação do nome do template, múltiplas
+  notes, precedência de valor existente e o fallback sem `field_names`.
+
+- `tests/test_completion_blocks.py` — 10 testes acrescentados: opcionais
+  comentados e com linha-guia, escopo sem opcionais, campos de `REQUIRED BUNDLE`
+  presentes e contabilizados no `detail`, grafia seguindo o que foi digitado,
+  maiúsculas por padrão. Os blocos resultantes — com opcionais comentados e com
+  bundle — continuam **fazendo parse** como Synesis válido.
+
+### Nota — pendência relacionada
+
+`synesis/getTemplate` (`template_info.py:_serialize_fields`) ainda **não envia**
+a `description` dos campos, e reduz `relations` a `list(spec.relations.keys())`,
+descartando a descrição de cada relação. O `abstractViewer` da extensão já
+consome ambas quando presentes (rótulo legível e tooltip por relação) e hoje cai
+no nome cru do campo. Expor os dois campos tornaria os rótulos legíveis sem
+nenhuma mudança na extensão.
+
 ## [0.21.0] - 2026-08-04
 
 ### Added — Blocos SOURCE/ITEM/ONTOLOGY no autocomplete

@@ -1225,6 +1225,14 @@ def get_excerpts(cached_result, bibref: str) -> dict:
             for fname, fval in raw_extra.items():
                 extra_fields[str(fname)] = _serialize_field_value(fval)
 
+            # MEMO e QUOTATION não passam por extra_fields: o transformer os
+            # promove a atributos próprios do ItemNode por NOME de campo
+            # (note/notes/memo/memos → item.notes; quote/quotation → item.quote,
+            # ver parser/transformer.py). Sem reinseri-los aqui, um campo MEMO
+            # declarado no template simplesmente não chega ao cliente — some da
+            # tela sem erro algum.
+            _reinsert_promoted_fields(item, extra_fields)
+
             # codes
             codes = [str(c) for c in (getattr(item, "codes", None) or []) if c]
 
@@ -1244,6 +1252,57 @@ def get_excerpts(cached_result, bibref: str) -> dict:
             })
 
     return {"success": True, "items": items_out}
+
+
+_PROMOTED_QUOTE_NAMES = {"quote", "quotation"}
+_PROMOTED_NOTE_NAMES = {"note", "notes", "memo", "memos"}
+
+
+def _reinsert_promoted_fields(item, extra_fields: dict) -> None:
+    """Recoloca em extra_fields os campos que o transformer promoveu.
+
+    O transformer roteia por NOME literal do campo, não por tipo do template:
+    quote/quotation → item.quote e note/notes/memo/memos → item.notes. Esses
+    campos ficam fora de extra_fields e, sem esta reinserção, nunca chegam ao
+    cliente.
+
+    Usa item.field_names para recuperar o nome ORIGINAL do campo (`memo` num
+    projeto, `note` noutro), preservando a correspondência com o template. Só
+    preenche chaves ausentes — se o campo já estiver em extra_fields por outro
+    caminho, o valor existente vence.
+    """
+    field_names = getattr(item, "field_names", None) or []
+    existing = {str(k).lower() for k in extra_fields}
+
+    quote = getattr(item, "quote", None)
+    notes = getattr(item, "notes", None) or []
+
+    for raw_name in field_names:
+        name = str(raw_name)
+        lname = name.lower()
+        if lname in existing:
+            continue
+
+        if lname in _PROMOTED_QUOTE_NAMES and quote:
+            extra_fields[name] = _serialize_field_value(quote)
+            existing.add(lname)
+            quote = None
+        elif lname in _PROMOTED_NOTE_NAMES and notes:
+            # Um único campo declarado pode ter múltiplas ocorrências no bloco;
+            # notes é a lista acumulada — devolvida inteira, sem parear por índice.
+            value = list(notes) if len(notes) > 1 else notes[0]
+            extra_fields[name] = _serialize_field_value(value)
+            existing.add(lname)
+            notes = []
+
+    # Fallback: sem field_names (ou com o campo ausente dele) o dado existe no
+    # ItemNode mas não teria como ser nomeado. Perder silenciosamente é pior que
+    # usar o nome canônico — o valor aparece e continua auditável.
+    if quote and "quote" not in existing:
+        extra_fields["quote"] = _serialize_field_value(quote)
+    if notes and not existing.intersection(_PROMOTED_NOTE_NAMES):
+        value = list(notes) if len(notes) > 1 else notes[0]
+        extra_fields["memo"] = _serialize_field_value(value)
 
 
 def _serialize_field_value(value) -> object:
