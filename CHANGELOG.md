@@ -5,6 +5,31 @@ All notable changes to the Synesis LSP project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Fixed — CI
+
+- **O job `Security` nunca auditou nada** (`.github/workflows/ci.yml`) — o passo
+  monta `runtime-requirements.txt` lendo o `pyproject.toml` com `tomllib`, que
+  só entrou na stdlib no **Python 3.11**, mas o job fixava `python-version:
+  '3.10'`. O script morria em `ModuleNotFoundError: No module named 'tomllib'`
+  **antes** de chamar o `pip-audit`.
+
+  O efeito era duplamente ruim: o job ficava vermelho sugerindo vulnerabilidade
+  em dependência, e a auditoria de fato nunca rodou desde que foi escrita.
+  Verificado com o comando exato do CI sob 3.11, em venv limpo: `No known
+  vulnerabilities found`.
+
+  Era a **única** causa do CI vermelho neste repositório desde 2026-07-19 — os
+  9 jobs da matriz de testes, o de integração, o lint e o build sempre passaram,
+  inclusive no commit `8aee570` (v0.22.0).
+
+  Corrigido subindo **apenas o runner** desse job para 3.11. `requires-python =
+  ">=3.10"` continua valendo e a matriz de testes segue cobrindo 3.10, 3.11 e
+  3.12.
+
+  Mesmo defeito e mesma correção em `synesis` (compilador).
+
 ## [0.22.0] - 2026-08-10
 
 ### Changed — Blocos de anotação no autocomplete
