@@ -26,8 +26,15 @@ classifiers = [
 requires-python = ">=3.10"
 dependencies = [
     "synesis>=0.10.0",
-    "pygls>=1.0.0,<3.0.0",
-    "lsprotocol>=2023.0.0,<2026.0.0",
+    # NAO afrouxar para <3.0.0 sem migrar o servidor: pygls 2.x e uma reescrita
+    # com API incompativel. `from pygls.server import LanguageServer`
+    # (server.py) deixa de existir e a suite inteira falha na coleta:
+    #   ImportError: cannot import name 'LanguageServer' from 'pygls.server'
+    # O teto foi afrouxado pelo PR #6 do Dependabot e derrubou os 9 jobs da
+    # matriz (run 31445874003); restaurado aqui. Migrar exige trabalho proprio,
+    # nao um bump de constraint — ver ignore de major em .github/dependabot.yml.
+    "pygls>=1.0.0,<2.0.0",
+    "lsprotocol>=2023.0.0,<2024.0.0",
 ]
 
 [project.optional-dependencies]

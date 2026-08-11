@@ -7,6 +7,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed — Regressão: `pygls<3.0.0` quebrou a suíte inteira
+
+- **Teto de `pygls` restaurado para `<2.0.0`** (`pyproject.toml`) — o PR #6 do
+  Dependabot afrouxou para `<3.0.0` e o resolvedor passou a instalar **pygls
+  2.1.1**, uma reescrita com API incompatível. `from pygls.server import
+  LanguageServer` (`server.py:83`) deixa de existir e o pytest falha já na
+  **coleta**:
+
+  ```
+  ImportError: cannot import name 'LanguageServer' from 'pygls.server'
+  collected 118 items / 1 error
+  ```
+
+  Derrubou os **9 jobs da matriz** de uma vez (run `31445874003`), em todos os
+  SOs e versões de Python. `lsprotocol` volta a `<2024.0.0` porque o par de
+  versões é casado com o pygls.
+
+- **`.github/dependabot.yml` passa a ignorar major de `pygls` e `lsprotocol`** —
+  sem isso o mesmo PR é reaberto toda semana. Migrar para pygls 2.x é trabalho
+  próprio (a API de registro de features e o ciclo de vida do servidor mudam),
+  não um bump de constraint.
+
+- **`ruff==0.16.1` e `mypy==2.3.0` foram preservados** — vieram no mesmo PR #6 e
+  não têm relação com o defeito. Verificado: `ruff check synesis_lsp/` passa
+  limpo na versão nova.
+
+  ⚠️ Isso deixa `synesis-lsp` **fora de sincronia** com `synesis-graph` e
+  `synesis-coder`, ainda em `ruff==0.15.17` / `mypy==1.16.0` (`synesis` também
+  já subiu, via seu PR #7). O pin compartilhado existe para evitar drift
+  silencioso entre repos — os dois restantes precisam subir junto.
+
 ### Fixed — CI
 
 - **O job `Security` nunca auditou nada** (`.github/workflows/ci.yml`) — o passo

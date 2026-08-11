@@ -8,6 +8,17 @@ updates:
     groups:
       python-dependencies:
         patterns: ["*"]
+    ignore:
+      # pygls 2.x e uma reescrita com API incompativel: `from pygls.server
+      # import LanguageServer` deixa de existir e a suite falha na coleta.
+      # O PR #6 afrouxou o teto para <3.0.0 e derrubou os 9 jobs da matriz.
+      # lsprotocol acompanha pygls (o par de versoes e casado), entao segue a
+      # mesma regra. Migrar exige trabalho proprio; sem este ignore o
+      # Dependabot reabre o mesmo PR toda semana.
+      - dependency-name: "pygls"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "lsprotocol"
+        update-types: ["version-update:semver-major"]
 
   - package-ecosystem: "github-actions"
     directory: "/"
