@@ -111,6 +111,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   o que é a razão de o defeito acima ter passado despercebido. Agora entra no
   teste de contrato, validado contra a saída real do handler.
 
+## [0.22.0] - 2026-08-10
+
 ### Fixed — Regressão: `pygls<3.0.0` quebrou a suíte inteira
 
 - **Teto de `pygls` restaurado para `<2.0.0`** (`pyproject.toml`) — o PR #6 do
@@ -165,7 +167,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
   Mesmo defeito e mesma correção em `synesis` (compilador).
 
-## [0.22.0] - 2026-08-10
 
 ### Changed — Blocos de anotação no autocomplete
 
