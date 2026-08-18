@@ -9,6 +9,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.23.0] - 2026-08-18
 
+### Fixed — Regressão do `pygls<3.0.0` reintroduzida (2ª vez)
+
+- **Teto de `pygls` restaurado para `<2.0.0`** — o PR #12 do Dependabot
+  afrouxou novamente para `<3.0.0`, repetindo exatamente o defeito do PR #6
+  descrito em 0.22.0: o resolvedor instala pygls 2.x, cuja API é incompatível,
+  e o pytest falha já na coleta.
+- **Por que o `ignore` do `dependabot.yml` não barrou:** a regra cobre
+  `version-update:semver-major` — o *upgrade* da dependência. O PR #12 não
+  atualizou a versão instalada, **afrouxou o teto da constraint**, operação que
+  o Dependabot classifica de outra forma. O `lsprotocol` permaneceu em
+  `<2024.0.0`, deixando o par de versões dessincronizado.
+- Passa despercebido em máquina de desenvolvimento: com `pygls` 1.3.1 já
+  instalado, a suíte local continua verde. Só o CI, resolvendo do zero, expõe
+  o problema.
+
 ### Fixed — Erros de projeto não apareciam no editor
 
 - **`ITEM` cuja referência não existe não acusava erro** (`synesis_lsp/server.py`)

@@ -33,7 +33,7 @@ dependencies = [
     # O teto foi afrouxado pelo PR #6 do Dependabot e derrubou os 9 jobs da
     # matriz (run 31445874003); restaurado aqui. Migrar exige trabalho proprio,
     # nao um bump de constraint — ver ignore de major em .github/dependabot.yml.
-    "pygls>=1.0.0,<3.0.0",
+    "pygls>=1.0.0,<2.0.0",
     "lsprotocol>=2023.0.0,<2024.0.0",
 ]
 
