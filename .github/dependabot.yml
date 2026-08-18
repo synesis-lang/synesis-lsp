@@ -6,8 +6,11 @@ updates:
       interval: "weekly"
     open-pull-requests-limit: 5
     groups:
+      # So minor/patch entram agrupados. Majors ficam em PR individual: um bump
+      # agrupado esconde a mudanca que importa e nao ha como reverter em partes.
       python-dependencies:
         patterns: ["*"]
+        update-types: ["minor", "patch"]
     ignore:
       # pygls 2.x e uma reescrita com API incompativel: `from pygls.server
       # import LanguageServer` deixa de existir e a suite falha na coleta.
@@ -15,10 +18,18 @@ updates:
       # lsprotocol acompanha pygls (o par de versoes e casado), entao segue a
       # mesma regra. Migrar exige trabalho proprio; sem este ignore o
       # Dependabot reabre o mesmo PR toda semana.
+      #
+      # ATENCAO — esta regra sozinha NAO basta, e o PR #12 provou: ele nao
+      # atualizou a versao instalada, AFROUXOU O TETO da constraint
+      # (`<2.0.0` -> `<3.0.0`), operacao que o Dependabot nao classifica como
+      # semver-major. A regressao reincidiu e so o CI, resolvendo do zero,
+      # expos o problema — a maquina de desenvolvimento ja tinha pygls 1.x
+      # instalado e a suite ficava verde.
+      #
+      # Por isso pygls e lsprotocol sao ignorados POR COMPLETO: qualquer
+      # mexida neles e' decisao manual, feita junto com a migracao do servidor.
       - dependency-name: "pygls"
-        update-types: ["version-update:semver-major"]
       - dependency-name: "lsprotocol"
-        update-types: ["version-update:semver-major"]
 
   - package-ecosystem: "github-actions"
     directory: "/"

@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed — `dependabot.yml`: `pygls`/`lsprotocol` ignorados por completo
+
+- A regra anterior cobria apenas `version-update:semver-major`, e **não bastou**:
+  o PR #12 não atualizou a versão instalada, **afrouxou o teto da constraint**
+  (`<2.0.0` → `<3.0.0`), operação que o Dependabot classifica de outra forma. A
+  regressão do PR #6 reincidiu por essa fresta.
+- Agora os dois são ignorados integralmente — qualquer mexida neles é decisão
+  manual, feita junto com a migração do servidor.
+- O grupo `python-dependencies` passa a aceitar apenas `minor`/`patch`; majors
+  vêm em PR individual, revisável e reversível.
+- Mesmo padrão aplicado ao `synesis-vscode`, onde o PR #8 juntou 9 pacotes com
+  6 majors num diff de 2 mil linhas.
+
 ## [0.23.0] - 2026-08-18
 
 ### Fixed — Regressão do `pygls<3.0.0` reintroduzida (2ª vez)
