@@ -56,14 +56,19 @@ def compute_references(
         return _find_bibref_references(lp, word[1:], workspace_root, include_declaration)
     else:
         # Code
-        return _find_code_references(lp, word, workspace_root, include_declaration)
+        template = getattr(result, "template", None)
+        field_specs = getattr(template, "field_specs", None) if template else None
+        return _find_code_references(
+            lp, word, workspace_root, include_declaration, field_specs
+        )
 
 
 def _find_code_references(
     lp,
     code: str,
     workspace_root: Optional[Path],
-    include_declaration: bool
+    include_declaration: bool,
+    field_specs: Optional[dict] = None,
 ) -> Optional[list[Location]]:
     """
     Encontra todas as referências a um code.
@@ -93,8 +98,11 @@ def _find_code_references(
                     locations.append(loc)
 
     # 2. Buscar usos nos arquivos .syn
-    code_usage = getattr(lp, "code_usage", {}) or {}
-    items = code_usage.get(code, code_usage.get(normalized, []))
+    # Via módulo compartilhado: `lp.code_usage` cru omite conceitos que só
+    # aparecem em CHAIN, e Find All References devolvia lista vazia para eles.
+    from synesis_lsp.code_usage import usage_items
+
+    items = usage_items(lp, code, field_specs)
 
     for item in items:
         # Localização do item

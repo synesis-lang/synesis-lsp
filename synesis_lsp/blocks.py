@@ -33,6 +33,73 @@ except ImportError:
     _RE_SOURCE = re.compile(r"^\s*SOURCE\s+@([\w._-]+)", re.MULTILINE)
     _RE_ITEM = re.compile(r"^\s*ITEM\s+@([\w._-]+)", re.MULTILINE)
 
+# Delimitadores usados para achar o FIM real de um bloco (ver _find_block_end).
+_RE_BLOCK_END = re.compile(r"^(\s*)END\s+(SOURCE|ITEM)\b", re.IGNORECASE)
+_RE_BLOCK_START = re.compile(r"^(\s*)(SOURCE|ITEM)\s+@", re.IGNORECASE)
+
+
+def _indent_width(line: str) -> int:
+    """Largura da indentação de uma linha."""
+    return len(line) - len(line.lstrip())
+
+
+def _find_block_end(lines: list[str], start_0: int, kind: str) -> int:
+    """
+    Linha (0-based) do fim real do bloco iniciado em `start_0`.
+
+    Antes, o fim era inferido por adjacência — "a linha anterior ao início do
+    próximo bloco". Todo espaço entre o `END` verdadeiro e o próximo bloco
+    (linhas em branco e, sobretudo, COMENTÁRIOS) era atribuído ao bloco
+    anterior. Um `# Estudo de Silva 2020` escrito acima de `SOURCE @b2020`
+    pertencia, para o getBlocks, ao ITEM de @a2019: o cursor ali resolvia o
+    bibref errado, e o synesis-coder inseria o ITEM gerado depois do comentário
+    da fonte seguinte.
+
+    Comentários são `%ignore` na gramática, então não existem no AST nem no
+    lexer — daí o fim precisar ser derivado do texto.
+
+    A comparação de indentação não é cosmética: um valor de campo multilinha
+    pode conter uma linha `END ITEM` indentada, e isso COMPILA. Sem exigir que o
+    `END` esteja no nível da abertura, um bloco assim seria truncado no meio.
+
+    Bloco sem `END` (estado normal durante a digitação) termina na linha
+    anterior ao próximo bloco de mesmo nível.
+
+    Args:
+        lines: linhas do documento
+        start_0: linha 0-based onde o bloco começa
+        kind: "SOURCE" ou "ITEM"
+
+    Returns:
+        Índice 0-based da linha final do bloco.
+    """
+    if start_0 >= len(lines):
+        return max(0, len(lines) - 1)
+
+    base_indent = _indent_width(lines[start_0])
+    target = kind.upper()
+
+    for i in range(start_0 + 1, len(lines)):
+        end_match = _RE_BLOCK_END.match(lines[i])
+        if (
+            end_match
+            and end_match.group(2).upper() == target
+            and len(end_match.group(1)) <= base_indent
+        ):
+            return i
+
+        start_match = _RE_BLOCK_START.match(lines[i])
+        if start_match and len(start_match.group(1)) <= base_indent:
+            return max(start_0, i - 1)
+
+    return max(0, len(lines) - 1)
+
+
+def _end_position(lines: list[str], end_line_0: int) -> tuple[int, int]:
+    """Converte a linha final em (line, character) do range LSP."""
+    end_char = len(lines[end_line_0]) if 0 <= end_line_0 < len(lines) else 0
+    return end_line_0, end_char
+
 
 def get_blocks(file_path: str, workspace_root: Optional[Path] = None) -> dict:
     """
@@ -105,65 +172,29 @@ def _blocks_from_nodes(nodes: list, source: str) -> list[dict]:
 
     lines = source.splitlines()
 
-    # Linha de início de todos os nodes top-level (para calcular fim de cada bloco)
-    all_start_lines: list[int] = sorted(
-        node.location.line
-        for node in nodes
-        if getattr(node, "location", None) is not None
-    )
-
-    def _block_end(start_line_1based: int) -> tuple[int, int]:
-        """Retorna (line_0based, character) do fim do bloco."""
-        if start_line_1based in all_start_lines:
-            idx = all_start_lines.index(start_line_1based)
-            if idx + 1 < len(all_start_lines):
-                end_line_0 = all_start_lines[idx + 1] - 2
-            else:
-                end_line_0 = max(0, len(lines) - 1)
-        else:
-            end_line_0 = max(0, len(lines) - 1)
-        end_char = len(lines[end_line_0]) if end_line_0 < len(lines) else 0
-        return end_line_0, end_char
-
-    # Agrupar items por bibref para herdar bibref do SOURCE pai quando necessário
     source_nodes = [n for n in nodes if isinstance(n, SourceNode)]
     item_nodes = [n for n in nodes if isinstance(n, ItemNode)]
 
     blocks: list[dict] = []
 
-    for snode in source_nodes:
-        loc = snode.location
-        if loc is None:
-            continue
-        start_0 = max(0, loc.line - 1)
-        start_col = max(0, loc.column - 1)
-        end_0, end_char = _block_end(loc.line)
-        bibref = _normalize_bibref(snode.bibref)
-        blocks.append({
-            "kind": "SOURCE",
-            "bibref": bibref,
-            "range": {
-                "start": {"line": start_0, "character": start_col},
-                "end":   {"line": end_0,   "character": end_char},
-            },
-        })
-
-    for item in item_nodes:
-        loc = item.location
-        if loc is None:
-            continue
-        start_0 = max(0, loc.line - 1)
-        start_col = max(0, loc.column - 1)
-        end_0, end_char = _block_end(loc.line)
-        bibref = _normalize_bibref(item.bibref)
-        blocks.append({
-            "kind": "ITEM",
-            "bibref": bibref,
-            "range": {
-                "start": {"line": start_0, "character": start_col},
-                "end":   {"line": end_0,   "character": end_char},
-            },
-        })
+    for kind, node_list in (("SOURCE", source_nodes), ("ITEM", item_nodes)):
+        for node in node_list:
+            loc = node.location
+            if loc is None:
+                continue
+            start_0 = max(0, loc.line - 1)
+            start_col = max(0, loc.column - 1)
+            end_0, end_char = _end_position(
+                lines, _find_block_end(lines, start_0, kind)
+            )
+            blocks.append({
+                "kind": kind,
+                "bibref": _normalize_bibref(node.bibref),
+                "range": {
+                    "start": {"line": start_0, "character": start_col},
+                    "end":   {"line": end_0,   "character": end_char},
+                },
+            })
 
     # Ordenar por linha de início
     blocks.sort(key=lambda b: b["range"]["start"]["line"])
@@ -226,21 +257,21 @@ def _blocks_from_lex(source: str) -> list[dict]:
 def _build_ranges(
     achados: list[tuple[int, str, str]], lines: list[str]
 ) -> list[dict]:
-    """Converte (linha, kind, bibref) em blocos com range LSP 0-based."""
+    """
+    Converte (linha, kind, bibref) em blocos com range LSP 0-based.
+
+    O fim vem de `_find_block_end` (o `END` real), não da adjacência do próximo
+    bloco — mesma regra do caminho AST, para que a escada de degradação não mude
+    de comportamento conforme o documento compile ou não.
+    """
     achados.sort(key=lambda t: t[0])
     blocks: list[dict] = []
 
-    for i, (line_idx, kind, bibref) in enumerate(achados):
-        if i + 1 < len(achados):
-            end_line = achados[i + 1][0] - 1
-        else:
-            end_line = max(0, len(lines) - 1)
-        end_char = len(lines[end_line]) if end_line < len(lines) else 0
-        col = (
-            len(lines[line_idx]) - len(lines[line_idx].lstrip())
-            if line_idx < len(lines)
-            else 0
+    for line_idx, kind, bibref in achados:
+        end_line, end_char = _end_position(
+            lines, _find_block_end(lines, line_idx, kind)
         )
+        col = _indent_width(lines[line_idx]) if line_idx < len(lines) else 0
         blocks.append({
             "kind": kind,
             "bibref": _normalize_bibref(bibref),
@@ -254,9 +285,14 @@ def _build_ranges(
 
 
 def _blocks_from_regex(source: str) -> list[dict]:
-    """Fallback: extrai blocos via regex quando compile_string falha (doc inválido)."""
+    """
+    Fallback: extrai blocos via regex quando compile_string falha (doc inválido).
+
+    Delega a construção dos ranges a `_build_ranges` — antes esta função tinha
+    sua própria cópia da lógica, e corrigir o cálculo de fim exigiria fazê-lo
+    duas vezes.
+    """
     lines = source.splitlines()
-    blocks: list[dict] = []
 
     all_matches: list[tuple[int, str, str]] = []  # (line_idx, kind, bibref)
     for m in _RE_SOURCE.finditer(source):
@@ -266,25 +302,7 @@ def _blocks_from_regex(source: str) -> list[dict]:
         line_idx = source[: m.start()].count("\n")
         all_matches.append((line_idx, "ITEM", m.group(1)))
 
-    all_matches.sort(key=lambda t: t[0])
-
-    for i, (line_idx, kind, bibref) in enumerate(all_matches):
-        if i + 1 < len(all_matches):
-            end_line = all_matches[i + 1][0] - 1
-        else:
-            end_line = max(0, len(lines) - 1)
-        end_char = len(lines[end_line]) if end_line < len(lines) else 0
-        col = len(lines[line_idx]) - len(lines[line_idx].lstrip()) if line_idx < len(lines) else 0
-        blocks.append({
-            "kind": kind,
-            "bibref": _normalize_bibref(bibref),
-            "range": {
-                "start": {"line": line_idx, "character": col},
-                "end":   {"line": end_line,  "character": end_char},
-            },
-        })
-
-    return blocks
+    return _build_ranges(all_matches, lines)
 
 
 def _normalize_bibref(value: str) -> str:

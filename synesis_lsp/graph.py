@@ -311,8 +311,12 @@ def _triples_for_bibref(lp, template, bibref: str) -> list[tuple[str, str, str]]
         if triples:
             return triples
 
-    # Stage 2 (fallback): Filtro por códigos em all_triples
-    relevant = _codes_for_bibref(lp, bibref)
+    # Stage 2 (fallback): Filtro por códigos em all_triples.
+    # `field_specs` é obrigatório aqui: sem ele, os nomes de RELAÇÃO das chains
+    # (CAUSES, ENABLES, …) entram na varredura como se fossem conceitos.
+    relevant = _codes_for_bibref(
+        lp, bibref, getattr(template, "field_specs", None) if template else None
+    )
     if not relevant:
         return []
 
@@ -346,12 +350,15 @@ def _extract_chain_triple(chain) -> Optional[tuple[str, str, str]]:
     return None
 
 
-def _codes_for_bibref(lp, bibref: str) -> set[str]:
+def _codes_for_bibref(lp, bibref: str, field_specs: Optional[dict] = None) -> set[str]:
     """
     Find all codes used by items that reference the given bibref.
 
     Uses enhanced _item_bibref() with more fallback strategies.
     Stage 2 uses _iter_codes_from_item_all() without ontology filter.
+
+    `field_specs` é opcional: sem ele, a varredura de chains cai nos nomes de
+    campo convencionais (`chain`/`chains`), que cobrem o caso comum.
     """
     normalized = _normalize_bibref(bibref)
     if not normalized:
@@ -359,8 +366,14 @@ def _codes_for_bibref(lp, bibref: str) -> set[str]:
 
     relevant: set[str] = set()
 
-    # Stage 1: Try code_usage (with enhanced _item_bibref)
-    code_usage = getattr(lp, "code_usage", {}) or {}
+    # Stage 1: uso de conceitos (com _item_bibref enriquecido).
+    # Usa o módulo compartilhado em vez de `lp.code_usage` cru: este último
+    # omite conceitos que só aparecem em CHAIN, e o `return` logo abaixo tornava
+    # a omissão definitiva — o Stage 2 só roda quando o Stage 1 devolve ZERO
+    # resultados, nunca quando devolve resultado parcial.
+    from synesis_lsp.code_usage import build_code_usage
+
+    code_usage = build_code_usage(lp, field_specs)
     if code_usage:
         for code, items in code_usage.items():
             for item in _iter_items(items):

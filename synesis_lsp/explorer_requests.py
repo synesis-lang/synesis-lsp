@@ -388,8 +388,12 @@ def _item_field_maps(field_specs: dict) -> tuple[set[str], set[str], dict[str, b
     return code_fields, chain_fields, chain_relations
 
 
-def _get_code_usage(lp, field_specs) -> dict:
-    raw_usage = None
+def _raw_code_usage(lp):
+    """Índice de uso montado pelo compilador, sob qualquer um dos nomes aceitos.
+
+    Cobre apenas campos CODE — chains não entram. Use `code_usage.build_code_usage`
+    para o dado completo.
+    """
     for attr_name in (
         "code_usage",
         "code_usage_index",
@@ -398,34 +402,20 @@ def _get_code_usage(lp, field_specs) -> dict:
     ):
         value = getattr(lp, attr_name, None)
         if value and hasattr(value, "items"):
-            raw_usage = value
-            break
+            return value
+    return None
 
-    if not raw_usage:
-        return _build_code_usage_from_sources(
-            lp,
-            field_specs,
-            include_code=True,
-            include_chain=True,
-        )
 
-    usage: dict[str, list] = {}
-    for code, items in raw_usage.items():
-        usage[code] = list(items)
+def _get_code_usage(lp, field_specs) -> dict:
+    """Uso de conceitos, com chaves normalizadas e chains incluídas.
 
-    # Complementar com códigos de CHAIN que não aparecem em code_usage.
-    chain_usage = _build_code_usage_from_sources(
-        lp,
-        field_specs,
-        include_code=False,
-        include_chain=True,
-    )
-    for code, items in chain_usage.items():
-        if code in usage:
-            continue
-        usage[code] = list(items)
+    Delega a `synesis_lsp.code_usage` — fonte única compartilhada com hover,
+    completion, references e graph. Antes, esta função era a única implementação
+    correta do projeto, e os demais consumidores liam `lp.code_usage` cru.
+    """
+    from synesis_lsp.code_usage import build_code_usage
 
-    return usage
+    return build_code_usage(lp, field_specs)
 
 
 def _build_code_usage_from_sources(
@@ -1202,8 +1192,13 @@ def get_excerpts(cached_result, bibref: str) -> dict:
     target = str(bibref).lstrip("@").lower()
 
     items_out = []
+    source_out: dict = {}
     sources = getattr(lp, "sources", {}) or {}
     for src in _iter_sources(sources):
+        src_bibref = str(getattr(src, "bibref", "") or "").lstrip("@").lower()
+        if src_bibref == target:
+            source_out = _serialize_source_fields(src)
+
         for item in getattr(src, "items", []) or []:
             item_bibref = str(getattr(item, "bibref", "") or "").lstrip("@").lower()
             if item_bibref != target:
@@ -1251,7 +1246,21 @@ def get_excerpts(cached_result, bibref: str) -> dict:
                 "file": file_str,
             })
 
-    return {"success": True, "items": items_out}
+    return {"success": True, "items": items_out, "source": source_out}
+
+
+def _serialize_source_fields(src) -> dict:
+    """Campos do bloco SOURCE em formato JSON-safe.
+
+    Chave NOVA no payload de getExcerpts (`source`), nunca alteração de `items`:
+    uma extensão antiga simplesmente ignora o campo desconhecido.
+
+    Ao contrário do ItemNode, o SourceNode não passa por promoção de campos — o
+    transformer roteia quote/note por nome apenas para items. `src.fields` já é
+    o dicionário completo, e não há `_reinsert_promoted_fields` a aplicar aqui.
+    """
+    raw = getattr(src, "fields", None) or {}
+    return {str(name): _serialize_field_value(value) for name, value in raw.items()}
 
 
 _PROMOTED_QUOTE_NAMES = {"quote", "quotation"}

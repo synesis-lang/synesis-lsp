@@ -168,8 +168,13 @@ def _hover_code(word: str, cached_result) -> Optional[Hover]:
     if not onto:
         return None
 
-    code_usage = getattr(lp, "code_usage", {})
-    usage_count = len(code_usage.get(normalized, code_usage.get(word, [])))
+    # `lp.code_usage` indexa apenas campos CODE: um conceito usado só em CHAIN
+    # aparecia como "0 itens". O módulo compartilhado cobre as duas formas.
+    from synesis_lsp.code_usage import usage_count as _usage_count
+
+    template = getattr(result, "template", None)
+    field_specs = getattr(template, "field_specs", None) if template else None
+    usage_count = _usage_count(lp, onto.concept or word, field_specs)
 
     md = f"**Ontologia: `{onto.concept}`**\n\n"
     if onto.description:

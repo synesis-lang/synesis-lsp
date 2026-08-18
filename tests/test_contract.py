@@ -25,7 +25,13 @@ CONTRACTS = Path(__file__).resolve().parents[1] / "contracts"
 SCHEMAS = CONTRACTS / "schemas"
 EXAMPLES = CONTRACTS / "examples"
 
-ENDPOINTS = ["getReferences", "getCodes", "getRelations", "getOntologyAnnotations"]
+ENDPOINTS = [
+    "getReferences",
+    "getCodes",
+    "getRelations",
+    "getOntologyAnnotations",
+    "getExcerpts",
+]
 
 
 def _load(path: Path) -> dict:
@@ -111,6 +117,20 @@ def test_real_output_matches_schema():
     _validator("getCodes").validate(get_codes(cached))
     _validator("getRelations").validate(get_relations(cached))
     _validator("getOntologyAnnotations").validate(get_ontology_annotations(cached, ws))
+
+
+@pytest.mark.skipif(not BASIC.exists(), reason="fixtures do compilador não disponíveis neste checkout")
+def test_real_excerpts_output_matches_schema():
+    """getExcerpts com um bibref real — inclui a chave `source`."""
+    from synesis_lsp.explorer_requests import get_excerpts, get_references
+
+    cached, _ws = _compile_cached(BASIC)
+    refs = get_references(cached)["references"]
+    assert refs, "esperado ao menos um SOURCE na fixture Basic"
+
+    payload = get_excerpts(cached, refs[0]["bibref"])
+    assert "source" in payload, "a chave source deve estar sempre presente"
+    _validator("getExcerpts").validate(payload)
 
 
 @pytest.mark.skipif(not CHAINS.exists(), reason="fixture T02 não disponível neste checkout")

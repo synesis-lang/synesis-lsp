@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://synesis-lang.org/contracts/lsp/getExcerpts.schema.json",
+  "title": "synesis/getExcerpts — response",
+  "description": "ITEM blocks of one bibref, plus the fields of its SOURCE block. Producer: get_excerpts (explorer_requests.py). Consumers: DataService.getExcerpts and DataService.getExcerptsWithSource (dataService.js). The `source` key was added after the endpoint shipped: an older server omits it, and the client treats its absence as 'no SOURCE fields'.",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "success": { "const": true },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "extra_fields": {
+                "type": "object",
+                "description": "Field name -> JSON-safe value. Includes fields the transformer promotes off extra_fields (quote/note), reinserted by _reinsert_promoted_fields."
+              },
+              "codes": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "chains": {
+                "type": "array",
+                "items": { "type": "string" },
+                "description": "Serialized as 'A -> B -> C'."
+              },
+              "line": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "1-based, as received from the compiler. DataService converts to 0-based."
+              },
+              "file": {
+                "type": "string",
+                "description": "Path relative to workspace_root."
+              }
+            },
+            "required": ["extra_fields", "codes", "chains", "line", "file"],
+            "additionalProperties": false
+          }
+        },
+        "source": {
+          "type": "object",
+          "description": "Fields of the SOURCE block for this bibref, name -> JSON-safe value. Empty object when the SOURCE has no extra fields or the bibref is unknown — never null."
+        }
+      },
+      "required": ["success", "items"],
+      "additionalProperties": false
+    },
+    { "$ref": "common.schema.json#/$defs/errorResponse" }
+  ]
+}

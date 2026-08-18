@@ -1419,6 +1419,13 @@ def validate_document(ls: SynesisLanguageServer, uri: str) -> None:
         # CONVERTER PARA DIAGNÓSTICOS LSP
         diagnostics = build_diagnostics(result)
 
+        # MESCLAR ERROS CROSS-FILE
+        # validate_single_file olha um arquivo isolado: erros que dependem da
+        # relação entre blocos (ITEM sem SOURCE, conceito de ontologia
+        # duplicado) só existem no linker, que roda na compilação do projeto.
+        # Publicar apenas o per-file apagava esses diagnósticos da tela.
+        diagnostics = _merge_project_diagnostics(ls, uri, diagnostics)
+
         # PUBLICAR DIAGNÓSTICOS
         try:
             logger.debug(f"Publishing {len(diagnostics)} diagnostics for {uri}")
@@ -1647,6 +1654,87 @@ def did_change_configuration(
 
     except Exception as e:
         logger.error(f"Erro ao processar mudança de configuração: {e}", exc_info=True)
+
+
+#: Erros que só o linker detecta — dependem da relação entre blocos do projeto,
+#: e portanto nunca aparecem em `validate_single_file` (que vê um arquivo por
+#: vez). Allowlist deliberadamente estreita: mesclar tudo do projeto traria
+#: diagnósticos obsoletos, já que o projeto compilado é mais antigo que o buffer
+#: sendo editado. Aqui, o pior caso é um erro cross-file persistir até o save.
+_CROSS_FILE_CODES = frozenset({
+    "SYNESIS_E002",  # OrphanItem — ITEM sem SOURCE correspondente
+    "SYNESIS_E003",  # SourceWithoutItems — SOURCE sem nenhum ITEM (warning)
+    "SYNESIS_E068",  # DuplicateOntologyConcept — conceito declarado 2x
+    "SYNESIS_E005",  # OntologyWithoutTemplateFields
+})
+
+
+def _diagnostic_key(diagnostic) -> tuple:
+    """Identidade de um diagnóstico, para deduplicação.
+
+    Linha + coluna + mensagem: um mesmo erro detectado pelos dois caminhos
+    (per-file e projeto) tem os três iguais. Sem isso, `UnregisteredSource`
+    apareceria duplicado na tela — medido.
+    """
+    start = diagnostic.range.start
+    return (start.line, start.character, diagnostic.message)
+
+
+def _merge_project_diagnostics(
+    ls: SynesisLanguageServer, uri: str, diagnostics: list
+) -> list:
+    """
+    Acrescenta aos diagnósticos per-file os erros cross-file deste arquivo.
+
+    Só as classes de `_CROSS_FILE_CODES` são mescladas, e a severidade de
+    origem é preservada — `SourceWithoutItems` é warning no compilador, e
+    promovê-lo a erro seria mais severo do que o próprio compilador considera.
+
+    Falha em silêncio: um problema aqui não pode impedir a publicação dos
+    diagnósticos per-file, que são o caminho principal.
+
+    Limitação conhecida: o projeto compilado é mais antigo que o buffer em
+    edição. Corrigir um erro cross-file sem salvar mantém o diagnóstico na tela
+    até o `did_save` disparar a recompilação (`_revalidate_workspace_deferred`).
+    É o preço de exibi-los; a allowlist estreita mantém a janela pequena.
+    """
+    try:
+        cached = _get_cached_for_uri(ls, uri)
+        validation_result = getattr(getattr(cached, "result", None), "validation_result", None)
+        if validation_result is None:
+            return diagnostics
+
+        from synesis_lsp.converters import group_diagnostics_by_file
+
+        workspace_root = getattr(cached, "workspace_root", None)
+        by_file = group_diagnostics_by_file(validation_result, workspace_root)
+
+        project_diagnostics = by_file.get(uri)
+        if not project_diagnostics:
+            return diagnostics
+
+        seen = {_diagnostic_key(d) for d in diagnostics}
+        merged = list(diagnostics)
+        for diagnostic in project_diagnostics:
+            if getattr(diagnostic, "code", None) not in _CROSS_FILE_CODES:
+                continue
+            key = _diagnostic_key(diagnostic)
+            if key in seen:
+                continue
+            seen.add(key)
+            merged.append(diagnostic)
+
+        if len(merged) != len(diagnostics):
+            logger.debug(
+                "Mesclados %d diagnósticos cross-file em %s",
+                len(merged) - len(diagnostics),
+                uri,
+            )
+        return merged
+
+    except Exception as e:
+        logger.warning("Falha ao mesclar diagnósticos de projeto para %s: %s", uri, e)
+        return diagnostics
 
 
 def _publish_compilation_diagnostics(

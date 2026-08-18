@@ -36,6 +36,7 @@ from lsprotocol.types import (
     InsertTextFormat,
     Position,
 )
+from synesis.ast.normalize import normalize_code as _normalize_code
 
 logger = logging.getLogger(__name__)
 
@@ -99,10 +100,13 @@ def compute_completions(
     # Sugerir códigos da ontologia apenas em contexto CODE/CHAIN
     lp = getattr(result, "linked_project", None)
     if lp and in_code_context:
+        from synesis_lsp.code_usage import build_code_usage
+
         ontology_index = getattr(lp, "ontology_index", {}) or {}
-        code_usage = getattr(lp, "code_usage", {}) or {}
+        # Inclui conceitos usados só em CHAIN, que `lp.code_usage` não indexa.
+        code_usage = build_code_usage(lp, field_specs)
         for concept in ontology_index:
-            usage_count = len(code_usage.get(concept, []))
+            usage_count = len(code_usage.get(_normalize_code(concept), []))
             items.append(
                 CompletionItem(
                     label=concept,

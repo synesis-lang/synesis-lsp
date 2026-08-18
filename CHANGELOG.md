@@ -7,6 +7,95 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.23.0] - 2026-08-18
+
+### Fixed — Erros de projeto não apareciam no editor
+
+- **`ITEM` cuja referência não existe não acusava erro** (`synesis_lsp/server.py`)
+  - Escrever `ITEM @barbieri20101` (chave inexistente) não produzia diagnóstico
+    algum no editor, embora `synesis compile` apontasse o erro. O mesmo valia
+    para `SOURCE` sem nenhum `ITEM` e para conceito de ontologia declarado duas
+    vezes.
+  - Causa: a validação que roda a cada tecla olha **um arquivo por vez**. Erros
+    que dependem da relação entre blocos existem apenas na compilação do
+    projeto, e o resultado por arquivo era publicado por cima deles, apagando-os
+    da tela.
+  - Explica por que o defeito parecia inconsistente: escrever `SOURCE` **e**
+    `ITEM` com a chave inexistente acusava normalmente — esse caso é detectável
+    olhando só o arquivo. Sem o `SOURCE`, não havia o que cruzar.
+  - Agora os dois conjuntos são combinados. Quatro classes entram: ITEM sem
+    SOURCE, SOURCE sem ITEM, conceito de ontologia duplicado e ontologia sem
+    campos no template. A severidade de origem é preservada — o que é aviso no
+    compilador continua aviso no editor.
+  - **Limitação conhecida:** corrigir um desses erros sem salvar mantém a marca
+    na tela até o próximo save, quando o projeto é recompilado.
+
+### Fixed — Conceito usado apenas em CHAIN contava como "0 itens"
+
+- **Hover, autocomplete, Find All References e Graph View ignoravam chains**
+  (`synesis_lsp/code_usage.py`, novo)
+  - Parar o mouse sobre um conceito exibia a descrição correta da ontologia
+    seguida de "Usado em **0** itens", mesmo com o conceito em uso. *Find All
+    References* devolvia lista vazia, sugerindo que o conceito não era usado em
+    lugar nenhum, e o Graph View o omitia.
+  - Causa: o índice de uso montado pelo compilador cobre apenas campos do tipo
+    CODE. Um conceito que aparece só dentro de uma CHAIN não tem entrada nele.
+    O painel **Codes** era o único lugar correto, porque complementava com as
+    chains por conta própria.
+  - Essa lógica virou módulo compartilhado (`code_usage.py`), agora usado pelos
+    cinco consumidores. Corrigir copiando o trecho para cada um seria repetir a
+    causa da divergência.
+  - **Dois defeitos adicionais** encontrados na lógica que serviu de base: as
+    chaves não eram normalizadas (o mesmo conceito virava duas entradas conforme
+    a caixa) e um conceito usado em CODE **e** em CHAIN não somava os dois usos.
+    Ambos ficavam escondidos porque o painel Codes reagrupava depois.
+  - No Graph View havia ainda um agravante: o caminho alternativo que teria
+    capturado as chains só era acionado quando o principal devolvia **zero**
+    resultados — nunca quando devolvia resultado incompleto.
+
+### Fixed — `synesis/getBlocks`: fim do bloco era estimado, não lido
+
+- **Comentários e linhas em branco eram atribuídos ao bloco anterior**
+  (`synesis_lsp/blocks.py`)
+  - `_block_end` calculava o fim de um bloco como *"a linha anterior ao início do
+    próximo"*. O `END SOURCE` / `END ITEM` real nunca era consultado, então tudo
+    entre o fim verdadeiro e o bloco seguinte — sobretudo **comentários** —
+    passava a pertencer ao bloco anterior.
+  - Efeitos observados na extensão: com o cursor sobre um comentário que rotula a
+    fonte seguinte, o *Show Abstract* abria o abstract da fonte anterior; e o
+    `synesis-coder` inseria o ITEM gerado **depois** desse comentário, isto é, no
+    território visual da próxima fonte.
+  - Comentários são `%ignore` na gramática: não existem no AST nem no lexer. O
+    fim precisa ser derivado do texto, e é o que `_find_block_end` faz.
+  - **A comparação de indentação não é cosmética:** um valor de campo multilinha
+    pode conter uma linha `END ITEM` indentada — e isso compila. Sem exigir que o
+    `END` esteja no nível da abertura do bloco, um bloco assim seria truncado no
+    meio.
+  - Corrigido nos **três** degraus da escada de degradação (AST, lexer, regex):
+    qual degrau roda depende de o documento compilar, não da intenção de quem
+    edita, e os ranges não podem divergir entre eles. `_blocks_from_regex` passou
+    a delegar a `_build_ranges` em vez de manter cópia própria da lógica.
+
+### Added — `synesis/getExcerpts` devolve os campos do bloco SOURCE
+
+- **Nova chave `source` no payload** (`synesis_lsp/explorer_requests.py`)
+  - `get_excerpts` devolvia apenas ITEMs. Um template com campos de escopo SOURCE
+    (`description`, `method`, `epistemic_model`) produzia um abstract viewer onde
+    **nenhum deles aparecia**: o cabeçalho era montado só a partir do `.bib`, e os
+    campos do `.syn` não tinham por onde chegar ao cliente.
+  - `source` é um dicionário `{nome: valor}`, sempre presente na resposta de
+    sucesso — vazio quando o SOURCE não tem campos extras ou a referência não
+    existe, **nunca `null`**.
+  - Chave **nova**, sem alteração da forma de `items`: um cliente anterior ignora
+    o campo desconhecido e segue funcionando.
+  - Ao contrário do `ItemNode`, o `SourceNode` não passa por promoção de campos —
+    o transformer roteia `quote`/`note` por nome apenas para items. `src.fields`
+    já é o dicionário completo.
+
+- **`contracts/schemas/getExcerpts.schema.json`** — o endpoint não tinha schema,
+  o que é a razão de o defeito acima ter passado despercebido. Agora entra no
+  teste de contrato, validado contra a saída real do handler.
+
 ### Fixed — Regressão: `pygls<3.0.0` quebrou a suíte inteira
 
 - **Teto de `pygls` restaurado para `<2.0.0`** (`pyproject.toml`) — o PR #6 do

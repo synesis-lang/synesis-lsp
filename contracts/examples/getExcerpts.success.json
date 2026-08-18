@@ -1,0 +1,29 @@
+{
+  "success": true,
+  "items": [
+    {
+      "extra_fields": {
+        "citation": "Uma grande onda de perseguição começou naquele dia",
+        "note": "A perseguição é consequência direta do anúncio do Evangelho.",
+        "zone": "results"
+      },
+      "codes": ["Perseguicoes", "Deslocamento"],
+      "chains": ["Perseguicao -> CAUSES -> Deslocamento"],
+      "line": 6,
+      "file": "biblestudy.syn"
+    },
+    {
+      "extra_fields": {
+        "citation": "Todos eles, com exceção dos apóstolos, foram dispersos"
+      },
+      "codes": [],
+      "chains": [],
+      "line": 12,
+      "file": "biblestudy.syn"
+    }
+  ],
+  "source": {
+    "description": "A morte de Estevão desencadeia uma grande perseguição contra a igreja primitiva",
+    "bible_verses_used": "Atos 8.1-25"
+  }
+}
