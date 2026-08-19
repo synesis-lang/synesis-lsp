@@ -1,10 +1,24 @@
 version: 2
+
+# Atualizacoes automaticas de versao DESLIGADAS (2026-08-18).
+#
+# O volume de PRs superava o ganho. As GitHub Actions estao pinadas por SHA de
+# commit, de modo que um bump de tag nao altera o que roda no CI.
+#
+# O que NAO esta desligado: os *security updates*, controlados em
+# Settings > Code security. Alertas de vulnerabilidade continuam chegando.
+# Desligar as duas coisas deixaria as actions pinadas sem caminho de
+# atualizacao — pin sem auditoria e risco, nao protecao.
+#
+# Para religar: troque `open-pull-requests-limit: 0` por um numero > 0. Os
+# blocos `ignore` abaixo continuam valendo e NAO devem ser removidos: cada um
+# registra uma quebra real de CI.
 updates:
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
       interval: "weekly"
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 0
     groups:
       # So minor/patch entram agrupados. Majors ficam em PR individual: um bump
       # agrupado esconde a mudanca que importa e nao ha como reverter em partes.
@@ -35,4 +49,4 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 0
