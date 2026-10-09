@@ -1063,8 +1063,11 @@ def debug_project_info(ls: SynesisLanguageServer, params) -> dict:
 
     template = getattr(result, "template", None)
     field_specs = getattr(template, "field_specs", {}) if template else {}
-    chain_spec = field_specs.get("chain") if field_specs else None
-    chain_has_relations = bool(getattr(chain_spec, "relations", None)) if chain_spec else None
+    # Pelo TIPO: qualquer campo CHAIN (antes, só o chamado `chain`).
+    from synesis_lsp.explorer_requests import _is_chain_field, any_chain_has_relations
+
+    has_chain_field = any(_is_chain_field(sp) for sp in (field_specs or {}).values())
+    chain_has_relations = any_chain_has_relations(field_specs) if has_chain_field else None
 
     info = {
         "success": True,

@@ -114,13 +114,15 @@ def get_relation_graph(
 
 
 def _has_chain_relations(template) -> bool:
+    """Algum campo CHAIN (pelo TIPO, qualquer nome) declara RELATIONS?
+
+    Antes só o campo chamado `chain` era consultado.
+    """
     if not template:
         return False
-    field_specs = getattr(template, "field_specs", None) or {}
-    chain_spec = field_specs.get("chain")
-    if chain_spec and getattr(chain_spec, "relations", None):
-        return True
-    return False
+    from synesis_lsp.explorer_requests import any_chain_has_relations
+
+    return any_chain_has_relations(getattr(template, "field_specs", None) or {})
 
 
 def _normalize_bibref(value: str) -> str:

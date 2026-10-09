@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.23.1] - 2026-10-09
+
+### Fixed — CHAIN fields by their declared TYPE
+
+Audit of 2026-10-09. CHAIN fields with arbitrary names were already read by type
+from `extra_fields`; three places still looked for the field named `chain`:
+
+- the spec of `item.chains` came from `field_specs.get("chain")` — a field named
+  `chains` or `Chain` lost its RELATIONS and had relations read as concepts
+  (`_traditional_chain_spec`);
+- the Mermaid graph (`_has_chain_relations`) and the project stats
+  (`chainHasRelations`) only checked the field `chain`; they now check every
+  CHAIN field (`any_chain_has_relations`).
+
+Works with the compiler fix in `synesis` 0.13.2, which adds the triples of
+arbitrarily named CHAIN fields to `all_triples`.
+
 ### Changed — `dependabot.yml`: `pygls`/`lsprotocol` ignorados por completo
 
 - A regra anterior cobria apenas `version-update:semver-major`, e **não bastou**:

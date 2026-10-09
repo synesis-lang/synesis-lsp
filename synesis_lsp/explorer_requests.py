@@ -351,6 +351,28 @@ def _is_chain_field(spec) -> bool:
     return "CHAIN" in type_name.upper()
 
 
+def _traditional_chain_spec(field_specs):
+    """Spec do campo que o parser põe em `item.chains`.
+
+    O parser só preenche `item.chains` com os campos chamados `chain`/`chains`
+    (qualquer caixa); os demais CHAIN ficam em `extra_fields` e são lidos pelo
+    tipo. Antes, a spec vinha de `field_specs.get("chain")`: um campo `chains`
+    ou `Chain` perdia as RELATIONS e tinha as relações lidas como conceitos.
+    """
+    for name, spec in (field_specs or {}).items():
+        if str(name).lower() in {"chain", "chains"} and _is_chain_field(spec):
+            return spec
+    return None
+
+
+def any_chain_has_relations(field_specs) -> bool:
+    """Algum campo CHAIN do template (pelo tipo, qualquer nome) declara RELATIONS?"""
+    return any(
+        _is_chain_field(spec) and getattr(spec, "relations", None)
+        for spec in (field_specs or {}).values()
+    )
+
+
 def _is_code_field(spec) -> bool:
     if not spec:
         return False
@@ -454,7 +476,7 @@ def _iter_codes_from_item(
 
     if include_chain:
         chains = getattr(item, "chains", None) or []
-        chain_spec = field_specs.get("chain") if field_specs else None
+        chain_spec = _traditional_chain_spec(field_specs)
         for chain in chains:
             for chain_code in _extract_chain_codes(chain, chain_spec):
                 if isinstance(chain_code, str) and chain_code.strip():
@@ -808,7 +830,7 @@ def _build_code_occurrences(
                 })
 
         chains = getattr(item, "chains", None) or []
-        chain_spec = field_specs.get("chain") if field_specs else None
+        chain_spec = _traditional_chain_spec(field_specs)
         for chain in chains:
             chain_codes = _extract_chain_codes(chain, chain_spec)
             if not chain_codes:
