@@ -37,6 +37,10 @@ class CachedCompilation:
     timestamp: float = field(default_factory=time.time)
     workspace_root: Path = field(default_factory=lambda: Path("."))
     fingerprint: Optional[str] = None
+    # Opção com que o projeto foi compilado: o resultado só serve à mesma opção.
+    check_codes: bool = False
+    # .synp compilado — permite recompilar quando a configuração muda.
+    synp_path: Optional[Path] = None
 
 
 class WorkspaceCache:
@@ -55,12 +59,16 @@ class WorkspaceCache:
         result,
         workspace_root: Path,
         fingerprint: Optional[str] = None,
+        check_codes: bool = False,
+        synp_path: Optional[Path] = None,
     ) -> None:
         """Armazena resultado de compilação no cache."""
         self._cache[workspace_key] = CachedCompilation(
             result=result,
             workspace_root=workspace_root,
             fingerprint=fingerprint,
+            check_codes=check_codes,
+            synp_path=synp_path,
         )
         logger.info(f"Cache atualizado para workspace: {workspace_key}")
 
@@ -72,6 +80,10 @@ class WorkspaceCache:
     def has(self, workspace_key: str) -> bool:
         """Verifica se há compilação em cache para o workspace."""
         return workspace_key in self._cache
+
+    def items(self) -> list[tuple[str, CachedCompilation]]:
+        """Pares (workspace_key, compilação), em cópia: seguro para alterar o cache."""
+        return list(self._cache.items())
 
 
 @dataclass

@@ -221,7 +221,12 @@ class SynesisLanguageServer(LanguageServer):
         super().__init__(*args, **kwargs)
         self.workspace_documents: dict[str, set[str]] = {}
         self.validation_enabled: bool = True  # Habilitado por padrão
+        # synesisExplorer.diagnostics.checkCodes: E004 por código sem conceito na
+        # ontologia. Desligado (padrão), o compilador publica só o resumo E090.
+        self.check_codes: bool = False
         self.workspace_cache: WorkspaceCache = WorkspaceCache()
+        # Raiz do projeto → URIs com diagnóstico na última compilação publicada
+        self._project_diagnostic_uris: dict[str, set[str]] = {}
         # Debounce state (Fase 1 — padrão Pyright scheduleReanalysis)
         self._pending_validations: dict[str, asyncio.TimerHandle] = {}
         self._validation_debounce_s: float = 0.3  # 300ms
@@ -470,7 +475,7 @@ def load_project(ls: SynesisLanguageServer, params) -> dict:
         # Se fingerprint igual ao cache, reaproveitar
         ws_key = _workspace_key(workspace_path)
         cached = ls.workspace_cache.get(ws_key) if ws_key else None
-        if cached and cached.fingerprint == fingerprint:
+        if cached and cached.fingerprint == fingerprint and cached.check_codes == ls.check_codes:
             stats = cached.result.stats
 
             # Bump context_version → dirty-flag força revalidação dos docs abertos.
@@ -514,13 +519,16 @@ def load_project(ls: SynesisLanguageServer, params) -> dict:
         # Compilar via disco (~3.7s)
         from synesis.compiler import SynesisCompiler
 
-        compiler = SynesisCompiler(synp_files[0])
+        compiler = SynesisCompiler(synp_files[0], check_codes=ls.check_codes)
         result = compiler.compile()
 
         # Cachear resultado
         if not ws_key:
             return {"success": False, "error": "Workspace inválido"}
-        ls.workspace_cache.put(ws_key, result, workspace_path, fingerprint=fingerprint)
+        ls.workspace_cache.put(
+            ws_key, result, workspace_path, fingerprint=fingerprint,
+            check_codes=compiler.check_codes, synp_path=synp_files[0],
+        )
 
         # Publicar diagnósticos de compilação para TODOS os arquivos do projeto
         # (não apenas os abertos no editor). Erros cross-file (linkagem, ontologia,
@@ -1310,7 +1318,7 @@ async def cmd_validate_workspace(ls: SynesisLanguageServer, params) -> dict:
         # Tentar usar resultado em cache primeiro
         ws_key = _workspace_key(workspace_path)
         cached = ls.workspace_cache.get(ws_key) if ws_key else None
-        if cached:
+        if cached and cached.check_codes == ls.check_codes:
             result = cached.result
         else:
             # Localizar .synp
@@ -1328,7 +1336,7 @@ async def cmd_validate_workspace(ls: SynesisLanguageServer, params) -> dict:
 
             loop = asyncio.get_event_loop()
             result = await loop.run_in_executor(
-                None, lambda: SynesisCompiler(synp_files[0]).compile()
+                None, lambda: SynesisCompiler(synp_files[0], check_codes=ls.check_codes).compile()
             )
 
         # Publicar diagnósticos para todos os arquivos
@@ -1417,7 +1425,7 @@ def validate_document(ls: SynesisLanguageServer, uri: str) -> None:
 
         # VALIDAR COM DESCOBERTA AUTOMÁTICA DE CONTEXTO
         # O lsp_adapter gerencia cache internamente com validação por mtime
-        result = validate_single_file(source, uri, context=None)
+        result = validate_single_file(source, uri, context=None, check_codes=ls.check_codes)
 
         # CONVERTER PARA DIAGNÓSTICOS LSP
         diagnostics = build_diagnostics(result)
@@ -1638,6 +1646,13 @@ def did_change_configuration(
 
         logger.info(f"Configuração atualizada: validation.enabled = {ls.validation_enabled}")
 
+        # synesisExplorer.diagnostics.checkCodes (a extensão sincroniza só essa seção)
+        check_codes = _setting(settings, "synesisExplorer", "diagnostics", "checkCodes")
+        if isinstance(check_codes, bool) and check_codes != ls.check_codes:
+            ls.check_codes = check_codes
+            logger.info(f"Configuração atualizada: diagnostics.checkCodes = {check_codes}")
+            asyncio.ensure_future(_recompile_after_check_codes_change(ls))
+
         # Se validação foi reativada, revalida todos os documentos
         if not old_validation_enabled and ls.validation_enabled:
             logger.info("Validação reativada, revalidando documentos abertos")
@@ -1659,6 +1674,48 @@ def did_change_configuration(
         logger.error(f"Erro ao processar mudança de configuração: {e}", exc_info=True)
 
 
+def _setting(settings, *path: str):
+    """Valor aninhado de didChangeConfiguration (`settings[a][b][c]`), ou None."""
+    node = settings
+    for key in path:
+        if not isinstance(node, dict):
+            return None
+        node = node.get(key)
+    return node
+
+
+async def _recompile_after_check_codes_change(ls: SynesisLanguageServer) -> None:
+    """Recompila os projetos em cache com o novo checkCodes e republica tudo.
+
+    O resultado em cache foi compilado com a opção anterior: lista E004 que
+    deveria sumir, ou só o resumo E090 quando a lista foi pedida.
+    """
+    from synesis.compiler import SynesisCompiler
+
+    loop = asyncio.get_event_loop()
+    for ws_key, cached in ls.workspace_cache.items():
+        if cached.synp_path is None:
+            ls.workspace_cache.invalidate(ws_key)
+            continue
+        compiler = SynesisCompiler(cached.synp_path, check_codes=ls.check_codes)
+        check_codes = compiler.check_codes
+        try:
+            result = await loop.run_in_executor(None, compiler.compile)
+        except Exception as e:
+            logger.error(f"Recompilação após checkCodes falhou: {e}", exc_info=True)
+            ls.workspace_cache.invalidate(ws_key)
+            continue
+        ls.workspace_cache.put(
+            ws_key, result, cached.workspace_root, fingerprint=cached.fingerprint,
+            check_codes=check_codes, synp_path=cached.synp_path,
+        )
+        root = cached.workspace_root if cached.workspace_root.is_dir() else cached.workspace_root.parent
+        _publish_compilation_diagnostics(ls, result.validation_result, root)
+        ls._context_versions[ws_key] = ls._context_versions.get(ws_key, 0) + 1
+        if ws_key in ls.workspace_documents:
+            await _revalidate_workspace_deferred(ls, ws_key, ls._last_focused_uri)
+
+
 #: Erros que só o linker detecta — dependem da relação entre blocos do projeto,
 #: e portanto nunca aparecem em `validate_single_file` (que vê um arquivo por
 #: vez). Allowlist deliberadamente estreita: mesclar tudo do projeto traria
@@ -1669,6 +1726,7 @@ _CROSS_FILE_CODES = frozenset({
     "SYNESIS_E003",  # SourceWithoutItems — SOURCE sem nenhum ITEM (warning)
     "SYNESIS_E068",  # DuplicateOntologyConcept — conceito declarado 2x
     "SYNESIS_E005",  # OntologyWithoutTemplateFields
+    "SYNESIS_E090",  # UndefinedCodesSummary — resumo no .synp (checkCodes desligado)
 })
 
 
@@ -1761,6 +1819,18 @@ def _publish_compilation_diagnostics(
         for uri, diagnostics in file_diagnostics.items():
             ls.publish_diagnostics(uri, diagnostics)
             published += 1
+
+        # Arquivo que tinha diagnóstico na compilação anterior e agora não tem:
+        # sem publicar a lista vazia, o aviso antigo ficava na tela (ex.: os E004
+        # todos depois de desligar checkCodes). Documento aberto fica de fora —
+        # validate_document republica o dele na revalidação que se segue.
+        root_key = str(workspace_root) if workspace_root else ""
+        previous = ls._project_diagnostic_uris.get(root_key, set())
+        current = set(file_diagnostics)
+        open_uris = set().union(*ls.workspace_documents.values()) if ls.workspace_documents else set()
+        for uri in previous - current - open_uris:
+            ls.publish_diagnostics(uri, [])
+        ls._project_diagnostic_uris[root_key] = current
 
         total_diags = sum(len(d) for d in file_diagnostics.values())
         logger.info(

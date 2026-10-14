@@ -7,6 +7,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.24.0] - 2026-10-14
+
+Requer `synesis>=0.13.4`.
+
+### Added — `synesisExplorer.diagnostics.checkCodes`
+
+- O servidor lê a configuração `checkCodes` da extensão, que vem desligada.
+  Desligada, código sem conceito na ontologia não gera E004 por ocorrência: a
+  compilação do projeto publica um único resumo `SYNESIS_E090` no `.synp`. No
+  face85, o painel tinha 66 mil avisos.
+- A opção vai a `SynesisCompiler(..., check_codes=)` (`loadProject`,
+  `validateWorkspace`) e a `validate_single_file(..., check_codes=)`.
+- Ao mudar a opção, os projetos em cache são recompilados, os diagnósticos são
+  republicados e os documentos abertos, revalidados. O cache guarda com qual
+  opção e qual `.synp` foi compilado (`CachedCompilation.check_codes`,
+  `synp_path`) e não serve um resultado compilado com a outra.
+- `SYNESIS_E090` entra em `_CROSS_FILE_CODES`: abrir o `.synp` não apaga o
+  resumo.
+
+### Fixed — aviso antigo ficava na tela depois de recompilar
+
+- `_publish_compilation_diagnostics` só publicava arquivos que ainda tinham
+  diagnóstico. Um arquivo corrigido mantinha o aviso antigo até ser aberto, e
+  desligar `checkCodes` deixaria todos os E004 no painel. Agora o servidor
+  guarda os arquivos publicados na compilação anterior e envia lista vazia aos
+  que saíram. Os documentos abertos ficam de fora, porque `validate_document`
+  os republica.
+
 ## [0.23.1] - 2026-10-09
 
 ### Fixed — CHAIN fields by their declared TYPE

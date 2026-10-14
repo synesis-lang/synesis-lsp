@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "synesis-lsp"
-version = "0.23.1"
+version = "0.24.0"
 description = "Language Server Protocol para Synesis v1.1"
 readme = "README.md"
 authors = [
@@ -25,7 +25,7 @@ classifiers = [
 ]
 requires-python = ">=3.10"
 dependencies = [
-    "synesis>=0.10.0",
+    "synesis>=0.13.4",
     # NAO afrouxar para <3.0.0 sem migrar o servidor: pygls 2.x e uma reescrita
     # com API incompativel. `from pygls.server import LanguageServer`
     # (server.py) deixa de existir e a suite inteira falha na coleta:

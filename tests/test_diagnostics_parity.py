@@ -15,9 +15,9 @@ from __future__ import annotations
 
 import pytest
 import synesis
+from synesis.lsp_adapter import validate_single_file
 
 import synesis_lsp.server as server
-from synesis.lsp_adapter import validate_single_file
 from synesis_lsp.converters import build_diagnostics
 from synesis_lsp.server import _CROSS_FILE_CODES, _merge_project_diagnostics
 
@@ -211,12 +211,13 @@ def test_apenas_classes_cross_file_sao_mescladas(projeto):
         assert code in _CROSS_FILE_CODES or code in per_file_codes or code is None
 
 
-def test_allowlist_documenta_as_quatro_classes():
+def test_allowlist_documenta_as_cinco_classes():
     assert _CROSS_FILE_CODES == {
         "SYNESIS_E002",  # OrphanItem
         "SYNESIS_E003",  # SourceWithoutItems
         "SYNESIS_E068",  # DuplicateOntologyConcept
         "SYNESIS_E005",  # OntologyWithoutTemplateFields
+        "SYNESIS_E090",  # UndefinedCodesSummary (resumo no .synp)
     }
 
 
