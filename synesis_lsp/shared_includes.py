@@ -79,7 +79,7 @@ def _shared_targets_of(synp_path: Path) -> List[Path]:
         tree = parse_file(synp_path)
         out = SynesisTransformer(synp_path).transform(tree)
     except Exception as exc:
-        logger.debug("shared_includes: falha ao parsear %s: %s", synp_path, exc)
+        logger.debug("shared_includes: failed to parse %s: %s", synp_path, exc)
         return []
 
     nodes = out if isinstance(out, list) else [out]

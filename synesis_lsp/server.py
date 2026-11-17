@@ -53,10 +53,13 @@ from lsprotocol.types import (
     TEXT_DOCUMENT_HOVER,
     TEXT_DOCUMENT_INLAY_HINT,
     TEXT_DOCUMENT_PREPARE_RENAME,
+    TEXT_DOCUMENT_PREPARE_TYPE_HIERARCHY,
     TEXT_DOCUMENT_REFERENCES,
     TEXT_DOCUMENT_RENAME,
     TEXT_DOCUMENT_SEMANTIC_TOKENS_FULL,
     TEXT_DOCUMENT_SIGNATURE_HELP,
+    TYPE_HIERARCHY_SUBTYPES,
+    TYPE_HIERARCHY_SUPERTYPES,
     WORKSPACE_DID_CHANGE_CONFIGURATION,
     WORKSPACE_DID_CHANGE_WATCHED_FILES,
     CodeActionParams,
@@ -79,6 +82,9 @@ from lsprotocol.types import (
     SemanticTokensParams,
     SignatureHelpOptions,
     SignatureHelpParams,
+    TypeHierarchyPrepareParams,
+    TypeHierarchySubtypesParams,
+    TypeHierarchySupertypesParams,
 )
 from pygls.server import LanguageServer
 
@@ -92,7 +98,7 @@ try:
     )
 except ImportError as e:
     raise ImportError(
-        "Pacote 'synesis' não encontrado. Execute: pip install synesis"
+        "Package 'synesis' not found. Run: pip install synesis"
     ) from e
 
 from synesis_lsp.abstract_viewer import get_abstract
@@ -382,7 +388,7 @@ def _compute_workspace_fingerprint(root: Path) -> str:
     try:
         shared = shared_targets_fingerprint(build_shared_include_index(root))
     except Exception as exc:  # nunca derrubar o fingerprint por causa disto
-        logger.debug("fingerprint: falha ao indexar INCLUDE SHARED: %s", exc)
+        logger.debug("fingerprint: failed to index INCLUDE SHARED: %s", exc)
         shared = ""
 
     return f"{base}|{shared}" if shared else base
@@ -401,7 +407,7 @@ def _shared_includes_payload(root: Path) -> list:
     try:
         index = build_shared_include_index(root)
     except Exception as exc:
-        logger.debug("sharedIncludes: falha ao indexar: %s", exc)
+        logger.debug("sharedIncludes: failed to index: %s", exc)
         return []
     return [
         {"target": str(target), "projects": [str(p) for p in projects]}
@@ -442,11 +448,11 @@ def load_project(ls: SynesisLanguageServer, params) -> dict:
     try:
         workspace_root = _resolve_workspace_root(ls, params)
         if not workspace_root:
-            return {"success": False, "error": "Workspace não encontrado"}
+            return {"success": False, "error": "Workspace not found"}
 
         workspace_path = _normalize_workspace_path(workspace_root)
         if not workspace_path:
-            return {"success": False, "error": "Workspace inválido"}
+            return {"success": False, "error": "Invalid workspace"}
 
         # Resolver .synp: synpPath explícito ou busca automática
         synp_files = []
@@ -457,7 +463,7 @@ def load_project(ls: SynesisLanguageServer, params) -> dict:
                 base_dir = workspace_path if workspace_path.is_dir() else workspace_path.parent
                 synp_path = (base_dir / synp_path).resolve()
             if not synp_path.exists() or synp_path.suffix.lower() != ".synp":
-                return {"success": False, "error": "synpPath inválido ou não encontrado"}
+                return {"success": False, "error": "synpPath invalid or not found"}
             synp_files = [synp_path]
         else:
             if workspace_path.suffix.lower() == ".synp":
@@ -467,7 +473,7 @@ def load_project(ls: SynesisLanguageServer, params) -> dict:
                     workspace_path = workspace_path.parent
                 synp_files = sorted(workspace_path.glob("**/*.synp"))
             if not synp_files:
-                return {"success": False, "error": "Nenhum arquivo .synp encontrado"}
+                return {"success": False, "error": "No .synp file found"}
 
         fingerprint_root = workspace_path if workspace_path.is_dir() else workspace_path.parent
         fingerprint = _compute_workspace_fingerprint(fingerprint_root)
@@ -490,7 +496,7 @@ def load_project(ls: SynesisLanguageServer, params) -> dict:
                 ls._context_versions[ws_key] = ls._context_versions.get(ws_key, 0) + 1
             if ws_key and ws_key in ls.workspace_documents:
                 logger.debug(
-                    "loadProject (cached): agendando revalidação de %d documentos",
+                    "loadProject (cached): scheduling revalidation of %d documents",
                     len(ls.workspace_documents[ws_key]),
                 )
                 asyncio.ensure_future(
@@ -514,7 +520,7 @@ def load_project(ls: SynesisLanguageServer, params) -> dict:
                 **_get_versions(),
             }
 
-        logger.info(f"Compilando projeto: {synp_files[0]}")
+        logger.info(f"Compiling project: {synp_files[0]}")
 
         # Compilar via disco (~3.7s)
         from synesis.compiler import SynesisCompiler
@@ -524,7 +530,7 @@ def load_project(ls: SynesisLanguageServer, params) -> dict:
 
         # Cachear resultado
         if not ws_key:
-            return {"success": False, "error": "Workspace inválido"}
+            return {"success": False, "error": "Invalid workspace"}
         ls.workspace_cache.put(
             ws_key, result, workspace_path, fingerprint=fingerprint,
             check_codes=compiler.check_codes, synp_path=synp_files[0],
@@ -546,7 +552,7 @@ def load_project(ls: SynesisLanguageServer, params) -> dict:
         # Agendar revalidação deferida de todos os documentos abertos no workspace
         if ws_key and ws_key in ls.workspace_documents:
             logger.debug(
-                "loadProject: agendando revalidação de %d documentos",
+                "loadProject: scheduling revalidation of %d documents",
                 len(ls.workspace_documents[ws_key]),
             )
             asyncio.ensure_future(
@@ -570,7 +576,7 @@ def load_project(ls: SynesisLanguageServer, params) -> dict:
             **_get_versions(),
         }
     except ImportError:
-        return {"success": False, "error": "Compilador synesis não encontrado"}
+        return {"success": False, "error": "synesis compiler not found"}
     except Exception as e:
         # Trata SynesisSyntaxError e outros erros
         # Usa error_handler para mensagem pedagógica enriquecida
@@ -587,7 +593,7 @@ def load_project(ls: SynesisLanguageServer, params) -> dict:
                 "line": location.line,
                 "column": location.column,
             }
-        logger.error(f"loadProject falhou: {e}", exc_info=True)
+        logger.error(f"loadProject failed: {e}", exc_info=True)
         return error_dict
 
 
@@ -600,17 +606,17 @@ def get_project_stats(ls: SynesisLanguageServer, params) -> dict:
     """
     workspace_root = _resolve_workspace_root(ls, params)
     if not workspace_root:
-        return {"success": False, "error": "Workspace não encontrado"}
+        return {"success": False, "error": "Workspace not found"}
 
     workspace_key = _workspace_key(workspace_root)
     if not workspace_key:
-        return {"success": False, "error": "Workspace inválido"}
+        return {"success": False, "error": "Invalid workspace"}
 
     cached = ls.workspace_cache.get(workspace_key)
     if not cached:
         return {
             "success": False,
-            "error": "Projeto não carregado. Chame synesis/loadProject primeiro.",
+            "error": "Project not loaded. Call synesis/loadProject first.",
         }
 
     stats = cached.result.stats
@@ -766,6 +772,50 @@ def references(ls: SynesisLanguageServer, params: ReferenceParams):
     return compute_references(cached_result, word, workspace_root, include_declaration)
 
 
+def _workspace_root(ls) -> Optional[Path]:
+    folders = getattr(getattr(ls, "workspace", None), "folders", None)
+    if folders:
+        first = next(iter(folders.values())) if isinstance(folders, dict) else folders[0]
+        return Path(first.uri.replace("file:///", "").replace("file://", ""))
+    return None
+
+
+@server.feature(TEXT_DOCUMENT_PREPARE_TYPE_HIERARCHY)
+def prepare_type_hierarchy(ls: SynesisLanguageServer, params: TypeHierarchyPrepareParams):
+    """Show Type Hierarchy num conceito: supertipos = pais, subtipos = filhos.
+
+    Le a hierarquia adotada (papeis HIERARCHY do .syno) do projeto compilado.
+    """
+    uri = params.text_document.uri
+    doc = ls.workspace.get_document(uri)
+    cached_result = _get_cached_for_uri(ls, uri)
+    lines = doc.source.split("\n")
+    if not cached_result or params.position.line >= len(lines):
+        return None
+    word = _get_word_at_position(lines[params.position.line], params.position.character)
+    if not word:
+        return None
+    from synesis_lsp.hierarchy import type_hierarchy_item
+
+    return type_hierarchy_item(cached_result, word, _workspace_root(ls))
+
+
+@server.feature(TYPE_HIERARCHY_SUPERTYPES)
+def type_hierarchy_supertypes(ls: SynesisLanguageServer, params: TypeHierarchySupertypesParams):
+    from synesis_lsp.hierarchy import supertypes
+
+    cached_result = _get_cached_for_uri(ls, params.item.uri)
+    return supertypes(cached_result, params.item, _workspace_root(ls))
+
+
+@server.feature(TYPE_HIERARCHY_SUBTYPES)
+def type_hierarchy_subtypes(ls: SynesisLanguageServer, params: TypeHierarchySubtypesParams):
+    from synesis_lsp.hierarchy import subtypes
+
+    cached_result = _get_cached_for_uri(ls, params.item.uri)
+    return subtypes(cached_result, params.item, _workspace_root(ls))
+
+
 @server.feature(TEXT_DOCUMENT_CODE_ACTION)
 def code_action(ls: SynesisLanguageServer, params: CodeActionParams):
     """
@@ -858,10 +908,10 @@ def _get_cached_for_workspace(ls: SynesisLanguageServer, params):
     """Helper: resolve workspace e retorna cached_result."""
     workspace_root = _resolve_workspace_root(ls, params)
     if not workspace_root:
-        return None, "Workspace não encontrado"
+        return None, "Workspace not found"
     workspace_key = _workspace_key(workspace_root)
     if not workspace_key:
-        return None, "Workspace inválido"
+        return None, "Invalid workspace"
     return ls.workspace_cache.get(workspace_key), None
 
 
@@ -1032,26 +1082,26 @@ def debug_project_info(ls: SynesisLanguageServer, params) -> dict:
     """
     workspace_root = _resolve_workspace_root(ls, params)
     if not workspace_root:
-        return {"success": False, "error": "Workspace não encontrado"}
+        return {"success": False, "error": "Workspace not found"}
 
     workspace_key = _workspace_key(workspace_root)
     if not workspace_key:
-        return {"success": False, "error": "Workspace inválido"}
+        return {"success": False, "error": "Invalid workspace"}
 
     cached = ls.workspace_cache.get(workspace_key)
     if not cached:
         return {
             "success": False,
-            "error": "Projeto não carregado. Chame synesis/loadProject primeiro.",
+            "error": "Project not loaded. Call synesis/loadProject first.",
         }
 
     result = getattr(cached, "result", None)
     if not result:
-        return {"success": False, "error": "Resultado de compilação inválido"}
+        return {"success": False, "error": "Invalid compilation result"}
 
     lp = getattr(result, "linked_project", None)
     if not lp:
-        return {"success": False, "error": "LinkedProject não disponível"}
+        return {"success": False, "error": "LinkedProject not available"}
 
     stats = getattr(result, "stats", None)
     sources = getattr(lp, "sources", {}) or {}
@@ -1178,6 +1228,25 @@ def cmd_get_ontology_topics(ls: SynesisLanguageServer, params) -> dict:
     return get_ontology_topics(cached, workspace_root=workspace_root)
 
 
+@server.command("synesis/getSubtreeEvidence")
+def cmd_get_subtree_evidence(ls: SynesisLanguageServer, params) -> dict:
+    """ITEMs de um conceito e de todos os seus descendentes (uniao, sem repetir).
+
+    params: {"workspaceRoot": str, "concept": str} (ou lista com esse dict).
+    """
+    first = params[0] if isinstance(params, list) and params else params
+    first = first if isinstance(first, dict) else {}
+    concept = first.get("concept") or ""
+    root = first.get("workspaceRoot")
+    cached, error = _get_cached_for_workspace(ls, params)
+    if not cached or not concept:
+        return {"success": False, "error": error or "missing concept", "items": []}
+    from synesis_lsp.hierarchy import subtree_evidence
+
+    items = subtree_evidence(cached, concept, Path(root) if root else None)
+    return {"success": True, "concept": concept, "items": items}
+
+
 @server.command("synesis/getOntologyAnnotations")
 def cmd_get_ontology_annotations(ls: SynesisLanguageServer, params) -> dict:
     """Retorna anotações de ontologia com occurrences."""
@@ -1230,7 +1299,7 @@ def cmd_get_abstract(ls: SynesisLanguageServer, params) -> dict:
                 workspace_root = Path(workspace_root_str)
 
     if not file_path:
-        return {"success": False, "error": "Parâmetro 'file' não fornecido"}
+        return {"success": False, "error": "Parameter 'file' not provided"}
 
     # Tentar obter cached_result (opcional)
     cached = None
@@ -1261,7 +1330,7 @@ def cmd_get_blocks(ls: SynesisLanguageServer, params) -> dict:
                 workspace_root = Path(workspace_root_str)
 
     if not file_path:
-        return {"success": False, "error": "Parâmetro 'file' não fornecido"}
+        return {"success": False, "error": "Parameter 'file' not provided"}
 
     return get_blocks(file_path, workspace_root=workspace_root)
 
@@ -1271,28 +1340,28 @@ def cmd_get_template(ls: SynesisLanguageServer, params) -> dict:
     """Retorna field-specs e requirements do template compilado."""
     workspace_root = _resolve_workspace_root(ls, params)
     if not workspace_root:
-        return {"success": False, "error": "Workspace não encontrado"}
+        return {"success": False, "error": "Workspace not found"}
 
     workspace_key = _workspace_key(workspace_root)
     if not workspace_key:
-        return {"success": False, "error": "Workspace inválido"}
+        return {"success": False, "error": "Invalid workspace"}
 
     cached = ls.workspace_cache.get(workspace_key)
     if not cached:
         return {
             "success": False,
-            "error": "Projeto não carregado. Chame synesis/loadProject primeiro.",
+            "error": "Project not loaded. Call synesis/loadProject first.",
         }
 
     template = getattr(getattr(cached, "result", None), "template", None)
     if template is None:
-        return {"success": False, "error": "Template não disponível no projeto compilado"}
+        return {"success": False, "error": "Template not available in the compiled project"}
 
     try:
         return {"success": True, "template": serialize_template(template)}
     except Exception as exc:
-        logger.exception("Erro ao serializar template: %s", exc)
-        return {"success": False, "error": f"Erro interno: {exc}"}
+        logger.exception("Error serializing template: %s", exc)
+        return {"success": False, "error": f"Internal error: {exc}"}
 
 
 @server.command("synesis/validateWorkspace")
@@ -1309,11 +1378,11 @@ async def cmd_validate_workspace(ls: SynesisLanguageServer, params) -> dict:
     try:
         workspace_root = _resolve_workspace_root(ls, params)
         if not workspace_root:
-            return {"success": False, "error": "Workspace não encontrado"}
+            return {"success": False, "error": "Workspace not found"}
 
         workspace_path = _normalize_workspace_path(workspace_root)
         if not workspace_path:
-            return {"success": False, "error": "Workspace inválido"}
+            return {"success": False, "error": "Invalid workspace"}
 
         # Tentar usar resultado em cache primeiro
         ws_key = _workspace_key(workspace_path)
@@ -1329,7 +1398,7 @@ async def cmd_validate_workspace(ls: SynesisLanguageServer, params) -> dict:
                 synp_files = sorted(search_dir.glob("**/*.synp"))
 
             if not synp_files:
-                return {"success": False, "error": "Nenhum arquivo .synp encontrado"}
+                return {"success": False, "error": "No .synp file found"}
 
             # Compilar em background thread (não bloqueia event loop)
             from synesis.compiler import SynesisCompiler
@@ -1359,9 +1428,9 @@ async def cmd_validate_workspace(ls: SynesisLanguageServer, params) -> dict:
         }
 
     except ImportError:
-        return {"success": False, "error": "Compilador synesis não encontrado"}
+        return {"success": False, "error": "synesis compiler not found"}
     except Exception as e:
-        logger.error(f"validateWorkspace falhou: {e}", exc_info=True)
+        logger.error(f"validateWorkspace failed: {e}", exc_info=True)
         return {"success": False, "error": str(e)}
 
 
@@ -1395,7 +1464,7 @@ def validate_document(ls: SynesisLanguageServer, uri: str) -> None:
     """
     # Verifica se validação está habilitada
     if not ls.validation_enabled:
-        logger.debug(f"Validação desabilitada, pulando: {uri}")
+        logger.debug(f"Validation disabled, skipping: {uri}")
         # Limpa diagnósticos existentes quando validação está desabilitada
         ls.publish_diagnostics(uri, [])
         return
@@ -1419,7 +1488,7 @@ def validate_document(ls: SynesisLanguageServer, uri: str) -> None:
             and state.context_version == ctx_version
             and state.last_diagnostics is not None
         ):
-            logger.debug(f"Cache hit — republicando diagnósticos para {uri}")
+            logger.debug(f"Cache hit — republishing diagnostics for {uri}")
             ls.publish_diagnostics(uri, state.last_diagnostics)
             return
 
@@ -1457,14 +1526,14 @@ def validate_document(ls: SynesisLanguageServer, uri: str) -> None:
             ls.workspace_documents[workspace_key].add(uri)
 
         logger.info(
-            f"Validação completa: {uri} - "
-            f"{len(result.errors)} erros, "
-            f"{len(result.warnings)} avisos"
+            f"Validation complete: {uri} - "
+            f"{len(result.errors)} errors, "
+            f"{len(result.warnings)} warnings"
         )
 
     except Exception as e:
         # Log do erro mas não crash
-        logger.error(f"Erro ao validar {uri}: {e}", exc_info=True)
+        logger.error(f"Error validating {uri}: {e}", exc_info=True)
 
         # Enriquece mensagem com error_handler se possível
         enriched_msg = enrich_error_message(e, source=source, filename=uri)
@@ -1513,10 +1582,10 @@ async def _validate_document_async(ls: SynesisLanguageServer, uri: str) -> None:
         await asyncio.sleep(0)
         validate_document(ls, uri)
     except asyncio.CancelledError:
-        logger.debug(f"Validação cancelada para {uri}")
+        logger.debug(f"Validation cancelled for {uri}")
         raise
     except Exception as e:
-        logger.error(f"Erro na validação async de {uri}: {e}", exc_info=True)
+        logger.error(f"Error in async validation of {uri}: {e}", exc_info=True)
     finally:
         # Remover do dict de tasks ao concluir (cancelado ou não)
         ls._validation_tasks.pop(uri, None)
@@ -1644,34 +1713,34 @@ def did_change_configuration(
         else:
             ls.validation_enabled = True
 
-        logger.info(f"Configuração atualizada: validation.enabled = {ls.validation_enabled}")
+        logger.info(f"Configuration updated: validation.enabled = {ls.validation_enabled}")
 
         # synesisExplorer.diagnostics.checkCodes (a extensão sincroniza só essa seção)
         check_codes = _setting(settings, "synesisExplorer", "diagnostics", "checkCodes")
         if isinstance(check_codes, bool) and check_codes != ls.check_codes:
             ls.check_codes = check_codes
-            logger.info(f"Configuração atualizada: diagnostics.checkCodes = {check_codes}")
+            logger.info(f"Configuration updated: diagnostics.checkCodes = {check_codes}")
             asyncio.ensure_future(_recompile_after_check_codes_change(ls))
 
         # Se validação foi reativada, revalida todos os documentos
         if not old_validation_enabled and ls.validation_enabled:
-            logger.info("Validação reativada, revalidando documentos abertos")
+            logger.info("Validation re-enabled, revalidating open documents")
             for workspace_key, doc_uris in ls.workspace_documents.items():
                 for doc_uri in list(doc_uris):
                     try:
                         validate_document(ls, doc_uri)
                     except Exception as e:
-                        logger.error(f"Erro ao revalidar {doc_uri}: {e}", exc_info=True)
+                        logger.error(f"Error revalidating {doc_uri}: {e}", exc_info=True)
 
         # Se validação foi desativada, limpa diagnósticos
         elif old_validation_enabled and not ls.validation_enabled:
-            logger.info("Validação desativada, limpando diagnósticos")
+            logger.info("Validation disabled, clearing diagnostics")
             for workspace_key, doc_uris in ls.workspace_documents.items():
                 for doc_uri in list(doc_uris):
                     ls.publish_diagnostics(doc_uri, [])
 
     except Exception as e:
-        logger.error(f"Erro ao processar mudança de configuração: {e}", exc_info=True)
+        logger.error(f"Error processing configuration change: {e}", exc_info=True)
 
 
 def _setting(settings, *path: str):
@@ -1702,7 +1771,7 @@ async def _recompile_after_check_codes_change(ls: SynesisLanguageServer) -> None
         try:
             result = await loop.run_in_executor(None, compiler.compile)
         except Exception as e:
-            logger.error(f"Recompilação após checkCodes falhou: {e}", exc_info=True)
+            logger.error(f"Recompilation after checkCodes failed: {e}", exc_info=True)
             ls.workspace_cache.invalidate(ws_key)
             continue
         ls.workspace_cache.put(
@@ -1787,14 +1856,14 @@ def _merge_project_diagnostics(
 
         if len(merged) != len(diagnostics):
             logger.debug(
-                "Mesclados %d diagnósticos cross-file em %s",
+                "Merged %d cross-file diagnostics into %s",
                 len(merged) - len(diagnostics),
                 uri,
             )
         return merged
 
     except Exception as e:
-        logger.warning("Falha ao mesclar diagnósticos de projeto para %s: %s", uri, e)
+        logger.warning("Failed to merge project diagnostics for %s: %s", uri, e)
         return diagnostics
 
 
@@ -1834,12 +1903,12 @@ def _publish_compilation_diagnostics(
 
         total_diags = sum(len(d) for d in file_diagnostics.values())
         logger.info(
-            "Diagnósticos de compilação publicados: %d diagnósticos em %d arquivos",
+            "Compilation diagnostics published: %d diagnostics in %d files",
             total_diags,
             published,
         )
     except Exception as e:
-        logger.error(f"Erro ao publicar diagnósticos de compilação: {e}", exc_info=True)
+        logger.error(f"Error publishing compilation diagnostics: {e}", exc_info=True)
 
 
 async def _revalidate_workspace_deferred(
@@ -1861,7 +1930,7 @@ async def _revalidate_workspace_deferred(
         try:
             validate_document(ls, focused_uri)
         except Exception as e:
-            logger.error(f"Erro ao revalidar (focused) {focused_uri}: {e}", exc_info=True)
+            logger.error(f"Error revalidating (focused) {focused_uri}: {e}", exc_info=True)
         docs.remove(focused_uri)
 
     # 2. Demais documentos com yield entre cada um — servidor permanece responsivo
@@ -1870,7 +1939,7 @@ async def _revalidate_workspace_deferred(
         try:
             validate_document(ls, doc_uri)
         except Exception as e:
-            logger.error(f"Erro ao revalidar {doc_uri}: {e}", exc_info=True)
+            logger.error(f"Error revalidating {doc_uri}: {e}", exc_info=True)
 
 
 @server.feature(TEXT_DOCUMENT_DID_SAVE)
@@ -1894,23 +1963,23 @@ def did_save(ls: SynesisLanguageServer, params: DidSaveTextDocumentParams) -> No
 
     # Arquivos que afetam contexto do workspace (.synp, .synt)
     if file_extension in [".synp", ".synt"]:
-        logger.info(f"Arquivo de contexto modificado: {uri}")
+        logger.info(f"Context file modified: {uri}")
 
         # 1. ENCONTRAR WORKSPACE ROOT
         workspace_root = find_workspace_root(uri)
         if not workspace_root:
-            logger.warning(f"Workspace root não encontrado para {uri}")
+            logger.warning(f"Workspace root not found for {uri}")
             return
 
         workspace_key = _workspace_key(workspace_root)
         if not workspace_key:
-            logger.warning(f"Workspace inválido para {uri}")
+            logger.warning(f"Invalid workspace for {uri}")
             return
 
         # 2. INVALIDAR CACHES
         invalidate_cache(workspace_root)
         ls.workspace_cache.invalidate(workspace_key)
-        logger.info(f"Caches invalidados para: {workspace_key}")
+        logger.info(f"Caches invalidated for: {workspace_key}")
 
         # Bump context_version → força revalidação de todos os docs do workspace (Fase 2)
         ls._context_versions[workspace_key] = ls._context_versions.get(workspace_key, 0) + 1
@@ -1918,7 +1987,7 @@ def did_save(ls: SynesisLanguageServer, params: DidSaveTextDocumentParams) -> No
         # 3. REVALIDAR — focado imediatamente, demais com yield (Fase 5)
         if workspace_key in ls.workspace_documents:
             n = len(ls.workspace_documents[workspace_key])
-            logger.info(f"Agendando revalidação deferida de {n} documentos no workspace")
+            logger.info(f"Scheduling deferred revalidation of {n} documents in the workspace")
             asyncio.ensure_future(
                 _revalidate_workspace_deferred(ls, workspace_key, ls._last_focused_uri)
             )
@@ -1931,13 +2000,13 @@ def did_save(ls: SynesisLanguageServer, params: DidSaveTextDocumentParams) -> No
         if workspace_root:
             workspace_key = _workspace_key(workspace_root)
             if not workspace_key:
-                logger.warning(f"Workspace inválido para {uri}")
+                logger.warning(f"Invalid workspace for {uri}")
                 return
 
             # Invalidar caches
             invalidate_cache(workspace_root)
             ls.workspace_cache.invalidate(workspace_key)
-            logger.info(f"Caches invalidados para: {workspace_key}")
+            logger.info(f"Caches invalidated for: {workspace_key}")
 
             # Bump context_version (Fase 2)
             ls._context_versions[workspace_key] = ls._context_versions.get(workspace_key, 0) + 1
@@ -1945,7 +2014,7 @@ def did_save(ls: SynesisLanguageServer, params: DidSaveTextDocumentParams) -> No
             # Revalidar documentos — focado imediatamente, demais com yield (Fase 5)
             if workspace_key in ls.workspace_documents:
                 n = len(ls.workspace_documents[workspace_key])
-                logger.info(f"Agendando revalidação deferida de {n} documentos (.bib)")
+                logger.info(f"Scheduling deferred revalidation of {n} documents (.bib)")
                 asyncio.ensure_future(
                     _revalidate_workspace_deferred(ls, workspace_key, ls._last_focused_uri)
                 )
@@ -1980,7 +2049,7 @@ def did_change_watched_files(
         change_type = change.type
 
         logger.info(
-            f"Arquivo monitorado mudou: {uri} (tipo: {change_type.name})"
+            f"Watched file changed: {uri} (type: {change_type.name})"
         )
 
         # Detecta extensão do arquivo
@@ -2003,7 +2072,7 @@ def did_change_watched_files(
         # Invalidar caches
         invalidate_cache(workspace_root)
         ls.workspace_cache.invalidate(workspace_key)
-        logger.info(f"Caches invalidados para workspace: {workspace_key}")
+        logger.info(f"Caches invalidated for workspace: {workspace_key}")
 
         # Bump context_version (Fase 2)
         ls._context_versions[workspace_key] = ls._context_versions.get(workspace_key, 0) + 1
@@ -2012,8 +2081,8 @@ def did_change_watched_files(
         if workspace_key in ls.workspace_documents:
             n = len(ls.workspace_documents[workspace_key])
             logger.info(
-                f"Agendando revalidação deferida de {n} documentos "
-                f"devido a mudança em {file_path.name}"
+                f"Scheduling deferred revalidation of {n} documents "
+                f"due to a change in {file_path.name}"
             )
             asyncio.ensure_future(
                 _revalidate_workspace_deferred(ls, workspace_key, ls._last_focused_uri)

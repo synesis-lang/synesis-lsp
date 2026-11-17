@@ -140,11 +140,11 @@ def _hover_field(word: str, cached_result) -> Optional[Hover]:
     if not spec:
         return None
 
-    md = f"**Campo: `{spec.name}`**\n\n"
-    md += f"- Tipo: `{spec.type.name}`\n"
-    md += f"- Escopo: `{spec.scope.name}`\n"
+    md = f"**Field: `{spec.name}`**\n\n"
+    md += f"- Type: `{spec.type.name}`\n"
+    md += f"- Scope: `{spec.scope.name}`\n"
     if spec.description:
-        md += f"- Descrição: {spec.description}\n"
+        md += f"- Description: {spec.description}\n"
 
     return Hover(contents=MarkupContent(kind=MarkupKind.Markdown, value=md))
 
@@ -176,7 +176,7 @@ def _hover_code(word: str, cached_result) -> Optional[Hover]:
     field_specs = getattr(template, "field_specs", None) if template else None
     usage_count = _usage_count(lp, onto.concept or word, field_specs)
 
-    md = f"**Ontologia: `{onto.concept}`**\n\n"
+    md = f"**Model entry: `{onto.concept}`**\n\n"
     if onto.description:
         md += f"{onto.description}\n\n"
 
@@ -186,7 +186,15 @@ def _hover_code(word: str, cached_result) -> Optional[Hover]:
         val = str(v)[:80]
         md += f"- {k}: {val}\n"
 
-    md += f"\nUsado em **{usage_count}** itens"
+    md += f"\nUsed in **{usage_count}** items"
+
+    # Hierarquia adotada (papeis HIERARCHY): pais e filhos por especie, ITEMs da
+    # subarvore por uniao e fundamentacao. Vazio sem papeis no template.
+    from synesis_lsp.hierarchy import hierarchy_hover_lines
+
+    lines = hierarchy_hover_lines(cached_result, onto.concept or word)
+    if lines:
+        md += "\n\n" + "\n\n".join(lines)
 
     return Hover(contents=MarkupContent(kind=MarkupKind.Markdown, value=md))
 
@@ -212,7 +220,7 @@ def _hover_relation(word: str, cached_result) -> Optional[Hover]:
             continue
         for key, description in relations.items():
             if str(key).strip().lower() == target:
-                md = f"**Relação: `{key}`**\n\n"
+                md = f"**Relation: `{key}`**\n\n"
                 if description:
                     md += f"{description}\n"
                 return Hover(contents=MarkupContent(kind=MarkupKind.Markdown, value=md))
@@ -261,14 +269,14 @@ def _hover_block(word: str, cached_result) -> Optional[Hover]:
     fields.sort(key=lambda entry: str(entry.name).lower())
     preview = fields[:10]
 
-    md = f"**Bloco {block}**\n\n"
-    md += f"Campos definidos ({len(fields)}):\n"
+    md = f"**Block {block}**\n\n"
+    md += f"Defined fields ({len(fields)}):\n"
     for spec in preview:
         type_name = getattr(spec.type, "name", str(spec.type))
         md += f"- `{spec.name}` ({type_name})\n"
 
     if len(fields) > len(preview):
-        md += f"... e mais {len(fields) - len(preview)} campos"
+        md += f"... and {len(fields) - len(preview)} more fields"
 
     return Hover(contents=MarkupContent(kind=MarkupKind.Markdown, value=md))
 

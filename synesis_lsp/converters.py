@@ -55,8 +55,8 @@ try:
     from synesis.ast.results import ErrorSeverity, ValidationError, ValidationResult
 except ImportError as e:
     raise ImportError(
-        "Pacote 'synesis' não encontrado. "
-        "Instale o compilador primeiro: cd ../Compiler && pip install -e ."
+        "Package 'synesis' not found. "
+        "Install the compiler first: pip install synesis"
     ) from e
 
 # Importa error_handler (opcional — fallback se não disponível)
@@ -139,7 +139,7 @@ def build_diagnostic(error: ValidationError) -> Diagnostic:
     if _HAS_ERROR_HANDLER and hasattr(error, "expected") and error.expected:
         humanized = _humanize_expected(error.expected)
         if humanized:
-            message = f"{message}\n\nEsperado: {humanized}"
+            message = f"{message}\n\nExpected: {humanized}"
 
     code = getattr(error, "CODE", None)
     return Diagnostic(
@@ -184,7 +184,7 @@ def build_diagnostics(result: ValidationResult) -> List[Diagnostic]:
                 ),
                 severity=DiagnosticSeverity.Error,
                 source="synesis-lsp",
-                message=f"Erro ao processar diagnóstico: {str(e)}",
+                message=f"Error processing diagnostic: {str(e)}",
             )
             diagnostics.append(fallback)
 
@@ -224,7 +224,7 @@ def group_diagnostics_by_file(
             uri = file_path.as_uri()
             grouped[uri].append(build_diagnostic(error))
         except Exception as e:
-            logger.warning(f"Erro ao agrupar diagnostico: {e}")
+            logger.warning(f"Error grouping diagnostic: {e}")
 
     return dict(grouped)
 
@@ -237,7 +237,7 @@ def group_diagnostics_by_file(
 _TOKEN_NAMES = {
     "COLON": "':'",
     "COMMA": "','",
-    "NEWLINE": "nova linha",
+    "NEWLINE": "new line",
     "KW_SOURCE": "SOURCE",
     "KW_ITEM": "ITEM",
     "KW_END": "END",
@@ -249,9 +249,9 @@ _TOKEN_NAMES = {
     "KW_OPTIONAL": "OPTIONAL",
     "KW_FORBIDDEN": "FORBIDDEN",
     "IDENTIFIER": "identificador",
-    "BIBREF": "@referência",
+    "BIBREF": "@reference",
     "ARROW": "'->'",
-    "QUOTED_STRING": "texto entre aspas",
+    "QUOTED_STRING": "quoted text",
 }
 
 
@@ -309,22 +309,22 @@ def enrich_error_message(
         if cause:
             try:
                 enriched = create_pedagogical_error(
-                    cause, source, filename or "<desconhecido>"
+                    cause, source, filename or "<unknown>"
                 )
                 if enriched:
                     return enriched
             except Exception:
-                logger.debug("error_handler falhou ao enriquecer __cause__", exc_info=True)
+                logger.debug("error_handler failed to enrich __cause__", exc_info=True)
 
         # Tenta enriquecer a exceção diretamente
         try:
             enriched = create_pedagogical_error(
-                exc, source, filename or "<desconhecido>"
+                exc, source, filename or "<unknown>"
             )
             if enriched:
                 return enriched
         except Exception:
-            logger.debug("error_handler falhou ao enriquecer exceção", exc_info=True)
+            logger.debug("error_handler failed to enrich the exception", exc_info=True)
 
     # Fallback: usa .message se disponível, senão str()
     return str(getattr(exc, "message", str(exc)))

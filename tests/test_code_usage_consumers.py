@@ -162,7 +162,7 @@ def test_hover_conta_conceito_de_chain(ctx):
     """Antes: 'Usado em 0 itens'."""
     hover = compute_hover(ctx["src"], _pos_do_conceito(ctx["src"], SO_EM_CHAIN), ctx["cached"])
     assert hover is not None
-    assert "Usado em **1** itens" in hover.contents.value
+    assert "Used in **1** items" in hover.contents.value
 
 
 def test_references_acha_ocorrencia_em_chain(ctx):
@@ -173,8 +173,8 @@ def test_references_acha_ocorrencia_em_chain(ctx):
 
 def test_completion_conta_conceito_de_chain(ctx):
     comp = compute_completions(ctx["src"], _pos_fim_da_linha(ctx["src"], "code:"), ctx["cached"])
-    detalhes = {i.label: i.detail for i in comp.items if i.detail and "Ontologia" in i.detail}
-    assert detalhes.get("percepcao_risco") == "Ontologia (1 usos)"
+    detalhes = {i.label: i.detail for i in comp.items if i.detail and "Ontology" in i.detail}
+    assert detalhes.get("percepcao_risco") == "Ontology (1 uses)"
 
 
 def test_graph_inclui_conceito_de_chain(ctx):
@@ -189,13 +189,13 @@ def test_hover_soma_code_e_chain(ctx):
     hover = compute_hover(
         ctx["src"], _pos_do_conceito(ctx["src"], EM_CODE_E_CHAIN), ctx["cached"]
     )
-    assert "Usado em **2** itens" in hover.contents.value
+    assert "Used in **2** items" in hover.contents.value
 
 
 def test_completion_soma_code_e_chain(ctx):
     comp = compute_completions(ctx["src"], _pos_fim_da_linha(ctx["src"], "code:"), ctx["cached"])
-    detalhes = {i.label: i.detail for i in comp.items if i.detail and "Ontologia" in i.detail}
-    assert detalhes.get("aceitacao_social") == "Ontologia (2 usos)"
+    detalhes = {i.label: i.detail for i in comp.items if i.detail and "Ontology" in i.detail}
+    assert detalhes.get("aceitacao_social") == "Ontology (2 uses)"
 
 
 # ----------------------------------------------------------- concordância
@@ -216,7 +216,7 @@ def test_todos_os_consumidores_concordam(ctx):
         assert len(build_code_usage(lp, fs).get(chave, [])) == n
 
         hover = compute_hover(ctx["src"], _pos_do_conceito(ctx["src"], conceito), cached)
-        assert f"Usado em **{n}** itens" in hover.contents.value
+        assert f"Used in **{n}** items" in hover.contents.value
 
         refs = compute_references(cached, conceito, ctx["root"], False)
         assert len(refs or []) == n

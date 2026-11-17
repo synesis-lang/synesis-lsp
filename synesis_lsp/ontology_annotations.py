@@ -319,15 +319,15 @@ def get_ontology_annotations(
         }
     """
     if not cached_result:
-        return {"success": False, "error": "Workspace não compilado"}
+        return {"success": False, "error": "Workspace not compiled"}
 
     result = getattr(cached_result, "result", None)
     if not result:
-        return {"success": False, "error": "Resultado de compilação inválido"}
+        return {"success": False, "error": "Invalid compilation result"}
 
     lp = getattr(result, "linked_project", None)
     if not lp:
-        return {"success": False, "error": "LinkedProject não disponível"}
+        return {"success": False, "error": "LinkedProject not available"}
 
     effective_root = workspace_root or getattr(cached_result, "workspace_root", None)
     cache_key = _annotations_cache_key(cached_result, effective_root)
@@ -349,7 +349,7 @@ def get_ontology_annotations(
     code_usage = _merge_code_usage_with_chains(lp, ontology_index, active_file=active_file)
 
     if not ontology_index:
-        logger.debug("Ontology index vazio, retornando lista vazia")
+        logger.debug("Ontology index empty, returning an empty list")
         result = {"success": True, "annotations": []}
         _annotations_cache_set(cache_key, result)
         return _filter_annotations_by_file(result, active_file) if active_file else result

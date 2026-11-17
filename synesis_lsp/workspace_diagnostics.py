@@ -37,13 +37,13 @@ def compute_workspace_diagnostics(
     diagnostics_map = {}
 
     if not workspace_root or not workspace_root.exists():
-        logger.warning(f"Workspace root não existe: {workspace_root}")
+        logger.warning(f"Workspace root does not exist: {workspace_root}")
         return diagnostics_map
 
     # Encontrar todos os arquivos Synesis
     synesis_files = _find_synesis_files(workspace_root)
 
-    logger.info(f"Validando {len(synesis_files)} arquivos no workspace")
+    logger.info(f"Validating {len(synesis_files)} files in the workspace")
 
     # Validar cada arquivo
     for file_path in synesis_files:
@@ -58,10 +58,10 @@ def compute_workspace_diagnostics(
                 diagnostics_map[uri] = []
 
         except Exception as e:
-            logger.warning(f"Erro ao validar {file_path}: {e}", exc_info=True)
+            logger.warning(f"Error validating {file_path}: {e}", exc_info=True)
             # Continuar com próximo arquivo
 
-    logger.info(f"Workspace diagnostics completo: {len(diagnostics_map)} arquivos processados")
+    logger.info(f"Workspace diagnostics complete: {len(diagnostics_map)} files processed")
 
     return diagnostics_map
 
@@ -84,7 +84,7 @@ def _find_synesis_files(workspace_root: Path) -> list[Path]:
             # Buscar recursivamente
             files.extend(workspace_root.rglob(f"*{ext}"))
     except Exception as e:
-        logger.warning(f"Erro ao buscar arquivos no workspace: {e}")
+        logger.warning(f"Error searching files in the workspace: {e}")
 
     return files
 
@@ -143,5 +143,5 @@ def validate_workspace_file(
         return diagnostics
 
     except Exception as e:
-        logger.warning(f"Erro ao validar arquivo {file_path}: {e}", exc_info=True)
+        logger.warning(f"Error validating file {file_path}: {e}", exc_info=True)
         return []

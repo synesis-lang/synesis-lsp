@@ -253,7 +253,7 @@ def _collect_files(workspace_root: Path, suffix: str) -> set[Path]:
             if path.is_file():
                 files.add(path)
     except OSError as exc:
-        logger.warning(f"Erro ao varrer arquivos {suffix}: {exc}")
+        logger.warning(f"Error scanning {suffix} files: {exc}")
     return files
 
 
@@ -328,7 +328,7 @@ def _find_and_replace_in_syn(
     try:
         content = file_path.read_text(encoding="utf-8")
     except (OSError, UnicodeDecodeError) as e:
-        logger.warning(f"Não foi possível ler {file_path}: {e}")
+        logger.warning(f"Could not read {file_path}: {e}")
         return edits
 
     lines = content.splitlines()
@@ -432,7 +432,7 @@ def _find_and_replace_in_syno(
     try:
         content = file_path.read_text(encoding="utf-8")
     except (OSError, UnicodeDecodeError) as e:
-        logger.warning(f"Não foi possível ler {file_path}: {e}")
+        logger.warning(f"Could not read {file_path}: {e}")
         return edits
 
     lines = content.splitlines()
@@ -541,7 +541,7 @@ def _find_and_replace_in_file(
     try:
         content = file_path.read_text(encoding="utf-8")
     except (OSError, UnicodeDecodeError) as e:
-        logger.warning(f"Não foi possível ler {file_path}: {e}")
+        logger.warning(f"Could not read {file_path}: {e}")
         return edits
 
     for line_num, line in enumerate(content.splitlines()):

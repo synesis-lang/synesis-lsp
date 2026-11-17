@@ -63,7 +63,7 @@ def get_references(cached_result) -> dict:
     """
     lp = _get_linked_project(cached_result)
     if lp is None:
-        return {"success": False, "error": "Projeto não carregado"}
+        return {"success": False, "error": "Project not loaded"}
 
     workspace_root = getattr(cached_result, "workspace_root", None)
     bibliography = getattr(cached_result.result, "bibliography", None) or {}
@@ -96,7 +96,7 @@ def get_codes(cached_result) -> dict:
     """
     lp = _get_linked_project(cached_result)
     if lp is None:
-        return {"success": False, "error": "Projeto não carregado"}
+        return {"success": False, "error": "Project not loaded"}
 
     workspace_root = getattr(cached_result, "workspace_root", None)
     cache_key = _relations_cache_key(cached_result, workspace_root)
@@ -179,7 +179,7 @@ def get_relations(cached_result) -> dict:
     """
     lp = _get_linked_project(cached_result)
     if lp is None:
-        return {"success": False, "error": "Projeto não carregado"}
+        return {"success": False, "error": "Project not loaded"}
 
     workspace_root = getattr(cached_result, "workspace_root", None)
     cache_key = _relations_cache_key(cached_result, workspace_root)
@@ -1203,11 +1203,11 @@ def get_excerpts(cached_result, bibref: str) -> dict:
         {"success": True, "items": [...]} ou {"success": False, "error": "..."}
     """
     if not bibref:
-        return {"success": False, "error": "bibref não especificado"}
+        return {"success": False, "error": "bibref not specified"}
 
     lp = _get_linked_project(cached_result)
     if lp is None:
-        return {"success": False, "error": "Projeto não carregado"}
+        return {"success": False, "error": "Project not loaded"}
 
     workspace_root = getattr(cached_result, "workspace_root", None)
     # Normalizar bibref para comparação insensível a @

@@ -18,7 +18,7 @@ from typing import Optional
 
 logger = logging.getLogger(__name__)
 
-_TOPICS_CACHE: dict[tuple[str, float], dict] = {}
+_TOPICS_CACHE: dict[tuple[str, int, float], dict] = {}
 _TOPICS_CACHE_MAX = 4
 
 
@@ -33,7 +33,7 @@ def _topics_cache_key(cached_result, workspace_root: Optional[Path]) -> Optional
     return (root_key, id(cached_result), float(timestamp))
 
 
-def _topics_cache_set(key: Optional[tuple[str, float]], value: dict) -> None:
+def _topics_cache_set(key: Optional[tuple[str, int, float]], value: dict) -> None:
     if not key:
         return
     _TOPICS_CACHE[key] = value
@@ -66,15 +66,15 @@ def get_ontology_topics(cached_result, workspace_root: Optional[Path] = None) ->
         }
     """
     if not cached_result:
-        return {"success": False, "error": "Workspace não compilado"}
+        return {"success": False, "error": "Workspace not compiled"}
 
     result = getattr(cached_result, "result", None)
     if not result:
-        return {"success": False, "error": "Resultado de compilação inválido"}
+        return {"success": False, "error": "Invalid compilation result"}
 
     lp = getattr(result, "linked_project", None)
     if not lp:
-        return {"success": False, "error": "LinkedProject não disponível"}
+        return {"success": False, "error": "LinkedProject not available"}
 
     effective_root = workspace_root or getattr(cached_result, "workspace_root", None)
     cache_key = _topics_cache_key(cached_result, effective_root)
@@ -86,8 +86,19 @@ def get_ontology_topics(cached_result, workspace_root: Optional[Path] = None) ->
     ontology_index = getattr(lp, "ontology_index", {}) or {}
 
     if not ontology_index:
-        logger.debug("Ontology index vazio, retornando lista vazia")
+        logger.debug("Ontology index empty, returning an empty list")
         result = {"success": True, "topics": []}
+        _topics_cache_set(cache_key, result)
+        return result
+
+    # Com papel HIERARCHY no template, a arvore e a hierarquia adotada (pais e
+    # filhos do .syno, com ITEMs da subarvore e fundamentacao), nao o agrupamento
+    # por arquivo/topico (Spec ROLE/EXPORT §12, etapa A2d).
+    from synesis_lsp.hierarchy import hierarchy_tree
+
+    tree = hierarchy_tree(cached_result, effective_root)
+    if tree is not None:
+        result = {"success": True, "topics": tree, "mode": "hierarchy"}
         _topics_cache_set(cache_key, result)
         return result
 
@@ -110,7 +121,7 @@ def get_ontology_topics(cached_result, workspace_root: Optional[Path] = None) ->
                 files_to_parse[path].append((code, line))
 
     if not files_to_parse:
-        logger.debug("Nenhum arquivo .syno encontrado")
+        logger.debug("No .syno file found")
         result = {"success": True, "topics": []}
         _topics_cache_set(cache_key, result)
         return result
@@ -122,7 +133,7 @@ def get_ontology_topics(cached_result, workspace_root: Optional[Path] = None) ->
             topics = _parse_syno_file(syno_path, effective_root, concepts)
             all_topics.extend(topics)
         except Exception as e:
-            logger.warning(f"Erro ao parsear {syno_path}: {e}", exc_info=True)
+            logger.warning(f"Error parsing {syno_path}: {e}", exc_info=True)
 
     result = {"success": True, "topics": all_topics}
     _topics_cache_set(cache_key, result)
@@ -146,13 +157,13 @@ def _parse_syno_file(
         Lista de tópicos raiz (cada um pode ter children)
     """
     if not file_path.exists():
-        logger.warning(f"Arquivo não encontrado: {file_path}")
+        logger.warning(f"File not found: {file_path}")
         return []
 
     try:
         content = file_path.read_text(encoding="utf-8")
     except Exception as e:
-        logger.warning(f"Erro ao ler {file_path}: {e}")
+        logger.warning(f"Error reading {file_path}: {e}")
         return []
 
     lines = content.split("\n")

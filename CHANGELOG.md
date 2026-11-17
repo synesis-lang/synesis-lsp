@@ -5,7 +5,62 @@ All notable changes to the Synesis LSP project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.25.0] - 2026-11-17
+
+### Changed — piso do compilador
+
+- `synesis>=0.15.0` (era `>=0.13.4`): a especificação U exige piso
+  compatível com `USE` nos consumidores. Vira `>=0.15.0` no release.
+
+### Changed — interface em inglês
+
+- Mensagens de erro das requisições, logs, hover (`Parents`, `Children`,
+  `Aliases (USE)`, `Ungrounded`), completamento (`(block)`, placeholders
+  `concept_name`/`value`), assinatura e diagnósticos do `.synt` passam a inglês
+  (idioma oficial das saídas, 2026-11-17). Os padrões em português de
+  `code_actions.py` ficam: reconhecem mensagens antigas do compilador.
+
+### Fixed
+
+- Quick fix de campo obrigatório (`SYNESIS_E020`) nunca aparecia: o nome do
+  campo era procurado entre aspas, e a mensagem do compilador o traz entre
+  crases. `_extract_field_name_from_message` passa a ler crases primeiro.
+
+### Added — USE (etapa U)
+
+- Hover do preterido: "usar → alvo"; hover do alvo lista os preteridos e
+  conta os ITEMs deles na subárvore. Completion de `ROLE` oferece `USE`.
+
+### Added — rastreio da hierarquia adotada (etapa A2d)
+
+Requer synesis >= 0.15 (papéis `ROLE HIERARCHY`); com um compilador anterior,
+nada muda.
+
+- **Referências** de um conceito incluem os blocos ONTOLOGY que o citam num
+  campo `HIERARCHY` (`tipo_de: phishing`), além dos ITEMs.
+- **Hierarquia de tipos** (`textDocument/prepareTypeHierarchy`,
+  `typeHierarchy/supertypes` = pais, `typeHierarchy/subtypes` = filhos), com a
+  espécie (`KIND`, `PART`, `INSTANCE`) no detalhe: "Show Type Hierarchy" no VS Code.
+- **Hover** de conceito: pais e filhos por espécie, ITEMs próprios e da
+  subárvore (união: um ITEM que cita dois descendentes conta uma vez) e a marca
+  de conceito sem fundamentação.
+- **Explorador de ontologia**: com papel `HIERARCHY` no template,
+  `synesis/getOntologyTopics` devolve a árvore da hierarquia (topos na raiz; um
+  conceito com dois pais aparece nos dois ramos), com ITEMs próprios e da
+  subárvore. Sem o papel, segue o agrupamento por tópico.
+- **`synesis/getSubtreeEvidence`**: ITEMs de um conceito e de todos os
+  descendentes, sem repetir.
+- **Completion**: papéis depois de `ROLE` e propriedades dentro de `EXPORT`
+  (mais `MAP RELATIONS` no SKOS), lidos dos catálogos do compilador.
+- Tokens semânticos: a lista de tipos de campo vem do enum `FieldType` do
+  compilador.
+
+### Added — questões e blocos `EXPORT` na estrutura do `.synp`
+
+- Na estrutura do documento (Outline), o `PROJECT` passa a ter como filhos as
+  questões de competência (`Q1`, `Q2`…, com o texto no detalhe) e os blocos
+  `EXPORT` (com o `OUTPUT` no detalhe). Requer synesis >= 0.15; com um compilador
+  anterior, o `PROJECT` continua sem filhos.
 
 ## [0.24.0] - 2026-10-14
 

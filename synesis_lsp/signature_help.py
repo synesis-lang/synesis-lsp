@@ -86,14 +86,14 @@ def compute_signature_help(
     label = f"{field_name}: <{type_name}>"
     doc = f"**{field_name}**\n\n"
     doc += f"- Tipo: `{type_name}`\n"
-    doc += f"- Escopo: `{scope_name}`\n"
+    doc += f"- Scope: `{scope_name}`\n"
     if description:
-        doc += f"- Descrição: {description}\n"
+        doc += f"- Description: {description}\n"
 
     # Parâmetro: o valor esperado
     param = ParameterInformation(
         label=f"<{type_name}>",
-        documentation=description or f"Valor do tipo {type_name}",
+        documentation=description or f"Value of type {type_name}",
     )
 
     sig = SignatureInformation(

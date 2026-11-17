@@ -234,6 +234,7 @@ def _extract_field_name_from_message(message: str) -> Optional[str]:
 
     # Padrão: palavra entre aspas simples ou duplas
     patterns = [
+        r"`([^`]+)`",  # Crases: forma das mensagens do compilador (E020, E027)
         r"'([^']+)'",  # Aspas simples
         r'"([^"]+)"',  # Aspas duplas
     ]

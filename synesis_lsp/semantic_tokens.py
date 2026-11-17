@@ -139,10 +139,18 @@ _RE_FIELD_LABEL = re.compile(r'^([\w.-]+)\s*:')
 # TEXT_LINE após KW_FIELD. `nome` é property; TYPE e o tipo são keywords.
 # Os tipos vêm da gramática (KW_* de tipo), colados aqui para reconhecê-los
 # dentro do TEXT_LINE onde o lexer não os separou.
-_FIELD_TYPE_NAMES = (
-    "CODE", "TEXT", "MEMO", "QUOTATION", "CHAIN", "DATE",
-    "SCALE", "ENUMERATED", "ORDERED", "TOPIC",
-)
+def _field_type_names() -> tuple:
+    """Tipos de campo do compilador (enum FieldType), para nao divergir dele."""
+    try:
+        from synesis.ast.nodes import FieldType
+
+        return tuple(t.value.upper() for t in FieldType)
+    except Exception:  # pragma: no cover - compilador indisponivel
+        return ("CODE", "TEXT", "MEMO", "QUOTATION", "CHAIN", "DATE",
+                "SCALE", "ENUMERATED", "ORDERED", "TOPIC")
+
+
+_FIELD_TYPE_NAMES = _field_type_names()
 _RE_FIELD_HEADER = re.compile(
     r'^([\w.-]+)(\s+)(TYPE)(\s+)(' + '|'.join(_FIELD_TYPE_NAMES) + r')\b',
     re.IGNORECASE,

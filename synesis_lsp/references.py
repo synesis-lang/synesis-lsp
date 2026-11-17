@@ -58,9 +58,19 @@ def compute_references(
         # Code
         template = getattr(result, "template", None)
         field_specs = getattr(template, "field_specs", None) if template else None
-        return _find_code_references(
+        locations = _find_code_references(
             lp, word, workspace_root, include_declaration, field_specs
-        )
+        ) or []
+        # Rastreio da hierarquia: os blocos ONTOLOGY que citam o conceito num
+        # campo HIERARCHY (`tipo_de: phishing`) tambem sao referencias a ele.
+        from synesis_lsp.hierarchy import hierarchy_references
+
+        seen = {(loc.uri, loc.range.start.line) for loc in locations}
+        for loc in hierarchy_references(cached_result, word, workspace_root):
+            if (loc.uri, loc.range.start.line) not in seen:
+                seen.add((loc.uri, loc.range.start.line))
+                locations.append(loc)
+        return locations or None
 
 
 def _find_code_references(

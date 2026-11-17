@@ -71,6 +71,12 @@ def compute_completions(
     lines = source.splitlines()
     line = lines[position.line] if position.line < len(lines) else ""
 
+    # Depois de `ROLE` (template) e dentro de `EXPORT` (.synp): os catalogos do
+    # compilador, para nao manter uma segunda lista aqui.
+    contextual = _role_or_export_completions(lines, position)
+    if contextual is not None:
+        return CompletionList(is_incomplete=False, items=contextual)
+
     # Após @: sugerir bibrefs
     if trigger_char == "@" or _is_after_at(line, position.character):
         bib = getattr(result, "bibliography", None) or {}
@@ -111,7 +117,7 @@ def compute_completions(
                 CompletionItem(
                     label=concept,
                     kind=CompletionItemKind.EnumMember,
-                    detail=f"Ontologia ({usage_count} usos)",
+                    detail=f"Ontology ({usage_count} uses)",
                 )
             )
 
@@ -230,33 +236,33 @@ def _block_snippet(
     word = keyword or scope_name
 
     # ONTOLOGY identifica o bloco por nome de conceito; os demais, por bibref.
-    header_arg = "${1:nome_do_conceito}" if scope_name == "ONTOLOGY" else "@${1:bibref}"
+    header_arg = "${1:concept_name}" if scope_name == "ONTOLOGY" else "@${1:bibref}"
     lines = [f"{word} {header_arg}"]
 
     tab = 2
     for field in required:
-        lines.append(f"    {field}: ${{{tab}:valor}}")
+        lines.append(f"    {field}: ${{{tab}:value}}")
         tab += 1
     if optional:
-        lines.append("    # opcionais — descomente o que for usar:")
+        lines.append("    # optional — uncomment what you use:")
         lines.extend(f"    # {field}: " for field in optional)
     lines.append(f"END {word}")
     lines.append("$0")
 
     if required:
-        detail = f"{len(required)} campo(s) obrigatorio(s): " + ", ".join(required)
+        detail = f"{len(required)} required field(s): " + ", ".join(required)
     else:
-        detail = "sem campos obrigatorios neste template"
+        detail = "no required fields in this template"
 
     documentation = detail
     if optional:
-        documentation += "\n\nOpcionais: " + ", ".join(optional)
+        documentation += "\n\nOptional: " + ", ".join(optional)
     if bundles:
         pairs = "; ".join("+".join(b) for b in bundles)
-        documentation += f"\n\nBundles opcionais (tudo ou nada): {pairs}"
+        documentation += f"\n\nOptional bundles (all or nothing): {pairs}"
 
     return CompletionItem(
-        label=f"{scope_name} (bloco)",
+        label=f"{scope_name} (block)",
         kind=CompletionItemKind.Snippet,
         detail=detail,
         documentation=documentation,
@@ -325,3 +331,51 @@ def _find_field_spec(field_specs, name: Optional[str]):
         if str(key).lower() == lowered:
             return value
     return None
+
+
+def _role_or_export_completions(lines: list[str], position: Position) -> Optional[list[CompletionItem]]:
+    """Papeis depois de `ROLE`; propriedades e `MAP RELATIONS` dentro de `EXPORT`.
+
+    Devolve None fora desses contextos (o completion segue como antes) ou com um
+    compilador que ainda nao tem os catalogos.
+    """
+    line = lines[position.line] if position.line < len(lines) else ""
+    before = line[: position.character]
+    stripped = before.lstrip()
+    if stripped.upper().startswith("ROLE"):
+        try:
+            from synesis.semantic.roles import CATALOG
+        except ImportError:
+            return None
+        return [
+            CompletionItem(label=role, kind=CompletionItemKind.EnumMember,
+                           detail=f"role (TYPE {info.field_type.value})")
+            for role, info in CATALOG.items()
+        ]
+    export_format = None
+    for previous in reversed(lines[: position.line]):
+        text = previous.strip().upper()
+        if text.startswith("END EXPORT") or text.startswith("END PROJECT"):
+            return None
+        if text.startswith("EXPORT "):
+            parts = text.split()
+            export_format = parts[1] if len(parts) > 1 else None
+            break
+    if export_format is None or " " in stripped:
+        return None
+    try:
+        from synesis.semantic.project_blocks import EXPORT_FORMATS, MAP_RELATIONS_FORMATS
+    except ImportError:
+        return None
+    fmt = EXPORT_FORMATS.get(export_format)
+    if fmt is None:
+        return None
+    items = [
+        CompletionItem(label=prop, kind=CompletionItemKind.Property,
+                       detail="required" if prop in fmt.required else "optional")
+        for prop in fmt.allowed
+    ]
+    if export_format in MAP_RELATIONS_FORMATS:
+        items.append(CompletionItem(label="MAP RELATIONS", kind=CompletionItemKind.Keyword,
+                                    detail="CHAIN relations in this artifact"))
+    return items

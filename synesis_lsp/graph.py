@@ -46,18 +46,18 @@ def get_relation_graph(
         (none) → grafo completo do projeto
     """
     if not cached_result:
-        return {"success": False, "error": "Projeto não carregado"}
+        return {"success": False, "error": "Project not loaded"}
 
     lp = getattr(cached_result.result, "linked_project", None)
     if not lp:
-        return {"success": False, "error": "Projeto não carregado"}
+        return {"success": False, "error": "Project not loaded"}
 
     template = getattr(getattr(cached_result, "result", None), "template", None)
 
     triples = getattr(lp, "all_triples", None)
     if not triples and not bibref and not item and not file:
         logger.debug("get_relation_graph: No triples found")
-        return {"success": True, "mermaidCode": "graph LR\n    empty[Sem relações]"}
+        return {"success": True, "mermaidCode": "graph LR\n    empty[No relations]"}
 
     logger.debug(f"get_relation_graph: Found {len(triples) if triples else 0} total triples")
 
@@ -68,7 +68,7 @@ def get_relation_graph(
         if not triples:
             return {
                 "success": True,
-                "mermaidCode": "graph LR\n    empty[Sem relações no arquivo]",
+                "mermaidCode": "graph LR\n    empty[No relations in the file]",
             }
         logger.debug(f"get_relation_graph: Filtered to {len(triples)} triples (file scope)")
     # Filtro por ITEM específico (bibref + arquivo + linha para desambiguar ITEMs com mesmo bibref)
@@ -78,7 +78,7 @@ def get_relation_graph(
         if not triples:
             return {
                 "success": True,
-                "mermaidCode": f"graph LR\n    empty[Sem relações para {item}]",
+                "mermaidCode": f"graph LR\n    empty[No relations for {item}]",
             }
         logger.debug(f"get_relation_graph: Filtered to {len(triples)} triples (item scope)")
     # Filtro por SOURCE (todos os ITEMs do SOURCE)
@@ -88,13 +88,13 @@ def get_relation_graph(
         if not triples:
             return {
                 "success": True,
-                "mermaidCode": f"graph LR\n    empty[Sem relações para {bibref}]",
+                "mermaidCode": f"graph LR\n    empty[No relations for {bibref}]",
             }
         logger.debug(f"get_relation_graph: Filtered to {len(triples)} triples")
 
     if not triples:
         logger.debug("get_relation_graph: No triples after filtering")
-        return {"success": True, "mermaidCode": "graph LR\n    empty[Sem relações]"}
+        return {"success": True, "mermaidCode": "graph LR\n    empty[No relations]"}
 
     lines = ["graph LR"]
     seen = set()

@@ -39,7 +39,7 @@ def get_abstract(
         }
     """
     if not file_path:
-        return {"success": False, "error": "Arquivo não especificado"}
+        return {"success": False, "error": "File not specified"}
 
     # Resolver path
     path = Path(file_path)
@@ -49,10 +49,10 @@ def get_abstract(
         path = workspace_root / path
 
     if not path.exists():
-        return {"success": False, "error": f"Arquivo não encontrado: {file_path}"}
+        return {"success": False, "error": f"File not found: {file_path}"}
 
     if path.suffix not in [".syn", ".synp"]:
-        return {"success": False, "error": "Arquivo deve ser .syn ou .synp"}
+        return {"success": False, "error": "File must be .syn or .synp"}
 
     # Tentar extrair ABSTRACT da bibliografia se disponível
     if cached_result:
@@ -269,8 +269,8 @@ def _parse_abstract_from_file(file_path: Path, workspace_root: Optional[Path]) -
     try:
         content = file_path.read_text(encoding="utf-8")
     except Exception as e:
-        logger.warning(f"Erro ao ler arquivo {file_path}: {e}")
-        return {"success": False, "error": f"Erro ao ler arquivo: {e}"}
+        logger.warning(f"Error reading file {file_path}: {e}")
+        return {"success": False, "error": f"Error reading file: {e}"}
 
     lines = content.split("\n")
 
@@ -332,5 +332,5 @@ def _parse_abstract_from_file(file_path: Path, workspace_root: Optional[Path]) -
     # ABSTRACT não encontrado
     return {
         "success": False,
-        "error": "Campo ABSTRACT não encontrado no arquivo"
+        "error": "ABSTRACT field not found in the file"
     }

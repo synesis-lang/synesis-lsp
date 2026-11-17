@@ -75,15 +75,15 @@ def build_template_diagnostics(
             spec_scope = _scope_name(getattr(spec, "scope", None))
             if spec_scope and spec_scope != scope:
                 message = (
-                    f"Campo '{field_name}' nao e permitido em {scope}. "
-                    f"Escopo esperado: {spec_scope}."
+                    f"Field '{field_name}' is not allowed in {scope}. "
+                    f"Expected scope: {spec_scope}."
                 )
                 diagnostics.append(_make_diag(line, column, message))
                 continue
 
             forbidden = set(forbidden_by_scope.get(scope, []))
             if field_name in forbidden:
-                message = f"Campo '{field_name}' e proibido em {scope}."
+                message = f"Field '{field_name}' is forbidden in {scope}."
                 diagnostics.append(_make_diag(line, column, message))
 
         required_fields = set(required_by_scope.get(scope, []))
@@ -92,7 +92,7 @@ def build_template_diagnostics(
             field_key = (field_name, scope)
             if field_key in existing_field_errors:
                 continue
-            message = f"Campo obrigatorio ausente em {scope}: '{field_name}'."
+            message = f"Required field missing in {scope}: '{field_name}'."
             diagnostics.append(_make_diag(block["line"], 1, message))
 
         bundle_tuples = bundled_by_scope.get(scope, [])
@@ -101,9 +101,9 @@ def build_template_diagnostics(
             absent = set(bundle) - present
             if present and absent:
                 message = (
-                    f"Bundle incompleto em {scope}: "
-                    f"'{', '.join(sorted(present))}' presente(s) mas "
-                    f"'{', '.join(sorted(absent))}' ausente(s) — devem aparecer juntos."
+                    f"Incomplete bundle in {scope}: "
+                    f"'{', '.join(sorted(present))}' present but "
+                    f"'{', '.join(sorted(absent))}' missing — they must appear together."
                 )
                 diagnostics.append(_make_diag(block["line"], 1, message))
 
@@ -153,8 +153,8 @@ def build_command_diagnostics(source: str, uri: str) -> list[Diagnostic]:
 
         if command not in allowed:
             message = (
-                f"Comando invalido '{command}'. "
-                f"Esperado: {', '.join(sorted(allowed))}."
+                f"Invalid command '{command}'. "
+                f"Expected: {', '.join(sorted(allowed))}."
             )
             diagnostics.append(_make_diag(line_idx, match.start(1) + 1, message, DiagnosticSeverity.Warning))
 
@@ -322,8 +322,8 @@ def _scope_to_bundles(mapping) -> dict[str, list[tuple[str, ...]]]:
 def _unknown_field_message(field_name: str, known_fields: Iterable[str]) -> str:
     suggestions = difflib.get_close_matches(field_name, list(known_fields), n=3, cutoff=0.6)
     if suggestions:
-        return f"Campo desconhecido '{field_name}'. Voce quis dizer: {', '.join(suggestions)}?"
-    return f"Campo desconhecido '{field_name}'."
+        return f"Unknown field '{field_name}'. Did you mean: {', '.join(suggestions)}?"
+    return f"Unknown field '{field_name}'."
 
 
 def _make_diag(line: int, column: int, message: str, severity: DiagnosticSeverity = DiagnosticSeverity.Error) -> Diagnostic:

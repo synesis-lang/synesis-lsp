@@ -69,7 +69,7 @@ def _blocks(source: str = "", character: int = 0, cached=None):
     result = compute_completions(
         source, Position(line=0, character=character), cached or _cached()
     )
-    return {i.label: i for i in result.items if i.label.endswith("(bloco)")}
+    return {i.label: i for i in result.items if i.label.endswith("(block)")}
 
 
 def _expand(text: str) -> str:
@@ -83,7 +83,7 @@ def _expand(text: str) -> str:
 
 def test_offers_the_three_annotation_blocks():
     blocks = _blocks()
-    assert set(blocks) == {"SOURCE (bloco)", "ITEM (bloco)", "ONTOLOGY (bloco)"}
+    assert set(blocks) == {"SOURCE (block)", "ITEM (block)", "ONTOLOGY (block)"}
 
 
 def test_blocks_are_snippets_not_plain_text():
@@ -94,7 +94,7 @@ def test_blocks_are_snippets_not_plain_text():
 
 
 def test_source_block_carries_required_fields_of_this_template():
-    body = _blocks()["SOURCE (bloco)"].insert_text
+    body = _blocks()["SOURCE (block)"].insert_text
     assert "SOURCE @" in body
     assert "slug:" in body
     assert "nome:" in body
@@ -104,21 +104,21 @@ def test_source_block_carries_required_fields_of_this_template():
 def test_optional_fields_are_commented_not_active():
     """Opcionais entram COMENTADOS: documentam o que o escopo aceita sem que
     um campo vazio quebre a validacao. Tambem seguem na documentacao do item."""
-    block = _blocks()["SOURCE (bloco)"]
+    block = _blocks()["SOURCE (block)"]
     assert "# headline:" in block.insert_text
     assert "\n    headline:" not in block.insert_text  # nao como linha ativa
     assert "headline" in block.documentation
 
 
 def test_ontology_block_uses_concept_name_not_bibref():
-    body = _blocks()["ONTOLOGY (bloco)"].insert_text
-    assert "ONTOLOGY ${1:nome_do_conceito}" in body
+    body = _blocks()["ONTOLOGY (block)"].insert_text
+    assert "ONTOLOGY ${1:concept_name}" in body
     assert "@" not in body.splitlines()[0]
 
 
 def test_bundle_is_reported_in_documentation():
     """Bundle e contrato tudo-ou-nada; o pesquisador precisa saber que existe."""
-    doc = _blocks()["ITEM (bloco)"].documentation
+    doc = _blocks()["ITEM (block)"].documentation
     assert "chain+memo" in doc
 
 
@@ -139,8 +139,8 @@ def test_block_content_varies_with_the_template():
                      .replace("FIELD slug TYPE TEXT", "FIELD lattes_id TYPE TEXT") \
                      .replace("FIELD nome TYPE TEXT\n    SCOPE SOURCE\nEND FIELD\n", "")
 
-    padrao = _blocks()["SOURCE (bloco)"].insert_text
-    variante = _blocks(cached=_cached(outro))["SOURCE (bloco)"].insert_text
+    padrao = _blocks()["SOURCE (block)"].insert_text
+    variante = _blocks(cached=_cached(outro))["SOURCE (block)"].insert_text
 
     assert "slug:" in padrao and "lattes_id:" not in padrao
     assert "lattes_id:" in variante and "slug:" not in variante
@@ -153,8 +153,8 @@ def test_scope_absent_from_template_yields_no_block():
         "FIELD ontology_description TYPE TEXT\n    SCOPE ONTOLOGY\nEND FIELD\n", ""
     )
     blocks = _blocks(cached=_cached(sem_ontologia))
-    assert "ONTOLOGY (bloco)" not in blocks
-    assert "SOURCE (bloco)" in blocks
+    assert "ONTOLOGY (block)" not in blocks
+    assert "SOURCE (block)" in blocks
 
 
 def test_expanded_blocks_parse():
@@ -191,7 +191,7 @@ def test_no_crash_without_template():
         result=SimpleNamespace(template=None, bibliography={}, linked_project=None)
     )
     result = compute_completions("", Position(line=0, character=0), cached)
-    assert not [i for i in result.items if i.label.endswith("(bloco)")]
+    assert not [i for i in result.items if i.label.endswith("(block)")]
 
 
 # --------------------------------------------------------------------------
@@ -253,21 +253,21 @@ def test_required_bundle_fields_are_in_the_block():
     `required_fields`. Ler so a segunda produzia blocos incompletos — bug real
     observado com social_acceptance.synt, onde `note` e `chain` sumiam."""
     blocks = _blocks(cached=_cached(_TEMPLATE_REQUIRED_BUNDLE))
-    body = blocks["ITEM (bloco)"].insert_text
+    body = blocks["ITEM (block)"].insert_text
     assert "text:" in body
     assert "note:" in body, "campo de REQUIRED BUNDLE ausente"
     assert "chain:" in body, "campo de REQUIRED BUNDLE ausente"
 
 
 def test_required_bundle_counted_in_detail():
-    detail = _blocks(cached=_cached(_TEMPLATE_REQUIRED_BUNDLE))["ITEM (bloco)"].detail
-    assert "3 campo" in detail
+    detail = _blocks(cached=_cached(_TEMPLATE_REQUIRED_BUNDLE))["ITEM (block)"].detail
+    assert "3 required field" in detail
 
 
 def test_block_with_required_bundle_parses():
     from synesis.parser.lexer import parse_string
 
-    body = _blocks(cached=_cached(_TEMPLATE_REQUIRED_BUNDLE))["ITEM (bloco)"].insert_text
+    body = _blocks(cached=_cached(_TEMPLATE_REQUIRED_BUNDLE))["ITEM (block)"].insert_text
     parse_string(_expand(body) + "\n", "<snippet>")
 
 
@@ -282,7 +282,7 @@ def test_block_keyword_follows_typed_case():
         ("ITEM", "ITEM"), ("item", "item"), ("Item", "Item"),
         ("ite", "item"), ("It", "Item"), ("I", "ITEM"),
     ]:
-        block = _blocks(source=typed, character=len(typed))["ITEM (bloco)"]
+        block = _blocks(source=typed, character=len(typed))["ITEM (block)"]
         first, last = block.insert_text.splitlines()[0], block.insert_text.splitlines()[-2]
         assert first.startswith(expected), f"{typed!r} -> {first!r}"
         assert last == f"END {expected}", f"{typed!r} -> {last!r}"
@@ -290,7 +290,7 @@ def test_block_keyword_follows_typed_case():
 
 def test_block_defaults_to_uppercase_without_input():
     """Sem nada digitado, segue a convencao dos templates do ecossistema."""
-    body = _blocks()["SOURCE (bloco)"].insert_text
+    body = _blocks()["SOURCE (block)"].insert_text
     assert body.startswith("SOURCE ")
     assert "END SOURCE" in body
 
@@ -298,7 +298,7 @@ def test_block_defaults_to_uppercase_without_input():
 def test_lowercase_block_still_parses():
     from synesis.parser.lexer import parse_string
 
-    block = _blocks(source="item", character=4)["ITEM (bloco)"]
+    block = _blocks(source="item", character=4)["ITEM (block)"]
     parse_string(_expand(block.insert_text) + "\n", "<snippet>")
 
 
@@ -308,24 +308,24 @@ def test_lowercase_block_still_parses():
 
 def test_optional_section_has_a_hint_line():
     """Uma linha explica o que fazer com as linhas comentadas."""
-    assert "descomente" in _blocks()["SOURCE (bloco)"].insert_text
+    assert "uncomment" in _blocks()["SOURCE (block)"].insert_text
 
 
 def test_scope_without_optionals_has_no_comment_section():
-    body = _blocks()["ONTOLOGY (bloco)"].insert_text
-    assert "descomente" not in body
+    body = _blocks()["ONTOLOGY (block)"].insert_text
+    assert "uncomment" not in body
 
 
 def test_block_with_commented_optionals_parses():
     from synesis.parser.lexer import parse_string
 
-    parse_string(_expand(_blocks()["SOURCE (bloco)"].insert_text) + "\n", "<snippet>")
+    parse_string(_expand(_blocks()["SOURCE (block)"].insert_text) + "\n", "<snippet>")
 
 
 def test_commented_optionals_have_no_tabstops():
     """Tab nao deve parar em linha comentada — o pesquisador so preenche o que
     descomentar."""
-    body = _blocks()["SOURCE (bloco)"].insert_text
+    body = _blocks()["SOURCE (block)"].insert_text
     for line in body.splitlines():
         if line.strip().startswith("#"):
             assert "${" not in line, f"tab-stop em linha comentada: {line!r}"

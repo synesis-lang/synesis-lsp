@@ -70,12 +70,12 @@ class WorkspaceCache:
             check_codes=check_codes,
             synp_path=synp_path,
         )
-        logger.info(f"Cache atualizado para workspace: {workspace_key}")
+        logger.info(f"Cache updated for workspace: {workspace_key}")
 
     def invalidate(self, workspace_key: str) -> None:
         """Remove compilação do cache para o workspace."""
         if self._cache.pop(workspace_key, None):
-            logger.info(f"Cache invalidado para workspace: {workspace_key}")
+            logger.info(f"Cache invalidated for workspace: {workspace_key}")
 
     def has(self, workspace_key: str) -> bool:
         """Verifica se há compilação em cache para o workspace."""

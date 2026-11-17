@@ -215,10 +215,44 @@ def _build_symbols_from_nodes(nodes: list, source: str) -> List[DocumentSymbol]:
                 kind=SymbolKind.Namespace,
                 range=proj_range,
                 selection_range=proj_sel,
+                children=_project_children(pnode, lines, proj_range) or None,
             )
         )
 
     return symbols
+
+
+def _project_children(pnode, lines: List[str], parent: Range) -> List[DocumentSymbol]:
+    """Questões de competência e blocos EXPORT como filhos do PROJECT (synesis >= 0.15).
+
+    `getattr`: compiladores anteriores não têm os atributos. Cada filho cobre só
+    a própria linha, dentro do range do PROJECT (exigência do protocolo).
+    """
+    children: List[DocumentSymbol] = []
+    for question in getattr(pnode, "questions", None) or []:
+        if not (question.id and question.text):
+            continue
+        rng = _make_range(question.location, lines)
+        children.append(DocumentSymbol(
+            name=question.id,
+            kind=SymbolKind.Key,
+            range=rng,
+            selection_range=rng,
+            detail=question.text[:80],
+        ))
+    for export in getattr(pnode, "exports", None) or []:
+        rng = _make_range(export.location, lines)
+        children.append(DocumentSymbol(
+            name=export.label,
+            kind=SymbolKind.Event,
+            range=rng,
+            selection_range=rng,
+            detail=export.prop("OUTPUT") or None,
+        ))
+    return [
+        c for c in children
+        if parent.start.line <= c.range.start.line and c.range.end.line <= parent.end.line
+    ]
 
 
 def _make_range(location, lines: List[str]) -> Range:

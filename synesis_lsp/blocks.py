@@ -125,19 +125,19 @@ def get_blocks(file_path: str, workspace_root: Optional[Path] = None) -> dict:
         }
     """
     if not file_path:
-        return {"success": False, "error": "Parâmetro 'file' não fornecido"}
+        return {"success": False, "error": "Parameter 'file' not provided"}
 
     path = Path(file_path)
     if not path.is_absolute() and workspace_root:
         path = workspace_root / path
 
     if not path.exists():
-        return {"success": False, "error": f"Arquivo não encontrado: {file_path}"}
+        return {"success": False, "error": f"File not found: {file_path}"}
 
     try:
         source = path.read_text(encoding="utf-8")
     except Exception as exc:
-        return {"success": False, "error": f"Erro ao ler arquivo: {exc}"}
+        return {"success": False, "error": f"Error reading file: {exc}"}
 
     blocks = _extract_blocks(source, str(path))
     return {"success": True, "blocks": blocks}
@@ -162,7 +162,7 @@ def _extract_blocks(source: str, uri: str) -> list[dict]:
     try:
         return _blocks_from_lex(source)
     except Exception:
-        logger.debug("blocks: lexer falhou, usando fallback regex", exc_info=True)
+        logger.debug("blocks: lexer failed, using the regex fallback", exc_info=True)
         return _blocks_from_regex(source)
 
 
