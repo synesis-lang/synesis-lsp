@@ -5,6 +5,17 @@ All notable changes to the Synesis LSP project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Fixed — identificador SPDX da licença (L-1)
+
+- `license` passa de `AGPL-3.0-only AND LicenseRef-Synesis-data-output-exception` para
+  `LicenseRef-Synesis-AGPL-3.0-with-Data-Output-Exception`. Em SPDX, `AND` significa duas
+  licenças cumulativas, não uma permissão adicional sobre a AGPL; uma exceção não
+  cadastrada se representa por um único `LicenseRef` com o conjunto dos termos
+  (`LICENSE` + `LICENSE.exception`). A licença em si não mudou. O `CITATION.cff` segue
+  `AGPL-3.0-only` (o CFF só aceita a lista SPDX).
+
 ## [0.25.0] - 2026-11-17
 
 ### Changed — piso do compilador

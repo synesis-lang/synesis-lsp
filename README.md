@@ -239,7 +239,7 @@ version 3 only (AGPL-3.0-only), with the Synesis Data-Output Exception** — see
 [LICENSE](https://github.com/synesis-lang/synesis-lsp/blob/main/LICENSE) and
 [LICENSE.exception](https://github.com/synesis-lang/synesis-lsp/blob/main/LICENSE.exception).
 
-SPDX identifier: `AGPL-3.0-only AND LicenseRef-Synesis-data-output-exception`
+SPDX identifier: `LicenseRef-Synesis-AGPL-3.0-with-Data-Output-Exception`
 
 **Your research data and outputs are yours.** Files you author and the
 artifacts Synesis produces from them are **not** covered by the AGPL and carry
