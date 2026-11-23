@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.25.1] - 2026-11-23
+
+### Alterado — piso do compilador
+
+- `synesis>=0.16.0` (era `>=0.15.0`): arquivo `.syn`/`.syno` vazio deixa de ser erro
+  de sintaxe (C-2) e os valores com linhas de continuação chegam inteiros (C-1).
+
 ### Fixed — identificador SPDX da licença (L-1)
 
 - `license` passa de `AGPL-3.0-only AND LicenseRef-Synesis-data-output-exception` para
